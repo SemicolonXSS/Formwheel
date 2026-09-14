@@ -4,509 +4,1315 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#f7f8fc">
-<title>FormWheel Marble</title>
+<title>FormWheel</title>
+
 <style>
 *{box-sizing:border-box}
-html,body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f7f8fc;color:#17181c}
-body{padding-bottom:40px}
-header{position:sticky;top:0;z-index:20;height:64px;background:rgba(255,255,255,.88);backdrop-filter:blur(14px);border-bottom:1px solid #e8e9ee;display:flex;align-items:center;padding:0 22px}
-.logo{font-weight:900;font-size:23px;letter-spacing:-1px;text-decoration:none;color:#17181c;display:flex;align-items:center;gap:7px}
-.logoWheel{width:25px;height:25px;border-radius:50%;border:4px dotted #17181c;display:inline-block}
-.wrap{max-width:1180px;margin:0 auto;padding:28px 18px}
-.hero{text-align:center;margin:12px 0 26px}
-.hero h1{font-size:38px;margin:0 0 8px;letter-spacing:-1.5px}
-.hero p{margin:0;color:#747780}
-.grid{display:grid;grid-template-columns:340px 1fr;gap:18px;align-items:start}
-.card{background:#fff;border:1px solid #e5e7ed;border-radius:20px;padding:20px;box-shadow:0 8px 28px rgba(30,35,50,.05)}
-.card h2{font-size:17px;margin:0 0 13px}
-textarea{width:100%;min-height:190px;border:1px solid #dfe2e8;border-radius:14px;padding:13px;resize:vertical;outline:none;font-size:15px;line-height:1.65}
-textarea:focus,input:focus{border-color:#7b61ff;box-shadow:0 0 0 3px rgba(123,97,255,.1)}
-.help{font-size:12px;color:#858994;margin-top:9px;line-height:1.5}
-.row{display:flex;gap:9px;flex-wrap:wrap}
-button,select,input{font:inherit}
-button{border:0;border-radius:12px;padding:11px 15px;font-weight:750;cursor:pointer;background:#eef0f5;color:#20232a}
-button:hover{filter:brightness(.97)}
-.primary{background:#17181c;color:#fff}
-.danger{background:#fff0f0;color:#d33}
-.mapBtns{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.mapBtn{padding:12px 7px;border:1px solid #e1e3e9;background:#fafbfc}
-.mapBtn.active{border-color:#17181c;background:#17181c;color:#fff}
-canvas{width:100%;display:block;background:#fafafa;border:1px solid #e4e5e9;border-radius:18px}
-.stage{position:relative}
-.overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
-.result{display:none;pointer-events:auto;background:rgba(255,255,255,.96);border:1px solid #ddd;border-radius:20px;padding:22px 30px;text-align:center;box-shadow:0 15px 50px rgba(0,0,0,.12)}
-.result.show{display:block}
-.result .winner{font-size:30px;font-weight:900;margin-top:4px}
-.stats{display:flex;gap:8px;margin-top:12px}
-.stat{flex:1;background:#f6f7f9;border-radius:12px;padding:10px;text-align:center;font-size:12px;color:#777}
-.stat b{display:block;color:#17181c;font-size:18px;margin-bottom:2px}
-.editor{margin-top:18px}
-.editorTools{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
-.editorTools button.selected{background:#17181c;color:#fff}
-.editorHint{font-size:12px;color:#777;margin:0 0 10px}
-.selPanel{display:none;background:#f4f2ff;border:1px solid #e3ddff;border-radius:12px;padding:9px 10px}
-.selPanel button{background:#fff;border:1px solid #ddd6ff}
-.modal{display:none;position:fixed;inset:0;background:rgba(10,12,18,.4);z-index:50;align-items:center;justify-content:center;padding:18px}
-.modal.show{display:flex}
-.modalBox{width:min(520px,100%);background:#fff;border-radius:22px;padding:22px;max-height:88vh;overflow:auto}
-.modalBox h2{margin:0 0 14px}
-.modalBox input{width:100%;padding:12px;border:1px solid #ddd;border-radius:11px}
-.saved{display:grid;gap:8px;margin-top:12px}
-.savedItem{display:flex;justify-content:space-between;align-items:center;background:#f7f8fa;padding:10px 12px;border-radius:11px}
-@media(max-width:800px){.grid{grid-template-columns:1fr}.hero h1{font-size:31px}.mapBtns{grid-template-columns:1fr}.card{border-radius:17px}}
+html,body{margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,
+  "Noto Sans KR",Arial,sans-serif;
+  background:#f7f8fc;
+  color:#15171c;
+  overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+
+body:before{
+  content:"";
+  position:fixed;
+  width:520px;
+  height:520px;
+  top:-260px;
+  left:-180px;
+  background:radial-gradient(circle,rgba(40,103,232,.12),transparent 68%);
+  pointer-events:none;
+  z-index:-1;
+}
+body:after{
+  content:"";
+  position:fixed;
+  width:500px;
+  height:500px;
+  right:-250px;
+  top:280px;
+  background:radial-gradient(circle,rgba(124,58,237,.09),transparent 68%);
+  pointer-events:none;
+  z-index:-1;
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  height:70px;
+  background:rgba(255,255,255,.82);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(224,226,234,.9);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 24px;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:21px;
+  font-weight:850;
+  letter-spacing:-1px;
+  flex-shrink:0;
+}
+
+.logo .form{color:#2867e8}
+.logo .wheel{color:#555}
+
+.logoIcon{
+  width:28px;
+  height:28px;
+  border:4px solid #2867e8;
+  border-radius:50%;
+  position:relative;
+  display:inline-block;
+  box-shadow:0 3px 12px rgba(40,103,232,.18);
+}
+.logoIcon:before,
+.logoIcon:after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:#2867e8;
+  transform:translate(-50%,-50%);
+}
+.logoIcon:after{
+  width:12px;
+  height:4px;
+  border-radius:4px;
+  transform:translate(-50%,-50%) rotate(45deg);
+  transform-origin:center;
+}
+
+nav{
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+
+nav a{
+  padding:9px 12px;
+  border-radius:10px;
+  font-size:13px;
+  font-weight:750;
+  color:#666a73;
+  transition:.18s ease;
+}
+nav a:hover{
+  background:#f0f2f7;
+  color:#111;
+}
+
+.gamesMenu{position:relative}
+.gamesMenu summary{
+  list-style:none;
+  cursor:pointer;
+  padding:9px 12px;
+  border-radius:10px;
+  font-size:13px;
+  font-weight:750;
+  color:#666a73;
+  transition:.18s ease;
+}
+.gamesMenu summary::-webkit-details-marker{display:none}
+.gamesMenu summary:after{
+  content:"⌄";
+  margin-left:5px;
+  font-size:10px;
+}
+.gamesMenu[open] summary,
+.gamesMenu summary:hover{
+  background:#f0f2f7;
+  color:#111;
+}
+
+.gamesDropdown{
+  position:absolute;
+  top:calc(100% + 8px);
+  right:0;
+  min-width:155px;
+  padding:7px;
+  background:rgba(255,255,255,.97);
+  border:1px solid #e5e7ed;
+  border-radius:14px;
+  box-shadow:0 14px 35px rgba(20,25,40,.12);
+  backdrop-filter:blur(14px);
+}
+
+.gamesDropdown a{
+  display:block;
+  padding:10px 11px;
+  border-radius:9px;
+  color:#666a73;
+  font-size:12px;
+  font-weight:750;
+  white-space:nowrap;
+}
+.gamesDropdown a:hover{
+  background:#f0f2f7;
+  color:#111;
+}
+
+nav a.navBattle{
+  color:#ea650e;
+  background:#fff5ed;
+}
+nav a.navBattle:hover{
+  background:#ffead9;
+}
+
+.construction{
+  font-size:9px;
+  color:#999;
+  margin-left:3px;
+  vertical-align:middle;
+}
+
+main{
+  max-width:1160px;
+  margin:0 auto;
+  padding:68px 24px 80px;
+}
+
+.page{display:none}
+.page.active{display:block}
+
+.hero{
+  text-align:center;
+  padding:26px 0 58px;
+  position:relative;
+}
+
+.heroGlow{
+  position:absolute;
+  left:50%;
+  top:0;
+  width:440px;
+  height:220px;
+  transform:translateX(-50%);
+  background:radial-gradient(
+    ellipse,
+    rgba(40,103,232,.13),
+    transparent 70%
+  );
+  filter:blur(4px);
+  pointer-events:none;
+  z-index:-1;
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  padding:8px 13px;
+  border-radius:999px;
+  background:#eaf1ff;
+  color:#2867e8;
+  border:1px solid #dce8ff;
+  font-size:11px;
+  font-weight:850;
+  letter-spacing:.7px;
+  margin-bottom:20px;
+}
+
+.badgeDot{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#2867e8;
+  box-shadow:0 0 0 4px rgba(40,103,232,.10);
+}
+
+h1{
+  margin:0;
+  font-size:clamp(48px,9vw,82px);
+  line-height:1;
+  letter-spacing:-4.5px;
+  font-weight:900;
+  background:linear-gradient(
+    120deg,
+    #2867e8 0%,
+    #15171c 45%,
+    #7c3aed 100%
+  );
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.heroTitle{
+  margin-top:24px;
+  font-size:clamp(26px,5vw,44px);
+  font-weight:850;
+  line-height:1.28;
+  letter-spacing:-2px;
+}
+
+.heroText{
+  margin:18px auto 0;
+  max-width:620px;
+  color:#6c7079;
+  line-height:1.75;
+  font-size:15px;
+}
+
+.heroActions{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-top:28px;
+  flex-wrap:wrap;
+}
+
+.heroBtn{
+  min-height:48px;
+  padding:0 22px;
+  border-radius:14px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-size:14px;
+  font-weight:800;
+  transition:.2s ease;
+}
+
+.heroBtn.primary{
+  color:#fff;
+  background:#15171c;
+  box-shadow:0 10px 22px rgba(21,23,28,.14);
+}
+
+.heroBtn.secondary{
+  color:#2867e8;
+  background:#fff;
+  border:1px solid #dfe5f2;
+}
+
+.heroBtn:hover{
+  transform:translateY(-2px);
+}
+
+.heroBtn.primary:hover{
+  box-shadow:0 14px 28px rgba(21,23,28,.18);
+}
+
+.sectionLabel{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin:0 2px 14px;
+}
+
+.sectionLabel strong{
+  font-size:14px;
+  letter-spacing:-.2px;
+}
+
+.sectionLabel span{
+  color:#9a9da5;
+  font-size:12px;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+.card{
+  position:relative;
+  overflow:hidden;
+  background:rgba(255,255,255,.92);
+  border:1px solid #e5e7ed;
+  border-radius:23px;
+  padding:28px;
+  min-height:310px;
+  box-shadow:0 12px 35px rgba(20,25,40,.045);
+  transition:
+    transform .22s ease,
+    box-shadow .22s ease,
+    border-color .22s ease;
+}
+
+.card:before{
+  content:"";
+  position:absolute;
+  width:150px;
+  height:150px;
+  right:-80px;
+  top:-80px;
+  border-radius:50%;
+  background:var(--soft);
+  pointer-events:none;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 45px rgba(20,25,40,.09);
+  border-color:#dce0e9;
+}
+
+.card.form{
+  --accent:#15171c;
+  --soft:rgba(21,23,28,.055);
+}
+
+.card.wheel{
+  --accent:#2867e8;
+  --soft:rgba(40,103,232,.10);
+}
+
+.card.quiz{
+  --accent:#7c3aed;
+  --soft:rgba(124,58,237,.10);
+}
+
+.card.casino{
+  --accent:#d97706;
+  --soft:rgba(217,119,6,.11);
+}
+
+.card.battle{
+  --accent:#f97316;
+  --soft:rgba(249,115,22,.12);
+}
+
+.card.bomb{
+  --accent:#dc2626;
+  --soft:rgba(220,38,38,.10);
+}
+
+.card.risk{
+  --accent:#16a34a;
+  --soft:rgba(22,163,74,.11);
+}
+
+.card.bomb .status{
+  color:#dc2626;
+}
+
+.card.bomb .statusDot{
+  background:#ef4444;
+}
+
+.card.risk .status{
+  color:#16a34a;
+}
+
+.card.risk .statusDot{
+  background:#22c55e;
+}
+
+.icon{
+  width:56px;
+  height:56px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:17px;
+  background:var(--soft);
+  font-size:30px;
+  margin-bottom:22px;
+}
+
+.card h2{
+  margin:0 0 9px;
+  font-size:25px;
+  letter-spacing:-1.1px;
+}
+
+.card p{
+  margin:0 0 25px;
+  color:#70737b;
+  line-height:1.65;
+  font-size:13.5px;
+  min-height:66px;
+}
+
+.status{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  margin-bottom:17px;
+  color:#92959d;
+  font-size:10px;
+  font-weight:750;
+}
+
+.statusDot{
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:#b8bbc2;
+}
+
+.card.battle .status{
+  color:#e56b18;
+}
+
+.card.battle .statusDot{
+  background:#f97316;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:44px;
+  padding:0 17px;
+  border-radius:12px;
+  background:#15171c;
+  color:#fff;
+  font-weight:750;
+  font-size:13px;
+  transition:.18s ease;
+}
+
+.btn:hover{
+  transform:translateY(-1px);
+  filter:brightness(1.05);
+}
+
+.btn.blue{
+  background:#2867e8;
+}
+
+.btn.purple{
+  background:#7c3aed;
+}
+
+.btn.orange{
+  background:#f97316;
+}
+
+.btn.green{
+  background:#16a34a;
+}
+
+.notice{
+  margin-top:18px;
+  padding:15px 18px;
+  background:rgba(255,255,255,.75);
+  border:1px solid #e5e7ed;
+  border-radius:15px;
+  color:#777b84;
+  font-size:12px;
+  text-align:center;
+}
+
+.features{
+  margin-top:58px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+
+.feature{
+  background:rgba(255,255,255,.62);
+  border:1px solid #e8e9ef;
+  border-radius:18px;
+  padding:20px;
+}
+
+.featureIcon{
+  font-size:20px;
+  margin-bottom:10px;
+}
+
+.feature strong{
+  display:block;
+  font-size:14px;
+  margin-bottom:6px;
+}
+
+.feature span{
+  color:#777b83;
+  font-size:12px;
+  line-height:1.6;
+}
+
+.formBox{
+  max-width:720px;
+  margin:40px auto 0;
+  background:rgba(255,255,255,.94);
+  border:1px solid #e5e7ed;
+  border-radius:25px;
+  padding:45px 35px;
+  text-align:center;
+  box-shadow:0 15px 40px rgba(20,25,40,.05);
+}
+
+.formBox h2{
+  margin:0 0 12px;
+  font-size:30px;
+  letter-spacing:-1px;
+}
+
+.formBox p{
+  color:#777b83;
+  line-height:1.7;
+  margin:0 0 24px;
+}
+
+.back{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  margin-bottom:12px;
+  color:#666a73;
+  font-size:13px;
+  font-weight:750;
+  padding:8px 10px;
+  border-radius:9px;
+}
+
+.back:hover{
+  background:#eef0f5;
+}
+
+footer{
+  text-align:center;
+  padding:32px 20px 40px;
+  color:#a4a7ae;
+  font-size:11px;
+}
+
+.footerLogo{
+  font-weight:800;
+  color:#777b83;
+  margin-bottom:5px;
+}
+
+@media(max-width:1050px){
+  .cards{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:700px){
+  header{
+    height:auto;
+    min-height:64px;
+    padding:10px 14px;
+    gap:8px;
+  }
+
+  .logo{
+    font-size:18px;
+  }
+
+  .logoIcon{
+    width:24px;
+    height:24px;
+    border-width:3px;
+  }
+
+  nav{
+    gap:1px;
+    overflow-x:auto;
+    scrollbar-width:none;
+  }
+
+  nav::-webkit-scrollbar{
+    display:none;
+  }
+
+  nav a{
+    padding:8px 6px;
+    font-size:10px;
+    white-space:nowrap;
+  }
+
+  .gamesMenu summary{
+    padding:8px 6px;
+    font-size:10px;
+    white-space:nowrap;
+  }
+
+  .construction{
+    font-size:8px;
+  }
+
+  main{
+    padding:42px 16px 55px;
+  }
+
+  .hero{
+    padding:15px 0 44px;
+  }
+
+  .heroGlow{
+    width:330px;
+  }
+
+  h1{
+    letter-spacing:-3px;
+  }
+
+  .heroTitle{
+    letter-spacing:-1.4px;
+  }
+
+  .heroText{
+    font-size:14px;
+  }
+
+  .cards{
+    grid-template-columns:1fr;
+    gap:13px;
+  }
+
+  .card{
+    min-height:auto;
+    padding:24px;
+  }
+
+  .card p{
+    min-height:auto;
+  }
+
+  .features{
+    grid-template-columns:1fr;
+    margin-top:42px;
+  }
+
+  .notice{
+    line-height:1.6;
+  }
+
+  .formBox{
+    margin-top:25px;
+    padding:35px 20px;
+  }
+}
+
+@media(max-width:420px){
+  header{
+    flex-wrap:wrap;
+  }
+
+  nav{
+    width:100%;
+    justify-content:space-between;
+  }
+
+  nav a{
+    flex:1;
+    text-align:center;
+  }
+
+  .heroActions{
+    flex-direction:column;
+  }
+
+  .heroBtn{
+    width:100%;
+  }
+}
 </style>
 </head>
+
 <body>
+
 <header>
-<a class="logo" href="https://semicolonxss.github.io/Formwheel/">Form<span class="logoWheel"></span>Wheel</a>
+
+  <a href="#" class="logo"
+     onclick="showPage('home');return false;"
+     aria-label="FormWheel Home">
+    <span class="form">Form</span>
+    <span class="logoIcon"></span>
+    <span class="wheel">Wheel</span>
+  </a>
+
+  <nav>
+
+    <a href="#"
+       onclick="showPage('home');return false;">
+      Home
+    </a>
+
+    <a href="#"
+       onclick="showPage('form');return false;">
+      Form
+    </a>
+
+    <a href="https://semicolonxss.github.io/Formwheel_Wheel/"
+       target="_blank"
+       rel="noopener">
+      Wheel
+    </a>
+
+    <a href="https://semicolonxss.github.io/Formwheel_Quiz"
+       target="_blank"
+       rel="noopener">
+      Quiz
+    </a>
+
+    <details class="gamesMenu">
+      <summary>Games</summary>
+
+      <div class="gamesDropdown">
+
+        <a href="https://semicolonxss.github.io/Formwheel_Battle"
+           target="_blank"
+           rel="noopener">
+          ⚔️ Battle
+        </a>
+
+        <a href="https://semicolonxss.github.io/Formwheel_Bomb/"
+           target="_blank"
+           rel="noopener">
+          💣 Bomb
+        </a>
+
+        <a href="https://semicolonxss.github.io/Formwheel_Risk/"
+           target="_blank"
+           rel="noopener">
+          🎲 Risk
+        </a>
+
+        <a href="https://semicolonxss.github.io/Formwheel_WheelB/"
+           target="_blank"
+           rel="noopener">
+          ⚔️ Wheel Battle
+        </a>
+
+        <a href="https://semicolonxss.github.io/Formwheel_Reflex/"
+           target="_blank"
+           rel="noopener">
+          ⚡ Reflex
+        </a>
+
+        <a href="https://semicolonxss.github.io/Formwheel_Spy/"
+           target="_blank"
+           rel="noopener">
+          🕵️ Spy
+        </a>
+
+        <a href="https://semicolonxss.github.io/Formwheel_Casino/"
+           target="_blank"
+           rel="noopener">
+          🎰 Casino
+        </a>
+
+        <a href="https://semicolonxss.github.io/Formwheel_DiceDuel/"
+           target="_blank"
+           rel="noopener">
+          🎲 Dice Duel
+        </a>
+
+        <a href="https://semicolonxss.github.io/Formwheel_Marble/"
+           target="_blank"
+           rel="noopener">
+          🎱 Marble
+        </a>
+
+      </div>
+    </details>
+
+  </nav>
+
 </header>
 
-<main class="wrap">
-<section class="hero">
-<h1>🎱 FormWheel Marble</h1>
-<p>구슬들이 맵을 달리고, 결승선에 가장 먼저 도착한 구슬이 우승합니다.</p>
-</section>
+<main>
 
-<div class="grid">
-<section>
-<div class="card">
-<h2>참가자</h2>
-<textarea id="names" placeholder="[기생충-3], [전랑], [어벤져스-5]"></textarea>
-<div class="help">대괄호로 구분하세요. <b>[이름-숫자]</b>는 해당 구슬을 숫자만큼 생성하고, 숫자가 없으면 1개입니다.</div>
-<div class="row" style="margin-top:12px">
-<button class="primary" onclick="applyNames()">입력</button>
-<button onclick="sample()">예시 입력</button>
-<button class="danger" onclick="clearNames()">지우기</button>
-</div>
-</div>
+  <!-- HOME -->
+  <section id="home" class="page active">
 
-<div class="card" style="margin-top:18px">
-<h2>맵 선택</h2>
-<div class="mapBtns">
-<button class="mapBtn active" data-map="classic">Classic</button>
-<button class="mapBtn" data-map="maze">Maze</button>
-<button class="mapBtn" data-map="chaos">Chaos</button>
-</div>
-<div class="row" style="margin-top:10px">
-<button onclick="openEditor()">🎨 맵 만들기</button>
-<button onclick="openSaved()">📁 저장 맵</button>
-</div>
-</div>
+    <div class="hero">
 
-<div class="card" style="margin-top:18px">
-<h2>게임 설정</h2>
-<div class="row">
-<label style="display:flex;align-items:center;gap:8px"><input id="labels" type="checkbox" checked> 구슬 이름 표시</label>
-<label style="display:flex;align-items:center;gap:8px"><input id="sound" type="checkbox" checked> 효과음</label>
-</div>
-<div class="row" style="margin-top:14px">
-<button class="primary" style="flex:1" onclick="startGame()">▶ MARBLE START</button>
-<button onclick="resetGame()">↻ 초기화</button>
-</div>
-<div class="stats">
-<div class="stat"><b id="count">0</b>구슬</div>
-<div class="stat"><b id="mapName">Classic</b>맵</div>
-</div>
-</div>
-</section>
+      <div class="heroGlow"></div>
 
-<section class="card">
-<div class="stage">
-<canvas id="game" width="760" height="900"></canvas>
-<div class="overlay"><div id="result" class="result"><div>🏆 WINNER</div><div id="winner" class="winner"></div><button style="margin-top:13px" onclick="startGame()">다시 뽑기</button></div></div>
-</div>
-</section>
-</div>
+      <div class="badge">
+        <span class="badgeDot"></span>
+        FORMWHEEL
+      </div>
+
+      <h1>FormWheel</h1>
+
+      <div class="heroTitle">
+        만들고 · 참여하고 ·<br>
+        대결하고 · 뽑고
+      </div>
+
+      <p class="heroText">
+        설문부터 랜덤 추첨, 실시간 퀴즈와 배틀까지.<br>
+        친구들과 함께 즐기는 다양한 경험을 한곳에서 만나보세요.
+      </p>
+
+      <div class="heroActions">
+
+        <a href="https://semicolonxss.github.io/Formwheel_Form"
+           target="_blank"
+           rel="noopener"
+           class="heroBtn primary">
+          📝 Form 시작하기
+        </a>
+
+        <a href="https://semicolonxss.github.io/Formwheel_Wheel/"
+           target="_blank"
+           rel="noopener"
+           class="heroBtn secondary">
+          🎡 Wheel 시작하기
+        </a>
+
+      </div>
+
+    </div>
+
+    <div class="sectionLabel">
+      <strong>FormWheel 서비스</strong>
+      <span>Choose your experience</span>
+    </div>
+
+    <div class="cards">
+
+      <!-- FORM -->
+      <div class="card form">
+
+        <div class="icon">📝</div>
+
+        <div class="status">
+          <span class="statusDot"></span>
+          Available
+        </div>
+
+        <h2>Form</h2>
+
+        <p>
+          설문을 만들고 공유 링크를 통해
+          다른 사람의 응답을 받아보세요.
+        </p>
+
+        <a href="https://semicolonxss.github.io/Formwheel_Form"
+           target="_blank"
+           rel="noopener"
+           class="btn">
+          Form으로 이동 →
+        </a>
+
+      </div>
+
+      <!-- WHEEL -->
+      <div class="card wheel">
+
+        <div class="icon">🎡</div>
+
+        <div class="status">
+          <span class="statusDot"></span>
+          Available
+        </div>
+
+        <h2>Wheel</h2>
+
+        <p>
+          설문 응답을 이용해서
+          간편하게 랜덤 추첨을 진행하세요.
+        </p>
+
+        <a href="https://semicolonxss.github.io/Formwheel_Wheel/"
+           target="_blank"
+           rel="noopener"
+           class="btn blue">
+          Wheel로 이동 →
+        </a>
+
+      </div>
+
+      <!-- QUIZ -->
+      <div class="card quiz">
+
+        <div class="icon">🧠</div>
+
+        <div class="status">
+          <span class="statusDot"></span>
+          Available
+        </div>
+
+        <h2>Quiz</h2>
+
+        <p>
+          실시간으로 참가자들과
+          함께 즐기는 퀴즈를 진행하세요.
+        </p>
+
+        <a href="https://semicolonxss.github.io/Formwheel_Quiz"
+           target="_blank"
+           rel="noopener"
+           class="btn purple">
+          Quiz로 이동 →
+        </a>
+
+      </div>
+
+      <!-- BATTLE -->
+      <div class="card battle">
+
+        <div class="icon">⚔️</div>
+
+        <div class="status">
+          <span class="statusDot"></span>
+          Available
+        </div>
+
+        <h2>Battle</h2>
+
+        <p>
+          참가자들과 실시간으로 대결하며
+          재미있는 배틀을 진행하세요.
+        </p>
+
+        <a href="https://semicolonxss.github.io/Formwheel_Battle"
+           target="_blank"
+           rel="noopener"
+           class="btn orange">
+          Battle로 이동 →
+        </a>
+
+      </div>
+
+      <!-- BOMB -->
+      <div class="card bomb">
+
+        <div class="icon">💣</div>
+
+        <div class="status">
+          <span class="statusDot"></span>
+          New game
+        </div>
+
+        <h2>Bomb</h2>
+
+        <p>
+          폭탄을 다른 참가자에게 넘기며
+          마지막까지 살아남아보세요.
+        </p>
+
+        <a href="https://semicolonxss.github.io/Formwheel_Bomb/"
+           target="_blank"
+           rel="noopener"
+           class="btn orange">
+          Bomb로 이동 →
+        </a>
+
+      </div>
+
+      <!-- RISK -->
+      <div class="card risk">
+
+        <div class="icon">🎲</div>
+
+        <div class="status">
+          <span class="statusDot"></span>
+          New game
+        </div>
+
+        <h2>Risk</h2>
+
+        <p>
+          위험을 감수하고 선택하며
+          마지막까지 살아남아보세요.
+        </p>
+
+        <a href="https://semicolonxss.github.io/Formwheel_Risk/"
+           target="_blank"
+           rel="noopener"
+           class="btn green">
+          Risk로 이동 →
+        </a>
+
+      </div>
+
+      <!-- WHEEL BATTLE -->
+      <div class="card battle">
+
+        <div class="icon">⚔️</div>
+
+        <div class="status">
+          <span class="statusDot"></span>
+          New game
+        </div>
+
+        <h2>Wheel Battle</h2>
+
+        <p>
+          랜덤 휠을 이용해서
+          친구들과 실시간으로 대결해보세요.
+        </p>
+
+        <a href="https://semicolonxss.github.io/Formwheel_WheelB/"
+           target="_blank"
+           rel="noopener"
+           class="btn orange">
+          Wheel Battle로 이동 →
+        </a>
+
+      </div>
+
+      <!-- REFLEX -->
+      <div class="card wheel">
+
+        <div class="icon">⚡</div>
+
+        <div class="status">
+          <span class="statusDot"></span>
+          New game
+        </div>
+
+        <h2>Reflex</h2>
+
+        <p>
+          빠르게 나타나는 신호에 반응하며
+          순발력을 겨뤄보세요.
+        </p>
+
+        <a href="https://semicolonxss.github.io/Formwheel_Reflex/"
+           target="_blank"
+           rel="noopener"
+           class="btn blue">
+          Reflex로 이동 →
+        </a>
+
+      </div>
+
+      <!-- SPY -->
+      <div class="card quiz">
+
+        <div class="icon">🕵️</div>
+
+        <div class="status">
+          <span class="statusDot"></span>
+          New game
+        </div>
+
+        <h2>Spy</h2>
+
+        <p>
+          숨어 있는 스파이를 찾아내며
+          친구들과 심리전을 즐겨보세요.
+        </p>
+
+        <a href="https://semicolonxss.github.io/Formwheel_Spy/"
+           target="_blank"
+           rel="noopener"
+           class="btn purple">
+          Spy로 이동 →
+        </a>
+
+      </div>
+
+      <!-- CASINO -->
+      <div class="card casino">
+
+        <div class="icon">🎰</div>
+
+        <div class="status">
+          <span class="statusDot"></span>
+          New game
+        </div>
+
+        <h2>Casino</h2>
+
+        <p>
+          코인을 사용해서 다양한 게임을 즐기고
+          행운의 결과를 확인해보세요.
+        </p>
+
+        <a href="https://semicolonxss.github.io/Formwheel_Casino/"
+           target="_blank"
+           rel="noopener"
+           class="btn purple">
+          Casino로 이동 →
+        </a>
+
+      </div>
+
+      <!-- Dice Duel -->
+      <div class="card dice">
+
+        <div class="icon">🎲</div>
+
+        <div class="status">
+          <span class="statusDot"></span>
+          New game
+        </div>
+
+        <h2>Dice Duel</h2>
+
+        <p>
+          다른 사람들을 초대해
+          같이 주사위 배틀을 즐기세요!
+        </p>
+
+        <a href="https://semicolonxss.github.io/Formwheel_DiceDuel/"
+           target="_blank"
+           rel="noopener"
+           class="btn blue">
+          Dice Duel 이동 →
+        </a>
+
+      </div>
+      
+        <!-- Marble -->
+      <div class="card marble">
+
+        <div class="icon">🎱</div>
+
+        <div class="status">
+          <span class="statusDot"></span>
+          New game
+        </div>
+
+        <h2>Marble</h2>
+
+        <p>
+          구슬을 추가하고
+          트랙을 통해 경주하세요!
+        </p>
+
+        <a href="https://semicolonxss.github.io/Formwheel_Marble/"
+           target="_blank"
+           rel="noopener"
+           class="btn purple">
+          Marble 이동 →
+        </a>
+
+      </div>
+
+    </div>
+
+    <div class="notice">
+      🎡 Wheel은 FormWheel의 랜덤 추첨 기능을 제공합니다.
+      &nbsp;·&nbsp;
+      🎮 Games에서 Battle, Bomb, Risk, Wheel Battle, Reflex, Spy, Dice Duel를 친구들과 함께 즐겨보세요.
+    </div>
+
+    <div class="features">
+
+      <div class="feature">
+
+        <div class="featureIcon">🔗</div>
+
+        <strong>간편한 공유</strong>
+
+        <span>
+          링크와 코드 하나로 친구들과 Form, Quiz,
+          Battle, Bomb, Risk, Wheel Battle, Reflex, Spy를 공유할 수 있어요.
+        </span>
+
+      </div>
+
+      <div class="feature">
+
+        <div class="featureIcon">⚡</div>
+
+        <strong>빠르게 시작</strong>
+
+        <span>
+          복잡한 과정 없이 원하는 기능을 골라
+          바로 시작할 수 있어요.
+        </span>
+
+      </div>
+
+      <div class="feature">
+
+        <div class="featureIcon">🎮</div>
+
+        <strong>함께 즐기기</strong>
+
+        <span>
+          설문뿐 아니라 퀴즈와 다양한 게임까지
+          여러 방식으로 참여해보세요.
+        </span>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FORM -->
+  <section id="form" class="page">
+
+    <a href="#"
+       class="back"
+       onclick="showPage('home');return false;">
+      ← Home
+    </a>
+
+    <div class="formBox">
+
+      <div class="icon"
+           style="margin:0 auto 20px;background:rgba(21,23,28,.055)">
+        📝
+      </div>
+
+      <h2>Form</h2>
+
+      <p>
+        설문을 만들고 사람들의 응답을 받아보세요.
+      </p>
+
+      <a href="https://semicolonxss.github.io/Formwheel_Form"
+         target="_blank"
+         rel="noopener"
+         class="btn">
+        Form으로 이동 →
+      </a>
+
+    </div>
+
+  </section>
+
 </main>
 
-<div id="editorModal" class="modal">
-<div class="modalBox">
-<h2>🎨 나만의 맵 만들기</h2>
-<p class="editorHint">캔버스를 클릭해서 장애물을 배치하세요. 벽/원형 못/통로(기둥) 중 선택할 수 있고, "선택/회전" 도구로 기존 장애물을 골라 회전하거나 길이를 조정할 수 있어요. 맨 아래 빨간 점선이 결승선입니다.</p>
-<div class="editorTools">
-<button id="wallTool" class="selected" onclick="setEditorTool('wall',this)">▭ 벽 추가</button>
-<button onclick="setEditorTool('circle',this)">⚪ 원형 못</button>
-<button onclick="setEditorTool('gate',this)">🚪 통로</button>
-<button onclick="setEditorTool('select',this)">✥ 선택/회전</button>
-<button onclick="setEditorTool('erase',this)">지우기</button>
-<button onclick="clearEditor()">전체 지우기</button>
-</div>
-<canvas id="editor" width="760" height="900"></canvas>
-<div id="selPanel" class="selPanel row" style="margin-top:10px">
-<button onclick="rotateSel(-15)">↺ 회전</button>
-<button onclick="rotateSel(15)">↻ 회전</button>
-<button onclick="resizeSel(-10)">길이 -</button>
-<button onclick="resizeSel(10)">길이 +</button>
-<button class="danger" onclick="deleteSel()">선택 삭제</button>
-</div>
-<div class="row" style="margin-top:12px">
-<input id="mapTitle" placeholder="맵 이름" style="flex:1;min-width:180px">
-<button class="primary" onclick="saveCustomMap()">저장</button>
-<button onclick="closeEditor()">닫기</button>
-</div>
-</div>
-</div>
+<footer>
 
-<div id="savedModal" class="modal">
-<div class="modalBox">
-<h2>📁 저장한 맵</h2>
-<div id="savedList" class="saved"></div>
-<div class="row" style="margin-top:14px"><button onclick="closeSaved()">닫기</button></div>
-</div>
-</div>
+  <div class="footerLogo">
+    FormWheel
+  </div>
+
+  <div>
+    Make · Join · Play · Spin
+  </div>
+
+</footer>
 
 <script>
-const canvas=document.getElementById("game"),ctx=canvas.getContext("2d");
-const ecanvas=document.getElementById("editor"),ectx=ecanvas.getContext("2d");
-const CANVAS_W=canvas.width, CANVAS_H=canvas.height;
-const LEFT_IN=58, RIGHT_IN=CANVAS_W-58;
-const FINISH_Y=CANVAS_H-50;
+function showPage(page){
 
-let currentMap="classic",balls=[],running=false,last=0,editorTool="wall",editorWalls=[],selectedIndex=-1;
-let customMaps=JSON.parse(localStorage.getItem("formwheel_marble_maps")||"{}");
+  document.querySelectorAll('.page').forEach(function(el){
+    el.classList.remove('active');
+  });
 
-function sideWalls(){
- return [{type:'rect',x:40,y:90,w:18,h:CANVAS_H-140},{type:'rect',x:CANVAS_W-58,y:90,w:18,h:CANVAS_H-140}];
-}
+  var target=document.getElementById(page);
 
-// 위에서 아래까지 지그재그로 어긋난 못들을 배치 - 사각형 벽과 원형 못을 섞어 다양하게 구성
-function genClassic(){
- let walls=sideWalls();
- let rowY=140,gap=82,row=0;
- while(rowY<CANVAS_H-130){
-   let offset=(row%2===0)?0:80;
-   let useCircle=row%3===2;
-   for(let x=70+offset;x<CANVAS_W-70;x+=160){
-     if(useCircle) walls.push({type:'circle',x:x+27,y:rowY+7,r:16});
-     else walls.push({type:'rect',x,y:rowY,w:54,h:14});
-   }
-   rowY+=gap;row++;
- }
- return walls;
-}
-// 좌우로 번갈아 막힌 통로를 만들어 S자로 굽이치는 미로 + 통로 중간에 원형 못을 섞어 변화를 줌
-function genMaze(){
- let walls=sideWalls();
- let y=150,dir=1,gapW=190,row=0;
- while(y<CANVAS_H-150){
-   if(dir===1) walls.push({type:'rect',x:LEFT_IN,y,w:(RIGHT_IN-LEFT_IN)-gapW,h:16});
-   else walls.push({type:'rect',x:LEFT_IN+gapW,y,w:(RIGHT_IN-LEFT_IN)-gapW,h:16});
-   if(row%2===1){
-     let cx=dir===1?(RIGHT_IN-gapW/2):(LEFT_IN+gapW/2);
-     walls.push({type:'circle',x:cx,y:y+55,r:14});
-   }
-   y+=100;dir*=-1;row++;
- }
- return walls;
-}
-// 사각형, 원형, 기울어진 램프, 좁은 통로(기둥)까지 뒤섞은 혼돈 맵 - 완전히 막히지 않도록 한 줄에 1~2개로 제한
-function genChaos(){
- let walls=sideWalls();
- let y=150;
- while(y<CANVAS_H-150){
-   let n=1+Math.floor(Math.random()*2);
-   for(let i=0;i<n;i++){
-     let kind=Math.random();
-     if(kind<0.15){
-       let gap=46+Math.random()*30;
-       let cx=LEFT_IN+40+Math.random()*((RIGHT_IN-LEFT_IN-80)-gap);
-       walls.push({type:'rect',x:cx,y,w:14,h:70});
-       walls.push({type:'rect',x:cx+14+gap,y,w:14,h:70});
-     } else if(kind<0.45){
-       let x=LEFT_IN+10+Math.random()*(RIGHT_IN-LEFT_IN-20);
-       walls.push({type:'circle',x,y:y+7,r:14+Math.random()*8});
-     } else if(kind<0.72){
-       let w=45+Math.random()*55;
-       let x=LEFT_IN+10+Math.random()*((RIGHT_IN-LEFT_IN-20)-w);
-       let angle=(Math.random()*40-20)*Math.PI/180;
-       walls.push({type:'rect',x,y,w,h:14,angle});
-     } else {
-       let w=45+Math.random()*55;
-       let x=LEFT_IN+10+Math.random()*((RIGHT_IN-LEFT_IN-20)-w);
-       walls.push({type:'rect',x,y,w,h:15});
-     }
-   }
-   y+=75+Math.random()*40;
- }
- return walls;
-}
+  if(target){
+    target.classList.add('active');
+  }
 
-const baseMaps={classic:genClassic(),maze:genMaze(),chaos:genChaos()};
-
-function parseNames(){
- let text=document.getElementById("names").value;
- let arr=[], re=/\[([^\]\n]+)\]/g,m;
- while((m=re.exec(text))){
-   let raw=m[1].trim(), parts=raw.match(/^(.*?)-(\d+)$/), name=raw, n=1;
-   if(parts){name=parts[1].trim();n=Math.max(1,Math.min(100,parseInt(parts[2])))}
-   if(name) for(let i=0;i<n;i++) arr.push({name,id:crypto.randomUUID()});
- }
- document.getElementById("count").textContent=arr.length;
- return arr;
+  window.scrollTo({
+    top:0,
+    behavior:'smooth'
+  });
 }
-function applyNames(){
- parseNames();
- let el=document.getElementById("count");
- el.style.color="#7b61ff";
- setTimeout(()=>{el.style.color="";},400);
-}
-function sample(){document.getElementById("names").value="[기생충-3], [전랑], [어벤져스-5], [타이타닉-2]";applyNames()}
-function clearNames(){document.getElementById("names").value="";applyNames()}
-document.getElementById("names").addEventListener("input",parseNames);
-
-document.querySelectorAll(".mapBtn").forEach(b=>b.onclick=()=>{
- document.querySelectorAll(".mapBtn").forEach(x=>x.classList.remove("active"));
- b.classList.add("active");currentMap=b.dataset.map;document.getElementById("mapName").textContent=b.textContent;draw();
-});
-
-function walls(){
- if(currentMap.startsWith("custom:")) return customMaps[currentMap.slice(7)]||[];
- return baseMaps[currentMap]||baseMaps.classic;
-}
-function drawObstacle(context,o){
- if(o.type==='circle'){
-   context.beginPath();context.arc(o.x,o.y,o.r,0,Math.PI*2);context.fill();
-   return;
- }
- let angle=o.angle||0;
- if(!angle){context.fillRect(o.x,o.y,o.w,o.h);return}
- let cx=o.x+o.w/2, cy=o.y+o.h/2;
- context.save();context.translate(cx,cy);context.rotate(angle);
- context.fillRect(-o.w/2,-o.h/2,o.w,o.h);
- context.restore();
-}
-function draw(){
- ctx.clearRect(0,0,canvas.width,canvas.height);
- ctx.fillStyle="#fafafa";ctx.fillRect(0,0,canvas.width,canvas.height);
- ctx.fillStyle="#e8e9ed";
- for(const w of walls()) drawObstacle(ctx,w);
- // 결승선
- ctx.setLineDash([8,6]);ctx.strokeStyle="#ff5a5f";ctx.lineWidth=3;
- ctx.beginPath();ctx.moveTo(40,FINISH_Y);ctx.lineTo(CANVAS_W-40,FINISH_Y);ctx.stroke();
- ctx.setLineDash([]);
- ctx.fillStyle="#ff5a5f";ctx.font="700 13px sans-serif";ctx.textAlign="left";
- ctx.fillText("FINISH",46,FINISH_Y-8);
- if(!running){
-   ctx.fillStyle="#9b9da4";ctx.font="600 18px sans-serif";ctx.textAlign="center";
-   ctx.fillText("MARBLE READY",canvas.width/2,70);
- }
- for(const b of balls) drawBall(b);
-}
-function drawBall(b){
- ctx.beginPath();ctx.arc(b.x,b.y,b.r,0,Math.PI*2);ctx.fillStyle=b.color;ctx.fill();
- ctx.strokeStyle="rgba(0,0,0,.15)";ctx.stroke();
- if(document.getElementById("labels").checked){
-   ctx.fillStyle="#333";ctx.font="11px sans-serif";ctx.textAlign="center";
-   ctx.fillText(b.name,b.x,b.y-b.r-5);
- }
-}
-function makeBall(p,i,total){
- let angle=Math.random()*Math.PI*2,s=.8+Math.random()*1.4;
- return {name:p.name,x:LEFT_IN+18+Math.random()*((RIGHT_IN-LEFT_IN)-36),y:60+Math.random()*20,
- r:9,
- vx:Math.cos(angle)*s,vy:Math.sin(angle)*s+1,color:`hsl(${(i*360/Math.max(total,1)+Math.random()*25)%360} 70% 55%)`};
-}
-function startGame(){
- let people=parseNames();
- if(!people.length){alert("참가자를 먼저 입력해주세요.");return}
- balls=people.map((p,i)=>makeBall(p,i,people.length));
- document.getElementById("result").classList.remove("show");
- running=true;last=performance.now();requestAnimationFrame(loop);
-}
-function resetGame(){running=false;balls=[];document.getElementById("result").classList.remove("show");draw();parseNames()}
-function loop(t){
- if(!running)return;
- let dt=Math.min(2,(t-last)/16.67);last=t;
- for(const b of balls){
-   b.vy+=.035*dt;b.x+=b.vx*dt;b.y+=b.vy*dt;
-   if(b.x<LEFT_IN+b.r){b.x=LEFT_IN+b.r;b.vx=Math.abs(b.vx)*.9}
-   if(b.x>RIGHT_IN-b.r){b.x=RIGHT_IN-b.r;b.vx=-Math.abs(b.vx)*.9}
-   if(b.y<b.r){b.y=b.r;b.vy=Math.abs(b.vy)*.9}
-   for(const w of walls()) collideObstacle(b,w);
- }
- for(let i=0;i<balls.length;i++)for(let j=i+1;j<balls.length;j++)ballCollision(balls[i],balls[j]);
- for(const b of balls){if(Math.abs(b.vx)+Math.abs(b.vy)<.35){b.vx+=(Math.random()-.5)*.6;b.vy+=.7}}
- // 결승선에 도달한 구슬이 있으면 즉시 종료 (실제로 가장 먼저 결승선에 닿은 구슬이 우승)
- let arrived=balls.filter(b=>b.y+b.r>=FINISH_Y);
- if(arrived.length){
-   let winner=arrived.reduce((a,c)=>c.y>a.y?c:a);
-   finishGame(winner);
-   return;
- }
- draw();
- requestAnimationFrame(loop);
-}
-function collideObstacle(b,o){
- if(o.type==='circle'){
-   let dx=b.x-o.x, dy=b.y-o.y, d=Math.hypot(dx,dy), min=b.r+o.r;
-   if(d && d<min){
-     let nx=dx/d, ny=dy/d, overlap=min-d;
-     b.x+=nx*overlap; b.y+=ny*overlap;
-     let dot=b.vx*nx+b.vy*ny;
-     if(dot<0){ b.vx-=1.8*dot*nx; b.vy-=1.8*dot*ny; }
-     b.vx*=0.94; b.vy*=0.94;
-   }
-   return;
- }
- let angle=o.angle||0;
- if(!angle){
-   let nx=Math.max(o.x,Math.min(b.x,o.x+o.w)), ny=Math.max(o.y,Math.min(b.y,o.y+o.h));
-   let dx=b.x-nx, dy=b.y-ny, d=dx*dx+dy*dy;
-   if(d<b.r*b.r){
-     if(Math.abs(dx)>Math.abs(dy)){ b.vx=-b.vx*.86; b.x+=dx>0?b.r-dx:-(b.r+dx); }
-     else{ b.vy=-b.vy*.84; b.y+=dy>0?b.r-dy:-(b.r+dy); }
-   }
-   return;
- }
- let cx=o.x+o.w/2, cy=o.y+o.h/2;
- let cos=Math.cos(-angle), sin=Math.sin(-angle);
- let dx=b.x-cx, dy=b.y-cy;
- let lx=dx*cos-dy*sin, ly=dx*sin+dy*cos;
- let hw=o.w/2, hh=o.h/2;
- let clx=Math.max(-hw,Math.min(lx,hw)), cly=Math.max(-hh,Math.min(ly,hh));
- let ddx=lx-clx, ddy=ly-cly, d=ddx*ddx+ddy*ddy;
- if(d<b.r*b.r){
-   let dist=Math.sqrt(d)||0.0001;
-   let pushLx=ddx/dist*(b.r-dist), pushLy=ddy/dist*(b.r-dist);
-   let cos2=Math.cos(angle), sin2=Math.sin(angle);
-   let wx=pushLx*cos2-pushLy*sin2, wy=pushLx*sin2+pushLy*cos2;
-   b.x+=wx; b.y+=wy;
-   let nlen=Math.hypot(wx,wy)||1, nx=wx/nlen, ny=wy/nlen;
-   let dot=b.vx*nx+b.vy*ny;
-   if(dot<0){ b.vx-=1.86*dot*nx; b.vy-=1.86*dot*ny; }
- }
-}
-function ballCollision(a,b){
- let dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy),min=a.r+b.r;
- if(d&&d<min){let nx=dx/d,ny=dy/d,over=min-d;a.x-=nx*over/2;a.y-=ny*over/2;b.x+=nx*over/2;b.y+=ny*over/2;let rvx=b.vx-a.vx,rvy=b.vy-a.vy,p=rvx*nx+rvy*ny;if(p<0){a.vx+=p*nx;a.vy+=p*ny;b.vx-=p*nx;b.vy-=p*ny}}}
-function finishGame(winner){
- running=false;
- document.getElementById("winner").textContent=winner.name;
- document.getElementById("result").classList.add("show");
- draw();
-}
-function hitTest(o,x,y){
- if(o.type==='circle') return Math.hypot(x-o.x,y-o.y)<=o.r+4;
- let angle=o.angle||0;
- if(!angle) return x>=o.x-3 && x<=o.x+o.w+3 && y>=o.y-3 && y<=o.y+o.h+3;
- let cx=o.x+o.w/2, cy=o.y+o.h/2;
- let cos=Math.cos(-angle), sin=Math.sin(-angle);
- let dx=x-cx, dy=y-cy;
- let lx=dx*cos-dy*sin, ly=dx*sin+dy*cos;
- return lx>=-o.w/2-3 && lx<=o.w/2+3 && ly>=-o.h/2-3 && ly<=o.h/2+3;
-}
-function toolHint(){
- if(editorTool==='wall') return "클릭해서 벽을 추가하세요";
- if(editorTool==='circle') return "클릭해서 원형 못을 추가하세요";
- if(editorTool==='gate') return "클릭해서 통로(기둥 두 개)를 추가하세요";
- if(editorTool==='erase') return "클릭해서 삭제하세요";
- if(editorTool==='select') return "장애물을 클릭해 선택 후 회전/길이를 조정하세요";
- return "";
-}
-function openEditor(){
- editorWalls=JSON.parse(JSON.stringify(walls().slice(0,140)));
- selectedIndex=-1;updateSelPanel();
- document.getElementById("mapTitle").value="";
- setEditorTool('wall',document.getElementById("wallTool"));
- document.getElementById("editorModal").classList.add("show");
-}
-function closeEditor(){document.getElementById("editorModal").classList.remove("show")}
-function selectTool(el){document.querySelectorAll(".editorTools button").forEach(x=>x.classList.remove("selected"));if(el)el.classList.add("selected")}
-function setEditorTool(t,el){
- editorTool=t;
- if(t!=='select'){selectedIndex=-1;updateSelPanel();}
- selectTool(el);
- drawEditor();
-}
-function updateSelPanel(){document.getElementById("selPanel").style.display=selectedIndex>=0?"flex":"none"}
-function rotateSel(deg){
- if(selectedIndex<0||!editorWalls[selectedIndex])return;
- let o=editorWalls[selectedIndex];
- if(o.type==='circle')return;
- o.angle=(o.angle||0)+deg*Math.PI/180;
- drawEditor();
-}
-function resizeSel(delta){
- if(selectedIndex<0||!editorWalls[selectedIndex])return;
- let o=editorWalls[selectedIndex];
- if(o.type==='circle'){o.r=Math.max(8,Math.min(60,o.r+delta/2))}
- else if(o.w>=o.h){o.w=Math.max(20,Math.min(500,o.w+delta))}
- else {o.h=Math.max(20,Math.min(500,o.h+delta))}
- drawEditor();
-}
-function deleteSel(){
- if(selectedIndex<0||!editorWalls[selectedIndex])return;
- editorWalls.splice(selectedIndex,1);
- selectedIndex=-1;updateSelPanel();drawEditor();
-}
-function drawEditor(){
- ectx.clearRect(0,0,ecanvas.width,ecanvas.height);ectx.fillStyle="#fafafa";ectx.fillRect(0,0,ecanvas.width,ecanvas.height);
- ectx.fillStyle="#c9cbd3";
- editorWalls.forEach(w=>drawObstacle(ectx,w));
- if(selectedIndex>=0 && editorWalls[selectedIndex]){
-   let o=editorWalls[selectedIndex];
-   ectx.save();ectx.strokeStyle="#7b61ff";ectx.lineWidth=2.5;ectx.setLineDash([5,4]);
-   if(o.type==='circle'){
-     ectx.beginPath();ectx.arc(o.x,o.y,o.r+5,0,Math.PI*2);ectx.stroke();
-   } else {
-     let angle=o.angle||0, cx=o.x+o.w/2, cy=o.y+o.h/2;
-     ectx.translate(cx,cy);ectx.rotate(angle);
-     ectx.strokeRect(-o.w/2-4,-o.h/2-4,o.w+8,o.h+8);
-   }
-   ectx.restore();
- }
- ectx.setLineDash([8,6]);ectx.strokeStyle="#ff5a5f";ectx.lineWidth=3;
- ectx.beginPath();ectx.moveTo(40,FINISH_Y);ectx.lineTo(ecanvas.width-40,FINISH_Y);ectx.stroke();
- ectx.setLineDash([]);
- ectx.fillStyle="#ff5a5f";ectx.font="700 13px sans-serif";ectx.textAlign="left";
- ectx.fillText("FINISH",46,FINISH_Y-8);
- ectx.fillStyle="#bbb";ectx.font="13px sans-serif";ectx.textAlign="center";
- ectx.fillText(toolHint(),ecanvas.width/2,35);
-}
-ecanvas.addEventListener("click",e=>{
- let r=ecanvas.getBoundingClientRect(),x=(e.clientX-r.left)*ecanvas.width/r.width,y=(e.clientY-r.top)*ecanvas.height/r.height;
- if(editorTool==="erase"){
-   editorWalls=editorWalls.filter(w=>!hitTest(w,x,y));
-   selectedIndex=-1;updateSelPanel();
- } else if(editorTool==="wall"){
-   editorWalls.push({type:'rect',x:Math.round(x/10)*10-40,y:Math.round(y/10)*10-8,w:80,h:16,angle:0});
- } else if(editorTool==="circle"){
-   editorWalls.push({type:'circle',x:Math.round(x/10)*10,y:Math.round(y/10)*10,r:18});
- } else if(editorTool==="gate"){
-   let cx=Math.round(x/10)*10, cy=Math.round(y/10)*10, gap=60;
-   editorWalls.push({type:'rect',x:cx-gap/2-14,y:cy-50,w:14,h:100,angle:0});
-   editorWalls.push({type:'rect',x:cx+gap/2,y:cy-50,w:14,h:100,angle:0});
- } else if(editorTool==="select"){
-   let idx=-1;
-   for(let i=editorWalls.length-1;i>=0;i--){if(hitTest(editorWalls[i],x,y)){idx=i;break}}
-   selectedIndex=idx;updateSelPanel();
- }
- drawEditor();
-});
-function clearEditor(){editorWalls=[];selectedIndex=-1;updateSelPanel();drawEditor()}
-function saveCustomMap(){
- let name=document.getElementById("mapTitle").value.trim()||"내 맵";
- customMaps[name]=editorWalls;localStorage.setItem("formwheel_marble_maps",JSON.stringify(customMaps));
- closeEditor();currentMap="custom:"+name;document.getElementById("mapName").textContent=name;
- document.querySelectorAll(".mapBtn").forEach(x=>x.classList.remove("active"));draw();
-}
-function openSaved(){
- let box=document.getElementById("savedList");box.innerHTML="";
- let keys=Object.keys(customMaps);
- if(!keys.length)box.innerHTML="<div style='color:#777'>저장된 맵이 없습니다.</div>";
- keys.forEach(k=>{
-  let div=document.createElement("div");div.className="savedItem";
-  div.innerHTML=`<span>${escapeHtml(k)}</span>`;
-  let row=document.createElement("span");
-  let use=document.createElement("button");use.textContent="사용";use.onclick=()=>{currentMap="custom:"+k;document.getElementById("mapName").textContent=k;closeSaved();draw()};
-  let del=document.createElement("button");del.textContent="삭제";del.className="danger";del.onclick=()=>{delete customMaps[k];localStorage.setItem("formwheel_marble_maps",JSON.stringify(customMaps));openSaved()};
-  row.append(use,del);div.append(row);box.append(div);
- });
- document.getElementById("savedModal").classList.add("show");
-}
-function closeSaved(){document.getElementById("savedModal").classList.remove("show")}
-function escapeHtml(s){return s.replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
-draw();parseNames();
 </script>
+
 </body>
 </html>
