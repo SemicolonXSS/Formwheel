@@ -10,6 +10,7 @@
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 html{scroll-behavior:smooth}
+
 body{
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,
   "Noto Sans KR",Arial,sans-serif;
@@ -17,6 +18,7 @@ body{
   color:#15171c;
   overflow-x:hidden;
 }
+
 a{text-decoration:none;color:inherit}
 
 body:before{
@@ -30,6 +32,7 @@ body:before{
   pointer-events:none;
   z-index:-1;
 }
+
 body:after{
   content:"";
   position:fixed;
@@ -41,6 +44,8 @@ body:after{
   pointer-events:none;
   z-index:-1;
 }
+
+/* HEADER */
 
 header{
   position:sticky;
@@ -79,6 +84,7 @@ header{
   display:inline-block;
   box-shadow:0 3px 12px rgba(40,103,232,.18);
 }
+
 .logoIcon:before,
 .logoIcon:after{
   content:"";
@@ -91,6 +97,7 @@ header{
   background:#2867e8;
   transform:translate(-50%,-50%);
 }
+
 .logoIcon:after{
   width:12px;
   height:4px;
@@ -113,12 +120,16 @@ nav a{
   color:#666a73;
   transition:.18s ease;
 }
+
 nav a:hover{
   background:#f0f2f7;
   color:#111;
 }
 
-.gamesMenu{position:relative}
+.gamesMenu{
+  position:relative;
+}
+
 .gamesMenu summary{
   list-style:none;
   cursor:pointer;
@@ -129,12 +140,17 @@ nav a:hover{
   color:#666a73;
   transition:.18s ease;
 }
-.gamesMenu summary::-webkit-details-marker{display:none}
+
+.gamesMenu summary::-webkit-details-marker{
+  display:none;
+}
+
 .gamesMenu summary:after{
   content:"⌄";
   margin-left:5px;
   font-size:10px;
 }
+
 .gamesMenu[open] summary,
 .gamesMenu summary:hover{
   background:#f0f2f7;
@@ -145,7 +161,9 @@ nav a:hover{
   position:absolute;
   top:calc(100% + 8px);
   right:0;
-  min-width:155px;
+  min-width:170px;
+  max-height:75vh;
+  overflow-y:auto;
   padding:7px;
   background:rgba(255,255,255,.97);
   border:1px solid #e5e7ed;
@@ -163,25 +181,13 @@ nav a:hover{
   font-weight:750;
   white-space:nowrap;
 }
+
 .gamesDropdown a:hover{
   background:#f0f2f7;
   color:#111;
 }
 
-nav a.navBattle{
-  color:#ea650e;
-  background:#fff5ed;
-}
-nav a.navBattle:hover{
-  background:#ffead9;
-}
-
-.construction{
-  font-size:9px;
-  color:#999;
-  margin-left:3px;
-  vertical-align:middle;
-}
+/* MAIN */
 
 main{
   max-width:1160px;
@@ -189,8 +195,15 @@ main{
   padding:68px 24px 80px;
 }
 
-.page{display:none}
-.page.active{display:block}
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
+
+/* HERO */
 
 .hero{
   text-align:center;
@@ -311,6 +324,8 @@ h1{
   box-shadow:0 14px 28px rgba(21,23,28,.18);
 }
 
+/* SECTION */
+
 .sectionLabel{
   display:flex;
   align-items:center;
@@ -327,6 +342,8 @@ h1{
   color:#9a9da5;
   font-size:12px;
 }
+
+/* CARDS */
 
 .cards{
   display:grid;
@@ -367,6 +384,8 @@ h1{
   border-color:#dce0e9;
 }
 
+/* CARD COLORS */
+
 .card.form{
   --accent:#15171c;
   --soft:rgba(21,23,28,.055);
@@ -402,6 +421,28 @@ h1{
   --soft:rgba(22,163,74,.11);
 }
 
+.card.dice{
+  --accent:#2563eb;
+  --soft:rgba(37,99,235,.10);
+}
+
+.card.marble{
+  --accent:#7c3aed;
+  --soft:rgba(124,58,237,.10);
+}
+
+.card.vote{
+  --accent:#0891b2;
+  --soft:rgba(8,145,178,.10);
+}
+
+.card.clicker{
+  --accent:#0891b2;
+  --soft:rgba(8,145,178,.11);
+}
+
+/* CARD CONTENT */
+
 .card.bomb .status{
   color:#dc2626;
 }
@@ -416,6 +457,14 @@ h1{
 
 .card.risk .statusDot{
   background:#22c55e;
+}
+
+.card.battle .status{
+  color:#e56b18;
+}
+
+.card.battle .statusDot{
+  background:#f97316;
 }
 
 .icon{
@@ -461,13 +510,7 @@ h1{
   background:#b8bbc2;
 }
 
-.card.battle .status{
-  color:#e56b18;
-}
-
-.card.battle .statusDot{
-  background:#f97316;
-}
+/* BUTTONS */
 
 .btn{
   display:inline-flex;
@@ -504,6 +547,12 @@ h1{
   background:#16a34a;
 }
 
+.btn.cyan{
+  background:#0891b2;
+}
+
+/* NOTICE */
+
 .notice{
   margin-top:18px;
   padding:15px 18px;
@@ -513,7 +562,10 @@ h1{
   color:#777b84;
   font-size:12px;
   text-align:center;
+  line-height:1.6;
 }
+
+/* FEATURES */
 
 .features{
   margin-top:58px;
@@ -545,6 +597,8 @@ h1{
   font-size:12px;
   line-height:1.6;
 }
+
+/* FORM PAGE */
 
 .formBox{
   max-width:720px;
@@ -585,6 +639,8 @@ h1{
   background:#eef0f5;
 }
 
+/* FOOTER */
+
 footer{
   text-align:center;
   padding:32px 20px 40px;
@@ -598,13 +654,18 @@ footer{
   margin-bottom:5px;
 }
 
+/* TABLET */
+
 @media(max-width:1050px){
   .cards{
     grid-template-columns:repeat(2,1fr);
   }
 }
 
+/* MOBILE */
+
 @media(max-width:700px){
+
   header{
     height:auto;
     min-height:64px;
@@ -642,10 +703,6 @@ footer{
     padding:8px 6px;
     font-size:10px;
     white-space:nowrap;
-  }
-
-  .construction{
-    font-size:8px;
   }
 
   main{
@@ -691,17 +748,16 @@ footer{
     margin-top:42px;
   }
 
-  .notice{
-    line-height:1.6;
-  }
-
   .formBox{
     margin-top:25px;
     padding:35px 20px;
   }
 }
 
+/* SMALL MOBILE */
+
 @media(max-width:420px){
+
   header{
     flex-wrap:wrap;
   }
@@ -731,15 +787,19 @@ footer{
 
 <header>
 
-  <a href="#" class="logo"
+  <!-- LOGO -->
+  <a href="#"
+     class="logo"
      onclick="showPage('home');return false;"
      aria-label="FormWheel Home">
+
     <span class="form">Form</span>
     <span class="logoIcon"></span>
     <span class="wheel">Wheel</span>
-    <span class="vote">Vote</span>
+
   </a>
 
+  <!-- NAVIGATION -->
   <nav>
 
     <a href="#"
@@ -770,7 +830,9 @@ footer{
       Vote
     </a>
 
+    <!-- GAMES -->
     <details class="gamesMenu">
+
       <summary>Games</summary>
 
       <div class="gamesDropdown">
@@ -811,6 +873,12 @@ footer{
           🕵️ Spy
         </a>
 
+        <a href="https://semicolonxss.github.io/Formwheel_Clicker"
+           target="_blank"
+           rel="noopener">
+          🖱️ Clicker
+        </a>
+
         <a href="https://semicolonxss.github.io/Formwheel_Casino/"
            target="_blank"
            rel="noopener">
@@ -830,11 +898,13 @@ footer{
         </a>
 
       </div>
+
     </details>
 
   </nav>
 
 </header>
+
 
 <main>
 
@@ -882,10 +952,12 @@ footer{
 
     </div>
 
+
     <div class="sectionLabel">
       <strong>FormWheel 서비스</strong>
       <span>Choose your experience</span>
     </div>
+
 
     <div class="cards">
 
@@ -915,6 +987,7 @@ footer{
 
       </div>
 
+
       <!-- WHEEL -->
       <div class="card wheel">
 
@@ -940,6 +1013,7 @@ footer{
         </a>
 
       </div>
+
 
       <!-- QUIZ -->
       <div class="card quiz">
@@ -967,6 +1041,7 @@ footer{
 
       </div>
 
+
       <!-- BATTLE -->
       <div class="card battle">
 
@@ -992,6 +1067,7 @@ footer{
         </a>
 
       </div>
+
 
       <!-- BOMB -->
       <div class="card bomb">
@@ -1019,6 +1095,7 @@ footer{
 
       </div>
 
+
       <!-- RISK -->
       <div class="card risk">
 
@@ -1044,6 +1121,7 @@ footer{
         </a>
 
       </div>
+
 
       <!-- WHEEL BATTLE -->
       <div class="card battle">
@@ -1071,6 +1149,7 @@ footer{
 
       </div>
 
+
       <!-- REFLEX -->
       <div class="card wheel">
 
@@ -1096,6 +1175,7 @@ footer{
         </a>
 
       </div>
+
 
       <!-- SPY -->
       <div class="card quiz">
@@ -1123,6 +1203,34 @@ footer{
 
       </div>
 
+
+      <!-- CLICKER -->
+      <div class="card clicker">
+
+        <div class="icon">🖱️</div>
+
+        <div class="status">
+          <span class="statusDot"></span>
+          New game
+        </div>
+
+        <h2>Clicker</h2>
+
+        <p>
+          빠르게 클릭하며
+          친구들과 클릭 실력을 겨뤄보세요.
+        </p>
+
+        <a href="https://semicolonxss.github.io/Formwheel_Clicker"
+           target="_blank"
+           rel="noopener"
+           class="btn cyan">
+          Clicker로 이동 →
+        </a>
+
+      </div>
+
+
       <!-- CASINO -->
       <div class="card casino">
 
@@ -1149,7 +1257,8 @@ footer{
 
       </div>
 
-      <!-- Dice Duel -->
+
+      <!-- DICE DUEL -->
       <div class="card dice">
 
         <div class="icon">🎲</div>
@@ -1174,8 +1283,9 @@ footer{
         </a>
 
       </div>
-      
-        <!-- Marble -->
+
+
+      <!-- MARBLE -->
       <div class="card marble">
 
         <div class="icon">🎱</div>
@@ -1200,8 +1310,9 @@ footer{
         </a>
 
       </div>
-      
-      <!-- Vote -->
+
+
+      <!-- VOTE -->
       <div class="card vote">
 
         <div class="icon">🗳️</div>
@@ -1221,19 +1332,21 @@ footer{
         <a href="https://semicolonxss.github.io/Formwheel_Vote/"
            target="_blank"
            rel="noopener"
-           class="btn blue">
+           class="btn cyan">
           Vote로 이동 →
         </a>
 
       </div>
-      
+
     </div>
+
 
     <div class="notice">
       🎡 Wheel은 FormWheel의 랜덤 추첨 기능을 제공합니다.
       &nbsp;·&nbsp;
-      🎮 Games에서 Battle, Bomb, Risk, Wheel Battle, Reflex, Spy, Dice Duel를 친구들과 함께 즐겨보세요.
+      🎮 Games에서 다양한 게임을 친구들과 함께 즐겨보세요.
     </div>
+
 
     <div class="features">
 
@@ -1244,11 +1357,12 @@ footer{
         <strong>간편한 공유</strong>
 
         <span>
-          링크와 코드 하나로 친구들과 Form, Quiz,
-          Battle, Bomb, Risk, Wheel Battle, Reflex, Spy를 공유할 수 있어요.
+          링크와 코드 하나로 친구들과
+          다양한 FormWheel 서비스를 공유할 수 있어요.
         </span>
 
       </div>
+
 
       <div class="feature">
 
@@ -1262,6 +1376,7 @@ footer{
         </span>
 
       </div>
+
 
       <div class="feature">
 
@@ -1280,7 +1395,8 @@ footer{
 
   </section>
 
-  <!-- FORM -->
+
+  <!-- FORM PAGE -->
   <section id="form" class="page">
 
     <a href="#"
@@ -1315,6 +1431,7 @@ footer{
 
 </main>
 
+
 <footer>
 
   <div class="footerLogo">
@@ -1326,6 +1443,7 @@ footer{
   </div>
 
 </footer>
+
 
 <script>
 function showPage(page){
