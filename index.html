@@ -1,13 +1,15 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#f7f8fc">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>FormWheel</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
 html{
   scroll-behavior:smooth;
@@ -21,7 +23,6 @@ body{
     -apple-system,
     BlinkMacSystemFont,
     "Segoe UI",
-    Roboto,
     "Noto Sans KR",
     Arial,
     sans-serif;
@@ -32,6 +33,12 @@ a{
   text-decoration:none;
 }
 
+button,
+input{
+  font:inherit;
+}
+
+
 /* =========================
    HEADER
 ========================= */
@@ -39,14 +46,17 @@ a{
 header{
   position:sticky;
   top:0;
-  z-index:100;
-  height:64px;
+  z-index:1000;
+
+  height:62px;
   padding:0 22px;
+
   display:flex;
   align-items:center;
   justify-content:space-between;
+  gap:15px;
 
-  background:rgba(255,255,255,.88);
+  background:rgba(255,255,255,.9);
   backdrop-filter:blur(16px);
   -webkit-backdrop-filter:blur(16px);
 
@@ -56,52 +66,67 @@ header{
 .logo{
   display:flex;
   align-items:center;
-  gap:7px;
-  font-size:20px;
+  gap:6px;
+
+  font-size:19px;
   font-weight:900;
   letter-spacing:-1px;
+
   white-space:nowrap;
 }
 
-.logo .form{
+.logoForm{
   color:#2867e8;
 }
 
-.logo .wheel{
-  color:#555;
+.logoWheel{
+  color:#333;
 }
 
 .logoIcon{
-  width:27px;
-  height:27px;
+  width:26px;
+  height:26px;
+
   border:4px solid #2867e8;
   border-radius:50%;
+
   position:relative;
 }
 
-.logoIcon:before{
+.logoIcon::before{
   content:"";
+
   position:absolute;
-  width:6px;
-  height:6px;
+
+  width:5px;
+  height:5px;
+
   background:#2867e8;
   border-radius:50%;
+
   left:50%;
   top:50%;
+
   transform:translate(-50%,-50%);
 }
 
-.logoIcon:after{
+.logoIcon::after{
   content:"";
+
   position:absolute;
-  width:13px;
+
+  width:12px;
   height:3px;
+
   background:#2867e8;
   border-radius:5px;
+
   left:50%;
   top:50%;
+
   transform:translate(-50%,-50%) rotate(45deg);
 }
+
 
 /* NAV */
 
@@ -111,185 +136,156 @@ nav{
   gap:3px;
 }
 
-nav>a,
-.menu summary{
-  padding:8px 11px;
-  border-radius:9px;
-  font-size:12px;
-  font-weight:750;
+nav a,
+.navButton{
+  border:0;
+  background:transparent;
+
+  padding:8px 10px;
+
+  border-radius:8px;
+
   color:#676b74;
+
+  font-size:11px;
+  font-weight:800;
+
   cursor:pointer;
 }
 
-nav>a:hover,
-.menu summary:hover{
+nav a:hover,
+.navButton:hover{
   background:#f0f2f6;
   color:#111;
 }
 
-.menu{
-  position:relative;
-}
-
-.menu summary{
-  list-style:none;
-}
-
-.menu summary::-webkit-details-marker{
-  display:none;
-}
-
-.menu summary:after{
-  content:"⌄";
-  margin-left:4px;
-  font-size:9px;
-}
-
-.dropdown{
-  position:absolute;
-  top:calc(100% + 7px);
-  right:0;
-
-  width:180px;
-  max-height:70vh;
-  overflow-y:auto;
-
-  padding:6px;
-
-  background:#fff;
-  border:1px solid #e2e5eb;
-  border-radius:12px;
-
-  box-shadow:0 15px 35px rgba(20,25,40,.12);
-}
-
-.dropdown a{
-  display:block;
-  padding:8px 9px;
-  border-radius:8px;
-  font-size:11px;
-  font-weight:700;
-  color:#666a73;
-}
-
-.dropdown a:hover{
-  background:#f1f3f7;
-  color:#111;
-}
 
 /* =========================
    MAIN
 ========================= */
 
 main{
-  max-width:1220px;
-  margin:auto;
-  padding:45px 20px 70px;
+  width:min(1180px,calc(100% - 30px));
+  margin:0 auto;
+
+  padding:38px 0 60px;
 }
 
-/* HERO */
+
+/* =========================
+   HERO
+========================= */
 
 .hero{
   text-align:center;
-  padding:10px 0 35px;
+
+  padding:10px 0 30px;
 }
 
-.badge{
+.heroBadge{
   display:inline-flex;
   align-items:center;
   gap:6px;
 
   padding:6px 10px;
-  margin-bottom:13px;
 
-  border-radius:999px;
   background:#eaf1ff;
   color:#2867e8;
 
-  font-size:10px;
-  font-weight:850;
-  letter-spacing:.6px;
+  border-radius:999px;
+
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:.7px;
 }
 
-.badgeDot{
+.heroDot{
   width:5px;
   height:5px;
+
   background:#2867e8;
   border-radius:50%;
 }
 
-h1{
-  margin:0;
-  font-size:clamp(44px,8vw,70px);
+.hero h1{
+  margin:14px 0 8px;
+
+  font-size:clamp(44px,7vw,70px);
   line-height:1;
+
   letter-spacing:-4px;
   font-weight:950;
 
-  background:linear-gradient(
-    120deg,
-    #2867e8,
-    #15171c 48%,
-    #7c3aed
-  );
+  background:
+    linear-gradient(
+      120deg,
+      #2867e8,
+      #17191e 50%,
+      #7c3aed
+    );
 
   -webkit-background-clip:text;
   background-clip:text;
+
   color:transparent;
 }
 
-.heroTitle{
-  margin-top:14px;
-  font-size:clamp(22px,4vw,34px);
-  font-weight:850;
-  letter-spacing:-1.5px;
+.hero h2{
+  margin:0;
+
+  font-size:clamp(21px,3vw,31px);
   line-height:1.3;
+
+  letter-spacing:-1.5px;
 }
 
-.heroText{
-  max-width:600px;
+.hero p{
+  max-width:580px;
+
   margin:12px auto 0;
 
-  color:#747780;
-  font-size:13px;
+  color:#777b84;
+
+  font-size:12px;
   line-height:1.7;
 }
 
-.heroActions{
+.heroButtons{
   display:flex;
   justify-content:center;
-  gap:8px;
-  margin-top:18px;
+  gap:7px;
+
+  margin-top:17px;
 }
 
-.heroBtn{
-  display:inline-flex;
+.heroButton{
+  height:38px;
+
+  padding:0 15px;
+
+  display:flex;
   align-items:center;
   justify-content:center;
 
-  height:42px;
-  padding:0 17px;
+  border-radius:9px;
 
-  border-radius:11px;
-  font-size:12px;
-  font-weight:800;
-
-  transition:.18s;
+  font-size:10px;
+  font-weight:850;
 }
 
-.heroBtn:hover{
-  transform:translateY(-2px);
-}
-
-.heroBtn.primary{
+.heroButton.primary{
   background:#15171c;
-  color:white;
+  color:#fff;
 }
 
-.heroBtn.secondary{
-  background:white;
-  border:1px solid #dfe3eb;
+.heroButton.secondary{
+  background:#fff;
+
+  border:1px solid #dfe2e9;
+
   color:#2867e8;
 }
+
 
 /* =========================
    TOOLBAR
@@ -297,66 +293,72 @@ h1{
 
 .toolbar{
   display:flex;
-  gap:8px;
   align-items:center;
-  margin-bottom:13px;
+  gap:7px;
+
+  margin-bottom:9px;
 }
 
-.search{
+.searchBox{
   flex:1;
-  height:39px;
 
-  border:1px solid #e1e4eb;
-  border-radius:10px;
+  height:37px;
 
-  background:white;
-  padding:0 13px;
+  padding:0 12px;
 
-  outline:none;
-  font-size:12px;
-}
-
-.search:focus{
-  border-color:#b8c9ef;
-}
-
-.filters{
-  display:flex;
-  gap:4px;
-  flex-wrap:wrap;
-}
-
-.filter{
-  height:35px;
-  padding:0 10px;
-
-  border:1px solid #e1e4eb;
+  border:1px solid #dfe2e8;
   border-radius:9px;
 
-  background:white;
-  color:#70737b;
+  background:#fff;
 
-  font-size:10px;
-  font-weight:750;
+  outline:none;
+
+  font-size:11px;
+}
+
+.searchBox:focus{
+  border-color:#9eb8ed;
+}
+
+.categoryButtons{
+  display:flex;
+  gap:4px;
+}
+
+.filterButton{
+  height:35px;
+
+  padding:0 10px;
+
+  border:1px solid #dfe2e8;
+  border-radius:8px;
+
+  background:#fff;
+
+  color:#70747c;
+
+  font-size:9px;
+  font-weight:800;
 
   cursor:pointer;
 }
 
-.filter:hover{
-  background:#f1f3f7;
+.filterButton:hover{
+  background:#f0f2f6;
 }
 
-.filter.active{
+.filterButton.active{
   background:#15171c;
-  color:white;
   border-color:#15171c;
+  color:#fff;
 }
+
 
 /* =========================
-   SECTION
+   SUB TOOLBAR
 ========================= */
 
-.sectionTitle{
+.subToolbar{
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -364,14 +366,30 @@ h1{
   margin:0 2px 9px;
 }
 
-.sectionTitle strong{
-  font-size:13px;
+.resultText{
+  color:#858992;
+  font-size:9px;
 }
 
-.sectionTitle span{
-  color:#999da5;
-  font-size:10px;
+.resultText strong{
+  color:#333;
 }
+
+.sortSelect{
+  height:28px;
+
+  padding:0 7px;
+
+  border:1px solid #dfe2e8;
+  border-radius:7px;
+
+  background:#fff;
+
+  color:#666;
+
+  font-size:9px;
+}
+
 
 /* =========================
    CARDS
@@ -379,193 +397,266 @@ h1{
 
 .cards{
   display:grid;
+
   grid-template-columns:
     repeat(4,minmax(0,1fr));
 
-  gap:9px;
+  gap:8px;
 }
 
 .card{
+  min-width:0;
+
   position:relative;
 
-  min-width:0;
-  min-height:132px;
+  padding:12px;
 
-  padding:15px;
+  background:#fff;
 
-  background:rgba(255,255,255,.94);
   border:1px solid #e4e6ec;
-  border-radius:14px;
-
-  box-shadow:0 4px 15px rgba(20,25,40,.035);
+  border-radius:11px;
 
   transition:
-    transform .17s ease,
-    box-shadow .17s ease,
-    border-color .17s ease;
+    transform .15s,
+    box-shadow .15s,
+    border-color .15s;
 }
 
 .card:hover{
-  transform:translateY(-3px);
-  box-shadow:0 10px 25px rgba(20,25,40,.08);
-  border-color:#d7dbe4;
+  transform:translateY(-2px);
+
+  border-color:#d3d7df;
+
+  box-shadow:
+    0 8px 20px rgba(20,25,40,.07);
 }
 
-/* TOP */
+
+/* NEW */
+
+.newBadge{
+  position:absolute;
+
+  right:9px;
+  top:9px;
+
+  padding:3px 5px;
+
+  border-radius:5px;
+
+  background:#eaf1ff;
+  color:#2867e8;
+
+  font-size:7px;
+  font-weight:900;
+}
+
+
+/* CARD TOP */
 
 .cardTop{
   display:flex;
   align-items:center;
-  gap:9px;
+
+  gap:8px;
+
+  min-width:0;
 }
 
 .icon{
-  width:35px;
-  height:35px;
+  width:33px;
+  height:33px;
 
-  flex-shrink:0;
+  flex:0 0 33px;
 
   display:flex;
   align-items:center;
   justify-content:center;
 
-  border-radius:10px;
+  border-radius:8px;
 
   background:var(--soft);
-  font-size:19px;
+
+  font-size:16px;
 }
 
 .cardTitle{
   min-width:0;
 }
 
-.card h2{
+.cardTitle h3{
   margin:0;
 
-  font-size:15px;
-  font-weight:850;
-  letter-spacing:-.5px;
+  font-size:13px;
+  font-weight:900;
+
+  letter-spacing:-.3px;
+
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 
-.status{
-  display:flex;
-  align-items:center;
-  gap:4px;
-
+.cardCategory{
   margin-top:2px;
 
-  color:#999da5;
-  font-size:8px;
-  font-weight:750;
+  color:#92969e;
+
+  font-size:7px;
+  font-weight:800;
 }
 
-.statusDot{
-  width:4px;
-  height:4px;
-  border-radius:50%;
-  background:#b8bbc2;
-}
 
 /* DESCRIPTION */
 
-.card p{
-  margin:9px 0 11px;
+.description{
+  height:28px;
 
-  color:#777b83;
+  margin:8px 0 8px;
 
-  font-size:10px;
+  color:#777b84;
+
+  font-size:9px;
   line-height:1.45;
 
-  height:29px;
   overflow:hidden;
 }
 
+
+/* INFO */
+
+.info{
+  display:flex;
+  flex-wrap:wrap;
+  gap:4px;
+
+  margin-bottom:8px;
+}
+
+.tag{
+  padding:3px 5px;
+
+  border-radius:5px;
+
+  background:#f3f4f7;
+
+  color:#737780;
+
+  font-size:7px;
+  font-weight:800;
+}
+
+.tag.online{
+  background:#eef9f2;
+  color:#20864a;
+}
+
+.tag.offline{
+  background:#f1f2f4;
+  color:#737780;
+}
+
+.tag.difficulty{
+  background:#fff7e8;
+  color:#a66a00;
+}
+
+
 /* BUTTON */
 
-.cardButton{
-  display:inline-flex;
+.cardBottom{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:5px;
+}
+
+.openButton{
+  height:25px;
+
+  padding:0 8px;
+
+  display:flex;
   align-items:center;
   justify-content:center;
 
-  height:28px;
-  padding:0 10px;
-
-  border-radius:8px;
+  border-radius:6px;
 
   background:#15171c;
   color:#fff;
 
-  font-size:9px;
-  font-weight:800;
-
-  transition:.15s;
+  font-size:8px;
+  font-weight:850;
 }
 
-.cardButton:hover{
-  filter:brightness(1.08);
+.openButton:hover{
+  background:#2867e8;
 }
+
+.linkWarning{
+  color:#b1b4bb;
+  font-size:7px;
+}
+
 
 /* COLORS */
 
-.form{
-  --soft:rgba(21,23,28,.06);
+.blue{
+  --soft:#eaf1ff;
 }
 
-.wheel{
-  --soft:rgba(40,103,232,.10);
+.purple{
+  --soft:#f1ebff;
 }
 
-.quiz{
-  --soft:rgba(124,58,237,.10);
+.orange{
+  --soft:#fff1e7;
 }
 
-.battle{
-  --soft:rgba(249,115,22,.11);
+.red{
+  --soft:#ffeded;
 }
 
-.bomb{
-  --soft:rgba(220,38,38,.10);
-}
-
-.risk{
-  --soft:rgba(22,163,74,.10);
+.green{
+  --soft:#eaf8ef;
 }
 
 .cyan{
-  --soft:rgba(8,145,178,.10);
+  --soft:#e9f8fb;
 }
 
-.music{
-  --soft:rgba(236,72,153,.10);
+.pink{
+  --soft:#fff0f6;
 }
 
-.security{
-  --soft:rgba(71,85,105,.10);
+.gray{
+  --soft:#f0f1f4;
 }
 
-.ai{
-  --soft:rgba(99,102,241,.10);
+.indigo{
+  --soft:#efefff;
 }
 
-/* =========================
-   NOTICE
-========================= */
 
-.notice{
-  margin-top:12px;
+/* EMPTY */
 
-  padding:11px 14px;
+.empty{
+  display:none;
 
-  border:1px solid #e5e7ed;
-  border-radius:10px;
+  padding:40px 15px;
 
-  background:rgba(255,255,255,.7);
-
-  color:#777b83;
-  font-size:10px;
-  line-height:1.5;
   text-align:center;
+
+  color:#999da5;
+
+  font-size:11px;
 }
+
+.empty.show{
+  display:block;
+}
+
 
 /* =========================
    FEATURES
@@ -573,147 +664,107 @@ h1{
 
 .features{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:9px;
 
-  margin-top:32px;
+  grid-template-columns:
+    repeat(3,minmax(0,1fr));
+
+  gap:8px;
+
+  margin-top:28px;
 }
 
 .feature{
-  padding:14px;
+  padding:12px;
 
-  background:rgba(255,255,255,.62);
-  border:1px solid #e7e9ee;
-  border-radius:12px;
+  background:#fff;
+
+  border:1px solid #e6e8ed;
+  border-radius:10px;
 }
 
 .featureIcon{
-  font-size:16px;
-  margin-bottom:6px;
+  font-size:15px;
+  margin-bottom:5px;
 }
 
 .feature strong{
   display:block;
+
   margin-bottom:3px;
-  font-size:11px;
+
+  font-size:10px;
 }
 
 .feature span{
-  color:#777b83;
-  font-size:9px;
+  color:#858991;
+
+  font-size:8px;
   line-height:1.5;
 }
 
-/* =========================
-   FORM PAGE
-========================= */
-
-.page{
-  display:none;
-}
-
-.page.active{
-  display:block;
-}
-
-.formBox{
-  max-width:600px;
-  margin:35px auto;
-
-  padding:35px 25px;
-
-  background:white;
-  border:1px solid #e5e7ed;
-  border-radius:17px;
-
-  text-align:center;
-}
-
-.formBox .icon{
-  margin:0 auto 12px;
-}
-
-.formBox h2{
-  margin:0 0 8px;
-  font-size:25px;
-}
-
-.formBox p{
-  color:#777b83;
-  font-size:12px;
-  margin-bottom:18px;
-}
-
-.back{
-  display:inline-flex;
-  padding:7px 9px;
-  border-radius:8px;
-
-  color:#666a73;
-  font-size:11px;
-  font-weight:750;
-}
-
-.back:hover{
-  background:#eef0f5;
-}
 
 /* =========================
    FOOTER
 ========================= */
 
 footer{
-  padding:25px 15px 35px;
+  border-top:1px solid #e6e8ed;
+
+  padding:22px 15px 30px;
+
   text-align:center;
 
-  color:#a1a4ab;
-  font-size:9px;
+  color:#a0a3aa;
+
+  font-size:8px;
 }
 
 .footerLogo{
   margin-bottom:3px;
+
   color:#777b83;
-  font-weight:850;
+
+  font-size:10px;
+  font-weight:900;
 }
 
-/* =========================
-   TABLET
-========================= */
-
-@media(max-width:1000px){
-
-  .cards{
-    grid-template-columns:repeat(3,minmax(0,1fr));
-  }
-
-}
 
 /* =========================
    MOBILE
 ========================= */
 
+@media(max-width:950px){
+
+  .cards{
+    grid-template-columns:
+      repeat(3,minmax(0,1fr));
+  }
+
+}
+
+
 @media(max-width:700px){
 
   header{
-    height:auto;
-    min-height:60px;
-    padding:9px 13px;
+    min-height:58px;
 
-    gap:6px;
+    padding:8px 12px;
   }
 
   .logo{
-    font-size:17px;
+    font-size:16px;
   }
 
   .logoIcon{
-    width:23px;
-    height:23px;
+    width:22px;
+    height:22px;
+
     border-width:3px;
   }
 
   nav{
     overflow-x:auto;
+
     scrollbar-width:none;
   }
 
@@ -721,30 +772,25 @@ footer{
     display:none;
   }
 
-  nav>a,
-  .menu summary{
-    padding:7px 6px;
-    font-size:9px;
+  nav a{
+    padding:6px 6px;
+
+    font-size:8px;
+
     white-space:nowrap;
   }
 
   main{
-    padding:32px 12px 50px;
+    width:min(100% - 20px,600px);
+
+    padding-top:27px;
   }
 
-  .hero{
-    padding-bottom:25px;
-  }
-
-  .heroText{
-    font-size:11px;
-  }
-
-  .heroActions{
+  .heroButtons{
     flex-direction:column;
   }
 
-  .heroBtn{
+  .heroButton{
     width:100%;
   }
 
@@ -753,37 +799,27 @@ footer{
     align-items:stretch;
   }
 
-  .filters{
+  .categoryButtons{
     width:100%;
   }
 
-  .filter{
+  .filterButton{
     flex:1;
   }
 
   .cards{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:7px;
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
+
+    gap:6px;
   }
 
   .card{
-    padding:12px;
-    min-height:125px;
+    padding:10px;
   }
 
-  .icon{
-    width:31px;
-    height:31px;
-    font-size:16px;
-    border-radius:8px;
-  }
-
-  .card h2{
-    font-size:13px;
-  }
-
-  .card p{
-    font-size:9px;
+  .description{
+    font-size:8px;
   }
 
   .features{
@@ -792,1327 +828,280 @@ footer{
 
 }
 
-/* =========================
-   SMALL MOBILE
-========================= */
 
-@media(max-width:420px){
+@media(max-width:430px){
 
   .cards{
     grid-template-columns:1fr;
   }
 
   .card{
-    min-height:112px;
+    min-height:0;
   }
 
-  .card p{
+  .description{
     height:auto;
     max-height:28px;
+  }
+
+}
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media(prefers-reduced-motion:reduce){
+
+  *{
+    scroll-behavior:auto !important;
+    transition:none !important;
   }
 
 }
 </style>
 </head>
 
+
 <body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
 <a
-  href="#"
   class="logo"
-  onclick="showPage('home');return false;"
+  href="https://semicolonxss.github.io/Formwheel/"
 >
-  <span class="form">Form</span>
+
+  <span class="logoForm">Form</span>
+
   <span class="logoIcon"></span>
-  <span class="wheel">Wheel</span>
+
+  <span class="logoWheel">Wheel</span>
+
 </a>
+
 
 <nav>
 
-<a href="#" onclick="showPage('home');return false;">
+<a href="https://semicolonxss.github.io/Formwheel/">
   Home
 </a>
 
-<a href="#" onclick="showPage('form');return false;">
+<a href="https://semicolonxss.github.io/Formwheel_Form">
   Form
 </a>
 
-<a
-  href="https://semicolonxss.github.io/Formwheel_Wheel/"
-  target="_blank"
->
+<a href="https://semicolonxss.github.io/Formwheel_Wheel/">
   Wheel
 </a>
 
-<a
-  href="https://semicolonxss.github.io/Formwheel_Quiz"
-  target="_blank"
->
+<a href="https://semicolonxss.github.io/Formwheel_Quiz">
   Quiz
 </a>
 
-<a
-  href="https://semicolonxss.github.io/Formwheel_Vote/"
-  target="_blank"
->
-  Vote
+<a href="#projects">
+  Explore
 </a>
-
-<details class="menu">
-
-<summary>Games</summary>
-
-<div class="dropdown">
-
-<a href="https://semicolonxss.github.io/Formwheel_Battle">
-⚔️ Battle
-</a>
-
-<a href="https://semicolonxss.github.io/Formwheel_Bomb/">
-💣 Bomb
-</a>
-
-<a href="https://semicolonxss.github.io/Formwheel_Risk/">
-🎲 Risk
-</a>
-
-<a href="https://semicolonxss.github.io/Formwheel_WheelB/">
-⚔️ Wheel Battle
-</a>
-
-<a href="https://semicolonxss.github.io/Formwheel_Reflex/">
-⚡ Reflex
-</a>
-
-<a href="https://semicolonxss.github.io/Formwheel_Spy/">
-🕵️ Spy
-</a>
-
-<a href="https://semicolonxss.github.io/Formwheel_Clicker">
-🖱️ Clicker
-</a>
-
-<a href="https://semicolonxss.github.io/Formwheel_DiceDuel/">
-🎲 Dice Duel
-</a>
-
-<a href="https://semicolonxss.github.io/Formwheel_Marble/">
-🎱 Marble
-</a>
-
-<a href="https://semicolonxss.github.io/Formwheel_Vault/">
-🔐 Vault
-</a>
-
-<a href="https://semicolonxss.github.io/Formwheel_GCrown/">
-👑 GCrown
-</a>
-
-<a href="https://semicolonxss.github.io/Formwheel_Fate/">
-🎡 Fate
-</a>
-
-<a href="https://semicolonxss.github.io/Formwheel_Time/">
-⏱️ Time
-</a>
-
-<a href="https://semicolonxss.github.io/Formwheel_Music/">
-🎵 Music
-</a>
-
-<a href="https://semicolonxss.github.io/Formwheel_Edit/">
-✏️ Edit
-</a>
-
-<a href="https://semicolonxss.github.io/Formwheel_Piano/">
-🎹 Piano
-</a>
-
-<a href="https://semicolonxss.github.io/Formwheel_Balance/">
-⚖️ Balance
-</a>
-
-<a href="https://semicolonxss.github.io/Formwheel_Decode/">
-🔐 Decode
-</a>
-
-<a href="https://semicolonxss.github.io/Formwheel_Chat/">
-💬 Chat
-</a>
-
-<a href="https://semicolonxss.github.io/Formwheel_AI/">
-🤖 AI
-</a>
-
-</div>
-
-</details>
 
 </nav>
 
 </header>
 
 
+
+<!-- =========================
+     MAIN
+========================= -->
+
 <main>
 
-<section id="home" class="page active">
 
-<div class="hero">
+<section class="hero">
 
-<div class="badge">
-<span class="badgeDot"></span>
-FORMWHEEL
+<div class="heroBadge">
+  <span class="heroDot"></span>
+  FORMWHEEL PLATFORM
 </div>
 
 <h1>FormWheel</h1>
 
-<div class="heroTitle">
-만들고 · 참여하고 ·<br>
-대결하고 · 즐기고
-</div>
+<h2>
+만들고 · 참여하고 · 플레이하고 · 즐기고
+</h2>
 
-<p class="heroText">
-설문부터 랜덤 추첨, 퀴즈, 실시간 게임과 여러 도구까지.<br>
-FormWheel의 다양한 서비스를 한곳에서 만나보세요.
+<p>
+설문부터 추첨, 퀴즈, 게임, 음악, 도구와 실험 프로젝트까지.<br>
+FormWheel의 모든 프로젝트를 한곳에서 만나보세요.
 </p>
 
-<div class="heroActions">
+
+<div class="heroButtons">
 
 <a
+  class="heroButton primary"
   href="https://semicolonxss.github.io/Formwheel_Form"
-  target="_blank"
-  class="heroBtn primary"
 >
-📝 Form 시작하기
+  📝 Form 시작하기
 </a>
 
 <a
+  class="heroButton secondary"
   href="https://semicolonxss.github.io/Formwheel_Wheel/"
-  target="_blank"
-  class="heroBtn secondary"
 >
-🎡 Wheel 시작하기
+  🎡 Wheel 시작하기
 </a>
-
-</div>
-
-</div>
-
-
-<div class="sectionTitle">
-
-<strong>FormWheel 전체</strong>
-
-<span id="countText">0개</span>
-
-</div>
-
-
-<div class="toolbar">
-
-<input
-  id="search"
-  class="search"
-  type="search"
-  placeholder="🔎 프로젝트 검색..."
->
-
-<div class="filters">
-
-<button class="filter active" data-filter="all">
-전체
-</button>
-
-<button class="filter" data-filter="service">
-서비스
-</button>
-
-<button class="filter" data-filter="game">
-게임
-</button>
-
-<button class="filter" data-filter="solo">
-1인
-</button>
-
-<button class="filter" data-filter="multi">
-멀티
-</button>
-
-</div>
-
-</div>
-
-
-<div class="cards" id="cards">
-
-
-<!-- FORM -->
-
-<div
- class="card form"
- data-name="Form"
- data-type="service"
- data-mode="multi"
->
-
-<div class="cardTop">
-
-<div class="icon">📝</div>
-
-<div class="cardTitle">
-
-<h2>Form</h2>
-
-<div class="status">
-<span class="statusDot"></span>
-서비스
-</div>
-
-</div>
-
-</div>
-
-<p>
-설문을 만들고 응답을 받아보세요.
-</p>
-
-<a
- class="cardButton"
- href="https://semicolonxss.github.io/Formwheel_Form"
- target="_blank"
->
-열기 →
-</a>
-
-</div>
-
-
-<!-- WHEEL -->
-
-<div
- class="card wheel"
- data-name="Wheel"
- data-type="service"
- data-mode="multi"
->
-
-<div class="cardTop">
-
-<div class="icon">🎡</div>
-
-<div class="cardTitle">
-
-<h2>Wheel</h2>
-
-<div class="status">
-<span class="statusDot"></span>
-추첨
-</div>
-
-</div>
-
-</div>
-
-<p>
-랜덤 추첨과 선택을 간편하게 진행하세요.
-</p>
-
-<a
- class="cardButton"
- href="https://semicolonxss.github.io/Formwheel_Wheel/"
- target="_blank"
->
-열기 →
-</a>
-
-</div>
-
-
-<!-- QUIZ -->
-
-<div
- class="card quiz"
- data-name="Quiz"
- data-type="service"
- data-mode="multi"
->
-
-<div class="cardTop">
-
-<div class="icon">🧠</div>
-
-<div class="cardTitle">
-
-<h2>Quiz</h2>
-
-<div class="status">
-<span class="statusDot"></span>
-멀티
-</div>
-
-</div>
-
-</div>
-
-<p>
-친구들과 실시간 퀴즈를 즐겨보세요.
-</p>
-
-<a
- class="cardButton"
- href="https://semicolonxss.github.io/Formwheel_Quiz"
- target="_blank"
->
-열기 →
-</a>
-
-</div>
-
-
-<!-- VOTE -->
-
-<div
- class="card cyan"
- data-name="Vote"
- data-type="service"
- data-mode="multi"
->
-
-<div class="cardTop">
-
-<div class="icon">🗳️</div>
-
-<div class="cardTitle">
-
-<h2>Vote</h2>
-
-<div class="status">
-<span class="statusDot"></span>
-멀티
-</div>
-
-</div>
-
-</div>
-
-<p>
-여러 사람과 함께 투표하세요.
-</p>
-
-<a
- class="cardButton"
- href="https://semicolonxss.github.io/Formwheel_Vote/"
- target="_blank"
->
-열기 →
-</a>
-
-</div>
-
-
-<!-- BATTLE -->
-
-<div
- class="card battle"
- data-name="Battle"
- data-type="game"
- data-mode="multi"
->
-
-<div class="cardTop">
-
-<div class="icon">⚔️</div>
-
-<div class="cardTitle">
-
-<h2>Battle</h2>
-
-<div class="status">
-<span class="statusDot"></span>
-멀티
-</div>
-
-</div>
-
-</div>
-
-<p>
-친구와 실시간 퀴즈 대결!
-</p>
-
-<a
- class="cardButton"
- href="https://semicolonxss.github.io/Formwheel_Battle"
- target="_blank"
->
-플레이 →
-</a>
-
-</div>
-
-
-<!-- BOMB -->
-
-<div
- class="card bomb"
- data-name="Bomb"
- data-type="game"
- data-mode="multi"
->
-
-<div class="cardTop">
-
-<div class="icon">💣</div>
-
-<div class="cardTitle">
-
-<h2>Bomb</h2>
-
-<div class="status">
-<span class="statusDot"></span>
-멀티
-</div>
-
-</div>
-
-</div>
-
-<p>
-폭탄을 넘기며 제한시간을 버텨보세요.
-</p>
-
-<a
- class="cardButton"
- href="https://semicolonxss.github.io/Formwheel_Bomb/"
- target="_blank"
->
-플레이 →
-</a>
-
-</div>
-
-
-<!-- RISK -->
-
-<div
- class="card risk"
- data-name="Risk"
- data-type="game"
- data-mode="multi"
->
-
-<div class="cardTop">
-
-<div class="icon">🎲</div>
-
-<div class="cardTitle">
-
-<h2>Risk</h2>
-
-<div class="status">
-<span class="statusDot"></span>
-멀티
-</div>
-
-</div>
-
-</div>
-
-<p>
-선택과 위험을 이용한 전략 게임.
-</p>
-
-<a
- class="cardButton"
- href="https://semicolonxss.github.io/Formwheel_Risk/"
- target="_blank"
->
-플레이 →
-</a>
-
-</div>
-
-
-<!-- WHEEL BATTLE -->
-
-<div
- class="card battle"
- data-name="Wheel Battle"
- data-type="game"
- data-mode="multi"
->
-
-<div class="cardTop">
-
-<div class="icon">⚔️</div>
-
-<div class="cardTitle">
-
-<h2>Wheel Battle</h2>
-
-<div class="status">
-<span class="statusDot"></span>
-멀티
-</div>
-
-</div>
-
-</div>
-
-<p>
-휠을 이용해 친구들과 대결하세요.
-</p>
-
-<a
- class="cardButton"
- href="https://semicolonxss.github.io/Formwheel_WheelB/"
- target="_blank"
->
-플레이 →
-</a>
-
-</div>
-
-
-<!-- REFLEX -->
-
-<div
- class="card wheel"
- data-name="Reflex"
- data-type="game"
- data-mode="both"
->
-
-<div class="cardTop">
-
-<div class="icon">⚡</div>
-
-<div class="cardTitle">
-
-<h2>Reflex</h2>
-
-<div class="status">
-<span class="statusDot"></span>
-1인 · 멀티
-</div>
-
-</div>
-
-</div>
-
-<p>
-순발력과 반응속도를 겨뤄보세요.
-</p>
-
-<a
- class="cardButton"
- href="https://semicolonxss.github.io/Formwheel_Reflex/"
- target="_blank"
->
-플레이 →
-</a>
-
-</div>
-
-
-<!-- SPY -->
-
-<div
- class="card quiz"
- data-name="Spy"
- data-type="game"
- data-mode="multi"
->
-
-<div class="cardTop">
-
-<div class="icon">🕵️</div>
-
-<div class="cardTitle">
-
-<h2>Spy</h2>
-
-<div class="status">
-<span class="statusDot"></span>
-멀티
-</div>
-
-</div>
-
-</div>
-
-<p>
-친구들 사이에서 스파이를 찾아보세요.
-</p>
-
-<a
- class="cardButton"
- href="https://semicolonxss.github.io/Formwheel_Spy/"
- target="_blank"
->
-플레이 →
-</a>
-
-</div>
-
-
-<!-- CLICKER -->
-
-<div
- class="card cyan"
- data-name="Clicker"
- data-type="game"
- data-mode="solo"
->
-
-<div class="cardTop">
-
-<div class="icon">🖱️</div>
-
-<div class="cardTitle">
-
-<h2>Clicker</h2>
-
-<div class="status">
-<span class="statusDot"></span>
-1인
-</div>
-
-</div>
-
-</div>
-
-<p>
-클릭하고 기록을 쌓아보세요.
-</p>
-
-<a
- class="cardButton"
- href="https://semicolonxss.github.io/Formwheel_Clicker"
- target="_blank"
->
-플레이 →
-</a>
-
-</div>
-
-
-<!-- DICE DUEL -->
-
-<div
- class="card wheel"
- data-name="Dice Duel"
- data-type="game"
- data-mode="multi"
->
-
-<div class="cardTop">
-
-<div class="icon">🎲</div>
-
-<div class="cardTitle">
-
-<h2>Dice Duel</h2>
-
-<div class="status">
-<span class="statusDot"></span>
-멀티
-</div>
-
-</div>
-
-</div>
-
-<p>
-주사위를 이용한 실시간 대결.
-</p>
-
-<a
- class="cardButton"
- href="https://semicolonxss.github.io/Formwheel_DiceDuel/"
- target="_blank"
->
-플레이 →
-</a>
-
-</div>
-
-
-<!-- MARBLE -->
-
-<div
- class="card quiz"
- data-name="Marble"
- data-type="game"
- data-mode="multi"
->
-
-<div class="cardTop">
-
-<div class="icon">🎱</div>
-
-<div class="cardTitle">
-
-<h2>Marble</h2>
-
-<div class="status">
-<span class="statusDot"></span>
-멀티
-</div>
-
-</div>
-
-</div>
-
-<p>
-구슬을 이용한 트랙 레이스.
-</p>
-
-<a
- class="cardButton"
- href="https://semicolonxss.github.io/Formwheel_Marble/"
- target="_blank"
->
-플레이 →
-</a>
-
-</div>
-
-
-<!-- VAULT -->
-
-<div
- class="card security"
- data-name="Vault"
- data-type="game"
- data-mode="solo"
->
-
-<div class="cardTop">
-
-<div class="icon">🔐</div>
-
-<div class="cardTitle">
-
-<h2>Vault</h2>
-
-<div class="status">
-<span class="statusDot"></span>
-1인
-</div>
-
-</div>
-
-</div>
-
-<p>
-나만의 금고와 공간을 만들어보세요.
-</p>
-
-<a
- class="cardButton"
- href="https://semicolonxss.github.io/Formwheel_Vault/"
- target="_blank"
->
-열기 →
-</a>
-
-</div>
-
-
-<!-- GCROWN -->
-
-<div
- class="card battle"
- data-name="GCrown"
- data-type="game"
- data-mode="both"
->
-
-<div class="cardTop">
-
-<div class="icon">👑</div>
-
-<div class="cardTitle">
-
-<h2>GCrown</h2>
-
-<div class="status">
-<span class="statusDot"></span>
-1인 · 멀티
-</div>
-
-</div>
-
-</div>
-
-<p>
-왕관을 차지하는 전략 보드게임.
-</p>
-
-<a
- class="cardButton"
- href="https://semicolonxss.github.io/Formwheel_GCrown/"
- target="_blank"
->
-플레이 →
-</a>
-
-</div>
-
-
-<!-- FATE -->
-
-<div
- class="card wheel"
- data-name="Fate"
- data-type="game"
- data-mode="multi"
->
-
-<div class="cardTop">
-
-<div class="icon">🎡</div>
-
-<div class="cardTitle">
-
-<h2>Fate</h2>
-
-<div class="status">
-<span class="statusDot"></span>
-멀티
-</div>
-
-</div>
-
-</div>
-
-<p>
-랜덤 선택으로 운명을 결정하세요.
-</p>
-
-<a
- class="cardButton"
- href="https://semicolonxss.github.io/Formwheel_Fate/"
- target="_blank"
->
-플레이 →
-</a>
-
-</div>
-
-
-<!-- TIME -->
-
-<div
- class="card battle"
- data-name="Time"
- data-type="game"
- data-mode="both"
->
-
-<div class="cardTop">
-
-<div class="icon">⏱️</div>
-
-<div class="cardTitle">
-
-<h2>Time</h2>
-
-<div class="status">
-<span class="statusDot"></span>
-1인 · 멀티
-</div>
-
-</div>
-
-</div>
-
-<p>
-시간 제한 속에서 빠르게 플레이하세요.
-</p>
-
-<a
- class="cardButton"
- href="https://semicolonxss.github.io/Formwheel_Time/"
- target="_blank"
->
-플레이 →
-</a>
-
-</div>
-
-
-<!-- MUSIC -->
-
-<div
- class="card music"
- data-name="Music"
- data-type="game"
- data-mode="both"
->
-
-<div class="cardTop">
-
-<div class="icon">🎵</div>
-
-<div class="cardTitle">
-
-<h2>Music</h2>
-
-<div class="status">
-<span class="statusDot"></span>
-1인 · 멀티
-</div>
-
-</div>
-
-</div>
-
-<p>
-음악을 만들고 연주하고 플레이하세요.
-</p>
-
-<a
- class="cardButton"
- href="https://semicolonxss.github.io/Formwheel_Music/"
- target="_blank"
->
-열기 →
-</a>
-
-</div>
-
-
-<!-- EDIT -->
-
-<div
- class="card form"
- data-name="Edit"
- data-type="service"
- data-mode="solo"
->
-
-<div class="cardTop">
-
-<div class="icon">✏️</div>
-
-<div class="cardTitle">
-
-<h2>Edit</h2>
-
-<div class="status">
-<span class="statusDot"></span>
-서비스
-</div>
-
-</div>
-
-</div>
-
-<p>
-콘텐츠를 만들고 편집하세요.
-</p>
-
-<a
- class="cardButton"
- href="https://semicolonxss.github.io/Formwheel_Edit/"
- target="_blank"
->
-열기 →
-</a>
-
-</div>
-
-
-<!-- PIANO -->
-
-<div
- class="card music"
- data-name="Piano"
- data-type="game"
- data-mode="multi"
->
-
-<div class="cardTop">
-
-<div class="icon">🎹</div>
-
-<div class="cardTitle">
-
-<h2>Piano</h2>
-
-<div class="status">
-<span class="statusDot"></span>
-멀티
-</div>
-
-</div>
-
-</div>
-
-<p>
-음계를 활용한 보드게임.
-</p>
-
-<a
- class="cardButton"
- href="https://semicolonxss.github.io/Formwheel_Piano/"
- target="_blank"
->
-플레이 →
-</a>
-
-</div>
-
-
-<!-- BALANCE -->
-
-<div
- class="card risk"
- data-name="Balance"
- data-type="game"
- data-mode="multi"
->
-
-<div class="cardTop">
-
-<div class="icon">⚖️</div>
-
-<div class="cardTitle">
-
-<h2>Balance</h2>
-
-<div class="status">
-<span class="statusDot"></span>
-멀티
-</div>
-
-</div>
-
-</div>
-
-<p>
-선택과 전략으로 균형을 잡아보세요.
-</p>
-
-<a
- class="cardButton"
- href="https://semicolonxss.github.io/Formwheel_Balance/"
- target="_blank"
->
-플레이 →
-</a>
-
-</div>
-
-
-<!-- DECODE -->
-
-<div
- class="card security"
- data-name="Decode"
- data-type="service"
- data-mode="solo"
->
-
-<div class="cardTop">
-
-<div class="icon">🔎</div>
-
-<div class="cardTitle">
-
-<h2>Decode</h2>
-
-<div class="status">
-<span class="statusDot"></span>
-도구
-</div>
-
-</div>
-
-</div>
-
-<p>
-Base64, ROT13, 진법 등을 변환하세요.
-</p>
-
-<a
- class="cardButton"
- href="https://semicolonxss.github.io/Formwheel_Decode/"
- target="_blank"
->
-열기 →
-</a>
-
-</div>
-
-
-<!-- CHAT -->
-
-<div
- class="card cyan"
- data-name="Chat"
- data-type="service"
- data-mode="multi"
->
-
-<div class="cardTop">
-
-<div class="icon">💬</div>
-
-<div class="cardTitle">
-
-<h2>Chat</h2>
-
-<div class="status">
-<span class="statusDot"></span>
-멀티
-</div>
-
-</div>
-
-</div>
-
-<p>
-방을 만들고 친구들과 대화하세요.
-</p>
-
-<a
- class="cardButton"
- href="https://semicolonxss.github.io/Formwheel_Chat/"
- target="_blank"
->
-열기 →
-</a>
-
-</div>
-
-
-<!-- AI -->
-
-<div
- class="card ai"
- data-name="AI"
- data-type="service"
- data-mode="solo"
->
-
-<div class="cardTop">
-
-<div class="icon">🤖</div>
-
-<div class="cardTitle">
-
-<h2>AI</h2>
-
-<div class="status">
-<span class="statusDot"></span>
-실험
-</div>
-
-</div>
-
-</div>
-
-<p>
-기억하고 학습하는 FormWheel AI.
-</p>
-
-<a
- class="cardButton"
- href="https://semicolonxss.github.io/Formwheel_AI/"
- target="_blank"
->
-열기 →
-</a>
-
-</div>
-
-
-</div>
-
-
-<div class="notice">
-💡 원하는 프로젝트를 검색하거나 필터를 눌러 빠르게 찾아보세요.
-</div>
-
-
-<div class="features">
-
-<div class="feature">
-
-<div class="featureIcon">🔗</div>
-
-<strong>간편한 공유</strong>
-
-<span>
-링크와 코드를 이용해 친구들과 쉽게 공유할 수 있어요.
-</span>
-
-</div>
-
-<div class="feature">
-
-<div class="featureIcon">⚡</div>
-
-<strong>빠른 시작</strong>
-
-<span>
-원하는 프로젝트를 찾고 바로 시작할 수 있어요.
-</span>
-
-</div>
-
-<div class="feature">
-
-<div class="featureIcon">🎮</div>
-
-<strong>하나의 플랫폼</strong>
-
-<span>
-Form부터 게임과 여러 도구까지 한곳에서 관리하세요.
-</span>
-
-</div>
 
 </div>
 
 </section>
 
 
-<section id="form" class="page">
 
-<a
- href="#"
- class="back"
- onclick="showPage('home');return false;"
+<section id="projects">
+
+
+<!-- TOOLBAR -->
+
+<div class="toolbar">
+
+<input
+  id="search"
+  class="searchBox"
+  type="search"
+  placeholder="🔎 프로젝트 검색..."
+  autocomplete="off"
 >
-← Home
-</a>
 
-<div class="formBox">
 
-<div class="icon form">
-📝
+<div class="categoryButtons">
+
+<button
+  class="filterButton active"
+  data-filter="all"
+>
+전체
+</button>
+
+<button
+  class="filterButton"
+  data-filter="game"
+>
+게임
+</button>
+
+<button
+  class="filterButton"
+  data-filter="tool"
+>
+도구
+</button>
+
+<button
+  class="filterButton"
+  data-filter="app"
+>
+앱
+</button>
+
+<button
+  class="filterButton"
+  data-filter="recent"
+>
+최근 추가
+</button>
+
 </div>
 
-<h2>Form</h2>
+</div>
 
-<p>
-설문을 만들고 사람들의 응답을 받아보세요.
-</p>
 
-<a
- href="https://semicolonxss.github.io/Formwheel_Form"
- target="_blank"
- class="cardButton"
->
-Form으로 이동 →
-</a>
+<div class="subToolbar">
+
+<div class="resultText">
+  현재 <strong id="count">0</strong>개
+</div>
+
+
+<select id="sort" class="sortSelect">
+
+<option value="default">
+기본순
+</option>
+
+<option value="name">
+이름순
+</option>
+
+<option value="recent">
+최근 추가순
+</option>
+
+</select>
+
+</div>
+
+
+
+<!-- CARDS -->
+
+<div id="cards" class="cards"></div>
+
+
+<div id="empty" class="empty">
+
+검색 결과가 없어요.<br>
+다른 이름이나 카테고리로 찾아보세요.
+
+</div>
+
+
+
+<!-- FEATURES -->
+
+<div class="features">
+
+<div class="feature">
+
+<div class="featureIcon">🔎</div>
+
+<strong>쉽게 찾기</strong>
+
+<span>
+검색과 카테고리 필터로 원하는 프로젝트를 빠르게 찾을 수 있어요.
+</span>
+
+</div>
+
+
+<div class="feature">
+
+<div class="featureIcon">🎮</div>
+
+<strong>게임부터 도구까지</strong>
+
+<span>
+게임, 제작 도구, 실험 앱을 하나의 FormWheel 플랫폼에서 관리합니다.
+</span>
+
+</div>
+
+
+<div class="feature">
+
+<div class="featureIcon">📱</div>
+
+<strong>모바일 대응</strong>
+
+<span>
+PC뿐 아니라 작은 화면에서도 사용할 수 있도록 반응형으로 구성했습니다.
+</span>
+
+</div>
 
 </div>
 
@@ -2121,116 +1110,715 @@ Form으로 이동 →
 </main>
 
 
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
 
 <div class="footerLogo">
-FormWheel
+  FormWheel
 </div>
 
 <div>
-Make · Join · Play · Explore
+  Make · Join · Play · Explore
+</div>
+
+<div style="margin-top:6px;">
+  © FormWheel
 </div>
 
 </footer>
 
 
+
 <script>
 
-const cards = [...document.querySelectorAll(".card")];
-const search = document.getElementById("search");
-const filters = [...document.querySelectorAll(".filter")];
-const countText = document.getElementById("countText");
+/*
+=========================================================
+FORMWHEEL PROJECT DATABASE
+=========================================================
+
+category:
+  game = 게임
+  tool = 도구
+  app  = 앱
+
+mode:
+  solo
+  multi
+  both
+
+connection:
+  online
+  offline
+
+difficulty:
+  easy
+  normal
+  hard
+
+recent:
+  true = 최근 추가 표시
+
+IMPORTANT:
+링크는 이 배열에서만 관리하면 됩니다.
+프로젝트 주소가 바뀌면 여기만 수정하세요.
+=========================================================
+*/
+
+
+const projects = [
+
+  /* =====================
+     SERVICES / TOOLS
+  ===================== */
+
+  {
+    name:"Form",
+    icon:"📝",
+    className:"blue",
+    category:"tool",
+    mode:"multi",
+    connection:"online",
+    difficulty:"쉬움",
+    description:"설문을 만들고 응답을 받을 수 있는 FormWheel 설문 도구.",
+    url:"https://semicolonxss.github.io/Formwheel_Form",
+    recent:false
+  },
+
+
+  {
+    name:"Wheel",
+    icon:"🎡",
+    className:"blue",
+    category:"tool",
+    mode:"multi",
+    connection:"online",
+    difficulty:"쉬움",
+    description:"랜덤 추첨과 선택을 간편하게 진행하는 Wheel 도구.",
+    url:"https://semicolonxss.github.io/Formwheel_Wheel/",
+    recent:false
+  },
+
+
+  {
+    name:"Quiz",
+    icon:"🧠",
+    className:"purple",
+    category:"tool",
+    mode:"multi",
+    connection:"online",
+    difficulty:"보통",
+    description:"퀴즈를 만들고 다른 사람들과 함께 풀어보는 서비스.",
+    url:"https://semicolonxss.github.io/Formwheel_Quiz",
+    recent:false
+  },
+
+
+  {
+    name:"Decode",
+    icon:"🔐",
+    className:"gray",
+    category:"tool",
+    mode:"solo",
+    connection:"offline",
+    difficulty:"보통",
+    description:"ROT13, Base64, HTML, 진법 등을 인코딩하고 디코딩하는 도구.",
+    url:"https://semicolonxss.github.io/Formwheel_Decode/",
+    recent:true
+  },
+
+
+  {
+    name:"Edit",
+    icon:"✏️",
+    className:"blue",
+    category:"tool",
+    mode:"solo",
+    connection:"offline",
+    difficulty:"보통",
+    description:"콘텐츠를 만들고 편집하기 위한 FormWheel 편집 도구.",
+    url:"https://semicolonxss.github.io/Formwheel_Edit/",
+    recent:true
+  },
+
+
+  /* =====================
+     APPS
+  ===================== */
+
+  {
+    name:"Chat",
+    icon:"💬",
+    className:"cyan",
+    category:"app",
+    mode:"multi",
+    connection:"online",
+    difficulty:"보통",
+    description:"방을 만들고 친구들과 실시간으로 대화하는 채팅 앱.",
+    url:"https://semicolonxss.github.io/Formwheel_Chat/",
+    recent:true
+  },
+
+
+  {
+    name:"AI",
+    icon:"🤖",
+    className:"indigo",
+    category:"app",
+    mode:"solo",
+    connection:"online",
+    difficulty:"어려움",
+    description:"기억을 사용하고 대화를 통해 발전하도록 만든 FormWheel AI 실험.",
+    url:"https://semicolonxss.github.io/Formwheel_AI/",
+    recent:true
+  },
+
+
+  /* =====================
+     GAMES
+  ===================== */
+
+  {
+    name:"Battle",
+    icon:"⚔️",
+    className:"orange",
+    category:"game",
+    mode:"multi",
+    connection:"online",
+    difficulty:"보통",
+    description:"친구와 실시간으로 퀴즈를 풀며 대결하는 게임.",
+    url:"https://semicolonxss.github.io/Formwheel_Battle",
+    recent:false
+  },
+
+
+  {
+    name:"Bomb",
+    icon:"💣",
+    className:"red",
+    category:"game",
+    mode:"multi",
+    connection:"online",
+    difficulty:"보통",
+    description:"폭탄을 넘기며 제한 시간 안에 살아남는 멀티 게임.",
+    url:"https://semicolonxss.github.io/Formwheel_Bomb/",
+    recent:false
+  },
+
+
+  {
+    name:"Wheel Battle",
+    icon:"⚔️",
+    className:"orange",
+    category:"game",
+    mode:"multi",
+    connection:"online",
+    difficulty:"보통",
+    description:"Wheel 시스템을 이용해 다른 플레이어와 대결하는 게임.",
+    url:"https://semicolonxss.github.io/Formwheel_WheelB/",
+    recent:false
+  },
+
+
+  {
+    name:"Reflex",
+    icon:"⚡",
+    className:"blue",
+    category:"game",
+    mode:"both",
+    connection:"online",
+    difficulty:"쉬움",
+    description:"반응 속도를 테스트하고 다른 플레이어와 기록을 겨루는 게임.",
+    url:"https://semicolonxss.github.io/Formwheel_Reflex/",
+    recent:false
+  },
+
+
+  {
+    name:"Spy",
+    icon:"🕵️",
+    className:"purple",
+    category:"game",
+    mode:"multi",
+    connection:"online",
+    difficulty:"보통",
+    description:"플레이어 중 스파이를 찾아내는 추리형 파티 게임.",
+    url:"https://semicolonxss.github.io/Formwheel_Spy/",
+    recent:false
+  },
+
+
+  {
+    name:"Clicker",
+    icon:"🖱️",
+    className:"cyan",
+    category:"game",
+    mode:"solo",
+    connection:"offline",
+    difficulty:"쉬움",
+    description:"클릭을 통해 점수와 업그레이드를 쌓는 클릭 게임.",
+    url:"https://semicolonxss.github.io/Formwheel_Clicker",
+    recent:false
+  },
+
+
+  {
+    name:"Dice Duel",
+    icon:"🎲",
+    className:"blue",
+    category:"game",
+    mode:"multi",
+    connection:"online",
+    difficulty:"보통",
+    description:"주사위와 다양한 효과를 이용해 대결하는 게임.",
+    url:"https://semicolonxss.github.io/Formwheel_DiceDuel/",
+    recent:false
+  },
+
+
+  {
+    name:"Marble",
+    icon:"🎱",
+    className:"purple",
+    category:"game",
+    mode:"multi",
+    connection:"online",
+    difficulty:"보통",
+    description:"구슬을 트랙에 굴려 경쟁하는 레이스형 게임.",
+    url:"https://semicolonxss.github.io/Formwheel_Marble/",
+    recent:true
+  },
+
+
+  {
+    name:"GCrown",
+    icon:"👑",
+    className:"orange",
+    category:"game",
+    mode:"both",
+    connection:"online",
+    difficulty:"어려움",
+    description:"보드 위에서 왕관을 차지하기 위해 경쟁하는 전략 게임.",
+    url:"https://semicolonxss.github.io/Formwheel_GCrown/",
+    recent:true
+  },
+
+
+  {
+    name:"Fate",
+    icon:"🎡",
+    className:"purple",
+    category:"game",
+    mode:"multi",
+    connection:"online",
+    difficulty:"보통",
+    description:"랜덤한 선택과 결과를 이용해 플레이하는 운 게임.",
+    url:"https://semicolonxss.github.io/Formwheel_Fate/",
+    recent:true
+  },
+
+
+  {
+    name:"Time",
+    icon:"⏱️",
+    className:"red",
+    category:"game",
+    mode:"both",
+    connection:"online",
+    difficulty:"보통",
+    description:"제한 시간 안에서 빠르게 행동하는 타임 게임.",
+    url:"https://semicolonxss.github.io/Formwheel_Time/",
+    recent:true
+  },
+
+
+  {
+    name:"Music",
+    icon:"🎵",
+    className:"pink",
+    category:"game",
+    mode:"both",
+    connection:"online",
+    difficulty:"어려움",
+    description:"음악을 만들고 재생하고 직접 플레이하는 음악 프로젝트.",
+    url:"https://semicolonxss.github.io/Formwheel_Music/",
+    recent:true
+  },
+
+
+  {
+    name:"Piano",
+    icon:"🎹",
+    className:"pink",
+    category:"game",
+    mode:"multi",
+    connection:"online",
+    difficulty:"보통",
+    description:"음계 카드를 활용해 플레이하는 FormWheel 보드게임.",
+    url:"https://semicolonxss.github.io/Formwheel_Piano/",
+    recent:true
+  },
+
+
+  {
+    name:"Balance",
+    icon:"⚖️",
+    className:"green",
+    category:"game",
+    mode:"multi",
+    connection:"online",
+    difficulty:"어려움",
+    description:"공격, 방어, 점수 등 선택을 이용해 균형을 겨루는 게임.",
+    url:"https://semicolonxss.github.io/Formwheel_Balance/",
+    recent:true
+  },
+
+
+  {
+    name:"Vault",
+    icon:"🔒",
+    className:"gray",
+    category:"game",
+    mode:"solo",
+    connection:"offline",
+    difficulty:"보통",
+    description:"금고와 잠금 장치를 이용하는 퍼즐형 실험 게임.",
+    url:"https://semicolonxss.github.io/Formwheel_Vault/",
+    recent:true
+  },
+
+
+  {
+    name:"Risk",
+    icon:"🎲",
+    className:"green",
+    category:"game",
+    mode:"multi",
+    connection:"online",
+    difficulty:"어려움",
+    description:"선택과 위험 요소를 이용해 경쟁하는 전략 게임.",
+    url:"https://semicolonxss.github.io/Formwheel_Risk/",
+    recent:true
+  }
+
+];
+
+
+/* ======================================================
+   ELEMENTS
+====================================================== */
+
+const cardsElement =
+  document.getElementById("cards");
+
+const searchElement =
+  document.getElementById("search");
+
+const countElement =
+  document.getElementById("count");
+
+const emptyElement =
+  document.getElementById("empty");
+
+const sortElement =
+  document.getElementById("sort");
+
+const filterButtons =
+  [...document.querySelectorAll(".filterButton")];
+
+
+/* ======================================================
+   STATE
+====================================================== */
 
 let currentFilter = "all";
 
 
-function updateCards(){
+/* ======================================================
+   LABELS
+====================================================== */
+
+const categoryLabel = {
+
+  game:"게임",
+
+  tool:"도구",
+
+  app:"앱"
+
+};
+
+
+const modeLabel = {
+
+  solo:"1인",
+
+  multi:"멀티",
+
+  both:"1인 · 멀티"
+
+};
+
+
+const connectionLabel = {
+
+  online:"온라인",
+
+  offline:"오프라인"
+
+};
+
+
+/* ======================================================
+   RENDER
+====================================================== */
+
+function render(){
+
+  let list =
+    [...projects];
+
+
+  /* SEARCH */
 
   const keyword =
-    search.value
+    searchElement.value
       .trim()
       .toLowerCase();
 
-  let visible = 0;
 
-  cards.forEach(card => {
+  if(keyword){
 
-    const name =
-      card.dataset.name.toLowerCase();
+    list =
+      list.filter(project => {
 
-    const type =
-      card.dataset.type;
+        const text =
+          (
+            project.name +
+            " " +
+            project.description +
+            " " +
+            categoryLabel[project.category]
+          ).toLowerCase();
 
-    const mode =
-      card.dataset.mode;
+        return text.includes(keyword);
 
-    const matchesSearch =
-      !keyword ||
-      name.includes(keyword);
+      });
 
-    let matchesFilter = true;
+  }
 
-    if(currentFilter === "service"){
-      matchesFilter = type === "service";
+
+  /* FILTER */
+
+  if(currentFilter !== "all"){
+
+    if(currentFilter === "recent"){
+
+      list =
+        list.filter(project => project.recent);
+
     }
 
-    if(currentFilter === "game"){
-      matchesFilter = type === "game";
+    else{
+
+      list =
+        list.filter(project =>
+          project.category === currentFilter
+        );
+
     }
 
-    if(currentFilter === "solo"){
-      matchesFilter =
-        mode === "solo" ||
-        mode === "both";
-    }
+  }
 
-    if(currentFilter === "multi"){
-      matchesFilter =
-        mode === "multi" ||
-        mode === "both";
-    }
 
-    const show =
-      matchesSearch &&
-      matchesFilter;
+  /* SORT */
 
-    card.style.display =
-      show ? "" : "none";
+  if(sortElement.value === "name"){
 
-    if(show){
-      visible++;
-    }
+    list.sort((a,b) =>
+      a.name.localeCompare(
+        b.name,
+        "ko"
+      )
+    );
 
-  });
+  }
 
-  countText.textContent =
-    visible + "개";
+
+  if(sortElement.value === "recent"){
+
+    list.sort((a,b) =>
+      Number(b.recent) -
+      Number(a.recent)
+    );
+
+  }
+
+
+  /* COUNT */
+
+  countElement.textContent =
+    list.length;
+
+
+  /* EMPTY */
+
+  emptyElement.classList.toggle(
+    "show",
+    list.length === 0
+  );
+
+
+  /* HTML */
+
+  cardsElement.innerHTML =
+    list.map(project => {
+
+      const difficultyStars =
+        project.difficulty === "쉬움"
+          ? "⭐"
+          : project.difficulty === "보통"
+            ? "⭐⭐"
+            : "⭐⭐⭐";
+
+
+      const newBadge =
+        project.recent
+          ? `<span class="newBadge">NEW</span>`
+          : "";
+
+
+      return `
+
+        <article
+          class="card ${project.className}"
+        >
+
+          ${newBadge}
+
+
+          <div class="cardTop">
+
+            <div class="icon">
+              ${project.icon}
+            </div>
+
+
+            <div class="cardTitle">
+
+              <h3>
+                ${escapeHTML(project.name)}
+              </h3>
+
+              <div class="cardCategory">
+                ${categoryLabel[project.category]}
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="description">
+            ${escapeHTML(project.description)}
+          </div>
+
+
+          <div class="info">
+
+            <span class="tag">
+              ${modeLabel[project.mode]}
+            </span>
+
+            <span
+              class="tag ${project.connection}"
+            >
+              ${connectionLabel[project.connection]}
+            </span>
+
+            <span class="tag difficulty">
+              ${difficultyStars}
+              ${project.difficulty}
+            </span>
+
+          </div>
+
+
+          <div class="cardBottom">
+
+            <a
+              class="openButton"
+              href="${project.url}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              열기 →
+            </a>
+
+          </div>
+
+        </article>
+
+      `;
+
+    }).join("");
 
 }
 
 
-search.addEventListener(
+/* ======================================================
+   ESCAPE
+====================================================== */
+
+function escapeHTML(value){
+
+  return String(value)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+
+/* ======================================================
+   SEARCH
+====================================================== */
+
+searchElement.addEventListener(
   "input",
-  updateCards
+  render
 );
 
 
-filters.forEach(button => {
+/* ======================================================
+   FILTER
+====================================================== */
+
+filterButtons.forEach(button => {
 
   button.addEventListener(
     "click",
     () => {
 
-      filters.forEach(
-        b => b.classList.remove("active")
+      filterButtons.forEach(
+        item =>
+          item.classList.remove("active")
       );
 
+
       button.classList.add("active");
+
 
       currentFilter =
         button.dataset.filter;
 
-      updateCards();
+
+      render();
 
     }
   );
@@ -2238,30 +1826,21 @@ filters.forEach(button => {
 });
 
 
-function showPage(page){
+/* ======================================================
+   SORT
+====================================================== */
 
-  document
-    .querySelectorAll(".page")
-    .forEach(el => {
-      el.classList.remove("active");
-    });
-
-  const target =
-    document.getElementById(page);
-
-  if(target){
-    target.classList.add("active");
-  }
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-}
+sortElement.addEventListener(
+  "change",
+  render
+);
 
 
-updateCards();
+/* ======================================================
+   START
+====================================================== */
+
+render();
 
 </script>
 
