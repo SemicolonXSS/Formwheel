@@ -37,6 +37,8 @@ label{display:block;font-size:13px;font-weight:800;margin:0 0 7px}.field{margin-
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#202535;color:#fff;padding:12px 16px;border-radius:12px;z-index:100;opacity:0;pointer-events:none;transition:.2s}.toast.show{opacity:1}
 @media(max-width:650px){.hud{grid-template-columns:1fr auto}.hud .right{grid-column:1/-1;text-align:left}.timer{font-size:44px}.rule{font-size:21px}.room-code{font-size:34px}}
 </style>
+<link rel="stylesheet" href="https://semicolonxss.github.io/Formwheel/shared/formwheel-ui.css">
+<script defer src="https://semicolonxss.github.io/Formwheel/shared/formwheel-ui.js"></script>
 </head>
 <body>
 <header><div class="nav"><a class="logo" href="https://semicolonxss.github.io/Formwheel/">Form<span>wheel</span><b>_Button</b></a><span class="badge">🔘 CHAOS BUTTON</span></div></header>
@@ -381,4 +383,5 @@ window.addEventListener("beforeunload",()=>{if(room&&uid)remove(ref(db,`${root}/
 </script>
 </body>
 </html>
+
 
