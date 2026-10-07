@@ -1,0 +1,14 @@
+/* Shared Formwheel controls. Layout and game-specific colors remain in each project. */
+:root{--fw-focus:#4059d5;--fw-border:#e1e4eb;--fw-radius:14px}
+button{border-radius:var(--fw-radius);font:inherit}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--fw-focus);outline-offset:3px}
+.card,.wa-card{border-radius:18px;border-color:var(--fw-border)}
+.fw-footer{display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap;padding:24px 12px;font:13px/1.6 system-ui,sans-serif;color:#666}
+.fw-footer a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.fw-footer button{padding:8px 12px;background:transparent;color:inherit;border:1px solid var(--fw-border);cursor:pointer}
+.fw-toast,.fw-error{position:fixed;left:50%;transform:translateX(-50%);z-index:100000;max-width:min(92vw,650px);padding:13px 18px;border-radius:var(--fw-radius);font:14px/1.6 system-ui,sans-serif;background:#20232a;color:white;box-shadow:0 8px 30px #0003}
+.fw-toast{bottom:22px;pointer-events:none}.fw-error{top:15px;background:#842d2d;display:flex;gap:12px;align-items:center}.fw-error button{padding:8px;border:1px solid #fff8;color:white;background:transparent;cursor:pointer}
+.fw-loading{position:fixed;inset:0;z-index:99990;display:grid;place-items:center;background:#f8f9fc;font:15px system-ui,sans-serif;color:#343947}
+.fw-dialog{border:1px solid var(--fw-border);border-radius:20px;padding:24px;max-width:min(90vw,500px);font:15px/1.7 system-ui,sans-serif;color:#222;background:white;box-shadow:0 20px 80px #0003}.fw-dialog::backdrop{background:#0006}.fw-dialog h2{font-size:21px;margin:0 0 12px}.fw-dialog button{padding:10px 18px;border:0;background:#20232a;color:white;cursor:pointer}.fw-dialog p{white-space:pre-line}
+@media(max-width:600px){button:not(.key):not(.piano-key):not(.black-key):not(.white-key){min-height:44px}.fw-error{font-size:13px;max-width:94vw}.fw-footer{padding-bottom:32px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
