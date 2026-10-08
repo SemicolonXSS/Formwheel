@@ -62,7 +62,7 @@ const projects = [
     connection:"online",
     difficulty:"쉬움",
     description:"랜덤 추첨과 선택을 간편하게 진행하는 Wheel 도구.",
-    url:"https://semicolonxss.github.io/Formwheel_Wheel/",
+    url:"https://semicolonxss.github.io/Formwheel_Wheel/?v=20261008-logo2",
     addedAt:"2026-09-06T07:44:57Z",
     recent:false
   },
@@ -122,7 +122,7 @@ const projects = [
     connection:"offline",
     difficulty:"쉬움",
     description:"계산기·타이머와 성별 패턴·저장·CSV를 지원하는 자리 배치 등 생활 도구 모음.",
-    url:"https://semicolonxss.github.io/Formwheel_Tool/",
+    url:"https://semicolonxss.github.io/Formwheel_Tool/?v=20261008-logo2",
     addedAt:"2026-09-30T00:12:47Z",
     recent:false
   },
@@ -401,7 +401,7 @@ const projects = [
     connection:"online",
     difficulty:"보통",
     description:"장애물을 피하며 시간을 모으고 점수·콤보·이벤트·공격으로 겨루는 생존 게임.",
-    url:"https://semicolonxss.github.io/Formwheel_Time/",
+    url:"https://semicolonxss.github.io/Formwheel_Time/?v=20261008-logo2",
     addedAt:"2026-09-22T01:28:52Z",
     recent:false
   },
