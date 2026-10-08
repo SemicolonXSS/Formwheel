@@ -220,7 +220,7 @@ const projects = [
     connection:"online",
     difficulty:"보통",
     description:"다양한 지시와 타이밍에 맞춰 버튼을 누르는 솔로·멀티 게임.",
-    url:"https://semicolonxss.github.io/Formwheel_Button/",
+    url:"https://semicolonxss.github.io/Formwheel/button/",
     addedAt:"2026-10-01T02:14:02Z",
     recent:false
   },

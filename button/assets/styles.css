@@ -1,0 +1,31 @@
+:root{--bg:#f7f8fc;--card:#fff;--text:#171923;--muted:#727887;--line:#e7e9f0;--accent:#5b63ff;--good:#18a566;--bad:#e04f5f;--warn:#f0a020;--shadow:0 12px 35px rgba(30,35,60,.09)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{max-width:1100px;margin:auto;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 18px}
+.logo{font-size:22px;font-weight:900;letter-spacing:-1px;text-decoration:none;color:#111}.logo b{color:var(--accent)}
+main{max-width:1100px;margin:auto;padding:28px 18px 60px}.view{display:none}.view.active{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:var(--shadow);margin-bottom:18px}
+h1,h2,h3{margin-top:0;letter-spacing:-.5px}.sub{color:var(--muted);line-height:1.6}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+button,input,select{font:inherit}button{border:0;border-radius:14px;padding:13px 17px;font-weight:800;cursor:pointer;transition:.15s;touch-action:manipulation}
+button:hover{transform:translateY(-1px)}button:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.primary{background:var(--accent);color:#fff}.secondary{background:#eef0ff;color:#4249b7}.dark{background:#1d2130;color:#fff}.ghost{background:#f2f3f7;color:#454a58}.danger{background:#ffecef;color:#c33243}
+input,select{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:13px;background:#fff;outline:none}input:focus{border-color:var(--accent)}
+label{display:block;font-size:13px;font-weight:800;margin:0 0 7px}.field{margin-bottom:14px}
+.actions{display:flex;gap:10px;flex-wrap:wrap}.center{text-align:center}
+.mode-card{cursor:pointer;border:2px solid var(--line);transition:.15s}.mode-card:hover{border-color:#aab0ff}.mode-card h3{margin-bottom:6px}
+.badge{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:6px 10px;background:#f0f1f6;color:#5d6270;font-size:12px;font-weight:800}
+.status{font-size:13px;color:var(--muted);margin-top:10px}.status.ok{color:var(--good)}.status.bad{color:var(--bad)}
+.room-code{font-size:42px;font-weight:950;letter-spacing:7px;margin:8px 0}.players{display:flex;flex-wrap:wrap;gap:8px}.player{padding:9px 12px;border:1px solid var(--line);border-radius:12px;background:#fafaff}
+.hud{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;margin-bottom:18px}.hud .right{text-align:right}
+.timer{font-size:56px;font-weight:950;line-height:1;letter-spacing:-3px}.timer.danger{color:var(--bad)}.timer.warn{color:var(--warn)}
+.round{font-weight:900;color:var(--muted)}.rule{font-size:25px;font-weight:900;line-height:1.35;margin:16px 0}
+.button-zone{min-height:310px;border:2px dashed #dfe2ec;border-radius:24px;position:relative;overflow:hidden;background:radial-gradient(circle at 50% 50%,#fff,#f7f8fc)}
+.chaos-button{position:absolute;min-width:130px;min-height:76px;font-size:24px;border-radius:22px;background:#202535;color:#fff;box-shadow:0 12px 25px rgba(0,0,0,.15)}
+.chaos-button.red,.chaos-button.blue,.chaos-button.green,.chaos-button.gold{background:#e45462}
+.feedback{min-height:34px;text-align:center;font-size:18px;font-weight:900;padding:12px}.good{color:var(--good)}.bad{color:var(--bad)}
+.result-list{display:grid;gap:9px}.result-row{display:grid;grid-template-columns:40px 1fr auto;align-items:center;padding:12px;border:1px solid var(--line);border-radius:13px}
+.small{font-size:12px;color:var(--muted)}.hidden{display:none!important}
+.toggle{display:flex;align-items:center;gap:8px}.toggle input{width:auto}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#202535;color:#fff;padding:12px 16px;border-radius:12px;z-index:100;opacity:0;pointer-events:none;transition:.2s}.toast.show{opacity:1}
+@media(max-width:650px){.hud{grid-template-columns:1fr auto}.hud .right{grid-column:1/-1;text-align:left}.timer{font-size:44px}.rule{font-size:21px}.room-code{font-size:34px}}
