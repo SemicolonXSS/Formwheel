@@ -557,6 +557,12 @@ const connectionLabel = {
    RENDER
 ====================================================== */
 
+function thumbnailURL(project){
+  if (project.thumbnail) return project.thumbnail;
+  // Resolve against the project directory, excluding navigation query/hash values.
+  return new URL("assets/thumbnail.svg", project.url).href;
+}
+
 function isRecent(project,now=Date.now()){const age=now-Date.parse(project.addedAt);return Number.isFinite(age)&&age>=0&&age<=14*86400000;}
 function render(){
 
@@ -688,7 +694,7 @@ function render(){
           ${newBadge}
 
 
-          <img src="${project.thumbnail || project.url + "assets/thumbnail.svg"}" alt="" loading="lazy" width="1200" height="630" style="display:block;width:100%;height:auto;border-radius:12px;margin-bottom:14px">
+          <img src="${thumbnailURL(project)}" alt="" loading="lazy" width="1200" height="630" style="display:block;width:100%;height:auto;border-radius:12px;margin-bottom:14px">
           <div class="cardTop">
 
             <div class="icon">
