@@ -47,7 +47,7 @@ const projects = [
     connection:"online",
     difficulty:"쉬움",
     description:"설문을 만들고 응답을 받을 수 있는 FormWheel 설문 도구.",
-    url:"https://semicolonxss.github.io/Formwheel_Form",
+    url:"https://semicolonxss.github.io/Formwheel_Form/",
     addedAt:"2026-09-07T10:49:23Z",
     recent:false
   },
@@ -77,7 +77,7 @@ const projects = [
     connection:"online",
     difficulty:"보통",
     description:"퀴즈를 만들고 다른 사람들과 함께 풀어보는 서비스.",
-    url:"https://semicolonxss.github.io/Formwheel_Quiz",
+    url:"https://semicolonxss.github.io/Formwheel_Quiz/",
     addedAt:"2026-09-08T05:27:28Z",
     recent:false
   },
@@ -220,7 +220,7 @@ const projects = [
     connection:"online",
     difficulty:"보통",
     description:"다양한 지시와 타이밍에 맞춰 버튼을 누르는 솔로·멀티 게임.",
-    url:"https://semicolonxss.github.io/Formwheel/button/",
+    url:"https://semicolonxss.github.io/Formwheel_Button/",
     addedAt:"2026-10-01T02:14:02Z",
     recent:false
   },
@@ -250,7 +250,7 @@ const projects = [
     connection:"online",
     difficulty:"보통",
     description:"친구와 실시간으로 퀴즈를 풀며 대결하는 게임.",
-    url:"https://semicolonxss.github.io/Formwheel_Battle",
+    url:"https://semicolonxss.github.io/Formwheel_Battle/",
     addedAt:"2026-09-08T11:38:29Z",
     recent:false
   },
@@ -291,10 +291,10 @@ const projects = [
     icon:"⚡",
     className:"blue",
     category:"game",
-    mode:"solo",
-    connection:"offline",
+    mode:"both",
+    connection:"online",
     difficulty:"쉬움",
-    description:"혼자 반응 속도를 측정하고 이 기기의 최고 기록에 도전하는 게임.",
+    description:"솔로 기록과 5라운드 실시간 배틀로 반응속도를 겨루는 게임.",
     url:"https://semicolonxss.github.io/Formwheel_Reflex/",
     addedAt:"2026-09-10T11:26:35Z",
     recent:false
@@ -325,7 +325,7 @@ const projects = [
     connection:"offline",
     difficulty:"쉬움",
     description:"클릭을 통해 점수와 업그레이드를 쌓는 클릭 게임.",
-    url:"https://semicolonxss.github.io/Formwheel_Clicker",
+    url:"https://semicolonxss.github.io/Formwheel_Clicker/",
     addedAt:"2026-09-15T12:00:53Z",
     recent:false
   },
