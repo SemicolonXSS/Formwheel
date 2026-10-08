@@ -1,0 +1,1 @@
+{"database":{"rules":"database.rules.json"},"functions":[{"source":"functions","codebase":"formwheel-secure"}],"emulators":{"database":{"port":9000},"auth":{"port":9099},"functions":{"port":5001},"ui":{"enabled":false}}}

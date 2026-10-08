@@ -1,0 +1,106 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "formwheelV2": {
+      "users": {
+        "$uid": {
+          ".read": "auth != null && (auth.uid === $uid || auth.token.producer === true)",
+          ".write": "auth != null && auth.uid === $uid",
+          ".validate": "newData.hasChildren(['displayName', 'createdAt'])",
+          "displayName": {
+            ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 12"
+          },
+          "createdAt": {
+            ".validate": "newData.isNumber() && (!data.exists() || newData.val() === data.val())"
+          },
+          "$other": {
+            ".validate": false
+          }
+        }
+      },
+      "rooms": {
+        "$room": {
+          ".read": "auth != null && data.child(\"players\").child(auth.uid).exists()",
+          ".write": false
+        }
+      },
+      "privateRooms": {
+        ".read": false,
+        ".write": false
+      },
+      "privatePlayers": {
+        "$room": {
+          "$uid": {
+            ".read": "auth != null && auth.uid === $uid && root.child(\"formwheelV2/rooms\").child($room).child(\"players\").child(auth.uid).exists()",
+            ".write": false
+          }
+        }
+      },
+      "wallets": {
+        "$uid": {
+          ".read": "auth != null && auth.uid === $uid",
+          ".write": false
+        }
+      },
+      "bans": {
+        "$uid": {
+          ".read": "auth != null && (auth.uid === $uid || auth.token.producer === true)",
+          ".write": false
+        }
+      },
+      "rateLimits": {
+        ".read": false,
+        ".write": false
+      },
+      "forms": {
+        "$id": {
+          "public": {
+            ".read": true,
+            ".write": "auth != null && ((!data.exists() && newData.child('owner').val() === auth.uid) || (data.child('owner').val() === auth.uid && newData.child('owner').val() === data.child('owner').val()))",
+            ".validate": "newData.hasChildren(['owner','title','questions'])"
+          },
+          "responses": {
+            ".read": "auth != null && root.child('formwheelV2/forms').child($id).child('public/owner').val() === auth.uid",
+            "$response": {
+              ".write": "auth != null && !data.exists() && newData.child('respondent').val() === auth.uid && root.child('formwheelV2/forms').child($id).child('public').exists()",
+              ".validate": "newData.hasChildren(['respondent','answers','submittedAt'])"
+            }
+          }
+        }
+      },
+      "ai": {
+        "$uid": {
+          ".read": "auth != null && auth.uid === $uid",
+          ".write": "auth != null && auth.uid === $uid",
+          ".validate": "newData.exists()"
+        }
+      },
+      "chat": {
+        "public": {
+          "messages": {
+            ".read": "auth != null",
+            "$id": {
+              ".write": "auth != null && ((!data.exists() && newData.child('uid').val() === auth.uid && !root.child('formwheelV2/bans').child(auth.uid).exists()) || (data.exists() && (data.child('uid').val() === auth.uid || auth.token.producer === true)))",
+              ".validate": "newData.hasChildren(['uid','text','createdAt']) && newData.child('uid').val() === auth.uid && newData.child('text').isString() && newData.child('text').val().length > 0 && newData.child('text').val().length <= 2000 && (!data.exists() || newData.child('uid').val() === data.child('uid').val())",
+              "$other": {
+                ".validate": true
+              }
+            }
+          }
+        },
+        "rooms": {
+          "$room": {
+            ".read": "auth != null && root.child('formwheelV2/rooms').child($room).child('players').child(auth.uid).exists()",
+            "messages": {
+              "$id": {
+                ".write": "auth != null && root.child('formwheelV2/rooms').child($room).child('players').child(auth.uid).exists() && ((!data.exists() && newData.child('uid').val() === auth.uid && !root.child('formwheelV2/bans').child(auth.uid).exists()) || (data.exists() && (data.child('uid').val() === auth.uid || auth.token.producer === true)))",
+                ".validate": "newData.hasChildren(['uid','text','createdAt']) && newData.child('uid').val() === auth.uid && newData.child('text').isString() && newData.child('text').val().length > 0 && newData.child('text').val().length <= 2000"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
