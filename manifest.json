@@ -1,0 +1,20 @@
+{
+  "id": "/Formwheel/",
+  "name": "Formwheel",
+  "short_name": "Formwheel",
+  "description": "게임과 도구를 한곳에서 즐기는 Formwheel 플랫폼",
+  "start_url": "/Formwheel/",
+  "scope": "/Formwheel/",
+  "display": "standalone",
+  "background_color": "#f7f8fc",
+  "theme_color": "#f7f8fc",
+  "lang": "ko",
+  "icons": [
+    {
+      "src": "/Formwheel/assets/formwheel-favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
