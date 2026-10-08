@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>FormWheel</title>
+<link rel="manifest" href="/Formwheel/manifest.json">
+<meta name="theme-color" content="#f7f8fc">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Formwheel">
+
 
 <link rel="stylesheet" href="./assets/styles.css?v=20261008-filters">
 <link rel="stylesheet" href="https://semicolonxss.github.io/Formwheel/shared/formwheel-ui.css">
@@ -283,6 +288,14 @@ PC뿐 아니라 작은 화면에서도 사용할 수 있도록 반응형으로 �
 
 
 <script src="./assets/app.js?v=20261008-thumbnails"></script>
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/Formwheel/sw.js").catch(console.warn);
+  });
+}
+</script>
 
 </body>
 </html>
