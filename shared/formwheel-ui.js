@@ -57,7 +57,7 @@ next.onclick=()=>{if(index===steps.length-1)end();else{index++;render();}};
 close.onclick=()=>end();
 document.addEventListener('keydown',event=>{if(active&&event.key==='Escape')end();});
 new MutationObserver(()=>{if(!active||frame)return;frame=requestAnimationFrame(()=>{frame=0;highlight();});}).observe(document.body,{childList:true,subtree:true});
-try{if(!localStorage.getItem(key))start(false);}catch{start(false);}
+if(name!=='Formwheel'){try{if(!localStorage.getItem(key))start(false);}catch{start(false);}}
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();
