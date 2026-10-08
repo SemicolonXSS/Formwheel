@@ -145,6 +145,7 @@ const projects = [
 
   {
     name:"Check",
+    thumbnail:"./assets/check-thumbnail.svg",
     icon:"✅",
     className:"green",
     category:"tool",
@@ -511,6 +512,10 @@ const filterButtons =
 ====================================================== */
 
 let currentFilter = "all";
+const modeFilter = document.getElementById("modeFilter");
+const connectionFilter = document.getElementById("connectionFilter");
+const difficultyFilter = document.getElementById("difficultyFilter");
+const resetFilters = document.getElementById("resetFilters");
 
 
 /* ======================================================
@@ -532,9 +537,9 @@ const modeLabel = {
 
   solo:"1인",
 
-  multi:"멀티",
+  multi:"다인",
 
-  both:"1인 · 멀티"
+  both:"1인 · 다인"
 
 };
 
@@ -578,7 +583,7 @@ function render(){
             " " +
             project.description +
             " " +
-            categoryLabel[project.category]
+            categoryLabel[project.category] + " " + modeLabel[project.mode] + " " + connectionLabel[project.connection] + " " + project.difficulty
           ).toLowerCase();
 
         return text.includes(keyword);
@@ -610,6 +615,12 @@ function render(){
 
   }
 
+
+  list = list.filter(project =>
+    (modeFilter.value === "all" || project.mode === modeFilter.value || (project.mode === "both" && modeFilter.value !== "both")) &&
+    (connectionFilter.value === "all" || project.connection === connectionFilter.value) &&
+    (difficultyFilter.value === "all" || project.difficulty === difficultyFilter.value)
+  );
 
   /* SORT */
 
@@ -677,7 +688,7 @@ function render(){
           ${newBadge}
 
 
-          <img src="${project.url}assets/thumbnail.svg" alt="" loading="lazy" width="1200" height="630" style="display:block;width:100%;height:auto;border-radius:12px;margin-bottom:14px">
+          <img src="${project.thumbnail || project.url + "assets/thumbnail.svg"}" alt="" loading="lazy" width="1200" height="630" style="display:block;width:100%;height:auto;border-radius:12px;margin-bottom:14px">
           <div class="cardTop">
 
             <div class="icon">
@@ -790,6 +801,7 @@ filterButtons.forEach(button => {
 
 
       button.classList.add("active");
+      filterButtons.forEach(item => item.setAttribute("aria-pressed", String(item === button)));
 
 
       currentFilter =
@@ -818,4 +830,26 @@ sortElement.addEventListener(
    START
 ====================================================== */
 
+[modeFilter, connectionFilter, difficultyFilter].forEach(select => select.addEventListener("change", render));
+filterButtons.forEach(button => button.setAttribute("aria-pressed", String(button.classList.contains("active"))));
+resetFilters.addEventListener("click", () => {
+  searchElement.value = "";
+  currentFilter = "all";
+  [modeFilter, connectionFilter, difficultyFilter].forEach(select => select.value = "all");
+  sortElement.value = "default";
+  filterButtons.forEach(button => {
+    const active = button.dataset.filter === "all";
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-pressed", String(active));
+  });
+  render();
+});
+cardsElement.addEventListener("error", event => {
+  const img = event.target;
+  if (img.tagName !== "IMG") return;
+  const fallback = document.createElement("div");
+  fallback.className = "thumbnailFallback";
+  fallback.textContent = img.closest(".card").querySelector("h3").textContent.trim();
+  img.replaceWith(fallback);
+}, true);
 render();

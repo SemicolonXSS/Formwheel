@@ -6,7 +6,7 @@
 
 <title>FormWheel</title>
 
-<link rel="stylesheet" href="./assets/styles.css?v=859c6a845a97">
+<link rel="stylesheet" href="./assets/styles.css?v=20261008-filters">
 <link rel="stylesheet" href="https://semicolonxss.github.io/Formwheel/shared/formwheel-ui.css">
 <script defer src="https://semicolonxss.github.io/Formwheel/shared/formwheel-ui.js"></script>
 <link rel="icon" type="image/svg+xml" href="./assets/icon.svg">
@@ -173,6 +173,12 @@ FormWheel의 모든 프로젝트를 한곳에서 만나보세요.
 </div>
 
 
+<div class="detailFilters" aria-label="상세 필터">
+<label>인원 <select id="modeFilter"><option value="all">전체 인원</option><option value="solo">1인 가능</option><option value="multi">다인 가능</option><option value="both">1인·다인 모두</option></select></label>
+<label>연결 <select id="connectionFilter"><option value="all">전체 연결</option><option value="online">온라인</option><option value="offline">오프라인</option></select></label>
+<label>난이도 <select id="difficultyFilter"><option value="all">전체 난이도</option><option value="쉬움">쉬움</option><option value="보통">보통</option><option value="어려움">어려움</option></select></label>
+<button id="resetFilters" type="button" class="filterButton">필터 초기화</button>
+</div>
 <div class="subToolbar">
 
 <div class="resultText">
@@ -208,7 +214,7 @@ FormWheel의 모든 프로젝트를 한곳에서 만나보세요.
 <div id="empty" class="empty">
 
 검색 결과가 없어요.<br>
-다른 이름이나 카테고리로 찾아보세요.
+다른 이름이나 필터로 찾아보거나 필터를 초기화해보세요.
 
 </div>
 
@@ -225,7 +231,7 @@ FormWheel의 모든 프로젝트를 한곳에서 만나보세요.
 <strong>쉽게 찾기</strong>
 
 <span>
-검색과 카테고리 필터로 원하는 프로젝트를 빠르게 찾을 수 있어요.
+검색과 인원·연결·난이도 필터로 원하는 프로젝트를 빠르게 찾을 수 있어요.
 </span>
 
 </div>
@@ -286,7 +292,7 @@ PC뿐 아니라 작은 화면에서도 사용할 수 있도록 반응형으로 �
 
 
 
-<script src="./assets/app.js?v=bcdc951a13fe"></script>
+<script src="./assets/app.js?v=20261008-filters"></script>
 
 </body>
 </html>

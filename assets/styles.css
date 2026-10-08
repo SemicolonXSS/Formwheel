@@ -855,3 +855,10 @@ footer{
  .tag,.badge,.project-tag,.project-meta span{font-size:12px!important}
  button,a.open-btn,.open-button,.card-open{min-height:44px;font-size:13px!important}
 }
+
+.detailFilters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0}
+.detailFilters label{display:flex;align-items:center;gap:6px;font-size:12px;color:#676b74;font-weight:700}
+.detailFilters select{font:inherit;height:36px;max-width:100%;padding:0 8px;border:1px solid #dfe2e8;border-radius:8px;background:#fff;color:#333}
+.categoryButtons{flex-wrap:wrap}
+.thumbnailFallback{display:flex;align-items:center;justify-content:center;aspect-ratio:1200/630;background:var(--soft);border-radius:12px;margin-bottom:14px;font-size:26px;font-weight:850}
+@media(max-width:700px){.detailFilters label{flex:1 1 140px}.detailFilters select{flex:1;min-width:0}.detailFilters button{flex:1 1 100%}.searchBox{flex:auto;width:100%;min-height:44px}}
