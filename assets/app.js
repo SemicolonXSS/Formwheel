@@ -121,7 +121,7 @@ const projects = [
     mode:"solo",
     connection:"offline",
     difficulty:"쉬움",
-    description:"계산기, 타이머, 단위 변환 등 실생활에 필요한 도구 모음.",
+    description:"계산기·타이머와 성별 패턴·저장·CSV를 지원하는 자리 배치 등 생활 도구 모음.",
     url:"https://semicolonxss.github.io/Formwheel_Tool/",
     addedAt:"2026-09-30T00:12:47Z",
     recent:false
@@ -234,7 +234,7 @@ const projects = [
     mode:"solo",
     connection:"online",
     difficulty:"보통",
-    description:"코인으로 룰렛과 슬롯 등 다양한 미니게임을 즐기는 프로젝트.",
+    description:"가상 코인 미니게임과 UID 지갑·거래 내역·배경/이름 장식 상점을 제공하는 프로젝트.",
     url:"https://semicolonxss.github.io/Formwheel_Casino/",
     addedAt:"2026-09-11T03:44:13Z",
     recent:false
@@ -399,7 +399,7 @@ const projects = [
     mode:"both",
     connection:"online",
     difficulty:"보통",
-    description:"제한 시간 안에서 빠르게 행동하는 타임 게임.",
+    description:"장애물을 피하며 시간을 모으고 점수·콤보·이벤트·공격으로 겨루는 생존 게임.",
     url:"https://semicolonxss.github.io/Formwheel_Time/",
     addedAt:"2026-09-22T01:28:52Z",
     recent:false
@@ -411,10 +411,10 @@ const projects = [
     icon:"🎵",
     className:"pink",
     category:"game",
-    mode:"both",
+    mode:"solo",
     connection:"online",
     difficulty:"어려움",
-    description:"음악을 만들고 재생하고 직접 플레이하는 음악 프로젝트.",
+    description:"한 손·두 손·포 핸드 악보를 만들고 드럼·피아노로 재생하며 리듬을 연주하는 음악 도구.",
     url:"https://semicolonxss.github.io/Formwheel_Music/",
     addedAt:"2026-09-26T09:38:35Z",
     recent:false
@@ -426,10 +426,10 @@ const projects = [
     icon:"🎹",
     className:"pink",
     category:"game",
-    mode:"multi",
+    mode:"both",
     connection:"online",
     difficulty:"보통",
-    description:"음계 카드를 활용해 플레이하는 FormWheel 보드게임.",
+    description:"음계 카드 보드게임을 튜토리얼로 배우고 AI 솔로 또는 실시간 방에서 플레이.",
     url:"https://semicolonxss.github.io/Formwheel_Piano/",
     addedAt:"2026-09-21T01:16:37Z",
     recent:false
