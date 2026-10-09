@@ -19,6 +19,15 @@
 <meta property="og:image" content="https://semicolonxss.github.io/Formwheel/assets/thumbnail.svg">
 <link rel="stylesheet" href="assets/formwheel-brand.css?v=20261008-hub-logo">
 <link rel="icon" type="image/svg+xml" href="https://semicolonxss.github.io/Formwheel/assets/formwheel-favicon.svg">
+<style id="formwheel-install-styles">
+.fw-install{max-width:510px;margin:18px auto 4px;padding:18px;border:1px solid #e4e7ef;border-radius:18px;background:rgba(255,255,255,.94);box-shadow:0 10px 28px rgba(35,48,90,.06);text-align:center;color:#202638}
+.fw-install h3{margin:0 0 7px;font-size:19px}.fw-install p{margin:0 0 13px;font-size:13px;color:#5c6476;line-height:1.6}
+.fw-install button{font:inherit;cursor:pointer}.fw-install-primary,.fw-install-option{display:block;width:100%;border:0;border-radius:12px;padding:12px 14px;background:#3439bd;color:white;font-weight:750}
+.fw-install-more{display:inline-flex;align-items:center;justify-content:center;border:0;background:transparent;color:#596177;font-size:12px;padding:9px 14px;margin-top:5px;cursor:pointer}
+.fw-install-options[hidden],.fw-install-info[hidden]{display:none}
+.fw-install-options{display:grid;gap:8px;margin:5px 0 0}.fw-install-option{background:#f0f2fc;color:#263184;border:1px solid #e0e3f3}
+.fw-install-info{margin:12px 0 0;padding:12px;text-align:left;white-space:pre-line;background:#f5f6fb;border-radius:12px;font-size:13px;line-height:1.7;color:#323b4e}
+</style>
 </head>
 
 
@@ -105,6 +114,19 @@ FormWheel의 모든 프로젝트를 한곳에서 만나보세요.
 </a>
 
 </div>
+
+<section class="fw-install" id="fw-install" aria-labelledby="fw-install-title">
+<h3 id="fw-install-title">📥 Formwheel 앱 설치</h3>
+<p>현재 기기에 맞는 설치 방법을 안내해 드려요.</p>
+<button type="button" class="fw-install-primary" id="fw-install-primary">설치 방법 확인</button>
+<button type="button" class="fw-install-more" id="fw-install-more" aria-controls="fw-install-options" aria-expanded="false">다른 기기 보기 ▾</button>
+<div id="fw-install-options" class="fw-install-options" hidden>
+<button type="button" class="fw-install-option" data-install-target="pc">💻 PC에서 다운로드</button>
+<button type="button" class="fw-install-option" data-install-target="android">🤖 Android에서 다운로드</button>
+<button type="button" class="fw-install-option" data-install-target="ios">🍎 iPhone에서 추가</button>
+</div>
+<div class="fw-install-info" id="fw-install-info" role="status" aria-live="polite" hidden></div>
+</section>
 
 </section>
 
@@ -297,6 +319,55 @@ if ("serviceWorker" in navigator) {
 }
 </script>
 
+<script id="fw-install-logic">
+(() => {
+  const root = document.getElementById("fw-install");
+  if (!root) return;
+  const primary = document.getElementById("fw-install-primary");
+  const more = document.getElementById("fw-install-more");
+  const options = document.getElementById("fw-install-options");
+  const info = document.getElementById("fw-install-info");
+  const ua = navigator.userAgent || "";
+  const target = /Android/i.test(ua) ? "android" : /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1) ? "ios" : "pc";
+  const labels = {pc:"💻 PC에서 다운로드",android:"🤖 Android에서 다운로드",ios:"🍎 iPhone에서 추가"};
+  const guides = {
+    pc:"PC Chrome 또는 Edge에서 Formwheel을 열고 주소창의 설치 아이콘을 누르세요. 없다면 브라우저 메뉴에서 '페이지를 앱으로 설치' 또는 '앱' 메뉴를 확인해 주세요. 설치 항목이 없으면 해당 브라우저에서 아직 지원되지 않을 수 있습니다.",
+    android:"Android Chrome에서 Formwheel을 열고 오른쪽 위 ⋮ 메뉴 → '홈 화면에 추가' 또는 '앱 설치'를 누르세요. Daum 등 일부 인앱 브라우저에서는 Chrome으로 열어야 할 수 있습니다.",
+    ios:"iPhone Safari에서 Formwheel을 연 뒤 공유 버튼 → '홈 화면에 추가' → '추가'를 누르세요. 다른 브라우저에서는 Safari로 열어 주세요."
+  };
+  let installPrompt = null;
+  window.addEventListener("beforeinstallprompt", event => { event.preventDefault(); installPrompt = event; });
+  window.addEventListener("appinstalled", () => { installPrompt = null; info.hidden = false; info.textContent = "✅ Formwheel이 설치되었어요!"; });
+  const installed = () => window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+  function showGuide(device) {
+    info.hidden = false;
+    info.textContent = guides[device];
+  }
+  async function install(device) {
+    if (installed()) { info.hidden = false; info.textContent = "✅ 이미 앱 모드로 실행 중이에요."; return; }
+    if (device === target && installPrompt) {
+      const prompt = installPrompt;
+      installPrompt = null;
+      try { await prompt.prompt(); await prompt.userChoice; }
+      catch { showGuide(device); }
+      return;
+    }
+    showGuide(device);
+  }
+  primary.textContent = labels[target];
+  primary.addEventListener("click", () => install(target));
+  more.addEventListener("click", () => {
+    const expanded = more.getAttribute("aria-expanded") === "true";
+    more.setAttribute("aria-expanded", String(!expanded));
+    options.hidden = expanded;
+    more.textContent = expanded ? "다른 기기 보기 ▾" : "접기 ▴";
+  });
+  options.querySelectorAll("[data-install-target]").forEach(button => {
+    if (button.dataset.installTarget === target) button.hidden = true;
+    button.addEventListener("click", () => install(button.dataset.installTarget));
+  });
+})();
+</script>
 </body>
 </html>
 
