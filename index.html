@@ -28,6 +28,7 @@
 .fw-install-options{display:grid;gap:8px;margin:5px 0 0}.fw-install-option{background:#f0f2fc;color:#263184;border:1px solid #e0e3f3}
 .fw-install-info{margin:12px 0 0;padding:12px;text-align:left;white-space:pre-line;background:#f5f6fb;border-radius:12px;font-size:13px;line-height:1.7;color:#323b4e}
 </style>
+<link rel="stylesheet" href="./assets/home.css?v=20261009-home1">
 </head>
 
 
@@ -115,23 +116,29 @@ FormWheel의 모든 프로젝트를 한곳에서 만나보세요.
 
 </div>
 
-<section class="fw-install" id="fw-install" aria-labelledby="fw-install-title">
-<h3 id="fw-install-title">📥 Formwheel 앱 설치</h3>
-<p>현재 기기에 맞는 설치 방법을 안내해 드려요.</p>
-<button type="button" class="fw-install-primary" id="fw-install-primary">설치 방법 확인</button>
-<button type="button" class="fw-install-more" id="fw-install-more" aria-controls="fw-install-options" aria-expanded="false">다른 기기 보기 ▾</button>
-<div id="fw-install-options" class="fw-install-options" hidden>
-<button type="button" class="fw-install-option" data-install-target="pc">💻 PC에서 다운로드</button>
-<button type="button" class="fw-install-option" data-install-target="android">🤖 Android에서 다운로드</button>
-<button type="button" class="fw-install-option" data-install-target="ios">🍎 iPhone에서 추가</button>
-</div>
-<div class="fw-install-info" id="fw-install-info" role="status" aria-live="polite" hidden></div>
-</section>
+
 
 </section>
 
 
 
+<section id="fw-home" aria-label="나만의 Formwheel 홈">
+  <h2>오늘은 뭘 플레이할까?</h2>
+  <p>좋아하는 프로젝트는 고정하고, 새로운 프로젝트도 만나보세요.</p>
+  <div class="fw-home-section" id="fw-pinned-section" hidden>
+    <div><h3>📌 고정한 프로젝트 <small id="fw-home-count">0/3</small></h3><button id="fw-edit-toggle" type="button">편집</button></div>
+    <div id="fw-pinned-cards" class="fw-home-grid"></div>
+    <div id="fw-home-editor" hidden><p>위아래 버튼으로 순서를 변경하세요.</p><div id="fw-edit-list"></div><button type="button" id="fw-edit-save">순서 저장</button> <button type="button" id="fw-edit-cancel">취소</button></div>
+  </div>
+  <div class="fw-home-section">
+    <div><h3>✨ 오늘의 추천</h3><span>매일 갱신 · 최대 3개</span></div>
+    <div id="fw-recommended-cards" class="fw-home-grid"></div>
+    <p id="fw-recommended-empty" hidden>추천할 프로젝트가 없어요. 추천 제외 설정을 확인해 주세요.</p>
+  </div>
+  <button type="button" id="fw-excluded-show">추천 제외 관리</button>
+  <div id="fw-excluded-list" hidden></div>
+  <p id="fw-home-status" role="status" aria-live="polite"></p>
+</section>
 <section id="projects">
 
 
@@ -190,7 +197,8 @@ FormWheel의 모든 프로젝트를 한곳에서 만나보세요.
 </div>
 
 
-<div class="detailFilters" aria-label="상세 필터">
+<button type="button" id="fw-filter-toggle" aria-controls="fw-filter-panel" aria-expanded="false">⚙️ 인원 · 연결 · 난이도 <span id="fw-filter-count"></span> ▾</button>
+<div class="detailFilters" id="fw-filter-panel" aria-label="상세 필터">
 <label>인원 <select id="modeFilter"><option value="all">전체 인원</option><option value="solo">1인 가능</option><option value="multi">다인 가능</option><option value="both">1인·다인 모두</option></select></label>
 <label>연결 <select id="connectionFilter"><option value="all">전체 연결</option><option value="online">온라인</option><option value="offline">오프라인</option></select></label>
 <label>난이도 <select id="difficultyFilter"><option value="all">전체 난이도</option><option value="쉬움">쉬움</option><option value="보통">보통</option><option value="어려움">어려움</option></select></label>
@@ -292,6 +300,18 @@ PC뿐 아니라 작은 화면에서도 사용할 수 있도록 반응형으로 �
 ========================= -->
 
 <footer>
+<section class="fw-install" id="fw-install" aria-labelledby="fw-install-title">
+<h3 id="fw-install-title">📥 Formwheel 앱 설치</h3>
+<p>현재 기기에 맞는 설치 방법을 안내해 드려요.</p>
+<button type="button" class="fw-install-primary" id="fw-install-primary">설치 방법 확인</button>
+<button type="button" class="fw-install-more" id="fw-install-more" aria-controls="fw-install-options" aria-expanded="false">다른 기기 보기 ▾</button>
+<div id="fw-install-options" class="fw-install-options" hidden>
+<button type="button" class="fw-install-option" data-install-target="pc">💻 PC에서 다운로드</button>
+<button type="button" class="fw-install-option" data-install-target="android">🤖 Android에서 다운로드</button>
+<button type="button" class="fw-install-option" data-install-target="ios">🍎 iPhone에서 추가</button>
+</div>
+<div class="fw-install-info" id="fw-install-info" role="status" aria-live="polite" hidden></div>
+</section>
 
 <div class="footerLogo">
   FormWheel
@@ -310,6 +330,7 @@ PC뿐 아니라 작은 화면에서도 사용할 수 있도록 반응형으로 �
 
 
 <script src="./assets/app.js?v=20261008-thumbnails"></script>
+<script src="./assets/home.js?v=20261009-home1"></script>
 
 <script>
 if ("serviceWorker" in navigator) {
@@ -337,14 +358,17 @@ if ("serviceWorker" in navigator) {
   };
   let installPrompt = null;
   window.addEventListener("beforeinstallprompt", event => { event.preventDefault(); installPrompt = event; });
-  window.addEventListener("appinstalled", () => { installPrompt = null; info.hidden = false; info.textContent = "✅ Formwheel이 설치되었어요!"; });
+  window.addEventListener("appinstalled", () => { installPrompt = null; root.hidden = true; });
   const installed = () => window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+  const refreshVisibility = () => { root.hidden = installed(); };
+  refreshVisibility();
+  window.matchMedia("(display-mode: standalone)").addEventListener?.("change", refreshVisibility);
   function showGuide(device) {
     info.hidden = false;
     info.textContent = guides[device];
   }
   async function install(device) {
-    if (installed()) { info.hidden = false; info.textContent = "✅ 이미 앱 모드로 실행 중이에요."; return; }
+    if (installed()) { root.hidden = true; return; }
     if (device === target && installPrompt) {
       const prompt = installPrompt;
       installPrompt = null;
