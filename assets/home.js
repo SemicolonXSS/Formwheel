@@ -84,6 +84,8 @@ byId("fw-edit-cancel").addEventListener("click",()=>{byId("fw-home-editor").hidd
 byId("fw-excluded-show").addEventListener("click",()=>{const el=byId("fw-excluded-list");el.hidden=!el.hidden;el.innerHTML=state.excluded.map(id=>'<button type="button" data-restore="'+id+'">'+escapeHTML(all.get(id)?.name||id)+' 제외 해제 ×</button>').join("")||"<span>제외한 프로젝트가 없어요.</span>"});
 byId("fw-excluded-list").addEventListener("click",e=>{const b=e.target.closest("[data-restore]");if(!b)return;state.excluded=state.excluded.filter(x=>x!==b.dataset.restore);persist();byId("fw-excluded-show").click();byId("fw-excluded-show").click()});
 const filterToggle=byId("fw-filter-toggle"),filterPanel=byId("fw-filter-panel");
+const responsiveFilters=()=>{if(window.matchMedia("(max-width:700px)").matches){if(!filterPanel.dataset.initialized){filterPanel.hidden=true;filterPanel.dataset.initialized="1"}}else{filterPanel.hidden=false;filterPanel.dataset.initialized="";}filterToggle.setAttribute("aria-expanded",String(!filterPanel.hidden))};
+responsiveFilters();window.addEventListener("resize",responsiveFilters);
 filterToggle.addEventListener("click",()=>{filterPanel.hidden=!filterPanel.hidden;filterToggle.setAttribute("aria-expanded",String(!filterPanel.hidden))});
 function syncFilterCount(){const count=["modeFilter","connectionFilter","difficultyFilter"].filter(id=>byId(id).value!=="all").length;byId("fw-filter-count").textContent=count?count+"개 적용":""}
 ["modeFilter","connectionFilter","difficultyFilter","resetFilters"].forEach(id=>byId(id).addEventListener(id==="resetFilters"?"click":"change",()=>setTimeout(syncFilterCount,0)));
