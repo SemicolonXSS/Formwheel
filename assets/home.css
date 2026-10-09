@@ -1,0 +1,13 @@
+/* Formwheel Hub personalized home */
+#fw-home{margin:22px 0 24px}#fw-home h2{font-size:20px;margin:0}#fw-home .fw-home-section{margin:18px 0}#fw-home .fw-home-section>div:first-child{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;gap:8px}
+.fw-home-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.fw-home-card{border:1px solid #e4e7ef;background:#fff;border-radius:14px;padding:10px;min-width:0;display:flex;flex-direction:column;justify-content:space-between}
+.fw-home-link{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;min-width:0;padding:6px 0}.fw-home-emoji{font-size:29px}.fw-home-link strong{font-size:14px;overflow-wrap:anywhere}.fw-home-link small{font-size:11px;color:#667085}
+.fw-home-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:5px}.fw-home-actions button,#fw-edit-toggle,#fw-excluded-show,.fw-edit-item button,#fw-edit-save,#fw-edit-cancel{border:1px solid #dce1ec;border-radius:9px;background:#f6f8ff;padding:7px 9px;font-size:12px;color:#273c73;cursor:pointer}
+.fw-home-actions button{flex:1;min-width:65px}.fw-edit-item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px;border-bottom:1px solid #e8eaf1}.fw-edit-item>span:last-child{display:flex;gap:5px}
+#fw-home-editor{background:#f6f8fc;border-radius:12px;padding:12px}#fw-home-editor[hidden],#fw-pinned-section[hidden],#fw-recommended-empty[hidden],#fw-excluded-list[hidden],#fw-filter-panel[hidden]{display:none!important}
+#fw-home-status{min-height:18px;color:#656f82;font-size:12px}#fw-excluded-list{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}#fw-excluded-list button{padding:7px;border-radius:8px;border:1px solid #dce1ec;background:#fff}
+#fw-filter-toggle{display:none}#fw-filter-count{font-size:11px;color:#657187}
+@media(max-width:700px){#fw-filter-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;padding:12px;background:#fff;border:1px solid #e4e7ed;border-radius:11px;margin:10px 0;font-weight:700}#fw-filter-panel{display:flex;flex-wrap:wrap}#fw-home{margin:16px 0 20px}.fw-home-grid{gap:7px}.fw-home-card{padding:7px}.fw-home-actions button{font-size:11px;padding:7px 4px}}
+@media(max-width:359px){.fw-home-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.fw-install[hidden]{display:none!important}
