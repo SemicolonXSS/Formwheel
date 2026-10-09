@@ -100,6 +100,19 @@
             }
           }
         }
+      },
+      "hubHomes": {
+        "$uid": {
+          ".read": "auth != null && auth.uid === $uid && auth.token.firebase.sign_in_provider !== 'anonymous'",
+          ".write": "auth != null && auth.uid === $uid && auth.token.firebase.sign_in_provider !== 'anonymous'",
+          ".validate": "newData.hasChildren(['version','pinned','excluded','visits']) && newData.child('version').val() === 1",
+          "version": {
+            ".validate": "newData.isNumber() && newData.val() === 1"
+          },
+          "$other": {
+            ".validate": true
+          }
+        }
       }
     }
   }
