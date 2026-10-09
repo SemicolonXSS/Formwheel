@@ -8,6 +8,10 @@ const auth=getAuth(app), db=getDatabase(app);
 const home=window.FormwheelHubHome, status=document.getElementById("fw-id-status"), login=document.getElementById("fw-id-login"), logout=document.getElementById("fw-id-logout");
 const show=t=>{if(status)status.textContent=t};
 let uid=null,unsubscribe=null,applying=false,ready=false,previousUid=null,writeQueue=Promise.resolve();
+const guestKey="fw:hub:guest:v1";
+const readGuest=()=>{try{return JSON.parse(localStorage.getItem(guestKey))}catch{return null}};
+const keepGuest=()=>{try{localStorage.setItem(guestKey,JSON.stringify(home.read()))}catch{}};
+let activeAccount=false;
 const clean=raw=>{
  const valid=new Set(homeIds());
  const ids=(list,max)=>[...new Set((Array.isArray(list)?list:[]).filter(x=>typeof x==="string"&&valid.has(x)))].slice(0,max);
@@ -23,6 +27,7 @@ function merge(remote,local){
  return {version:1,pinned:a.pinned.length?a.pinned:b.pinned,excluded:[...new Set([...a.excluded,...b.excluded])],visits};
 }
 async function connect(user){
+ if(!activeAccount)keepGuest();activeAccount=true;
  uid=user.uid;ready=false;
  login.hidden=true;logout.hidden=false;show("Formwheel ID 연결 중…");
  const thisUid=uid;
@@ -51,7 +56,7 @@ window.addEventListener("fw:hub:changed",event=>{
 });
 onAuthStateChanged(auth,user=>{
  if(unsubscribe){unsubscribe();unsubscribe=null}ready=false;uid=null;
- if(!user||user.isAnonymous){login.hidden=false;logout.hidden=true;show(user?.isAnonymous?"게스트 모드 · 기기에만 저장":"로그인하면 다른 기기와 홈 설정이 동기화돼요.");return}
+ if(!user||user.isAnonymous){if(activeAccount){applying=true;home.apply(readGuest()||{pinned:[],excluded:[],visits:{}});applying=false;activeAccount=false}login.hidden=false;logout.hidden=true;show(user?.isAnonymous?"게스트 모드 · 기기에만 저장":"로그인하면 다른 기기와 홈 설정이 동기화돼요.");return}
  connect(user);
 });
 login?.addEventListener("click",async()=>{
