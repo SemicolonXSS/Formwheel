@@ -13,7 +13,9 @@ let state=load(key,{pinned:[],excluded:[],visits:{},version:1});
 state={pinned:valid(state.pinned,3),excluded:valid(state.excluded),visits:state.visits&&typeof state.visits==="object"?state.visits:{},version:1};
 let cache=load(cacheKey,{}),draft=null;
 const today=()=>new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Seoul",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
-const persist=()=>{save(key,state);render()};
+const persist=()=>{save(key,state);render();window.dispatchEvent(new CustomEvent("fw:hub:changed",{detail:{state:exportState()}}))};
+const exportState=()=>JSON.parse(JSON.stringify({version:1,pinned:state.pinned,excluded:state.excluded,visits:state.visits}));
+window.FormwheelHubHome={read:exportState,apply(remote){if(!remote||typeof remote!=="object")return;state={version:1,pinned:valid(remote.pinned,3),excluded:valid(remote.excluded),visits:remote.visits&&typeof remote.visits==="object"?remote.visits:{}};save(key,state);cache={};render()},localKey:key};
 const list=()=>projects.filter(p=>!state.pinned.includes(p.name.toLowerCase())&&!state.excluded.includes(p.name.toLowerCase()));
 function recompute(){
  const date=today();const pool=list();
@@ -68,7 +70,7 @@ byId("fw-home").addEventListener("click",e=>{
 });
 function record(id){
  const v=state.visits[id]||{count:0};state.visits[id]={count:Math.min(100000,(Number(v.count)||0)+1),last:Date.now()};
- save(key,state); // Navigation click is an approximation, not proof of completed gameplay.
+ persist(); // Navigation click is an approximation, not proof of completed gameplay.
 }
 document.getElementById("cards")?.addEventListener("click",e=>{
  const a=e.target.closest("a.openButton");if(!a)return;
