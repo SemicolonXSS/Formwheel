@@ -55,44 +55,15 @@ window.addEventListener("fw:hub:changed",event=>{
  writeQueue=writeQueue.then(async()=>{if(id!==uid)return;await set(path(id),next)}).catch(err=>show("저장 실패 · 로컬 설정은 유지됨: "+(err.code||"연결 오류")));
 });
 
-const profileForm=document.getElementById("fw-profile-form"),profileName=document.getElementById("fw-profile-name"),profileAvatar=document.getElementById("fw-profile-avatar"),profileDetail=document.getElementById("fw-profile-detail"),profileMessage=document.getElementById("fw-profile-status");
-const profileKey="fw:profile:guest:v1", allowedIcons=["🎡","🎮","🦊","🐱","🚀","🌟","🎲","👑"];
-const defaultProfile={nickname:"게스트",icon:"🎡",color:"#6366f1"};
-function sanitizeProfile(value){
- const nickname=typeof value?.nickname==="string"?value.nickname.trim().slice(0,16):"";
- return {nickname:nickname.length>=2?nickname:"게스트",icon:allowedIcons.includes(value?.icon)?value.icon:"🎡",color:/^#[0-9a-f]{6}$/i.test(value?.color||"")?value.color:"#6366f1"};
-}
-function guestProfile(){try{return sanitizeProfile(JSON.parse(localStorage.getItem(profileKey)))}catch{return {...defaultProfile}}}
-function renderProfile(p){
- const value=sanitizeProfile(p);profileName.textContent=value.nickname;profileAvatar.textContent=value.icon;profileAvatar.style.backgroundColor=value.color;
- profileForm.elements["fw-profile-nickname"].value=value.nickname==="게스트"?"":value.nickname;
- document.getElementById("fw-profile-icon").value=value.icon;document.getElementById("fw-profile-color").value=value.color;
- profileDetail.textContent=auth.currentUser&&!auth.currentUser.isAnonymous?"계정에 저장되는 프로필":"현재 기기에만 저장되는 게스트 프로필";
-}
-function profilePath(userId){return ref(db,"formwheelV2/hubProfiles/"+userId)}
-let profileUnsubscribe=null,profileGeneration=0;
+const headerAvatar=document.getElementById("fw-header-avatar");
+const guestProfile=()=>{try{return JSON.parse(localStorage.getItem("fw:profile:guest:v1"))||{}}catch{return {}}};
+let profileUnsubscribe=null;
 function syncProfile(user){
  if(profileUnsubscribe){profileUnsubscribe();profileUnsubscribe=null}
- const generation=++profileGeneration;
- if(!user||user.isAnonymous){renderProfile(guestProfile());return}
- profileUnsubscribe=onValue(profilePath(user.uid),snapshot=>{
-  if(generation!==profileGeneration)return;
-  const cloud=snapshot.val();
-  renderProfile(cloud||{nickname:user.displayName?.slice(0,16)||"게스트",icon:"🎡",color:"#6366f1"});
- },error=>{profileMessage.textContent="프로필 동기화 실패: "+(error.code||"연결 오류")});
+ const display=p=>{if(!headerAvatar)return;const icon=["🎡","🎮","🦊","🐱","🚀","🌟","🎲","👑"].includes(p?.icon)?p.icon:"🎡";const color=/^#[0-9a-f]{6}$/i.test(p?.color||"")?p.color:"#6366f1";headerAvatar.textContent=icon;headerAvatar.style.backgroundColor=color;};
+ if(!user||user.isAnonymous){display(guestProfile());return}
+ profileUnsubscribe=onValue(ref(db,"formwheelV2/hubProfiles/"+user.uid),snap=>display(snap.val()),()=>display({}));
 }
-profileForm?.addEventListener("submit",async e=>{
- e.preventDefault();
- const nickname=document.getElementById("fw-profile-nickname").value.trim();
- if(nickname.length<2||nickname.length>16){profileMessage.textContent="닉네임은 2~16자로 입력해 주세요.";return}
- const p=sanitizeProfile({nickname,icon:document.getElementById("fw-profile-icon").value,color:document.getElementById("fw-profile-color").value});
- try{
-  const user=auth.currentUser;
-  if(user&&!user.isAnonymous){await set(profilePath(user.uid),p);profileMessage.textContent="계정 프로필이 저장되었어요."}
-  else{localStorage.setItem(profileKey,JSON.stringify(p));renderProfile(p);profileMessage.textContent="기기에 프로필이 저장되었어요."}
- }catch(error){profileMessage.textContent="프로필 저장 실패: "+(error.code||"연결 오류")}
-});
-
 onAuthStateChanged(auth,user=>{
  syncProfile(user);
  if(unsubscribe){unsubscribe();unsubscribe=null}ready=false;uid=null;
