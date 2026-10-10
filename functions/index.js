@@ -19,11 +19,11 @@ exports.friendAction=onCall(async req=>{const me=uidOf(req),other=req.data?.uid,
 if(!safeId(other)||other===me)fail("invalid-argument","사용자 ID 오류");
 if(!["request","accept","decline","remove","block","unblock","cancel"].includes(action))fail("invalid-argument","작업 오류");
 const base=db.ref(root);if(action==="unblock"){await base.child("blocks/"+me+"/"+other).remove();return {ok:true};}
-if(action==="block"){await base.update({["blocks/"+me+"/"+other]:true,["friends/"+me+"/"+other]:null,["friends/"+other+"/"+me]:null,["requests/"+me+"/"+other]:null,["requests/"+other+"/"+me]:null});return {ok:true};}
+if(action==="block"){await base.update({["blocks/"+me+"/"+other]:true,["friends/"+me+"/"+other]:null,["friends/"+other+"/"+me]:null,["requests/"+me+"/"+other]:null,["requests/"+other+"/"+me]:null,["requestInbox/"+me+"/"+other]:null,["requestInbox/"+other+"/"+me]:null});return {ok:true};}
 if(await blocked(me,other))fail("permission-denied","차단 관계입니다.");
-if(action==="request"){if(await friends(me,other))return {ok:true};const snap=await base.child("requests/"+other+"/"+me).get();if(snap.exists())fail("already-exists","상대의 신청을 먼저 확인해 주세요.");const path="requests/"+me+"/"+other;const r=await base.child(path).transaction(v=>v||{at:now()});if(!r.committed)fail("aborted","신청 실패");return {ok:true};}
-if(action==="accept"){const incoming=await base.child("requests/"+other+"/"+me).get();if(!incoming.exists())fail("failed-precondition","받은 신청이 없습니다.");if(await blocked(me,other))fail("permission-denied","차단 관계입니다.");await base.update({["requests/"+other+"/"+me]:null,["requests/"+me+"/"+other]:null,["friends/"+me+"/"+other]:true,["friends/"+other+"/"+me]:true});return {ok:true};}
-if(action==="cancel"||action==="decline"){await base.child("requests/"+(action==="cancel"?me:other)+"/"+(action==="cancel"?other:me)).remove();return {ok:true};}
+if(action==="request"){if(await friends(me,other))return {ok:true};const snap=await base.child("requests/"+other+"/"+me).get();if(snap.exists())fail("already-exists","상대의 신청을 먼저 확인해 주세요.");const path="requests/"+me+"/"+other;const r=await base.child(path).transaction(v=>v||{at:now()});if(!r.committed)fail("aborted","신청 실패");await base.child("requestInbox/"+other+"/"+me).set({at:now()});return {ok:true};}
+if(action==="accept"){const incoming=await base.child("requests/"+other+"/"+me).get();if(!incoming.exists())fail("failed-precondition","받은 신청이 없습니다.");if(await blocked(me,other))fail("permission-denied","차단 관계입니다.");await base.update({["requests/"+other+"/"+me]:null,["requests/"+me+"/"+other]:null,["requestInbox/"+me+"/"+other]:null,["requestInbox/"+other+"/"+me]:null,["friends/"+me+"/"+other]:true,["friends/"+other+"/"+me]:true});return {ok:true};}
+if(action==="cancel"||action==="decline"){await base.update({["requests/"+(action==="cancel"?me:other)+"/"+(action==="cancel"?other:me)]:null,["requestInbox/"+(action==="cancel"?other:me)+"/"+(action==="cancel"?me:other)]:null});return {ok:true};}
 if(action==="remove"){await base.update({["friends/"+me+"/"+other]:null,["friends/"+other+"/"+me]:null});return {ok:true};}});
 const validGames=new Set(["Spy","Battle","GCrown","Dice Duel","Risk"]);
 const capacities={"Spy":6,"Battle":2,"GCrown":4,"Dice Duel":2,"Risk":4};
@@ -57,7 +57,7 @@ exports.socialOverview=onCall(async req=>{const me=uidOf(req);const base=db.ref(
 const [handle,friendsSnap,outgoing,invitesSnap]=await Promise.all([base.child("handlesByUid/"+me).get(),base.child("friends/"+me).get(),base.child("requests/"+me).get(),base.child("invites").orderByChild("to").equalTo(me).limitToLast(60).get()]);
 const friendIds=Object.keys(friendsSnap.val()||{}).filter(id=>friendsSnap.val()[id]===true),incoming=[];
 for(const id of friendIds){const prof=(await db.ref("formwheelV2/hubProfiles/"+id).get()).val()||{};incoming.push({uid:id,nickname:text(prof.nickname).slice(0,16)||"친구"});}
-const requests=[];const incomingSnap=await base.child("requests").get();
-incomingSnap.forEach(user=>{const data=user.child(me).val();if(data&&requests.length<50)requests.push({uid:user.key,at:data.at})});
+const requests=[];const incomingSnap=await base.child("requestInbox/"+me).get();
+incomingSnap.forEach(user=>{const data=user.val();if(data&&requests.length<50)requests.push({uid:user.key,at:data.at})});
 const invites=[];invitesSnap.forEach(item=>{const v=item.val();if(v&&v.to===me)invites.push({id:item.key,game:v.game,from:v.from,status:v.status,expiresAt:v.expiresAt,roomId:v.roomId})});
 return {handle:handle.val()||null,friends:incoming,requests,invitations:invites.reverse().slice(0,40),outgoing:Object.keys(outgoing.val()||{})};});
