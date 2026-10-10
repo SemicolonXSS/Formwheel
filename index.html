@@ -28,7 +28,7 @@
 .fw-install-options{display:grid;gap:8px;margin:5px 0 0}.fw-install-option{background:#f0f2fc;color:#263184;border:1px solid #e0e3f3}
 .fw-install-info{margin:12px 0 0;padding:12px;text-align:left;white-space:pre-line;background:#f5f6fb;border-radius:12px;font-size:13px;line-height:1.7;color:#323b4e}
 </style>
-<link rel="stylesheet" href="./assets/home.css?v=20261010-profile1">
+<link rel="stylesheet" href="./assets/home.css?v=20261010-profile2">
 </head>
 
 
@@ -67,7 +67,7 @@
 </a>
 
 </nav>
-
+<a href="./profile.html" class="fw-profile-trigger" aria-label="내 프로필 및 커스터마이징 페이지 열기" title="내 프로필"><span id="fw-header-avatar">🎡</span></a>
 </header>
 
 
@@ -301,18 +301,7 @@ PC뿐 아니라 작은 화면에서도 사용할 수 있도록 반응형으로 �
 ========================= -->
 
 <footer>
-<section id="fw-account" aria-labelledby="fw-account-title">
-<h3 id="fw-account-title">👤 Formwheel ID · 내 프로필</h3>
-<div class="fw-id-panel"><span id="fw-id-status" role="status">계정 연결 확인 중…</span><button id="fw-id-login" type="button" hidden>Google 로그인</button><button id="fw-id-logout" type="button" hidden>로그아웃</button></div>
-<div class="fw-profile-preview"><span id="fw-profile-avatar" aria-hidden="true">🎡</span><div><strong id="fw-profile-name">게스트</strong><p id="fw-profile-detail">내 프로필을 꾸며 보세요</p></div></div>
-<form id="fw-profile-form">
-<label>닉네임 <input id="fw-profile-nickname" maxlength="16" placeholder="2~16자" autocomplete="nickname" required></label>
-<label>프로필 아이콘 <select id="fw-profile-icon"><option>🎡</option><option>🎮</option><option>🦊</option><option>🐱</option><option>🚀</option><option>🌟</option><option>🎲</option><option>👑</option></select></label>
-<label>테마 색상 <input id="fw-profile-color" type="color" value="#6366f1"></label>
-<button type="submit">프로필 저장</button>
-</form>
-<p id="fw-profile-status" role="status" aria-live="polite"></p>
-</section>
+<section id="fw-account" aria-labelledby="fw-account-title"><h3 id="fw-account-title">Formwheel ID 로그인</h3><div class="fw-id-panel"><span id="fw-id-status" role="status">계정 연결 확인 중…</span><button id="fw-id-login" type="button" hidden>Google 로그인</button><button id="fw-id-logout" type="button" hidden>로그아웃</button></div></section>
 <section class="fw-install" id="fw-install" aria-labelledby="fw-install-title">
 <h3 id="fw-install-title">📥 Formwheel 앱 설치</h3>
 <p>현재 기기에 맞는 설치 방법을 안내해 드려요.</p>
@@ -344,7 +333,7 @@ PC뿐 아니라 작은 화면에서도 사용할 수 있도록 반응형으로 �
 
 <script src="./assets/app.js?v=20261008-thumbnails"></script>
 <script src="./assets/home.js?v=20261010-sync1"></script>
-<script type="module" src="./assets/id-core.js?v=20261010-profile1"></script>
+<script type="module" src="./assets/id-core.js?v=20261010-profile2"></script>
 
 <script>
 if ("serviceWorker" in navigator) {
