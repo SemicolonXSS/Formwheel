@@ -1,268 +1,155 @@
-# 🎡 FormWheel
+# 🎡 Formwheel
 
-> 다양한 웹 도구와 게임을 하나의 공간에서 즐길 수 있는 **FormWheel** 프로젝트입니다.
+**Make · Join · Play · Explore**
 
-**FormWheel**은 HTML, CSS, JavaScript와 Firebase 등을 활용해 제작하고 있는 개인 웹 프로젝트 모음입니다.
+게임, 추첨, 퀴즈, 음악, 제작 도구를 하나의 공간에서 만나는 웹 프로젝트 플랫폼입니다. 각 프로젝트는 독립적으로 개발되며, **Formwheel Hub**에서 찾아 실행할 수 있습니다.
 
-게임부터 음악, 퀴즈, 채팅, 각종 유틸리티까지 다양한 기능을 하나의 Hub에서 이용할 수 있도록 구성하고 있습니다.
+[![Open Hub](https://img.shields.io/badge/🎡_Formwheel-Hub-3439bd?style=for-the-badge)](https://semicolonxss.github.io/Formwheel/)
+[![Project status](https://img.shields.io/badge/개발_현황-Check-566276?style=for-the-badge)](https://semicolonxss.github.io/Formwheel_Check/)
 
----
-
-## 🌐 FormWheel
-
-### 🏠 공식 Hub
-
-👉 **[FormWheel 바로가기](https://semicolonxss.github.io/Formwheel/)**
-
-모든 FormWheel 프로젝트는 Hub에서 한곳에 모아 관리합니다.
+> **바로 시작하기:** [Formwheel Hub 열기](https://semicolonxss.github.io/Formwheel/) · [개선점 보내기](https://semicolonxss.github.io/Formwheel/feedback.html)
 
 ---
 
-# 🎮 Games
+## ✨ Formwheel에서 할 수 있는 일
 
-FormWheel에서 제작한 다양한 게임입니다.
+- **🎮 플레이:** 혼자 또는 친구들과 게임을 즐기고, 지원되는 게임에서는 방 코드를 통해 참가합니다.
+- **🎡 만들기:** 룰렛, 설문, 퀴즈, 음악 등 다양한 콘텐츠를 직접 제작합니다.
+- **🔎 탐색:** Hub에서 이름 검색, 게임·도구·앱 분류, 인원·연결·난이도 필터를 이용합니다.
+- **📌 나만의 홈:** 프로젝트 고정, 추천 및 추천 제외 설정을 이용합니다.
+- **👤 계정 및 기록:** 일부 프로젝트에서 Firebase 로그인, 온라인 데이터, 기록·리더보드를 활용합니다.
+- **📱 다양한 화면:** PC·모바일 브라우저에서 접속하고 지원되는 환경에서는 앱처럼 설치할 수 있습니다.
 
-| 게임               | 설명                     | 바로가기                                                       |
-| ---------------- | ---------------------- | ---------------------------------------------------------- |
-| ⚔️ **Battle**    | 실시간 1:1 퀴즈 배틀          | [Play](https://semicolonxss.github.io/Formwheel_Battle/)   |
-| 💣 **Bomb**      | 제한 시간 안에 폭탄을 통과시키는 게임  | [Play](https://semicolonxss.github.io/Formwheel_Bomb/)     |
-| 👑 **GCrown**    | 왕관을 차지하는 전략 보드 게임      | [Play](https://semicolonxss.github.io/Formwheel_GCrown/)   |
-| 🎲 **Dice Duel** | 주사위와 특수 효과를 이용한 대결     | [Play](https://semicolonxss.github.io/Formwheel_DiceDuel/) |
-| 🕵️ **Spy**      | 플레이어 중 스파이를 찾아내는 게임    | [Play](https://semicolonxss.github.io/Formwheel_Spy/)      |
-| ⚡ **Reflex**     | 반응 속도를 겨루는 게임          | [Play](https://semicolonxss.github.io/Formwheel_Reflex/)   |
-| 🎰 **Casino**    | 다양한 미니게임을 즐기는 카지노 프로젝트 | [Play](https://semicolonxss.github.io/Formwheel_Casino/)   |
-| 🟢 **Marble**    | 구슬과 맵을 이용한 룰렛형 게임      | [Play](https://semicolonxss.github.io/Formwheel_Marble/)   |
-| ⏱️ **Time**      | 제한 시간 안에 행동을 선택하는 게임   | 준비 중                                                       |
-| 🎹 **Piano**     | 음표를 이용한 보드 게임          | 준비 중                                                       |
+기능과 지원 범위는 **프로젝트별로 다릅니다**. 일부 계정 연동·친구 초대·공통 기록 기능은 개발 중이므로 화면의 안내와 [진행 현황](https://semicolonxss.github.io/Formwheel_Check/)을 확인해 주세요.
 
----
+## 🧭 프로젝트 둘러보기
 
-# 🎵 Music
+아래 링크는 개별 웹 프로젝트로 연결됩니다. 최신 프로젝트와 정확한 사용 가능 여부는 [Hub](https://semicolonxss.github.io/Formwheel/)에서 확인할 수 있습니다.
 
-### FormWheel Music
+### 🎮 게임
 
-음악을 직접 만들고, 재생하고, 플레이할 수 있는 음악 프로젝트입니다.
+| 프로젝트 | 소개 | 실행 |
+| --- | --- | --- |
+| Battle | 실시간 퀴즈 대결 | [열기](https://semicolonxss.github.io/Formwheel_Battle/) |
+| Bomb | 제한 시간과 폭탄을 활용한 게임 | [열기](https://semicolonxss.github.io/Formwheel_Bomb/) |
+| GCrown | 왕관을 차지하는 전략 보드 게임 | [열기](https://semicolonxss.github.io/Formwheel_GCrown/) |
+| Dice Duel | 특수 효과 주사위 대결 | [열기](https://semicolonxss.github.io/Formwheel_DiceDuel/) |
+| Spy | 숨어 있는 스파이를 찾는 추리 게임 | [열기](https://semicolonxss.github.io/Formwheel_Spy/) |
+| Reflex | 반응 속도 도전 | [열기](https://semicolonxss.github.io/Formwheel_Reflex/) |
+| Casino | 여러 미니게임을 즐기는 프로젝트 | [열기](https://semicolonxss.github.io/Formwheel_Casino/) |
+| Marble | 다양한 코스와 구슬을 활용한 게임 | [열기](https://semicolonxss.github.io/Formwheel_Marble/) |
+| Time | 시간과 장애물에 도전하는 게임 | [열기](https://semicolonxss.github.io/Formwheel_Time/) |
+| Piano | 음악 요소를 활용한 보드 게임 | [열기](https://semicolonxss.github.io/Formwheel_Piano/) |
+| Risk | 점수를 걸고 승부하는 게임 | [열기](https://semicolonxss.github.io/Formwheel_Risk/) |
+| Fate | 운명 카드 기반 게임 | [열기](https://semicolonxss.github.io/Formwheel_Fate/) |
+| Clicker | 클릭·업그레이드·기록 경쟁 | [열기](https://semicolonxss.github.io/Formwheel_Clicker/) |
+| Cook | 재료와 도구로 요리하는 시뮬레이션 | [열기](https://semicolonxss.github.io/Formwheel_Cook/) |
+| Button | 제한 시간 안에 지시를 수행하는 게임 | [열기](https://semicolonxss.github.io/Formwheel_Button/) |
+| Balance | 선택과 위험을 조절하는 게임 | [열기](https://semicolonxss.github.io/Formwheel_Balance/) |
 
-주요 기능:
+### 🛠️ 제작 도구 · 앱
 
-* 🎼 음악 제작
-* 🎹 피아노 / 바이올린 / 드럼 등 악기
-* 🎵 한 손 / 두 손 / 네 손 연주
-* 🎶 쉼표 지원
-* 📄 악보 표시
-* 🎧 MP3 지원
-* 🎹 Synthesia 스타일 플레이
-* 🏆 플레이 점수 및 리더보드
-* ☁️ Firebase 기반 음악 데이터
+| 프로젝트 | 소개 | 실행 |
+| --- | --- | --- |
+| Wheel | 랜덤 선택과 룰렛 | [열기](https://semicolonxss.github.io/Formwheel_Wheel/) |
+| Quiz | 퀴즈 제작과 플레이 | [열기](https://semicolonxss.github.io/Formwheel_Quiz/) |
+| Music | 음악 제작·재생·플레이 | [열기](https://semicolonxss.github.io/Formwheel_Music/) |
+| Decode | Base64, ROT13, 진법 등 인코딩·디코딩 | [열기](https://semicolonxss.github.io/Formwheel_Decode/) |
+| Form | 설문 제작과 응답 | [열기](https://semicolonxss.github.io/Formwheel_Form/) |
+| Check | 개선 작업과 진행 현황 관리 | [열기](https://semicolonxss.github.io/Formwheel_Check/) |
+| Chat | 채팅·방·사용자 기능 개발 프로젝트 | [저장소](https://github.com/SemicolonXSS/Formwheel_Chat) |
+| AI | 대화형 AI 실험 | [열기](https://semicolonxss.github.io/Formwheel_AI/) |
+| Vault | 개인 금고 프로젝트 | [열기](https://semicolonxss.github.io/Formwheel_Vault/) |
+| Edit | 편집 도구 프로젝트 | [열기](https://semicolonxss.github.io/Formwheel_Edit/) |
 
-👉 [FormWheel Music](https://semicolonxss.github.io/Formwheel_Music/)
+## 🚀 시작하기
 
----
+1. [Formwheel Hub](https://semicolonxss.github.io/Formwheel/)에 접속합니다.
+2. 검색창이나 필터로 원하는 프로젝트를 찾습니다.
+3. 카드를 클릭하고 프로젝트별 튜토리얼 또는 화면 안내에 따라 이용합니다.
+4. 온라인 방 게임은 방을 만든 뒤 참가자와 **방 코드**를 공유합니다.
 
-# 🛠️ Tools
+온라인 기능에는 인터넷 연결 및 Firebase 서비스가 필요할 수 있습니다. 게스트 데이터, 브라우저 로컬 저장 데이터, 로그인 계정 데이터는 프로젝트마다 저장·동기화 방식이 다릅니다.
 
-FormWheel은 게임뿐만 아니라 여러 웹 도구도 제작하고 있습니다.
+### 📥 설치 안내
 
-### 🔐 FormWheel Decode
+Hub 하단의 **Formwheel 앱 설치**에서 현재 기기에 맞는 설치 방법을 확인할 수 있습니다. 브라우저·운영체제에 따라 PWA 설치 지원 여부와 방법이 달라질 수 있으며, 웹 앱 설치는 Play 스토어 앱 출시와는 별개입니다.
 
-문자열을 다양한 방식으로 인코딩하거나 디코딩할 수 있는 도구입니다.
+## 🧱 기술 스택과 구조
 
-지원 예정/지원 기능:
+| 영역 | 기술 |
+| --- | --- |
+| 프런트엔드 | HTML · CSS · JavaScript |
+| 호스팅 | GitHub Pages |
+| 인증·실시간 데이터(일부 프로젝트) | Firebase Authentication · Firebase Realtime Database |
+| 사용자 인터페이스 | 반응형 웹, 공통 브랜드 스타일 |
+| 설치형 웹 | Web App Manifest · Service Worker 등 지원 환경별 기능 |
 
-* Base64
-* ROT13
-* HTML Entity
-* 2진수
-* 8진수
-* 10진수
-* 16진수
-* 기타 인코딩/디코딩
-
-👉 [FormWheel Decode](https://semicolonxss.github.io/Formwheel_Decode/)
-
----
-
-# 💬 FormWheel Chat
-
-Firebase를 기반으로 제작하는 실시간 채팅 프로젝트입니다.
-
-예정 기능:
-
-* 👤 로그인
-* 💬 전체 채팅
-* 🏠 채팅방
-* 🔑 6자리 방 코드
-* 👥 개인 / 그룹 채팅
-* 😀 이모지
-* 🟢 온라인 사용자 표시
-* 🛠️ Producer 권한
-* 🗑️ 메시지 관리
-* 🚫 임시 사용자 제한
-* 🤖 명령어 시스템
-
-👉 **개발 중**
-
----
-
-# 🧩 FormWheel Projects
-
-FormWheel에는 다양한 프로젝트가 계속 추가되고 있습니다.
-
-### 🎡 Wheel
-
-여러 사람 중 한 명을 랜덤으로 선택하거나 다양한 방식으로 결과를 결정할 수 있는 프로젝트입니다.
-
-👉 [FormWheel Wheel](https://semicolonxss.github.io/Formwheel_Wheel/)
-
-### ❓ Quiz
-
-퀴즈를 만들고 플레이할 수 있는 프로젝트입니다.
-
-👉 [FormWheel Quiz](https://semicolonxss.github.io/Formwheel_Quiz/)
-
-### 📝 Form
-
-사용자가 직접 Form을 제작할 수 있도록 만드는 프로젝트입니다.
-
-👉 **개발 중**
-
----
-
-# 🔥 Firebase
-
-일부 FormWheel 프로젝트는 **Firebase**를 사용합니다.
-
-사용되는 기능:
-
-* Firebase Authentication
-* Realtime Database
-* 실시간 멀티플레이
-* 사용자 계정
-* 리더보드
-* 게임방
-* 음악 데이터 저장
-
-프로젝트별로 Firebase 데이터 경로를 분리하여 서로 다른 프로젝트의 데이터가 충돌하지 않도록 관리하고 있습니다.
-
----
-
-# 💻 Tech Stack
-
-### Frontend
-
-* HTML
-* CSS
-* JavaScript
-
-### Backend / Cloud
-
-* Firebase
-* Firebase Authentication
-* Firebase Realtime Database
-
-### Hosting
-
-* GitHub Pages
-
----
-
-# 📂 Project Structure
-
-각 프로젝트는 독립적인 웹 프로젝트로 관리됩니다.
+각 프로젝트는 별도 저장소와 배포 주소를 가질 수 있습니다. **이 저장소(Formwheel)는 Hub**이며 모든 게임의 소스가 하나의 하위 폴더에 들어 있는 모노레포는 아닙니다.
 
 ```text
-Formwheel/
-│
-├── Formwheel Hub
-│
-├── Formwheel_Battle
-├── Formwheel_Bomb
-├── Formwheel_GCrown
-├── Formwheel_DiceDuel
-├── Formwheel_Spy
-├── Formwheel_Reflex
-├── Formwheel_Casino
-├── Formwheel_Marble
-│
-├── Formwheel_Music
-├── Formwheel_Decode
-├── Formwheel_Quiz
-├── Formwheel_Wheel
-│
-└── ...
+Formwheel/                  # Hub 저장소 (대표 경로)
+├── index.html              # 메인 화면
+├── assets/                 # Hub 스타일·스크립트·이미지
+├── shared/                 # 공통 UI 자산
+├── firebase-security/      # 보안 전환을 위한 설정·코드
+├── scripts/check-syntax.cjs
+├── manifest.json
+└── README.md
+
+Formwheel_Battle/           # 독립 프로젝트 저장소의 예
+Formwheel_Music/
+Formwheel_Check/
+...
 ```
 
----
+### 🧑‍💻 로컬 실행 및 점검
 
-# 🚀 목표
+이 저장소를 클론한 뒤 **HTTP 로컬 서버**로 정적 페이지를 제공하세요. `file://`로 직접 열면 모듈, 경로, 브라우저 보안 정책 때문에 일부 기능이 동작하지 않을 수 있습니다.
 
-FormWheel은 단순한 웹사이트 하나가 아니라,
+```bash
+git clone https://github.com/SemicolonXSS/Formwheel.git
+cd Formwheel
+python -m http.server 8000
+```
 
-> **게임 + 도구 + 음악 + 커뮤니티를 하나의 플랫폼으로 만드는 것**
+브라우저에서 `http://localhost:8000`을 엽니다. 배포 경로가 `/Formwheel/`로 고정된 링크나 Firebase 인증 도메인 설정은 로컬에서 별도 조정이 필요할 수 있습니다.
 
-을 목표로 하고 있습니다.
+구문 및 파일 경로의 기본 점검:
 
-앞으로 새로운 게임과 도구를 계속 추가할 예정입니다.
-
----
-
-# 🗺️ Development
-
-현재 개발 중인 기능과 프로젝트:
-
-* 🎮 새로운 멀티플레이 게임
-* 🎵 FormWheel Music
-* 💬 FormWheel Chat
-* 🔐 FormWheel Decode
-* 🧩 새로운 웹 도구
-* 👤 계정 시스템
-* 🏆 통합 리더보드
-* ☁️ Firebase 기반 실시간 기능
-
----
-
-# 📜 License
-
-현재 FormWheel은 개인 프로젝트로 개발되고 있습니다.
-
-프로젝트의 코드 및 콘텐츠를 무단으로 복제하거나 재배포하지 말아주세요.
-
----
-
-## 🎡 FormWheel
-
-**Make. Play. Create.**
-
-👉 https://semicolonxss.github.io/Formwheel/
-
----
-
-## 2026-10-08 개발·운영 안내
-
-Formwheel 프로젝트와 게임을 모아 실행하는 홈 화면.
-
-- 실행: https://semicolonxss.github.io/Formwheel/
-- 프로젝트 목록: https://semicolonxss.github.io/Formwheel/
-- 진행 상태: https://semicolonxss.github.io/Formwheel_Check/
-
-## 사용
-
-브라우저에서 실행 링크를 여세요. 화면에 표시된 설명과 버튼으로 진행합니다. 온라인 기능은 Firebase 연결이 필요하며, 방 게임은 같은 코드로 참가합니다. 로컬 저장은 현재 브라우저에만 남습니다.
-
-## 개발 및 검증
-
-정적 HTML/JavaScript 프로젝트입니다. HTTP 서버로 제공하세요. Firebase 운영 설정·Rules는 이 저장소의 화면 파일만 배포해서 바뀌지 않습니다.
-
-```sh
+```bash
 node scripts/check-syntax.cjs
 ```
 
-첫 검사는 JavaScript 구문과 상대경로 파일 존재를 확인합니다. 모든 앱의 실제 멀티플레이와 운영 권한을 보증하는 검사는 아닙니다.
+이 검사는 **실제 다인용 연결, Firebase 권한, 모든 게임 동작을 검증하는 종합 테스트가 아닙니다.**
 
-## 데이터 및 운영 보안
+## 🔐 데이터와 보안
 
-공통 안내: https://semicolonxss.github.io/Formwheel/privacy.html
+일부 프로젝트는 닉네임, 답안, 점수, 채팅, 방 정보 등을 저장할 수 있습니다. 자세한 내용은 [개인정보 안내](https://semicolonxss.github.io/Formwheel/privacy.html)를 참고하세요.
 
-닉네임·답안·점수·채팅 등이 서버에 저장될 수 있습니다. 새 보안 스키마와 서버 코드는 [Formwheel/firebase-security](https://github.com/SemicolonXSS/Formwheel/tree/main/firebase-security)에 준비했습니다. 현재 운영 적용 및 기존 경로 전환이 완료되었다고 가정하지 마세요. 계정/제공자 설정, 서버 보안 검증이 필요한 항목은 Check에서 별도로 남겨둡니다.
+- Firebase 클라이언트 설정과 **Database Rules / 인증 제공자 설정은 별도로 관리**해야 합니다.
+- 웹 화면을 GitHub Pages에 배포한다고 Firebase 운영 보안 규칙이 자동 적용되는 것은 아닙니다.
+- [`firebase-security/`](https://github.com/SemicolonXSS/Formwheel/tree/main/firebase-security)는 보안 개선을 위한 자료입니다. **운영 반영 또는 기존 데이터 경로 전환이 완료되었다고 가정하지 마세요.**
+- 사용자 권한 및 점수 검증처럼 신뢰가 필요한 작업은 클라이언트 표시만으로 보장되지 않습니다.
 
-화면 마크업은 `index.html`, 앱별 스타일과 실행 코드는 `assets/`에 분리했습니다. 공통 UI는 Formwheel 저장소의 `shared/`를 사용합니다.
+문제 제보 시 비밀번호, 인증 토큰, 개인정보 및 민감한 데이터는 포함하지 마세요.
+
+## 🗺️ 개발 현황과 피드백
+
+Formwheel은 기능을 계속 확장하고 개선 중인 프로젝트입니다. 게임별 오류 수정, 공통 디자인·계정·방 시스템, 접근성, 데이터 안정성과 공정성 등을 단계적으로 개선하고 있습니다.
+
+- **진행 현황:** [Formwheel Check](https://semicolonxss.github.io/Formwheel_Check/)
+- **개선점 제출:** [Hub 피드백](https://semicolonxss.github.io/Formwheel/feedback.html)
+- **소스 코드:** [GitHub · SemicolonXSS](https://github.com/SemicolonXSS)
+
+기능이 화면에 존재하는 것과 실제 운영에서 검증이 완료된 것은 다릅니다. 사용 전 프로젝트별 최신 안내를 확인해 주세요.
+
+## 📜 라이선스
+
+이 저장소에 별도 `LICENSE` 파일이 명시되지 않은 경우, 공개 저장소라는 사실만으로 코드의 수정·복제·재배포 권한이 부여되는 것은 아닙니다. 재사용이나 배포 전 저장소의 라이선스와 저작권 조건을 확인해 주세요.
+
+---
+
+**🎡 Formwheel — Make · Join · Play · Explore**
+
+[**Hub로 돌아가기 →**](https://semicolonxss.github.io/Formwheel/)
