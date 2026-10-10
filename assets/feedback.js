@@ -20,3 +20,4 @@ $("code-form").addEventListener("submit",async e=>{
  try{await user();const s=await get(node),items=[];s.forEach(child=>items.push(child.val()));items.reverse();$("list").replaceChildren();for(const x of items.slice(0,100)){const a=document.createElement("article"),h=document.createElement("h3"),p=document.createElement("p");h.textContent="["+(x.project||"기타")+"] "+(x.subject||"");p.textContent=x.body||"";a.append(h,p);$("list").append(a)}$("items").hidden=false;$("code-form").hidden=true;$("admin-status").textContent="최근 개선점 "+Math.min(items.length,100)+"개";}
  catch(err){$("admin-status").textContent="조회 실패: "+(err.code||"Firebase 읽기 권한 확인 필요");}
 });
+if(location.hash==="#admin"){$("admin").hidden=false;$("code").focus()}
