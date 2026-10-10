@@ -52,3 +52,12 @@ await ir.child("status").set("joined");return {status:"joined",roomId:invite.roo
 exports.awardVerifiedAchievement=onCall(async req=>{uidOf(req);fail("failed-precondition","경쟁 업적은 게임 서버 검증 연동 후 발급됩니다.");});
 exports.mergeGuestPreview=onCall(async req=>{uidOf(req);const guest=req.data?.guest;if(!guest||typeof guest!=="object")fail("invalid-argument","병합 자료가 없습니다.");
 return {previewOnly:true,notice:"기기 내 즐겨찾기와 설정은 기존 계정 우선으로 검토할 수 있습니다. 검증되지 않은 게스트 점수나 업적은 공식 기록으로 이전할 수 없습니다."};});
+
+exports.socialOverview=onCall(async req=>{const me=uidOf(req);const base=db.ref(root);
+const [handle,friendsSnap,outgoing,invitesSnap]=await Promise.all([base.child("handlesByUid/"+me).get(),base.child("friends/"+me).get(),base.child("requests/"+me).get(),base.child("invites").orderByChild("to").equalTo(me).limitToLast(60).get()]);
+const friendIds=Object.keys(friendsSnap.val()||{}).filter(id=>friendsSnap.val()[id]===true),incoming=[];
+for(const id of friendIds){const prof=(await db.ref("formwheelV2/hubProfiles/"+id).get()).val()||{};incoming.push({uid:id,nickname:text(prof.nickname).slice(0,16)||"친구"});}
+const requests=[];const incomingSnap=await base.child("requests").get();
+incomingSnap.forEach(user=>{const data=user.child(me).val();if(data&&requests.length<50)requests.push({uid:user.key,at:data.at})});
+const invites=[];invitesSnap.forEach(item=>{const v=item.val();if(v&&v.to===me)invites.push({id:item.key,game:v.game,from:v.from,status:v.status,expiresAt:v.expiresAt,roomId:v.roomId})});
+return {handle:handle.val()||null,friends:incoming,requests,invitations:invites.reverse().slice(0,40),outgoing:Object.keys(outgoing.val()||{})};});
