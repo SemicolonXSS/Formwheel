@@ -1,0 +1,47 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "formwheelV2": {
+      "social": {
+        "handles": {
+          ".read": false,
+          ".write": false
+        },
+        "handlesByUid": {
+          ".read": false,
+          ".write": false
+        },
+        "friends": {
+          "$uid": {
+            ".read": "auth != null && auth.uid === $uid",
+            ".write": false
+          }
+        },
+        "requests": {
+          "$uid": {
+            ".read": "auth != null && auth.uid === $uid",
+            ".write": false
+          }
+        },
+        "blocks": {
+          "$uid": {
+            ".read": "auth != null && auth.uid === $uid",
+            ".write": false
+          }
+        },
+        "invites": {
+          ".read": false,
+          ".write": false,
+          ".indexOn": [
+            "to"
+          ]
+        },
+        "inviteRooms": {
+          ".read": false,
+          ".write": false
+        }
+      }
+    }
+  }
+}
