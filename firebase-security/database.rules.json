@@ -113,6 +113,25 @@
             ".validate": true
           }
         }
+      },
+      "hubProfiles": {
+        "$uid": {
+          ".read": "auth != null && auth.uid === $uid && auth.token.firebase.sign_in_provider !== 'anonymous'",
+          ".write": "auth != null && auth.uid === $uid && auth.token.firebase.sign_in_provider !== 'anonymous'",
+          ".validate": "newData.hasChildren(['nickname','icon','color'])",
+          "nickname": {
+            ".validate": "newData.isString() && newData.val().length >= 2 && newData.val().length <= 16"
+          },
+          "icon": {
+            ".validate": "newData.isString() && newData.val().length <= 4"
+          },
+          "color": {
+            ".validate": "newData.isString() && newData.val().matches(/^#[0-9a-fA-F]{6}$/)"
+          },
+          "$other": {
+            ".validate": false
+          }
+        }
       }
     }
   }
