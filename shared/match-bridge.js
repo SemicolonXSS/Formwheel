@@ -21,7 +21,7 @@ const a=adapters[game];if(a){
 const box=document.createElement("div");box.style.cssText="position:fixed;bottom:16px;left:16px;right:16px;max-width:480px;margin:auto;z-index:99999;background:#101c36;color:white;padding:16px;border-radius:17px;box-shadow:0 15px 50px #0005;font:14px system-ui";const label=document.createElement("div");label.textContent="🎮 Formwheel 매칭 방에 연결 중…";box.append(label);const close=document.createElement("button");close.textContent="안내 닫기";close.style.cssText="float:right;margin-top:8px";close.onclick=()=>box.remove();box.append(close);document.body.append(box);
 const say=t=>label.textContent="🎮 "+t;
 const nick=()=>{if(a.name&&$(a.name)&&!$(a.name).value)$(a.name).value="플레이어-"+Math.floor(Math.random()*9000+1000)};
-let initiated=false,joined=false;
+let initiated=false,joined=false,creating=false,joining=false;
 async function waitUntil(check,timeout=16000){const start=Date.now();while(Date.now()-start<timeout){const v=check();if(v)return v;await pause(300)}throw Error("게임 화면 준비 시간 초과")}
 function clickButton(id){const b=$(id);if(!b)throw Error("버튼을 찾지 못했습니다: "+id);b.click()}
 function start(){a.start();nick()}
@@ -51,9 +51,9 @@ async function join(room){
 onValue(path,async snap=>{
  const v=snap.val();if(!v){say("매칭 정보가 없어졌어요. Hub에서 다시 매칭해 주세요.");return}
  try{
- if(side==="owner"&&!initiated){initiated=true;await pause(900);await create()}
- if(side==="guest"&&v.gameRoom&&!joined){joined=true;await pause(900);await join(v.gameRoom)}
+ if(side==="owner"&&!initiated&&!creating){creating=true;initiated=true;await pause(900);await create();creating=false}
+ if(side==="guest"&&v.gameRoom&&!joined&&!joining){joining=true;joined=true;await pause(900);await join(v.gameRoom);joining=false}
  if(side==="guest"&&!v.gameRoom)say("상대가 게임방을 만들고 있어요…");
- }catch(e){if(side==="owner")initiated=false;else joined=false;say("자동 참가 실패: "+e.message+" · 자동 재시도 중…");setTimeout(()=>{if(side==="owner"&&!initiated)create().then(()=>initiated=true).catch(err=>say("방 생성 실패: "+err.message));else if(side==="guest"&&v.gameRoom&&!joined)join(v.gameRoom).then(()=>joined=true).catch(err=>say("입장 실패: "+err.message));},2500);console.warn("match bridge",e)}
+ }catch(e){creating=false;joining=false;say("자동 참가에 실패했어요: "+e.message+" · 새 게임방을 무한 생성하지 않도록 중지했어요. Hub에서 다시 매칭하거나 게임방 코드를 확인해 주세요.");console.error("Formwheel match bridge",e)}
 },e=>say("Firebase 매칭 연결 오류: "+e.message));
 }}
