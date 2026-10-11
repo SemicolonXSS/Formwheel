@@ -11,13 +11,13 @@ const sanitize=p=>({nickname:typeof p?.nickname==="string"&&p.nickname.trim().le
 const guest=()=>{try{return sanitize(JSON.parse(localStorage.getItem(guestKey)))}catch{return sanitize({})}};
 const path=uid=>ref(db,"formwheelV2/hubProfiles/"+uid);
 function render(data,user){const p=sanitize(data);get("fw-profile-name").textContent=p.nickname;get("fw-profile-avatar").textContent=p.icon;get("fw-profile-avatar").style.backgroundColor=p.color;get("fw-profile-nickname").value=p.nickname==="게스트"?"":p.nickname;get("fw-profile-icon").value=p.icon;get("fw-profile-color").value=p.color;get("fw-profile-detail").textContent=user?"Firebase에 저장되는 계정 프로필":"이 기기에만 저장되는 게스트 프로필";}
-let badgeUnsubscribe=null,homeUnsubscribe=null,awards={},homeData=null,profileData=null,expanded=false,filter="all";
+let badgeUnsubscribe=null,homeUnsubscribe=null,awards={},homeData=null,profileData=null,expanded=false,filter="all",stats=null,featuredId="",statsUnsubscribe=null,featuredUnsubscribe=null;
 function showBadges(){
  const holder=get("fw-badges-grid");holder.replaceChildren();
  const items=BADGES.filter(b=>filter==="all"||b.category===filter);
  const visible=expanded?items:items.slice(0,6);
  for(const b of visible){
-  const earned=earnedBadge(b,awards,homeData,profileData);
+  const earned=earnedBadge(b,awards,homeData,profileData,stats);
   const item=document.createElement("div");item.className="fw-badge"+(earned?"":" locked");
   const icon=document.createElement("span");icon.className="fw-badge-icon";icon.textContent=earned?b.icon:"🔒";
   const info=document.createElement("div"),name=document.createElement("strong"),sub=document.createElement("small");
@@ -26,15 +26,24 @@ function showBadges(){
  }
  get("fw-badge-toggle").hidden=items.length<=6;
  get("fw-badge-toggle").textContent=expanded?"▲ 배지 줄이기":"▼ 배지 늘이기 ("+(items.length-6)+"개 더보기)";
+ const select=get("fw-featured-select"), selected=select.value;select.replaceChildren();
+ const none=document.createElement("option");none.value="";none.textContent="대표 업적 없음";select.append(none);
+ for(const b of BADGES.filter(b=>earnedBadge(b,awards,homeData,profileData,stats))){const option=document.createElement("option");option.value=b.id;option.textContent=b.icon+" "+b.title;select.append(option)}
+ select.value=[...select.options].some(o=>o.value===selected)?selected:featuredId;
+ if(select.selectedIndex<0)select.value="";
+ const featured=BADGES.find(b=>b.id===featuredId&&earnedBadge(b,awards,homeData,profileData,stats));
+ get("fw-featured-display").textContent=featured?featured.icon+" "+featured.title:"선택한 배지가 없습니다.";
  get("fw-badge-count").textContent=BADGES.filter(b=>earnedBadge(b,awards,homeData,profileData)).length+" / "+BADGES.length+"개 획득";
 }
 get("fw-badge-toggle").addEventListener("click",()=>{expanded=!expanded;showBadges()});
 get("fw-badge-filter").addEventListener("change",e=>{filter=e.target.value;expanded=false;showBadges()});
 showBadges();
 let unsubscribe=null,currentUser=null,authReady=false;
-onAuthStateChanged(auth,user=>{authReady=true;currentUser=user&&!user.isAnonymous?user:null;if(unsubscribe){unsubscribe();unsubscribe=null}if(badgeUnsubscribe){badgeUnsubscribe();badgeUnsubscribe=null}if(homeUnsubscribe){homeUnsubscribe();homeUnsubscribe=null}awards={};homeData=null;profileData=null;showBadges()
+onAuthStateChanged(auth,user=>{authReady=true;currentUser=user&&!user.isAnonymous?user:null;if(unsubscribe){unsubscribe();unsubscribe=null}if(badgeUnsubscribe){badgeUnsubscribe();badgeUnsubscribe=null}if(homeUnsubscribe){homeUnsubscribe();homeUnsubscribe=null}if(statsUnsubscribe){statsUnsubscribe();statsUnsubscribe=null}if(featuredUnsubscribe){featuredUnsubscribe();featuredUnsubscribe=null}awards={};homeData=null;profileData=null;stats=null;featuredId="";showBadges()
 if(!currentUser){render(guest(),null);showBadges();get("fw-badges-status").textContent="로그인하면 계정의 획득 배지를 볼 수 있어요.";return}
-badgeUnsubscribe=onValue(ref(db,"formwheelV2/anniversary4050/"+currentUser.uid+"/badges"),snap=>{awards=snap.val()||{};showBadges();get("fw-badges-status").textContent="계정의 배지 기록을 불러왔어요.";},e=>{showBadges(null);get("fw-badges-status").textContent="배지 불러오기 실패: "+(e.code||e.message)+". Firebase Rules를 확인해 주세요."});homeUnsubscribe=onValue(ref(db,"formwheelV2/hubHomes/"+currentUser.uid),snap=>{homeData=snap.val();showBadges()},()=>{});unsubscribe=onValue(path(currentUser.uid),snapshot=>{profileData=snapshot.val()||{nickname:currentUser.displayName||"게스트"};render(profileData,currentUser);showBadges()},e=>{message.textContent="프로필 불러오기 실패: "+e.code})});
+badgeUnsubscribe=onValue(ref(db,"formwheelV2/anniversary4050/"+currentUser.uid+"/badges"),snap=>{awards=snap.val()||{};showBadges();get("fw-badges-status").textContent="계정의 배지 기록을 불러왔어요.";},e=>{showBadges(null);get("fw-badges-status").textContent="배지 불러오기 실패: "+(e.code||e.message)+". Firebase Rules를 확인해 주세요."});statsUnsubscribe=onValue(ref(db,"formwheelV2/achievementStats/"+currentUser.uid),snap=>{stats=snap.val()||{};showBadges()},e=>{get("fw-badges-status").textContent="게임 통계 조회 실패: "+(e.code||"권한 오류")});
+featuredUnsubscribe=onValue(ref(db,"formwheelV2/featuredBadges/"+currentUser.uid),snap=>{featuredId=typeof snap.val()==="string"?snap.val():"";showBadges()},e=>{get("fw-featured-status").textContent="대표 업적 조회 실패: "+(e.code||"권한 오류")});
+homeUnsubscribe=onValue(ref(db,"formwheelV2/hubHomes/"+currentUser.uid),snap=>{homeData=snap.val();showBadges()},()=>{});unsubscribe=onValue(path(currentUser.uid),snapshot=>{profileData=snapshot.val()||{nickname:currentUser.displayName||"게스트"};render(profileData,currentUser);showBadges()},e=>{message.textContent="프로필 불러오기 실패: "+e.code})});
 get("fw-profile-form").addEventListener("submit",async event=>{event.preventDefault();if(!authReady){message.textContent="로그인 상태를 확인 중이에요.";return}const nickname=get("fw-profile-nickname").value.trim();if(nickname.length<2||nickname.length>16){message.textContent="닉네임은 2~16자로 입력해 주세요.";return}const profile=sanitize({nickname,icon:get("fw-profile-icon").value,color:get("fw-profile-color").value});try{if(currentUser){await set(path(currentUser.uid),profile);message.textContent="계정 프로필을 저장했어요."}else{localStorage.setItem(guestKey,JSON.stringify(profile));render(profile,null);message.textContent="게스트 프로필을 이 기기에 저장했어요."}}catch(e){message.textContent="저장 실패: "+(e.code||"네트워크 또는 권한 오류")}});
 
 /* Friend search exposes the uid only after the social lookup succeeds.
@@ -58,4 +67,14 @@ window.addEventListener("fw:friend-found",async event=>{
   if(!owned.length){const p=document.createElement("p");p.textContent="공개된 이벤트 배지가 없어요.";grid.append(p)}
   view.append(grid);
  }catch(e){state.textContent="배지 공개 조회 불가 · Firebase 읽기 권한 또는 공개 설정을 확인해 주세요. ("+(e.code||"연결 오류")+")";}
+});
+
+get("fw-featured-save").addEventListener("click",async()=>{
+ const status=get("fw-featured-status"),id=get("fw-featured-select").value;
+ if(!currentUser){status.textContent="대표 업적 설정은 로그인 후 이용할 수 있어요.";return}
+ const badge=BADGES.find(b=>b.id===id);
+ if(id&&(!badge||!earnedBadge(badge,awards,homeData,profileData,stats))){status.textContent="획득한 배지만 대표 업적으로 설정할 수 있어요.";return}
+ const uid=currentUser.uid;
+ try{await set(ref(db,"formwheelV2/featuredBadges/"+uid),id||null);status.textContent="대표 업적을 저장했어요."}
+ catch(e){status.textContent="저장 실패: "+(e.code||"Firebase 권한 또는 네트워크 오류")}
 });
