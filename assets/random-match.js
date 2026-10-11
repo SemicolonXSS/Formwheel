@@ -74,7 +74,7 @@ $("fw-match-quick").onclick=async()=>{
   }
   const code=token().replace(/-/g,"").slice(0,15);
   await set(ref(db,ROOT+"/quick/"+code),{owner:localId,status:"waiting",createdAt:now,updatedAt:now});
-  await onDisconnect(ref(db,ROOT+"/quick/"+code)).remove();
+  // Keep matched lobby available when a player navigates to the game.
   watch("quick",code);
  }catch(e){$("fw-match-actions").hidden=false;say("매칭 시작 실패: "+e.message)}
 };
@@ -85,7 +85,7 @@ $("fw-match-friend").onclick=async()=>{
   for(let i=0;i<10;i++){code=String(Math.floor(100000+Math.random()*900000));r=ref(db,ROOT+"/friend/"+code);if(!(await get(r)).exists())break;}
   if((await get(r)).exists())throw Error("코드 발급 실패");
   await set(r,{owner:localId,status:"waiting",createdAt:Date.now(),updatedAt:Date.now()});
-  await onDisconnect(r).remove();
+  // The room is expired through timestamp checks instead of disconnect deletion.
   watch("friend",code);
  }catch(e){say("코드 생성 실패: "+e.message)}
 };
