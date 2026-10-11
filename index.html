@@ -51,13 +51,7 @@
   Home
 </a>
 
-<a href="https://semicolonxss.github.io/Formwheel_Form">
-  Form
-</a>
-
-<a href="https://semicolonxss.github.io/Formwheel_Wheel/?v=20261008-logo2">
-  Wheel
-</a>
+<a href="#" id="fw-nav-quick">⚔️ 빠른 대전</a>\n<a href="#" id="fw-nav-friend">🎲 랜덤 플레이</a>
 
 <a href="https://semicolonxss.github.io/Formwheel_Quiz">
   Quiz
@@ -67,7 +61,17 @@
   Explore
 </a>
 
-</nav>
+</nav>\n<section id="fw-matchmaking" hidden style="position:fixed;z-index:9999;top:75px;left:50%;transform:translateX(-50%);width:min(92vw,580px);max-height:calc(100vh - 95px);overflow:auto;padding:24px;border:1px solid #dfe5f1;border-radius:22px;background:white;box-shadow:0 15px 55px #1d265340">
+<button type="button" id="fw-match-close" aria-label="매칭 창 닫기" style="float:right;border:0;background:transparent;font-size:24px;cursor:pointer">×</button><h2 style="margin:0 0 8px">🎮 Formwheel 랜덤 대전</h2><p style="color:#667085">빠른 대전은 모르는 상대와, 랜덤 플레이는 친구와 코드를 공유해 랜덤 게임을 선택해요.</p>
+<div id="fw-match-actions" style="display:flex;gap:10px;flex-wrap:wrap">
+<button id="fw-match-quick" type="button" style="background:#373cc3;color:white;border:0;border-radius:12px;padding:14px 20px;font:inherit;font-weight:800;cursor:pointer">⚔️ 빠른 대전 · 자동 상대</button>
+<button id="fw-match-friend" type="button" style="background:#eff1ff;color:#303a86;border:0;border-radius:12px;padding:14px 20px;font:inherit;font-weight:800;cursor:pointer">🎲 랜덤 플레이 · 코드 생성</button>
+<label style="display:flex;gap:5px;align-items:center"><input id="fw-match-input" inputmode="numeric" maxlength="6" placeholder="친구 코드 6자리" style="max-width:145px;padding:12px;border:1px solid #d7dcee;border-radius:10px"><button id="fw-match-friend-join" type="button" style="padding:12px;border:0;border-radius:10px;cursor:pointer">코드 참가</button></label>
+</div>
+<div id="fw-match-panel" hidden style="border-top:1px solid #e4e7ef;margin-top:14px;padding-top:14px"><strong>매칭 코드: <span id="fw-match-code">—</span></strong> <button id="fw-match-copy" type="button">복사</button><p>매칭 완료 시 두 플레이어에게 동일한 게임이 선택됩니다.</p><a id="fw-match-launch" hidden target="_blank" rel="noopener" style="display:inline-block;padding:11px 16px;border-radius:10px;background:#373cc3;color:white;text-decoration:none;font-weight:800">선택된 게임 열기 →</a> <button id="fw-match-stop" type="button">나가기 / 매칭 취소</button></div>
+<p id="fw-match-status" role="status" aria-live="polite" style="margin:12px 0 0;color:#4a5670"></p>
+</section>
+
 <a href="./profile.html" class="fw-profile-trigger" aria-label="내 프로필 및 커스터마이징 페이지 열기" title="내 프로필"><span id="fw-header-avatar">🎡</span></a>
 </header>
 
@@ -124,16 +128,6 @@ FormWheel의 모든 프로젝트를 한곳에서 만나보세요.
 
 
 
-<section id="fw-matchmaking" style="max-width:1080px;margin:24px auto;padding:24px;border:1px solid #dfe5f1;border-radius:22px;background:white;box-shadow:0 10px 30px #1d26530a">
-<h2 style="margin:0 0 8px">🎮 Formwheel 랜덤 대전</h2><p style="color:#667085">빠른 대전은 모르는 상대와, 랜덤 플레이는 친구와 코드를 공유해 랜덤 게임을 선택해요.</p>
-<div id="fw-match-actions" style="display:flex;gap:10px;flex-wrap:wrap">
-<button id="fw-match-quick" type="button" style="background:#373cc3;color:white;border:0;border-radius:12px;padding:14px 20px;font:inherit;font-weight:800;cursor:pointer">⚔️ 빠른 대전 · 자동 상대</button>
-<button id="fw-match-friend" type="button" style="background:#eff1ff;color:#303a86;border:0;border-radius:12px;padding:14px 20px;font:inherit;font-weight:800;cursor:pointer">🎲 랜덤 플레이 · 코드 생성</button>
-<label style="display:flex;gap:5px;align-items:center"><input id="fw-match-input" inputmode="numeric" maxlength="6" placeholder="친구 코드 6자리" style="max-width:145px;padding:12px;border:1px solid #d7dcee;border-radius:10px"><button id="fw-match-friend-join" type="button" style="padding:12px;border:0;border-radius:10px;cursor:pointer">코드 참가</button></label>
-</div>
-<div id="fw-match-panel" hidden style="border-top:1px solid #e4e7ef;margin-top:14px;padding-top:14px"><strong>매칭 코드: <span id="fw-match-code">—</span></strong> <button id="fw-match-copy" type="button">복사</button><p>매칭 완료 시 두 플레이어에게 동일한 게임이 선택됩니다.</p><a id="fw-match-launch" hidden target="_blank" rel="noopener" style="display:inline-block;padding:11px 16px;border-radius:10px;background:#373cc3;color:white;text-decoration:none;font-weight:800">선택된 게임 열기 →</a> <button id="fw-match-stop" type="button">나가기 / 매칭 취소</button></div>
-<p id="fw-match-status" role="status" aria-live="polite" style="margin:12px 0 0;color:#4a5670"></p>
-</section>
 <section id="fw-anniversary-banner" style="max-width:1080px;margin:20px auto;padding:22px;border-radius:20px;background:linear-gradient(110deg,#101b30,#294478);color:white;text-align:center;box-shadow:0 12px 28px #101b3020"><div style="color:#ffce65;font-size:12px;font-weight:800;letter-spacing:.12em">🎉 FORMWHEEL ANNIVERSARY EVENT</div><h2 style="color:white;margin:10px 0">40 → 50 DAYS</h2><p style="color:#dbe7ff">10월 11~20일 기념 이벤트 · 10월 21일 피날레!</p><a href="./anniversary-40-50.html" style="display:inline-block;padding:12px 22px;border-radius:12px;background:#f4c366;color:#172032;font-weight:800;text-decoration:none">이벤트 참여하기 →</a></section>
 
 <section id="fw-home" aria-label="나만의 Formwheel 홈">
@@ -417,7 +411,14 @@ if ("serviceWorker" in navigator) {
 })();
 </script>
 <script type="module" src="./assets/random-match.js?v=20261011"></script>
-</body>
+<script>
+(()=>{const modal=document.getElementById("fw-matchmaking");const quick=document.getElementById("fw-nav-quick"),friend=document.getElementById("fw-nav-friend");
+function open(mode){modal.hidden=false;document.getElementById("fw-match-actions").hidden=false;if(mode==="quick"){document.getElementById("fw-match-quick").click()}}
+quick.addEventListener("click",e=>{e.preventDefault();open("quick")});
+friend.addEventListener("click",e=>{e.preventDefault();open("friend")});
+document.getElementById("fw-match-close").onclick=()=>{modal.hidden=true};
+})();
+</script></body>
 </html>
 
 
