@@ -41,6 +41,23 @@
           ".read": false,
           ".write": false
         }
+      },
+      "anniversary4050": {
+        "$uid": {
+          ".read": "auth != null && auth.uid === $uid",
+          "participation": {
+            "$gameId": {
+              ".write": "auth != null && auth.uid === $uid && $gameId.matches(/^(cook|reflex|gcrown|time)$/) && !data.exists() && newData.exists() && now >= 1791663600000 && now < 1792527600000",
+              ".validate": "newData.hasChildren(['completedAt','source','status']) && newData.child('completedAt').isNumber() && newData.child('completedAt').val() === now && newData.child('source').val() === 'game-end' && newData.child('status').val() === 'unverified'"
+            }
+          },
+          "badges": {
+            "$badgeId": {
+              ".write": "auth != null && auth.uid === $uid && !data.exists() && newData.exists() && (($badgeId === 'base' && now >= 1791663600000 && now < 1792527600000) || ($badgeId === 'day40' && now >= 1791663600000 && now < 1791750000000) || ($badgeId === 'day50' && now >= 1792527600000 && now < 1792614000000) || ($badgeId === 'master' && root.child('formwheelV2/anniversary4050/'+$uid+'/participation/cook').exists() && root.child('formwheelV2/anniversary4050/'+$uid+'/participation/reflex').exists() && root.child('formwheelV2/anniversary4050/'+$uid+'/participation/gcrown').exists() && root.child('formwheelV2/anniversary4050/'+$uid+'/participation/time').exists()))",
+              ".validate": "newData.hasChildren(['claimedAt','badgeId']) && newData.child('claimedAt').isNumber() && newData.child('claimedAt').val() === now && newData.child('badgeId').val() === $badgeId"
+            }
+          }
+        }
       }
     }
   }
