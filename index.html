@@ -29,7 +29,7 @@
 .fw-install-options{display:grid;gap:8px;margin:5px 0 0}.fw-install-option{background:#f0f2fc;color:#263184;border:1px solid #e0e3f3}
 .fw-install-info{margin:12px 0 0;padding:12px;text-align:left;white-space:pre-line;background:#f5f6fb;border-radius:12px;font-size:13px;line-height:1.7;color:#323b4e}
 </style>
-<link rel="stylesheet" href="./assets/home.css?v=20261010-profile3">
+<link rel="stylesheet" href="./assets/home.css?v=20261011-matchnav">
 </head>
 
 
@@ -45,23 +45,19 @@
 <a class="logo fw-hub-logo" href="https://semicolonxss.github.io/Formwheel/" aria-label="FormWheel 메인으로 이동"><span class="fw-hub-form">Form</span><span class="fw-hub-icon" aria-hidden="true"></span><span class="fw-hub-wheel">Wheel</span></a>
 
 
-<nav>
-
-<a href="https://semicolonxss.github.io/Formwheel/">
-  Home
-</a>
-
-<a href="#" id="fw-nav-quick">⚔️ 빠른 대전</a>\n<a href="#" id="fw-nav-friend">🎲 랜덤 플레이</a>
-
-<a href="https://semicolonxss.github.io/Formwheel_Quiz">
-  Quiz
-</a>
-
-<a href="#projects">
-  Explore
-</a>
-
-</nav>\n<style>#fw-matchmaking[hidden],#fw-matchmaking [hidden]{display:none!important}#fw-matchmaking{box-sizing:border-box}#fw-matchmaking button{cursor:pointer}</style>\n<section id="fw-matchmaking" hidden style="position:fixed;z-index:9999;top:75px;left:50%;transform:translateX(-50%);width:min(92vw,580px);max-height:calc(100vh - 95px);overflow:auto;padding:24px;border:1px solid #dfe5f1;border-radius:22px;background:white;box-shadow:0 15px 55px #1d265340">
+<nav aria-label="메인 메뉴">
+<a href="#" id="fw-nav-quick">⚔️ 빠른 대전</a>
+<a href="#" id="fw-nav-friend">🎲 랜덤 플레이</a>
+<a href="#projects">Explore</a>
+</nav>\n<a href="./profile.html" class="fw-profile-trigger" aria-label="내 프로필 및 커스터마이징 페이지 열기" title="내 프로필"><span id="fw-header-avatar">🎡</span></a>
+</header>
+<style>
+header nav{display:flex;align-items:center;gap:8px;margin-left:auto}
+header nav a{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;padding:10px 12px;font-size:13px;border-radius:10px}
+header .fw-profile-trigger{margin-left:0}
+@media(max-width:700px){header{gap:8px}header nav{gap:3px;overflow-x:auto;min-width:0;flex:1}header nav a{font-size:11px;padding:8px 7px}}
+#fw-matchmaking[hidden],#fw-matchmaking [hidden]{display:none!important}#fw-matchmaking{box-sizing:border-box}#fw-matchmaking button{cursor:pointer}</style>
+<section id="fw-matchmaking" hidden style="position:fixed;z-index:9999;top:75px;left:50%;transform:translateX(-50%);width:min(92vw,580px);max-height:calc(100vh - 95px);overflow:auto;padding:24px;border:1px solid #dfe5f1;border-radius:22px;background:white;box-shadow:0 15px 55px #1d265340">
 <button type="button" id="fw-match-close" aria-label="매칭 창 닫기" style="float:right;border:0;background:transparent;font-size:24px;cursor:pointer">×</button><h2 style="margin:0 0 8px">🎮 Formwheel 랜덤 대전</h2><p style="color:#667085">빠른 대전은 모르는 상대와, 랜덤 플레이는 친구와 코드를 공유해 랜덤 게임을 선택해요.</p>
 <div id="fw-match-actions" style="display:flex;gap:10px;flex-wrap:wrap">
 <button id="fw-match-quick" type="button" style="background:#373cc3;color:white;border:0;border-radius:12px;padding:14px 20px;font:inherit;font-weight:800;cursor:pointer">⚔️ 빠른 대전 · 자동 상대</button>
@@ -72,8 +68,8 @@
 <p id="fw-match-status" role="status" aria-live="polite" style="margin:12px 0 0;color:#4a5670"></p>
 </section>
 
-<a href="./profile.html" class="fw-profile-trigger" aria-label="내 프로필 및 커스터마이징 페이지 열기" title="내 프로필"><span id="fw-header-avatar">🎡</span></a>
-</header>
+
+
 
 
 
