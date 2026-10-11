@@ -9,6 +9,8 @@ const $=id=>document.getElementById(id),status=$("fw-match-status"),codeEl=$("fw
 const token=()=>crypto.randomUUID?.()||Math.random().toString(36).slice(2)+Date.now();
 const localId=sessionStorage.fwMatchTabId||(sessionStorage.fwMatchTabId=token());
 let active=null,unsubscribe=null,heartbeat=null,authUser=null,matched=false;
+const ownUid=()=>authUser?.uid||null;
+const testAllowed=()=>document.getElementById("fw-match-testmode")?.checked===true;
 onAuthStateChanged(auth,u=>{authUser=u&&!u.isAnonymous?u:null});
 function say(t){status.textContent=t}
 function badge(kind){
@@ -65,15 +67,15 @@ $("fw-match-quick").onclick=async()=>{
   const list=(await get(ref(db,ROOT+"/quick"))).val()||{};
   const now=Date.now();
   for(const [key,item] of Object.entries(list)){
-   if(item?.status!=="waiting"||now-item.updatedAt>45000||item.owner===localId)continue;
+   if(item?.status!=="waiting"||now-item.updatedAt>45000||item.owner===localId||(ownUid()&&item.ownerUid===ownUid()&&!testAllowed()))continue;
    const claim=await runTransaction(ref(db,ROOT+"/quick/"+key),v=>{
-    if(!v||v.status!=="waiting"||Date.now()-v.updatedAt>45000||v.owner===localId)return;
+    if(!v||v.status!=="waiting"||Date.now()-v.updatedAt>45000||v.owner===localId||(ownUid()&&v.ownerUid===ownUid()&&!testAllowed()))return;
     v.guest=localId;v.game=GAMES[Math.floor(Math.random()*GAMES.length)][0];v.status="matched";return v;
    },{applyLocally:false});
    if(claim.committed){watch("quick",key);return}
   }
   const code=token().replace(/-/g,"").slice(0,15);
-  await set(ref(db,ROOT+"/quick/"+code),{owner:localId,status:"waiting",createdAt:now,updatedAt:now});
+  await set(ref(db,ROOT+"/quick/"+code),{owner:localId,ownerUid:ownUid(),status:"waiting",createdAt:now,updatedAt:now});
   // Keep matched lobby available when a player navigates to the game.
   watch("quick",code);
  }catch(e){$("fw-match-actions").hidden=false;say("매칭 시작 실패: "+e.message)}
@@ -84,7 +86,7 @@ $("fw-match-friend").onclick=async()=>{
   let code="",r;
   for(let i=0;i<10;i++){code=String(Math.floor(100000+Math.random()*900000));r=ref(db,ROOT+"/friend/"+code);if(!(await get(r)).exists())break;}
   if((await get(r)).exists())throw Error("코드 발급 실패");
-  await set(r,{owner:localId,status:"waiting",createdAt:Date.now(),updatedAt:Date.now()});
+  await set(r,{owner:localId,ownerUid:ownUid(),status:"waiting",createdAt:Date.now(),updatedAt:Date.now()});
   // The room is expired through timestamp checks instead of disconnect deletion.
   watch("friend",code);
  }catch(e){say("코드 생성 실패: "+e.message)}
