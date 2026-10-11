@@ -20,7 +20,7 @@ function url(game){return "https://semicolonxss.github.io/Formwheel_"+({reflex:"
 function renderMatch(d){
  if(!d)return;
  if(d.status==="matched"){
- matched=true;clearInterval(heartbeat);heartbeat=null;
+ matched=true;clearInterval(heartbeat);heartbeat=null;onDisconnect(ref(db,ROOT+"/"+active.kind+"/"+active.code)).cancel().catch(()=>{});
  const g=GAMES.find(x=>x[0]===d.game);
  say("🎉 매칭 완료! "+(g?.[1]||d.game)+" 대전이 선택됐어요.");
  $("fw-match-launch").hidden=false;$("fw-match-launch").href=url(d.game)+"?fwMatch="+encodeURIComponent(active.code)+"&fwKind="+active.kind+"&fwSide="+(d.owner===localId?"owner":"guest");
