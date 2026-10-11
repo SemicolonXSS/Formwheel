@@ -7,7 +7,7 @@ const ROOT="formwheelV2/matchmaking",GAMES=[
 ["reflex","⚡ Reflex"],["battle","⚔️ Battle"],["territory","🎯 Territory"],["risk","🎲 Risk"],["gcrown","👑 GCrown"],["time","⏱️ Time"],["bomb","💣 Bomb"]];
 const $=id=>document.getElementById(id),status=$("fw-match-status"),codeEl=$("fw-match-code");
 const token=()=>crypto.randomUUID?.()||Math.random().toString(36).slice(2)+Date.now();
-const localId=sessionStorage.fwMatchTabId||(sessionStorage.fwMatchTabId=token());
+// A newly opened tab can inherit an exact copy of sessionStorage from its opener.\n// Match identities must be unique for each loaded page, including same-account testing.\nconst localId=token();
 let active=null,unsubscribe=null,heartbeat=null,authUser=null,matched=false;
 const ownUid=()=>authUser?.uid||null;
 const testAllowed=()=>document.getElementById("fw-match-testmode")?.checked===true;
