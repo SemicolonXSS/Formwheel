@@ -198,6 +198,22 @@ const projects = [
   ===================== */
 
   {
+    name:"Territory",
+    icon:"🗺️",
+    className:"blue",
+    category:"game",
+    mode:"both",
+    connection:"offline",
+    difficulty:"보통",
+    description:"솔로 AI, 2인·4인 한 기기 대전! 동시 명령으로 영토를 점령하는 전략 게임.",
+    url:"https://semicolonxss.github.io/Formwheel_Territory/",
+    addedAt:"2026-10-11T04:20:00Z",
+    recent:true
+  },
+
+
+
+  {
     name:"Cook",
     icon:"🍳",
     className:"orange",
