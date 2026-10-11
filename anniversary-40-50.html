@@ -10,6 +10,7 @@
 <article class="card"><div class="symbol">👑</div><h3>DAY 40 · Original</h3><p>10월 11일 하루만 수령 가능한 특별 배지</p><button id="claim-day40" disabled>로그인 확인 중…</button></article>
 <article class="card"><div class="symbol">✨</div><h3>DAY 50 · Finale</h3><p>10월 21일 피날레 전용 배지 · 당일 직접 수령</p><button id="claim-day50" disabled>10월 21일 공개</button></article>
 </div><p id="status" role="status" aria-live="polite"></p><p class="muted" style="font-size:13px">로그인이 필요하다면 <a href="./#fw-account">Hub의 로그인 영역</a>으로 이동하세요.</p></section>
+<section class="section card"><h2>📣 SHARE · 함께하는 40→50</h2><p class="muted">친구에게 기념 이벤트 링크를 공유하고 SHARE 배지를 영구 소장하세요. 10월 11~20일에 참여할 수 있습니다.</p><button id="share-event" type="button" disabled>공유 기능 준비 중…</button> <button id="copy-event" type="button" style="background:#334669;color:white">링크 복사</button><p id="share-status" class="muted" role="status" aria-live="polite">기기에 공유 메뉴가 지원되면 공유를 마친 뒤 배지를 수령할 수 있어요.</p></section>
 <section class="section card"><h2>🎮 4 GAMES CHALLENGE</h2><p class="muted">10월 11~20일 사이에 서로 다른 게임 4종을 정상 완료하면 Master 배지를 받을 수 있어요.</p><div class="four"><div class="slot">🎮<br>1</div><div class="slot">🎮<br>2</div><div class="slot">🎮<br>3</div><div class="slot">🎮<br>4</div></div><div class="progress"><div class="bar" id="progress-bar"></div></div><p id="challenge-count">참여 기록을 불러오는 중…</p><p class="notice">지정 게임 Cook · Reflex · GCrown · Time의 참여 기록 4개가 확인되면 Master 배지 자동 지급을 시도합니다. 현재 게임 기록은 클라이언트 신고 기반으로 공식 서버 검증은 아직 준비되지 않았습니다.</p><p id="master-status" role="status" aria-live="polite">🏆 Master · 진행도 확인 중</p><a class="button" href="./#projects">게임 찾아보기 ↗</a></section>
 <section class="section card"><h2>📅 10일간의 축제</h2><p>10월 11일 — DAY 40 시작 및 한정 배지</p><p>10월 12~19일 — 챌린지 진행</p><p>10월 20일 — 챌린지 마감</p><p>10월 21일 — DAY 50 피날레</p></section>
 <section class="section"><p class="notice">보안 안내: 기념 배지 수령은 Firebase 로그인과 중복 방지 트랜잭션을 사용합니다. Master 배지는 4개 참여 기록으로 자동 지급됩니다. 참여 기록의 서버 검증은 미구현이며 공식 경쟁 업적으로 간주하지 않습니다. Firebase Rules 배포 여부에 따라 저장이 거부될 수 있습니다.</p></section>
@@ -22,11 +23,12 @@ const cfg={apiKey:"AIzaSyBreTSe1m0-xlbF4aupnU5isRZCihR25IE",authDomain:"formwhee
 const app=getApps().find(x=>x.name==="[DEFAULT]")||initializeApp(cfg),auth=getAuth(app),db=getDatabase(app);
 const $=id=>document.getElementById(id);
 const start=Date.parse("2026-10-10T15:00:00Z"),end=Date.parse("2026-10-20T15:00:00Z"),day40End=Date.parse("2026-10-11T15:00:00Z"),finaleEnd=Date.parse("2026-10-21T15:00:00Z");
-let user=null,offset=0,badges={},clockReady=false,busy=false; const status=t=>$("status").textContent=t;
+let user=null,offset=0,badges={},clockReady=false,busy=false,sharing=false; const status=t=>$("status").textContent=t;
 function now(){return Date.now()+offset}function eligible(type){const n=now();return type==="base"?n>=start&&n<end:type==="day40"?n>=start&&n<day40End:n>=end&&n<finaleEnd}
 let participation={},masterAwarding=false;
 const labels={base:"기념 배지 받기",day40:"DAY 40 배지 받기",day50:"DAY 50 배지 받기"};
 function render(){const count=["cook","reflex","gcrown","time"].filter(id=>participation[id]).length; $("progress-bar").style.width=(count*25)+"%"; $("challenge-count").textContent="게임 완료 참여 기록 "+count+"/4"+(count===4?" · 4종 완료! 공식 배지는 검증 대기":""); $("master-status").textContent=badges.master?"🏆 Master 배지 수령 완료 · 영구 소장":count===4?"🏆 Master 배지 자동 지급 확인 중":"🏆 Master · 4개 완료하면 자동 지급"; document.querySelectorAll(".slot").forEach((el,i)=>{const ids=["cook","reflex","gcrown","time"]; const names=["Cook","Reflex","GCrown","Time"];el.textContent=participation[ids[i]]?"✅ "+names[i]:"🎮 "+names[i];el.style.borderColor=participation[ids[i]]?"#e7bd60":"#42506a"}); const n=now();$("period").textContent=n<start?"곧 시작해요":n<end?"🎉 40→50 DAYS 이벤트 진행 중!":n<finaleEnd?"✨ DAY 50 피날레!":"이벤트가 종료되었어요.";
+$("share-event").disabled=sharing||!user||!clockReady||!eligible("base")||!!badges.share||typeof navigator.share!=="function"; $("share-event").textContent=badges.share?"✓ SHARE 배지 획득":!user?"로그인 후 공유":!eligible("base")?"이벤트 기간에 공유":typeof navigator.share!=="function"?"공유 메뉴 미지원":"📣 이벤트 공유하고 배지 받기";
 for(const type of Object.keys(labels)){const b=$("claim-"+type);b.disabled=busy||!clockReady||!user||!eligible(type)||!!badges[type];b.textContent=badges[type]?"✓ 수령 완료":!user?"로그인 후 수령":!clockReady?"서버 시간 확인 중":!eligible(type)?n<(type==="day50"?end:start)?"오픈 예정":"수령 기간 종료":labels[type]}}
 async function refresh(quiet=false){
  if(!user){badges={};participation={};render();status("Formwheel ID 로그인 후 배지를 수령할 수 있어요. Hub 하단에서 Google 로그인을 완료해 주세요.");return}
@@ -58,6 +60,22 @@ for(const type of Object.keys(labels))$("claim-"+type).addEventListener("click",
   const code=e.code||"unknown";
   status("수령 실패 ("+code+"): "+(String(code).toLowerCase().includes("permission")?"Firebase Database Rules에서 본인 계정 배지 생성 권한을 확인해야 해요.":e.message||"연결 상태를 확인해 주세요."));
  }finally{busy=false;render()}
+});
+$("copy-event").addEventListener("click",async()=>{try{await navigator.clipboard.writeText(new URL("./anniversary-40-50.html",location.href).href);$("share-status").textContent="링크를 복사했어요! 링크 복사만으로는 공유 배지가 지급되지 않습니다."}catch(e){$("share-status").textContent="링크 복사에 실패했어요. 주소창의 주소를 직접 복사해 주세요."}});
+$("share-event").addEventListener("click",async()=>{
+ if(sharing||!user||!clockReady||!eligible("base")||badges.share||!navigator.share)return;
+ const uid=user.uid;sharing=true;render();
+ try{
+  await navigator.share({title:"Formwheel 40→50 DAYS",text:"🎡 Formwheel 40→50 DAYS 기념 이벤트에 참여해 봐!",url:new URL("./anniversary-40-50.html",location.href).href});
+  if(auth.currentUser?.uid!==uid||!eligible("base")){ $("share-status").textContent="계정 또는 이벤트 시간이 변경되어 지급하지 않았어요.";return}
+  $("share-status").textContent="공유 메뉴가 완료되었어요. 배지를 저장하는 중…";
+  const path=ref(db,"formwheelV2/anniversary4050/"+uid+"/badges/share");
+  const result=await runTransaction(path,old=>old===null?{badgeId:"share",claimedAt:serverTimestamp(),source:"web-share-completed"}:undefined,{applyLocally:false});
+  if(result.snapshot.exists())badges.share=result.snapshot.val();
+  $("share-status").textContent=badges.share?"🎉 SHARE 배지를 획득했어요! (기기 공유 메뉴 완료 기준)":"배지 저장이 완료되지 않았어요.";
+ }catch(e){
+  $("share-status").textContent=e.name==="AbortError"?"공유를 취소했어요. 배지는 지급되지 않았습니다.":"공유 또는 배지 지급 실패: "+(e.code||e.message||"알 수 없는 오류");
+ }finally{sharing=false;render()}
 });
 onValue(ref(db,".info/serverTimeOffset"),snap=>{
  offset=Number(snap.val())||0;clockReady=true;render();awardMaster();
