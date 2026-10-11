@@ -10,9 +10,9 @@
 <article class="card"><div class="symbol">👑</div><h3>DAY 40 · Original</h3><p>10월 11일 하루만 수령 가능한 특별 배지</p><button id="claim-day40" disabled>로그인 확인 중…</button></article>
 <article class="card"><div class="symbol">✨</div><h3>DAY 50 · Finale</h3><p>10월 21일 피날레 전용 배지 · 당일 직접 수령</p><button id="claim-day50" disabled>10월 21일 공개</button></article>
 </div><p id="status" role="status" aria-live="polite"></p><p class="muted" style="font-size:13px">로그인이 필요하다면 <a href="./#fw-account">Hub의 로그인 영역</a>으로 이동하세요.</p></section>
-<section class="section card"><h2>🎮 4 GAMES CHALLENGE</h2><p class="muted">10월 11~20일 사이에 서로 다른 게임 4종을 정상 완료하면 Master 배지를 받을 수 있어요.</p><div class="four"><div class="slot">🎮<br>1</div><div class="slot">🎮<br>2</div><div class="slot">🎮<br>3</div><div class="slot">🎮<br>4</div></div><div class="progress"><div class="bar" id="progress-bar"></div></div><p id="challenge-count">참여 기록을 불러오는 중…</p><p class="notice">현재 연결된 지정 게임은 Cook · Reflex · GCrown · Time입니다. 다른 게임의 완료 기록 연동이 준비되지 않으면 이 4개를 모두 플레이하는 방식으로 진행합니다. 현재 진행도는 참여 기록이며, 공식 Master 배지는 서버 검증 후 지급됩니다.</p><a class="button" href="./#projects">게임 찾아보기 ↗</a></section>
+<section class="section card"><h2>🎮 4 GAMES CHALLENGE</h2><p class="muted">10월 11~20일 사이에 서로 다른 게임 4종을 정상 완료하면 Master 배지를 받을 수 있어요.</p><div class="four"><div class="slot">🎮<br>1</div><div class="slot">🎮<br>2</div><div class="slot">🎮<br>3</div><div class="slot">🎮<br>4</div></div><div class="progress"><div class="bar" id="progress-bar"></div></div><p id="challenge-count">참여 기록을 불러오는 중…</p><p class="notice">지정 게임 Cook · Reflex · GCrown · Time의 참여 기록 4개가 확인되면 Master 배지 자동 지급을 시도합니다. 현재 게임 기록은 클라이언트 신고 기반으로 공식 서버 검증은 아직 준비되지 않았습니다.</p><p id="master-status" role="status" aria-live="polite">🏆 Master · 진행도 확인 중</p><a class="button" href="./#projects">게임 찾아보기 ↗</a></section>
 <section class="section card"><h2>📅 10일간의 축제</h2><p>10월 11일 — DAY 40 시작 및 한정 배지</p><p>10월 12~19일 — 챌린지 진행</p><p>10월 20일 — 챌린지 마감</p><p>10월 21일 — DAY 50 피날레</p></section>
-<section class="section"><p class="notice">보안 안내: 기념 배지 수령은 Firebase 로그인과 중복 방지 트랜잭션을 사용합니다. 서버 전용 지급 검증 및 데이터베이스 보안 규칙은 별도 검증이 필요하므로, 현재 표시는 베타 이벤트 상태입니다.</p></section>
+<section class="section"><p class="notice">보안 안내: 기념 배지 수령은 Firebase 로그인과 중복 방지 트랜잭션을 사용합니다. Master 배지는 4개 참여 기록으로 자동 지급됩니다. 참여 기록의 서버 검증은 미구현이며 공식 경쟁 업적으로 간주하지 않습니다. Firebase Rules 배포 여부에 따라 저장이 거부될 수 있습니다.</p></section>
 </main><footer>© Formwheel · 40 → 50 DAYS</footer>
 <script type="module">
 import {initializeApp,getApps} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
@@ -24,9 +24,9 @@ const $=id=>document.getElementById(id);
 const start=Date.parse("2026-10-10T15:00:00Z"),end=Date.parse("2026-10-20T15:00:00Z"),day40End=Date.parse("2026-10-11T15:00:00Z"),finaleEnd=Date.parse("2026-10-21T15:00:00Z");
 let user=null,offset=0,badges={},clockReady=false,busy=false; const status=t=>$("status").textContent=t;
 function now(){return Date.now()+offset}function eligible(type){const n=now();return type==="base"?n>=start&&n<end:type==="day40"?n>=start&&n<day40End:n>=end&&n<finaleEnd}
-let participation={};
+let participation={},masterAwarding=false;
 const labels={base:"기념 배지 받기",day40:"DAY 40 배지 받기",day50:"DAY 50 배지 받기"};
-function render(){const count=["cook","reflex","gcrown","time"].filter(id=>participation[id]).length; $("progress-bar").style.width=(count*25)+"%"; $("challenge-count").textContent="게임 완료 참여 기록 "+count+"/4"+(count===4?" · 4종 완료! 공식 배지는 검증 대기":""); document.querySelectorAll(".slot").forEach((el,i)=>{const ids=["cook","reflex","gcrown","time"]; const names=["Cook","Reflex","GCrown","Time"];el.textContent=participation[ids[i]]?"✅ "+names[i]:"🎮 "+names[i];el.style.borderColor=participation[ids[i]]?"#e7bd60":"#42506a"}); const n=now();$("period").textContent=n<start?"곧 시작해요":n<end?"🎉 40→50 DAYS 이벤트 진행 중!":n<finaleEnd?"✨ DAY 50 피날레!":"이벤트가 종료되었어요.";
+function render(){const count=["cook","reflex","gcrown","time"].filter(id=>participation[id]).length; $("progress-bar").style.width=(count*25)+"%"; $("challenge-count").textContent="게임 완료 참여 기록 "+count+"/4"+(count===4?" · 4종 완료! 공식 배지는 검증 대기":""); $("master-status").textContent=badges.master?"🏆 Master 배지 수령 완료 · 영구 소장":count===4?"🏆 Master 배지 자동 지급 확인 중":"🏆 Master · 4개 완료하면 자동 지급"; document.querySelectorAll(".slot").forEach((el,i)=>{const ids=["cook","reflex","gcrown","time"]; const names=["Cook","Reflex","GCrown","Time"];el.textContent=participation[ids[i]]?"✅ "+names[i]:"🎮 "+names[i];el.style.borderColor=participation[ids[i]]?"#e7bd60":"#42506a"}); const n=now();$("period").textContent=n<start?"곧 시작해요":n<end?"🎉 40→50 DAYS 이벤트 진행 중!":n<finaleEnd?"✨ DAY 50 피날레!":"이벤트가 종료되었어요.";
 for(const type of Object.keys(labels)){const b=$("claim-"+type);b.disabled=busy||!clockReady||!user||!eligible(type)||!!badges[type];b.textContent=badges[type]?"✓ 수령 완료":!user?"로그인 후 수령":!clockReady?"서버 시간 확인 중":!eligible(type)?n<(type==="day50"?end:start)?"오픈 예정":"수령 기간 종료":labels[type]}}
 async function refresh(quiet=false){
  if(!user){badges={};participation={};render();status("Formwheel ID 로그인 후 배지를 수령할 수 있어요. Hub 하단에서 Google 로그인을 완료해 주세요.");return}
@@ -34,6 +34,7 @@ async function refresh(quiet=false){
   const basePath="formwheelV2/anniversary4050/"+user.uid; const [snap,gameSnap]=await Promise.all([get(ref(db,basePath+"/badges")),get(ref(db,basePath+"/participation"))]);
   badges=snap.val()||{};participation=gameSnap.val()||{};render();
   if(!quiet)status("로그인 완료 · 기념 배지 및 챌린지 참여 기록을 불러왔어요.");
+  await awardMaster();
  }catch(e){
   badges={};render();
   status("Firebase 읽기 실패 ("+(e.code||"unknown")+"). "+(e.code==="PERMISSION_DENIED"||e.code==="permission-denied"?"데이터베이스 Rules에서 이벤트 계정 읽기 권한을 확인해 주세요.":"인터넷 연결과 Firebase 상태를 확인해 주세요."));
@@ -59,10 +60,25 @@ for(const type of Object.keys(labels))$("claim-"+type).addEventListener("click",
  }finally{busy=false;render()}
 });
 onValue(ref(db,".info/serverTimeOffset"),snap=>{
- offset=Number(snap.val())||0;clockReady=true;render();
+ offset=Number(snap.val())||0;clockReady=true;render();awardMaster();
 },()=>{clockReady=false;render();status("서버 시간 확인에 실패했어요. 새로고침 후 다시 시도해 주세요.")});
+async function awardMaster(){
+ if(masterAwarding||!user||!clockReady||badges.master)return;
+ if(["cook","reflex","gcrown","time"].some(id=>!participation[id]))return;
+ const uid=user.uid; masterAwarding=true;
+ $("master-status").textContent="🏆 Master 배지 자동 지급 중…";
+ try{
+  const badgeRef=ref(db,"formwheelV2/anniversary4050/"+uid+"/badges/master");
+  const result=await runTransaction(badgeRef,current=>current===null?{claimedAt:serverTimestamp(),badgeId:"master",source:"challenge-4-games",status:"participation-unverified"}:undefined,{applyLocally:false});
+  if(auth.currentUser?.uid!==uid)return;
+  if(result.snapshot.exists())badges.master=result.snapshot.val();
+  if(result.committed)status("🏆 4게임 챌린지 Master 배지가 자동으로 저장되었어요!");
+  else if(!result.snapshot.exists())status("Master 자동 지급이 완료되지 않았어요.");
+ }catch(e){status("Master 배지 지급 실패 ("+(e.code||"unknown")+"): Firebase Database Rules 또는 연결 상태를 확인해 주세요.");}
+ finally{masterAwarding=false;render()}
+}
 let gameUnsubscribe=null;
-onAuthStateChanged(auth,u=>{user=u&&!u.isAnonymous?u:null;if(gameUnsubscribe){gameUnsubscribe();gameUnsubscribe=null}if(user){gameUnsubscribe=onValue(ref(db,"formwheelV2/anniversary4050/"+user.uid+"/participation"),snapshot=>{participation=snapshot.val()||{};render()},error=>{status("챌린지 진행도 조회 실패 ("+(error.code||"unknown")+"): Firebase 규칙을 확인해 주세요.")})}refresh()});
+onAuthStateChanged(auth,u=>{user=u&&!u.isAnonymous?u:null;if(gameUnsubscribe){gameUnsubscribe();gameUnsubscribe=null}if(user){gameUnsubscribe=onValue(ref(db,"formwheelV2/anniversary4050/"+user.uid+"/participation"),snapshot=>{participation=snapshot.val()||{};render();awardMaster()},error=>{status("챌린지 진행도 조회 실패 ("+(error.code||"unknown")+"): Firebase 규칙을 확인해 주세요.")})}refresh()});
 
 render();
 </script></body></html>
