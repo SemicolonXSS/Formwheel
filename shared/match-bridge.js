@@ -41,13 +41,12 @@ async function create(){
  say("같은 게임방 생성 완료 · 코드 "+room+" · 상대 입장 대기");
 }
 async function join(room){
- await waitUntil(()=>checkRoom(room),1000).catch(()=>{});
  if(!(await checkRoom(room)))throw Error("상대의 게임방이 없습니다. 방장이 다시 생성해야 합니다.");
  start();nick();
  if(game==="gcrown"){await waitUntil(()=>typeof window.joinRoom==="function");$("joinCode").value=room;await window.joinRoom()}
  else if(game==="battle"){await waitUntil(()=> $("joinBattle"));clickButton("joinBattle");await waitUntil(()=>$("joinPin")&&$("joinBtn"));$("joinPin").value=room;$("joinName").value="랜덤-"+Math.floor(Math.random()*9000);clickButton("joinBtn")}
  else{await waitUntil(()=>$(a.input)&&$(a.join));$(a.input).value=room;clickButton(a.join)}
- say("매칭된 게임방 "+room+"에 참가 요청을 보냈어요.");
+ say("매칭된 게임방 "+room+"에 참가 요청을 보냈어요. 대기실 입장을 확인해 주세요.");
 }
 onValue(path,async snap=>{
  const v=snap.val();if(!v){say("매칭 정보가 없어졌어요. Hub에서 다시 매칭해 주세요.");return}
