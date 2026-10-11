@@ -23,7 +23,7 @@ function renderMatch(d){
  matched=true;clearInterval(heartbeat);heartbeat=null;
  const g=GAMES.find(x=>x[0]===d.game);
  say("🎉 매칭 완료! "+(g?.[1]||d.game)+" 대전이 선택됐어요.");
- $("fw-match-launch").hidden=false;$("fw-match-launch").href=url(d.game)+"?fwMatch="+encodeURIComponent(active.code);
+ $("fw-match-launch").hidden=false;$("fw-match-launch").href=url(d.game)+"?fwMatch="+encodeURIComponent(active.code)+"&fwKind="+active.kind+"&fwSide="+(d.owner===localId?"owner":"guest");
  badge(active.kind);
  }else{
  say(active.kind==="quick"?"다른 플레이어를 찾는 중이에요…":"친구가 코드를 입력할 때까지 기다리는 중이에요.");
