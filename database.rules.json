@@ -53,8 +53,8 @@
           },
           "badges": {
             "$badgeId": {
-              ".write": "auth != null && auth.uid === $uid && !data.exists() && newData.exists() && (($badgeId === 'base' && now >= 1791644400000 && now < 1792508400000) || ($badgeId === 'day40' && now >= 1791644400000 && now < 1791730800000) || ($badgeId === 'day50' && now >= 1792508400000 && now < 1792594800000) || ($badgeId === 'master' && root.child('formwheelV2/anniversary4050/'+$uid+'/participation/cook').exists() && root.child('formwheelV2/anniversary4050/'+$uid+'/participation/reflex').exists() && root.child('formwheelV2/anniversary4050/'+$uid+'/participation/gcrown').exists() && root.child('formwheelV2/anniversary4050/'+$uid+'/participation/time').exists()))",
-              ".validate": "newData.hasChildren(['claimedAt','badgeId']) && newData.child('claimedAt').isNumber() && newData.child('claimedAt').val() === now && newData.child('badgeId').val() === $badgeId"
+              ".write": "auth != null && auth.uid === $uid && !data.exists() && newData.exists() && (($badgeId === 'base' && now >= 1791644400000 && now < 1792508400000) || ($badgeId === 'day40' && now >= 1791644400000 && now < 1791730800000) || ($badgeId === 'day50' && now >= 1792508400000 && now < 1792594800000) || ($badgeId === 'share' && now >= 1791644400000 && now < 1792508400000) || ($badgeId === 'master' && root.child('formwheelV2/anniversary4050/'+$uid+'/participation/cook').exists() && root.child('formwheelV2/anniversary4050/'+$uid+'/participation/reflex').exists() && root.child('formwheelV2/anniversary4050/'+$uid+'/participation/gcrown').exists() && root.child('formwheelV2/anniversary4050/'+$uid+'/participation/time').exists()))",
+              ".validate": "newData.hasChildren(['claimedAt','badgeId']) && newData.child('claimedAt').isNumber() && newData.child('claimedAt').val() === now && newData.child('badgeId').val() === $badgeId && ($badgeId !== 'share' || (newData.child('source').val() === 'web-share-completed'))"
             }
           }
         }
