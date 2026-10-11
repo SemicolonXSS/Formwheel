@@ -31,7 +31,7 @@ async function create(){
  const room=await waitUntil(()=>{
    if(game==="battle"){return document.querySelector(".pin-box .pin")?.textContent?.trim()?.match(/^\d{4}$/)?.[0]}
    if(game==="territory"){return location.hash.match(/room=([A-Z2-9]{6})/)?.[1]}
-   return $(a.display)?.textContent?.trim()?.match(/^[A-Z0-9]{4,6}$/)?.[0]
+   return ($(a.display)?.value||$(a.display)?.textContent||"").trim().match(/^[A-Z0-9]{4,6}$/)?.[0]
  },20000);
  const tx=await runTransaction(path,v=>{if(!v||v.status!=="matched"||v.gameRoom)return;v.gameRoom=room;v.gameReadyAt=Date.now();return v},{applyLocally:false});
  if(!tx.committed)throw Error("매칭 방 번호 저장에 실패했어요");
