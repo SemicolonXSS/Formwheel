@@ -7,8 +7,9 @@ const ROOT="formwheelV2/matchmaking",GAMES=[
 ["reflex","⚡ Reflex"],["battle","⚔️ Battle"],["territory","🎯 Territory"],["risk","🎲 Risk"],["gcrown","👑 GCrown"],["time","⏱️ Time"],["bomb","💣 Bomb"]];
 const $=id=>document.getElementById(id),status=$("fw-match-status"),codeEl=$("fw-match-code");
 const token=()=>crypto.randomUUID?.()||Math.random().toString(36).slice(2)+Date.now();
-// A newly opened tab can inherit an exact copy of sessionStorage from its opener.\n// Match identities must be unique for each loaded page, including same-account testing.\nconst localId=token();
-let active=null,unsubscribe=null,heartbeat=null,authUser=null,matched=false;
+// Use a unique ID for each page load, even when a tab inherits sessionStorage.
+const localId=token();
+let active=null,unsubscribe=null,heartbeat=null,queuePoll=null,authUser=null,matched=false;
 const ownUid=()=>authUser?.uid||null;
 const testAllowed=()=>document.getElementById("fw-match-testmode")?.checked===true;
 onAuthStateChanged(auth,u=>{authUser=u&&!u.isAnonymous?u:null});
@@ -22,7 +23,7 @@ function url(game){return "https://semicolonxss.github.io/Formwheel_"+({reflex:"
 function renderMatch(d){
  if(!d)return;
  if(d.status==="matched"){
- matched=true;clearInterval(heartbeat);heartbeat=null;onDisconnect(ref(db,ROOT+"/"+active.kind+"/"+active.code)).cancel().catch(()=>{});
+ matched=true;clearInterval(heartbeat);heartbeat=null;clearInterval(queuePoll);queuePoll=null;onDisconnect(ref(db,ROOT+"/"+active.kind+"/"+active.code)).cancel().catch(()=>{});
  const g=GAMES.find(x=>x[0]===d.game);
  say("🎉 매칭 완료! "+(g?.[1]||d.game)+" 대전이 선택됐어요.");
  $("fw-match-launch").hidden=false;$("fw-match-launch").href=url(d.game)+"?fwMatch="+encodeURIComponent(active.code)+"&fwKind="+active.kind+"&fwSide="+(d.owner===localId?"owner":"guest");
@@ -32,7 +33,7 @@ function renderMatch(d){
  }
 }
 function watch(kind,code){
- if(unsubscribe)unsubscribe(); active={kind,code};matched=false;
+ if(unsubscribe)unsubscribe(); clearInterval(queuePoll);queuePoll=null;active={kind,code};matched=false;
  $("fw-match-launch").hidden=true;
  codeEl.textContent=kind==="friend"?code:"자동 매칭 중";
  $("fw-match-panel").hidden=false;$("fw-match-actions").hidden=true;
@@ -48,7 +49,7 @@ function watch(kind,code){
 }
 async function stop(){
  const prev=active;
- active=null;if(unsubscribe){unsubscribe();unsubscribe=null}clearInterval(heartbeat);heartbeat=null;
+ active=null;if(unsubscribe){unsubscribe();unsubscribe=null}clearInterval(heartbeat);heartbeat=null;clearInterval(queuePoll);queuePoll=null;
  $("fw-match-panel").hidden=true;$("fw-match-actions").hidden=false;
  if(prev&&!matched)try{
  const r=ref(db,ROOT+"/"+prev.kind+"/"+prev.code);
@@ -78,6 +79,25 @@ $("fw-match-quick").onclick=async()=>{
   await set(ref(db,ROOT+"/quick/"+code),{owner:localId,ownerUid:ownUid(),status:"waiting",createdAt:now,updatedAt:now});
   // Keep matched lobby available when a player navigates to the game.
   watch("quick",code);
+  // The first player must keep checking: otherwise two players starting at the
+  // same time can each create a waiting room and never discover one another.
+  queuePoll=setInterval(async()=>{
+   if(!active||active.kind!=="quick"||matched)return;
+   try{
+    const items=(await get(ref(db,ROOT+"/quick"))).val()||{};
+    for(const [otherKey,item] of Object.entries(items)){
+     if(otherKey===active.code||item?.status!=="waiting"||Date.now()-item.updatedAt>45000||item.owner===localId)continue;
+     if(ownUid()&&item.ownerUid===ownUid()&&!testAllowed())continue;
+     // Deterministic order prevents both participants trying to join each other.
+     if(active.code.localeCompare(otherKey)<0)continue;
+     const claim=await runTransaction(ref(db,ROOT+"/quick/"+otherKey),v=>{
+      if(!v||v.status!=="waiting"||Date.now()-v.updatedAt>45000||v.owner===localId||(ownUid()&&v.ownerUid===ownUid()&&!testAllowed()))return;
+      v.guest=localId;v.game=GAMES[Math.floor(Math.random()*GAMES.length)][0];v.status="matched";return v;
+     },{applyLocally:false});
+     if(claim.committed){const oldCode=active.code;await runTransaction(ref(db,ROOT+"/quick/"+oldCode),v=>v?.owner===localId&&v.status==="waiting"?null:undefined,{applyLocally:false});watch("quick",otherKey);return}
+    }
+   }catch(e){say("상대 재검색 오류: "+e.message)}
+  },3000);
  }catch(e){$("fw-match-actions").hidden=false;say("매칭 시작 실패: "+e.message)}
 };
 $("fw-match-friend").onclick=async()=>{
