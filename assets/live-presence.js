@@ -12,18 +12,23 @@ const sessionId=crypto.randomUUID().replace(/-/g,"");
 const rawProject=(location.pathname.split("/").filter(Boolean)[0]||"Formwheel");
 const project=(rawProject==="Formwheel"?"Hub":rawProject.replace(/^Formwheel_/i,"")).slice(0,60);
 const sessionKey=()=>auth.currentUser?.uid;
-let registered=null,disconnect=null,connection=true,generation=0;
+let registered=null,disconnect=null,connection=true,generation=0,heartbeatTimer=null;
+const STALE_MS=5*60*1000;
+const isFresh=v=>v&&typeof v.lastSeen==="number"&&Date.now()-v.lastSeen<STALE_MS;
+const stateOf=v=>!v||typeof v!=="object"?"unknown":typeof v.lastSeen!=="number"?"legacy":Date.now()-v.lastSeen>=STALE_MS?"stale":"fresh";
+const sessionEntries=s=>Object.values(s||{}).filter(v=>v&&typeof v==="object");
+const activeEntries=s=>sessionEntries(s).filter(isFresh);
 const say=(message)=>{if(note)note.textContent=message};
 onValue(ref(db,base),snapshot=>{
  const val=snapshot.val()||{},unique=new Set();
  latestSessions=val;
  if(adminUnlocked)renderAdmin();
- Object.entries(val).forEach(([uid,sessions])=>{if(sessions&&typeof sessions==="object"&&Object.keys(sessions).length)unique.add(uid)});
+ Object.entries(val).forEach(([uid,sessions])=>{if(activeEntries(sessions).length)unique.add(uid)});
  if(label)label.textContent=unique.size.toLocaleString("ko-KR")+"명";
- say("공통 접속 기록 · 지원 게임 포함 · 로그인/게스트");
+ say("최근 5분 내 접속 확인 · 공통 게임 포함");
 },error=>{if(label)label.textContent="조회 불가";say("Firebase 읽기 권한을 확인해 주세요 · "+(error.code||"연결 오류"))});
 onValue(ref(db,".info/connected"),snapshot=>{connection=snapshot.val()===true;if(connection)start(auth.currentUser);else say("연결 재시도 중…")});
-async function clear(){const old=registered,d=disconnect;registered=null;disconnect=null;if(d)try{await d.cancel()}catch{}if(old)try{await remove(old)}catch{}}
+async function clear(){if(heartbeatTimer)clearInterval(heartbeatTimer);heartbeatTimer=null;const old=registered,d=disconnect;registered=null;disconnect=null;if(d)try{await d.cancel()}catch{}if(old)try{await remove(old)}catch{}}
 async function start(user){
  const token=++generation;await clear();
  if(token!==generation||!user||!connection)return;
@@ -31,9 +36,10 @@ async function start(user){
  try{
   const guard=onDisconnect(node);await guard.remove();
   if(token!==generation){await guard.cancel();return}
-  await set(node,{joinedAt:serverTimestamp(),project});
+  await set(node,{joinedAt:serverTimestamp(),lastSeen:serverTimestamp(),project,accountType:user.isAnonymous?"guest":"account"});
   if(token!==generation){await guard.cancel();await remove(node);return}
   registered=node;disconnect=guard;
+  heartbeatTimer=setInterval(()=>{if(registered===node&&connection)set(ref(db,base+"/"+user.uid+"/"+sessionId+"/lastSeen"),serverTimestamp()).catch(()=>{});},60000);
  }catch(error){say("접속자 등록 실패 · Firebase Rules 확인 ("+(error.code||"연결 오류")+")")}
 }
 onAuthStateChanged(auth,async user=>{
@@ -46,6 +52,7 @@ window.addEventListener("pagehide",()=>{if(registered)remove(registered).catch((
 /* Administrator presence inspector: UI gate only, not a Firebase security boundary. */
 const presenceRoot=document.getElementById("fw-live-presence");
 let adminUnlocked=false,profileCache=new Map(),profileLoad=0;
+setInterval(()=>{if(adminUnlocked)renderAdmin();},30000);
 if(presenceRoot){
  const trigger=document.createElement("button");
  trigger.type="button";trigger.textContent="접속자 확인";
@@ -68,20 +75,29 @@ if(presenceRoot){
 function renderAdmin(){
  if(!adminUnlocked||!presenceRoot)return;
  const list=document.getElementById("presence-list");if(!list)return;
- const entries=Object.entries(latestSessions).filter(([,sessions])=>sessions&&typeof sessions==="object"&&Object.keys(sessions).length);
+ const entries=Object.entries(latestSessions).filter(([,sessions])=>sessionEntries(sessions).length);
  list.replaceChildren();
- const header=document.createElement("p");header.style.fontWeight="700";const gameCounts={};for(const [,sessions] of entries){for(const game of new Set(Object.values(sessions).map(v=>typeof v?.project==="string"?(v.project==="Formwheel"?"Hub":v.project.replace(/^Formwheel_/i,"")):"알 수 없음"))){gameCounts[game]=(gameCounts[game]||0)+1}}header.textContent="현재 "+entries.length+"명 · 위치별 "+Object.entries(gameCounts).map(([k,v])=>k+" "+v+"명").join(" / ");list.appendChild(header);
+ const header=document.createElement("p");header.style.fontWeight="700";const gameCounts={};for(const [,sessions] of entries){for(const game of new Set(activeEntries(sessions).map(v=>typeof v?.project==="string"?(v.project==="Formwheel"?"Hub":v.project.replace(/^Formwheel_/i,"")):"알 수 없음"))){gameCounts[game]=(gameCounts[game]||0)+1}}header.textContent="최근 5분 접속 확인 "+entries.filter(([,s])=>activeEntries(s).length).length+"명 · 위치별 "+Object.entries(gameCounts).map(([k,v])=>k+" "+v+"명").join(" / ");list.appendChild(header);
  if(!entries.length){const empty=document.createElement("p");empty.textContent="현재 기록된 접속자가 없습니다.";list.appendChild(empty);return}
  entries.slice(0,200).forEach(([uid,sessions])=>{
-  const values=Object.values(sessions).filter(x=>x&&typeof x==="object");
+  const values=sessionEntries(sessions);
   const line=document.createElement("div");line.style.cssText="padding:12px 0;border-top:1px solid #e7eaf1";
-  const name=document.createElement("strong");name.textContent="👤 "+(profileCache.get(uid)||"게스트 / 비공개 사용자");line.appendChild(name);
+  const name=document.createElement("strong");
+  const label=profileCache.get(uid);
+  const kind=values.some(x=>x.accountType==="account")?"로그인 기록":values.some(x=>x.accountType==="guest")?"익명 게스트": "계정 유형 기록 없음";
+  const self=auth.currentUser?.uid===uid?" · 내 현재 계정":"";
+  name.textContent="👤 "+(label||"닉네임 확인 안 됨")+" ("+kind+self+")";line.appendChild(name);
   const detail=document.createElement("div");detail.style.cssText="font-size:12px;color:#6b7280;margin-top:5px";
   const joined=values.map(x=>typeof x.joinedAt==="number"?x.joinedAt:null).filter(Boolean);
   const first=joined.length?new Date(Math.min(...joined)).toLocaleString("ko-KR"):"확인 불가";
   const locations=[...new Set(values.map(x=>typeof x.project==="string"?(x.project==="Formwheel"?"Hub":x.project.replace(/^Formwheel_/i,"")):"알 수 없음"))];
-  detail.textContent="📍 "+locations.join(" · ")+" | "+values.length+"개 세션 · 최초 접속 "+first;line.appendChild(detail);list.appendChild(line);
-  if(!profileCache.has(uid))loadName(uid);
+  const fresh=values.filter(isFresh).length;
+  const legacy=values.filter(v=>stateOf(v)==="legacy").length;
+  const stale=values.filter(v=>stateOf(v)==="stale").length;
+  const last=Math.max(0,...values.map(v=>typeof v.lastSeen==="number"?v.lastSeen:0));
+  const status=fresh?"🟢 최근 접속 확인":stale?"⚪ 5분 이상 갱신 없음": "❔ 이전 버전 기록 · 상태 불명";
+  detail.textContent=status+" | 📍 "+locations.join(" · ")+" | "+values.length+"개 세션 (활성 "+fresh+", 오래됨 "+stale+", 미확인 "+legacy+") · 최초 접속 "+first+(last?" · 마지막 확인 "+new Date(last).toLocaleString("ko-KR"):"");line.appendChild(detail);list.appendChild(line);
+  if(!profileCache.has(uid)&&values.some(v=>v.accountType==="account"||!v.accountType))loadName(uid);
  });
 }
 async function loadName(uid){
