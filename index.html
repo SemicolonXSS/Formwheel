@@ -65,6 +65,7 @@ header .fw-profile-trigger{margin-left:0}
 <button id="fw-match-friend" type="button" style="background:#eff1ff;color:#303a86;border:0;border-radius:12px;padding:14px 20px;font:inherit;font-weight:800;cursor:pointer">🎲 랜덤 플레이 · 코드 생성</button>
 <label style="display:flex;gap:5px;align-items:center"><input id="fw-match-input" inputmode="numeric" maxlength="6" placeholder="친구 코드 6자리" style="max-width:145px;padding:12px;border:1px solid #d7dcee;border-radius:10px"><button id="fw-match-friend-join" type="button" style="padding:12px;border:0;border-radius:10px;cursor:pointer">코드 참가</button></label>
 </div>
+<label style="display:block;margin:11px 0;font-size:13px;color:#526078"><input type="checkbox" id="fw-match-testmode"> 🧪 같은 계정의 다른 탭과 테스트 허용 (빠른 대전)</label>
 <div id="fw-match-panel" hidden style="border-top:1px solid #e4e7ef;margin-top:14px;padding-top:14px"><strong>매칭 코드: <span id="fw-match-code">—</span></strong> <button id="fw-match-copy" type="button">복사</button><p>매칭 완료 시 두 플레이어에게 동일한 게임이 선택됩니다.</p><a id="fw-match-launch" hidden target="_blank" rel="noopener" style="display:inline-block;padding:11px 16px;border-radius:10px;background:#373cc3;color:white;text-decoration:none;font-weight:800">선택된 게임 열기 →</a> <button id="fw-match-stop" type="button">나가기 / 매칭 취소</button></div>
 <p id="fw-match-status" role="status" aria-live="polite" style="margin:12px 0 0;color:#4a5670"></p>
 </section>
@@ -407,7 +408,7 @@ if ("serviceWorker" in navigator) {
   });
 })();
 </script>
-<script type="module" src="./assets/random-match.js?v=20261011-roomfix"></script>
+<script type="module" src="./assets/random-match.js?v=20261011-selfmatch"></script>
 <script>
 (()=>{const modal=document.getElementById("fw-matchmaking");const quick=document.getElementById("fw-nav-quick"),friend=document.getElementById("fw-nav-friend");
 function open(mode){modal.hidden=false;document.getElementById("fw-match-actions").hidden=false;if(mode==="quick"){document.getElementById("fw-match-quick").click()}}
