@@ -1,0 +1,55 @@
+import{initializeApp,getApps}from"https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+import{getDatabase,ref,onValue,runTransaction}from"https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
+const p=new URLSearchParams(location.search),code=p.get("fwMatch"),kind=p.get("fwKind"),side=p.get("fwSide");
+if(code&&["quick","friend"].includes(kind)&&["owner","guest"].includes(side)){
+const app=getApps()[0]||initializeApp({apiKey:"AIzaSyBreTSe1m0-xlbF4aupnU5isRZCihR25IE",authDomain:"formwheel.firebaseapp.com",databaseURL:"https://formwheel-default-rtdb.firebaseio.com",projectId:"formwheel",appId:"1:431583088241:web:74e0e34ea1e3e1170c55d0"});
+const db=getDatabase(app),path=ref(db,"formwheelV2/matchmaking/"+kind+"/"+code);
+const game=location.pathname.match(/Formwheel_([^/]+)/)?.[1]?.toLowerCase();
+const $=id=>document.getElementById(id),pause=ms=>new Promise(r=>setTimeout(r,ms));
+const adapters={
+ reflex:{start:()=>{},name:"battleName",create:"battleCreate",join:"battleJoin",input:"battleCode",display:"battleCode"},
+ risk:{start:()=>{},name:"nameInput",create:"createBtn",join:"joinConfirm",input:"roomInput",display:"roomCode"},
+ time:{start:()=>{if($("battleSetup")?.classList.contains("hidden"))$("battleMode")?.click()},name:"nickname",create:"createRoom",join:"joinRoom",input:"roomCode",display:"roomCodeDisplay"},
+ bomb:{start:()=>{},name:"name",create:"createBtn",join:"joinBtn",input:"roomInput",display:"roomCode"},
+ gcrown:{start:()=>{window.showBattleSetup?.()},name:"battleName",create:null,join:null,input:"joinCode",display:"roomCodeDisplay"},
+ territory:{start:()=>{document.querySelector('[value="online2"]')?.click();},name:null,create:"createRoom",join:"joinRoom",input:"roomCode",display:"roomDetail"},
+ battle:{start:()=>{},name:null,create:"createBtn",join:"joinBtn",input:"joinPin",display:null}
+};
+const a=adapters[game];if(a){
+const box=document.createElement("div");box.style.cssText="position:fixed;bottom:16px;left:16px;right:16px;max-width:480px;margin:auto;z-index:99999;background:#101c36;color:white;padding:16px;border-radius:17px;box-shadow:0 15px 50px #0005;font:14px system-ui";const label=document.createElement("div");label.textContent="🎮 Formwheel 매칭 방에 연결 중…";box.append(label);const close=document.createElement("button");close.textContent="안내 닫기";close.style.cssText="float:right;margin-top:8px";close.onclick=()=>box.remove();box.append(close);document.body.append(box);
+const say=t=>label.textContent="🎮 "+t;
+const nick=()=>{if(a.name&&$(a.name)&&!$(a.name).value)$(a.name).value="플레이어-"+Math.floor(Math.random()*9000+1000)};
+let initiated=false,joined=false;
+async function waitUntil(check,timeout=16000){const start=Date.now();while(Date.now()-start<timeout){const v=check();if(v)return v;await pause(300)}throw Error("게임 화면 준비 시간 초과")}
+function clickButton(id){const b=$(id);if(!b)throw Error("버튼을 찾지 못했습니다: "+id);b.click()}
+function start(){a.start();nick()}
+async function create(){
+ start();
+ if(game==="gcrown"){await waitUntil(()=>typeof window.createRoom==="function");window.createRoom()}
+ else if(game==="battle"){clickButton("createBattle");await waitUntil(()=> $("hostName")&&$("createBtn"));$("hostName").value="랜덤-"+Math.floor(Math.random()*9000);await pause(800);clickButton("createBtn")}
+ else{await waitUntil(()=>$(a.create));clickButton(a.create)}
+ const room=await waitUntil(()=>{
+   if(game==="battle"){const text=document.body.innerText.match(/(?:Battle 코드|방 코드)\s*[:：]?\s*(\d{4})/);return text?.[1]}
+   if(game==="territory"){return location.hash.match(/room=([A-Z2-9]{6})/)?.[1]}
+   return $(a.display)?.textContent?.trim()?.match(/^[A-Z0-9]{4,6}$/)?.[0]
+ },20000);
+ const tx=await runTransaction(path,v=>{if(!v||v.status!=="matched"||v.gameRoom)return;v.gameRoom=room;v.gameReadyAt=Date.now();return v},{applyLocally:false});
+ if(!tx.committed)throw Error("매칭 방 번호 저장에 실패했어요");
+ say("같은 게임방 생성 완료 · 코드 "+room+" · 상대 입장 대기");
+}
+async function join(room){
+ start();nick();
+ if(game==="gcrown"){await waitUntil(()=>typeof window.joinRoom==="function");$("joinCode").value=room;window.joinRoom()}
+ else if(game==="battle"){clickButton("joinBattle");await waitUntil(()=>$("joinPin")&&$("joinBtn"));$("joinPin").value=room;$("joinName").value="랜덤-"+Math.floor(Math.random()*9000);clickButton("joinBtn")}
+ else{$(a.input).value=room;clickButton(a.join)}
+ say("매칭된 게임방 "+room+"에 참가 요청을 보냈어요.");
+}
+onValue(path,async snap=>{
+ const v=snap.val();if(!v){say("매칭 정보가 없어졌어요. Hub에서 다시 매칭해 주세요.");return}
+ try{
+ if(side==="owner"&&!initiated){initiated=true;await pause(900);await create()}
+ if(side==="guest"&&v.gameRoom&&!joined){joined=true;await pause(900);await join(v.gameRoom)}
+ if(side==="guest"&&!v.gameRoom)say("상대가 게임방을 만들고 있어요…");
+ }catch(e){say("자동 참가 실패: "+e.message+" · 게임에서 직접 방을 만들거나 참가해 주세요.");console.warn("match bridge",e)}
+},e=>say("Firebase 매칭 연결 오류: "+e.message));
+}}
