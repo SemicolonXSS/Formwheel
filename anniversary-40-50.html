@@ -9,7 +9,7 @@
 <article class="card"><div class="symbol">🏅</div><h3>40→50 Anniversary</h3><p>10월 11일~20일에 직접 수령하는 기본 기념 배지</p><button id="claim-base" disabled>로그인 확인 중…</button></article>
 <article class="card"><div class="symbol">👑</div><h3>DAY 40 · Original</h3><p>10월 11일 하루만 수령 가능한 특별 배지</p><button id="claim-day40" disabled>로그인 확인 중…</button></article>
 <article class="card"><div class="symbol">✨</div><h3>DAY 50 · Finale</h3><p>10월 21일 피날레 전용 배지 · 당일 직접 수령</p><button id="claim-day50" disabled>10월 21일 공개</button></article>
-</div><p id="status" role="status" aria-live="polite"></p></section>
+</div><p id="status" role="status" aria-live="polite"></p><p class="muted" style="font-size:13px">로그인이 필요하다면 <a href="./#fw-account">Hub의 로그인 영역</a>으로 이동하세요.</p></section>
 <section class="section card"><h2>🎮 4 GAMES CHALLENGE</h2><p class="muted">10월 11~20일 사이에 서로 다른 게임 4종을 정상 완료하면 Master 배지를 받을 수 있어요.</p><div class="four"><div class="slot">🎮<br>1</div><div class="slot">🎮<br>2</div><div class="slot">🎮<br>3</div><div class="slot">🎮<br>4</div></div><div class="progress"><div class="bar" id="progress-bar"></div></div><p id="challenge-count">검증된 완료 기록 0/4</p><p class="notice">현재는 게임별 신뢰 가능한 완료 이벤트 연동을 준비 중입니다. 단순 방문·새로고침·클릭 기록은 완료로 계산하지 않으며, 검증 전에는 Master 배지를 지급하지 않습니다.</p><a class="button" href="./#projects">게임 찾아보기 ↗</a></section>
 <section class="section card"><h2>📅 10일간의 축제</h2><p>10월 11일 — DAY 40 시작 및 한정 배지</p><p>10월 12~19일 — 챌린지 진행</p><p>10월 20일 — 챌린지 마감</p><p>10월 21일 — DAY 50 피날레</p></section>
 <section class="section"><p class="notice">보안 안내: 기념 배지 수령은 Firebase 로그인과 중복 방지 트랜잭션을 사용합니다. 서버 전용 지급 검증 및 데이터베이스 보안 규칙은 별도 검증이 필요하므로, 현재 표시는 베타 이벤트 상태입니다.</p></section>
@@ -17,19 +17,50 @@
 <script type="module">
 import {initializeApp,getApps} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 import {getAuth,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
-import {getDatabase,ref,get,runTransaction,serverTimestamp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
+import {getDatabase,ref,get,runTransaction,serverTimestamp,onValue} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
 const cfg={apiKey:"AIzaSyBreTSe1m0-xlbF4aupnU5isRZCihR25IE",authDomain:"formwheel.firebaseapp.com",databaseURL:"https://formwheel-default-rtdb.firebaseio.com",projectId:"formwheel",storageBucket:"formwheel.firebasestorage.app",messagingSenderId:"431583088241",appId:"1:431583088241:web:74e0e34ea1e3e1170c55d0"};
 const app=getApps().find(x=>x.name==="[DEFAULT]")||initializeApp(cfg),auth=getAuth(app),db=getDatabase(app);
 const $=id=>document.getElementById(id);
 const start=Date.parse("2026-10-10T15:00:00Z"),end=Date.parse("2026-10-20T15:00:00Z"),day40End=Date.parse("2026-10-11T15:00:00Z"),finaleEnd=Date.parse("2026-10-21T15:00:00Z");
-let user=null,offset=0,badges={}; const status=t=>$("status").textContent=t;
+let user=null,offset=0,badges={},clockReady=false,busy=false; const status=t=>$("status").textContent=t;
 function now(){return Date.now()+offset}function eligible(type){const n=now();return type==="base"?n>=start&&n<end:type==="day40"?n>=start&&n<day40End:n>=end&&n<finaleEnd}
 const labels={base:"기념 배지 받기",day40:"DAY 40 배지 받기",day50:"DAY 50 배지 받기"};
 function render(){const n=now();$("period").textContent=n<start?"곧 시작해요":n<end?"🎉 40→50 DAYS 이벤트 진행 중!":n<finaleEnd?"✨ DAY 50 피날레!":"이벤트가 종료되었어요.";
-for(const type of Object.keys(labels)){const b=$("claim-"+type);b.disabled=!user||!eligible(type)||!!badges[type];b.textContent=badges[type]?"✓ 수령 완료":!user?"로그인 후 수령":!eligible(type)?n<(type==="day50"?end:start)?"오픈 예정":"수령 기간 종료":labels[type]}}
-async function refresh(){if(!user){badges={};render();status("Formwheel ID 로그인 후 배지를 수령할 수 있어요. Hub 하단에서 로그인해 주세요.");return}try{const snap=await get(ref(db,"formwheelV2/anniversary4050/"+user.uid+"/badges"));badges=snap.val()||{};render();status("로그인 완료 · 배지 상태를 불러왔어요.")}catch(e){status("배지 정보 읽기 실패: "+(e.code||e.message));render()}}
-for(const type of Object.keys(labels))$("claim-"+type).addEventListener("click",async()=>{if(!user||!eligible(type))return;const b=$("claim-"+type);b.disabled=true;status("배지 수령 처리 중…");try{const path=ref(db,"formwheelV2/anniversary4050/"+user.uid+"/badges/"+type);const outcome=await runTransaction(path,current=>current||{claimedAt:serverTimestamp(),badgeId:type},{applyLocally:false});if(outcome.committed){badges[type]=outcome.snapshot.val();status("🎉 배지가 계정에 기록되었어요!")}else status("기존 배지 기록을 확인했어요.");await refresh()}catch(e){status("수령 실패: "+(e.code||e.message)+". Firebase 권한과 연결을 확인해 주세요.")}finally{render()}});
-get(ref(db,".info/serverTimeOffset")).then(s=>{offset=Number(s.val())||0;render()}).catch(()=>render());
+for(const type of Object.keys(labels)){const b=$("claim-"+type);b.disabled=busy||!clockReady||!user||!eligible(type)||!!badges[type];b.textContent=badges[type]?"✓ 수령 완료":!user?"로그인 후 수령":!clockReady?"서버 시간 확인 중":!eligible(type)?n<(type==="day50"?end:start)?"오픈 예정":"수령 기간 종료":labels[type]}}
+async function refresh(quiet=false){
+ if(!user){badges={};render();status("Formwheel ID 로그인 후 배지를 수령할 수 있어요. Hub 하단에서 Google 로그인을 완료해 주세요.");return}
+ try{
+  const snap=await get(ref(db,"formwheelV2/anniversary4050/"+user.uid+"/badges"));
+  badges=snap.val()||{};render();
+  if(!quiet)status("로그인 완료 · 배지 상태를 불러왔어요.");
+ }catch(e){
+  badges={};render();
+  status("Firebase 읽기 실패 ("+(e.code||"unknown")+"). "+(e.code==="PERMISSION_DENIED"||e.code==="permission-denied"?"데이터베이스 Rules에서 이벤트 계정 읽기 권한을 확인해 주세요.":"인터넷 연결과 Firebase 상태를 확인해 주세요."));
+ }
+}
+for(const type of Object.keys(labels))$("claim-"+type).addEventListener("click",async()=>{
+ if(busy||!clockReady||!user||!eligible(type))return;
+ busy=true;render();status("배지 수령 처리 중…");
+ try{
+  const path=ref(db,"formwheelV2/anniversary4050/"+user.uid+"/badges/"+type);
+  const outcome=await runTransaction(path,current=>{
+   if(current!==null)return;
+   return {claimedAt:serverTimestamp(),badgeId:type};
+  },{applyLocally:false});
+  if(outcome.snapshot.exists())badges[type]=outcome.snapshot.val();
+  render();
+  if(outcome.committed)status("🎉 배지를 획득했어요! Firebase에 기록되었습니다.");
+  else if(outcome.snapshot.exists())status("이미 수령한 배지예요. 기존 기록을 유지했어요.");
+  else status("배지 수령이 완료되지 않았어요. 다시 시도해 주세요.");
+ }catch(e){
+  const code=e.code||"unknown";
+  status("수령 실패 ("+code+"): "+(String(code).toLowerCase().includes("permission")?"Firebase Database Rules에서 본인 계정 배지 생성 권한을 확인해야 해요.":e.message||"연결 상태를 확인해 주세요."));
+ }finally{busy=false;render()}
+});
+onValue(ref(db,".info/serverTimeOffset"),snap=>{
+ offset=Number(snap.val())||0;clockReady=true;render();
+},()=>{clockReady=false;render();status("서버 시간 확인에 실패했어요. 새로고침 후 다시 시도해 주세요.")});
 onAuthStateChanged(auth,u=>{user=u&&!u.isAnonymous?u:null;refresh()});
+
 render();
 </script></body></html>
