@@ -12,7 +12,7 @@ const adapters={
  time:{start:()=>{if($("battleSetup")?.classList.contains("hidden"))$("battleMode")?.click()},name:"nickname",create:"createRoom",join:"joinRoom",input:"roomCode",display:"roomCodeDisplay"},
  bomb:{start:()=>{},name:"name",create:"createBtn",join:"joinBtn",input:"roomInput",display:"roomCode"},
  gcrown:{start:()=>{window.showBattleSetup?.()},name:"battleName",create:null,join:null,input:"joinCode",display:"roomCodeDisplay"},
- territory:{start:()=>{document.querySelector('[value="online2"]')?.click();},name:null,create:"createRoom",join:"joinRoom",input:"roomCode",display:"roomDetail"},
+ territory:{start:()=>{document.querySelector('[data-mode="online2"]')?.click();},name:null,create:"createRoom",join:"joinRoom",input:"roomCode",display:"roomDetail"},
  battle:{start:()=>{},name:null,create:"createBtn",join:"joinBtn",input:"joinPin",display:null}
 };
 const a=adapters[game];if(a){
@@ -25,11 +25,11 @@ function clickButton(id){const b=$(id);if(!b)throw Error("버튼을 찾지 못�
 function start(){a.start();nick()}
 async function create(){
  start();
- if(game==="gcrown"){await waitUntil(()=>typeof window.createRoom==="function");window.createRoom()}
- else if(game==="battle"){clickButton("createBattle");await waitUntil(()=> $("hostName")&&$("createBtn"));$("hostName").value="랜덤-"+Math.floor(Math.random()*9000);await pause(800);clickButton("createBtn")}
+ if(game==="gcrown"){await waitUntil(()=>typeof window.createRoom==="function");await window.createRoom()}
+ else if(game==="battle"){await waitUntil(()=> $("createBattle"));clickButton("createBattle");await waitUntil(()=> $("hostName")&&$("createBtn"));$("hostName").value="랜덤-"+Math.floor(Math.random()*9000);await pause(800);clickButton("createBtn")}
  else{await waitUntil(()=>$(a.create));clickButton(a.create)}
  const room=await waitUntil(()=>{
-   if(game==="battle"){const text=document.body.innerText.match(/(?:Battle 코드|방 코드)\s*[:：]?\s*(\d{4})/);return text?.[1]}
+   if(game==="battle"){return document.querySelector(".pin-box .pin")?.textContent?.trim()?.match(/^\d{4}$/)?.[0]}
    if(game==="territory"){return location.hash.match(/room=([A-Z2-9]{6})/)?.[1]}
    return $(a.display)?.textContent?.trim()?.match(/^[A-Z0-9]{4,6}$/)?.[0]
  },20000);
@@ -39,8 +39,8 @@ async function create(){
 }
 async function join(room){
  start();nick();
- if(game==="gcrown"){await waitUntil(()=>typeof window.joinRoom==="function");$("joinCode").value=room;window.joinRoom()}
- else if(game==="battle"){clickButton("joinBattle");await waitUntil(()=>$("joinPin")&&$("joinBtn"));$("joinPin").value=room;$("joinName").value="랜덤-"+Math.floor(Math.random()*9000);clickButton("joinBtn")}
+ if(game==="gcrown"){await waitUntil(()=>typeof window.joinRoom==="function");$("joinCode").value=room;await window.joinRoom()}
+ else if(game==="battle"){await waitUntil(()=> $("joinBattle"));clickButton("joinBattle");await waitUntil(()=>$("joinPin")&&$("joinBtn"));$("joinPin").value=room;$("joinName").value="랜덤-"+Math.floor(Math.random()*9000);clickButton("joinBtn")}
  else{$(a.input).value=room;clickButton(a.join)}
  say("매칭된 게임방 "+room+"에 참가 요청을 보냈어요.");
 }
