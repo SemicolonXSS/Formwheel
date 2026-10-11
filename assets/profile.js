@@ -29,7 +29,7 @@ function showBadges(){
  const select=get("fw-featured-select"), selected=select.value;select.replaceChildren();
  const none=document.createElement("option");none.value="";none.textContent="대표 업적 없음";select.append(none);
  for(const b of BADGES.filter(b=>earnedBadge(b,awards,homeData,profileData,stats))){const option=document.createElement("option");option.value=b.id;option.textContent=b.icon+" "+b.title;select.append(option)}
- select.value=[...select.options].some(o=>o.value===selected)?selected:featuredId;
+ select.value=[...select.options].some(o=>o.value===selected&&selected)?selected:featuredId;
  if(select.selectedIndex<0)select.value="";
  const featured=BADGES.find(b=>b.id===featuredId&&earnedBadge(b,awards,homeData,profileData,stats));
  get("fw-featured-display").textContent=featured?featured.icon+" "+featured.title:"선택한 배지가 없습니다.";
@@ -66,6 +66,11 @@ window.addEventListener("fw:friend-found",async event=>{
   }
   if(!owned.length){const p=document.createElement("p");p.textContent="공개된 이벤트 배지가 없어요.";grid.append(p)}
   view.append(grid);
+  try{
+   const fSnap=await read(ref(db,"formwheelV2/featuredBadges/"+target.uid));
+   const featured=BADGES.find(b=>b.id===fSnap.val()&&owned.some(x=>x.id===b.id));
+   if(featured){const p=document.createElement("p");p.textContent="🌟 대표 업적: "+featured.icon+" "+featured.title;view.insertBefore(p,grid)}
+  }catch{const p=document.createElement("small");p.textContent="대표 업적은 공개 권한이 없어 표시하지 못했어요.";view.append(p)}
  }catch(e){state.textContent="배지 공개 조회 불가 · Firebase 읽기 권한 또는 공개 설정을 확인해 주세요. ("+(e.code||"연결 오류")+")";}
 });
 
