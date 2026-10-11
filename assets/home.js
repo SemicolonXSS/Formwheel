@@ -44,7 +44,7 @@ function recompute(){
  if(cache.date!==date||cache.fingerprint!==fingerprint||!Array.isArray(cache.slots)||cache.slots.some(slot=>!all.has(slot.id))){
   const chosen=new Set();
   const choose=(kind,rank)=>{
-   const options=pool.filter(p=>!chosen.has(p.name.toLowerCase())&&(kind!=="new"||p.category==="game"));
+   const options=pool.filter(p=>!chosen.has(p.name.toLowerCase())&&((kind!=="new"&&kind!=="familiar")||p.category==="game"));
    options.sort((a,b)=>rank(b)-rank(a)||a.name.localeCompare(b.name));
    if(!options.length)return null;
    const id=options[0].name.toLowerCase();chosen.add(id);return {id,kind};
@@ -53,7 +53,7 @@ function recompute(){
   const newSlot=choose("new",added);
   const familiarSlot=choose("familiar",p=>{
    const v=state.visits[p.name.toLowerCase()]||{};
-   return (Number(v.count)||0)*1e13+(Number(v.last)||0);
+   return (Number(v.count)||0)*1e13+(Number(v.last)||0)+(defaults.includes(p.name.toLowerCase())?1:0);
   });
   cache={date,fingerprint,slots:[updatedSlot,newSlot,familiarSlot].filter(Boolean)};
   save(cacheKey,cache);
