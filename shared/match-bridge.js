@@ -1,5 +1,5 @@
 import{initializeApp,getApps}from"https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
-import{getDatabase,ref,onValue,runTransaction}from"https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
+import{getDatabase,ref,get,onValue,runTransaction}from"https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
 const p=new URLSearchParams(location.search),code=p.get("fwMatch"),kind=p.get("fwKind"),side=p.get("fwSide");
 if(code&&["quick","friend"].includes(kind)&&["owner","guest"].includes(side)){
 const app=getApps()[0]||initializeApp({apiKey:"AIzaSyBreTSe1m0-xlbF4aupnU5isRZCihR25IE",authDomain:"formwheel.firebaseapp.com",databaseURL:"https://formwheel-default-rtdb.firebaseio.com",projectId:"formwheel",appId:"1:431583088241:web:74e0e34ea1e3e1170c55d0"});
@@ -15,6 +15,8 @@ const adapters={
  territory:{start:()=>{document.querySelector('[data-mode="online2"]')?.click();},name:null,create:"createRoom",join:"joinRoom",input:"roomCode",display:"roomDetail"},
  battle:{start:()=>{},name:null,create:"createBtn",join:"joinBtn",input:"joinPin",display:null}
 };
+const roomRoots={reflex:"reflexRooms",battle:"battle",territory:"territoryRooms",risk:"rooms",gcrown:"gcrown/rooms",time:"timeRooms",bomb:"bombRooms"};
+async function checkRoom(room){if(!/^[A-Za-z0-9]{4,6}$/.test(room))return false;const snap=await get(ref(db,roomRoots[game]+"/"+room));if(!snap.exists())return false;const d=snap.val();if(game==="risk")return d.phase==="lobby" && (d.players||[]).length===1;if(game==="time")return d.meta?.status==="waiting";if(game==="battle")return d.state?.phase==="waiting";if(game==="territory")return !d.started;if(game==="reflex")return d.status==="lobby";if(game==="gcrown")return !d.started;if(game==="bomb")return d.status==="waiting";return false;}
 const a=adapters[game];if(a){
 const box=document.createElement("div");box.style.cssText="position:fixed;bottom:16px;left:16px;right:16px;max-width:480px;margin:auto;z-index:99999;background:#101c36;color:white;padding:16px;border-radius:17px;box-shadow:0 15px 50px #0005;font:14px system-ui";const label=document.createElement("div");label.textContent="🎮 Formwheel 매칭 방에 연결 중…";box.append(label);const close=document.createElement("button");close.textContent="안내 닫기";close.style.cssText="float:right;margin-top:8px";close.onclick=()=>box.remove();box.append(close);document.body.append(box);
 const say=t=>label.textContent="🎮 "+t;
@@ -33,15 +35,18 @@ async function create(){
    if(game==="territory"){return location.hash.match(/room=([A-Z2-9]{6})/)?.[1]}
    return ($(a.display)?.value||$(a.display)?.textContent||"").trim().match(/^[A-Z0-9]{4,6}$/)?.[0]
  },20000);
+ if(!(await checkRoom(room)))throw Error("방이 Firebase에 생성되지 않았거나 이미 시작되었습니다.");
  const tx=await runTransaction(path,v=>{if(!v||v.status!=="matched"||v.gameRoom)return;v.gameRoom=room;v.gameReadyAt=Date.now();return v},{applyLocally:false});
  if(!tx.committed)throw Error("매칭 방 번호 저장에 실패했어요");
  say("같은 게임방 생성 완료 · 코드 "+room+" · 상대 입장 대기");
 }
 async function join(room){
+ await waitUntil(()=>checkRoom(room),1000).catch(()=>{});
+ if(!(await checkRoom(room)))throw Error("상대의 게임방이 없습니다. 방장이 다시 생성해야 합니다.");
  start();nick();
  if(game==="gcrown"){await waitUntil(()=>typeof window.joinRoom==="function");$("joinCode").value=room;await window.joinRoom()}
  else if(game==="battle"){await waitUntil(()=> $("joinBattle"));clickButton("joinBattle");await waitUntil(()=>$("joinPin")&&$("joinBtn"));$("joinPin").value=room;$("joinName").value="랜덤-"+Math.floor(Math.random()*9000);clickButton("joinBtn")}
- else{$(a.input).value=room;clickButton(a.join)}
+ else{await waitUntil(()=>$(a.input)&&$(a.join));$(a.input).value=room;clickButton(a.join)}
  say("매칭된 게임방 "+room+"에 참가 요청을 보냈어요.");
 }
 onValue(path,async snap=>{
@@ -50,6 +55,6 @@ onValue(path,async snap=>{
  if(side==="owner"&&!initiated){initiated=true;await pause(900);await create()}
  if(side==="guest"&&v.gameRoom&&!joined){joined=true;await pause(900);await join(v.gameRoom)}
  if(side==="guest"&&!v.gameRoom)say("상대가 게임방을 만들고 있어요…");
- }catch(e){say("자동 참가 실패: "+e.message+" · 게임에서 직접 방을 만들거나 참가해 주세요.");console.warn("match bridge",e)}
+ }catch(e){if(side==="owner")initiated=false;else joined=false;say("자동 참가 실패: "+e.message+" · 자동 재시도 중…");setTimeout(()=>{if(side==="owner"&&!initiated)create().then(()=>initiated=true).catch(err=>say("방 생성 실패: "+err.message));else if(side==="guest"&&v.gameRoom&&!joined)join(v.gameRoom).then(()=>joined=true).catch(err=>say("입장 실패: "+err.message));},2500);console.warn("match bridge",e)}
 },e=>say("Firebase 매칭 연결 오류: "+e.message));
 }}
