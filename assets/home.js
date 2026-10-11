@@ -3,7 +3,7 @@
 "use strict";
 const byId=id=>document.getElementById(id);
 if(typeof projects==="undefined" || !byId("fw-home")) return;
-const key="fw:hub:home:v1", cacheKey="fw:hub:recommend:v1";
+const key="fw:hub:home:v1", cacheKey="fw:hub:recommend:v2";
 const all=new Map(projects.map(p=>[p.name.toLowerCase(),p]));
 const defaults=["wheel","spy","reflex"];
 const valid=(arr,max=100)=>[...new Set((Array.isArray(arr)?arr:[]).filter(id=>typeof id==="string"&&all.has(id)))].slice(0,max);
@@ -17,22 +17,52 @@ const persist=()=>{save(key,state);render();window.dispatchEvent(new CustomEvent
 const exportState=()=>JSON.parse(JSON.stringify({version:1,pinned:state.pinned,excluded:state.excluded,visits:state.visits}));
 window.FormwheelHubHome={read:exportState,apply(remote){if(!remote||typeof remote!=="object")return;state={version:1,pinned:valid(remote.pinned,3),excluded:valid(remote.excluded),visits:remote.visits&&typeof remote.visits==="object"?remote.visits:{}};save(key,state);cache={};render()},localKey:key};
 const list=()=>projects.filter(p=>!state.pinned.includes(p.name.toLowerCase())&&!state.excluded.includes(p.name.toLowerCase()));
-function recompute(){
- const date=today();const pool=list();
- const fingerprint=[...state.pinned,...state.excluded].join("|");
- if(cache.date!==date||cache.fingerprint!==fingerprint||!Array.isArray(cache.ids)||cache.ids.some(id=>!all.has(id))){
-   const preferred=defaults.filter(id=>pool.some(p=>p.name.toLowerCase()===id));
-   const scored=pool.map((p,i)=>{const visit=state.visits[p.name.toLowerCase()]||{};const age=visit.last?Math.max(0,(Date.now()-visit.last)/86400000):999;
-     return {id:p.name.toLowerCase(),index:i,score:(age<=7?35*(1-age/8):0)+30*Math.min(Number(visit.count)||0,10)/10+(!visit.count?15:0)+((projects.length-i)/projects.length)*20};});
-   scored.sort((a,b)=>b.score-a.score||a.index-b.index);
-   const ids=state.pinned.length||Object.keys(state.visits).length?scored.map(x=>x.id):[...preferred,...scored.map(x=>x.id)];
-   cache={date,fingerprint,ids:[...new Set(ids)].slice(0,Math.max(3,ids.length))};save(cacheKey,cache);
- }
- return cache.ids.filter(id=>all.has(id)&&!state.pinned.includes(id)&&!state.excluded.includes(id)).slice(0,3);
+// GitHub repository pushed_at records are cached for one day to limit API requests.
+let updatedByRepo={};
+const repoCacheKey="fw:hub:repository-updates:v1";
+const repoCache=load(repoCacheKey,{});
+if(repoCache&&repoCache.time&&Date.now()-repoCache.time<86400000&&repoCache.data)updatedByRepo=repoCache.data;
+async function refreshRepositoryUpdates(){
+ if(repoCache&&repoCache.time&&Date.now()-repoCache.time<86400000&&repoCache.data)return;
+ try{
+  const response=await fetch("https://api.github.com/users/SemicolonXSS/repos?per_page=100&type=owner",{headers:{Accept:"application/vnd.github+json"}});
+  if(!response.ok)throw Error("GitHub API unavailable");
+  const repos=await response.json();
+  updatedByRepo=Object.fromEntries(repos.filter(r=>r.name&&r.pushed_at).map(r=>[r.name.toLowerCase(),Date.parse(r.pushed_at)]));
+  save(repoCacheKey,{time:Date.now(),data:updatedByRepo});
+  cache={};render();
+ }catch(_){ /* Offline: use available project dates. */ }
 }
-function card(id,recommend=false){
+const added=p=>Date.parse(p.addedAt||"")||0;
+const updated=p=>{
+ const pathname=(()=>{try{return new URL(p.url).pathname}catch{return ""}})();
+ const repo=pathname.split("/").filter(Boolean)[0]?.toLowerCase();
+ return updatedByRepo[repo]||Date.parse(p.updatedAt||"")||added(p);
+};
+function recompute(){
+ const date=today(),pool=list(),fingerprint=[...state.pinned,...state.excluded].join("|")+"|"+Object.keys(state.visits).map(id=>id+":"+(state.visits[id]?.count||0)).sort().join("|")+"|"+Object.keys(updatedByRepo).length;
+ if(cache.date!==date||cache.fingerprint!==fingerprint||!Array.isArray(cache.slots)||cache.slots.some(slot=>!all.has(slot.id))){
+  const chosen=new Set();
+  const choose=(kind,rank)=>{
+   const options=pool.filter(p=>!chosen.has(p.name.toLowerCase())&&(kind!=="new"||p.category==="game"));
+   options.sort((a,b)=>rank(b)-rank(a)||a.name.localeCompare(b.name));
+   if(!options.length)return null;
+   const id=options[0].name.toLowerCase();chosen.add(id);return {id,kind};
+  };
+  const updatedSlot=choose("updated",updated);
+  const newSlot=choose("new",added);
+  const familiarSlot=choose("familiar",p=>{
+   const v=state.visits[p.name.toLowerCase()]||{};
+   return (Number(v.count)||0)*1e13+(Number(v.last)||0);
+  });
+  cache={date,fingerprint,slots:[updatedSlot,newSlot,familiarSlot].filter(Boolean)};
+  save(cacheKey,cache);
+ }
+ return cache.slots.filter(slot=>all.has(slot.id)&&!state.pinned.includes(slot.id)&&!state.excluded.includes(slot.id));
+}
+function card(id,recommend=false,kind=""){
  const p=all.get(id);if(!p)return "";
- const reason=(state.visits[id]?.count?"최근 플레이":defaults.includes(id)?"대표 프로젝트":"새로운 발견");
+ const reason=kind==="updated"?"🛠️ 최근 업데이트":kind==="new"?"🆕 새로운 게임":kind==="familiar"?"💜 친숙한 게임":"고정됨";
  return '<article class="fw-home-card"><a class="fw-home-link" href="'+p.url+'" data-fw-play="'+id+'"><span class="fw-home-emoji">'+p.icon+'</span><strong>'+escapeHTML(p.name)+'</strong><small>'+(recommend?reason:"고정됨")+'</small></a><div class="fw-home-actions"><button type="button" data-fw-pin="'+id+'" aria-label="'+escapeHTML(p.name)+(recommend?" 고정":" 고정 해제")+'">'+(recommend?"📌 고정":"✓ 고정")+'</button>'+(recommend?'<button type="button" data-fw-exclude="'+id+'">추천 제외</button>':"")+'</div></article>';
 }
 function render(){
@@ -40,7 +70,7 @@ function render(){
  byId("fw-pinned-section").hidden=pins.length===0;
  byId("fw-pinned-cards").innerHTML=pins.map(id=>card(id)).join("");
  const rec=recompute();
- byId("fw-recommended-cards").innerHTML=rec.map(id=>card(id,true)).join("");
+ byId("fw-recommended-cards").innerHTML=rec.map(slot=>card(slot.id,true,slot.kind)).join("");
  byId("fw-recommended-empty").hidden=rec.length!==0;
  byId("fw-home-count").textContent=pins.length+"/3";
 }
@@ -93,5 +123,6 @@ function syncFilterCount(){const count=["modeFilter","connectionFilter","difficu
 ["modeFilter","connectionFilter","difficultyFilter","resetFilters"].forEach(id=>byId(id).addEventListener(id==="resetFilters"?"click":"change",()=>setTimeout(syncFilterCount,0)));
 syncFilterCount();
 render();
+refreshRepositoryUpdates();
 window.addEventListener("storage",e=>{if(e.key===key){const incoming=load(key,null);if(incoming){state={pinned:valid(incoming.pinned,3),excluded:valid(incoming.excluded),visits:incoming.visits||{},version:1};render()}}});
 })();
