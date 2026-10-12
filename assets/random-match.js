@@ -7,6 +7,7 @@ const ROOT="formwheelV2/matchmaking",GAMES=[
 ["reflex","⚡ Reflex"],["battle","⚔️ Battle"],["territory","🎯 Territory"],["risk","🎲 Risk"],["gcrown","👑 GCrown"],["time","⏱️ Time"],["bomb","💣 Bomb"]];
 const $=id=>document.getElementById(id),status=$("fw-match-status"),codeEl=$("fw-match-code");
 const token=()=>crypto.randomUUID?.()||Math.random().toString(36).slice(2)+Date.now();
+const FRIEND_TTL=10*60*1000;
 // Use a unique ID for each page load, even when a tab inherits sessionStorage.
 const localId=token();
 let active=null,unsubscribe=null,heartbeat=null,queuePoll=null,authUser=null,matched=false;
@@ -42,7 +43,7 @@ function watch(kind,code){
   renderMatch(s.val());
  },e=>say("실시간 연결 오류: "+e.message));
  heartbeat=setInterval(async()=>{
-  if(!active||matched)return;
+  if(!active||matched||active.code!==code||active.kind!==kind)return;
   const r=ref(db,ROOT+"/"+kind+"/"+code);
   try{await runTransaction(r,v=>{if(!v||v.status!=="waiting")return; if(v.owner===localId){v.updatedAt=Date.now();return v}}, {applyLocally:false})}catch(e){say("연결 재시도 중: "+e.message)}
  },15000);
@@ -118,10 +119,14 @@ $("fw-match-friend-join").onclick=async()=>{
   if(active)await stop();
   const r=ref(db,ROOT+"/friend/"+code);
   const result=await runTransaction(r,v=>{
-   if(!v||v.status!=="waiting"||Date.now()-v.updatedAt>45000||v.owner===localId)return;
+   if(!v||v.status!=="waiting"||Date.now()-(v.updatedAt||v.createdAt)>FRIEND_TTL||v.owner===localId)return;
    v.guest=localId;v.game=GAMES[Math.floor(Math.random()*GAMES.length)][0];v.status="matched";return v;
   },{applyLocally:false});
-  if(!result.committed){say("없는 코드이거나 이미 매칭이 완료된 방이에요.");return}
+  if(!result.committed){
+   const latest=(await get(r)).val();
+   say(!latest?"해당 코드로 만든 대기실이 없어요. 코드를 다시 확인해 주세요.":latest.owner===localId?"같은 탭에서는 자신의 방에 참가할 수 없어요. 다른 탭이나 기기를 사용해 주세요.":latest.status==="matched"?"이미 매칭된 코드예요. 새 방을 만들어 주세요.":latest.status!=="waiting"?"참가 가능한 대기실이 아니에요.":Date.now()-(latest.updatedAt||latest.createdAt)>FRIEND_TTL?"코드가 만료됐어요. 새 코드를 생성해 주세요.":"참가 처리 중 충돌이 발생했어요. 다시 시도해 주세요.");
+   return
+  }
   watch("friend",code);
  }catch(e){say("코드 참가 실패: "+e.message)}
 };
