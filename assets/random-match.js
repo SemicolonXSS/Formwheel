@@ -10,7 +10,7 @@ const token=()=>crypto.randomUUID?.()||Math.random().toString(36).slice(2)+Date.
 const FRIEND_TTL=10*60*1000;
 // Use a unique ID for each page load, even when a tab inherits sessionStorage.
 const localId=token();
-let active=null,unsubscribe=null,heartbeat=null,queuePoll=null,authUser=null,matched=false;
+let active=null,unsubscribe=null,heartbeat=null,queuePoll=null,authUser=null,matched=false,redirectStarted=false;
 const ownUid=()=>authUser?.uid||null;
 const testAllowed=()=>document.getElementById("fw-match-testmode")?.checked===true;
 const quickEligible=(item,now=Date.now())=>item?.status==="waiting"&&now-Number(item.updatedAt||item.createdAt)<90000&&item.owner!==localId&&!(ownUid()&&item.ownerUid===ownUid()&&!testAllowed());
@@ -24,19 +24,20 @@ function badge(kind){
 }
 function url(game){return "https://semicolonxss.github.io/Formwheel_"+({reflex:"Reflex",battle:"Battle",territory:"Territory",risk:"Risk",gcrown:"GCrown",time:"Time",bomb:"Bomb"}[game])+"/"}
 function renderMatch(d){
- if(!d)return;
+ if(!d||!active)return;
  if(d.status==="matched"){
  matched=true;clearInterval(heartbeat);heartbeat=null;clearInterval(queuePoll);queuePoll=null;onDisconnect(ref(db,ROOT+"/"+active.kind+"/"+active.code)).cancel().catch(()=>{});
  const g=GAMES.find(x=>x[0]===d.game);
  say("🎉 매칭 완료! "+(g?.[1]||d.game)+" 대전이 선택됐어요.");
- $("fw-match-launch").hidden=false;$("fw-match-launch").href=url(d.game)+"?fwMatch="+encodeURIComponent(active.code)+"&fwKind="+active.kind+"&fwSide="+(d.owner===localId?"owner":"guest");
- badge(active.kind);
+ const target=url(d.game)+"?fwMatch="+encodeURIComponent(active.code)+"&fwKind="+active.kind+"&fwSide="+(d.owner===localId?"owner":"guest");
+ $("fw-match-launch").hidden=false;$("fw-match-launch").href=target;
+ if(!redirectStarted){redirectStarted=true;badge(active.kind);say("🎉 매칭 완료! "+(g?.[1]||d.game)+"로 자동 이동합니다…");window.location.assign(target)}
  }else{
  if(active.kind!=="quick")say("친구가 코드를 입력할 때까지 기다리는 중이에요.");
  }
 }
 function watch(kind,code){
- if(unsubscribe)unsubscribe(); clearInterval(queuePoll);queuePoll=null;active={kind,code};matched=false;
+ if(unsubscribe)unsubscribe(); clearInterval(queuePoll);queuePoll=null;active={kind,code};matched=false;redirectStarted=false;
  $("fw-match-launch").hidden=true;
  codeEl.textContent=kind==="friend"?code:"자동 매칭 중";
  $("fw-match-panel").hidden=false;$("fw-match-actions").hidden=true;
@@ -61,7 +62,7 @@ async function stop(){
   if(v.owner===localId||v.guest===localId)return null;
  },{applyLocally:false});
  }catch(e){console.warn("대기실 취소 실패",e)}
- matched=false;
+ matched=false;redirectStarted=false;
 }
 $("fw-match-stop").onclick=stop;
 $("fw-match-quick").onclick=async()=>{
