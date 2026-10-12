@@ -19,7 +19,23 @@ const roomRoots={reflex:"reflexRooms",battle:"battle",territory:"territoryRooms"
 async function checkRoom(room){if(!/^[A-Za-z0-9]{4,6}$/.test(room))return false;const snap=await get(ref(db,roomRoots[game]+"/"+room));if(!snap.exists())return false;const d=snap.val();if(game==="risk")return d.phase==="lobby" && (d.players||[]).length===1;if(game==="time")return d.meta?.status==="waiting";if(game==="battle")return d.state?.phase==="waiting";if(game==="territory")return !d.started;if(game==="reflex")return d.status==="lobby";if(game==="gcrown")return !d.started;if(game==="bomb")return d.status==="waiting";return false;}
 const a=adapters[game];if(a){
 const box=document.createElement("div");box.style.cssText="position:fixed;bottom:16px;left:16px;right:16px;max-width:480px;margin:auto;z-index:99999;background:#101c36;color:white;padding:16px;border-radius:17px;box-shadow:0 15px 50px #0005;font:14px system-ui";const label=document.createElement("div");label.textContent="🎮 Formwheel 매칭 방에 연결 중…";box.append(label);const close=document.createElement("button");close.textContent="안내 닫기";close.style.cssText="float:right;margin-top:8px";close.onclick=()=>box.remove();box.append(close);document.body.append(box);
-const say=t=>label.textContent="🎮 "+t;
+const say=t=>{if(box.isConnected)label.textContent="🎮 "+t};
+let observedRoom="",roomUnsub=null;
+function observeGameStart(roomCode){
+ if(!roomCode||observedRoom===roomCode)return;
+ roomUnsub?.();observedRoom=roomCode;
+ roomUnsub=onValue(ref(db,roomRoots[game]+"/"+roomCode),snap=>{
+  const room=snap.val();if(!room)return;
+  const started=game==="risk"?room.phase==="playing":
+   game==="battle"?["countdown","playing","result","finished"].includes(room.state?.phase):
+   game==="territory"?Boolean(room.started):
+   game==="time"?["playing","finished"].includes(room.meta?.status):
+   game==="gcrown"?Boolean(room.started):
+   game==="reflex"?room.status==="playing":
+   game==="bomb"?room.status==="playing":false;
+  if(started){box.remove();roomUnsub?.();roomUnsub=null;}
+ },e=>console.warn("매칭 게임 상태 확인 실패",e));
+}
 const nick=()=>{if(a.name&&$(a.name)&&!$(a.name).value)$(a.name).value="플레이어-"+Math.floor(Math.random()*9000+1000)};
 let initiated=false,joined=false,creating=false,joining=false,autoStartRunning=false;
 async function automaticStart(roomCode){
@@ -71,6 +87,7 @@ async function create(){
  const tx=await runTransaction(path,v=>{if(!v||v.status!=="matched"||v.gameRoom)return;v.gameRoom=room;v.gameReadyAt=Date.now();return v},{applyLocally:false});
  if(!tx.committed)throw Error("매칭 방 번호 저장에 실패했어요");
  say("같은 게임방 생성 완료 · 코드 "+room+" · 상대 입장 대기");
+ observeGameStart(room);
  automaticStart(room);
 }
 async function join(room){
@@ -79,6 +96,7 @@ async function join(room){
  if(game==="gcrown"){await waitUntil(()=>typeof window.joinRoom==="function");$("joinCode").value=room;await window.joinRoom()}
  else if(game==="battle"){await waitUntil(()=> $("joinBattle"));clickButton("joinBattle");await waitUntil(()=>$("joinPin")&&$("joinBtn"));$("joinPin").value=room;$("joinName").value="랜덤-"+Math.floor(Math.random()*9000);clickButton("joinBtn")}
  else{await waitUntil(()=>$(a.input)&&$(a.join));$(a.input).value=room;clickButton(a.join)}
+ observeGameStart(room);
  say("매칭된 게임방 "+room+"에 참가 요청을 보냈어요. 대기실 입장을 확인해 주세요.");
 }
 onValue(path,async snap=>{
