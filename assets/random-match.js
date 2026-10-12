@@ -13,6 +13,8 @@ const localId=token();
 let active=null,unsubscribe=null,heartbeat=null,queuePoll=null,authUser=null,matched=false;
 const ownUid=()=>authUser?.uid||null;
 const testAllowed=()=>document.getElementById("fw-match-testmode")?.checked===true;
+const quickEligible=(item,now=Date.now())=>item?.status==="waiting"&&now-Number(item.updatedAt||item.createdAt)<90000&&item.owner!==localId&&!(ownUid()&&item.ownerUid===ownUid()&&!testAllowed());
+const quickStatus=(items)=>{const values=Object.values(items||{}),waiting=values.filter(v=>v?.status==="waiting"&&Date.now()-Number(v.updatedAt||v.createdAt)<90000);const blocked=waiting.filter(v=>v.owner!==localId&&ownUid()&&v.ownerUid===ownUid()&&!testAllowed()).length;return blocked?"같은 계정으로 대기 중인 상대 "+blocked+"명이 제외됐어요. 두 탭에서 🧪 테스트 허용을 체크해 주세요.":"다른 플레이어를 찾는 중이에요… 현재 유효한 공개 대기방 "+waiting.length+"개";};
 onAuthStateChanged(auth,u=>{authUser=u&&!u.isAnonymous?u:null});
 function say(t){status.textContent=t}
 function badge(kind){
@@ -30,7 +32,7 @@ function renderMatch(d){
  $("fw-match-launch").hidden=false;$("fw-match-launch").href=url(d.game)+"?fwMatch="+encodeURIComponent(active.code)+"&fwKind="+active.kind+"&fwSide="+(d.owner===localId?"owner":"guest");
  badge(active.kind);
  }else{
- say(active.kind==="quick"?"다른 플레이어를 찾는 중이에요…":"친구가 코드를 입력할 때까지 기다리는 중이에요.");
+ if(active.kind!=="quick")say("친구가 코드를 입력할 때까지 기다리는 중이에요.");
  }
 }
 function watch(kind,code){
@@ -69,9 +71,9 @@ $("fw-match-quick").onclick=async()=>{
   const list=(await get(ref(db,ROOT+"/quick"))).val()||{};
   const now=Date.now();
   for(const [key,item] of Object.entries(list)){
-   if(item?.status!=="waiting"||now-item.updatedAt>45000||item.owner===localId||(ownUid()&&item.ownerUid===ownUid()&&!testAllowed()))continue;
+   if(!quickEligible(item,now))continue;
    const claim=await runTransaction(ref(db,ROOT+"/quick/"+key),v=>{
-    if(!v||v.status!=="waiting"||Date.now()-v.updatedAt>45000||v.owner===localId||(ownUid()&&v.ownerUid===ownUid()&&!testAllowed()))return;
+    if(!quickEligible(v))return;
     v.guest=localId;v.game=GAMES[Math.floor(Math.random()*GAMES.length)][0];v.status="matched";return v;
    },{applyLocally:false});
    if(claim.committed){watch("quick",key);return}
@@ -86,19 +88,19 @@ $("fw-match-quick").onclick=async()=>{
    if(!active||active.kind!=="quick"||matched)return;
    try{
     const items=(await get(ref(db,ROOT+"/quick"))).val()||{};
+    say(quickStatus(items));
     for(const [otherKey,item] of Object.entries(items)){
-     if(otherKey===active.code||item?.status!=="waiting"||Date.now()-item.updatedAt>45000||item.owner===localId)continue;
-     if(ownUid()&&item.ownerUid===ownUid()&&!testAllowed())continue;
+     if(otherKey===active.code||!quickEligible(item))continue;
      // Deterministic order prevents both participants trying to join each other.
      if(active.code.localeCompare(otherKey)<0)continue;
      const claim=await runTransaction(ref(db,ROOT+"/quick/"+otherKey),v=>{
       if(!v||v.status!=="waiting"||Date.now()-v.updatedAt>45000||v.owner===localId||(ownUid()&&v.ownerUid===ownUid()&&!testAllowed()))return;
       v.guest=localId;v.game=GAMES[Math.floor(Math.random()*GAMES.length)][0];v.status="matched";return v;
      },{applyLocally:false});
-     if(claim.committed){const oldCode=active.code;await runTransaction(ref(db,ROOT+"/quick/"+oldCode),v=>v?.owner===localId&&v.status==="waiting"?null:undefined,{applyLocally:false});watch("quick",otherKey);return}
+     if(claim.committed){const oldCode=active.code;watch("quick",otherKey);runTransaction(ref(db,ROOT+"/quick/"+oldCode),v=>v?.owner===localId&&v.status==="waiting"?null:undefined,{applyLocally:false}).catch(console.warn);return}
     }
    }catch(e){say("상대 재검색 오류: "+e.message)}
-  },3000);
+  },2500);
  }catch(e){$("fw-match-actions").hidden=false;say("매칭 시작 실패: "+e.message)}
 };
 $("fw-match-friend").onclick=async()=>{
