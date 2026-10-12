@@ -21,7 +21,39 @@ const a=adapters[game];if(a){
 const box=document.createElement("div");box.style.cssText="position:fixed;bottom:16px;left:16px;right:16px;max-width:480px;margin:auto;z-index:99999;background:#101c36;color:white;padding:16px;border-radius:17px;box-shadow:0 15px 50px #0005;font:14px system-ui";const label=document.createElement("div");label.textContent="🎮 Formwheel 매칭 방에 연결 중…";box.append(label);const close=document.createElement("button");close.textContent="안내 닫기";close.style.cssText="float:right;margin-top:8px";close.onclick=()=>box.remove();box.append(close);document.body.append(box);
 const say=t=>label.textContent="🎮 "+t;
 const nick=()=>{if(a.name&&$(a.name)&&!$(a.name).value)$(a.name).value="플레이어-"+Math.floor(Math.random()*9000+1000)};
-let initiated=false,joined=false,creating=false,joining=false;
+let initiated=false,joined=false,creating=false,joining=false,autoStartRunning=false;
+async function automaticStart(roomCode){
+ if(autoStartRunning)return;
+ autoStartRunning=true;
+ const startedAt=Date.now();
+ const root=roomRoots[game];
+ let launched=false;
+ const timer=setInterval(async()=>{
+  if(launched||Date.now()-startedAt>120000){clearInterval(timer);return}
+  try{
+   const snap=await get(ref(db,root+"/"+roomCode));
+   if(!snap.exists())return;
+   const room=snap.val();
+   let players=0,waiting=false;
+   if(game==="risk"){players=(room.players||[]).length;waiting=room.phase==="lobby";}
+   else if(game==="battle"){players=Object.keys(room.players||{}).length;waiting=room.state?.phase==="waiting";}
+   else if(game==="territory"){players=Object.keys(room.players||{}).length;waiting=!room.started;}
+   else if(game==="time"){players=Object.keys(room.players||{}).length;waiting=room.meta?.status==="waiting";}
+   else if(game==="gcrown"){players=Object.keys(room.players||{}).length;waiting=!room.started;}
+   else if(game==="reflex"){players=Object.keys(room.players||{}).length;waiting=room.status==="lobby";}
+   else if(game==="bomb"){players=Object.keys(room.players||{}).length;waiting=room.status==="waiting";}
+   if(!waiting){clearInterval(timer);return}
+   if(players<2)return;
+   // Only the matched room's host performs the start.
+   const startId={risk:"startBtn",battle:"startBattle",territory:"roomStart",time:"startBattle",gcrown:"startBattleBtn",reflex:"battleStart",bomb:"startBtn"}[game];
+   const button=$(startId);
+   if(!button||button.disabled||button.classList.contains("hidden")||button.hidden)return;
+   launched=true;clearInterval(timer);
+   say("상대 입장 완료 · 게임 자동 시작!");
+   button.click();
+  }catch(e){console.warn("자동 시작 검사 실패",e)}
+ },900);
+}
 async function waitUntil(check,timeout=16000){const start=Date.now();while(Date.now()-start<timeout){const v=check();if(v)return v;await pause(300)}throw Error("게임 화면 준비 시간 초과")}
 function clickButton(id){const b=$(id);if(!b)throw Error("버튼을 찾지 못했습니다: "+id);b.click()}
 function start(){a.start();nick()}
@@ -39,6 +71,7 @@ async function create(){
  const tx=await runTransaction(path,v=>{if(!v||v.status!=="matched"||v.gameRoom)return;v.gameRoom=room;v.gameReadyAt=Date.now();return v},{applyLocally:false});
  if(!tx.committed)throw Error("매칭 방 번호 저장에 실패했어요");
  say("같은 게임방 생성 완료 · 코드 "+room+" · 상대 입장 대기");
+ automaticStart(room);
 }
 async function join(room){
  if(!(await checkRoom(room)))throw Error("상대의 게임방이 없습니다. 방장이 다시 생성해야 합니다.");
