@@ -60,7 +60,7 @@ function start(){a.start();nick()}
 async function create(){
  start();
  if(game==="gcrown"){await waitUntil(()=>typeof window.createRoom==="function");await window.createRoom()}
- else if(game==="battle"){await waitUntil(()=> $("createBattle"));clickButton("createBattle");await waitUntil(()=> $("hostName")&&$("createBtn"));$("hostName").value="랜덤-"+Math.floor(Math.random()*9000);await pause(800);clickButton("createBtn")}
+ else if(game==="battle"){await waitUntil(()=> $("createBattle"));clickButton("createBattle");await waitUntil(()=> $("hostName")&&$("createBtn"));$("hostName").value="랜덤-"+Math.floor(Math.random()*9000);await waitUntil(()=>$("quizSelect")?.options?.length>0);const quizOptions=Array.from($("quizSelect").options).filter(o=>o.value);const choice=quizOptions.length?quizOptions[Math.floor(Math.random()*quizOptions.length)]:$("quizSelect").options[0];if(choice){$("quizSelect").value=choice.value;$("quizSelect").dispatchEvent(new Event("change",{bubbles:true}));}await pause(350);clickButton("createBtn")}
  else{await waitUntil(()=>$(a.create));clickButton(a.create)}
  const room=await waitUntil(()=>{
    if(game==="battle"){return document.querySelector(".pin-box .pin")?.textContent?.trim()?.match(/^\d{4}$/)?.[0]}
