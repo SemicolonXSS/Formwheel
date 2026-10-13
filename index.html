@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>FormWheel</title>
+<title>Formwheel | 무료 웹게임 · 친구와 온라인 대전 · 돌림판</title>
+<meta name="description" content="설치 없이 바로 즐기는 무료 웹게임과 도구! Formwheel에서 친구와 퀴즈 대결을 하고, 요리 게임 Cook과 돌림판 Wheel 등 다양한 프로젝트를 만나보세요.">
+<link rel="canonical" href="https://semicolonxss.github.io/Formwheel/">
 <link rel="manifest" href="/Formwheel/manifest.json">
 <meta name="theme-color" content="#f7f8fc">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -14,9 +16,12 @@
 <link rel="stylesheet" href="./assets/styles.css?v=20261008-filters">
 <link rel="stylesheet" href="https://semicolonxss.github.io/Formwheel/shared/formwheel-ui.css">
 <script defer src="https://semicolonxss.github.io/Formwheel/shared/formwheel-ui.js"></script>
-<meta property="og:title" content="Formwheel · Formwheel">
-<meta property="og:description" content="Formwheel 프로젝트와 게임을 모아 실행하는 홈 화면.">
+<meta property="og:title" content="Formwheel | 설치 없이 즐기는 무료 웹게임">
+<meta property="og:description" content="친구와 온라인 대전, 요리 게임, 퀴즈와 돌림판까지! 무료로 바로 플레이하세요.">
 <meta property="og:image" content="https://semicolonxss.github.io/Formwheel/assets/thumbnail.svg">
+<meta property="og:url" content="https://semicolonxss.github.io/Formwheel/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="assets/formwheel-brand.css?v=20261008-hub-logo">
 <link rel="icon" type="image/svg+xml" href="https://semicolonxss.github.io/Formwheel/assets/formwheel-favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="/Formwheel/assets/formwheel-apple-touch-icon.svg?v=20261011-ios">
@@ -101,16 +106,18 @@ header .fw-profile-trigger{margin-left:0}
 <h1>FormWheel</h1>
 
 <h2>
-만들고 · 참여하고 · 플레이하고 · 즐기고
+설치 없이, 친구와 함께 즐기는 무료 웹게임!
 </h2>
 
 <p>
 설문부터 추첨, 퀴즈, 게임, 음악, 도구와 실험 프로젝트까지.<br>
-FormWheel의 모든 프로젝트를 한곳에서 만나보세요.
+Formwheel의 모든 프로젝트를 한곳에서 만나보세요.
 </p>
 
 
 <div class="heroButtons">
+<a class="heroButton primary" href="https://semicolonxss.github.io/Formwheel_Cook/">🍳 Cook 플레이하기</a>
+<a class="heroButton secondary" href="#projects">🎮 전체 프로젝트 보기</a>
 
 <a
   class="heroButton primary"
@@ -415,6 +422,13 @@ if ("serviceWorker" in navigator) {
     button.addEventListener("click", () => install(button.dataset.installTarget));
   });
 })();
+</script>
+<script>
+document.getElementById("fw-share-hub")?.addEventListener("click",async function(){
+ const url="https://semicolonxss.github.io/Formwheel/";
+ const data={title:"Formwheel | 무료 웹게임",text:"설치 없이 친구랑 즐기는 무료 웹게임! Formwheel에서 같이 플레이하자 🎮",url};
+ try{if(navigator.share){await navigator.share(data);return;}if(navigator.clipboard?.writeText){await navigator.clipboard.writeText(url);this.textContent="✓ 링크 복사 완료";return;}window.prompt("Formwheel 링크 복사",url);}catch(e){if(e.name!=="AbortError")window.prompt("Formwheel 링크 복사",url);}
+});
 </script>
 <script type="module" src="./assets/random-match.js?v=20261012-autoredirect"></script>
 <script>
