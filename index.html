@@ -36,6 +36,12 @@
 </style>
 <link rel="stylesheet" href="./assets/home.css?v=20261011-matchnav">
 <style>
+/* Compact visitor counters: retain existing Firebase count bindings */
+#fw-live-presence{display:inline-flex!important;gap:6px!important;padding:5px 10px!important;margin-bottom:8px!important;font-size:11px!important;line-height:1.35!important;box-shadow:none!important;max-width:calc(100% - 16px);border-radius:12px!important}
+#fw-live-presence strong{font-size:11px;font-weight:650;white-space:nowrap}
+#fw-live-presence small{display:none!important}
+#fw-live-presence span[aria-hidden="true"]{font-size:10px}
+@media(max-width:480px){#fw-live-presence{gap:5px!important;padding:5px 8px!important;font-size:10px!important}#fw-live-presence strong{font-size:10px}}
 .fw-language-control{display:inline-flex;gap:5px;align-items:center;padding:6px 9px;border:1px solid #e0e4ec;border-radius:10px;background:#fff;color:#273044;white-space:nowrap}
 .fw-language-control select{border:0;outline:0;background:transparent;color:inherit;font:inherit;font-size:12px;cursor:pointer;max-width:92px}
 .fw-language-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
