@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>더보기 · Formwheel</title><link rel="icon" href="./assets/formwheel-favicon.svg"><style>body{font:15px system-ui,-apple-system,sans-serif;background:#f7f8fc;color:#202638;margin:0}header{background:#fff;border-bottom:1px solid #e2e7f0;padding:17px max(20px,calc((100vw - 900px)/2))}a{color:#3439bd}header a{text-decoration:none;font-weight:800}main{max-width:720px;padding:22px 16px 50px;margin:auto}h1{font-size:28px}h2{font-size:19px}.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}.links a{display:block;background:white;text-decoration:none;border:1px solid #e3e6ee;border-radius:13px;padding:18px;font-weight:700;color:#28376d}section{margin-top:20px}.fw-install{max-width:100%!important}#fw-install-info{white-space:pre-line}.fw-install[hidden],.fw-install-options[hidden],.fw-install-info[hidden],.fw-install-option[hidden]{display:none!important}</style><style>.fw-install{padding:18px;border:1px solid #e4e7ef;border-radius:18px;background:white;text-align:center}.fw-install button{font:inherit;cursor:pointer}.fw-install-primary,.fw-install-option{display:block;width:100%;border:0;border-radius:12px;padding:12px;background:#3439bd;color:white;font-weight:750}.fw-install-more{border:0;background:transparent;padding:10px;cursor:pointer}.fw-install-options{display:grid;gap:8px}.fw-install-option{background:#f0f2fc;color:#263184}.fw-install-info{padding:12px;text-align:left;background:#f5f6fb;border-radius:12px;margin-top:12px}</style></head><body><header><a href="./">← Formwheel Hub</a></header><main><h1>더보기</h1><p>도움말과 설정은 여기에서 확인할 수 있어요.</p><div class="links"><a href="./profile.html">👤 내 프로필 · 업적</a><a href="./id-center.html">🪪 ID 센터 · 친구 · 초대</a><a href="https://semicolonxss.github.io/Formwheel_Wiki/">📚 공식 Wiki</a><a href="https://semicolonxss.github.io/Formwheel_Wiki/glossary.html">📖 공식 용어집</a><a href="./anniversary-40-50.html">🎉 기념 이벤트</a><a href="./feedback.html">💡 개선점 제출</a></div><section class="fw-install" id="fw-install" aria-labelledby="fw-install-title">
+<h3 id="fw-install-title">📥 Formwheel 앱 설치</h3>
+<p>현재 기기에 맞는 설치 방법을 안내해 드려요.</p>
+<button type="button" class="fw-install-primary" id="fw-install-primary">설치 방법 확인</button>
+<button type="button" class="fw-install-more" id="fw-install-more" aria-controls="fw-install-options" aria-expanded="false">다른 기기 보기 ▾</button>
+<div id="fw-install-options" class="fw-install-options" hidden>
+<button type="button" class="fw-install-option" data-install-target="pc">💻 PC에서 다운로드</button>
+<button type="button" class="fw-install-option" data-install-target="android">🤖 Android에서 다운로드</button>
+<button type="button" class="fw-install-option" data-install-target="ios">🍎 iPhone에서 추가</button>
+</div>
+<div class="fw-install-info" id="fw-install-info" role="status" aria-live="polite" hidden></div>
+</section>
+<section aria-label="개선점 보내기" style="max-width:510px;margin:14px auto;padding:18px;background:#fff;border:1px solid #e4e7ef;border-radius:16px;color:#202638">
+<h3 style="margin:0 0 7px">💡 Formwheel 개선점 제출</h3>
+<p style="font-size:13px;color:#60677c;margin:0 0 12px">불편했던 점이나 새로운 아이디어를 알려주세요.</p>
+<a href="./feedback.html" style="display:inline-block;padding:10px 14px;background:#3439bd;color:white;border-radius:10px;text-decoration:none;font-weight:700">개선점 제출하기 →</a>
+<p style="font-size:12px;text-align:center;margin:14px 0 0"><a href="./feedback.html#admin" style="color:#777f93;text-decoration:underline">개선점 확인</a></p>
+</section><p style="text-align:center"><a href="./">← 프로젝트 둘러보기</a></p></main><script id="fw-install-logic">
+(() => {
+  const root = document.getElementById("fw-install");
+  if (!root) return;
+  const primary = document.getElementById("fw-install-primary");
+  const more = document.getElementById("fw-install-more");
+  const options = document.getElementById("fw-install-options");
+  const info = document.getElementById("fw-install-info");
+  const ua = navigator.userAgent || "";
+  const target = /Android/i.test(ua) ? "android" : /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1) ? "ios" : "pc";
+  const labels = {pc:"💻 PC에서 다운로드",android:"🤖 Android에서 다운로드",ios:"🍎 iPhone에서 추가"};
+  const guides = {
+    pc:"PC Chrome 또는 Edge에서 Formwheel을 열고 주소창의 설치 아이콘을 누르세요. 없다면 브라우저 메뉴에서 '페이지를 앱으로 설치' 또는 '앱' 메뉴를 확인해 주세요. 설치 항목이 없으면 해당 브라우저에서 아직 지원되지 않을 수 있습니다.",
+    android:"Android Chrome에서 Formwheel을 열고 오른쪽 위 ⋮ 메뉴 → '홈 화면에 추가' 또는 '앱 설치'를 누르세요. Daum 등 일부 인앱 브라우저에서는 Chrome으로 열어야 할 수 있습니다.",
+    ios:"iPhone Safari에서 Formwheel을 연 뒤 공유 버튼 → '홈 화면에 추가' → '추가'를 누르세요. 다른 브라우저에서는 Safari로 열어 주세요."
+  };
+  let installPrompt = null;
+  window.addEventListener("beforeinstallprompt", event => { event.preventDefault(); installPrompt = event; });
+  window.addEventListener("appinstalled", () => { installPrompt = null; root.hidden = true; });
+  const installed = () => window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+  const refreshVisibility = () => { root.hidden = installed(); };
+  refreshVisibility();
+  window.matchMedia("(display-mode: standalone)").addEventListener?.("change", refreshVisibility);
+  function showGuide(device) {
+    info.hidden = false;
+    info.textContent = guides[device];
+  }
+  async function install(device) {
+    if (installed()) { root.hidden = true; return; }
+    if (device === target && installPrompt) {
+      const prompt = installPrompt;
+      installPrompt = null;
+      try { await prompt.prompt(); await prompt.userChoice; }
+      catch { showGuide(device); }
+      return;
+    }
+    showGuide(device);
+  }
+  primary.textContent = labels[target];
+  primary.addEventListener("click", () => install(target));
+  more.addEventListener("click", () => {
+    const expanded = more.getAttribute("aria-expanded") === "true";
+    more.setAttribute("aria-expanded", String(!expanded));
+    options.hidden = expanded;
+    more.textContent = expanded ? "다른 기기 보기 ▾" : "접기 ▴";
+  });
+  options.querySelectorAll("[data-install-target]").forEach(button => {
+    if (button.dataset.installTarget === target) button.hidden = true;
+    button.addEventListener("click", () => install(button.dataset.installTarget));
+  });
+})();
+</script></body></html>
