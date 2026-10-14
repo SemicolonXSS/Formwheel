@@ -78,8 +78,8 @@ let adminUnlocked=false,profileCache=new Map(),profileLoad=0;
 setInterval(()=>{if(adminUnlocked)renderAdmin();},30000);
 if(presenceRoot){
  const trigger=document.createElement("button");
- trigger.type="button";trigger.textContent="접속·누적 확인";
- trigger.style.cssText="border:0;background:#eef0ff;color:#3439bd;border-radius:999px;padding:6px 10px;font:inherit;font-size:12px;font-weight:700;cursor:pointer";
+ trigger.type="button";trigger.textContent="확인";trigger.title="접속자와 누적 방문 통계 확인";trigger.setAttribute("aria-label","접속자와 누적 방문 통계 확인");
+ trigger.style.cssText="border:0;background:#eef0ff;color:#3439bd;border-radius:999px;padding:3px 6px;font:inherit;font-size:10px;line-height:1.3;font-weight:650;cursor:pointer;white-space:nowrap";
  presenceRoot.appendChild(trigger);
  const panel=document.createElement("section");panel.hidden=true;
  panel.style.cssText="position:fixed;z-index:10002;top:10vh;left:50%;transform:translateX(-50%);width:min(92vw,540px);max-height:80vh;overflow:auto;padding:22px;background:white;color:#242842;border:1px solid #dce1ee;border-radius:20px;box-shadow:0 20px 75px #15204055;text-align:left";
