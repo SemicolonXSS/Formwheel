@@ -30,3 +30,15 @@ header .fw-profile-trigger{margin-left:auto;flex:0 0 auto;display:flex;align-ite
 #fw-header-avatar{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:#6366f1;color:white;font-size:21px}
 header nav{min-width:0}
 @media(max-width:700px){header .fw-profile-trigger{width:40px;height:40px}#fw-header-avatar{width:35px;height:35px}header nav{flex:1}}
+
+/* Compact recommendation cards on Hub */
+#fw-home .fw-home-section:has(#fw-recommended-cards){margin:10px 0}
+#fw-recommended-cards{gap:7px}
+#fw-recommended-cards .fw-home-card{padding:6px 7px;border-radius:11px}
+#fw-recommended-cards .fw-home-link{gap:3px;padding:3px 0}
+#fw-recommended-cards .fw-home-emoji{font-size:22px}
+#fw-recommended-cards .fw-home-link strong{font-size:12px}
+#fw-recommended-cards .fw-home-link small{font-size:10px}
+#fw-recommended-cards .fw-home-actions{gap:4px}
+#fw-recommended-cards .fw-home-actions button{padding:5px 4px;font-size:10px;min-width:0}
+@media(max-width:700px){#fw-recommended-cards{gap:5px}#fw-recommended-cards .fw-home-card{padding:5px}#fw-recommended-cards .fw-home-emoji{font-size:19px}#fw-recommended-cards .fw-home-link strong{font-size:11px}}
