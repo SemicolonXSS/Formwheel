@@ -119,19 +119,7 @@ Formwheel의 모든 프로젝트를 한곳에서 만나보세요.
 <a class="heroButton primary" href="https://semicolonxss.github.io/Formwheel_Cook/">🍳 Cook 플레이하기</a>
 <a class="heroButton secondary" href="#projects">🎮 전체 프로젝트 보기</a>
 
-<a
-  class="heroButton primary"
-  href="https://semicolonxss.github.io/Formwheel_Form"
->
-  📝 Form 시작하기
-</a>
 
-<a
-  class="heroButton secondary"
-  href="https://semicolonxss.github.io/Formwheel_Wheel/?v=20261008-logo2"
->
-  🎡 Wheel 시작하기
-</a>
 
 </div>
 
@@ -156,8 +144,8 @@ Formwheel의 모든 프로젝트를 한곳에서 만나보세요.
     <div id="fw-recommended-cards" class="fw-home-grid"></div>
     <p id="fw-recommended-empty" hidden>추천할 프로젝트가 없어요. 추천 제외 설정을 확인해 주세요.</p>
   </div>
-  <button type="button" id="fw-excluded-show">추천 제외 관리</button>
-  <div id="fw-excluded-list" hidden></div>
+  <details style="max-width:700px;margin:10px auto"><summary style="cursor:pointer;font-size:13px;color:#5b6380">⚙️ 추천 설정</summary><button type="button" id="fw-excluded-show">추천 제외 관리</button>
+  <div id="fw-excluded-list" hidden></div></details>
   <p id="fw-home-status" role="status" aria-live="polite"></p>
 </section>
 <section id="projects">
@@ -280,7 +268,7 @@ Formwheel의 모든 프로젝트를 한곳에서 만나보세요.
 ========================= -->
 
 <footer>
-<section id="fw-account" aria-labelledby="fw-account-title"><h3 id="fw-account-title">Formwheel ID 로그인</h3><div class="fw-id-panel"><span id="fw-id-status" role="status">계정 연결 확인 중…</span><button id="fw-id-login" type="button" hidden>Google 로그인</button><button id="fw-id-logout" type="button" hidden>로그아웃</button></div></section>
+<details style="max-width:510px;margin:12px auto"><summary style="cursor:pointer;font-size:13px">계정 · 로그인 관리</summary><section id="fw-account" aria-labelledby="fw-account-title"><h3 id="fw-account-title">Formwheel ID 로그인</h3><div class="fw-id-panel"><span id="fw-id-status" role="status">계정 연결 확인 중…</span><button id="fw-id-login" type="button" hidden>Google 로그인</button><button id="fw-id-logout" type="button" hidden>로그아웃</button></div></section></details>
 <p style="text-align:center"><a href="./more.html">앱 설치 · 의견 보내기 · Wiki · ID 센터 →</a></p>
 <div class="footerLogo">
   FormWheel
