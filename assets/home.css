@@ -42,3 +42,23 @@ header nav{min-width:0}
 #fw-recommended-cards .fw-home-actions{gap:4px}
 #fw-recommended-cards .fw-home-actions button{padding:5px 4px;font-size:10px;min-width:0}
 @media(max-width:700px){#fw-recommended-cards{gap:5px}#fw-recommended-cards .fw-home-card{padding:5px}#fw-recommended-cards .fw-home-emoji{font-size:19px}#fw-recommended-cards .fw-home-link strong{font-size:11px}}
+
+/* Accessibility improvements: keyboard and touch, 2026-10-14 */
+#fw-home :where(a,button,input,select):focus-visible,
+#fw-filter-toggle:focus-visible{
+  outline:3px solid #3146c9;
+  outline-offset:3px;
+}
+@media (pointer:coarse){
+  #fw-home .fw-home-actions button,
+  #fw-home #fw-edit-toggle,
+  #fw-home #fw-excluded-show,
+  #fw-filter-toggle{min-height:44px}
+}
+@media (prefers-reduced-motion:reduce){
+  #fw-home *,#fw-home *::before,#fw-home *::after{
+    animation-duration:.01ms!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important;
+  }
+}
