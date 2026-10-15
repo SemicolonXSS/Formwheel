@@ -58,6 +58,12 @@
             }
           }
         }
+      },
+      "questXP": {
+        "$uid": {
+          ".read": "auth != null && auth.uid === $uid",
+          ".write": false
+        }
       }
     }
   }
