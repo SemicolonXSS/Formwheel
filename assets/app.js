@@ -34,6 +34,21 @@ IMPORTANT:
 
 const projects = [
 
+  {
+    name:"Secret",
+    icon:"🕵️",
+    className:"purple",
+    category:"game",
+    mode:"solo",
+    connection:"offline",
+    difficulty:"어려움",
+    description:"Formwheel 곳곳의 비밀을 찾아 수집하는 이스터에그 탐험 프로젝트. 첫 퍼즐 공개!",
+    url:"https://semicolonxss.github.io/Formwheel/secret/",
+    addedAt:"2026-10-15T05:30:00Z",
+    recent:true
+  },
+
+
   /* =====================
      SERVICES / TOOLS
   ===================== */
