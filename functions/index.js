@@ -61,3 +61,30 @@ const requests=[];const incomingSnap=await base.child("requestInbox/"+me).get();
 incomingSnap.forEach(user=>{const data=user.val();if(data&&requests.length<50)requests.push({uid:user.key,at:data.at})});
 const invites=[];invitesSnap.forEach(item=>{const v=item.val();if(v&&v.to===me)invites.push({id:item.key,game:v.game,from:v.from,status:v.status,expiresAt:v.expiresAt,roomId:v.roomId})});
 return {handle:handle.val()||null,friends:incoming,requests,invitations:invites.reverse().slice(0,40),outgoing:Object.keys(outgoing.val()||{})};});
+
+
+/* Quest XP v1: authenticated daily claim, server-owned balance, once per KST day.
+ * This is a daily participation reward, not proof of a completed game mission.
+ * All writes use Admin SDK; clients cannot write to questXP with database rules.
+ */
+function kstDay(ts){return new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Seoul",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date(ts))}
+exports.questXPStatus=onCall(async req=>{
+ const uid=uidOf(req),day=kstDay(now());
+ const snap=await db.ref("formwheelV2/questXP/"+uid).get(),s=snap.val()||{};
+ return {day,xp:Math.max(0,Number(s.xp)||0),claimedToday:!!s.days?.[day],dailyXP:10};
+});
+exports.claimQuestDailyXP=onCall(async req=>{
+ const uid=uidOf(req),day=kstDay(now()),path=db.ref("formwheelV2/questXP/"+uid);
+ let awarded=false;
+ const result=await path.transaction(current=>{
+  const s=current&&typeof current==="object"?current:{xp:0,days:{}};
+  const days=s.days&&typeof s.days==="object"?s.days:{};
+  if(days[day])return; // transaction aborts duplicate
+  s.xp=Math.max(0,Number(s.xp)||0)+10;
+  days[day]={amount:10,claimedAt:now()};
+  s.days=days;s.updatedAt=now();return s;
+ });
+ if(result.committed)awarded=true;
+ const state=result.snapshot.val()||{};
+ return {day,awarded,xp:Math.max(0,Number(state.xp)||0),dailyXP:10};
+});
