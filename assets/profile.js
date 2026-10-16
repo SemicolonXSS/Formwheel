@@ -33,6 +33,23 @@ function showBadges(){
  if(select.selectedIndex<0)select.value="";
  const featured=BADGES.find(b=>b.id===featuredId&&earnedBadge(b,awards,homeData,profileData,stats));
  get("fw-featured-display").textContent=featured?featured.icon+" "+featured.title:"선택한 배지가 없습니다.";
+ const pictured=get("fw-profile-featured");pictured.hidden=!featured;pictured.textContent=featured?.icon||"";pictured.title=featured?.title||"";
+ const total=BADGES.filter(b=>earnedBadge(b,awards,homeData,profileData,stats)).length;
+ const levels=[{n:0,name:"기본",border:"none"},{n:3,name:"브론즈",border:"3px solid #b77b49"},{n:10,name:"실버",border:"3px solid #a8b2c6"},{n:20,name:"골드",border:"3px solid #e5b845"},{n:40,name:"다이아",border:"3px solid #63c9e7"}];
+ const available=levels.filter(l=>total>=l.n),next=levels.find(l=>total<l.n);
+ const stored=localStorage.getItem("fw:badge:frame:"+(currentUser?.uid||"guest"));
+ const level=available.find(l=>l.name===stored)||available[available.length-1];
+ get("fw-profile-avatar").style.border=level.border;
+ get("fw-badge-perk-level").textContent="현재 "+total+"개 획득 · "+level.name+" 테두리";
+ get("fw-badge-perk-bar").style.width=next?Math.round((total-available[available.length-1].n)/(next.n-available[available.length-1].n)*100)+"%":"100%";
+ get("fw-badge-perk-next").textContent=next?"다음 "+next.name+" 테두리까지 "+(next.n-total)+"개":"모든 프로필 테두리 해금 완료!";
+ const opts=get("fw-badge-perk-options");opts.replaceChildren();
+ const label=document.createElement("label");label.textContent="프로필 테두리 선택 ";
+ const choice=document.createElement("select");
+ available.forEach(l=>{const option=document.createElement("option");option.value=l.name;option.textContent=l.name;choice.append(option)});
+ choice.value=level.name;
+ choice.addEventListener("change",()=>{localStorage.setItem("fw:badge:frame:"+(currentUser?.uid||"guest"),choice.value);showBadges()});
+ label.append(choice);opts.append(label);
  get("fw-badge-count").textContent=BADGES.filter(b=>earnedBadge(b,awards,homeData,profileData)).length+" / "+BADGES.length+"개 획득";
 }
 get("fw-badge-toggle").addEventListener("click",()=>{expanded=!expanded;showBadges()});
