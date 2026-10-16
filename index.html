@@ -69,9 +69,11 @@
 <a href="#projects">Explore</a>
 <a href="./more.html">☰ 더보기</a>
 </nav>
-<a href="./profile.html" class="fw-profile-trigger" aria-label="내 프로필 및 커스터마이징 페이지 열기" title="내 프로필"><span id="fw-header-avatar">🎡</span></a>
+<a href="./profile.html" class="fw-profile-trigger" aria-label="내 프로필 및 커스터마이징 페이지 열기" title="내 프로필"><span id="fw-header-avatar">🎡</span><span id="fw-header-featured" hidden aria-label="대표 업적"></span></a>
 </header>
 <style>
+#fw-header-featured{position:absolute;bottom:-6px;right:-7px;display:grid;place-items:center;width:23px;height:23px;border:2px solid white;border-radius:50%;background:#f0e9ff;font-size:13px;box-shadow:0 2px 8px #2222}#fw-header-featured[hidden]{display:none!important}.fw-profile-trigger{position:relative;overflow:visible!important}
+
 header nav{display:flex;align-items:center;gap:8px;margin-left:auto}
 header nav a{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;padding:10px 12px;font-size:13px;border-radius:10px}
 header .fw-profile-trigger{margin-left:0}
