@@ -1,3 +1,4 @@
+import {BADGES} from "./badge-catalog.js";
 /* Formwheel ID/Core bridge for Hub. Firebase SDK v10 modules. */
 import {initializeApp,getApps,getApp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 import {getAuth,onAuthStateChanged,GoogleAuthProvider,signInWithPopup,signInWithRedirect,getRedirectResult,signOut} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
@@ -57,7 +58,20 @@ window.addEventListener("fw:hub:changed",event=>{
 
 const headerAvatar=document.getElementById("fw-header-avatar");
 const guestProfile=()=>{try{return JSON.parse(localStorage.getItem("fw:profile:guest:v1"))||{}}catch{return {}}};
-let profileUnsubscribe=null;
+let profileUnsubscribe=null,featuredUnsubscribe=null;
+const headerFeatured=document.getElementById("fw-header-featured");
+function syncFeatured(user){
+ if(featuredUnsubscribe){featuredUnsubscribe();featuredUnsubscribe=null}
+ if(!headerFeatured)return;
+ headerFeatured.hidden=true;headerFeatured.textContent="";
+ if(!user||user.isAnonymous)return;
+ featuredUnsubscribe=onValue(ref(db,"formwheelV2/featuredBadges/"+user.uid),snap=>{
+  const badge=BADGES.find(b=>b.id===snap.val());
+  headerFeatured.hidden=!badge;headerFeatured.textContent=badge?.icon||"";
+  headerFeatured.title=badge?"대표 업적 · "+badge.title:"";
+ },()=>{headerFeatured.hidden=true});
+}
+
 function syncProfile(user){
  if(profileUnsubscribe){profileUnsubscribe();profileUnsubscribe=null}
  const display=p=>{if(!headerAvatar)return;const icon=["🎡","🎮","🦊","🐱","🚀","🌟","🎲","👑"].includes(p?.icon)?p.icon:"🎡";const color=/^#[0-9a-f]{6}$/i.test(p?.color||"")?p.color:"#6366f1";headerAvatar.textContent=icon;headerAvatar.style.backgroundColor=color;};
@@ -66,6 +80,7 @@ function syncProfile(user){
 }
 onAuthStateChanged(auth,user=>{
  syncProfile(user);
+ syncFeatured(user);
  if(unsubscribe){unsubscribe();unsubscribe=null}ready=false;uid=null;
  if(!user||user.isAnonymous){if(activeAccount){applying=true;home.apply(readGuest()||{pinned:[],excluded:[],visits:{}});applying=false;activeAccount=false}login.hidden=false;logout.hidden=true;show(user?.isAnonymous?"게스트 모드 · 기기에만 저장":"로그인하면 다른 기기와 홈 설정이 동기화돼요.");return}
  connect(user);
