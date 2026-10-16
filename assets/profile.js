@@ -11,6 +11,7 @@ const sanitize=p=>({nickname:typeof p?.nickname==="string"&&p.nickname.trim().le
 const guest=()=>{try{return sanitize(JSON.parse(localStorage.getItem(guestKey)))}catch{return sanitize({})}};
 const path=uid=>ref(db,"formwheelV2/hubProfiles/"+uid);
 function render(data,user){const p=sanitize(data);get("fw-profile-name").textContent=p.nickname;get("fw-profile-avatar").textContent=p.icon;get("fw-profile-avatar").style.backgroundColor=p.color;get("fw-profile-nickname").value=p.nickname==="게스트"?"":p.nickname;get("fw-profile-icon").value=p.icon;get("fw-profile-color").value=p.color;get("fw-profile-detail").textContent=user?"Firebase에 저장되는 계정 프로필":"이 기기에만 저장되는 게스트 프로필";}
+let unsubscribe=null,currentUser=null,authReady=false;
 let badgeUnsubscribe=null,homeUnsubscribe=null,awards={},homeData=null,profileData=null,expanded=false,filter="all",stats=null,featuredId="",statsUnsubscribe=null,featuredUnsubscribe=null;
 function showBadges(){
  const holder=get("fw-badges-grid");holder.replaceChildren();
@@ -55,7 +56,6 @@ function showBadges(){
 get("fw-badge-toggle").addEventListener("click",()=>{expanded=!expanded;showBadges()});
 get("fw-badge-filter").addEventListener("change",e=>{filter=e.target.value;expanded=false;showBadges()});
 showBadges();
-let unsubscribe=null,currentUser=null,authReady=false;
 onAuthStateChanged(auth,user=>{authReady=true;currentUser=user&&!user.isAnonymous?user:null;if(unsubscribe){unsubscribe();unsubscribe=null}if(badgeUnsubscribe){badgeUnsubscribe();badgeUnsubscribe=null}if(homeUnsubscribe){homeUnsubscribe();homeUnsubscribe=null}if(statsUnsubscribe){statsUnsubscribe();statsUnsubscribe=null}if(featuredUnsubscribe){featuredUnsubscribe();featuredUnsubscribe=null}awards={};homeData=null;profileData=null;stats=null;featuredId="";showBadges()
 if(!currentUser){render(guest(),null);showBadges();get("fw-badges-status").textContent="로그인하면 계정의 획득 배지를 볼 수 있어요.";return}
 badgeUnsubscribe=onValue(ref(db,"formwheelV2/anniversary4050/"+currentUser.uid+"/badges"),snap=>{awards=snap.val()||{};showBadges();get("fw-badges-status").textContent="계정의 배지 기록을 불러왔어요.";},e=>{showBadges(null);get("fw-badges-status").textContent="배지 불러오기 실패: "+(e.code||e.message)+". Firebase Rules를 확인해 주세요."});statsUnsubscribe=onValue(ref(db,"formwheelV2/achievementStats/"+currentUser.uid),snap=>{stats=snap.val()||{};showBadges()},e=>{get("fw-badges-status").textContent="게임 통계 조회 실패: "+(e.code||"권한 오류")});
