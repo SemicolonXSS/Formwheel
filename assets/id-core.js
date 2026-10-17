@@ -66,7 +66,7 @@ function paintFeatured(){
  if(!headerFeatured)return;
  const legacy=BADGES.find(b=>b.id===legacyFeaturedId);
  const aqs=aqsBadges[aqsFeaturedId];
- const selected=legacy||aqs;
+ const selected=aqs||legacy;
  headerFeatured.hidden=!selected;
  headerFeatured.textContent=selected?.icon||"";
  headerFeatured.title=selected?"대표 업적 · "+selected.title:"";
