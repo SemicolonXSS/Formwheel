@@ -194,6 +194,62 @@ const projects = [
   },
 
 
+  {
+    name:"Wiki",
+    icon:"📚",
+    className:"blue",
+    category:"tool",
+    mode:"both",
+    connection:"online",
+    difficulty:"보통",
+    description:"Formwheel의 문서를 읽고 편집 요청을 제출하는 공식 위키.",
+    url:"https://semicolonxss.github.io/Formwheel_Wiki/",
+    addedAt:"2026-10-17T00:00:00Z",
+    recent:true
+  },
+
+  {
+    name:"AQS",
+    icon:"🏆",
+    className:"purple",
+    category:"app",
+    mode:"solo",
+    connection:"online",
+    difficulty:"보통",
+    description:"Achievement · Quest · Secret을 통합한 도전과 발견의 공간.",
+    url:"https://semicolonxss.github.io/Formwheel_AQS/",
+    addedAt:"2026-10-17T00:00:00Z",
+    recent:true
+  },
+
+  {
+    name:"Spotlight",
+    icon:"🌟",
+    className:"purple",
+    category:"app",
+    mode:"solo",
+    connection:"online",
+    difficulty:"쉬움",
+    description:"매일 새로운 주인공과 미션을 만나보는 오늘의 Spotlight.",
+    url:"https://semicolonxss.github.io/Formwheel_Spotlight/",
+    addedAt:"2026-10-17T00:00:00Z",
+    recent:true
+  },
+
+  {
+    name:"Story",
+    icon:"📖",
+    className:"indigo",
+    category:"game",
+    mode:"solo",
+    connection:"offline",
+    difficulty:"보통",
+    description:"Formwheel 세계관을 따라가며 펼쳐지는 이야기 프로젝트.",
+    url:"https://semicolonxss.github.io/Formwheel_Story/",
+    addedAt:"2026-10-17T00:00:00Z",
+    recent:true
+  },
+
   /* =====================
      GAMES
   ===================== */
