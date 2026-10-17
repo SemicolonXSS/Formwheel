@@ -255,6 +255,22 @@ const projects = [
   ===================== */
 
   {
+    name:"PVP",
+    icon:"⚔️",
+    className:"purple",
+    category:"game",
+    mode:"solo",
+    connection:"offline",
+    difficulty:"보통",
+    description:"무기를 골라 AI와 싸우는 2D 아레나. 능력 포인트·쿨타임으로 밸런스를 맞춘 솔로 베타.",
+    url:"https://semicolonxss.github.io/Formwheel/pvp/",
+    addedAt:"2026-10-17T11:30:00Z",
+    recent:true
+  },
+
+
+
+  {
     name:"Territory",
     icon:"🗺️",
     className:"blue",
