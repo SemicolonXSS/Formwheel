@@ -630,9 +630,30 @@ const connectionLabel = {
    RENDER
 ====================================================== */
 
+function generatedThumbnail(project){
+  const colors = {
+    AQS:["#241b58","#8065f6"], Spotlight:["#3d237b","#e49b39"],
+    Story:["#172c64","#6178db"], Wiki:["#16476a","#38b6a5"]
+  };
+  const [start,end] = colors[project.name] || ["#263158","#717db0"];
+  const name = escapeHTML(project.name);
+  const icon = escapeHTML(project.icon || "✦");
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+    <defs><linearGradient id="g" x2="1" y2="1"><stop stop-color="${start}"/><stop offset="1" stop-color="${end}"/></linearGradient></defs>
+    <rect width="1200" height="630" rx="38" fill="url(#g)"/>
+    <circle cx="1050" cy="100" r="250" fill="#ffffff" opacity=".07"/>
+    <circle cx="120" cy="600" r="290" fill="#ffffff" opacity=".06"/>
+    <text x="72" y="108" fill="#ffffff" opacity=".8" font-size="34" font-family="Arial,sans-serif" font-weight="bold">FORMWHEEL PROJECT</text>
+    <text x="600" y="315" font-size="142" text-anchor="middle" font-family="Apple Color Emoji,Segoe UI Emoji,sans-serif">${icon}</text>
+    <text x="600" y="475" fill="#ffffff" font-size="100" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold">${name}</text>
+    <rect x="72" y="554" width="1056" height="3" rx="2" fill="#ffffff" opacity=".4"/>
+  </svg>`;
+  return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+}
 function thumbnailURL(project){
   if (project.thumbnail) return project.thumbnail;
-  // Resolve against the project directory, excluding navigation query/hash values.
+  // Newly registered projects don't all have a thumbnail.svg in their own repositories.
+  if (["AQS","Spotlight","Story","Wiki"].includes(project.name)) return generatedThumbnail(project);
   return new URL("assets/thumbnail.svg", project.url).href;
 }
 
@@ -926,9 +947,10 @@ resetFilters.addEventListener("click", () => {
 cardsElement.addEventListener("error", event => {
   const img = event.target;
   if (img.tagName !== "IMG") return;
-  const fallback = document.createElement("div");
-  fallback.className = "thumbnailFallback";
-  fallback.textContent = img.closest(".card").querySelector("h3").textContent.trim();
-  img.replaceWith(fallback);
+  if (img.dataset.fallbackApplied) return;
+  img.dataset.fallbackApplied = "true";
+  const name = img.closest(".card")?.querySelector("h3")?.textContent?.trim() || "Project";
+  const project = projects.find(item => item.name === name) || { name, icon:"✦" };
+  img.src = generatedThumbnail(project);
 }, true);
 render();
