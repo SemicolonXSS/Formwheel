@@ -60,17 +60,33 @@ const headerAvatar=document.getElementById("fw-header-avatar");
 const guestProfile=()=>{try{return JSON.parse(localStorage.getItem("fw:profile:guest:v1"))||{}}catch{return {}}};
 let profileUnsubscribe=null,featuredUnsubscribe=null;
 const headerFeatured=document.getElementById("fw-header-featured");
+const aqsBadges={welcome:{icon:"👋",title:"첫 발걸음"},daily:{icon:"📅",title:"꾸준한 탐험가"},explorer:{icon:"🧭",title:"프로젝트 여행자"},secret:{icon:"🔮",title:"메아리의 발견"}};
+let aqsFeaturedUnsubscribe=null,legacyFeaturedId="",aqsFeaturedId="";
+function paintFeatured(){
+ if(!headerFeatured)return;
+ const legacy=BADGES.find(b=>b.id===legacyFeaturedId);
+ const aqs=aqsBadges[aqsFeaturedId];
+ const selected=legacy||aqs;
+ headerFeatured.hidden=!selected;
+ headerFeatured.textContent=selected?.icon||"";
+ headerFeatured.title=selected?"대표 업적 · "+selected.title:"";
+}
 function syncFeatured(user){
  if(featuredUnsubscribe){featuredUnsubscribe();featuredUnsubscribe=null}
+ if(aqsFeaturedUnsubscribe){aqsFeaturedUnsubscribe();aqsFeaturedUnsubscribe=null}
+ legacyFeaturedId="";aqsFeaturedId="";
  if(!headerFeatured)return;
- headerFeatured.hidden=true;headerFeatured.textContent="";
- if(!user||user.isAnonymous)return;
- featuredUnsubscribe=onValue(ref(db,"formwheelV2/featuredBadges/"+user.uid),snap=>{
-  const badge=BADGES.find(b=>b.id===snap.val());
-  headerFeatured.hidden=!badge;headerFeatured.textContent=badge?.icon||"";
-  headerFeatured.title=badge?"대표 업적 · "+badge.title:"";
- },()=>{headerFeatured.hidden=true});
+ const local=(()=>{try{return JSON.parse(localStorage.getItem("formwheel.aqs.v1"))}catch{return null}})();
+ if(!user||user.isAnonymous){aqsFeaturedId=local?.unlocked?.[local?.featuredId]?local.featuredId:"";paintFeatured();return}
+ paintFeatured();
+ featuredUnsubscribe=onValue(ref(db,"formwheelV2/featuredBadges/"+user.uid),snap=>{legacyFeaturedId=snap.val()||"";paintFeatured()},()=>{legacyFeaturedId="";paintFeatured()});
+ aqsFeaturedUnsubscribe=onValue(ref(db,"aqs/v1/users/"+user.uid),snap=>{
+  const data=snap.val();
+  aqsFeaturedId=data?.unlocked?.[data.featuredId]?data.featuredId:"";
+  paintFeatured();
+ },()=>{aqsFeaturedId=local?.unlocked?.[local?.featuredId]?local.featuredId:"";paintFeatured()});
 }
+window.addEventListener("storage",event=>{if(event.key!=="formwheel.aqs.v1")return;if(auth.currentUser&&!auth.currentUser.isAnonymous)return;syncFeatured(auth.currentUser)});
 
 function syncProfile(user){
  if(profileUnsubscribe){profileUnsubscribe();profileUnsubscribe=null}
