@@ -1,4 +1,4 @@
-const CACHE = "formwheel-hub-v2-profile-20261010";
+const CACHE = "formwheel-hub-v3-hubfix-20261018";
 const APP_SHELL = [
   "/Formwheel/",
   "/Formwheel/index.html",
@@ -8,6 +8,8 @@ const APP_SHELL = [
   "/Formwheel/assets/home.css",
   "/Formwheel/assets/app.js",
   "/Formwheel/assets/home.js",
+  "/Formwheel/assets/spotlight.js",
+  "/Formwheel/assets/random-match.js",
   "/Formwheel/assets/id-core.js",
   "/Formwheel/assets/profile.js",
   "/Formwheel/assets/formwheel-favicon.svg"
