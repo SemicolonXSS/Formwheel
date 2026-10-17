@@ -13,6 +13,32 @@ const visitorBase="formwheelV2/visitorStats/uniqueVisitors";
 const visitorCount=document.getElementById("fw-total-visitor-count");
 const visitorNote=document.getElementById("fw-total-visitor-note");
 let recordedVisitorUid=null;
+let durationTimer=null;
+let durationBusy=false;
+const DURATION_INTERVAL=30000;
+const DURATION_MAX_GAP=45000;
+const formatDuration=ms=>{
+ if(!Number.isFinite(ms)||ms<=0)return "0분";
+ const minutes=Math.floor(ms/60000),seconds=Math.floor(ms/1000)%60;
+ const hours=Math.floor(minutes/60),days=Math.floor(hours/24);
+ return (days?days+"일 ":"")+(hours%24?hours%24+"시간 ":"")+(minutes%60?minutes%60+"분":!days&&!hours?"0분":"")+(minutes<1?" "+seconds+"초":"");
+};
+async function accumulateDuration(uid){
+ if(!uid||auth.currentUser?.uid!==uid||!connection||document.visibilityState!=="visible"||durationBusy)return;
+ durationBusy=true;
+ try{
+  const now=Date.now();
+  await runTransaction(ref(db,visitorBase+"/"+uid),current=>{
+   if(!current||typeof current!=="object")return;
+   const previous=Number(current.lastCountedAt)||now;
+   const elapsed=Math.max(0,Math.min(DURATION_MAX_GAP,now-previous));
+   // A long inactive/offline period must not be interpreted as time spent visiting.
+   const counted=now-previous<=DURATION_MAX_GAP?elapsed:0;
+   return {...current,totalMs:(Number(current.totalMs)||0)+counted,lastCountedAt:now,lastVisitAt:now};
+  },{applyLocally:false});
+ }catch(error){console.warn("방문 시간 누적 실패",error.code||error)}
+ finally{durationBusy=false}
+}
 function visitorEntries(){return Object.entries(latestVisitors).filter(([,v])=>v&&typeof v==="object");}
 onValue(ref(db,visitorBase),snapshot=>{
  latestVisitors=snapshot.val()||{};
@@ -25,9 +51,15 @@ async function recordVisitor(user){
  const uid=user.uid;
  try{
   const node=ref(db,visitorBase+"/"+uid);
-  // Transactions prevent duplicate records across tabs, refreshes and devices sharing an account.
-  await runTransaction(node,current=>current===null?{firstSeen:Date.now(),accountType:user.isAnonymous?"guest":"account"}:undefined,{applyLocally:false});
+  await runTransaction(node,current=>current===null?{
+   firstSeen:Date.now(),accountType:user.isAnonymous?"guest":"account",
+   totalMs:0,lastCountedAt:Date.now(),lastVisitAt:Date.now()
+  }:current&&typeof current==="object"?{
+   ...current,totalMs:Number(current.totalMs)||0,lastCountedAt:Date.now(),lastVisitAt:Date.now()
+  }:undefined,{applyLocally:false});
   recordedVisitorUid=uid;
+  if(durationTimer)clearInterval(durationTimer);
+  durationTimer=setInterval(()=>accumulateDuration(uid),DURATION_INTERVAL);
  }catch(error){if(visitorNote)visitorNote.textContent="방문 기록 저장 실패 · Rules 확인 ("+(error.code||"오류")+")";}
 }
 
@@ -67,10 +99,16 @@ async function start(user){
 }
 onAuthStateChanged(auth,async user=>{
  if(user){start(user);recordVisitor(user);return}
+ if(durationTimer)clearInterval(durationTimer);
+ durationTimer=null;recordedVisitorUid=null;
  // Guests count only when anonymous Firebase sign-in is enabled.
  try{await signInAnonymously(auth)}catch(error){say("게스트 집계 비활성 · 익명 인증 설정 확인 ("+(error.code||"인증 실패")+")")}
 });
-window.addEventListener("pagehide",()=>{if(registered)remove(registered).catch(()=>{})});
+document.addEventListener("visibilitychange",()=>{
+ if(document.visibilityState==="hidden")accumulateDuration(auth.currentUser?.uid);
+ else if(auth.currentUser?.uid)runTransaction(ref(db,visitorBase+"/"+auth.currentUser.uid),current=>current&&typeof current==="object"?{...current,lastCountedAt:Date.now()}:undefined,{applyLocally:false}).catch(()=>{});
+});
+window.addEventListener("pagehide",()=>{if(registered)remove(registered).catch(()=>{});accumulateDuration(auth.currentUser?.uid)});
 
 /* Administrator presence inspector: UI gate only, not a Firebase security boundary. */
 const presenceRoot=document.getElementById("fw-live-presence");
@@ -141,14 +179,15 @@ function renderVisitorAdmin(){
  root.replaceChildren();
  const items=visitorEntries().sort((a,b)=>(b[1].firstSeen||0)-(a[1].firstSeen||0));
  const title=document.createElement("h3");title.textContent="📈 누적 고유 방문자 "+items.length.toLocaleString("ko-KR")+"명";root.appendChild(title);
- const subtitle=document.createElement("p");subtitle.style.cssText="font-size:12px;color:#687388";subtitle.textContent="집계 기능 적용 이후 기준 · Firebase UID당 1명 · 계정 변경 또는 익명 계정 초기화 시 다른 방문자로 집계될 수 있습니다.";root.appendChild(subtitle);
+ const subtitle=document.createElement("p");subtitle.style.cssText="font-size:12px;color:#687388";subtitle.textContent="집계 기능 적용 이후 기준 · 접속 시간은 이번 업데이트 이후 Hub 이용 시간만 합산(30초 간격) · 과거 시간 복원 불가 · UID당 1명";root.appendChild(subtitle);
  const guests=items.filter(([,v])=>v.accountType==="guest").length;
  const summary=document.createElement("p");summary.textContent="로그인/기타 "+(items.length-guests)+"명 · 게스트 "+guests+"명";root.appendChild(summary);
  if(!items.length){const empty=document.createElement("p");empty.textContent="아직 수집된 누적 방문 기록이 없습니다.";root.appendChild(empty);return}
  items.slice(0,100).forEach(([uid,v],index)=>{
   const p=document.createElement("div");p.style.cssText="padding:8px 0;border-top:1px solid #e7eaf1;font-size:12px";
   const when=Number.isFinite(v.firstSeen)?new Date(v.firstSeen).toLocaleString("ko-KR"):"날짜 미확인";
-  p.textContent=(index+1)+". "+(v.accountType==="guest"?"게스트":"로그인/기타")+" · 최초 방문 "+when+(uid===auth.currentUser?.uid?" · 내 계정":"");root.appendChild(p);
+  const duration=Number.isFinite(v.totalMs)?" · ⏱ 누적 접속 "+formatDuration(v.totalMs):" · ⏱ 누적 접속 미집계";
+  p.textContent=(index+1)+". "+(v.accountType==="guest"?"게스트":"로그인/기타")+" · 최초 방문 "+when+duration+(uid===auth.currentUser?.uid?" · 내 계정":"");root.appendChild(p);
  });
  if(items.length>100){const rest=document.createElement("p");rest.textContent="최근 방문 100명만 표시합니다.";root.appendChild(rest)}
 }
