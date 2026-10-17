@@ -726,7 +726,13 @@ function render(){
     (difficultyFilter.value === "all" || project.difficulty === difficultyFilter.value)
   );
 
-  /* SORT */
+  /* SORT: personalized popularity based on recorded Hub openings. */
+
+  if(sortElement.value === "popular"){
+    const visits = window.FormwheelHubHome?.read?.().visits || {};
+    const count = project => Math.max(0, Number(visits[project.name.toLowerCase()]?.count) || 0);
+    list.sort((a,b) => count(b)-count(a) || Date.parse(b.addedAt||0)-Date.parse(a.addedAt||0) || a.name.localeCompare(b.name,"ko"));
+  }
 
   if(sortElement.value === "name"){
 
@@ -940,7 +946,7 @@ resetFilters.addEventListener("click", () => {
   searchElement.value = "";
   currentFilter = "all";
   [modeFilter, connectionFilter, difficultyFilter].forEach(select => select.value = "all");
-  sortElement.value = "default";
+  sortElement.value = "popular";
   filterButtons.forEach(button => {
     const active = button.dataset.filter === "all";
     button.classList.toggle("active", active);
