@@ -259,10 +259,10 @@ const projects = [
     icon:"⚔️",
     className:"purple",
     category:"game",
-    mode:"solo",
-    connection:"offline",
+    mode:"both",
+    connection:"online",
     difficulty:"보통",
-    description:"무기를 골라 AI와 싸우는 2D 아레나. 능력 포인트·쿨타임으로 밸런스를 맞춘 솔로 베타.",
+    description:"솔로 AI 연습과 친구 초대 온라인 1대1 아레나. 특수 능력과 무기 밸런스를 갖춘 PvP 베타.",
     url:"https://semicolonxss.github.io/Formwheel/pvp/",
     addedAt:"2026-10-17T11:30:00Z",
     recent:true
