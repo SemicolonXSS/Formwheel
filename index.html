@@ -76,6 +76,7 @@
 <nav aria-label="메인 메뉴">
 <a href="#" id="fw-nav-quick">⚔️ 빠른 대전</a>
 <a href="#" id="fw-nav-friend">🎲 랜덤 플레이</a>
+<a href="#" id="fw-nav-solo" title="혼자 할 수 있는 게임으로 바로 이동">🌀 혼자 플레이</a>
 <a href="#projects">Explore</a>
 <a href="./more.html">☰ 더보기</a>
 </nav>
@@ -365,6 +366,32 @@ document.getElementById("fw-share-hub")?.addEventListener("click",async function
  const data={title:"Formwheel | 무료 웹게임",text:"설치 없이 친구랑 즐기는 무료 웹게임! Formwheel에서 같이 플레이하자 🎮",url};
  try{if(navigator.share){await navigator.share(data);return;}if(navigator.clipboard?.writeText){await navigator.clipboard.writeText(url);this.textContent="✓ 링크 복사 완료";return;}window.prompt("Formwheel 링크 복사",url);}catch(e){if(e.name!=="AbortError")window.prompt("Formwheel 링크 복사",url);}
 });
+</script>
+<script>
+/* Hub: 랜덤 혼자 플레이 — 등록된 게임 중 1인 플레이 지원 게임만 사용 */
+(() => {
+  const button = document.getElementById("fw-nav-solo");
+  if (!button) return;
+  button.addEventListener("click", event => {
+    event.preventDefault();
+    const candidates = (typeof projects !== "undefined" ? projects : [])
+      .filter(project => project.category === "game"
+        && (project.mode === "solo" || project.mode === "both")
+        && project.name !== "Casino"
+        && typeof project.url === "string"
+        && /^https:\/\//.test(project.url));
+    if (!candidates.length) {
+      alert("지금은 이동할 수 있는 혼자 플레이 게임이 없어요.");
+      return;
+    }
+    // Crypto API가 없으면 Math.random으로 대체하며, 게임은 현재 탭에서 시작합니다.
+    const random = new Uint32Array(1);
+    const index = (window.crypto && crypto.getRandomValues)
+      ? (crypto.getRandomValues(random), random[0] % candidates.length)
+      : Math.floor(Math.random() * candidates.length);
+    window.location.assign(candidates[index].url);
+  });
+})();
 </script>
 <script type="module" src="./assets/random-match.js?v=20261012-autoredirect"></script>
 <script>
