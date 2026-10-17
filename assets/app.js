@@ -635,7 +635,13 @@ function generatedThumbnail(project){
     AQS:["#241b58","#8065f6"], Spotlight:["#3d237b","#e49b39"],
     Story:["#172c64","#6178db"], Wiki:["#16476a","#38b6a5"]
   };
-  const [start,end] = colors[project.name] || ["#263158","#717db0"];
+  const palette = {
+    blue:["#123c72","#3687d5"], purple:["#382067","#9764da"],
+    indigo:["#202956","#6679d9"], orange:["#753313","#e99b3d"],
+    cyan:["#104e63","#42b8cf"], green:["#155443","#4bb88f"],
+    red:["#741e35","#df5975"], gray:["#313a50","#8795aa"]
+  };
+  const [start,end] = colors[project.name] || palette[project.className] || ["#263158","#717db0"];
   const name = escapeHTML(project.name);
   const icon = escapeHTML(project.icon || "✦");
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
@@ -651,10 +657,8 @@ function generatedThumbnail(project){
   return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
 }
 function thumbnailURL(project){
-  if (project.thumbnail) return project.thumbnail;
-  // Newly registered projects don't all have a thumbnail.svg in their own repositories.
-  if (["AQS","Spotlight","Story","Wiki"].includes(project.name)) return generatedThumbnail(project);
-  return new URL("assets/thumbnail.svg", project.url).href;
+  // Unified Hub card design. Original thumbnail files remain untouched in their repositories.
+  return generatedThumbnail(project);
 }
 
 function isRecent(project,now=Date.now()){const age=now-Date.parse(project.addedAt);return Number.isFinite(age)&&age>=0&&age<=14*86400000;}
