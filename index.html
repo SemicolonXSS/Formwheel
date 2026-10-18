@@ -369,12 +369,66 @@ document.getElementById("fw-share-hub")?.addEventListener("click",async function
 });
 </script>
 <script>
-/* Hub: 랜덤 혼자 플레이 — 등록된 게임 중 1인 플레이 지원 게임만 사용 */
+/* Hub: 랜덤 혼자 플레이 — 스킵 가능한 두구두구 연출 */
 (() => {
   const button = document.getElementById("fw-nav-solo");
   if (!button) return;
+  const style = document.createElement("style");
+  style.textContent = `
+    .fw-solo-backdrop{position:fixed;inset:0;z-index:100000;background:rgba(8,11,30,.86);display:grid;place-items:center;padding:20px;box-sizing:border-box;backdrop-filter:blur(10px)}
+    .fw-solo-backdrop[hidden]{display:none!important}
+    .fw-solo-panel{width:min(440px,100%);padding:34px 24px;text-align:center;border:1px solid rgba(255,255,255,.22);border-radius:26px;background:linear-gradient(150deg,#26205b,#121b39);color:#fff;box-shadow:0 22px 90px #0008;box-sizing:border-box}
+    .fw-solo-drum{font-size:33px;margin-bottom:12px;animation:fw-solo-bounce .38s ease-in-out infinite alternate}
+    .fw-solo-title{font-size:22px;font-weight:800;margin:0 0 10px}
+    .fw-solo-choice{min-height:96px;display:grid;place-items:center;font-size:30px;font-weight:850;color:#ffdf83;overflow-wrap:anywhere}
+    .fw-solo-hint{font-size:13px;opacity:.8;margin:8px 0 24px}
+    .fw-solo-skip{width:100%;padding:13px 18px;border:0;border-radius:14px;background:#ffcf6b;color:#211a32;font-size:16px;font-weight:800;cursor:pointer}
+    .fw-solo-skip:focus-visible{outline:3px solid #fff;outline-offset:3px}
+    @keyframes fw-solo-bounce{to{transform:scale(1.14) rotate(7deg)}}
+    @media(prefers-reduced-motion:reduce){.fw-solo-drum{animation:none}}
+  `;
+  document.head.appendChild(style);
+  const overlay = document.createElement("div");
+  overlay.className = "fw-solo-backdrop";
+  overlay.hidden = true;
+  overlay.innerHTML = `<div class="fw-solo-panel" role="dialog" aria-modal="true" aria-labelledby="fw-solo-heading">
+    <div class="fw-solo-drum" aria-hidden="true">🥁</div>
+    <h2 class="fw-solo-title" id="fw-solo-heading">두구두구... 오늘의 게임은?</h2>
+    <div class="fw-solo-choice" id="fw-solo-choice" aria-live="off">🎲</div>
+    <p class="fw-solo-hint">잠시 후 랜덤 게임으로 텔레포트!</p>
+    <button type="button" class="fw-solo-skip">⏩ 스킵하고 바로 이동</button>
+  </div>`;
+  document.body.appendChild(overlay);
+  const choice = overlay.querySelector("#fw-solo-choice");
+  const skip = overlay.querySelector(".fw-solo-skip");
+  const title = overlay.querySelector("#fw-solo-heading");
+  let ticker = null, revealTimer = null, goTimer = null, target = null, previousFocus = null;
+  function clearTimers() {
+    clearInterval(ticker); clearTimeout(revealTimer); clearTimeout(goTimer);
+    ticker = revealTimer = goTimer = null;
+  }
+  function navigate() {
+    if (!target) return;
+    clearTimers();
+    window.location.assign(target.url);
+  }
+  function close() {
+    clearTimers();
+    overlay.hidden = true;
+    target = null;
+    if (previousFocus && previousFocus.isConnected) previousFocus.focus();
+  }
+  skip.addEventListener("click", navigate);
+  overlay.addEventListener("keydown", event => {
+    if (event.key === "Escape") { event.preventDefault(); close(); }
+    if (event.key === "Tab") { event.preventDefault(); skip.focus(); }
+  });
+  overlay.addEventListener("click", event => {
+    if (event.target === overlay) close();
+  });
   button.addEventListener("click", event => {
     event.preventDefault();
+    if (!overlay.hidden) return;
     const candidates = (typeof projects !== "undefined" ? projects : [])
       .filter(project => project.category === "game"
         && (project.mode === "solo" || project.mode === "both")
@@ -386,12 +440,29 @@ document.getElementById("fw-share-hub")?.addEventListener("click",async function
       alert("지금은 이동할 수 있는 혼자 플레이 게임이 없어요.");
       return;
     }
-    // Crypto API가 없으면 Math.random으로 대체하며, 게임은 현재 탭에서 시작합니다.
     const random = new Uint32Array(1);
     const index = (window.crypto && crypto.getRandomValues)
       ? (crypto.getRandomValues(random), random[0] % candidates.length)
       : Math.floor(Math.random() * candidates.length);
-    window.location.assign(candidates[index].url);
+    target = candidates[index];
+    previousFocus = document.activeElement;
+    overlay.hidden = false;
+    title.textContent = "두구두구... 오늘의 게임은?";
+    choice.textContent = "🎲";
+    skip.focus();
+    let count = 0;
+    ticker = setInterval(() => {
+      const display = candidates[Math.floor(Math.random() * candidates.length)];
+      choice.textContent = (display.icon || "🎮") + " " + display.name;
+      count++;
+    }, 110);
+    revealTimer = setTimeout(() => {
+      clearInterval(ticker);
+      ticker = null;
+      title.textContent = "🎉 당첨!";
+      choice.textContent = (target.icon || "🎮") + " " + target.name;
+      goTimer = setTimeout(navigate, 850);
+    }, 2700);
   });
 })();
 </script>
