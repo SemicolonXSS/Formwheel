@@ -379,6 +379,7 @@ document.getElementById("fw-share-hub")?.addEventListener("click",async function
       .filter(project => project.category === "game"
         && (project.mode === "solo" || project.mode === "both")
         && project.name !== "Casino"
+        && project.name !== "Story"
         && typeof project.url === "string"
         && /^https:\/\//.test(project.url));
     if (!candidates.length) {
