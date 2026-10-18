@@ -13,7 +13,7 @@ const maps={classic:[[377,158,46,144]],twin:[[275,85,42,130],[483,245,42,130]],m
 const mapWalls=()=>maps[room?.map]||maps.classic;
 function blocked(x,y,r=16){return mapWalls().some(([bx,by,bw,bh])=>x+r>bx&&x-r<bx+bw&&y+r>by&&y-r<by+bh)}
 function move(p,dx,dy){const x=clamp(p.x+dx,17,783),y=clamp(p.y+dy,17,443);if(!blocked(x,p.y))p.x=x;if(!blocked(p.x,y))p.y=y;}
-function segmentHit(x1,y1,x2,y2,rect){const [rx,ry,rw,rh]=rect,dx=x2-x1,dy=y2-y1;let lo=0,hi=1;for(const [p,q] of [[-dx,x1-rx],[dx,rx+rw-x1],[-dy,y1-ry],[dy,ry+rh-y1]]){if(Math.abs(p)<1e-9){if(q<0)return null;}else{const t=q/p;if(p<0)lo=Math.max(lo,t);else hi=Math.min(hi,t);if(lo>hi)return null;}}return lo;}
+function segmentHit(x1,y1,x2,y2,rect){const [rx,ry,rw,rh]=rect,dx=x2-x1,dy=y2-y1;let lo=0,hi=1;for(const [p,q] of [[-dx,x1-rx],[dx,rx+rw-x1],[-dy,y1-ry],[dy,ry+rh-y1]]){if(Math.abs(p)<1e-9){if(q<0)return null;}else{const t=q/p;if(p<0)lo=Math.max(lo,t);else hi=Math.min(hi,t);if(lo>hi)return null;}}return lo<=1&&hi>=0?Math.max(0,lo):null;}
 function firstWallHit(x1,y1,x2,y2){let hit=null;for(const wall of mapWalls()){const t=segmentHit(x1,y1,x2,y2,wall);if(t!==null&&(hit===null||t<hit))hit=t;}return hit;}
 function targetHit(x1,y1,x2,y2,target,radius){const dx=x2-x1,dy=y2-y1,len=dx*dx+dy*dy;if(!len)return Math.hypot(x1-target.x,y1-target.y)<=radius?0:null;const t=clamp(((target.x-x1)*dx+(target.y-y1)*dy)/len,0,1);return Math.hypot(x1+t*dx-target.x,y1+t*dy)<=radius?t:null;}
 const POINT_CAP=10,weaponPoints={orb:3,wave:3,spark:4,cannon:4,swift:3,frost:4,burst:3,arc:4,heavy:5,needle:4},skillPoints={dream:4,shield:4,dash:3,heal:4,blink:4,boost:4,slow:3,barrier:5};
