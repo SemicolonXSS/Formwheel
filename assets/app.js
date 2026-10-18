@@ -160,6 +160,20 @@ const projects = [
   },
 
 
+  {
+    name:"Note",
+    icon:"📔",
+    className:"purple",
+    category:"app",
+    mode:"solo",
+    connection:"offline",
+    difficulty:"쉬움",
+    description:"날짜와 기분을 기록하고 일기를 검색·백업할 수 있는 나만의 전자일기.",
+    url:"https://semicolonxss.github.io/Formwheel_Note/",
+    addedAt:"2026-10-18T07:30:00Z",
+    recent:true
+  },
+
   /* =====================
      APPS
   ===================== */
