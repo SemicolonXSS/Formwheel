@@ -61,6 +61,7 @@ sendButton?.addEventListener("click", async () => {
       handleCodeInApp: false
     });
     lastSent = Date.now();
+    setTimeout(() => render(), 60000);
     render("📨 인증 메일을 보냈어요! 받은편지함과 스팸함을 확인한 뒤 인증 링크를 눌러 주세요.");
   } catch (e) { render(friendlyError(e)); }
   finally { pending = false; sendButton.disabled = Date.now() - lastSent < 60000; checkButton.disabled = false; }
