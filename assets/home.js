@@ -10,13 +10,13 @@ const valid=(arr,max=100)=>[...new Set((Array.isArray(arr)?arr:[]).filter(id=>ty
 const load=(k,fallback)=>{try{return JSON.parse(localStorage.getItem(k))||fallback}catch{return fallback}};
 const save=(k,value)=>{try{localStorage.setItem(k,JSON.stringify(value))}catch{byId("fw-home-status").textContent="기기 저장소에 저장하지 못했어요."}};
 let state=load(key,{pinned:[],excluded:[],visits:{},version:1});
-state={pinned:valid(state.pinned,3),excluded:valid(state.excluded),visits:state.visits&&typeof state.visits==="object"?state.visits:{},version:1};
+state={pinned:[],excluded:valid(state.excluded),visits:state.visits&&typeof state.visits==="object"?state.visits:{},version:1};
 let cache=load(cacheKey,{}),draft=null;
 const today=()=>new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Seoul",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
 const persist=()=>{save(key,state);render();window.dispatchEvent(new CustomEvent("fw:hub:changed",{detail:{state:exportState()}}))};
 const exportState=()=>JSON.parse(JSON.stringify({version:1,pinned:state.pinned,excluded:state.excluded,visits:state.visits}));
-window.FormwheelHubHome={read:exportState,apply(remote){if(!remote||typeof remote!=="object")return;state={version:1,pinned:valid(remote.pinned,3),excluded:valid(remote.excluded),visits:remote.visits&&typeof remote.visits==="object"?remote.visits:{}};save(key,state);cache={};render()},localKey:key};
-const list=()=>projects.filter(p=>!state.pinned.includes(p.name.toLowerCase())&&!state.excluded.includes(p.name.toLowerCase()));
+window.FormwheelHubHome={read:exportState,apply(remote){if(!remote||typeof remote!=="object")return;state={version:1,pinned:[],excluded:valid(remote.excluded),visits:remote.visits&&typeof remote.visits==="object"?remote.visits:{}};save(key,state);cache={};render()},localKey:key};
+const list=()=>projects.filter(p=>!state.excluded.includes(p.name.toLowerCase()));
 // GitHub repository pushed_at records are cached for one day to limit API requests.
 let updatedByRepo={};
 const repoCacheKey="fw:hub:repository-updates:v1";
@@ -40,7 +40,7 @@ const updated=p=>{
  return updatedByRepo[repo]||Date.parse(p.updatedAt||"")||added(p);
 };
 function recompute(){
- const date=today(),pool=list(),fingerprint=[...state.pinned,...state.excluded].join("|")+"|"+Object.keys(state.visits).map(id=>id+":"+(state.visits[id]?.count||0)).sort().join("|")+"|"+Object.keys(updatedByRepo).length;
+ const date=today(),pool=list(),fingerprint=[...state.excluded].join("|")+"|"+Object.keys(state.visits).map(id=>id+":"+(state.visits[id]?.count||0)).sort().join("|")+"|"+Object.keys(updatedByRepo).length;
  if(cache.date!==date||cache.fingerprint!==fingerprint||!Array.isArray(cache.slots)||cache.slots.some(slot=>!all.has(slot.id))){
   const chosen=new Set();
   const choose=(kind,rank)=>{
@@ -58,43 +58,22 @@ function recompute(){
   cache={date,fingerprint,slots:[updatedSlot,newSlot,familiarSlot].filter(Boolean)};
   save(cacheKey,cache);
  }
- return cache.slots.filter(slot=>all.has(slot.id)&&!state.pinned.includes(slot.id)&&!state.excluded.includes(slot.id));
+ return cache.slots.filter(slot=>all.has(slot.id)&&!state.excluded.includes(slot.id));
 }
-function card(id,recommend=false,kind=""){
+function card(id,kind=""){
  const p=all.get(id);if(!p)return "";
- const reason=kind==="updated"?"🛠️ 최근 업데이트":kind==="new"?"🆕 새로운 게임":kind==="familiar"?"💜 친숙한 게임":"고정됨";
- return '<article class="fw-home-card"><a class="fw-home-link" href="'+p.url+'" data-fw-play="'+id+'"><span class="fw-home-emoji">'+p.icon+'</span><strong>'+escapeHTML(p.name)+'</strong><small>'+(recommend?reason:"고정됨")+'</small></a><div class="fw-home-actions"><button type="button" data-fw-pin="'+id+'" aria-label="'+escapeHTML(p.name)+(recommend?" 고정":" 고정 해제")+'">'+(recommend?"📌 고정":"✓ 고정")+'</button>'+(recommend?'<button type="button" data-fw-exclude="'+id+'">추천 제외</button>':"")+'</div></article>';
+ const reason=kind==="updated"?"🛠️ 최근 업데이트":kind==="new"?"🆕 새로운 게임":kind==="familiar"?"💜 친숙한 게임":"추천";
+ return '<article class="fw-home-card"><a class="fw-home-link" href="'+p.url+'" data-fw-play="'+id+'"><span class="fw-home-emoji">'+p.icon+'</span><strong>'+escapeHTML(p.name)+'</strong><small>'+reason+'</small></a><div class="fw-home-actions"><button type="button" data-fw-exclude="'+id+'">추천 제외</button></div></article>';
 }
 function render(){
- const pins=state.pinned.filter(id=>all.has(id));
- byId("fw-pinned-section").hidden=pins.length===0;
- byId("fw-pinned-cards").innerHTML=pins.map(id=>card(id)).join("");
  const rec=recompute();
- byId("fw-recommended-cards").innerHTML=rec.map(slot=>card(slot.id,true,slot.kind)).join("");
+ byId("fw-recommended-cards").innerHTML=rec.map(slot=>card(slot.id,slot.kind)).join("");
  byId("fw-recommended-empty").hidden=rec.length!==0;
- byId("fw-home-count").textContent=pins.length+"/3";
-}
-function renderEditor(){
- const container=byId("fw-edit-list");
- container.innerHTML=draft.map((id,i)=>{const p=all.get(id);return '<div class="fw-edit-item"><span>'+p.icon+' '+escapeHTML(p.name)+'</span><span><button type="button" data-move="'+i+':-1" '+(!i?"disabled":"")+'>↑</button><button type="button" data-move="'+i+':1" '+(i===draft.length-1?"disabled":"")+'>↓</button><button type="button" data-remove="'+id+'">해제</button></span></div>'}).join("")||'<p>고정한 프로젝트가 없어요.</p>';
-}
-function togglePin(id){
- if(state.pinned.includes(id)){state.pinned=state.pinned.filter(x=>x!==id);persist();byId("fw-home-status").textContent="고정을 해제했어요.";return}
- if(state.pinned.length>=3){
-  const old=window.prompt("고정은 최대 3개예요. 교체할 프로젝트 이름을 입력하세요: "+state.pinned.map(x=>all.get(x).name).join(", "));
-  if(!old)return;
-  const replace=state.pinned.find(x=>x===old.trim().toLowerCase());if(!replace){byId("fw-home-status").textContent="고정 교체를 취소했어요. 정확한 프로젝트 이름이 필요해요.";return}
-  state.pinned.splice(state.pinned.indexOf(replace),1,id);
- }else state.pinned.push(id);
- persist();byId("fw-home-status").textContent="홈 고정 설정을 저장했어요.";
 }
 byId("fw-home").addEventListener("click",e=>{
  const button=e.target.closest("button");
  if(button){
-  if(button.dataset.fwPin){togglePin(button.dataset.fwPin);return}
   if(button.dataset.fwExclude){state.excluded=valid([...state.excluded,button.dataset.fwExclude]);persist();byId("fw-home-status").textContent="추천에서 제외했어요. 전체 목록에서는 계속 찾을 수 있어요.";return}
-  if(button.dataset.move){const [i,d]=button.dataset.move.split(":").map(Number);const j=i+d;if(j>=0&&j<draft.length){[draft[i],draft[j]]=[draft[j],draft[i]];renderEditor()}return}
-  if(button.dataset.remove){draft=draft.filter(x=>x!==button.dataset.remove);renderEditor();return}
  }
  const link=e.target.closest("[data-fw-play]");if(link)record(link.dataset.fwPlay);
 });
@@ -106,13 +85,6 @@ document.getElementById("cards")?.addEventListener("click",e=>{
  const a=e.target.closest("a.openButton");if(!a)return;
  const project=projects.find(p=>p.url===a.href);if(project)record(project.name.toLowerCase());
 });
-byId("fw-edit-toggle").addEventListener("click",()=>{
- const editor=byId("fw-home-editor");
- if(editor.hidden){draft=[...state.pinned];renderEditor();editor.hidden=false;byId("fw-edit-toggle").textContent="편집 닫기"}
- else{editor.hidden=true;draft=null;byId("fw-edit-toggle").textContent="편집"}
-});
-byId("fw-edit-save").addEventListener("click",()=>{state.pinned=valid(draft,3);byId("fw-home-editor").hidden=true;draft=null;byId("fw-edit-toggle").textContent="편집";persist();byId("fw-home-status").textContent="고정 순서를 저장했어요."});
-byId("fw-edit-cancel").addEventListener("click",()=>{byId("fw-home-editor").hidden=true;draft=null;byId("fw-edit-toggle").textContent="편집"});
 byId("fw-excluded-show").addEventListener("click",()=>{const el=byId("fw-excluded-list");el.hidden=!el.hidden;el.innerHTML=state.excluded.map(id=>'<button type="button" data-restore="'+id+'">'+escapeHTML(all.get(id)?.name||id)+' 제외 해제 ×</button>').join("")||"<span>제외한 프로젝트가 없어요.</span>"});
 byId("fw-excluded-list").addEventListener("click",e=>{const b=e.target.closest("[data-restore]");if(!b)return;state.excluded=state.excluded.filter(x=>x!==b.dataset.restore);persist();byId("fw-excluded-show").click();byId("fw-excluded-show").click()});
 const filterToggle=byId("fw-filter-toggle"),filterPanel=byId("fw-filter-panel");
