@@ -33,6 +33,14 @@ IMPORTANT:
 
 
 const projects = [
+  {
+    name:"Maze", icon:"🌀", className:"purple", category:"game", mode:"solo",
+    connection:"offline", difficulty:"보통",
+    description:"매번 달라지는 미로를 탈출하자! 3단계 난이도, 타이머와 최고 기록에 도전.",
+    url:"https://semicolonxss.github.io/Formwheel/maze/",
+    addedAt:"2026-10-19T04:40:00Z", recent:true
+  },
+
 
 
   /* =====================
