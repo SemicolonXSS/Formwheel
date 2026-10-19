@@ -68,6 +68,35 @@
 }
 </style>
 <script defer src="./shared/formwheel-i18n.js?v=20261013-1"></script>
+<style id="fw-hub-cleanup-20261019">
+/* Prioritize actual projects, not decorative panels. */
+main .hero{padding-bottom:18px!important}
+main .heroButtons{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+#projects{scroll-margin-top:82px}
+#projects .toolbar{gap:12px}
+#projects .searchBox{min-width:0}
+#projects .categoryButtons{display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;padding-bottom:5px}
+#projects .categoryButtons button{flex-shrink:0}
+#fw-filter-toggle{margin-top:8px}
+#fw-filter-panel:not(.open):not([data-open="true"]){/* Existing filter JS controls visibility; do not override it. */}
+@media(max-width:700px){
+ header{gap:5px!important}
+ header nav{scrollbar-width:none!important;gap:2px!important}
+ header nav::-webkit-scrollbar{display:none}
+ header nav a{padding:8px 6px!important;font-size:11px!important}
+ header .fw-hub-logo{flex-shrink:0}
+ main .hero{padding:14px 12px 16px!important}
+ main .hero h1{font-size:clamp(27px,8vw,39px)!important}
+ main .hero h2{font-size:15px!important;line-height:1.5}
+ main .heroButtons a{flex:1 1 145px;text-align:center;padding:11px 8px!important}
+ #projects .toolbar{display:flex;flex-direction:column;align-items:stretch}
+ #projects .searchBox{width:100%;max-width:none}
+ #projects .categoryButtons{width:100%}
+ #projects .subToolbar{gap:8px}
+ #projects .sortSelect{max-width:175px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}}
+</style>
 </head>
 
 
@@ -87,7 +116,7 @@
 <a href="#" id="fw-nav-quick">⚔️ 빠른 대전</a>
 <a href="#" id="fw-nav-friend">🎲 랜덤 플레이</a>
 <a href="#" id="fw-nav-solo" title="혼자 할 수 있는 게임으로 바로 이동">🌀 혼자 플레이</a>
-<a href="#projects">Explore</a>
+<a href="#projects">🔎 찾기</a>
 <a href="./more.html">☰ 더보기</a>
 </nav>
 <a href="./profile.html" class="fw-profile-trigger" aria-label="내 프로필 및 커스터마이징 페이지 열기" title="내 프로필"><span id="fw-header-avatar">🎡</span><span id="fw-header-featured" hidden aria-label="대표 업적"></span></a>
@@ -146,8 +175,8 @@ Formwheel의 모든 프로젝트를 한곳에서 만나보세요.
 
 
 <div class="heroButtons">
-<a class="heroButton primary" href="https://semicolonxss.github.io/Formwheel_Cook/">🍳 Cook 플레이하기</a>
-<a class="heroButton secondary" href="#projects">🎮 전체 프로젝트 보기</a>
+<a class="heroButton primary" href="#" id="fw-hero-solo">🌀 게임 바로 시작</a>
+<a class="heroButton secondary" href="#projects">🔎 프로젝트 찾아보기</a>
 
 
 
@@ -169,12 +198,12 @@ Formwheel의 모든 프로젝트를 한곳에서 만나보세요.
   id="search"
   class="searchBox"
   type="search"
-  placeholder="🔎 프로젝트 검색..."
+  placeholder="🔎 게임 · 도구 · 앱 이름 검색..."
   autocomplete="off"
 >
 
 
-<div class="categoryButtons">
+<div class="categoryButtons" role="group" aria-label="프로젝트 종류">
 
 <button
   class="filterButton active"
@@ -233,7 +262,7 @@ Formwheel의 모든 프로젝트를 한곳에서 만나보세요.
 <select id="sort" class="sortSelect">
 
 <option value="popular" selected>
-인기순 (내 이용 기준)
+자주 플레이한 순
 </option>
 
 <option value="default">
@@ -282,8 +311,7 @@ Formwheel의 모든 프로젝트를 한곳에서 만나보세요.
 
 
 <p style="text-align:center;margin:16px auto 20px"><a href="./anniversary-40-50.html" style="display:inline-block;background:linear-gradient(110deg,#3439bd,#7354c7);color:#fff;text-decoration:none;font-weight:800;font-size:13px;padding:11px 22px;border-radius:12px;box-shadow:0 5px 15px #3439bd24">🎉 기념 이벤트 →</a></p>
-<p style="text-align:center;margin:8px auto 18px"><a href="https://semicolonxss.github.io/Formwheel_AQS/" style="display:inline-flex;gap:7px;align-items:center;padding:9px 15px;border:1px solid #dfe3ee;border-radius:12px;background:#fff;color:#3439bd;text-decoration:none;font-size:13px;font-weight:750">🏆 Achievement · 내 업적 보기 →</a></p>
-<p style="text-align:center;margin:0 auto 18px"><a href="https://semicolonxss.github.io/Formwheel_AQS/" style="display:inline-flex;gap:7px;align-items:center;padding:9px 15px;border:1px solid #dfe3ee;border-radius:12px;background:#fff;color:#3439bd;text-decoration:none;font-size:13px;font-weight:750">🎯 Quest · 오늘의 미션 →</a></p>
+<p style="text-align:center;margin:8px auto 18px"><a href="https://semicolonxss.github.io/Formwheel_AQS/" style="display:inline-flex;gap:7px;align-items:center;padding:10px 16px;border:1px solid #dfe3ee;border-radius:12px;background:#fff;color:#3439bd;text-decoration:none;font-size:13px;font-weight:750">🏆 업적 · 퀘스트 · 비밀 확인 →</a></p>
 <section id="fw-spotlight" hidden aria-label="오늘의 Spotlight" style="max-width:890px;margin:12px auto 24px;padding:18px 22px;border:1px solid #dfe3f0;border-radius:20px;background:linear-gradient(120deg,#fff,#f4f1ff);box-shadow:0 8px 26px #3439bd10;color:#222842">
   <div style="display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap"><strong style="font-size:13px;color:#4f46a5">🌟 PROJECT SPOTLIGHT</strong><small data-spotlight-date style="color:#69718a"></small></div>
   <h2 data-spotlight-title style="font-size:25px;margin:12px 0 5px"></h2>
@@ -344,6 +372,22 @@ Formwheel의 모든 프로젝트를 한곳에서 만나보세요.
 
 
 
+<script>
+/* Hub usability: keep the main shortcut and filters functional without changing game logic. */
+document.getElementById("fw-hero-solo")?.addEventListener("click",function(e){
+  e.preventDefault();
+  document.getElementById("fw-nav-solo")?.click();
+});
+const hubSearch = document.getElementById("search");
+hubSearch?.setAttribute("aria-label","프로젝트 이름 검색");
+document.querySelectorAll(".categoryButtons .filterButton").forEach(button=>{
+  button.setAttribute("type","button");
+  button.setAttribute("aria-pressed",String(button.classList.contains("active")));
+  button.addEventListener("click",()=>{
+    document.querySelectorAll(".categoryButtons .filterButton").forEach(b=>b.setAttribute("aria-pressed",String(b===button)));
+  });
+});
+</script>
 <script src="./assets/app.js?v=20261018-note"></script>
 <script defer src="./assets/hub-tour.js?v=20261018-spotlight2"></script>
 <script defer src="./assets/spotlight.js?v=20261016-2"></script>
