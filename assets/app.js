@@ -679,7 +679,14 @@ function generatedThumbnail(project){
     cyan:["#104e63","#42b8cf"], green:["#155443","#4bb88f"],
     red:["#741e35","#df5975"], gray:["#313a50","#8795aa"]
   };
-  const [start,end] = colors[project.name] || palette[project.className] || ["#263158","#717db0"];
+  // Consistent thumbnail backgrounds by project category.
+  // Keep individual icons, names and decorative shapes unchanged.
+  const categoryColors = {
+    game:["#234B9B","#518BE8"],  // 게임: blue
+    tool:["#176858","#45AF9B"],  // 도구: teal
+    app:["#6A3A98","#A177D4"]    // 앱: violet
+  };
+  const [start,end] = categoryColors[project.category] || colors[project.name] || palette[project.className] || ["#263158","#717db0"];
   const name = escapeHTML(project.name);
   const icon = escapeHTML(project.icon || "✦");
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
