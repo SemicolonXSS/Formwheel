@@ -83,7 +83,7 @@ function record(id){
 }
 document.getElementById("cards")?.addEventListener("click",e=>{
  const a=e.target.closest("a.openButton");if(!a)return;
- const project=projects.find(p=>p.url===a.href);if(project)record(project.name.toLowerCase());
+ const project=projects.find(p=>{try{const expected=new URL(p.url,location.href),actual=new URL(a.href,location.href);return expected.origin===actual.origin&&expected.pathname.replace(/\/$/,"")===actual.pathname.replace(/\/$/,"")}catch{return false}});if(project)record(project.name.toLowerCase());
 });
 byId("fw-excluded-show").addEventListener("click",()=>{const el=byId("fw-excluded-list");el.hidden=!el.hidden;el.innerHTML=state.excluded.map(id=>'<button type="button" data-restore="'+id+'">'+escapeHTML(all.get(id)?.name||id)+' 제외 해제 ×</button>').join("")||"<span>제외한 프로젝트가 없어요.</span>"});
 byId("fw-excluded-list").addEventListener("click",e=>{const b=e.target.closest("[data-restore]");if(!b)return;state.excluded=state.excluded.filter(x=>x!==b.dataset.restore);persist();byId("fw-excluded-show").click();byId("fw-excluded-show").click()});
