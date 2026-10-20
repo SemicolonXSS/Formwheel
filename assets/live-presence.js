@@ -15,7 +15,9 @@ const visitorNote=document.getElementById("fw-total-visitor-note");
 let recordedVisitorUid=null;
 let durationTimer=null;
 let durationBusy=false;
-const DURATION_INTERVAL=30000;
+const DURATION_INTERVAL=15000;
+let lastActiveTick=Date.now();
+const projectStatsKey='Hub';
 const DURATION_MAX_GAP=45000;
 const formatDuration=ms=>{
  if(!Number.isFinite(ms)||ms<=0)return "0분";
@@ -23,21 +25,24 @@ const formatDuration=ms=>{
  const hours=Math.floor(minutes/60),days=Math.floor(hours/24);
  return (days?days+"일 ":"")+(hours%24?hours%24+"시간 ":"")+(minutes%60?minutes%60+"분":!days&&!hours?"0분":"")+(minutes<1?" "+seconds+"초":"");
 };
-async function accumulateDuration(uid){
- if(!uid||auth.currentUser?.uid!==uid||!connection||document.visibilityState!=="visible"||durationBusy)return;
- durationBusy=true;
- try{
+async function accumulateDuration(uid,{allowHidden=false}={}){
+  if(!uid||auth.currentUser?.uid!==uid||!connection||durationBusy)return;
   const now=Date.now();
-  await runTransaction(ref(db,visitorBase+"/"+uid),current=>{
-   if(!current||typeof current!=="object")return;
-   const previous=Number(current.lastCountedAt)||now;
-   const elapsed=Math.max(0,Math.min(DURATION_MAX_GAP,now-previous));
-   // A long inactive/offline period must not be interpreted as time spent visiting.
-   const counted=now-previous<=DURATION_MAX_GAP?elapsed:0;
-   return {...current,totalMs:(Number(current.totalMs)||0)+counted,lastCountedAt:now,lastVisitAt:now};
-  },{applyLocally:false});
- }catch(error){console.warn("방문 시간 누적 실패",error.code||error)}
- finally{durationBusy=false}
+  const elapsed=Math.min(DURATION_MAX_GAP,Math.max(0,now-lastActiveTick));
+  lastActiveTick=now;
+  if(!allowHidden&&document.visibilityState!=="visible")return;
+  if(elapsed<=0)return;
+  durationBusy=true;
+  try{
+    await runTransaction(ref(db,visitorBase+"/"+uid),current=>{
+      if(!current||typeof current!=="object")return;
+      const projectMs={...(current.projectMs||{})};
+      projectMs[projectStatsKey]=(Number(projectMs[projectStatsKey])||0)+elapsed;
+      return {...current,totalMs:(Number(current.totalMs)||0)+elapsed,projectMs,
+        lastCountedAt:now,lastVisitAt:now};
+    },{applyLocally:false});
+  }catch(error){console.warn("방문 시간 누적 실패",error.code||error)}
+  finally{durationBusy=false}
 }
 function visitorEntries(){return Object.entries(latestVisitors).filter(([,v])=>v&&typeof v==="object");}
 onValue(ref(db,visitorBase),snapshot=>{
@@ -48,21 +53,22 @@ onValue(ref(db,visitorBase),snapshot=>{
 },error=>{if(visitorCount)visitorCount.textContent="조회 불가";if(visitorNote)visitorNote.textContent="Firebase 읽기 권한 확인 ("+(error.code||"오류")+")";});
 async function recordVisitor(user){
  if(!user||recordedVisitorUid===user.uid)return;
- const uid=user.uid;
+ const uid=user.uid,now=Date.now();
  try{
   const node=ref(db,visitorBase+"/"+uid);
   await runTransaction(node,current=>current===null?{
-   firstSeen:Date.now(),accountType:user.isAnonymous?"guest":"account",
-   totalMs:0,lastCountedAt:Date.now(),lastVisitAt:Date.now()
+   firstSeen:now,accountType:user.isAnonymous?"guest":"account",
+   totalMs:0,projectMs:{},visitCount:1,lastCountedAt:now,lastVisitAt:now
   }:current&&typeof current==="object"?{
-   ...current,totalMs:Number(current.totalMs)||0,lastCountedAt:Date.now(),lastVisitAt:Date.now()
+   ...current,totalMs:Number(current.totalMs)||0,
+   visitCount:(Number(current.visitCount)||1)+(now-(Number(current.lastVisitAt)||0)>30*60*1000?1:0),
+   lastCountedAt:now,lastVisitAt:now
   }:undefined,{applyLocally:false});
-  recordedVisitorUid=uid;
+  recordedVisitorUid=uid;lastActiveTick=Date.now();
   if(durationTimer)clearInterval(durationTimer);
   durationTimer=setInterval(()=>accumulateDuration(uid),DURATION_INTERVAL);
  }catch(error){if(visitorNote)visitorNote.textContent="방문 기록 저장 실패 · Rules 확인 ("+(error.code||"오류")+")";}
 }
-
 const sessionId=crypto.randomUUID().replace(/-/g,"");
 const rawProject=(location.pathname.split("/").filter(Boolean)[0]||"Formwheel");
 const project=(rawProject==="Formwheel"?"Hub":rawProject.replace(/^Formwheel_/i,"")).slice(0,60);
@@ -105,10 +111,14 @@ onAuthStateChanged(auth,async user=>{
  try{await signInAnonymously(auth)}catch(error){say("게스트 집계 비활성 · 익명 인증 설정 확인 ("+(error.code||"인증 실패")+")")}
 });
 document.addEventListener("visibilitychange",()=>{
- if(document.visibilityState==="hidden")accumulateDuration(auth.currentUser?.uid);
- else if(auth.currentUser?.uid)runTransaction(ref(db,visitorBase+"/"+auth.currentUser.uid),current=>current&&typeof current==="object"?{...current,lastCountedAt:Date.now()}:undefined,{applyLocally:false}).catch(()=>{});
+ const uid=auth.currentUser?.uid;
+ if(document.visibilityState==="hidden")accumulateDuration(uid,{allowHidden:true});
+ else lastActiveTick=Date.now();
 });
-window.addEventListener("pagehide",()=>{if(registered)remove(registered).catch(()=>{});accumulateDuration(auth.currentUser?.uid)});
+window.addEventListener("pagehide",()=>{
+ if(registered)remove(registered).catch(()=>{});
+ accumulateDuration(auth.currentUser?.uid,{allowHidden:true});
+});
 
 /* Administrator presence inspector: UI gate only, not a Firebase security boundary. */
 const presenceRoot=document.getElementById("fw-live-presence");
@@ -179,7 +189,7 @@ function renderVisitorAdmin(){
  root.replaceChildren();
  const items=visitorEntries().sort((a,b)=>(b[1].firstSeen||0)-(a[1].firstSeen||0));
  const title=document.createElement("h3");title.textContent="📈 누적 고유 방문자 "+items.length.toLocaleString("ko-KR")+"명";root.appendChild(title);
- const subtitle=document.createElement("p");subtitle.style.cssText="font-size:12px;color:#687388";subtitle.textContent="집계 기능 적용 이후 기준 · 접속 시간은 이번 업데이트 이후 Hub 이용 시간만 합산(30초 간격) · 과거 시간 복원 불가 · UID당 1명";root.appendChild(subtitle);
+ const subtitle=document.createElement("p");subtitle.style.cssText="font-size:12px;color:#687388";subtitle.textContent="집계 기능 적용 이후 기준 · 접속 시간은 계측 적용 후부터 합산(15초 간격) · 일부 프로젝트는 적용 전 기록 제외 · 과거 시간 복원 불가 · UID당 1명";root.appendChild(subtitle);
  const guests=items.filter(([,v])=>v.accountType==="guest").length;
  const summary=document.createElement("p");summary.textContent="로그인/기타 "+(items.length-guests)+"명 · 게스트 "+guests+"명";root.appendChild(summary);
  if(!items.length){const empty=document.createElement("p");empty.textContent="아직 수집된 누적 방문 기록이 없습니다.";root.appendChild(empty);return}
@@ -187,7 +197,9 @@ function renderVisitorAdmin(){
   const p=document.createElement("div");p.style.cssText="padding:8px 0;border-top:1px solid #e7eaf1;font-size:12px";
   const when=Number.isFinite(v.firstSeen)?new Date(v.firstSeen).toLocaleString("ko-KR"):"날짜 미확인";
   const duration=Number.isFinite(v.totalMs)?" · ⏱ 누적 접속 "+formatDuration(v.totalMs):" · ⏱ 누적 접속 미집계";
-  p.textContent=(index+1)+". "+(v.accountType==="guest"?"게스트":"로그인/기타")+" · 최초 방문 "+when+duration+(uid===auth.currentUser?.uid?" · 내 계정":"");root.appendChild(p);
+   const repeat=" · 재방문 "+Math.max(0,(Number(v.visitCount)||1)-1)+"회";
+   const breakdown=Object.entries(v.projectMs||{}).filter(([,ms])=>Number(ms)>0).sort((a,b)=>b[1]-a[1]).map(([name,ms])=>name+" "+formatDuration(Number(ms))).join(" / ");
+  p.textContent=(index+1)+". "+(v.accountType==="guest"?"게스트":"로그인/기타")+" · 최초 방문 "+when+duration+repeat+(breakdown?" · 📍 "+breakdown:"")+(uid===auth.currentUser?.uid?" · 내 계정":"");root.appendChild(p);
  });
  if(items.length>100){const rest=document.createElement("p");rest.textContent="최근 방문 100명만 표시합니다.";root.appendChild(rest)}
 }
