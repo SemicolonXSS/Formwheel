@@ -57,6 +57,20 @@ window.addEventListener("fw:hub:changed",event=>{
 });
 
 const headerAvatar=document.getElementById("fw-header-avatar");
+const FRAME_STYLES={기본:"none",브론즈:"3px solid #b77b49",실버:"3px solid #a8b2c6",골드:"3px solid #e5b845",다이아:"3px solid #63c9e7"};
+function syncAvatarFrame(user=auth.currentUser){
+ if(!headerAvatar)return;
+ const key="fw:badge:frame:"+(user&&!user.isAnonymous?user.uid:"guest");
+ let chosen="기본";
+ try{chosen=localStorage.getItem(key)||"기본"}catch{}
+ headerAvatar.style.setProperty("border",FRAME_STYLES[chosen]||"none","important");
+ headerAvatar.style.boxSizing="border-box";
+ headerAvatar.dataset.badgeFrame=chosen in FRAME_STYLES?chosen:"기본";
+}
+window.addEventListener("pageshow",()=>syncAvatarFrame());
+window.addEventListener("focus",()=>syncAvatarFrame());
+window.addEventListener("storage",event=>{if(event.key?.startsWith("fw:badge:frame:"))syncAvatarFrame()});
+
 const guestProfile=()=>{try{return JSON.parse(localStorage.getItem("fw:profile:guest:v1"))||{}}catch{return {}}};
 let profileUnsubscribe=null,featuredUnsubscribe=null;
 const headerFeatured=document.getElementById("fw-header-featured");
@@ -97,6 +111,7 @@ function syncProfile(user){
 onAuthStateChanged(auth,user=>{
  syncProfile(user);
  syncFeatured(user);
+ syncAvatarFrame(user);
  if(unsubscribe){unsubscribe();unsubscribe=null}ready=false;uid=null;
  if(!user||user.isAnonymous){if(activeAccount){applying=true;home.apply(readGuest()||{pinned:[],excluded:[],visits:{}});applying=false;activeAccount=false}login.hidden=false;logout.hidden=true;show(user?.isAnonymous?"게스트 모드 · 기기에만 저장":"로그인하면 다른 기기와 홈 설정이 동기화돼요.");return}
  connect(user);
