@@ -214,10 +214,21 @@ function renderVisitorAdmin(){
  selector("방문자 구분",[["all","전체 유형"],["guest","게스트"],["account","로그인/기타"],["repeat","재방문 기록 있음"]],visitorView.type,"type");
  selector("정렬",[["newest","최근 최초 방문"],["recent","마지막 방문"],["duration","체류 시간"],["visits","방문 횟수"]],visitorView.sort,"sort");
  root.appendChild(toolbar);
- const metricGrid=document.createElement("div");metricGrid.style.cssText="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:12px";
  const selectedPeriod=visitorView.period==="all"?"전체 기록":visitorView.period==="today"?"오늘":visitorView.period==="7d"?"7일":"30일";
- metricGrid.append(metric("누적 고유 방문자",all.length.toLocaleString("ko-KR")+"명"),metric(selectedPeriod+" 신규 방문자",newPeriod.length+"명"),metric(selectedPeriod+" 최근 활동 UID",recentlySeen.length+"명"),metric("기존 방문자의 최근 활동",visitorView.period==="all"?"기간 선택 시 표시":returned.length+"명"),metric("평균 누적 체류 시간",formatDuration(all.length?totalMs/all.length:0)),metric("재방문 기록 보유",all.filter(x=>x.visits>1).length+"명"),metric("총 기록 세션",all.reduce((s,x)=>s+x.visits,0).toLocaleString("ko-KR")+"회"),metric("300명 목표 달성률",Math.min(100,all.length/300*100).toFixed(1)+"%"));
- root.appendChild(metricGrid);
+ const statsTable=document.createElement("table");statsTable.style.cssText="width:100%;border-collapse:collapse;font-size:12px;margin:6px 0 10px;table-layout:fixed";
+ const rows=[
+  [["누적 방문자",all.length.toLocaleString("ko-KR")+"명"],[selectedPeriod+" 신규",newPeriod.length+"명"]],
+  [[selectedPeriod+" 최근 활동",recentlySeen.length+"명"],["기존 방문자 활동",visitorView.period==="all"?"—":returned.length+"명"]],
+  [["평균 누적 체류",formatDuration(all.length?totalMs/all.length:0)],["재방문 기록",all.filter(x=>x.visits>1).length+"명"]],
+  [["총 기록 세션",all.reduce((sum,x)=>sum+x.visits,0).toLocaleString("ko-KR")+"회"],["게스트",all.filter(x=>x.v.accountType==="guest").length+"명"]]
+ ];
+ rows.forEach((cells,i)=>{const tr=document.createElement("tr");cells.forEach(([name,value])=>{const td=document.createElement("td");td.style.cssText="padding:7px 8px;border-bottom:1px solid #e7eaf1;vertical-align:middle;width:50%";const nameEl=document.createElement("span");nameEl.style.cssText="font-size:11px;color:#687388;display:block";nameEl.textContent=name;const valueEl=document.createElement("strong");valueEl.style.cssText="font-size:14px;display:block;margin-top:2px";valueEl.textContent=value;td.append(nameEl,valueEl);tr.appendChild(td)});statsTable.appendChild(tr)});root.appendChild(statsTable);
+ const goalPct=Math.min(100,all.length/300*100);
+ const goalWrap=document.createElement("div");goalWrap.style.cssText="padding:10px 11px;background:#f4f6fd;border-radius:10px;margin:8px 0 16px";
+ const goalHeader=document.createElement("div");goalHeader.style.cssText="display:flex;justify-content:space-between;gap:8px;align-items:center;font-size:12px;margin-bottom:7px";
+ const goalLabel=document.createElement("strong");goalLabel.textContent="🎯 300명 방문자 목표";const goalValue=document.createElement("span");goalValue.textContent=all.length.toLocaleString("ko-KR")+" / 300명 · "+goalPct.toFixed(1)+"%";goalHeader.append(goalLabel,goalValue);
+ const progressTrack=document.createElement("div");progressTrack.setAttribute("role","progressbar");progressTrack.setAttribute("aria-label","300명 방문자 목표 달성률");progressTrack.setAttribute("aria-valuemin","0");progressTrack.setAttribute("aria-valuemax","300");progressTrack.setAttribute("aria-valuenow",String(Math.min(300,all.length)));progressTrack.style.cssText="height:9px;background:#dce1f3;border-radius:999px;overflow:hidden";
+ const progressFill=document.createElement("div");progressFill.style.cssText="height:100%;width:"+goalPct+"%;background:linear-gradient(90deg,#6069dc,#8b5cf6);border-radius:999px;transition:width .3s";progressTrack.appendChild(progressFill);goalWrap.append(goalHeader,progressTrack);root.appendChild(goalWrap);
  const chartTitle=document.createElement("strong");chartTitle.textContent="📈 신규 방문자 추이 (최근 14일)";root.appendChild(chartTitle);
  const buckets=[];for(let i=13;i>=0;i--){const d=new Date(now-i*86400000);buckets.push({day:kstDay(d.getTime()),count:0});}
  const byDay=new Map(buckets.map(x=>[x.day,x]));
