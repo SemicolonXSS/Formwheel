@@ -184,22 +184,68 @@ async function loadName(uid){
  if(adminUnlocked)renderAdmin();
 }
 
+
+/* Dashboard filters are kept outside render so live Firebase updates don't reset them. */
+const visitorView={period:"all",sort:"newest",type:"all",query:"",page:0};
+const VISITOR_PAGE_SIZE=25;
+const kstDay=value=>{
+ const n=Number(value);
+ return Number.isFinite(n)&&n>0?new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Seoul",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date(n)):"";
+};
+const safeNumber=value=>Number.isFinite(Number(value))?Math.max(0,Number(value)):0;
+const displayWhen=value=>Number.isFinite(Number(value))&&Number(value)>0?new Date(Number(value)).toLocaleString("ko-KR"):"기록 없음";
+const metric=(label,value)=>{const item=document.createElement("div");item.style.cssText="padding:12px;border-radius:12px;background:#f4f6fd;min-width:0";const l=document.createElement("div");l.style.cssText="font-size:11px;color:#626c83";l.textContent=label;const v=document.createElement("strong");v.style.cssText="font-size:19px;display:block;margin-top:4px;overflow-wrap:anywhere";v.textContent=value;item.append(l,v);return item};
 function renderVisitorAdmin(){
  const root=document.getElementById("visitor-list");if(!root||!adminUnlocked)return;
  root.replaceChildren();
- const items=visitorEntries().sort((a,b)=>(b[1].firstSeen||0)-(a[1].firstSeen||0));
- const title=document.createElement("h3");title.textContent="📈 누적 고유 방문자 "+items.length.toLocaleString("ko-KR")+"명";root.appendChild(title);
- const subtitle=document.createElement("p");subtitle.style.cssText="font-size:12px;color:#687388";subtitle.textContent="집계 기능 적용 이후 기준 · 접속 시간은 계측 적용 후부터 합산(15초 간격) · 일부 프로젝트는 적용 전 기록 제외 · 과거 시간 복원 불가 · UID당 1명";root.appendChild(subtitle);
- const guests=items.filter(([,v])=>v.accountType==="guest").length;
- const summary=document.createElement("p");summary.textContent="로그인/기타 "+(items.length-guests)+"명 · 게스트 "+guests+"명";root.appendChild(summary);
- if(!items.length){const empty=document.createElement("p");empty.textContent="아직 수집된 누적 방문 기록이 없습니다.";root.appendChild(empty);return}
- items.slice(0,100).forEach(([uid,v],index)=>{
-  const p=document.createElement("div");p.style.cssText="padding:8px 0;border-top:1px solid #e7eaf1;font-size:12px";
-  const when=Number.isFinite(v.firstSeen)?new Date(v.firstSeen).toLocaleString("ko-KR"):"날짜 미확인";
-  const duration=Number.isFinite(v.totalMs)?" · ⏱ 누적 접속 "+formatDuration(v.totalMs):" · ⏱ 누적 접속 미집계";
-   const repeat=" · 재방문 "+Math.max(0,(Number(v.visitCount)||1)-1)+"회";
-   const breakdown=Object.entries(v.projectMs||{}).filter(([,ms])=>Number(ms)>0).sort((a,b)=>b[1]-a[1]).map(([name,ms])=>name+" "+formatDuration(Number(ms))).join(" / ");
-  p.textContent=(index+1)+". "+(v.accountType==="guest"?"게스트":"로그인/기타")+" · 최초 방문 "+when+duration+repeat+(breakdown?" · 📍 "+breakdown:"")+(uid===auth.currentUser?.uid?" · 내 계정":"");root.appendChild(p);
- });
- if(items.length>100){const rest=document.createElement("p");rest.textContent="최근 방문 100명만 표시합니다.";root.appendChild(rest)}
+ const now=Date.now(),today=kstDay(now);
+ const all=visitorEntries().map(([uid,v])=>({uid,v,first:safeNumber(v.firstSeen),last:safeNumber(v.lastVisitAt),ms:safeNumber(v.totalMs),visits:Math.max(1,safeNumber(v.visitCount)),projects:v.projectMs&&typeof v.projectMs==="object"?v.projectMs:{}}));
+ const start=visitorView.period==="7d"?now-7*86400000:visitorView.period==="30d"?now-30*86400000:visitorView.period==="today"?new Date(today+"T00:00:00+09:00").getTime():0;
+ // Historical daily unique traffic cannot be reconstructed; firstSeen measures new visitors.
+ const newPeriod=all.filter(x=>x.first>=start);
+ const recentlySeen=all.filter(x=>x.last>=start);
+ const returned=recentlySeen.filter(x=>x.first<start);
+ const totalMs=all.reduce((s,x)=>s+x.ms,0);
+ const title=document.createElement("h3");title.textContent="📊 방문자 분석 · "+all.length.toLocaleString("ko-KR")+"명";root.appendChild(title);
+ const note=document.createElement("p");note.style.cssText="font-size:12px;color:#687388;line-height:1.65";note.textContent="한국 시간 기준 · 방문자는 Firebase UID 기준(기기 변경·게스트 재설치 시 달라질 수 있음). 30분 이상 간격을 새 세션으로 추정합니다. 기존에 수집하지 않은 접속·체류 기록은 복원할 수 없습니다.";root.appendChild(note);
+ const toolbar=document.createElement("div");toolbar.style.cssText="display:flex;flex-wrap:wrap;gap:8px;margin:12px 0";
+ function selector(aria,options,current,key){const s=document.createElement("select");s.setAttribute("aria-label",aria);s.style.cssText="font:inherit;font-size:12px;padding:9px;border:1px solid #ccd2e2;border-radius:9px;max-width:100%";options.forEach(([value,label])=>{const o=document.createElement("option");o.value=value;o.textContent=label;s.appendChild(o)});s.value=current;s.onchange=()=>{visitorView[key]=s.value;visitorView.page=0;renderVisitorAdmin()};toolbar.appendChild(s);}
+ selector("분석 기간",[["all","전체 기간"],["today","오늘"],["7d","최근 7일"],["30d","최근 30일"]],visitorView.period,"period");
+ selector("방문자 구분",[["all","전체 유형"],["guest","게스트"],["account","로그인/기타"],["repeat","재방문 기록 있음"]],visitorView.type,"type");
+ selector("정렬",[["newest","최근 최초 방문"],["recent","마지막 방문"],["duration","체류 시간"],["visits","방문 횟수"]],visitorView.sort,"sort");
+ root.appendChild(toolbar);
+ const metricGrid=document.createElement("div");metricGrid.style.cssText="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:12px";
+ const selectedPeriod=visitorView.period==="all"?"전체 기록":visitorView.period==="today"?"오늘":visitorView.period==="7d"?"7일":"30일";
+ metricGrid.append(metric("누적 고유 방문자",all.length.toLocaleString("ko-KR")+"명"),metric(selectedPeriod+" 신규 방문자",newPeriod.length+"명"),metric(selectedPeriod+" 최근 활동 UID",recentlySeen.length+"명"),metric("기존 방문자의 최근 활동",visitorView.period==="all"?"기간 선택 시 표시":returned.length+"명"),metric("평균 누적 체류 시간",formatDuration(all.length?totalMs/all.length:0)),metric("재방문 기록 보유",all.filter(x=>x.visits>1).length+"명"),metric("총 기록 세션",all.reduce((s,x)=>s+x.visits,0).toLocaleString("ko-KR")+"회"),metric("300명 목표 달성률",Math.min(100,all.length/300*100).toFixed(1)+"%"));
+ root.appendChild(metricGrid);
+ const chartTitle=document.createElement("strong");chartTitle.textContent="📈 신규 방문자 추이 (최근 14일)";root.appendChild(chartTitle);
+ const buckets=[];for(let i=13;i>=0;i--){const d=new Date(now-i*86400000);buckets.push({day:kstDay(d.getTime()),count:0});}
+ const byDay=new Map(buckets.map(x=>[x.day,x]));
+ all.forEach(x=>{const b=byDay.get(kstDay(x.first));if(b)b.count++});
+ const max=Math.max(1,...buckets.map(x=>x.count));
+ const chart=document.createElement("div");chart.style.cssText="display:grid;grid-template-columns:repeat(14,minmax(0,1fr));gap:3px;align-items:end;height:110px;margin:12px 0 5px;border-bottom:1px solid #c9cfdd";
+ buckets.forEach(b=>{const cell=document.createElement("div");cell.title=b.day+" 신규 "+b.count+"명";cell.style.cssText="display:flex;flex-direction:column;align-items:center;justify-content:end;height:100%;min-width:0";const n=document.createElement("span");n.textContent=b.count||"";n.style.cssText="font-size:9px;color:#525b74";const bar=document.createElement("div");bar.style.cssText="width:100%;max-width:28px;border-radius:4px 4px 0 0;background:#6069dc;height:"+Math.max(2,Math.round(b.count/max*83))+"px";cell.append(n,bar);chart.appendChild(cell)});root.appendChild(chart);
+ const axis=document.createElement("div");axis.style.cssText="display:flex;justify-content:space-between;font-size:11px;color:#697388;margin-bottom:16px";axis.textContent=buckets[0].day+" → "+buckets[13].day;root.appendChild(axis);
+ const projectTotals=new Map();all.forEach(x=>Object.entries(x.projects).forEach(([name,ms])=>{const time=safeNumber(ms);if(time)projectTotals.set(name,(projectTotals.get(name)||0)+time)}));
+ const ranking=[...projectTotals].sort((a,b)=>b[1]-a[1]).slice(0,8);
+ const projectTitle=document.createElement("strong");projectTitle.textContent="🏆 프로젝트별 기록 체류 시간 TOP 8";root.appendChild(projectTitle);
+ const rankingEl=document.createElement("div");rankingEl.style.cssText="margin:8px 0 16px;font-size:12px";
+ if(!ranking.length){rankingEl.textContent="수집된 프로젝트 체류 시간이 없습니다."}
+ ranking.forEach(([name,ms],i)=>{const line=document.createElement("div");line.style.cssText="padding:6px 0;border-bottom:1px solid #edf0f6";const bar=document.createElement("div");bar.style.cssText="height:5px;background:#e8eaf5;border-radius:5px;margin-top:4px;overflow:hidden";const fill=document.createElement("div");fill.style.cssText="height:100%;background:#6069dc;width:"+Math.max(1,ms/ranking[0][1]*100)+"%";bar.appendChild(fill);const caption=document.createElement("div");caption.textContent=(i+1)+". "+name+" · "+formatDuration(ms);line.append(caption,bar);rankingEl.appendChild(line)});root.appendChild(rankingEl);
+ const header=document.createElement("strong");header.textContent="👥 개별 방문 기록";root.appendChild(header);
+ const search=document.createElement("input");search.type="search";search.placeholder="UID 일부 검색 (관리용)";search.setAttribute("aria-label","방문자 검색");search.value=visitorView.query;search.style.cssText="display:block;box-sizing:border-box;width:100%;padding:10px;margin:9px 0;border:1px solid #ccd2e2;border-radius:10px;font:inherit;font-size:12px";search.onchange=()=>{visitorView.query=search.value.trim().toLowerCase();visitorView.page=0;renderVisitorAdmin()};root.appendChild(search);
+ let filtered=all.filter(x=>visitorView.period==="all"||x.last>=start||x.first>=start).filter(x=>visitorView.type==="all"||(visitorView.type==="guest"?x.v.accountType==="guest":visitorView.type==="account"?x.v.accountType!=="guest":x.visits>1)).filter(x=>!visitorView.query||x.uid.toLowerCase().includes(visitorView.query));
+ const order=visitorView.sort==="recent"?"last":visitorView.sort==="duration"?"ms":visitorView.sort==="visits"?"visits":"first";filtered.sort((a,b)=>b[order]-a[order]);
+ const pageCount=Math.max(1,Math.ceil(filtered.length/VISITOR_PAGE_SIZE));visitorView.page=Math.min(visitorView.page,pageCount-1);
+ const summary=document.createElement("p");summary.style.cssText="font-size:11px;color:#687388";summary.textContent="조건에 맞는 방문자 "+filtered.length+"명 · "+(visitorView.page+1)+"/"+pageCount+" 페이지";root.appendChild(summary);
+ for(const [index,x] of filtered.slice(visitorView.page*VISITOR_PAGE_SIZE,(visitorView.page+1)*VISITOR_PAGE_SIZE).entries()){
+  const item=document.createElement("details");item.style.cssText="padding:9px 0;border-top:1px solid #e7eaf1;font-size:12px";
+  const head=document.createElement("summary");head.style.cssText="cursor:pointer;line-height:1.7";head.textContent=(visitorView.page*VISITOR_PAGE_SIZE+index+1)+". "+(x.v.accountType==="guest"?"게스트":"로그인/기타")+(x.uid===auth.currentUser?.uid?" (내 계정)":"")+" · "+displayWhen(x.first)+" · "+formatDuration(x.ms);item.appendChild(head);
+  const detail=document.createElement("div");detail.style.cssText="padding:7px 10px;line-height:1.8;color:#526079;overflow-wrap:anywhere";
+  const projectList=Object.entries(x.projects).filter(([,ms])=>safeNumber(ms)>0).sort((a,b)=>safeNumber(b[1])-safeNumber(a[1])).map(([name,ms])=>name+" "+formatDuration(safeNumber(ms))).join(" / ");
+  detail.textContent="마지막 방문: "+displayWhen(x.last)+" · 세션 추정 "+x.visits+"회 · 재방문 "+(x.visits-1)+"회 · 누적 접속 "+formatDuration(x.ms)+" · 프로젝트: "+(projectList||"기록 없음")+" · 식별자(일부): "+x.uid.slice(0,8)+"…";item.appendChild(detail);root.appendChild(item);
+ }
+ const pages=document.createElement("div");pages.style.cssText="display:flex;gap:8px;justify-content:center;margin:12px";
+ for(const [label,delta] of [["← 이전",-1],["다음 →",1]]){const b=document.createElement("button");b.type="button";b.textContent=label;b.disabled=delta<0?visitorView.page===0:visitorView.page>=pageCount-1;b.style.cssText="padding:8px 12px;border-radius:9px;border:1px solid #ccd2e2;background:white;color:#3439bd;cursor:pointer";b.onclick=()=>{visitorView.page+=delta;renderVisitorAdmin()};pages.appendChild(b)}root.appendChild(pages);
+ const caveat=document.createElement("p");caveat.style.cssText="font-size:11px;color:#7a8191;line-height:1.6";caveat.textContent="주의: 신규 방문 추이는 firstSeen 기준이며, 최근 활동 UID는 lastVisitAt 기준입니다. 과거 날짜별 전체 방문 횟수나 유입 경로는 현재 데이터만으로 알 수 없습니다. 관리자 확인 코드는 화면 표시용이며 데이터베이스 보안 권한을 대신하지 않습니다.";root.appendChild(caveat);
 }
