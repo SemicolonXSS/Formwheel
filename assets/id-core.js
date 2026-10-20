@@ -64,11 +64,15 @@ function syncAvatarFrame(user=auth.currentUser){
  let chosen="기본";
  try{chosen=localStorage.getItem(key)||"기본"}catch{}
  headerAvatar.style.setProperty("border",FRAME_STYLES[chosen]||"none","important");
+ headerAvatar.style.setProperty("outline",chosen==="기본"?"none":"2px solid transparent","important");
+ headerAvatar.style.setProperty("background-clip","padding-box","important");
  headerAvatar.style.boxSizing="border-box";
  headerAvatar.dataset.badgeFrame=chosen in FRAME_STYLES?chosen:"기본";
 }
 window.addEventListener("pageshow",()=>syncAvatarFrame());
 window.addEventListener("focus",()=>syncAvatarFrame());
+window.addEventListener("fw:badge:frame-changed",()=>syncAvatarFrame());
+document.addEventListener("visibilitychange",()=>{if(!document.hidden)syncAvatarFrame()});
 window.addEventListener("storage",event=>{if(event.key?.startsWith("fw:badge:frame:"))syncAvatarFrame()});
 
 const guestProfile=()=>{try{return JSON.parse(localStorage.getItem("fw:profile:guest:v1"))||{}}catch{return {}}};
