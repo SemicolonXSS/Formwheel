@@ -5,6 +5,7 @@ export const legacyBadgeIds=new Set(["base","day40","master","share","day50"]);
 export function earnedBadge(b,awards={},home=null,profile=null,stats=null){
  if(legacyBadgeIds.has(b.id))return !!awards[b.id];
  const visits=home?.visits||{}, values=Object.values(visits);
+ const normalizedVisits=Object.fromEntries(Object.entries(visits).map(([id,record])=>[id.toLowerCase().replace(/[^a-z0-9]/g,""),record]));
  const count=values.reduce((sum,x)=>sum+Math.max(0,Number(x?.count)||0),0);
  const explored=values.filter(x=>(Number(x?.count)||0)>0).length;
  const thresholds={explore1:1,explore5:5,explore10:10,explore20:20};
@@ -16,7 +17,7 @@ export function earnedBadge(b,awards={},home=null,profile=null,stats=null){
  if(b.id.startsWith("project")){
    const names=["Wheel","Quiz","Battle","Bomb","Risk","Spy","Reflex","Casino","Music","Piano","Dice Duel","Time","GCrown","Marble","Vault","AI","Button","Clicker","Decode","Check","Form","Edit","Balance","Fate","Cook","Tool"];
    const id=names[Number(b.id.slice(7))]?.toLowerCase();
-   return !!(id&&(Number(visits[id]?.count)||0)>0);
+   return !!(id&&(Number(normalizedVisits[id.replace(/[^a-z0-9]/g,"")]?.count)||0)>0);
  }
  const v=(key)=>Math.max(0,Number(stats?.[key])||0);
  const challenge={
