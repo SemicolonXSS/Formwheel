@@ -7,7 +7,7 @@ const config={apiKey:"AIzaSyBreTSe1m0-xlbF4aupnU5isRZCihR25IE",authDomain:"formw
 const app=getApps().find(a=>a.name==="[DEFAULT]")||initializeApp(config);
 const auth=getAuth(app),db=getDatabase(app);
 const root="formwheelV2/visitorStats/uniqueVisitors";
-const raw=document.currentScript?.dataset?.project||location.pathname.split("/").filter(Boolean)[0]||"Hub";
+const raw=new URL(import.meta.url).searchParams.get("project")||location.pathname.split("/").filter(Boolean)[0]||"Hub";
 const project=String(raw).replace(/^Formwheel_/i,"").replace(/[^a-zA-Z0-9_-]/g,"").slice(0,50)||"Hub";
 let uid=null,lastTick=Date.now(),busy=false,connected=true;
 function visible(){return document.visibilityState==="visible"&&!document.prerendering}
