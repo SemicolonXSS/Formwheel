@@ -107,6 +107,23 @@ main .heroButtons{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
 .fw-picks-list a:hover,.fw-picks-list a:focus-visible{border-color:#7d83d4;background:#eef0ff}
 @media(max-width:580px){#fw-quick-picks{margin:0 10px 12px;padding:10px} .fw-picks-list a{flex-direction:column;gap:2px;font-size:12px;padding:9px 3px} .fw-picks-list a small{font-size:10px}}
 </style>
+<style id="fw-50days-style">
+#fw-50days{position:relative;isolation:isolate;overflow:hidden;max-width:1000px;margin:14px auto 16px;padding:23px 20px;border-radius:21px;background:radial-gradient(circle at 85% 10%,#6738a9 0,transparent 33%),linear-gradient(125deg,#101932,#28325d 56%,#452e6d);color:#fff;text-align:center;box-shadow:0 13px 34px #262b6340}
+#fw-50days[hidden]{display:none!important}
+#fw-50days h2{position:relative;z-index:1;margin:5px 0;font-size:clamp(26px,6vw,44px);font-weight:900;letter-spacing:-.035em;color:#fff}
+#fw-50days .fw50-eyebrow{position:relative;z-index:1;color:#ffd98b;font-size:11px;letter-spacing:.19em;font-weight:800}
+#fw-50days .fw50-desc{position:relative;z-index:1;margin:8px auto 13px;font-size:13px;line-height:1.65;color:#edf0ff}
+#fw-50days .fw50-actions{position:relative;z-index:1;display:flex;justify-content:center;gap:9px;flex-wrap:wrap}
+#fw-50days button,#fw-50days a.fw50-link{font:inherit;font-weight:800;font-size:12px;border-radius:999px;padding:10px 16px;cursor:pointer;text-decoration:none}
+#fw-50days #fw50-celebrate{border:0;background:#ffcf69;color:#38233b}
+#fw-50days a.fw50-link{border:1px solid #ffffff80;color:#fff;background:#ffffff17}
+#fw-50days #fw50-close{position:absolute;right:12px;top:10px;z-index:3;background:#ffffff1c;color:#fff;border:0;border-radius:50%;width:30px;height:30px;padding:0;font-size:18px}
+#fw50-sparks{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.fw50-spark{position:absolute;top:-20px;font-size:18px;animation:fw50-fall 2.6s ease-in forwards;will-change:transform;opacity:0}
+@keyframes fw50-fall{0%{transform:translateY(-30px) rotate(0);opacity:0}12%{opacity:1}100%{transform:translateY(230px) rotate(540deg);opacity:0}}
+@media(max-width:600px){#fw-50days{margin:10px 10px 12px;padding:19px 16px}#fw-50days .fw50-desc{font-size:12px}#fw-50days button,#fw-50days a.fw50-link{padding:9px 13px}}
+@media(prefers-reduced-motion:reduce){.fw50-spark{animation:none!important;display:none!important}}
+</style>
 </head>
 
 
@@ -162,6 +179,15 @@ header .fw-profile-trigger{margin-left:0}
 ========================= -->
 
 <main>
+<section id="fw-50days" aria-label="Formwheel 50일 기념 행사" hidden>
+  <button type="button" id="fw50-close" aria-label="기념 배너 닫기">×</button>
+  <div id="fw50-sparks" aria-hidden="true"></div>
+  <div class="fw50-eyebrow">✦ FORMWHEEL ANNIVERSARY ✦</div>
+  <h2 id="fw50-title">🎉 50 DAYS!</h2>
+  <p class="fw50-desc" id="fw50-desc">Formwheel과 함께한 50일! 오늘의 축제를 즐겨보세요.</p>
+  <div class="fw50-actions"><button type="button" id="fw50-celebrate">🎆 축하 폭죽!</button><a class="fw50-link" href="#projects">🎮 프로젝트 즐기기 →</a></div>
+</section>
+
 
 
 <section class="hero">
@@ -616,6 +642,43 @@ document.getElementById("fw-match-close").onclick=()=>{modal.hidden=true};
       return a;
     }));
   });
+})();
+</script>
+<script id="fw-50days-script">
+(() => {
+  const banner=document.getElementById('fw-50days');
+  if(!banner)return;
+  const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+  if(today!=='2026-10-20'&&today!=='2026-10-21')return;
+  try{if(sessionStorage.getItem('fw50-banner-closed-'+today)==='1')return;}catch{}
+  if(today==='2026-10-21'){
+    document.getElementById('fw50-title').textContent='🏆 50 DAYS FINALE!';
+    document.getElementById('fw50-desc').textContent='50일 기념 피날레! Semicolon × Secol, 다음 목표는 방문자 300명! 🚀';
+  }else{
+    document.getElementById('fw50-desc').textContent='10월 20일 · 50 DAYS 기념 축제! 내일은 특별 피날레 🎊';
+  }
+  banner.hidden=false;
+  const sparks=document.getElementById('fw50-sparks');
+  let cleanup;
+  const celebrate=()=>{
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    sparks.replaceChildren();
+    const shapes=['✨','🎉','⭐','🎊','✦'];
+    for(let i=0;i<23;i++){
+      const el=document.createElement('span');el.className='fw50-spark';el.textContent=shapes[i%shapes.length];
+      el.style.left=(4+Math.random()*92)+'%';
+      el.style.animationDelay=(Math.random()*.6)+'s';
+      el.style.animationDuration=(2+Math.random()*1.2)+'s';
+      sparks.append(el);
+    }
+    clearTimeout(cleanup);cleanup=setTimeout(()=>sparks.replaceChildren(),4000);
+  };
+  document.getElementById('fw50-celebrate').addEventListener('click',celebrate);
+  document.getElementById('fw50-close').addEventListener('click',()=>{
+    banner.hidden=true;clearTimeout(cleanup);sparks.replaceChildren();
+    try{sessionStorage.setItem('fw50-banner-closed-'+today,'1');}catch{}
+  });
+  celebrate();
 })();
 </script>
 </body>
