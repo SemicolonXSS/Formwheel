@@ -34,6 +34,14 @@ IMPORTANT:
 
 const projects = [
   {
+    name:"GLITCH", icon:"⚡", className:"purple", category:"game", mode:"solo",
+    connection:"offline", difficulty:"보통",
+    description:"30초마다 규칙이 바뀌는 120초 생존 게임! 장애물을 피하고 에너지 조각을 모아봐.",
+    url:"https://semicolonxss.github.io/Formwheel/glitch/",
+    addedAt:"2026-10-21T00:00:00Z", recent:true
+  },
+
+  {
     name:"Maze", icon:"🌀", className:"purple", category:"game", mode:"both",
     connection:"offline", difficulty:"어려움",
     description:"방해 봇과 함정을 피해 탈출! 미로를 직접 조작하는 2인 로컬 배틀도 즐겨봐.",
