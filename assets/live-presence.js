@@ -187,7 +187,7 @@ async function loadName(uid){
 
 /* Dashboard filters are kept outside render so live Firebase updates don't reset them. */
 const visitorView={period:"all",sort:"newest",type:"all",query:"",page:0};
-const VISITOR_PAGE_SIZE=25;
+const VISITOR_PAGE_SIZE=15;
 const kstDay=value=>{
  const n=Number(value);
  return Number.isFinite(n)&&n>0?new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Seoul",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date(n)):"";
@@ -206,8 +206,11 @@ function renderVisitorAdmin(){
  const recentlySeen=all.filter(x=>x.last>=start);
  const returned=recentlySeen.filter(x=>x.first<start);
  const totalMs=all.reduce((s,x)=>s+x.ms,0);
+ const engaged=all.filter(x=>x.ms>=60000).length;
+ const returning=all.filter(x=>x.visits>1).length;
  const title=document.createElement("h3");title.textContent="📊 방문자 분석 · "+all.length.toLocaleString("ko-KR")+"명";root.appendChild(title);
  const note=document.createElement("p");note.style.cssText="font-size:12px;color:#687388;line-height:1.65";note.textContent="한국 시간 기준 · 방문자는 Firebase UID 기준(기기 변경·게스트 재설치 시 달라질 수 있음). 30분 이상 간격을 새 세션으로 추정합니다. 기존에 수집하지 않은 접속·체류 기록은 복원할 수 없습니다.";root.appendChild(note);
+ const engagement=document.createElement("p");engagement.style.cssText="font-size:12px;color:#4c5670";engagement.textContent="1분 이상 체류 "+engaged+"명 · 재방문 "+returning+"명 · 목표 300명까지 "+Math.max(0,300-all.length)+"명";root.appendChild(engagement);
  const toolbar=document.createElement("div");toolbar.style.cssText="display:flex;flex-wrap:wrap;gap:8px;margin:12px 0";
  function selector(aria,options,current,key){const s=document.createElement("select");s.setAttribute("aria-label",aria);s.style.cssText="font:inherit;font-size:12px;padding:9px;border:1px solid #ccd2e2;border-radius:9px;max-width:100%";options.forEach(([value,label])=>{const o=document.createElement("option");o.value=value;o.textContent=label;s.appendChild(o)});s.value=current;s.onchange=()=>{visitorView[key]=s.value;visitorView.page=0;renderVisitorAdmin()};toolbar.appendChild(s);}
  selector("분석 기간",[["all","전체 기간"],["today","오늘"],["7d","최근 7일"],["30d","최근 30일"]],visitorView.period,"period");
