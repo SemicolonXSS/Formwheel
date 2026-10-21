@@ -33,6 +33,8 @@ IMPORTANT:
 
 
 const projects = [
+  {name:"Mix",icon:"🎲",className:"purple",category:"game",mode:"solo",connection:"offline",difficulty:"쉬움",description:"랜덤 게임 5개를 중복 없이 뽑아 연속 도전! 진행도 저장과 재추첨 지원.",url:"https://semicolonxss.github.io/Formwheel/mix/",addedAt:"2026-10-21T00:30:00Z",recent:true},
+
   {
     name:"Glitch", icon:"⚡", className:"purple", category:"game", mode:"solo",
     connection:"offline", difficulty:"보통",
