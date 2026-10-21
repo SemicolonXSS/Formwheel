@@ -10,6 +10,47 @@ const base="formwheelV2/liveHubSessions";
 let latestSessions={};
 let latestVisitors={};
 const visitorBase="formwheelV2/visitorStats/uniqueVisitors";
+/* All-time peak of distinct active UIDs. Saved separately from visitor totals. */
+const peakPath="formwheelV2/visitorStats/livePeak";
+const peakLabel=document.getElementById("fw-live-peak");
+let recordedPeak=0,peakWritePending=false,peakCandidate=0,peakLoaded=false;
+const peakToastKey="fw-peak-toast";
+function showPeakToast(count){
+  if(!count||document.hidden)return;
+  let toast=document.getElementById(peakToastKey);
+  if(!toast){toast=document.createElement("div");toast.id=peakToastKey;toast.setAttribute("role","status");
+    toast.style.cssText="position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);z-index:10010;background:#292153;color:white;padding:13px 18px;border-radius:16px;font:700 14px/1.5 system-ui,sans-serif;box-shadow:0 10px 35px #19143155;opacity:0;transition:opacity .25s,transform .25s;pointer-events:none;text-align:center;max-width:90vw";
+    document.body.appendChild(toast);
+  }
+  toast.textContent="🏆 Formwheel 동시 접속 신기록! "+count+"명 🎉";
+  toast.style.opacity="1";toast.style.transform="translate(-50%,0)";
+  clearTimeout(showPeakToast.timer);
+  showPeakToast.timer=setTimeout(()=>{toast.style.opacity="0";toast.style.transform="translate(-50%,20px)"},4200);
+}
+function renderPeak(){if(peakLabel)peakLabel.textContent=peakLoaded?recordedPeak.toLocaleString("ko-KR")+"명":"확인 중…";}
+async function savePeak(){
+  if(peakWritePending||!peakLoaded||peakCandidate<=recordedPeak||!auth.currentUser)return;
+  peakWritePending=true;
+  try{
+    const result=await runTransaction(ref(db,peakPath),current=>{
+      const old=Math.max(0,Number(current?.count)||0);
+      if(peakCandidate<=old)return;
+      return {count:peakCandidate,recordedAt:Date.now()};
+    },{applyLocally:false});
+    if(result.committed){
+      const count=Math.max(0,Number(result.snapshot.val()?.count)||0);
+      if(count>recordedPeak){recordedPeak=count;renderPeak();showPeakToast(count);}
+    }
+  }catch(error){console.warn("동시 접속 최고 기록 저장 실패 (Firebase Rules 확인)",error.code||error)}
+  finally{peakWritePending=false;}
+}
+onValue(ref(db,peakPath),snap=>{
+  const count=Math.max(0,Number(snap.val()?.count)||0);
+  if(count>recordedPeak){recordedPeak=count;if(peakLoaded)showPeakToast(count);}
+  peakLoaded=true;renderPeak();
+  if(peakCandidate>recordedPeak)void savePeak();
+},error=>{if(peakLabel)peakLabel.textContent="조회 불가";console.warn("최고 동접 기록 읽기 실패",error.code||error)});
+
 const visitorCount=document.getElementById("fw-total-visitor-count");
 const visitorNote=document.getElementById("fw-total-visitor-note");
 let recordedVisitorUid=null;
@@ -86,6 +127,8 @@ onValue(ref(db,base),snapshot=>{
  if(adminUnlocked)renderAdmin();
  Object.entries(val).forEach(([uid,sessions])=>{if(activeEntries(sessions).length)unique.add(uid)});
  if(label)label.textContent=unique.size.toLocaleString("ko-KR")+"명";
+  peakCandidate=Math.max(peakCandidate,unique.size);
+  if(peakLoaded&&peakCandidate>recordedPeak)void savePeak();
  say("최근 5분 내 접속 확인 · 공통 게임 포함");
 },error=>{if(label)label.textContent="조회 불가";say("Firebase 읽기 권한을 확인해 주세요 · "+(error.code||"연결 오류"))});
 onValue(ref(db,".info/connected"),snapshot=>{connection=snapshot.val()===true;if(connection)start(auth.currentUser);else say("연결 재시도 중…")});
@@ -104,7 +147,7 @@ async function start(user){
  }catch(error){say("접속자 등록 실패 · Firebase Rules 확인 ("+(error.code||"연결 오류")+")")}
 }
 onAuthStateChanged(auth,async user=>{
- if(user){start(user);recordVisitor(user);return}
+ if(user){start(user);recordVisitor(user);if(peakLoaded&&peakCandidate>recordedPeak)void savePeak();return}
  if(durationTimer)clearInterval(durationTimer);
  durationTimer=null;recordedVisitorUid=null;
  // Guests count only when anonymous Firebase sign-in is enabled.
