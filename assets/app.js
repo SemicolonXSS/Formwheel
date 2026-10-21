@@ -33,6 +33,8 @@ IMPORTANT:
 
 
 const projects = [
+  {name:"Animation",icon:"🎬",className:"purple",category:"tool",mode:"solo",connection:"offline",difficulty:"보통",description:"프레임별 그림과 타임라인으로 애니메이션 제작! 어니언 스킨, GIF·WebM 내보내기 지원.",url:"https://semicolonxss.github.io/Formwheel_Animation/",addedAt:"2026-10-21T04:15:00Z",recent:true},
+
   {name:"Mix",icon:"🎲",className:"purple",category:"game",mode:"solo",connection:"offline",difficulty:"쉬움",description:"랜덤 게임 5개를 중복 없이 뽑아 연속 도전! 진행도 저장과 재추첨 지원.",url:"https://semicolonxss.github.io/Formwheel/mix/",addedAt:"2026-10-21T00:30:00Z",recent:true},
 
   {
