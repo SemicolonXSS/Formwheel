@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://semicolonxss.github.io/Formwheel/sitemap.xml
