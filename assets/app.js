@@ -34,7 +34,7 @@ IMPORTANT:
 
 const projects = [
   {
-    name:"GLITCH", icon:"⚡", className:"purple", category:"game", mode:"solo",
+    name:"Glitch", icon:"⚡", className:"purple", category:"game", mode:"solo",
     connection:"offline", difficulty:"보통",
     description:"30초마다 규칙이 바뀌는 120초 생존 게임! 장애물을 피하고 에너지 조각을 모아봐.",
     url:"https://semicolonxss.github.io/Formwheel/glitch/",
