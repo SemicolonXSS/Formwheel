@@ -127,6 +127,28 @@ main .heroButtons{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
 <style id="fw-hub-20261020-six-fixes">
 @media(max-width:700px){main .hero{padding-block:12px!important} main .heroButtons{gap:7px!important} #fw-quick-picks{margin-block:6px!important} #projects{scroll-margin-top:60px}}
 </style>
+<style id="fw-road300-style">
+#fw-road300{max-width:920px;margin:0 auto 12px;padding:10px 13px;border:1px solid #dfe7fa;border-radius:15px;background:#f8faff;color:#253251;font-size:13px}
+.fw-road300-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:7px}
+.fw-road300-links a{flex:1 1 165px;text-decoration:none;text-align:center;padding:9px 8px;background:white;border:1px solid #e2e7f2;border-radius:10px;color:#273b7a;font-weight:750}
+.fw-road300-links small{font-weight:500;color:#667085;margin-left:5px}
+.fw-road300-links a:focus-visible{outline:3px solid #3146c9;outline-offset:2px}
+@media(max-width:580px){#fw-road300{margin:0 10px 9px;padding:9px} .fw-road300-links{gap:5px}.fw-road300-links a{flex:1 1 90px;font-size:11px;padding:9px 5px}.fw-road300-links small{display:none}}
+</style>
+<script type="application/ld+json" id="fw-seo-schema-20261022">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Formwheel",
+  "url": "https://semicolonxss.github.io/Formwheel/",
+  "description": "설치 없이 즐기는 무료 웹게임, 온라인 대전과 돌림판 등 다양한 도구를 제공하는 Formwheel 플랫폼",
+  "inLanguage": "ko-KR",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://semicolonxss.github.io/Formwheel/#projects"
+  }
+}
+</script>
 </head>
 
 
@@ -238,6 +260,15 @@ Formwheel의 모든 프로젝트를 한곳에서 만나보세요.
   </div>
 </section>
 
+<!-- ROAD TO 300: lightweight first-visit paths; no change to game or visitor logic -->
+<section id="fw-road300" aria-label="처음 방문자를 위한 빠른 시작">
+  <strong>🚀 처음 왔다면? 10초 안에 시작해요!</strong>
+  <div class="fw-road300-links">
+    <a href="https://semicolonxss.github.io/Formwheel_Reflex/" aria-label="Reflex 반응속도 게임 바로 플레이">⚡ 10초 도전 <small>Reflex</small></a>
+    <a href="https://semicolonxss.github.io/Formwheel_Cook/" aria-label="Cook 요리 게임 바로 플레이">🍳 자유롭게 요리 <small>Cook</small></a>
+    <a href="./share.html" aria-label="Formwheel 친구에게 공유하기">💌 친구에게 공유</a>
+  </div>
+</section>
 <!-- Primary discovery: show playable projects immediately after welcome -->
 <section id="projects">
 
