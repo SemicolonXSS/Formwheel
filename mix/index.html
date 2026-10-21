@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Formwheel Mix | 랜덤 5게임 챌린지</title><meta name="description" content="랜덤 Formwheel 게임 다섯 가지에 연속 도전!">
+<link rel="icon" href="../assets/formwheel-favicon.svg" type="image/svg+xml">
+<style>
+:root{font-family:system-ui,-apple-system,"Pretendard",sans-serif;color-scheme:dark;background:#0e1020;color:#f5f6ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 20% 0,#332567,#0e1020 60%);min-height:100vh}
+main{max-width:790px;margin:auto;padding:26px 17px 70px}a{color:inherit}header{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.back{color:#d1c5ff;text-decoration:none}h1{font-size:clamp(32px,8vw,55px);margin:30px 0 7px}h1 span{color:#b9a4ff}
+.sub{color:#c6c2dc;line-height:1.7} .panel{background:#1c1d35;border:1px solid #3e3b66;border-radius:20px;padding:22px;margin-top:22px;box-shadow:0 15px 40px #0003}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+button,.play{cursor:pointer;border:0;border-radius:13px;font:inherit;font-weight:800;padding:13px 17px;background:#a58bff;color:#17122b;text-decoration:none;display:inline-block}
+button.secondary{background:#35314e;color:#fff;border:1px solid #605781}button:disabled{opacity:.42;cursor:not-allowed}
+.progress{height:12px;background:#35324c;border-radius:30px;overflow:hidden;margin:13px 0}.fill{height:100%;width:0;background:linear-gradient(90deg,#8666ff,#4de3d6);transition:width .25s}
+ol{list-style:none;margin:17px 0 0;padding:0;display:grid;gap:10px}
+li{display:flex;align-items:center;gap:11px;background:#272742;border:1px solid #484365;border-radius:14px;padding:13px}
+li.current{border-color:#a996ff;background:#33305c}li.done{opacity:.72}li .num{font-weight:900;color:#b5a5fa;width:22px}
+li .info{flex:1;min-width:0}li .info strong{font-size:17px}li small{display:block;color:#bdb9d2;margin-top:4px}
+label{display:flex;align-items:center;gap:8px;color:#cec9e6}input{accent-color:#ae97ff}
+.notice{font-size:13px;color:#beb9d2;line-height:1.7}#finish{display:none;text-align:center}#finish h2{font-size:30px}#continue{display:none}#error{color:#ffbdbd}
+@media(max-width:500px){li{flex-wrap:wrap}li .play{width:100%;text-align:center}}
+</style></head>
+<body><main><header><a class="back" href="../">← Formwheel Hub</a><strong>🎲 MIX</strong></header>
+<h1>Formwheel <span>Mix</span></h1><p class="sub">랜덤으로 뽑힌 게임 <b>5개</b>를 차례대로 즐겨봐! 중복 없는 라인업, 매번 새로운 조합.</p>
+<section class="panel"><div class="row"><strong id="counter">0 / 5 완료</strong><span id="state">새 도전을 시작해 봐!</span></div>
+<div class="progress" role="progressbar" aria-label="도전 진행률" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0" id="bar"><div class="fill" id="fill"></div></div>
+<div class="row"><button id="shuffle">🎲 새로운 5게임 뽑기</button><button class="secondary" id="reset" hidden>↺ 처음부터</button></div>
+<ol id="games"></ol><div id="finish"><h2>🏆 MIX CLEAR!</h2><p>5개 게임 모두 완료! 다음 조합에도 도전해 보자!</p><button id="again">🎲 다시 섞기</button></div>
+<p class="notice">게임은 새 탭으로 열려. 플레이한 뒤 이 페이지로 돌아와 <b>플레이 완료</b>를 누르면 다음 게임이 열려. 자동 기록 판정이 아닌 직접 확인 방식이야. 진행 상황은 이 브라우저에 저장돼.</p><p id="error" role="alert"></p></section>
+</main><script>
+(()=>{'use strict';
+const POOL=[
+['⚡','Glitch','규칙이 뒤틀리는 생존','../glitch/'],
+['🌀','Maze','미로 탈출','https://semicolonxss.github.io/Formwheel_Maze/'],
+['🍳','Cook','요리 도전','https://semicolonxss.github.io/Formwheel_Cook/'],
+['🎯','Reflex','반응속도','https://semicolonxss.github.io/Formwheel_Reflex/'],
+['⏱️','Time','시간 감각','https://semicolonxss.github.io/Formwheel_Time/'],
+['💣','Bomb','폭탄 게임','https://semicolonxss.github.io/Formwheel_Bomb/'],
+['🎲','Risk','운과 전략','https://semicolonxss.github.io/Formwheel_Risk/'],
+['🃏','Fate','카드 심리전','https://semicolonxss.github.io/Formwheel_Fate/'],
+['👑','GCrown','왕관 쟁탈전','https://semicolonxss.github.io/Formwheel_GCrown/'],
+['🎵','Music','리듬 게임','https://semicolonxss.github.io/Formwheel_Music/'],
+['🎹','Piano','피아노 플레이','https://semicolonxss.github.io/Formwheel_Piano/'],
+['🖱️','Clicker','클릭 챌린지','https://semicolonxss.github.io/Formwheel_Clicker/'],
+['🔘','Button','버튼 선택','https://semicolonxss.github.io/Formwheel_Button/'],
+['🕵️','Spy','스파이 찾기','https://semicolonxss.github.io/Formwheel_Spy/'],
+['⚔️','Battle','퀴즈 대결','https://semicolonxss.github.io/Formwheel_Battle/'],
+['🎲','Dice Duel','주사위 배틀','https://semicolonxss.github.io/Formwheel_DiceDuel/'],
+['🔮','Marble','구슬 레이스','https://semicolonxss.github.io/Formwheel_Marble/'],
+['🗺️','Territory','영토 점령','https://semicolonxss.github.io/Formwheel_Territory/']
+];
+const KEY='formwheel-mix-v1';let run=null;
+try{const data=JSON.parse(localStorage.getItem(KEY));if(data&&Array.isArray(data.ids)&&data.ids.length===5&&new Set(data.ids).size===5&&data.ids.every(x=>Number.isInteger(x)&&x>=0&&x<POOL.length)&&Number.isInteger(data.done)&&data.done>=0&&data.done<=5)run=data}catch{}
+const $=id=>document.getElementById(id);
+function persist(){try{localStorage.setItem(KEY,JSON.stringify(run))}catch{}}
+function draw(){
+ const done=run?run.done:0;$('counter').textContent=done+' / 5 완료';$('fill').style.width=(done*20)+'%';$('bar').setAttribute('aria-valuenow',done);
+ $('reset').hidden=!run;$('shuffle').textContent=run?'🎲 새 조합 뽑기':'🎲 5게임 뽑기';
+ $('state').textContent=!run?'준비 완료':done===5?'전부 완료!':(done+1)+'번째 게임 도전 중';
+ $('games').replaceChildren();$('finish').style.display=run&&done===5?'block':'none';
+ if(!run)return;
+ run.ids.forEach((id,i)=>{const [emoji,name,desc,url]=POOL[id],li=document.createElement('li');li.className=i<done?'done':i===done?'current':'';
+ const num=document.createElement('span');num.className='num';num.textContent=i<done?'✓':String(i+1);
+ const info=document.createElement('div');info.className='info';const strong=document.createElement('strong');strong.textContent=emoji+' '+name;const small=document.createElement('small');small.textContent=desc+' · '+(i<done?'완료':i===done?'지금 플레이':'잠금');info.append(strong,small);li.append(num,info);
+ if(i===done){const a=document.createElement('a');a.className='play';a.href=url;a.target='_blank';a.rel='noopener noreferrer';a.textContent='▶ 플레이';li.append(a);
+ const b=document.createElement('button');b.className='secondary';b.textContent='✓ 플레이 완료';b.addEventListener('click',()=>{run.done++;persist();draw()});li.append(b)}
+ $('games').append(li)});
+}
+function shuffle(){if(run&&run.done<5&&!confirm('현재 도전을 버리고 새로운 5게임을 뽑을까?'))return;
+ let ids=POOL.map((_,i)=>i);for(let i=ids.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[ids[i],ids[j]]=[ids[j],ids[i]]}
+ run={ids:ids.slice(0,5),done:0};persist();draw()}
+$('shuffle').addEventListener('click',shuffle);$('again').addEventListener('click',shuffle);
+$('reset').addEventListener('click',()=>{if(run&&confirm('같은 조합으로 처음부터 다시 할까?')){run.done=0;persist();draw()}});
+draw();
+})();
+</script></body></html>
