@@ -14,6 +14,7 @@
 - `wikiV1`: 공개 위키, 관리자 UID, 비공개 제안 및 승인
 - `aqs/v1/users/$uid`: UID별 동기화. **XP는 클라이언트 값이므로 보상이 서버 인증되었다는 뜻이 아닙니다.**
 - `formwheelV2/liveHubSessions`·`visitorStats`: 자기 데이터 열람, 관리자 claim 기반 전체 열람
+- `clickerLeaderboardSeason3`: `scoreKey` 인덱스를 사용한 공개 리더보드(상위 20명 쿼리), UID 소유자만 자기 기록 쓰기
 
 ## 배포하면 달라지는 동작 (중요)
 기본은 `.read: false`, `.write: false`이며 **개별 게임의 이전 경로**(`battle`, `bombRooms`, `reflexRooms`, `spyRooms`, `timeRooms`, `pianoRooms`, `gcrown`, `chatRooms`, `formwheelMusic`, `data`, `quizzes`, `clickerLeaderboard` 등)는 스키마를 검증하지 못해 개방하지 않았습니다. **이 파일을 바로 운영 전체 Rules로 게시하면 해당 기능이 중단될 수 있습니다.**
@@ -21,6 +22,8 @@
 방문자 전체 목록과 접속자 원시 세션은 개인정보 보호를 위해 다른 이용자에게 열어두지 않았습니다. 따라서 현재 허브의 공개 방문자/동접 카운터는 **서버 집계용 공개 요약 노드로 별도 전환하기 전까지 읽기 오류가 날 수 있습니다.**
 
 Whiteboard는 방 코드가 일종의 초대 식별자일 뿐 강력한 접근 비밀번호가 아닙니다. 코드를 아는 인증 사용자는 방을 읽고 참여할 수 있습니다.
+
+Clicker 시즌 3은 `clickerLeaderboardSeason3` 루트에 `.read: true`가 추가되어 **UID와 닉네임·점수가 공개 열람**됩니다. 주어진 규칙은 문자열 형식·사용자 UID만 검사하므로 **점수 위조, `scoreKey`와 `score` 불일치, 하루 1회 등록 제한 위반을 서버에서 막지 못합니다**. 실제 부정 점수 방지는 서버 판정 또는 검증 가능한 별도 백엔드로 전환해야 합니다.
 
 AQS XP와 테마 선택 등 클라이언트 작성 값은 사용자 소유권만 제한하며 **서버가 정당성을 증명하는 값이 아닙니다**. 구매 소유권·경제 시스템·위조 방지는 서버 측 로직이 별도로 필요합니다.
 
