@@ -7,7 +7,16 @@ const palettes={
  sunset:['#fff0e8','#fff9f4','#ad3867','#ed9365'],
  forest:['#eaf7eb','#f7fff7','#176b49','#489467'],
  neon:['#f2eaff','#fdfaff','#6730bd','#9a55e5'],
- galaxy:['#e7e8ff','#f7f6ff','#3f359b','#7971db']
+ galaxy:['#e7e8ff','#f7f6ff','#3f359b','#7971db'],
+ ocean:["#def8ff","#f3fdff","#086b8e","#13a6bb"],
+ sakura:["#fff0f7","#fff8fb","#ac417f","#ed9fc8"],
+ midnight:["#1f2940","#283751","#a7baff","#647ca5"],
+ aurora:["#e7f9f5","#f4f8ff","#386f95","#9074d8"],
+ ember:["#fff1e4","#fff9ef","#ae4f28","#e9913b"],
+ cyber:["#edf5ff","#f9f5ff","#603bb6","#1b9da9"],
+ royal:["#f5edff","#fffcf2","#6e43a0","#b88a3a"],
+ void:["#e9e6f5","#f4f2fa","#575071","#86809c"],
+ prismatic:["#f6f1ff","#fff9fc","#8051bb","#cf7baf"]
 };
 const shopKey='formwheel_rapid_shop_beta_v1';
 function entitled(id){
