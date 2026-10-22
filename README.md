@@ -119,9 +119,14 @@ python -m http.server 8000
 
 ```bash
 node scripts/check-syntax.cjs
+node scripts/check-hub-catalog.cjs
 ```
 
+구문 점검 외에 허브 프로젝트 목록과 사이트맵의 중복, 필수 메타데이터, 내부 경로도 검사합니다.
+
 이 검사는 **실제 다인용 연결, Firebase 권한, 모든 게임 동작을 검증하는 종합 테스트가 아닙니다.**
+
+출시 전 Firebase 운영 검증과 실기기 점검은 [운영·출시 확인표](./RELEASE-CHECKLIST.md)를 사용하세요.
 
 ## 🔐 데이터와 보안
 
