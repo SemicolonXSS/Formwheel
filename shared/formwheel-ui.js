@@ -1,3 +1,60 @@
+/* Shared Rapid Shop cosmetic themes across Formwheel GitHub Pages projects.
+   Cross-repository navigation carries only a theme id; no wallet or purchase data. */
+(()=>{
+'use strict';
+const key='fw-global-theme-v1';
+const palettes={
+ sunset:['#fff0e8','#fff9f4','#ad3867','#ed9365'],
+ forest:['#eaf7eb','#f7fff7','#176b49','#489467'],
+ neon:['#f2eaff','#fdfaff','#6730bd','#9a55e5'],
+ galaxy:['#e7e8ff','#f7f6ff','#3f359b','#7971db']
+};
+let current=null;
+try{
+ const params=new URLSearchParams(location.search);
+ const incoming=params.get('fwTheme');
+ if(incoming==='classic'){localStorage.removeItem(key);}
+ else if(Object.hasOwn(palettes,incoming)){localStorage.setItem(key,incoming);}
+ current=localStorage.getItem(key);
+}catch{}
+if(!Object.hasOwn(palettes,current))current=null;
+const sheet=document.createElement('style');
+sheet.textContent=`body[data-fw-global-theme] {background:var(--fw-theme-bg)!important;}
+body[data-fw-global-theme] header,body[data-fw-global-theme] .card,body[data-fw-global-theme] .panel,body[data-fw-global-theme] .fw-footer{border-color:var(--fw-theme-accent)!important;}
+body[data-fw-global-theme] .fw-footer{background:var(--fw-theme-surface)!important;}
+body[data-fw-global-theme] a:not(.home):not(.logo){accent-color:var(--fw-theme-accent);}
+body[data-fw-global-theme] .hero h1,body[data-fw-global-theme] h1{ text-shadow:0 1px 0 var(--fw-theme-surface); }`;
+document.head.append(sheet);
+function apply(){
+ if(!document.body)return;
+ document.body.toggleAttribute('data-fw-global-theme',Boolean(current));
+ if(current){
+  document.body.dataset.fwGlobalTheme=current;
+  const [bg,surface,accent,secondary]=palettes[current];
+  document.body.style.setProperty('--fw-theme-bg',bg);
+  document.body.style.setProperty('--fw-theme-surface',surface);
+  document.body.style.setProperty('--fw-theme-accent',accent);
+  document.body.style.setProperty('--fw-theme-secondary',secondary);
+ }else document.body.removeAttribute('data-fw-global-theme');
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply,{once:true});else apply();
+document.addEventListener('click',e=>{
+ const link=e.target.closest?.('a[href]');
+ if(!link||!current||e.defaultPrevented)return;
+ try{
+  const url=new URL(link.href,location.href);
+  if(url.hostname==='semicolonxss.github.io' && url.origin===location.origin){
+   url.searchParams.set('fwTheme',current);
+   link.href=url.href;
+  }
+ }catch{}
+},true);
+window.FormwheelTheme={get:()=>current,set:id=>{
+ current=Object.hasOwn(palettes,id)?id:null;
+ try{if(current)localStorage.setItem(key,current);else localStorage.removeItem(key);}catch{}
+ apply();
+}};
+})();
 /* Common accessible controls, status and errors; no analytics or data transfer. */
 (()=>{'use strict';if(window.FormwheelUI)return;
  let toastTimer,toastNode,errorNode,dialogNode;
