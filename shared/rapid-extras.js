@@ -46,12 +46,14 @@ function stateRead(){
 }
 function walletRead(){
  const w=safeLoad(WALLET_KEY,null);
- return w&&Number.isSafeInteger(w.balance)&&w.balance>=0?w:null;
+ if(!w)return null;
+ const balance=typeof w.balance==="string"?w.balance:(Number.isSafeInteger(w.balance)?String(w.balance):"");
+ return /^\\d+$/.test(balance)?{...w,balance}:null;
 }
 function saveState(state){localStorage.setItem(EXTRAS_KEY,JSON.stringify(state))}
 const owned=(state,id)=>state.owned.includes(id);
 const equipped=(state,type)=>state.equipped[type]?known.get(state.equipped[type]):null;
-const format=n=>n.toLocaleString("ko-KR");
+const format=n=>BigInt(n).toLocaleString("ko-KR");
 function notify(message){
  const out=byId("fw-rapid-extra-status");if(out)out.textContent=message;
 }
@@ -59,12 +61,12 @@ function purchase(id){
  const item=known.get(id),wallet=walletRead(),state=stateRead();
  if(!item||!wallet){notify("Rapid 지갑을 확인해 주세요.");return}
  if(owned(state,id)){notify("이미 보유한 상품입니다.");return}
- if(wallet.balance<item.price){notify("Rapid가 부족해요! Clicker 환전소에서 모을 수 있어요.");return}
+ if(BigInt(wallet.balance)<BigInt(item.price)){notify("Rapid가 부족해요! Clicker 환전소에서 모을 수 있어요.");return}
  if(!confirm(item.name+"을(를) "+item.price+" R에 구매할까요? 구매 상품은 이 브라우저에 저장됩니다."))return;
  const latest=walletRead(),again=stateRead();
- if(!latest||latest.balance<item.price||owned(again,id)){notify("잔액 또는 구매 상태가 변경됐어요. 다시 확인해 주세요.");return}
+ if(!latest||BigInt(latest.balance)<BigInt(item.price)||owned(again,id)){notify("잔액 또는 구매 상태가 변경됐어요. 다시 확인해 주세요.");return}
  const previous=localStorage.getItem(WALLET_KEY);
- const after={...latest,balance:latest.balance-item.price};
+ const after={...latest,balance:(BigInt(latest.balance)-BigInt(item.price)).toString()};
  again.owned.push(id);
  try{
   localStorage.setItem(WALLET_KEY,JSON.stringify(after));
@@ -138,7 +140,7 @@ function renderShop(){
   if(owned(s,item.id)){
    if(EQUIPPABLE.has(item.category)){button.dataset.rxEquip=item.id;button.textContent=s.equipped[item.category]===item.id?"✓ 장착 중 · 해제":"장착하기";}
    else{button.disabled=true;button.textContent="✓ 해금됨"}
-  }else{button.dataset.rxBuy=item.id;button.textContent="구매";button.disabled=!w||w.balance<item.price}
+  }else{button.dataset.rxBuy=item.id;button.textContent="구매";button.disabled=!w||BigInt(w.balance)<BigInt(item.price)}
   box.append(icon,name,desc,price,button);host.append(box);
  }
  const settings=byId("fw-rx-settings");settings.replaceChildren();
