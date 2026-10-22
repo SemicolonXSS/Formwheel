@@ -126,6 +126,7 @@ function renderShop(){
  const host=byId("fw-rapid-extra-items");if(!host)return;
  const s=stateRead(),w=walletRead();
  byId("fw-rapid-extra-balance").textContent=w?"보유 "+format(w.balance)+" R":"지갑 확인 필요";
+ if(byId("balance")){if(typeof window.render==="function"){try{window.render()}catch{}}else byId("balance").textContent=w?format(w.balance)+" R":"지갑 확인 필요";}
  host.replaceChildren();
  for(const item of CATALOG.filter(p=>filter==="all"||p.category===filter)){
   const box=document.createElement("div");box.className="fw-rx-item";
