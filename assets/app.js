@@ -921,7 +921,7 @@ function render(){
           ${newBadge}
           ${pinnedGames.includes(project.name) ? '<span class="fw-pin-mark">📌 고정됨</span>' : ""}
 
-          <img src="${thumbnailURL(project)}" alt="" loading="lazy" width="1200" height="630" style="display:block;width:100%;height:auto;border-radius:12px;margin-bottom:14px">
+          <img src="${thumbnailURL(project)}" alt="" loading="lazy" decoding="async" width="1200" height="630" style="display:block;width:100%;height:auto;border-radius:12px;margin-bottom:14px">
           <div class="cardTop">
 
             <div class="icon">
@@ -974,6 +974,7 @@ function render(){
             <a
               class="openButton"
               href="${project.url}"
+              data-fw-project="${escapeHTML(project.name)}"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -1087,4 +1088,7 @@ cardsElement.addEventListener("error", event => {
   img.src = generatedThumbnail(project);
 }, true);
 window.addEventListener('formwheel-creator-sort-updated', render);
+window.FormwheelHubProjects=projects;
+window.FormwheelHubResetFilters=()=>resetFilters.click();
+
 render();
