@@ -132,13 +132,13 @@ body[data-fw-global-theme] .hero h1,body[data-fw-global-theme] h1{text-shadow:no
 document.head.append(themeStyle);
 const effects={overdrive:'spin',quantum:'reverse-spin',singularity:'slow-spin',nova:'pulse',echo:'pulse',comet:'drift',celestial:'shimmer',eclipse:'pulse',rift:'drift',aurora:'drift',prismatic:'shimmer',cyber:'shimmer','void-premium':'pulse'};
 const textThemes={
- sunset:['#281523','#fff8f4','#6b2850'],forest:['#fff','#f5fff7','#145039'],
- neon:['#fff','#f9f5ff','#5720a2'],galaxy:['#fff','#f7f6ff','#45369b'],
- ocean:['#063d50','#f4feff','#075577'],sakura:['#492039','#fff8fb','#913565'],
- midnight:['#fff','#1a2540','#c3d2ff'],aurora:['#fff','#ecfbfa','#295d77'],
- ember:['#2c130c','#fff8f0','#8a361d'],cyber:['#fff','#f6f4ff','#5534a8'],
- royal:['#fff','#faf3ff','#63338a'],void:['#fff','#f4f2fa','#575071'],
- prismatic:['#211a39','#fff8fc','#643d9e'],echo:['#fff','#152b3b','#89ecf1'],
+ sunset:['#281523','#432638','#6b2850'],forest:['#fff','#173e30','#145039'],
+ neon:['#fff','#291c48','#5720a2'],galaxy:['#fff','#262151','#45369b'],
+ ocean:['#063d50','#073c4a','#075577'],sakura:['#492039','#4b2346','#913565'],
+ midnight:['#fff','#1a2540','#c3d2ff'],aurora:['#fff','#254d5b','#295d77'],
+ ember:['#2c130c','#4d2819','#8a361d'],cyber:['#fff','#352657','#5534a8'],
+ royal:['#fff','#3d2459','#63338a'],void:['#fff','#312b45','#575071'],
+ prismatic:['#211a39','#352143','#643d9e'],echo:['#fff','#152b3b','#89ecf1'],
  nova:['#fff','#342541','#ffe0a9'],'void-premium':['#fff','#191323','#c8a9ff'],
  rift:['#fff','#15243c','#9ba8ff'],comet:['#fff','#16365c','#ffd4a2'],
  eclipse:['#fff','#211c39','#ffdf9b'],quantum:['#fff','#29335e','#96f7f0'],
@@ -154,11 +154,12 @@ function apply(){
   document.body.dataset.fwGlobalTheme=current;
   const effect=effects[current];
   if(effect)document.body.dataset.fwEffect=effect;else delete document.body.dataset.fwEffect;
+  const darkThemesForButtons=new Set(['midnight','echo','nova','void-premium','rift','comet','eclipse','quantum','celestial','singularity','overdrive']);
   const [onBackground,onSurface,linkAccent]=textThemes[current]||['#fff','#fff','#333'];
   document.body.style.setProperty('--fw-theme-on-background',onBackground);
   document.body.style.setProperty('--fw-theme-text',onSurface);
-  document.body.style.setProperty('--fw-theme-button-bg',onSurface==='#fff'?'#251c45':'#f0edff');
-  document.body.style.setProperty('--fw-theme-button-text',onSurface==='#fff'?'#fff':'#252040');
+  document.body.style.setProperty('--fw-theme-button-bg',darkThemesForButtons.has(current)?'#251c45':'#f0edff');
+  document.body.style.setProperty('--fw-theme-button-text',darkThemesForButtons.has(current)?'#fff':'#252040');
   const [bg,surface,accent,secondary]=palettes[current];
   document.body.style.setProperty('--fw-theme-preview-gradient',gradients[current]);
   document.body.style.setProperty('--fw-theme-bg',bg);
