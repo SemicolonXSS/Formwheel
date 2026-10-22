@@ -2,7 +2,7 @@
 (()=>{
 'use strict';
 const key='fw-project-themes-v1', shopKey='formwheel_rapid_shop_beta_v1';
-const palettes={sunset:'🌇 선셋',forest:'🌲 포레스트',neon:'💜 네온',galaxy:'🌌 갤럭시'};
+const palettes={sunset:'🌇 선셋',forest:'🌲 포레스트',neon:'💜 네온',galaxy:'🌌 갤럭시',ocean:'🌊 오션',sakura:'🌸 사쿠라',midnight:'🌙 미드나이트',aurora:'🌌 오로라',ember:'🔥 엠버',cyber:'⚡ 사이버',royal:'👑 로열',void:'🕳️ 보이드',prismatic:'💎 프리즈마'};
 const projects=window.FormwheelHubProjects||[];
 const host=document.getElementById('projects');
 if(!host||!projects.length)return;
