@@ -927,7 +927,10 @@ function render(){
           ${newBadge}
           ${pinnedGames.includes(project.name) ? '<span class="fw-pin-mark">📌 고정됨</span>' : ""}
 
-          <img src="${thumbnailURL(project)}" alt="" loading="lazy" decoding="async" width="1200" height="630" style="display:block;width:100%;height:auto;border-radius:12px;margin-bottom:14px">
+          <div class="fw-card-thumbnail">
+            <img src="${thumbnailURL(project)}" alt="" loading="lazy" decoding="async" width="1200" height="630">
+            <div class="fw-thumbnail-description">${escapeHTML(project.description)}</div>
+          </div>
           <div class="cardTop">
 
             <div class="icon">
@@ -950,9 +953,7 @@ function render(){
           </div>
 
 
-          <div class="description">
-            ${escapeHTML(project.description)}
-          </div>
+
 
 
           <div class="info">
