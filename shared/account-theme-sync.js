@@ -7,7 +7,7 @@ import {getDatabase,ref,get,set,onValue} from "https://www.gstatic.com/firebasej
 const config={apiKey:"AIzaSyBreTSe1m0-xlbF4aupnU5isRZCihR25IE",authDomain:"formwheel.firebaseapp.com",databaseURL:"https://formwheel-default-rtdb.firebaseio.com",projectId:"formwheel",storageBucket:"formwheel.firebasestorage.app",messagingSenderId:"431583088241",appId:"1:431583088241:web:74e0e34ea1e3e1170c55d0"};
 const app=getApps().find(a=>a.name==="[DEFAULT]")||initializeApp(config);
 const auth=getAuth(app),db=getDatabase(app);
-const MAIN="fw-global-theme-v1",BULK="fw-project-themes-v1",ALLOWED=new Set(["sunset","forest","neon","galaxy","ocean","sakura","midnight","aurora","ember","cyber","royal","void","prismatic"]);
+const MAIN="fw-global-theme-v1",BULK="fw-project-themes-v1",ALLOWED=new Set(["sunset","forest","neon","galaxy","ocean","sakura","midnight","aurora","ember","cyber","royal","void","prismatic","echo","nova","void-premium","rift","comet","eclipse","quantum","celestial","singularity","overdrive"]);
 const clean=x=>{const projects={};if(x?.projects&&typeof x.projects==="object"){for(const [k,v] of Object.entries(x.projects).slice(0,250)){if(k.length<=120&&ALLOWED.has(v))projects[k]=v;}}return {selected:ALLOWED.has(x?.selected)?x.selected:null,projects};};
 const local=()=>{let projects={};try{projects=JSON.parse(localStorage.getItem(BULK)||"{}")}catch{}return clean({selected:localStorage.getItem(MAIN),projects});};
 let user=null,unsubscribe=null,loading=true,remoteValue=null,writeTimer=null,applying=false;
