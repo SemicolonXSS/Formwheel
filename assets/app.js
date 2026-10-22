@@ -632,7 +632,7 @@ const sortElement =
   document.getElementById("sort");
 
 const filterButtons =
-  [...document.querySelectorAll(".filterButton")];
+  [...document.querySelectorAll(".categoryButtons .filterButton[data-filter]")];
 
 
 /* ======================================================
@@ -767,6 +767,12 @@ function thumbnailURL(project){
 
 function isRecent(project,now=Date.now()){const age=now-Date.parse(project.addedAt);return Number.isFinite(age)&&age>=0&&age<=14*86400000;}
 function render(){
+  const appliedCount = [modeFilter, connectionFilter, difficultyFilter]
+    .filter(select => select.value !== "all").length;
+  const filterCount = document.getElementById("fw-filter-count");
+  if (filterCount) filterCount.textContent = appliedCount ? appliedCount + "개 적용" : "";
+
+
 
   let list =
     [...projects];
@@ -1092,3 +1098,21 @@ window.FormwheelHubProjects=projects;
 window.FormwheelHubResetFilters=()=>resetFilters.click();
 
 render();
+
+// The compact Hub does not load home.js; filter controls belong to the catalogue.
+(() => {
+  const toggle = document.getElementById("fw-filter-toggle");
+  const panel = document.getElementById("fw-filter-panel");
+  if (!toggle || !panel) return;
+  const mobile = window.matchMedia("(max-width:700px)");
+  const sync = () => {
+    panel.hidden = mobile.matches;
+    toggle.setAttribute("aria-expanded", String(!panel.hidden));
+  };
+  toggle.addEventListener("click", () => {
+    panel.hidden = !panel.hidden;
+    toggle.setAttribute("aria-expanded", String(!panel.hidden));
+  });
+  mobile.addEventListener?.("change", sync);
+  sync();
+})();
