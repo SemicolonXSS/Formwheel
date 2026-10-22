@@ -608,6 +608,7 @@ const projects = [
 ];
 
 
+window.FormwheelHubProjects = projects;
 /* ======================================================
    ELEMENTS
 ====================================================== */
@@ -825,6 +826,15 @@ function render(){
     (connectionFilter.value === "all" || project.connection === connectionFilter.value) &&
     (difficultyFilter.value === "all" || project.difficulty === difficultyFilter.value)
   );
+
+  /* SORT: creator-managed list with fallback for new projects. */
+  if (sortElement.value === 'creator') {
+    const order = window.FormwheelCreatorSort?.order || [];
+    list.sort((a,b) => {
+      const ai=order.indexOf(a.name), bi=order.indexOf(b.name);
+      return (ai<0?Number.MAX_SAFE_INTEGER:ai)-(bi<0?Number.MAX_SAFE_INTEGER:bi);
+    });
+  }
 
   /* SORT: personalized popularity based on recorded Hub openings. */
 
@@ -1056,7 +1066,7 @@ resetFilters.addEventListener("click", () => {
   searchElement.value = "";
   currentFilter = "all";
   [modeFilter, connectionFilter, difficultyFilter].forEach(select => select.value = "all");
-  sortElement.value = "popular";
+  sortElement.value = "creator";
   filterButtons.forEach(button => {
     const active = button.dataset.filter === "all";
     button.classList.toggle("active", active);
@@ -1073,4 +1083,5 @@ cardsElement.addEventListener("error", event => {
   const project = projects.find(item => item.name === name) || { name, icon:"✦" };
   img.src = generatedThumbnail(project);
 }, true);
+window.addEventListener('formwheel-creator-sort-updated', render);
 render();
