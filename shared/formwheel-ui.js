@@ -139,6 +139,21 @@ body[data-fw-global-theme] :is(.upgrade-desc,.stat,.score-label,.click-info,.not
 body[data-fw-global-theme] :is(.upgrade,.item,.stat,.theme-item){color:var(--fw-theme-text)!important}
 body[data-fw-global-theme] :is(.card,.panel) :is(.upgrade,.item) button{color:var(--fw-theme-button-text)!important}
 body[data-fw-global-theme] :is(.upgrade-price,.stat strong,.item-title){color:var(--fw-theme-text)!important}
+/* Eternity has a pale animated gradient but dark content surfaces. Keep their text contrast separate. */
+body[data-fw-global-theme="cosmic-eternity"] :is(.card,.panel,.fw-footer,.upgrade,.item,.stat,.theme-item,.mission-row,.receipt,.notice,.status){
+  background-color:#35335d!important;color:#fff!important;border-color:#88d7e7!important;
+}
+body[data-fw-global-theme="cosmic-eternity"] :is(.card,.panel,.fw-footer,.upgrade,.item,.stat,.theme-item,.mission-row,.receipt,.notice,.status) :is(h1,h2,h3,h4,p,span,small,strong,label){
+  color:inherit!important;
+}
+body[data-fw-global-theme="cosmic-eternity"] :is(.card,.panel,.fw-footer,.upgrade,.item,.stat,.theme-item,.mission-row,.receipt,.notice,.status) :is(.muted,.sub,.item-desc,.upgrade-desc,.score-label,.click-info,.theme-note){
+  color:#e5def5!important;
+}
+body[data-fw-global-theme="cosmic-eternity"] :is(.card,.panel,.fw-footer,.upgrade,.item,.stat,.theme-item) :is(button,[role="button"]){
+  background-color:#251c45!important;color:#fff!important;border-color:#88d7e7!important;
+}
+body[data-fw-global-theme="cosmic-eternity"] :is(input,select,textarea){background:#fff!important;color:#202337!important}
+body[data-fw-global-theme="cosmic-eternity"] :is(input,textarea)::placeholder{color:#626979!important}
 
 @media(prefers-reduced-motion:reduce){body[data-fw-global-theme]::before{animation:none!important;transform:none!important}}
 `;
