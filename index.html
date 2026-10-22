@@ -15,7 +15,7 @@
 
 <link rel="stylesheet" href="./assets/styles.css?v=20261008-filters">
 <link rel="stylesheet" href="https://semicolonxss.github.io/Formwheel/shared/formwheel-ui.css">
-<script defer src="https://semicolonxss.github.io/Formwheel/shared/formwheel-ui.js?v=20261022-theme-purchase-guard"></script>
+<script defer src="https://semicolonxss.github.io/Formwheel/shared/formwheel-ui.js?v=20261022-theme-bulk"></script>
 <meta property="og:site_name" content="Formwheel">
 <meta property="og:title" content="Formwheel">
 <meta property="og:description" content="설치 없이 즐기는 무료 웹게임 & 도구. 돌리고, 도전하고, 발견하세요!">
@@ -493,7 +493,19 @@ document.querySelectorAll(".categoryButtons .filterButton").forEach(button=>{
   });
 });
 </script>
-<script src="./assets/app.js?v=20261022-sync1"></script>
+<script src="./assets/app.js?v=20261022-card-reliability2"></script>
+<script src="./assets/theme-bulk.js?v=20261022-1"></script>
+<script>
+(function(){
+ const container=document.getElementById('projects');
+ if(!container)return;
+ const btn=document.createElement('button');
+ btn.type='button';btn.textContent='↻ 전체 프로젝트 다시 표시';
+ btn.style.cssText='margin:8px 0;padding:9px 12px;border:1px solid #ccd1e2;border-radius:10px;background:#fff;color:#263b7e;cursor:pointer';
+ btn.onclick=()=>{if(window.FormwheelHubResetFilters){window.FormwheelHubResetFilters();}else location.reload();};
+ container.prepend(btn);
+})();
+</script>
 <script type="module" src="./assets/creator-sort.js?v=20261022-1"></script>
 <script defer src="./assets/hub-tour.js?v=20261018-spotlight2"></script>
 <script defer src="./assets/spotlight.js?v=20261016-2"></script>
