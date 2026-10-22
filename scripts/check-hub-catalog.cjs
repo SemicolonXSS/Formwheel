@@ -46,7 +46,7 @@ for (const [index, project] of projects.entries()) {
   try { url = new URL(project.url); }
   catch { assert.fail(prefix + 'invalid URL'); }
   assert(url.protocol === 'https:' && url.hostname === 'semicolonxss.github.io', prefix + 'unexpected URL origin');
-  assert(!url.search && !url.hash, prefix + 'URL must be a canonical project link');
+  assert(!url.hash && [...url.searchParams.keys()].every(key => key === 'v'), prefix + 'unexpected URL parameters');
   assert(!usedUrls.has(url.href), prefix + 'duplicate URL');
   usedUrls.add(url.href);
   const file = localFileForUrl(url);
