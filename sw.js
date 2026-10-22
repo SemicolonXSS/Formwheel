@@ -1,4 +1,4 @@
-const CACHE = "formwheel-hub-v4-cards-theme-20261022";
+const CACHE = "formwheel-hub-v5-audit-20261022";
 const APP_SHELL = [
   "/Formwheel/",
   "/Formwheel/index.html",
@@ -34,6 +34,17 @@ self.addEventListener("fetch", event => {
         event.waitUntil(caches.open(CACHE).then(cache => cache.put(request, copy)));
       }
       return response;
-    }).catch(() => caches.match(request).then(cached => cached || caches.match("/Formwheel/index.html"))));
+    }).catch(async () => {
+      const cached = await caches.match(request);
+      if (cached) return cached;
+      if (url.pathname === "/Formwheel/" || url.pathname === "/Formwheel/index.html") {
+        const home = await caches.match("/Formwheel/index.html");
+        if (home) return home;
+      }
+      return new Response('<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>연결 확인 | Formwheel</title><h1>인터넷 연결을 확인해 주세요</h1><p>이 페이지는 아직 기기에 저장되지 않았어요. 연결 후 다시 시도해 주세요.</p><button onclick="location.reload()">다시 시도</button> <a href="/Formwheel/">허브로 이동</a></html>', {
+        status: 503,
+        headers: {"Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store"}
+      });
+    }));
   }
 });
