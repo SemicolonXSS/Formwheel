@@ -1,0 +1,500 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "formwheelV2": {
+      "social": {
+        "handles": {
+          ".read": false,
+          ".write": false
+        },
+        "handlesByUid": {
+          ".read": false,
+          ".write": false
+        },
+        "friends": {
+          "$uid": {
+            ".read": "auth != null && auth.uid === $uid",
+            ".write": false
+          }
+        },
+        "requests": {
+          "$uid": {
+            ".read": "auth != null && auth.uid === $uid",
+            ".write": false
+          }
+        },
+        "blocks": {
+          "$uid": {
+            ".read": "auth != null && auth.uid === $uid",
+            ".write": false
+          }
+        },
+        "invites": {
+          ".read": false,
+          ".write": false,
+          ".indexOn": [
+            "to"
+          ]
+        },
+        "inviteRooms": {
+          ".read": false,
+          ".write": false
+        }
+      },
+      "anniversary4050": {
+        "$uid": {
+          ".read": "auth != null && auth.uid === $uid",
+          "participation": {
+            "$gameId": {
+              ".write": "auth != null && auth.uid === $uid && $gameId.matches(/^(cook|reflex|gcrown|time)$/) && !data.exists() && newData.exists() && now >= 1791644400000 && now < 1792508400000",
+              ".validate": "newData.hasChildren(['completedAt','source','status']) && newData.child('completedAt').isNumber() && newData.child('completedAt').val() === now && newData.child('source').val() === 'game-end' && newData.child('status').val() === 'unverified'"
+            }
+          },
+          "badges": {
+            "$badgeId": {
+              ".write": "auth != null && auth.uid === $uid && !data.exists() && newData.exists() && (($badgeId === 'base' && now >= 1791644400000 && now < 1792508400000) || ($badgeId === 'day40' && now >= 1791644400000 && now < 1791730800000) || ($badgeId === 'day50' && now >= 1792508400000 && now < 1792594800000) || ($badgeId === 'share' && now >= 1791644400000 && now < 1792508400000) || ($badgeId === 'master' && root.child('formwheelV2/anniversary4050/'+$uid+'/participation/cook').exists() && root.child('formwheelV2/anniversary4050/'+$uid+'/participation/reflex').exists() && root.child('formwheelV2/anniversary4050/'+$uid+'/participation/gcrown').exists() && root.child('formwheelV2/anniversary4050/'+$uid+'/participation/time').exists()))",
+              ".validate": "newData.hasChildren(['claimedAt','badgeId']) && newData.child('claimedAt').isNumber() && newData.child('claimedAt').val() === now && newData.child('badgeId').val() === $badgeId && ($badgeId !== 'share' || (newData.child('source').val() === 'web-share-completed'))"
+            }
+          }
+        }
+      },
+      "questXP": {
+        "$uid": {
+          ".read": "auth != null && auth.uid === $uid",
+          ".write": false
+        }
+      },
+      "users": {
+        "$uid": {
+          ".read": "auth != null && (auth.uid === $uid || auth.token.producer === true)",
+          ".write": "auth != null && auth.uid === $uid",
+          ".validate": "newData.hasChildren(['displayName', 'createdAt'])",
+          "displayName": {
+            ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 12"
+          },
+          "createdAt": {
+            ".validate": "newData.isNumber() && (!data.exists() || newData.val() === data.val())"
+          },
+          "$other": {
+            ".validate": false
+          }
+        }
+      },
+      "rooms": {
+        "$room": {
+          ".read": "auth != null && data.child(\"players\").child(auth.uid).exists()",
+          ".write": false
+        }
+      },
+      "privateRooms": {
+        ".read": false,
+        ".write": false
+      },
+      "privatePlayers": {
+        "$room": {
+          "$uid": {
+            ".read": "auth != null && auth.uid === $uid && root.child(\"formwheelV2/rooms\").child($room).child(\"players\").child(auth.uid).exists()",
+            ".write": false
+          }
+        }
+      },
+      "wallets": {
+        "$uid": {
+          ".read": "auth != null && auth.uid === $uid",
+          ".write": false
+        }
+      },
+      "bans": {
+        "$uid": {
+          ".read": "auth != null && (auth.uid === $uid || auth.token.producer === true)",
+          ".write": false
+        }
+      },
+      "rateLimits": {
+        ".read": false,
+        ".write": false
+      },
+      "forms": {
+        "$id": {
+          "public": {
+            ".read": true,
+            ".write": "auth != null && ((!data.exists() && newData.child('owner').val() === auth.uid) || (data.child('owner').val() === auth.uid && newData.child('owner').val() === data.child('owner').val()))",
+            ".validate": "newData.hasChildren(['owner','title','questions'])"
+          },
+          "responses": {
+            ".read": "auth != null && root.child('formwheelV2/forms').child($id).child('public/owner').val() === auth.uid",
+            "$response": {
+              ".write": "auth != null && !data.exists() && newData.child('respondent').val() === auth.uid && root.child('formwheelV2/forms').child($id).child('public').exists()",
+              ".validate": "newData.hasChildren(['respondent','answers','submittedAt'])"
+            }
+          }
+        }
+      },
+      "ai": {
+        "$uid": {
+          ".read": "auth != null && auth.uid === $uid",
+          ".write": "auth != null && auth.uid === $uid",
+          ".validate": "newData.exists()"
+        }
+      },
+      "chat": {
+        "public": {
+          "messages": {
+            ".read": "auth != null",
+            "$id": {
+              ".write": "auth != null && ((!data.exists() && newData.child('uid').val() === auth.uid && !root.child('formwheelV2/bans').child(auth.uid).exists()) || (data.exists() && (data.child('uid').val() === auth.uid || auth.token.producer === true)))",
+              ".validate": "newData.hasChildren(['uid','text','createdAt']) && newData.child('uid').val() === auth.uid && newData.child('text').isString() && newData.child('text').val().length > 0 && newData.child('text').val().length <= 2000 && (!data.exists() || newData.child('uid').val() === data.child('uid').val())",
+              "$other": {
+                ".validate": true
+              }
+            }
+          }
+        },
+        "rooms": {
+          "$room": {
+            ".read": "auth != null && root.child('formwheelV2/rooms').child($room).child('players').child(auth.uid).exists()",
+            "messages": {
+              "$id": {
+                ".write": "auth != null && root.child('formwheelV2/rooms').child($room).child('players').child(auth.uid).exists() && ((!data.exists() && newData.child('uid').val() === auth.uid && !root.child('formwheelV2/bans').child(auth.uid).exists()) || (data.exists() && (data.child('uid').val() === auth.uid || auth.token.producer === true)))",
+                ".validate": "newData.hasChildren(['uid','text','createdAt']) && newData.child('uid').val() === auth.uid && newData.child('text').isString() && newData.child('text').val().length > 0 && newData.child('text').val().length <= 2000"
+              }
+            }
+          }
+        }
+      },
+      "hubHomes": {
+        "$uid": {
+          ".read": "auth != null && auth.uid === $uid && auth.token.firebase.sign_in_provider !== 'anonymous'",
+          ".write": "auth != null && auth.uid === $uid && auth.token.firebase.sign_in_provider !== 'anonymous'",
+          ".validate": "newData.hasChild('version') && newData.child('version').val() === 1",
+          "version": {
+            ".validate": "newData.isNumber() && newData.val() === 1"
+          },
+          "$other": {
+            ".validate": true
+          }
+        }
+      },
+      "hubProfiles": {
+        "$uid": {
+          ".read": "auth != null && auth.uid === $uid && auth.token.firebase.sign_in_provider !== 'anonymous'",
+          ".write": "auth != null && auth.uid === $uid && auth.token.firebase.sign_in_provider !== 'anonymous'",
+          ".validate": "newData.hasChildren(['nickname','icon','color'])",
+          "nickname": {
+            ".validate": "newData.isString() && newData.val().length >= 2 && newData.val().length <= 16"
+          },
+          "icon": {
+            ".validate": "newData.isString() && newData.val().length <= 4"
+          },
+          "color": {
+            ".validate": "newData.isString() && newData.val().matches(/^#[0-9a-fA-F]{6}$/)"
+          },
+          "$other": {
+            ".validate": false
+          }
+        }
+      },
+      "themePreferences": {
+        "$uid": {
+          ".read": "auth != null && auth.uid === $uid && auth.token.firebase.sign_in_provider !== 'anonymous'",
+          ".write": "auth != null && auth.uid === $uid && auth.token.firebase.sign_in_provider !== 'anonymous'",
+          ".validate": "newData.hasChildren()",
+          "selected": {
+            ".validate": "newData.isString() && (newData.val() === 'sunset' || newData.val() === 'forest' || newData.val() === 'neon' || newData.val() === 'galaxy' || newData.val() === 'ocean' || newData.val() === 'sakura' || newData.val() === 'midnight' || newData.val() === 'aurora' || newData.val() === 'ember' || newData.val() === 'cyber' || newData.val() === 'royal' || newData.val() === 'void' || newData.val() === 'prismatic')"
+          },
+          "projects": {
+            "$project": {
+              ".validate": "$project.matches(/^[a-zA-Z0-9_-]{1,120}$/) && newData.isString() && (newData.val() === 'sunset' || newData.val() === 'forest' || newData.val() === 'neon' || newData.val() === 'galaxy' || newData.val() === 'ocean' || newData.val() === 'sakura' || newData.val() === 'midnight' || newData.val() === 'aurora' || newData.val() === 'ember' || newData.val() === 'cyber' || newData.val() === 'royal' || newData.val() === 'void' || newData.val() === 'prismatic')"
+            }
+          },
+          "$other": {
+            ".validate": false
+          }
+        }
+      },
+      "featuredBadges": {
+        "$uid": {
+          ".read": "auth != null && (auth.uid === $uid || auth.token.producer === true)",
+          ".write": "auth != null && auth.uid === $uid && ( !newData.exists() || (newData.isString() && (root.child('aqs/v1/users/'+$uid+'/unlocked/'+newData.val()).exists() || root.child('formwheelV2/anniversary4050/'+$uid+'/badges/'+newData.val()).exists())) )",
+          ".validate": "newData.isString() && newData.val().length <= 80"
+        }
+      },
+      "achievementStats": {
+        "$uid": {
+          ".read": "auth != null && (auth.uid === $uid || auth.token.producer === true)",
+          ".write": false
+        }
+      },
+      "liveHubSessions": {
+        ".read": "auth != null && auth.token.producer === true",
+        ".write": false,
+        "$uid": {
+          ".read": "auth != null && auth.uid === $uid",
+          "$session": {
+            ".write": "auth != null && auth.uid === $uid && $session.matches(/^[a-f0-9]{32}$/) && ((!data.exists() && newData.exists()) || data.exists())",
+            ".validate": "newData.hasChildren(['joinedAt','lastSeen','project','accountType']) && newData.child('joinedAt').isNumber() && newData.child('lastSeen').isNumber() && newData.child('project').isString() && newData.child('project').val().length <= 60 && (newData.child('accountType').val() === 'guest' || newData.child('accountType').val() === 'account')",
+            "joinedAt": {
+              ".validate": "newData.isNumber()"
+            },
+            "lastSeen": {
+              ".validate": "newData.isNumber() && newData.val() <= now + 60000"
+            },
+            "project": {
+              ".validate": "newData.isString() && newData.val().length <= 60"
+            },
+            "accountType": {
+              ".validate": "newData.val() === 'guest' || newData.val() === 'account'"
+            },
+            "$other": {
+              ".validate": false
+            }
+          }
+        }
+      },
+      "visitorStats": {
+        "livePeak": {
+          ".read": true,
+          ".write": false
+        },
+        "uniqueVisitors": {
+          ".read": "auth != null && auth.token.producer === true",
+          ".write": false,
+          "$uid": {
+            ".read": "auth != null && auth.uid === $uid",
+            ".write": "auth != null && auth.uid === $uid && ((!data.exists() && newData.exists() && newData.child('firstSeen').isNumber() && newData.child('firstSeen').val() >= now-86400000 && newData.child('firstSeen').val() <= now+60000) || (data.exists() && newData.exists() && newData.child('firstSeen').val() === data.child('firstSeen').val()))",
+            ".validate": "newData.hasChildren(['firstSeen','accountType','totalMs','projectMs','visitCount','lastCountedAt','lastVisitAt']) && newData.child('firstSeen').isNumber() && newData.child('accountType').val() === (auth.token.firebase.sign_in_provider === 'anonymous' ? 'guest' : 'account') && newData.child('totalMs').isNumber() && newData.child('totalMs').val() >= 0 && newData.child('visitCount').isNumber() && newData.child('visitCount').val() >= 1 && newData.child('lastCountedAt').isNumber() && newData.child('lastVisitAt').isNumber()",
+            "firstSeen": {
+              ".validate": "newData.isNumber() && (!data.exists() || newData.val() === data.val())"
+            },
+            "accountType": {
+              ".validate": "newData.val() === 'guest' || newData.val() === 'account'"
+            },
+            "totalMs": {
+              ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 315360000000"
+            },
+            "projectMs": {
+              "$project": {
+                ".validate": "$project.matches(/^[A-Za-z0-9_-]{1,60}$/) && newData.isNumber() && newData.val() >= 0"
+              }
+            },
+            "visitCount": {
+              ".validate": "newData.isNumber() && newData.val() >= 1"
+            },
+            "lastCountedAt": {
+              ".validate": "newData.isNumber()"
+            },
+            "lastVisitAt": {
+              ".validate": "newData.isNumber()"
+            },
+            "$other": {
+              ".validate": false
+            }
+          }
+        }
+      }
+    },
+    "hubCreatorSort": {
+      ".read": true,
+      ".write": "auth != null && auth.token.email === 'not404spam@gmail.com' && auth.token.email_verified === true",
+      ".validate": "newData.hasChildren(['order','updatedAt']) && newData.child('order').hasChildren() && newData.child('updatedAt').isNumber()",
+      "order": {
+        ".validate": "newData.hasChildren()",
+        "$index": {
+          ".validate": "newData.isString() && newData.val().length <= 80"
+        }
+      },
+      "updatedAt": {
+        ".validate": "newData.isNumber()"
+      }
+    },
+    "syncRooms": {
+      "$code": {
+        ".read": "auth != null",
+        ".write": "auth != null && ((!data.exists() && $code.matches(/^[A-HJ-NP-Z2-9]{6}$/) && newData.hasChildren(['hostUid','seed','createdAt','players','state']) && newData.child('hostUid').val() === auth.uid && newData.child('players').child(auth.uid).exists() && newData.child('state').child('phase').val() === 'lobby') || (data.exists() && !newData.exists() && data.child('hostUid').val() === auth.uid))",
+        "hostUid": {
+          ".validate": "newData.isString() && newData.val() === auth.uid"
+        },
+        "createdAt": {
+          ".validate": "newData.isNumber()"
+        },
+        "seed": {
+          ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() < 28"
+        },
+        "players": {
+          "$uid": {
+            ".write": "auth != null && auth.uid === $uid && (!newData.exists() || (root.child('syncRooms/'+$code+'/state/phase').val() === 'lobby' && (data.exists() || root.child('syncRooms/'+$code+'/players').numChildren() < 6)))",
+            ".validate": "newData.hasChildren(['name','joinedAt']) && newData.child('name').isString() && newData.child('name').val().length > 0 && newData.child('name').val().length <= 16 && newData.child('joinedAt').isNumber()"
+          }
+        },
+        "state": {
+          ".write": "auth != null && auth.uid === root.child('syncRooms/'+$code+'/hostUid').val()",
+          ".validate": "newData.hasChildren(['phase','round','score','streak','updatedAt']) && (newData.child('phase').val() === 'lobby' || newData.child('phase').val() === 'answer' || newData.child('phase').val() === 'reveal' || newData.child('phase').val() === 'end') && newData.child('round').isNumber() && newData.child('round').val() >= 0 && newData.child('round').val() <= 6 && newData.child('score').isNumber() && newData.child('score').val() >= 0 && newData.child('score').val() <= 750 && newData.child('streak').isNumber() && newData.child('streak').val() >= 0 && newData.child('streak').val() <= 6 && newData.child('updatedAt').isNumber()"
+        },
+        "answers": {
+          "$uid": {
+            ".write": "auth != null && auth.uid === $uid && root.child('syncRooms/'+$code+'/players/'+$uid).exists() && root.child('syncRooms/'+$code+'/state/phase').val() === 'answer' && (!data.exists() || data.child('round').val() !== root.child('syncRooms/'+$code+'/state/round').val()) && newData.child('round').val() === root.child('syncRooms/'+$code+'/state/round').val()",
+            ".validate": "newData.hasChildren(['round','choice']) && newData.child('round').isNumber() && newData.child('round').val() >= 1 && newData.child('round').val() <= 6 && newData.child('choice').isNumber() && newData.child('choice').val() >= 0 && newData.child('choice').val() <= 3"
+          }
+        }
+      }
+    },
+    "wikiV1": {
+      "admins": {
+        "$uid": {
+          ".read": "auth != null && auth.uid === $uid",
+          ".write": false,
+          ".validate": "newData.isBoolean()"
+        }
+      },
+      "pages": {
+        ".read": true,
+        "$pageId": {
+          ".write": "auth != null && root.child('wikiV1/admins').child(auth.uid).val() === true",
+          ".validate": "newData.hasChildren(['title','category','description','body','updatedAt']) && newData.child('title').isString() && newData.child('title').val().length <= 100 && newData.child('description').isString() && newData.child('description').val().length <= 1000 && newData.child('body').isString() && newData.child('body').val().length <= 20000 && newData.child('category').isString() && (newData.child('category').val() === '게임' || newData.child('category').val() === '도구' || newData.child('category').val() === '앱' || newData.child('category').val() === '기본' || newData.child('category').val() === '도움말')",
+          "$other": {
+            ".validate": false
+          }
+        }
+      },
+      "proposals": {
+        ".indexOn": [
+          "status"
+        ],
+        ".read": "auth != null && root.child('wikiV1/admins').child(auth.uid).val() === true",
+        "$proposalId": {
+          ".write": "(auth != null && root.child('wikiV1/admins').child(auth.uid).val() === true) || (auth != null && !data.exists() && newData.child('uid').val() === auth.uid && newData.child('status').val() === 'pending')",
+          ".validate": "newData.hasChildren(['mode','targetId','title','category','description','body','uid','status','createdAt']) && ((!data.exists() && auth != null && newData.child('uid').val() === auth.uid && newData.child('status').val() === 'pending') || (data.exists() && (auth != null && root.child('wikiV1/admins').child(auth.uid).val() === true) && newData.child('uid').val() === data.child('uid').val()))",
+          "mode": {
+            ".validate": "newData.val() === 'create' || newData.val() === 'edit'"
+          },
+          "targetId": {
+            ".validate": "newData.isString() && newData.val().length <= 64"
+          },
+          "title": {
+            ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 100"
+          },
+          "category": {
+            ".validate": "newData.val() === '게임' || newData.val() === '도구' || newData.val() === '앱' || newData.val() === '기본' || newData.val() === '도움말'"
+          },
+          "description": {
+            ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 1000"
+          },
+          "body": {
+            ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 20000"
+          },
+          "uid": {
+            ".validate": "newData.isString()"
+          },
+          "status": {
+            ".validate": "newData.val() === 'pending' || newData.val() === 'approved' || newData.val() === 'rejected'"
+          },
+          "createdAt": {
+            ".validate": "newData.isNumber()"
+          },
+          "reviewedAt": {
+            ".validate": "newData.isNumber()"
+          },
+          "reviewedBy": {
+            ".validate": "newData.isString()"
+          }
+        }
+      }
+    },
+    "whiteboardRooms": {
+      "$room": {
+        ".read": "auth != null && root.child('whiteboardRooms').child($room).child('meta').exists()",
+        "meta": {
+          ".read": "auth != null",
+          ".write": "auth != null && !data.exists() && $room.matches(/^[A-HJ-NP-Z2-9]{6}$/) && newData.child('owner').val() === auth.uid",
+          ".validate": "newData.hasChildren(['owner','createdAt'])",
+          "owner": {
+            ".validate": "newData.isString() && newData.val() === auth.uid"
+          },
+          "createdAt": {
+            ".validate": "newData.isNumber() && newData.val() >= now - 86400000 && newData.val() <= now + 60000"
+          },
+          "$other": {
+            ".validate": false
+          }
+        },
+        "presence": {
+          "$uid": {
+            ".write": "auth != null && auth.uid === $uid && root.child('whiteboardRooms').child($room).child('meta').exists()",
+            ".validate": "!newData.exists() || (newData.hasChildren(['name','joinedAt']) && newData.child('name').isString() && newData.child('name').val().length <= 24)",
+            "name": {
+              ".validate": "newData.isString() && newData.val().length <= 24"
+            },
+            "joinedAt": {
+              ".validate": "newData.isNumber()"
+            },
+            "$other": {
+              ".validate": false
+            }
+          }
+        },
+        "actions": {
+          ".write": "auth != null && auth.uid === root.child('whiteboardRooms').child($room).child('meta').child('owner').val() && !newData.exists()",
+          "$action": {
+            ".write": "auth != null && root.child('whiteboardRooms').child($room).child('meta').exists() && ((!data.exists() && newData.child('uid').val() === auth.uid) || (data.exists() && !newData.exists() && data.child('uid').val() === auth.uid))",
+            ".validate": "newData.hasChildren(['uid','tool','color','width','fill','points','createdAt']) && newData.child('uid').val() === auth.uid && newData.child('width').isNumber() && newData.child('width').val() >= 1 && newData.child('width').val() <= 50",
+            "uid": {
+              ".validate": "newData.val() === auth.uid"
+            },
+            "tool": {
+              ".validate": "newData.val() === 'pen' || newData.val() === 'eraser' || newData.val() === 'line' || newData.val() === 'rect' || newData.val() === 'ellipse'"
+            },
+            "color": {
+              ".validate": "newData.isString() && newData.val().matches(/^#[0-9a-fA-F]{6}$/)"
+            },
+            "width": {
+              ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() <= 50"
+            },
+            "fill": {
+              ".validate": "newData.isBoolean()"
+            },
+            "points": {
+              ".validate": "newData.hasChildren()",
+              "$index": {
+                "0": {
+                  ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 1200"
+                },
+                "1": {
+                  ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 750"
+                },
+                ".validate": "$index.matches(/^(?:[0-9]|[1-9][0-9]{1,2}|1[0-4][0-9]{2})$/) && newData.hasChildren(['0','1'])",
+                "$other": {
+                  ".validate": false
+                }
+              }
+            },
+            "createdAt": {
+              ".validate": "newData.isNumber() && newData.val() >= now-86400000 && newData.val() <= now+60000"
+            },
+            "$other": {
+              ".validate": false
+            }
+          }
+        }
+      }
+    },
+    "aqs": {
+      "v1": {
+        "users": {
+          ".read": "auth != null && auth.token.producer === true",
+          "$uid": {
+            ".read": "auth != null && auth.uid === $uid",
+            ".write": "auth != null && auth.uid === $uid",
+            ".validate": "newData.hasChild('version') && newData.child('version').val() === 1 && newData.child('xp').isNumber() && newData.child('xp').val() >= 0 && newData.child('xp').val() <= 10000000",
+            "version": {
+              ".validate": "newData.isNumber() && newData.val() === 1"
+            },
+            "xp": {
+              ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 10000000"
+            }
+          }
+        }
+      }
+    }
+  }
+}
