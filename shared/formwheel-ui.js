@@ -88,7 +88,8 @@ document.addEventListener('click',e=>{
   }
  }catch{}
 },true);
-window.FormwheelTheme={get:()=>refresh(),set:id=>{
+window.addEventListener('formwheel-theme-changed',apply);
+window.FormwheelTheme={get:()=>refresh(),apply,set:id=>{
  try{if(id==='classic'||id===null)localStorage.removeItem(key);
  else if(entitled(id))localStorage.setItem(key,id);
  else localStorage.removeItem(key);}catch{}
