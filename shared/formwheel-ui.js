@@ -135,6 +135,11 @@ body[data-fw-global-theme] :is(input,select,textarea){color:#202337!important;ba
 body[data-fw-global-theme] button{color:var(--fw-theme-button-text);background-color:var(--fw-theme-button-bg);border-color:var(--fw-theme-accent)}
 body[data-fw-global-theme] :is(.card,.panel) button{color:var(--fw-theme-button-text);background-color:var(--fw-theme-button-bg)}
 body[data-fw-global-theme] .hero h1,body[data-fw-global-theme] h1{text-shadow:none}
+body[data-fw-global-theme] :is(.upgrade-desc,.stat,.score-label,.click-info,.notice,.status,.item-desc,.theme-note,.muted,.sub,.mission-row,.receipt){color:var(--fw-theme-muted)!important}
+body[data-fw-global-theme] :is(.upgrade,.item,.stat,.theme-item){color:var(--fw-theme-text)!important}
+body[data-fw-global-theme] :is(.card,.panel) :is(.upgrade,.item) button{color:var(--fw-theme-button-text)!important}
+body[data-fw-global-theme] :is(.upgrade-price,.stat strong,.item-title){color:var(--fw-theme-text)!important}
+
 @media(prefers-reduced-motion:reduce){body[data-fw-global-theme]::before{animation:none!important;transform:none!important}}
 `;
 document.head.append(themeStyle);
@@ -175,7 +180,7 @@ function apply(){
   document.body.style.setProperty('--fw-theme-surface',surface);
   document.body.style.setProperty('--fw-theme-accent',linkAccent);
   document.body.style.setProperty('--fw-theme-secondary',secondary);
-  const darkThemes=new Set(['midnight','echo','nova','void-premium','rift','comet','eclipse','quantum','celestial','singularity','overdrive']);
+  const darkThemes=new Set(['midnight','echo','nova','void-premium','rift','comet','eclipse','quantum','celestial','singularity','overdrive','cosmic-infinity','cosmic-paradox','cosmic-omega','cosmic-eternity']);
   document.body.style.setProperty('--fw-theme-muted',darkThemes.has(current)?'#d5cce8':'#526078');
  }else {delete document.body.dataset.fwEffect;document.body.removeAttribute('data-fw-global-theme');document.body.style.removeProperty('--fw-theme-preview-gradient');}
 }
