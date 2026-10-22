@@ -43,6 +43,17 @@
 .fw-install-options[hidden],.fw-install-info[hidden],.fw-install-option[hidden]{display:none}
 .fw-install-options{display:grid;gap:8px;margin:5px 0 0}.fw-install-option{background:#f0f2fc;color:#263184;border:1px solid #e0e3f3}
 .fw-install-info{margin:12px 0 0;padding:12px;text-align:left;white-space:pre-line;background:#f5f6fb;border-radius:12px;font-size:13px;line-height:1.7;color:#323b4e}
+.fw-settings-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px}
+.fw-settings-row #fw-filter-toggle{margin-top:0}
+#fw-favorites-toggle{border:1px solid #c7ccec;border-radius:10px;background:#f2f0ff;color:#383278;padding:10px 13px;font-weight:700;cursor:pointer}
+.fw-favorites-panel{margin:10px 0 14px;padding:15px;border:1px solid #d9dcf1;background:#f9f9ff;border-radius:14px}
+.fw-favorites-panel[hidden]{display:none!important}
+.fw-favorites-panel p{margin:5px 0 12px;font-size:13px;color:#5a6276}
+.fw-favorites-options{display:grid;grid-template-columns:repeat(auto-fill,minmax(135px,1fr));gap:8px;max-height:230px;overflow:auto}
+.fw-favorites-options label{display:flex;gap:7px;align-items:center;padding:9px;border:1px solid #d9deed;border-radius:9px;background:white;cursor:pointer;font-size:13px}
+#fw-favorites-clear{margin-top:10px;padding:7px 10px;cursor:pointer}
+.card.fw-pinned{outline:2px solid #8a72ee;outline-offset:-2px}
+.fw-pin-mark{font-size:12px;color:#5946ab;font-weight:700;margin-left:auto}
 </style>
 <link rel="stylesheet" href="./assets/home.css?v=20261014-compact-recommend">
 <style>
@@ -328,7 +339,16 @@ Formwheel의 모든 프로젝트를 한곳에서 만나보세요.
 </div>
 
 
+<div class="fw-settings-row">
 <button type="button" id="fw-filter-toggle" aria-controls="fw-filter-panel" aria-expanded="false">⚙️ 인원 · 연결 · 난이도 <span id="fw-filter-count"></span> ▾</button>
+<button type="button" id="fw-favorites-toggle" aria-controls="fw-favorites-panel" aria-expanded="false">📌 즐겨찾기 설정 <span id="fw-favorites-count"></span></button>
+</div>
+<div id="fw-favorites-panel" class="fw-favorites-panel" hidden>
+  <strong>📌 맨 위에 고정할 게임 선택</strong>
+  <p>선택한 게임은 검색·필터 결과에서 다른 카드보다 위에 표시돼요. 이 기기에 저장됩니다.</p>
+  <div id="fw-favorites-options" class="fw-favorites-options"></div>
+  <button type="button" id="fw-favorites-clear">고정 전체 해제</button>
+</div>
 <div class="detailFilters" id="fw-filter-panel" aria-label="상세 필터">
 <label>인원 <select id="modeFilter"><option value="all">전체 인원</option><option value="solo">1인 가능</option><option value="multi">다인 가능</option><option value="both">1인·다인 모두</option></select></label>
 <label>연결 <select id="connectionFilter"><option value="all">전체 연결</option><option value="online">온라인</option><option value="offline">오프라인</option></select></label>
@@ -471,7 +491,7 @@ document.querySelectorAll(".categoryButtons .filterButton").forEach(button=>{
   });
 });
 </script>
-<script src="./assets/app.js?v=20261021-glitch-v12"></script>
+<script src="./assets/app.js?v=20261022-favorites1"></script>
 <script defer src="./assets/hub-tour.js?v=20261018-spotlight2"></script>
 <script defer src="./assets/spotlight.js?v=20261016-2"></script>
 <script src="./assets/hub-visit-bridge.js?v=20261020-1"></script>
