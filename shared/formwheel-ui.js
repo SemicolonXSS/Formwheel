@@ -34,7 +34,7 @@ function refresh(){
   const params=new URLSearchParams(location.search);
   const incoming=params.get('fwTheme');
   if(incoming==='classic')localStorage.removeItem(key);
-  else if(Object.hasOwn(palettes,incoming) && entitled(incoming))localStorage.setItem(key,incoming);
+  else if(Object.hasOwn(palettes,incoming) && entitled(incoming) && !params.has('fwProject'))localStorage.setItem(key,incoming);
   requested=projectTheme() || localStorage.getItem(key);
  }catch{}
  current=entitled(requested)?requested:null;
@@ -73,7 +73,8 @@ function apply(){
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply,{once:true});else apply();
 document.addEventListener('click',e=>{
  const link=e.target.closest?.('a[href]');
- if(!link||!refresh()||e.defaultPrevented)return;
+ if(!link||e.defaultPrevented)return;
+ refresh();
  try{
   const url=new URL(link.href,location.href);
   if(url.hostname==='semicolonxss.github.io' && url.origin===location.origin){
