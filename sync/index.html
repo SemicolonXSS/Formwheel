@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#171128">
+<title>SYNC | Formwheel</title>
+<meta name="description" content="서로 말하지 않고 같은 답을 고를 수 있을까? 2~6인 텔레파시 파티 게임 SYNC">
+<link rel="icon" type="image/svg+xml" href="../assets/formwheel-favicon.svg">
+<link rel="stylesheet" href="../shared/formwheel-ui.css">
+<style>
+:root{color-scheme:dark;--bg:#171128;--panel:#241b3c;--border:#49365f;--ink:#fff9ff;--muted:#c4b9d6;--accent:#ff995e;--violet:#ab8cff}
+*{box-sizing:border-box}body{margin:0;min-height:100dvh;background:radial-gradient(ellipse at 10% 0%,#493064 0,transparent 50%),radial-gradient(ellipse at 90% 80%,#3c254d 0,transparent 45%),var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Apple SD Gothic Neo",sans-serif}
+main{max-width:850px;margin:auto;padding:16px 15px 58px}.nav{display:flex;align-items:center;justify-content:space-between;gap:10px}.nav a{color:#e7c5ff;text-decoration:none}.nav small{color:var(--muted)}
+.brand{text-align:center;margin:22px 0}.brand h1{font-size:clamp(49px,12vw,78px);margin:4px 0 0;font-weight:1000;letter-spacing:.1em;line-height:1.12;background:linear-gradient(100deg,#ffbb70 25%,#fa75c2 55%,#b9a4ff 85%);background-clip:text;-webkit-background-clip:text;color:transparent}
+.brand p{margin:12px 0 0;color:#d6cce0;font-size:15px;line-height:1.6}.orb{font-size:30px;filter:drop-shadow(0 0 18px #e6a3ff)}
+.panel{padding:21px;border-radius:23px;border:1px solid var(--border);background:linear-gradient(130deg,#2a203f,#201a35);box-shadow:0 12px 32px #0c051c55;margin-top:15px}
+h2{margin:0 0 12px;font-size:22px}.subtitle{color:var(--muted);font-size:14px;line-height:1.7;margin:0 0 16px}h3{margin:12px 0}
+.modes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.mode{border:1px solid #5b497b;border-radius:17px;padding:15px;background:#312548}.mode strong{font-size:19px;display:block;margin:3px 0 7px}.mode p{font-size:13px;color:#ccc1df;line-height:1.55;margin:0 0 13px}
+input{width:100%;min-width:0;padding:14px;border-radius:12px;background:#19122a;color:#fff;border:1px solid #72588c;font:inherit;margin:6px 0 10px}input:focus,button:focus-visible{outline:3px solid #ffb989;outline-offset:2px}
+button,.button{display:inline-block;padding:12px 16px;background:linear-gradient(120deg,#ff925d,#ec6d9d);border:none;border-radius:12px;color:#281329;font:inherit;font-weight:850;cursor:pointer;text-decoration:none;min-height:45px}
+button.secondary{background:#493764;color:#fff;border:1px solid #6d568b}button:disabled{opacity:.42;cursor:not-allowed}.wide{width:100%}
+.actions{display:flex;gap:9px;flex-wrap:wrap}.actions>*{flex:1}
+.notice{margin:16px 0;padding:11px 14px;border:1px solid #ba87cd;background:#392446;color:#f4dafc;border-radius:12px;font-size:13px;line-height:1.65}#notice:empty{display:none}
+.badges{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:14px}.tag{font-size:12px;color:#eadcff;border:1px solid #866da6;border-radius:999px;padding:6px 10px}.big{font-size:clamp(24px,5vw,34px);line-height:1.42;margin:10px 0 21px}
+.options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.option{min-height:112px;background:#3d2c56;color:#fff;border:1px solid #8f74b0;border-radius:17px;font-size:19px;box-shadow:0 5px 0 #191027}.option:active{transform:translateY(3px);box-shadow:0 2px 0 #191027}
+.players{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 17px}.person{padding:9px 13px;border-radius:12px;background:#3a2b53;border:1px solid #685080;font-size:13px}.person.done{border-color:#e8a35c;color:#ffd89c}
+.statrow{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:14px 0}.stat{background:#38274c;border-radius:13px;text-align:center;padding:12px 6px}.stat b{display:block;font-size:24px;color:#ffd1a0}.stat small{color:#cfbeda}
+.votes{display:grid;gap:9px;margin:16px 0}.vote{padding:11px 13px;background:#382a52;border-radius:12px;border:1px solid #59466f;display:flex;justify-content:space-between;align-items:center;gap:10px}.vote b{color:#ffc28c}.result{font-size:clamp(26px,6vw,42px);font-weight:900;text-align:center;margin:18px 0}.result small{display:block;font-size:14px;color:var(--muted);margin-top:8px;font-weight:500}.roomcode{font-size:29px;letter-spacing:5px;font-weight:900;color:#ffbf87}.linkbox{font-size:12px;color:#d3c7e6;overflow-wrap:anywhere;margin:7px 0}.footer{font-size:12px;text-align:center;color:#aa9abf;margin:25px auto;line-height:1.6}
+@media(max-width:600px){.modes{grid-template-columns:1fr}.options{gap:8px}.option{font-size:16px;min-height:94px}.panel{padding:17px}.brand{margin:10px 0 15px}.stat b{font-size:19px}}
+@media(prefers-reduced-motion:no-preference){.orb{animation:float 4s ease-in-out infinite}@keyframes float{50%{transform:translateY(-6px)}}}
+</style>
+</head>
+<body><main>
+<nav class="nav"><a href="../">← Formwheel Hub</a><small>PARTY GAME · v1.0</small></nav>
+<div class="brand"><div class="orb">✦　◉　✦</div><h1>SYNC</h1><p>우리, 생각이 얼마나 똑같을까?<br>말하지 말고 같은 답을 선택해 봐!</p></div>
+<div id="notice" role="status" aria-live="polite"></div>
+<section id="screen" class="panel" aria-live="polite"></section>
+<p class="footer">Formwheel × Secol · 온라인 방에는 Firebase 로그인이 필요해요.<br>전화번호·주소 같은 개인정보는 닉네임에 넣지 마세요.</p>
+</main>
+<script type="module">
+const QUESTIONS=[
+["무인도에서 딱 하나만?","물 💧","휴대폰 📱","이불 🛏️","라면 🍜"],
+["시간여행을 할 수 있다면?","과거 ⏳","미래 🚀","어제 🕒","100년 후 🌌"],
+["초능력 하나만 고르자!","순간이동 ⚡","투명인간 👻","비행 🪽","시간 정지 ⏸️"],
+["지금 당장 먹고 싶은 건?","피자 🍕","치킨 🍗","떡볶이 🌶️","아이스크림 🍦"],
+["가장 먼저 떠오르는 동물은?","고양이 🐱","강아지 🐶","토끼 🐰","펭귄 🐧"],
+["갑자기 여행을 간다면?","바다 🌊","산 ⛰️","도시 🌆","우주 🌠"],
+["밤하늘에서 보고 싶은 건?","별 ⭐","달 🌙","오로라 🌈","유성 ☄️"],
+["팀 이름으로 어울리는 건?","번개 ⚡","은하 🌌","미스터리 🕵️","쿠키 🍪"],
+["게임 보상을 고른다면?","특별 배지 🏅","아바타 🎭","래피드 💎","새 테마 🎨"],
+["가장 강력해 보이는 건?","불 🔥","물 🌊","바람 🌪️","번개 ⚡"],
+["오늘의 색깔을 고른다면?","주황 🟠","파랑 🔵","초록 🟢","보라 🟣"],
+["마법 상자를 열었다! 뭐가 나올까?","보물 💰","드래곤 🐲","편지 ✉️","고양이 🐈"],
+["우리 팀의 비밀 아지트는?","나무집 🌳","지하실 🕳️","구름 위 ☁️","달 기지 🌕"],
+["갑자기 배경음악이 나온다면?","록 🎸","클래식 🎹","EDM 🎧","재즈 🎷"],
+["축제의 주인공은?","로봇 🤖","공룡 🦖","외계인 👽","마법사 🧙"],
+["문을 하나 열 수 있다면?","비밀 방 🚪","보물방 💎","미래 도시 🏙️","신비의 숲 🌲"],
+["공부가 끝난 후 가장 하고 싶은 건?","게임 🎮","간식 🍰","낮잠 😴","산책 🚶"],
+["친구와 팀을 이룬다면?","탐험대 🧭","탐정단 🔍","발명팀 🧪","방송팀 🎥"],
+["첫 번째 미션은?","암호 풀기 🔐","숨은그림찾기 🖼️","미로 탈출 🌀","보물 찾기 🗺️"],
+["가장 귀여운 이모지는?","🐣 병아리","🐼 판다","🦊 여우","🐸 개구리"],
+["모두의 컴퓨터 배경은?","우주 🌌","자연 🌴","게임 🎮","단색 🎨"],
+["하늘에서 떨어진다면?","별사탕 🍬","풍선 🎈","꽃잎 🌸","눈송이 ❄️"],
+["모험에 데려갈 동료는?","로봇 🤖","마법사 🧙","고양이 🐱","드래곤 🐉"],
+["모두 함께 만드는 것은?","도시 🏙️","정원 🌷","게임 🎲","우주선 🚀"],
+["비밀 신호로 쓸 이모지는?","🔥","⭐","🌀","💎"],
+["이 중에서 가장 빠를 것 같은 건?","치타 🐆","로켓 🚀","번개 ⚡","빛 ✨"],
+["새로운 행성 이름은?","노바","루나","오로라","오리온"],
+["주말에 친구들과?","보드게임 🎲","영화 🎬","운동 ⚽","요리 🍳"]
+];
+const MAX_ROUNDS=6,MAX_PLAYERS=6,CHARS="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+const el=document.getElementById("screen"),notice=document.getElementById("notice");
+const safe=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const codeUrl=c=>location.origin+location.pathname+"?room="+encodeURIComponent(c);
+let mode="home",local=null,online=null,roomCode="",uid="",db=null,refFn=null,getFn=null,setFn=null,onValueFn=null,offRoom=null,auth=null;
+const rand=n=>{let b=new Uint32Array(1);crypto.getRandomValues(b);return b[0]%n};
+const question=(seed,round)=>QUESTIONS[(seed+(round-1)*11)%QUESTIONS.length];
+const fmt=(s)=>safe(s).slice(0,50);
+function msg(s){notice.innerHTML=s?'<div class="notice">'+safe(s)+'</div>':""}
+function stats(round,score,streak){return '<div class="statrow"><div class="stat"><b>'+round+' / '+MAX_ROUNDS+'</b><small>라운드</small></div><div class="stat"><b>'+score+'</b><small>팀 점수</small></div><div class="stat"><b>🔥 '+streak+'</b><small>연속 완벽</small></div></div>'}
+function calc(votes,total){const counts=[0,0,0,0];votes.forEach(v=>{if(Number.isInteger(v)&&v>=0&&v<4)counts[v]++});const most=Math.max(...counts);const all=total>=2&&votes.length===total&&most===total;return{points:most?Math.round(most/total*100)+(all?25:0):0,perfect:all,most,counts}}
+function options(q){return '<div class="options">'+q.slice(1).map((v,i)=>'<button class="option" data-act="vote" data-choice="'+i+'">'+safe(v)+'</button>').join("")+'</div>'}
+function home(){
+mode="home";msg("");
+const supplied=new URLSearchParams(location.search).get("room")||"";
+el.innerHTML='<h2>🧠 텔레파시 실험실</h2><p class="subtitle">6라운드 동안 서로 같은 답을 골라 봐. 완벽히 일치하면 보너스 +25점! 힌트나 채팅 없이 도전해 봐.</p><div class="modes"><div class="mode"><strong>📱 한 기기 파티</strong><p>2~6명이 같은 기기를 돌아가며 사용해요. 인터넷 없이 바로 플레이!</p><label for="names">참가자 이름 (쉼표로 구분)</label><input id="names" maxlength="100" value="나, 친구" autocomplete="off"><button data-act="localStart" class="wide">즉시 시작</button></div><div class="mode"><strong>🌐 온라인 방</strong><p>각자 휴대폰에서 같은 방에 들어오세요. 로그인 사용자·게스트 모두 참여 가능해요.</p><label for="nickname">내 닉네임</label><input id="nickname" maxlength="16" placeholder="닉네임" autocomplete="nickname"><button data-act="create" class="wide">새 방 만들기</button><label for="joinCode">친구의 6자리 방 코드</label><input id="joinCode" maxlength="6" value="'+safe(supplied.replace(/[^A-Z0-9]/gi,"").toUpperCase().slice(0,6))+'" placeholder="ABC123" autocapitalize="characters"><button data-act="join" class="wide secondary">방 참가하기</button></div></div><p class="subtitle" style="margin-top:19px">🏆 이 기기 최고 팀 점수: <b>'+Number(localStorage.getItem("fw-sync-best")||0)+'점</b></p>';
+}
+function localStart(){
+const raw=document.getElementById("names").value.split(",").map(x=>x.trim().slice(0,16)).filter(Boolean);
+if(raw.length<2||raw.length>MAX_PLAYERS){msg("참가자 이름을 2~6개 입력해 줘.");return}
+local={players:raw,round:1,turn:0,answers:{},phase:"answer",seed:rand(QUESTIONS.length),score:0,streak:0,roundPoints:0};
+mode="local";msg("");renderLocal()
+}
+function renderLocal(){
+const l=local,q=question(l.seed,l.round);
+if(l.phase==="answer"){
+const current=l.players[l.turn];
+el.innerHTML='<div class="badges"><span class="tag">📱 한 기기 파티</span><span class="tag">서로 답을 보지 마세요!</span></div>'+stats(l.round,l.score,l.streak)+'<p class="subtitle">'+safe(l.players.join(" · "))+'</p><h2>🎯 '+safe(current)+'의 차례</h2><p class="big">'+safe(q[0])+'</p>'+options(q)+'<p class="subtitle" style="margin-top:15px">답을 누르면 자동으로 다음 사람 차례로 넘어가요.</p>';
+}else if(l.phase==="reveal") {
+el.innerHTML=results(q,l.players.map((name,i)=>({name,choice:l.answers[i]})),l.players.length,l.roundPoints,l.streak,l.round,l.score) + '<button class="wide" data-act="localNext">'+(l.round===MAX_ROUNDS?"최종 결과 보기":"다음 라운드 →")+'</button>';
+}else if(l.phase==="end"){
+el.innerHTML='<div class="result">🏆 SYNC COMPLETE<small>최종 팀 점수</small>'+l.score+'점</div>'+stats(MAX_ROUNDS,l.score,l.streak)+'<p class="subtitle">오늘 팀의 텔레파시 기록! 다른 친구들과도 도전해 봐.</p><div class="actions"><button data-act="localRestart">다시 플레이</button><button class="secondary" data-act="home">메뉴로</button></div>'
+}
+}
+function results(q,entries,total,points,streak,round,score){
+const c=calc(entries.map(x=>x.choice).filter(x=>Number.isInteger(x)),total);
+let badge=c.perfect?"💫 완벽한 싱크!":"✨ 가장 많이 고른 답이 일치했어!";
+return '<div class="badges"><span class="tag">결과 공개</span><span class="tag">ROUND '+round+'</span></div>'+stats(round,score,streak)+'<h2>'+safe(q[0])+'</h2><div class="result">'+badge+'<small>이번 라운드 +'+points+'점</small></div><div class="votes">'+entries.map(x=>'<div class="vote"><span>'+safe(x.name)+'</span><b>'+safe(Number.isInteger(x.choice)?q[x.choice+1]:"미제출")+'</b></div>').join("")+'</div>'
+}
+function localNext(){
+if(local.phase!=="reveal")return;
+if(local.round===MAX_ROUNDS){local.phase="end";saveBest(local.score)}
+else{local.round++;local.turn=0;local.answers={};local.phase="answer"}
+renderLocal()
+}
+function saveBest(score){try{const prev=Number(localStorage.getItem("fw-sync-best")||0);if(score>prev)localStorage.setItem("fw-sync-best",String(score))}catch{}}
+async function initFirebase(){
+if(auth)return auth.currentUser||await login();
+const [fa,fu,fd]=await Promise.all([
+import("https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js"),
+import("https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js"),
+import("https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js")]);
+const config={apiKey:"AIzaSyBreTSe1m0-xlbF4aupnU5isRZCihR25IE",authDomain:"formwheel.firebaseapp.com",databaseURL:"https://formwheel-default-rtdb.firebaseio.com",projectId:"formwheel",storageBucket:"formwheel.firebasestorage.app",messagingSenderId:"431583088241",appId:"1:431583088241:web:74e0e34ea1e3e1170c55d0"};
+const app=fa.getApps().find(x=>x.name==="[DEFAULT]")||fa.initializeApp(config);
+auth=fu.getAuth(app);db=fd.getDatabase(app);refFn=fd.ref;getFn=fd.get;setFn=fd.set;onValueFn=fd.onValue;
+window._syncSignIn=fu.signInAnonymously;window._syncAuthChanged=fu.onAuthStateChanged;
+return auth.currentUser||await login()
+}
+async function login(){
+return new Promise((resolve,reject)=>{const stop=window._syncAuthChanged(auth,async user=>{if(user){stop();uid=user.uid;resolve(user)}else{stop();try{const result=await window._syncSignIn(auth);uid=result.user.uid;resolve(result.user)}catch(e){reject(e)}}},reject)})
+}
+function nickname(){const input=document.getElementById("nickname");return(input?.value||"").trim().slice(0,16)}
+function randomCode(){const b=new Uint8Array(6);crypto.getRandomValues(b);return Array.from(b,x=>CHARS[x%CHARS.length]).join("")}
+function roomPath(p=""){return "syncRooms/"+roomCode+(p?"/"+p:"")}
+async function createOnline(){
+const name=nickname();if(!name){msg("먼저 닉네임을 입력해 줘.");return}
+msg("온라인 방을 연결하고 있어요…");
+try{const user=await initFirebase();uid=user.uid;let code=randomCode();let path="syncRooms/"+code;
+for(let i=0;i<4;i++){const snap=await getFn(refFn(db,path));if(!snap.exists())break;code=randomCode();path="syncRooms/"+code}
+roomCode=code;
+await setFn(refFn(db,roomPath()),{hostUid:uid,seed:rand(QUESTIONS.length),createdAt:Date.now(),players:{[uid]:{name,joinedAt:Date.now()}},state:{phase:"lobby",round:0,score:0,streak:0,updatedAt:Date.now()},answers:{}});
+subscribeRoom();mode="online";msg("");history.replaceState(null,"",location.pathname+"?room="+code)
+}catch(e){msg("방 생성 실패: "+(e.code||e.message||"연결 오류")+". Firebase 인증 및 데이터베이스 규칙을 확인해 주세요.")}
+}
+async function joinOnline(){
+const name=nickname(),code=(document.getElementById("joinCode")?.value||"").toUpperCase().replace(/[^A-Z0-9]/g,"");
+if(!name){msg("닉네임을 먼저 입력해 줘.");return}if(code.length!==6){msg("6자리 방 코드를 입력해 줘.");return}
+msg("참가하고 있어요…");
+try{const user=await initFirebase();uid=user.uid;roomCode=code;
+const snap=await getFn(refFn(db,roomPath()));if(!snap.exists())throw new Error("이 방을 찾지 못했어요");
+const r=snap.val();if(r.state?.phase!=="lobby"&&!r.players?.[uid])throw new Error("이미 시작된 게임이에요");
+if(Object.keys(r.players||{}).length>=MAX_PLAYERS&&!r.players?.[uid])throw new Error("최대 6명까지 참가할 수 있어요");
+await setFn(refFn(db,roomPath("players/"+uid)),{name,joinedAt:Date.now()});
+subscribeRoom();mode="online";msg("");history.replaceState(null,"",location.pathname+"?room="+code)
+}catch(e){msg("참가 실패: "+(e.code||e.message||"연결 오류"))}
+}
+function subscribeRoom(){
+if(offRoom){offRoom();offRoom=null}mode="online";
+offRoom=onValueFn(refFn(db,roomPath()),snap=>{online=snap.val();if(!online){msg("방이 종료되었어요");home();return}renderOnline()},err=>msg("실시간 연결 실패: "+(err.code||"권한 오류")+". Firebase 규칙을 확인해 주세요."))
+}
+function members(){return Object.entries(online?.players||{}).map(([id,p])=>({id,name:p.name||"게스트"}))}
+function currentAnswers(){
+return members().map(p=>({...p,choice:online?.answers?.[p.id]?.round===online.state.round?online.answers[p.id].choice:null}))
+}
+function renderOnline(){
+if(mode!=="online"||!online)return;
+const s=online.state,people=members(),q=question(online.seed,Math.max(1,s.round)),host=online.hostUid===uid,
+mine=people.some(p=>p.id===uid),choices=currentAnswers(),answered=choices.filter(p=>Number.isInteger(p.choice)).length;
+const head='<div class="badges"><span class="tag">🌐 온라인 멀티플레이</span><span class="tag">'+safe(host?"👑 방장":"참가자")+'</span></div><div class="roomcode">'+safe(roomCode)+'</div><p class="linkbox">'+safe(codeUrl(roomCode))+'</p><div class="actions"><button class="secondary" data-act="copyLink">🔗 초대 링크 복사</button><button class="secondary" data-act="leave">← 나가기</button></div><div class="players">'+people.map(p=>'<span class="person '+(choices.find(c=>c.id===p.id&&Number.isInteger(c.choice))?"done":"")+'">'+safe(p.name)+(p.id===online.hostUid?" 👑":"")+'</span>').join("")+'</div>';
+if(s.phase==="lobby"){
+el.innerHTML=head+'<h2>🎮 참가자 대기 중 ('+people.length+'/'+MAX_PLAYERS+')</h2><p class="subtitle">친구들에게 링크나 방 코드를 공유해 줘. 2명 이상 모이면 시작할 수 있어.</p>'+(host?'<button class="wide" data-act="start" '+(people.length<2?"disabled":"")+'>6라운드 시작!</button>':'<div class="notice">방장이 시작 버튼을 누르면 게임이 시작돼요.</div>');
+}else if(s.phase==="answer"){
+const done=choices.find(x=>x.id===uid&&Number.isInteger(x.choice));const expired=Date.now()-(s.updatedAt||0)>40000;
+el.innerHTML=head+stats(s.round,s.score,s.streak)+'<h2>🎯 '+safe(q[0])+'</h2>'+(done?'<div class="notice">✅ 제출 완료! 결과가 공개될 때까지 다른 사람을 기다려 줘.</div>':mine?options(q):'<div class="notice">관전 중이에요.</div>')+'<p class="subtitle" style="margin-top:13px">제출 '+answered+' / '+people.length+'명 · 선택 결과는 공개 전까지 숨겨져요.</p>'+(host?'<button class="wide secondary" data-act="reveal" '+(answered===people.length||expired?"":"disabled")+'>'+((answered===people.length)?"결과 공개 ✨":expired?"미제출자 제외하고 결과 공개":"모두 제출하면 결과 공개 가능")+'</button>':'');
+}else if(s.phase==="reveal"){
+el.innerHTML=head+results(q,choices,people.length,s.roundPoints||0,s.streak,s.round,s.score)+(host?'<button class="wide" data-act="next">'+(s.round===MAX_ROUNDS?"최종 결과 보기":"다음 라운드 →")+'</button>':'<div class="notice">방장이 다음 라운드를 진행할 거예요.</div>');
+}else{
+saveBest(s.score);
+el.innerHTML=head+'<div class="result">🏆 SYNC COMPLETE<small>최종 팀 점수</small>'+s.score+'점</div>'+stats(MAX_ROUNDS,s.score,s.streak)+(host?'<button class="wide" data-act="restart">새 게임 시작 준비</button>':'<div class="notice">방장이 새로운 게임을 준비할 수 있어요.</div>');
+}
+}
+async function stateTo(next){
+try{await setFn(refFn(db,roomPath("state")),next)}catch(e){msg("진행 실패: "+(e.code||e.message||"데이터베이스 오류"))}
+}
+async function onlineAct(action,choice){
+if(!online||mode!=="online")return;
+const s=online.state,host=online.hostUid===uid,people=members(),votes=currentAnswers();
+try{
+if(action==="vote"){
+if(s.phase!=="answer"||!people.some(p=>p.id===uid))return;
+if(online.answers?.[uid]?.round===s.round)return;
+await setFn(refFn(db,roomPath("answers/"+uid)),{round:s.round,choice});return
+}
+if(!host)return;
+if(action==="start"&&s.phase==="lobby"&&people.length>=2)await stateTo({phase:"answer",round:1,score:0,streak:0,updatedAt:Date.now(),roundPoints:0});
+if(action==="reveal"&&s.phase==="answer"){
+const m=calc(votes.map(x=>x.choice).filter(Number.isInteger),people.length);
+if(m.most===0)return;
+if(votes.filter(x=>Number.isInteger(x.choice)).length<people.length&&Date.now()-s.updatedAt<40000)return;
+await stateTo({phase:"reveal",round:s.round,score:s.score+m.points,streak:m.perfect?s.streak+1:0,updatedAt:Date.now(),roundPoints:m.points})
+}
+if(action==="next"&&s.phase==="reveal")await stateTo(s.round===MAX_ROUNDS?{...s,phase:"end",updatedAt:Date.now()}:{phase:"answer",round:s.round+1,score:s.score,streak:s.streak,updatedAt:Date.now(),roundPoints:0});
+if(action==="restart"&&s.phase==="end")await stateTo({phase:"lobby",round:0,score:0,streak:0,updatedAt:Date.now(),roundPoints:0})
+}catch(e){msg("작업 실패: "+(e.code||e.message||"연결 오류"))}
+}
+function leave(){if(offRoom){offRoom();offRoom=null}online=null;roomCode="";history.replaceState(null,"",location.pathname);home()}
+document.addEventListener("click",async e=>{
+const b=e.target.closest("button[data-act]");if(!b||b.disabled)return;
+const a=b.dataset.act;
+if(a==="home"){home();return}
+if(a==="localStart"){localStart();return}
+if(a==="localRestart"){localStartFromSaved();return}
+if(a==="localNext"){localNext();return}
+if(a==="vote"){const n=Number(b.dataset.choice);if(mode==="local"&&local?.phase==="answer"){local.answers[local.turn]=n;local.turn++;if(local.turn===local.players.length){const m=calc(Object.values(local.answers),local.players.length);local.roundPoints=m.points;local.score+=m.points;local.streak=m.perfect?local.streak+1:0;local.phase="reveal"}renderLocal()}else if(mode==="online")await onlineAct("vote",n);return}
+if(a==="create"){await createOnline();return}
+if(a==="join"){await joinOnline();return}
+if(a==="leave"){leave();return}
+if(a==="copyLink"){try{await navigator.clipboard.writeText(codeUrl(roomCode));msg("초대 링크를 복사했어! 친구에게 보내 줘.")}catch{msg("위에 표시된 초대 링크를 길게 눌러 복사해 줘.")}return}
+if(["start","reveal","next","restart"].includes(a)){await onlineAct(a);return}
+});
+function localStartFromSaved(){if(!local)return;local={...local,round:1,turn:0,answers:{},phase:"answer",seed:rand(QUESTIONS.length),score:0,streak:0,roundPoints:0};renderLocal()}
+setInterval(()=>{if(mode==="online"&&online?.state?.phase==="answer")renderOnline()},6000);
+home();
+</script>
+</body></html>
