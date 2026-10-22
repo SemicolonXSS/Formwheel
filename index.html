@@ -281,12 +281,12 @@ Formwheel의 모든 프로젝트를 한곳에서 만나보세요.
     <a href="./share.html" aria-label="Formwheel 친구에게 공유하기">💌 친구에게 공유</a>
   </div>
 </section>
-<section id="fw-hub-next" aria-label="HUB NEXT 개인화" style="max-width:1100px;margin:16px auto;padding:20px;border:1px solid #deddf0;border-radius:20px;background:#fff;color:#23243b">
-  <div style="display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap"><h2 style="margin:0">✨ HUB NEXT · 나만의 Formwheel</h2><button type="button" id="fw-next-clear" style="padding:8px 12px;border:1px solid #bbb;border-radius:10px;background:#fff;color:#333">최근 기록 초기화</button></div>
+<section id="fw-hub-next" aria-label="HUB NEXT 개인화" style="max-width:1000px;margin:10px auto;padding:12px 16px;border:1px solid #deddf0;border-radius:15px;background:#fff;color:#23243b">
+  <div style="display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap"><h2 style="margin:0;font-size:19px">✨ HUB NEXT · 나만의 Formwheel</h2><button type="button" id="fw-next-clear" style="padding:6px 9px;border:1px solid #bbb;border-radius:9px;background:#fff;color:#333">최근 기록 초기화</button></div>
   <p id="fw-next-status" role="status" style="color:#626982">프로젝트를 열면 나에게 맞는 추천이 시작돼요.</p>
-  <h3 style="margin:12px 0 6px">🕒 최근 플레이</h3><div id="fw-next-recent" style="display:flex;gap:8px;flex-wrap:wrap"></div>
-  <h3 style="margin:16px 0 6px">🎯 내 취향 추천</h3><div id="fw-next-recommend" style="display:flex;gap:8px;flex-wrap:wrap"></div>
-  <p id="fw-next-daily" style="padding:12px;background:#f3f2ff;border-radius:12px"></p>
+  <h3 style="margin:8px 0 4px;font-size:15px">🕒 최근 플레이</h3><div id="fw-next-recent" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+  <h3 style="margin:10px 0 4px;font-size:15px">🎯 내 취향 추천</h3><div id="fw-next-recommend" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+  <p id="fw-next-daily" style="padding:8px 10px;background:#f3f2ff;border-radius:10px;margin:9px 0 0"></p>
 </section>
 <!-- Primary discovery: show playable projects immediately after welcome -->
 <section id="projects">
@@ -770,7 +770,7 @@ document.getElementById("fw-match-close").onclick=()=>{modal.hidden=true};
  let data=read();
  const store=()=>{try{localStorage.setItem(KEY,JSON.stringify(data))}catch{}};
  const day=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
- const link=(p)=>{const a=document.createElement('a');a.href=p.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=(p.icon||'🎮')+' '+p.name;a.style.cssText='display:inline-block;padding:9px 12px;border:1px solid #d9daf0;border-radius:11px;text-decoration:none;background:#f8f8ff;color:#30366a;font-weight:700';a.dataset.fwNext=p.name;return a};
+ const link=(p)=>{const a=document.createElement('a');a.href=p.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=(p.icon||'🎮')+' '+p.name;a.style.cssText='display:inline-block;padding:6px 9px;border:1px solid #d9daf0;border-radius:9px;text-decoration:none;background:#f8f8ff;color:#30366a;font-weight:700';a.dataset.fwNext=p.name;return a};
  function renderNext(){
   const all=catalog();if(!all.length)return;
   const recent=Object.entries(data.visits||{}).filter(([n,v])=>all.some(p=>p.name===n)&&v&&Number.isFinite(v.last)).sort((a,b)=>b[1].last-a[1].last);
