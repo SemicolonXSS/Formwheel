@@ -21,6 +21,12 @@ if(!Object.hasOwn(palettes,current))current=null;
 const sheet=document.createElement('style');
 sheet.textContent=`body[data-fw-global-theme] {background:var(--fw-theme-bg)!important;}
 body[data-fw-global-theme] header,body[data-fw-global-theme] .card,body[data-fw-global-theme] .panel,body[data-fw-global-theme] .fw-footer{border-color:var(--fw-theme-accent)!important;}
+body[data-fw-global-theme]{color:var(--fw-theme-text)!important;}
+body[data-fw-global-theme] h1,body[data-fw-global-theme] h2,body[data-fw-global-theme] h3,body[data-fw-global-theme] h4,body[data-fw-global-theme] p,body[data-fw-global-theme] .hero p,body[data-fw-global-theme] .score,body[data-fw-global-theme] .stat strong{color:var(--fw-theme-text)!important;}
+body[data-fw-global-theme] .card,body[data-fw-global-theme] .panel{background-color:var(--fw-theme-surface)!important;color:var(--fw-theme-text)!important;}
+body[data-fw-global-theme] .muted,body[data-fw-global-theme] .sub,body[data-fw-global-theme] .theme-note,body[data-fw-global-theme] .item-desc{color:var(--fw-theme-muted)!important;}
+body[data-fw-global-theme] a:not(.logo):not(.home):not(.fw-hub-logo){color:var(--fw-theme-accent);}
+body[data-fw-global-theme] input,body[data-fw-global-theme] select,body[data-fw-global-theme] textarea{color:#202337;background-color:#fff;}
 body[data-fw-global-theme] .fw-footer{background:var(--fw-theme-surface)!important;}
 body[data-fw-global-theme] a:not(.home):not(.logo){accent-color:var(--fw-theme-accent);}
 body[data-fw-global-theme] .hero h1,body[data-fw-global-theme] h1{ text-shadow:0 1px 0 var(--fw-theme-surface); }`;
@@ -35,6 +41,8 @@ function apply(){
   document.body.style.setProperty('--fw-theme-surface',surface);
   document.body.style.setProperty('--fw-theme-accent',accent);
   document.body.style.setProperty('--fw-theme-secondary',secondary);
+  document.body.style.setProperty('--fw-theme-text',current==='neon'?'#291c48':current==='galaxy'?'#262151':current==='forest'?'#163e30':'#583047');
+  document.body.style.setProperty('--fw-theme-muted',current==='neon'?'#594b77':current==='galaxy'?'#5a5680':current==='forest'?'#426451':'#765b68');
  }else document.body.removeAttribute('data-fw-global-theme');
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply,{once:true});else apply();
