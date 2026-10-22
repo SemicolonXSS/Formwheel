@@ -135,15 +135,15 @@ const textThemes={
  sunset:['#281523','#432638','#6b2850'],forest:['#fff','#173e30','#145039'],
  neon:['#fff','#291c48','#5720a2'],galaxy:['#fff','#262151','#45369b'],
  ocean:['#063d50','#073c4a','#075577'],sakura:['#492039','#4b2346','#913565'],
- midnight:['#fff','#1a2540','#c3d2ff'],aurora:['#fff','#254d5b','#295d77'],
+ midnight:['#fff','#ffffff','#c3d2ff'],aurora:['#fff','#254d5b','#295d77'],
  ember:['#2c130c','#4d2819','#8a361d'],cyber:['#fff','#352657','#5534a8'],
  royal:['#fff','#3d2459','#63338a'],void:['#fff','#312b45','#575071'],
- prismatic:['#211a39','#352143','#643d9e'],echo:['#fff','#152b3b','#89ecf1'],
- nova:['#fff','#342541','#ffe0a9'],'void-premium':['#fff','#191323','#c8a9ff'],
- rift:['#fff','#15243c','#9ba8ff'],comet:['#fff','#16365c','#ffd4a2'],
- eclipse:['#fff','#211c39','#ffdf9b'],quantum:['#fff','#29335e','#96f7f0'],
- celestial:['#fff','#2e2758','#ffdba7'],singularity:['#fff','#1c1533','#d8b8ff'],
- overdrive:['#201329','#2b1b40','#ffe5a3']
+ prismatic:['#211a39','#ffffff','#643d9e'],echo:['#fff','#152b3b','#89ecf1'],
+ nova:['#fff','#ffffff','#ffe0a9'],'void-premium':['#fff','#191323','#c8a9ff'],
+ rift:['#fff','#ffffff','#9ba8ff'],comet:['#fff','#16365c','#ffd4a2'],
+ eclipse:['#fff','#ffffff','#ffdf9b'],quantum:['#fff','#29335e','#96f7f0'],
+ celestial:['#fff','#ffffff','#ffdba7'],singularity:['#fff','#1c1533','#d8b8ff'],
+ overdrive:['#201329','#ffffff','#ffe5a3']
 };
 
 function apply(){
