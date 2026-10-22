@@ -75,8 +75,8 @@ function apply(){
   document.body.style.setProperty('--fw-theme-surface',surface);
   document.body.style.setProperty('--fw-theme-accent',accent);
   document.body.style.setProperty('--fw-theme-secondary',secondary);
-  document.body.style.setProperty('--fw-theme-text',current==='neon'?'#291c48':current==='galaxy'?'#262151':current==='forest'?'#163e30':'#583047');
-  document.body.style.setProperty('--fw-theme-muted',current==='neon'?'#594b77':current==='galaxy'?'#5a5680':current==='forest'?'#426451':'#765b68');
+  document.body.style.setProperty('--fw-theme-text',current==='neon'?'#291c48':current==='galaxy'?'#262151':current==='forest'?'#163e30':'#253047');
+  document.body.style.setProperty('--fw-theme-muted',current==='neon'?'#594b77':current==='galaxy'?'#5a5680':current==='forest'?'#426451':'#526078');
  }else document.body.removeAttribute('data-fw-global-theme');
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply,{once:true});else apply();
