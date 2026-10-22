@@ -33,3 +33,5 @@ jobs:
         run: node firebase-security/tests/core.test.cjs
       - name: Validate database rules JSON syntax
         run: node -e "JSON.parse(require('node:fs').readFileSync('database.rules.json','utf8')); console.log('PASS rules JSON parse')"
+      - name: Check proposed combined database rules
+        run: node scripts/check-combined-rules.cjs
