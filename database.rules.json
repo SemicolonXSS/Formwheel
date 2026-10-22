@@ -69,9 +69,9 @@
     "hubCreatorSort": {
       ".read": true,
       ".write": "auth != null && auth.token.email === 'not404spam@gmail.com' && auth.token.email_verified === true",
-      ".validate": "newData.hasChildren(['order','updatedAt']) && newData.child('updatedAt').isNumber() && newData.child('order').childrenCount <= 120",
+      ".validate": "newData.hasChildren(['order','updatedAt']) && newData.child('order').hasChildren() && newData.child('updatedAt').isNumber()",
       "order": {
-        ".validate": "newData.hasChildren() || newData.val() === false",
+        ".validate": "newData.hasChildren()",
         "$index": {
           ".validate": "newData.isString() && newData.val().length <= 80"
         }
