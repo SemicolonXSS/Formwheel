@@ -9,15 +9,30 @@ const palettes={
  neon:['#f2eaff','#fdfaff','#6730bd','#9a55e5'],
  galaxy:['#e7e8ff','#f7f6ff','#3f359b','#7971db']
 };
+const shopKey='formwheel_rapid_shop_beta_v1';
+function entitled(id){
+ if(!Object.hasOwn(palettes,id))return false;
+ try{
+  const shop=JSON.parse(localStorage.getItem(shopKey)||'null');
+  return Boolean(shop && shop.equipped===id && Array.isArray(shop.purchases) &&
+   shop.purchases.some(p=>p && p.theme===id && p.refunded===false));
+ }catch{return false;}
+}
 let current=null;
-try{
- const params=new URLSearchParams(location.search);
- const incoming=params.get('fwTheme');
- if(incoming==='classic'){localStorage.removeItem(key);}
- else if(Object.hasOwn(palettes,incoming)){localStorage.setItem(key,incoming);}
- current=localStorage.getItem(key);
-}catch{}
-if(!Object.hasOwn(palettes,current))current=null;
+function refresh(){
+ let requested=null;
+ try{
+  const params=new URLSearchParams(location.search);
+  const incoming=params.get('fwTheme');
+  if(incoming==='classic')localStorage.removeItem(key);
+  else if(Object.hasOwn(palettes,incoming) && entitled(incoming))localStorage.setItem(key,incoming);
+  requested=localStorage.getItem(key);
+ }catch{}
+ current=entitled(requested)?requested:null;
+ if(!current){try{localStorage.removeItem(key);}catch{}}
+ return current;
+}
+refresh();
 const sheet=document.createElement('style');
 sheet.textContent=`body[data-fw-global-theme] {background:var(--fw-theme-bg)!important;}
 body[data-fw-global-theme] header,body[data-fw-global-theme] .card,body[data-fw-global-theme] .panel,body[data-fw-global-theme] .fw-footer{border-color:var(--fw-theme-accent)!important;}
@@ -32,6 +47,7 @@ body[data-fw-global-theme] a:not(.home):not(.logo){accent-color:var(--fw-theme-a
 body[data-fw-global-theme] .hero h1,body[data-fw-global-theme] h1{ text-shadow:0 1px 0 var(--fw-theme-surface); }`;
 document.head.append(sheet);
 function apply(){
+ refresh();
  if(!document.body)return;
  document.body.toggleAttribute('data-fw-global-theme',Boolean(current));
  if(current){
@@ -48,7 +64,7 @@ function apply(){
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply,{once:true});else apply();
 document.addEventListener('click',e=>{
  const link=e.target.closest?.('a[href]');
- if(!link||!current||e.defaultPrevented)return;
+ if(!link||!refresh()||e.defaultPrevented)return;
  try{
   const url=new URL(link.href,location.href);
   if(url.hostname==='semicolonxss.github.io' && url.origin===location.origin){
@@ -57,10 +73,12 @@ document.addEventListener('click',e=>{
   }
  }catch{}
 },true);
-window.FormwheelTheme={get:()=>current,set:id=>{
- current=Object.hasOwn(palettes,id)?id:null;
- try{if(current)localStorage.setItem(key,current);else localStorage.removeItem(key);}catch{}
+window.FormwheelTheme={get:()=>refresh(),set:id=>{
+ try{if(id==='classic'||id===null)localStorage.removeItem(key);
+ else if(entitled(id))localStorage.setItem(key,id);
+ else localStorage.removeItem(key);}catch{}
  apply();
+ return current;
 }};
 })();
 /* Common accessible controls, status and errors; no analytics or data transfer. */
