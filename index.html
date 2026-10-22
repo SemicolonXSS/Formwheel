@@ -281,12 +281,15 @@ Formwheel의 모든 프로젝트를 한곳에서 만나보세요.
     <a href="./share.html" aria-label="Formwheel 친구에게 공유하기">💌 친구에게 공유</a>
   </div>
 </section>
-<section id="fw-hub-next" aria-label="HUB NEXT 개인화" style="max-width:1000px;margin:10px auto;padding:12px 16px;border:1px solid #deddf0;border-radius:15px;background:#fff;color:#23243b">
-  <div style="display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap"><h2 style="margin:0;font-size:19px">✨ HUB NEXT · 나만의 Formwheel</h2><button type="button" id="fw-next-clear" style="padding:6px 9px;border:1px solid #bbb;border-radius:9px;background:#fff;color:#333">최근 기록 초기화</button></div>
-  <p id="fw-next-status" role="status" style="color:#626982">프로젝트를 열면 나에게 맞는 추천이 시작돼요.</p>
-  <h3 style="margin:8px 0 4px;font-size:15px">🕒 최근 플레이</h3><div id="fw-next-recent" style="display:flex;gap:8px;flex-wrap:wrap"></div>
-  <h3 style="margin:10px 0 4px;font-size:15px">🎯 내 취향 추천</h3><div id="fw-next-recommend" style="display:flex;gap:8px;flex-wrap:wrap"></div>
-  <p id="fw-next-daily" style="padding:8px 10px;background:#f3f2ff;border-radius:10px;margin:9px 0 0"></p>
+<section id="fw-hub-next" aria-label="HUB NEXT 개인화" style="max-width:900px;margin:6px auto;padding:8px 11px;border:1px solid #deddf0;border-radius:12px;background:#fff;color:#23243b;font-size:12px">
+ <div style="display:flex;align-items:center;justify-content:space-between;gap:7px;flex-wrap:wrap"><strong style="font-size:14px">✨ HUB NEXT</strong><button type="button" id="fw-next-expand" aria-expanded="false" aria-controls="fw-next-details" style="border:1px solid #d1d2e5;border-radius:8px;background:#f6f6ff;padding:5px 9px;color:#30366a">펼치기 ▾</button></div>
+ <p id="fw-next-daily" style="padding:5px 7px;background:#f3f2ff;border-radius:8px;margin:5px 0 0"></p>
+ <div id="fw-next-details" hidden>
+  <p id="fw-next-status" role="status" style="color:#626982;font-size:12px;margin:7px 0">프로젝트를 열면 맞춤 추천이 시작돼요.</p>
+  <strong>🕒 최근 플레이</strong><div id="fw-next-recent" style="display:flex;gap:5px;flex-wrap:wrap;margin:5px 0 8px"></div>
+  <strong>🎯 내 취향 추천</strong><div id="fw-next-recommend" style="display:flex;gap:5px;flex-wrap:wrap;margin:5px 0 8px"></div>
+  <button type="button" id="fw-next-clear" style="padding:5px 8px;border:1px solid #bbb;border-radius:8px;background:#fff;color:#333;font-size:12px">최근 기록 초기화</button>
+ </div>
 </section>
 <!-- Primary discovery: show playable projects immediately after welcome -->
 <section id="projects">
@@ -792,6 +795,7 @@ document.getElementById("fw-match-close").onclick=()=>{modal.hidden=true};
   if(daily?.name===name){data.daily=data.daily||{};data.daily[current]=name}
   store();renderNext();
  },true);
+ $('fw-next-expand')?.addEventListener('click',()=>{const details=$('fw-next-details'),expanded=details.hidden;details.hidden=!expanded;$('fw-next-expand').setAttribute('aria-expanded',String(expanded));$('fw-next-expand').textContent=expanded?'접기 ▴':'펼치기 ▾';});
  $('fw-next-clear')?.addEventListener('click',()=>{if(!confirm('이 브라우저의 HUB NEXT 최근 기록과 오늘의 탐험 표시를 초기화할까요?'))return;data={};store();renderNext()});
  window.addEventListener('storage',e=>{if(e.key===KEY){data=read();renderNext()}});
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',renderNext);else renderNext();
