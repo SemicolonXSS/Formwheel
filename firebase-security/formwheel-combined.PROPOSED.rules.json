@@ -263,7 +263,7 @@
           "$uid": {
             ".read": "auth != null && auth.uid === $uid",
             ".write": "auth != null && auth.uid === $uid && ((!data.exists() && newData.exists() && newData.child('firstSeen').isNumber() && newData.child('firstSeen').val() >= now-86400000 && newData.child('firstSeen').val() <= now+60000) || (data.exists() && newData.exists() && newData.child('firstSeen').val() === data.child('firstSeen').val()))",
-            ".validate": "newData.hasChildren(['firstSeen','accountType','totalMs','projectMs','visitCount','lastCountedAt','lastVisitAt']) && newData.child('firstSeen').isNumber() && newData.child('accountType').val() === (auth.token.firebase.sign_in_provider === 'anonymous' ? 'guest' : 'account') && newData.child('totalMs').isNumber() && newData.child('totalMs').val() >= 0 && newData.child('visitCount').isNumber() && newData.child('visitCount').val() >= 1 && newData.child('lastCountedAt').isNumber() && newData.child('lastVisitAt').isNumber()",
+            ".validate": "newData.hasChildren(['firstSeen','accountType','totalMs','visitCount','lastCountedAt','lastVisitAt']) && newData.child('firstSeen').isNumber() && (data.exists() ? newData.child('accountType').val() === data.child('accountType').val() : (newData.child('accountType').val() === 'guest' || newData.child('accountType').val() === 'account')) && newData.child('totalMs').isNumber() && newData.child('totalMs').val() >= 0 && newData.child('visitCount').isNumber() && newData.child('visitCount').val() >= 1 && newData.child('lastCountedAt').isNumber() && newData.child('lastVisitAt').isNumber()",
             "firstSeen": {
               ".validate": "newData.isNumber() && (!data.exists() || newData.val() === data.val())"
             },
