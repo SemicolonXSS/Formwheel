@@ -48,7 +48,7 @@ function walletRead(){
  const w=safeLoad(WALLET_KEY,null);
  if(!w)return null;
  const balance=typeof w.balance==="string"?w.balance:(Number.isSafeInteger(w.balance)?String(w.balance):"");
- return /^\\d+$/.test(balance)?{...w,balance}:null;
+ return /^\d+$/.test(balance)?{...w,balance}:null;
 }
 function saveState(state){localStorage.setItem(EXTRAS_KEY,JSON.stringify(state))}
 const owned=(state,id)=>state.owned.includes(id);
