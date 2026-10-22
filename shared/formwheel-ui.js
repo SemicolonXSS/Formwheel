@@ -14,11 +14,20 @@ function entitled(id){
  if(!Object.hasOwn(palettes,id))return false;
  try{
   const shop=JSON.parse(localStorage.getItem(shopKey)||'null');
-  return Boolean(shop && shop.equipped===id && Array.isArray(shop.purchases) &&
+  return Boolean(shop && Array.isArray(shop.purchases) &&
    shop.purchases.some(p=>p && p.theme===id && p.refunded===false));
  }catch{return false;}
 }
 let current=null;
+const assignmentsKey='fw-project-themes-v1';
+function projectTheme(){
+ try{
+  const path=location.pathname;
+  const map=JSON.parse(localStorage.getItem(assignmentsKey)||'{}');
+  const name=new URLSearchParams(location.search).get('fwProject');
+  return (name && map[name]) || map[path] || null;
+ }catch{return null;}
+}
 function refresh(){
  let requested=null;
  try{
@@ -26,10 +35,10 @@ function refresh(){
   const incoming=params.get('fwTheme');
   if(incoming==='classic')localStorage.removeItem(key);
   else if(Object.hasOwn(palettes,incoming) && entitled(incoming))localStorage.setItem(key,incoming);
-  requested=localStorage.getItem(key);
+  requested=projectTheme() || localStorage.getItem(key);
  }catch{}
  current=entitled(requested)?requested:null;
- if(!current){try{localStorage.removeItem(key);}catch{}}
+ if(!current && !projectTheme()){try{localStorage.removeItem(key);}catch{}}
  return current;
 }
 refresh();
@@ -68,7 +77,12 @@ document.addEventListener('click',e=>{
  try{
   const url=new URL(link.href,location.href);
   if(url.hostname==='semicolonxss.github.io' && url.origin===location.origin){
-   url.searchParams.set('fwTheme',current);
+   const projectName=link.dataset.fwProject || null;
+   const assignments=JSON.parse(localStorage.getItem(assignmentsKey)||'{}');
+   const theme=(projectName && assignments[projectName]) || assignments[url.pathname] || current;
+   if(theme && entitled(theme))url.searchParams.set('fwTheme',theme);
+   else url.searchParams.delete('fwTheme');
+   if(projectName)url.searchParams.set('fwProject',projectName);
    link.href=url.href;
   }
  }catch{}
