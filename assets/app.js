@@ -636,6 +636,48 @@ const filterButtons =
 ====================================================== */
 
 let currentFilter = "all";
+const favoriteStorageKey = "formwheel-hub-pinned-games-v1";
+let pinnedGames = [];
+try {
+  const stored = JSON.parse(localStorage.getItem(favoriteStorageKey) || "[]");
+  if (Array.isArray(stored)) pinnedGames = stored.filter(name => typeof name === "string");
+} catch (_) { /* Storage may be unavailable */ }
+const favoriteToggle = document.getElementById("fw-favorites-toggle");
+const favoritePanel = document.getElementById("fw-favorites-panel");
+const favoriteOptions = document.getElementById("fw-favorites-options");
+const favoriteCount = document.getElementById("fw-favorites-count");
+function savePinnedGames(){
+  try { localStorage.setItem(favoriteStorageKey, JSON.stringify(pinnedGames)); } catch (_) {}
+  updateFavoriteControls();
+  render();
+}
+function updateFavoriteControls(){
+  favoriteCount.textContent = pinnedGames.length ? "(" + pinnedGames.length + ")" : "";
+  favoriteOptions.querySelectorAll('input[type="checkbox"]').forEach(input => {
+    input.checked = pinnedGames.includes(input.value);
+  });
+}
+if (favoriteToggle && favoritePanel && favoriteOptions) {
+  favoriteOptions.innerHTML = projects.filter(p => p.category === "game")
+    .sort((a,b) => a.name.localeCompare(b.name,"ko"))
+    .map(p => '<label><input type="checkbox" value="' + escapeHTML(p.name) + '"><span>' + escapeHTML(p.icon || "🎮") + ' ' + escapeHTML(p.name) + '</span></label>').join("");
+  favoriteOptions.addEventListener("change", e => {
+    if (!e.target.matches('input[type="checkbox"]')) return;
+    const name = e.target.value;
+    pinnedGames = pinnedGames.filter(item => item !== name);
+    if (e.target.checked) pinnedGames.push(name);
+    savePinnedGames();
+  });
+  favoriteToggle.addEventListener("click", () => {
+    favoritePanel.hidden = !favoritePanel.hidden;
+    favoriteToggle.setAttribute("aria-expanded", String(!favoritePanel.hidden));
+  });
+  document.getElementById("fw-favorites-clear")?.addEventListener("click", () => {
+    pinnedGames = [];
+    savePinnedGames();
+  });
+  updateFavoriteControls();
+}
 const modeFilter = document.getElementById("modeFilter");
 const connectionFilter = document.getElementById("connectionFilter");
 const difficultyFilter = document.getElementById("difficultyFilter");
@@ -814,6 +856,16 @@ function render(){
   }
 
 
+  /* Keep pinned games above other visible cards, regardless of sort. */
+  list.sort((a,b) => {
+    const ai = pinnedGames.indexOf(a.name);
+    const bi = pinnedGames.indexOf(b.name);
+    if (ai === -1 && bi === -1) return 0;
+    if (ai === -1) return 1;
+    if (bi === -1) return -1;
+    return ai - bi;
+  });
+
   /* COUNT */
 
   countElement.textContent =
@@ -850,11 +902,11 @@ function render(){
       return `
 
         <article
-          class="card ${project.className}"
+          class="card ${project.className} ${pinnedGames.includes(project.name) ? "fw-pinned" : ""}"
         >
 
           ${newBadge}
-
+          ${pinnedGames.includes(project.name) ? '<span class="fw-pin-mark">📌 고정됨</span>' : ""}
 
           <img src="${thumbnailURL(project)}" alt="" loading="lazy" width="1200" height="630" style="display:block;width:100%;height:auto;border-radius:12px;margin-bottom:14px">
           <div class="cardTop">
