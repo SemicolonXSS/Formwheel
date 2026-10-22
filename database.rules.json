@@ -79,6 +79,37 @@
       "updatedAt": {
         ".validate": "newData.isNumber()"
       }
+    },
+    "syncRooms": {
+      "$code": {
+        ".read": "auth != null",
+        ".write": "auth != null && !data.exists() && $code.matches(/^[A-HJ-NP-Z2-9]{6}$/) && newData.hasChildren(['hostUid','seed','createdAt','players','state']) && newData.child('hostUid').val() === auth.uid && newData.child('players').child(auth.uid).exists() && newData.child('state').child('phase').val() === 'lobby'",
+        "hostUid": {
+          ".validate": "newData.isString() && newData.val() === auth.uid"
+        },
+        "createdAt": {
+          ".validate": "newData.isNumber()"
+        },
+        "seed": {
+          ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() < 28"
+        },
+        "players": {
+          "$uid": {
+            ".write": "auth != null && auth.uid === $uid && root.child('syncRooms/'+$code+'/state/phase').val() === 'lobby' && (data.exists() || root.child('syncRooms/'+$code+'/players').numChildren() < 6)",
+            ".validate": "newData.hasChildren(['name','joinedAt']) && newData.child('name').isString() && newData.child('name').val().length > 0 && newData.child('name').val().length <= 16 && newData.child('joinedAt').isNumber()"
+          }
+        },
+        "state": {
+          ".write": "auth != null && auth.uid === root.child('syncRooms/'+$code+'/hostUid').val()",
+          ".validate": "newData.hasChildren(['phase','round','score','streak','updatedAt']) && (newData.child('phase').val() === 'lobby' || newData.child('phase').val() === 'answer' || newData.child('phase').val() === 'reveal' || newData.child('phase').val() === 'end') && newData.child('round').isNumber() && newData.child('round').val() >= 0 && newData.child('round').val() <= 6 && newData.child('score').isNumber() && newData.child('score').val() >= 0 && newData.child('score').val() <= 750 && newData.child('streak').isNumber() && newData.child('streak').val() >= 0 && newData.child('streak').val() <= 6 && newData.child('updatedAt').isNumber()"
+        },
+        "answers": {
+          "$uid": {
+            ".write": "auth != null && auth.uid === $uid && root.child('syncRooms/'+$code+'/players/'+$uid).exists() && root.child('syncRooms/'+$code+'/state/phase').val() === 'answer' && (!data.exists() || data.child('round').val() !== root.child('syncRooms/'+$code+'/state/round').val()) && newData.child('round').val() === root.child('syncRooms/'+$code+'/state/round').val()",
+            ".validate": "newData.hasChildren(['round','choice']) && newData.child('round').isNumber() && newData.child('round').val() >= 1 && newData.child('round').val() <= 6 && newData.child('choice').isNumber() && newData.child('choice').val() >= 0 && newData.child('choice').val() <= 3"
+          }
+        }
+      }
     }
   }
 }
