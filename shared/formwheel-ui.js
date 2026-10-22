@@ -16,7 +16,17 @@ const palettes={
  cyber:["#edf5ff","#f9f5ff","#603bb6","#1b9da9"],
  royal:["#f5edff","#fffcf2","#6e43a0","#b88a3a"],
  void:["#e9e6f5","#f4f2fa","#575071","#86809c"],
- prismatic:["#f6f1ff","#fff9fc","#8051bb","#cf7baf"]
+ prismatic:["#f6f1ff","#fff9fc","#8051bb","#cf7baf"],
+ echo:["#101729","#172c40","#62d0d7","#225974"],
+ nova:["#15152c","#392746","#ffdeab","#af60cb"],
+ "void-premium":["#05050d","#191323","#b396ed","#42305c"],
+ rift:["#061b25","#15243c","#7b8cef","#7b2cbf"],
+ comet:["#071b35","#16365c","#ffb56e","#215e9e"],
+ eclipse:["#080914","#211c39","#f6cf84","#9c87c8"],
+ quantum:["#182354","#29335e","#62d9da","#7653c5"],
+ celestial:["#0c1632","#2e2758","#f8c986","#d68aba"],
+ singularity:["#050511","#1c1533","#b78cff","#8e55e8"],
+ overdrive:["#191130","#35204d","#fff0af","#ea9e36"]
 };
 const gradients={
  sunset:"linear-gradient(120deg,#f5a669,#ce6899,#5853b1)",
@@ -31,7 +41,17 @@ const gradients={
  cyber:"linear-gradient(120deg,#15112e,#6b20a4,#25c8d5)",
  royal:"linear-gradient(120deg,#352057,#7549a0,#d9ad50)",
  void:"linear-gradient(120deg,#0b0b15,#29223d,#565071)",
- prismatic:"linear-gradient(120deg,#e55786,#8069db,#3dbbc5,#e8bd6a)"
+ prismatic:"linear-gradient(120deg,#e55786,#8069db,#3dbbc5,#e8bd6a)",
+ echo:"linear-gradient(120deg,#101729,#225974,#62d0d7)",
+ nova:"radial-gradient(circle,#ffdeab,#af60cb,#15152c)",
+ "void-premium":"radial-gradient(circle,#42305c,#151222,#05050d)",
+ rift:"linear-gradient(120deg,#061b25,#145f8c,#7b2cbf,#19102f)",
+ comet:"linear-gradient(115deg,#071b35,#215e9e,#ffb56e)",
+ eclipse:"radial-gradient(circle at 55% 45%,#f6cf84 0 12%,#211c39 15% 32%,#080914 55%)",
+ quantum:"conic-gradient(from 25deg,#182354,#27a9ad,#7653c5,#1a224c,#27a9ad)",
+ celestial:"linear-gradient(135deg,#0c1632,#5546ab,#d68aba,#f8c986)",
+ singularity:"radial-gradient(circle at 50% 55%,#020208 0 18%,#8e55e8 21%,#251653 39%,#050511 70%)",
+ overdrive:"conic-gradient(from 45deg,#ea9e36,#fff0af,#9c53ce,#2d5abf,#ea9e36)"
 };
 const shopKey='formwheel_rapid_shop_beta_v1';
 function entitled(id){
@@ -91,8 +111,9 @@ function apply(){
   document.body.style.setProperty('--fw-theme-surface',surface);
   document.body.style.setProperty('--fw-theme-accent',accent);
   document.body.style.setProperty('--fw-theme-secondary',secondary);
-  document.body.style.setProperty('--fw-theme-text',current==='neon'?'#291c48':current==='galaxy'?'#262151':current==='forest'?'#163e30':'#253047');
-  document.body.style.setProperty('--fw-theme-muted',current==='neon'?'#594b77':current==='galaxy'?'#5a5680':current==='forest'?'#426451':'#526078');
+  const darkThemes=new Set(['midnight','echo','nova','void-premium','rift','comet','eclipse','quantum','celestial','singularity']);
+  document.body.style.setProperty('--fw-theme-text',darkThemes.has(current)?'#ffffff':current==='neon'?'#291c48':current==='galaxy'?'#262151':current==='forest'?'#163e30':current==='overdrive'?'#191130':'#253047');
+  document.body.style.setProperty('--fw-theme-muted',darkThemes.has(current)?'#d5cce8':current==='neon'?'#594b77':current==='galaxy'?'#5a5680':current==='forest'?'#426451':'#526078');
  }else {document.body.removeAttribute('data-fw-global-theme');document.body.style.removeProperty('--fw-theme-preview-gradient');}
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply,{once:true});else apply();
