@@ -35,6 +35,7 @@ IMPORTANT:
 const projects = [
   {name:"SYNC",icon:"🧠",className:"purple",category:"game",mode:"both",connection:"online",difficulty:"쉬움",description:"친구들과 텔레파시가 통할까? 같은 답을 고르는 6라운드 싱크 파티 게임! 한 기기 파티와 온라인 방 코드.",url:"https://semicolonxss.github.io/Formwheel/sync/",addedAt:"2026-10-22T06:00:00Z",recent:true},
   {name:"Scribble",icon:"🎨",className:"purple",category:"game",mode:"multi",connection:"online",difficulty:"쉬움",description:"친구와 문장·그림을 번갈아 전달하는 낙서 릴레이! 2~8인 방 코드, 실시간 턴 진행과 앨범 공개.",url:"https://semicolonxss.github.io/Formwheel_Scribble/",addedAt:"2026-10-22T04:00:00Z",recent:true},
+  {name:"Whiteboard",icon:"🖌️",className:"purple",category:"tool",mode:"multi",connection:"online",difficulty:"쉬움",description:"친구와 같은 캔버스에서 실시간으로 함께 그리는 협업 화이트보드! 방 코드와 초대 링크, 그림 저장 지원.",url:"https://semicolonxss.github.io/Formwheel_Whiteboard/",addedAt:"2026-10-22T06:00:00Z",recent:true},
   {name:"Paint",icon:"🎨",className:"purple",category:"tool",mode:"solo",connection:"offline",difficulty:"쉬움",description:"펜·도형·페인트통으로 자유롭게 그리는 그림판! PNG 저장, 이미지 불러오기, 자동 임시 저장 지원.",url:"https://semicolonxss.github.io/Formwheel_Paint/",addedAt:"2026-10-21T04:26:00Z",recent:true},
   {name:"Animation",icon:"🎬",className:"purple",category:"tool",mode:"solo",connection:"offline",difficulty:"보통",description:"프레임별 그림과 타임라인으로 애니메이션 제작! 어니언 스킨, GIF·WebM 내보내기 지원.",url:"https://semicolonxss.github.io/Formwheel_Animation/",addedAt:"2026-10-21T04:15:00Z",recent:true},
 
@@ -43,7 +44,7 @@ const projects = [
   {
     name:"Glitch", icon:"⚡", className:"purple", category:"game", mode:"solo",
     connection:"offline", difficulty:"보통",
-    description:"30초마다 규칙이 바뀌는 120초 생존 게임! 장애물을 피하고 에너지 조각을 모아봐.",
+    description:"5~10초마다 글리치가 누적되는 120초 생존 게임! 장애물을 피하고 에너지 조각을 모아봐.",
     url:"https://semicolonxss.github.io/Formwheel/glitch/",
     addedAt:"2026-10-21T00:00:00Z", recent:true
   },
