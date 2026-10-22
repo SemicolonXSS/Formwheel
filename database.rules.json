@@ -83,7 +83,7 @@
     "syncRooms": {
       "$code": {
         ".read": "auth != null",
-        ".write": "auth != null && !data.exists() && $code.matches(/^[A-HJ-NP-Z2-9]{6}$/) && newData.hasChildren(['hostUid','seed','createdAt','players','state']) && newData.child('hostUid').val() === auth.uid && newData.child('players').child(auth.uid).exists() && newData.child('state').child('phase').val() === 'lobby'",
+        ".write": "auth != null && ((!data.exists() && $code.matches(/^[A-HJ-NP-Z2-9]{6}$/) && newData.hasChildren(['hostUid','seed','createdAt','players','state']) && newData.child('hostUid').val() === auth.uid && newData.child('players').child(auth.uid).exists() && newData.child('state').child('phase').val() === 'lobby') || (data.exists() && !newData.exists() && data.child('hostUid').val() === auth.uid))",
         "hostUid": {
           ".validate": "newData.isString() && newData.val() === auth.uid"
         },
@@ -95,7 +95,7 @@
         },
         "players": {
           "$uid": {
-            ".write": "auth != null && auth.uid === $uid && root.child('syncRooms/'+$code+'/state/phase').val() === 'lobby' && (data.exists() || root.child('syncRooms/'+$code+'/players').numChildren() < 6)",
+            ".write": "auth != null && auth.uid === $uid && (!newData.exists() || (root.child('syncRooms/'+$code+'/state/phase').val() === 'lobby' && (data.exists() || root.child('syncRooms/'+$code+'/players').numChildren() < 6)))",
             ".validate": "newData.hasChildren(['name','joinedAt']) && newData.child('name').isString() && newData.child('name').val().length > 0 && newData.child('name').val().length <= 16 && newData.child('joinedAt').isNumber()"
           }
         },
