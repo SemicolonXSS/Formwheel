@@ -281,6 +281,13 @@ Formwheel의 모든 프로젝트를 한곳에서 만나보세요.
     <a href="./share.html" aria-label="Formwheel 친구에게 공유하기">💌 친구에게 공유</a>
   </div>
 </section>
+<section id="fw-hub-next" aria-label="HUB NEXT 개인화" style="max-width:1100px;margin:16px auto;padding:20px;border:1px solid #deddf0;border-radius:20px;background:#fff;color:#23243b">
+  <div style="display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap"><h2 style="margin:0">✨ HUB NEXT · 나만의 Formwheel</h2><button type="button" id="fw-next-clear" style="padding:8px 12px;border:1px solid #bbb;border-radius:10px;background:#fff;color:#333">최근 기록 초기화</button></div>
+  <p id="fw-next-status" role="status" style="color:#626982">프로젝트를 열면 나에게 맞는 추천이 시작돼요.</p>
+  <h3 style="margin:12px 0 6px">🕒 최근 플레이</h3><div id="fw-next-recent" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+  <h3 style="margin:16px 0 6px">🎯 내 취향 추천</h3><div id="fw-next-recommend" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+  <p id="fw-next-daily" style="padding:12px;background:#f3f2ff;border-radius:12px"></p>
+</section>
 <!-- Primary discovery: show playable projects immediately after welcome -->
 <section id="projects">
 
@@ -754,7 +761,42 @@ document.getElementById("fw-match-close").onclick=()=>{modal.hidden=true};
   celebrate();
 })();
 </script>
-<script defer src="./shared/rapid-extras.js?v=20261022-rapid1"></script></body>
+<script defer src="./shared/rapid-extras.js?v=20261022-rapid1"></script><script>
+/* HUB NEXT S2-14: additive discovery; no changes to the existing filter or sort pipeline. */
+(function(){
+ const KEY='formwheel.hub.next.v1', $=id=>document.getElementById(id);
+ const catalog=()=>typeof projects!=='undefined'&&Array.isArray(projects)?projects:[];
+ const read=()=>{try{const d=JSON.parse(localStorage.getItem(KEY)||'{}');return d&&typeof d==='object'&&!Array.isArray(d)?d:{}}catch{return {}}};
+ let data=read();
+ const store=()=>{try{localStorage.setItem(KEY,JSON.stringify(data))}catch{}};
+ const day=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+ const link=(p)=>{const a=document.createElement('a');a.href=p.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=(p.icon||'🎮')+' '+p.name;a.style.cssText='display:inline-block;padding:9px 12px;border:1px solid #d9daf0;border-radius:11px;text-decoration:none;background:#f8f8ff;color:#30366a;font-weight:700';a.dataset.fwNext=p.name;return a};
+ function renderNext(){
+  const all=catalog();if(!all.length)return;
+  const recent=Object.entries(data.visits||{}).filter(([n,v])=>all.some(p=>p.name===n)&&v&&Number.isFinite(v.last)).sort((a,b)=>b[1].last-a[1].last);
+  const recentBox=$('fw-next-recent');recentBox.replaceChildren(...recent.slice(0,5).map(([name])=>link(all.find(p=>p.name===name))));
+  if(!recent.length)recentBox.textContent='아직 기록이 없어요. 아래 프로젝트를 열어 보세요!';
+  const categoryCounts={};for(const [name,v]of recent){const p=all.find(x=>x.name===name);if(p)categoryCounts[p.category]=(categoryCounts[p.category]||0)+Math.min(10,Math.max(1,Number(v.count)||1))}
+  const favorite=Object.entries(categoryCounts).sort((a,b)=>b[1]-a[1])[0]?.[0]||'game';
+  const seen=new Set(recent.slice(0,3).map(([n])=>n));const suggestions=all.filter(p=>p.category===favorite&&!seen.has(p.name)).sort((a,b)=>(Number(b.recent===true)-Number(a.recent===true))||a.name.localeCompare(b.name,'ko')).slice(0,3);
+  $('fw-next-recommend').replaceChildren(...suggestions.map(link));$('fw-next-status').textContent=recent.length?'최근 이용 '+recent.length+'개 프로젝트 기록 · '+({game:'게임',tool:'도구',app:'앱'}[favorite]||'게임')+' 취향 추천':'방문 기록은 현재 브라우저에만 저장돼요.';
+  const current=day(),daily=all[(Math.floor(Date.parse(current+'T00:00:00Z')/86400000)%all.length+all.length)%all.length],completed=data.daily?.[current]===daily.name;
+  const dailyBox=$('fw-next-daily');dailyBox.replaceChildren(document.createTextNode((completed?'✅':'🎯')+' 오늘의 탐험: '));dailyBox.append(link(daily));dailyBox.append(document.createTextNode(completed?' · 오늘 방문 완료!':' · 열어 보고 새로운 프로젝트를 발견해 보세요.'));
+ }
+ document.addEventListener('click',e=>{
+  const a=e.target.closest('a[data-fw-project],a[data-fw-next]');if(!a)return;
+  const name=a.dataset.fwNext||a.dataset.fwProject;const p=catalog().find(x=>x.name===name);
+  if(!p||new URL(a.href,location.href).href!==new URL(p.url,location.href).href)return;
+  data.visits=data.visits||{};const old=data.visits[name]||{};data.visits[name]={last:Date.now(),count:Math.min(99999,(Number(old.count)||0)+1)};
+  const current=day();const daily=catalog()[(Math.floor(Date.parse(current+'T00:00:00Z')/86400000)%catalog().length+catalog().length)%catalog().length];
+  if(daily?.name===name){data.daily=data.daily||{};data.daily[current]=name}
+  store();renderNext();
+ },true);
+ $('fw-next-clear')?.addEventListener('click',()=>{if(!confirm('이 브라우저의 HUB NEXT 최근 기록과 오늘의 탐험 표시를 초기화할까요?'))return;data={};store();renderNext()});
+ window.addEventListener('storage',e=>{if(e.key===KEY){data=read();renderNext()}});
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',renderNext);else renderNext();
+})();
+</script></body>
 </html>
 
 
