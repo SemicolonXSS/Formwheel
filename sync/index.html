@@ -78,7 +78,7 @@ const question=(seed,round)=>QUESTIONS[(seed+(round-1)*11)%QUESTIONS.length];
 const fmt=(s)=>safe(s).slice(0,50);
 function msg(s){notice.innerHTML=s?'<div class="notice">'+safe(s)+'</div>':""}
 function stats(round,score,streak){return '<div class="statrow"><div class="stat"><b>'+round+' / '+MAX_ROUNDS+'</b><small>라운드</small></div><div class="stat"><b>'+score+'</b><small>팀 점수</small></div><div class="stat"><b>🔥 '+streak+'</b><small>연속 완벽</small></div></div>'}
-function calc(votes,total){const counts=[0,0,0,0];votes.forEach(v=>{if(Number.isInteger(v)&&v>=0&&v<4)counts[v]++});const most=Math.max(...counts);const all=total>=2&&votes.length===total&&most===total;return{points:most?Math.round(most/total*100)+(all?25:0):0,perfect:all,most,counts}}
+function calc(votes,total){const counts=[0,0,0,0];votes.forEach(v=>{if(Number.isInteger(v)&&v>=0&&v<4)counts[v]++});const most=Math.max(...counts);const matched=most>=2;const all=total>=2&&votes.length===total&&most===total;return{points:matched?Math.round(most/total*100)+(all?25:0):0,perfect:all,matched,most,counts}}
 function options(q){return '<div class="options">'+q.slice(1).map((v,i)=>'<button class="option" data-act="vote" data-choice="'+i+'">'+safe(v)+'</button>').join("")+'</div>'}
 function bestScore(){try{return Number(localStorage.getItem("fw-sync-best")||0)}catch{return 0}}
 function home(){
@@ -105,7 +105,7 @@ el.innerHTML='<div class="result">🏆 SYNC COMPLETE<small>최종 팀 점수</sm
 }
 function results(q,entries,total,points,streak,round,score){
 const c=calc(entries.map(x=>x.choice).filter(x=>Number.isInteger(x)),total);
-let badge=c.perfect?"💫 완벽한 싱크!":"✨ 가장 많이 고른 답이 일치했어!";
+let badge=c.perfect?"💫 완벽한 싱크!":c.matched?"✨ 일부 친구들의 선택이 일치했어!":"💭 이번에는 서로 다른 답을 골랐어!";
 return '<div class="badges"><span class="tag">결과 공개</span><span class="tag">ROUND '+round+'</span></div>'+stats(round,score,streak)+'<h2>'+safe(q[0])+'</h2><div class="result">'+badge+'<small>이번 라운드 +'+points+'점</small></div><div class="votes">'+entries.map(x=>'<div class="vote"><span>'+safe(x.name)+'</span><b>'+safe(Number.isInteger(x.choice)?q[x.choice+1]:"미제출")+'</b></div>').join("")+'</div>'
 }
 function localNext(){
