@@ -612,6 +612,16 @@ const projects = [
 
 
 window.FormwheelHubProjects = projects;
+/* Project maturity is an editorial estimate, not a measured completion rate. */
+const projectMaturity = {
+  SYNC:65,Scribble:68,Whiteboard:70,Paint:82,Animation:72,Mix:78,Glitch:79,Maze:76,
+  Form:87,Wheel:92,Quiz:88,Decode:93,Edit:73,Tool:86,Vote:82,Check:85,Note:78,
+  Chat:80,AI:57,Wiki:77,AQS:74,Spotlight:75,Story:62,PVP:55,Territory:76,
+  Cook:84,Button:79,Casino:82,Battle:88,Bomb:85,"Wheel Battle":77,Reflex:89,
+  Spy:81,Clicker:90,"Dice Duel":75,Marble:70,GCrown:79,Fate:80,Time:86,
+  Music:75,Piano:73,Balance:69,Vault:77,Risk:81
+};
+
 /* ======================================================
    ELEMENTS
 ====================================================== */
@@ -976,6 +986,10 @@ function render(){
           </div>
 
 
+          <div class="fw-maturity" title="제작자가 추정한 개발 완성도 · 자동 측정값이 아닙니다">
+            <div class="fw-maturity-caption"><span>개발 완성도 <small>(추정)</small></span><strong>${projectMaturity[project.name] ?? 60}%</strong></div>
+            <div class="fw-maturity-track" role="progressbar" aria-label="${escapeHTML(project.name)} 개발 완성도 추정" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${projectMaturity[project.name] ?? 60}"><div class="fw-maturity-fill" style="width:${projectMaturity[project.name] ?? 60}%"></div></div>
+          </div>
           <div class="cardBottom">
 
             <a
