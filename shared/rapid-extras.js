@@ -53,7 +53,8 @@ function walletRead(){
 function saveState(state){localStorage.setItem(EXTRAS_KEY,JSON.stringify(state))}
 const owned=(state,id)=>state.owned.includes(id);
 const equipped=(state,type)=>state.equipped[type]?known.get(state.equipped[type]):null;
-const format=n=>BigInt(n).toLocaleString("ko-KR");
+function formatRapidNumber(value){const n=BigInt(value);const negative=n<0n;const digits=(negative?-n:n).toString();if(digits.length<=12)return n.toLocaleString("ko-KR");const exponent=digits.length-1;const mantissa=digits[0]+(digits.slice(1,3).replace(/0+$/,"")?"."+digits.slice(1,3).replace(/0+$/,""):"");return (negative?"-":"")+mantissa+"e"+exponent;}
+const format=n=>formatRapidNumber(n);
 function notify(message){
  const out=byId("fw-rapid-extra-status");if(out)out.textContent=message;
 }
