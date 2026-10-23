@@ -1,7 +1,7 @@
 import {BADGES} from "./badge-catalog.js";
 /* Formwheel ID/Core bridge for Hub. Firebase SDK v10 modules. */
 import {initializeApp,getApps,getApp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
-import {getAuth,onAuthStateChanged,GoogleAuthProvider,signInWithPopup,signInWithRedirect,getRedirectResult,signOut} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import {getAuth,onAuthStateChanged,GoogleAuthProvider,signInWithPopup,signOut} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 import {getDatabase,ref,get,set,onValue,runTransaction} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
 const config={apiKey:"AIzaSyBreTSe1m0-xlbF4aupnU5isRZCihR25IE",authDomain:"formwheel.firebaseapp.com",databaseURL:"https://formwheel-default-rtdb.firebaseio.com",projectId:"formwheel",storageBucket:"formwheel.firebasestorage.app",messagingSenderId:"431583088241",appId:"1:431583088241:web:74e0e34ea1e3e1170c55d0"};
 const app=getApps().find(x=>x.name==="[DEFAULT]")||initializeApp(config);
@@ -120,46 +120,35 @@ onAuthStateChanged(auth,user=>{
  if(!user||user.isAnonymous){if(activeAccount){applying=true;home.apply(readGuest()||{pinned:[],excluded:[],visits:{}});applying=false;activeAccount=false}login.hidden=false;logout.hidden=true;show(user?.isAnonymous?"게스트 모드 · 기기에만 저장":"로그인하면 다른 기기와 홈 설정이 동기화돼요.");return}
  connect(user);
 });
-/* Keep popup sign-in tied directly to a user gesture; show actionable errors. */
-const redirectLogin=document.createElement("button");
-redirectLogin.type="button";
-redirectLogin.textContent="다른 로그인 방법";
-redirectLogin.hidden=true;
-redirectLogin.style.cssText="margin-left:8px;padding:7px 10px;border:1px solid currentColor;border-radius:9px;background:transparent;color:inherit;cursor:pointer";
-login?.insertAdjacentElement("afterend",redirectLogin);
+/* GitHub Pages uses a different origin than Firebase Auth. Redirect login
+   loses its result in browsers that partition cross-site storage.
+   Keep sign-in in a user-initiated popup so Firebase can complete on this page. */
 const popupIssues=new Set(["auth/popup-blocked","auth/popup-closed-by-user","auth/cancelled-popup-request","auth/operation-not-supported-in-this-environment"]);
 login?.addEventListener("click",async()=>{
  if(login.disabled)return;
  login.disabled=true;
- redirectLogin.hidden=true;
  show("Google 로그인 창을 여는 중…");
  try{
   await signInWithPopup(auth,new GoogleAuthProvider());
+  show("로그인 확인 중…");
  }catch(e){
   console.error("Formwheel Google popup sign-in failed",e);
   const code=e?.code||"unknown";
   if(popupIssues.has(code)){
-   show("로그인 창을 열지 못했어요 ("+code+"). 브라우저의 팝업 허용을 확인하고 다시 시도하세요. 다른 로그인 방법도 선택할 수 있어요.");
-   redirectLogin.hidden=false;
+   show("로그인 팝업을 완료하지 못했어요 ("+code+"). 브라우저 주소창 옆 팝업 차단 표시에서 이 사이트의 팝업을 허용한 뒤 다시 눌러 주세요. 다른 사이트로 이동하는 로그인은 현재 지원하지 않아요.");
   }else if(code==="auth/unauthorized-domain"){
-   show("로그인 실패: Firebase Authentication 승인된 도메인에 semicolonxss.github.io를 추가해야 해요.");
+   show("Firebase Authentication의 승인된 도메인에 semicolonxss.github.io를 등록해 주세요.");
   }else if(code==="auth/network-request-failed"){
-   show("로그인 네트워크 오류: 연결 및 브라우저 확장 프로그램을 확인해 주세요.");
+   show("네트워크 또는 브라우저 확장 프로그램이 인증 요청을 차단했어요.");
   }else{
    show("로그인 실패: "+code);
   }
  }finally{login.disabled=false}
 });
-redirectLogin.addEventListener("click",async()=>{
- redirectLogin.disabled=true;
- show("Google 로그인 페이지로 이동하는 중…");
- try{await signInWithRedirect(auth,new GoogleAuthProvider())}
- catch(e){console.error("Formwheel redirect sign-in failed",e);show("로그인 페이지 전환 실패: "+(e?.code||"알 수 없는 오류"));redirectLogin.disabled=false}
-});
 logout?.addEventListener("click",async()=>{
  try{await signOut(auth);show("로그아웃했어요.")}catch(e){show("로그아웃 실패: "+e.code)}
 });
-getRedirectResult(auth).catch(e=>show("로그인 돌아오기 실패: "+e.code));
+
 window.FormwheelCore=Object.freeze({
  version:1,
  getUser:()=>auth.currentUser?{uid:auth.currentUser.uid,anonymous:auth.currentUser.isAnonymous}:null,
