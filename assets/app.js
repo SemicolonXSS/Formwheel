@@ -301,7 +301,7 @@ const projects = [
     connection:"online",
     difficulty:"보통",
     description:"솔로 AI 연습과 친구 초대 온라인 1대1 아레나. 특수 능력과 무기 밸런스를 갖춘 PvP 베타.",
-    url:"https://semicolonxss.github.io/Formwheel/pvp/",
+    url:"https://semicolonxss.github.io/Formwheel_PVP/",
     addedAt:"2026-10-17T11:30:00Z",
     recent:true
   },
@@ -348,7 +348,7 @@ const projects = [
     connection:"online",
     difficulty:"보통",
     description:"다양한 지시와 타이밍에 맞춰 버튼을 누르는 솔로·멀티 게임.",
-    url:"https://semicolonxss.github.io/Formwheel/button/",
+    url:"https://semicolonxss.github.io/Formwheel_Button/",
     addedAt:"2026-10-01T02:14:02Z",
     recent:false
   },
