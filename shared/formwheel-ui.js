@@ -30,7 +30,7 @@ const palettes={
  "cosmic-infinity":["#0b122a","#182345","#7de8ed","#b26df0"],
  "cosmic-paradox":["#0c102e","#302254","#7de8e0","#8257c5"],
  "cosmic-omega":["#08071d","#321f71","#ffe6b8","#bb5ce5"],
- "cosmic-eternity":["#171739","#fffaf0","#111111","#88d7e7"]
+ "cosmic-eternity":["#171739","#fffaf0","#292929","#88d7e7"]
 };
 const gradients={
  sunset:"linear-gradient(120deg,#f5a669,#ce6899,#5853b1)",
@@ -156,7 +156,7 @@ body[data-fw-global-theme="cosmic-eternity"] :is(.hero h1,.hero h2,.hero p,main 
   color:#251b47!important;text-shadow:0 1px 2px rgba(255,255,255,.9);
 }
 body[data-fw-global-theme="cosmic-eternity"] :is(.card,.panel,.fw-footer,.upgrade,.item,.theme-item,.mission-row,.receipt,.notice,.status,.fw-install,.fw-favorites-panel,.fw-install-info){
-  background:#fffaf0!important;color:#111!important;border-color:#615f8b!important;
+  background:#fffaf0!important;color:#292929!important;border-color:#615f8b!important;
 }
 body[data-fw-global-theme="cosmic-eternity"] :is(.card,.panel,.fw-footer,.upgrade,.item,.theme-item,.mission-row,.receipt,.notice,.status,.fw-install,.fw-favorites-panel,.fw-install-info) :is(h1,h2,h3,h4,p,span,small,strong,label):not(.muted):not(.sub):not(.item-desc):not(.upgrade-desc):not(.theme-note){
   color:inherit!important;text-shadow:none!important;
@@ -170,8 +170,8 @@ body[data-fw-global-theme="cosmic-eternity"] :is(button,[role="button"]){
 body[data-fw-global-theme="cosmic-eternity"] :is(input,select,textarea){background:#fff!important;color:#202337!important}
 body[data-fw-global-theme="cosmic-eternity"] :is(input,textarea)::placeholder{color:#626979!important}
 /* Difficulty chips keep their pale background; use black text for Eternity. */
-body[data-fw-global-theme="cosmic-eternity"] .tag.difficulty{color:#111!important;text-shadow:none!important}
-body[data-fw-global-theme="cosmic-eternity"] .card .tag.difficulty{color:#111!important}
+body[data-fw-global-theme="cosmic-eternity"] .tag.difficulty{color:#292929!important;text-shadow:none!important}
+body[data-fw-global-theme="cosmic-eternity"] .card .tag.difficulty{color:#292929!important}
 
 
 /* Premium backgrounds: readable foreground on cards and inputs. */
@@ -190,16 +190,16 @@ body[data-fw-global-theme] :is(input,textarea,select,option){color:#172033!impor
 body[data-fw-global-theme] :is(button,[role="button"]):not(.food):not(.selected){color:var(--fw-theme-button-text)!important}
 /* Eternity monochrome lettering: dark text on warm ivory surfaces. */
 body[data-fw-global-theme="cosmic-eternity"] :is(.card,.panel,.fw-footer,.upgrade,.item,.theme-item,.station,.notice,.status,.receipt,.modal,.dialog,.fw-install,.fw-favorites-panel,.fw-install-info){
-  background:#fffaf0!important;color:#111!important;
+  background:#fffaf0!important;color:#292929!important;
 }
 body[data-fw-global-theme="cosmic-eternity"] :is(.card,.panel,.fw-footer,.upgrade,.item,.theme-item,.station,.notice,.status,.receipt,.modal,.dialog,.fw-install,.fw-favorites-panel,.fw-install-info) :is(h1,h2,h3,h4,p,span,small,strong,label,a,.title,.description,.muted,.sub,.item-desc,.upgrade-desc,.theme-note,.score-label,.click-info){
-  color:#111!important;text-shadow:none!important;
+  color:#292929!important;text-shadow:none!important;
 }
 body[data-fw-global-theme="cosmic-eternity"] :is(button,[role="button"],.openButton){
-  background:#f3edf9!important;color:#111!important;border-color:#676080!important;
+  background:#f3edf9!important;color:#292929!important;border-color:#676080!important;
 }
-body[data-fw-global-theme="cosmic-eternity"] :is(button,[role="button"],.openButton) :is(span,small,strong,b){color:#111!important}
-body[data-fw-global-theme="cosmic-eternity"] :is(.tag,.badge,.fw-maturity-caption){color:#111!important;text-shadow:none!important}
+body[data-fw-global-theme="cosmic-eternity"] :is(button,[role="button"],.openButton) :is(span,small,strong,b){color:#292929!important}
+body[data-fw-global-theme="cosmic-eternity"] :is(.tag,.badge,.fw-maturity-caption){color:#292929!important;text-shadow:none!important}
 body[data-fw-global-theme="cosmic-eternity"] :is(.muted,.sub,.theme-note,.item-desc,.upgrade-desc,.score-label,.click-info){color:#252238!important}
 
 body[data-fw-global-theme] .food.selected,body[data-fw-global-theme] .food.selected :is(span,small,strong,b,.name,.state,.components){color:#142341!important}
@@ -220,7 +220,7 @@ const textThemes={
  eclipse:['#fff','#ffffff','#ffdf9b'],quantum:['#fff','#29335e','#96f7f0'],
  celestial:['#fff','#ffffff','#ffdba7'],singularity:['#fff','#1c1533','#d8b8ff'],
  overdrive:['#201329','#ffffff','#ffe5a3'],
- 'cosmic-infinity':['#ffffff','#ffffff','#90ebf0'],'cosmic-paradox':['#ffffff','#ffffff','#83e8e1'],'cosmic-omega':['#ffffff','#ffffff','#ffe6b8'],'cosmic-eternity':['#111111','#111111','#111111']
+ 'cosmic-infinity':['#ffffff','#ffffff','#90ebf0'],'cosmic-paradox':['#ffffff','#ffffff','#83e8e1'],'cosmic-omega':['#ffffff','#ffffff','#ffe6b8'],'cosmic-eternity':['#292929','#292929','#292929']
 };
 
 // Derive readable text from each theme's *actual* surface color.
@@ -248,7 +248,7 @@ function apply(){
   document.body.style.setProperty('--fw-theme-on-background',onBackground);
   document.body.style.setProperty('--fw-theme-text',onSurface);
   document.body.style.setProperty('--fw-theme-button-bg',current==='cosmic-eternity'?'#f3edf9':darkThemesForButtons.has(current)?'#251c45':'#f0edff');
-  document.body.style.setProperty('--fw-theme-button-text',current==='cosmic-eternity'?'#111111':darkThemesForButtons.has(current)?'#fff':'#252040');
+  document.body.style.setProperty('--fw-theme-button-text',current==='cosmic-eternity'?'#292929':darkThemesForButtons.has(current)?'#fff':'#252040');
   const [bg,surface,accent,secondary]=palettes[current];
   document.body.style.setProperty('--fw-theme-preview-gradient',gradients[current]);
   document.body.style.setProperty('--fw-theme-bg',bg);
