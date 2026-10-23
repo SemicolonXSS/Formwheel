@@ -169,6 +169,10 @@ body[data-fw-global-theme="cosmic-eternity"] :is(button,[role="button"]){
 }
 body[data-fw-global-theme="cosmic-eternity"] :is(input,select,textarea){background:#fff!important;color:#202337!important}
 body[data-fw-global-theme="cosmic-eternity"] :is(input,textarea)::placeholder{color:#626979!important}
+/* Difficulty chips keep their pale background; use black text for Eternity. */
+body[data-fw-global-theme="cosmic-eternity"] .tag.difficulty{color:#111!important;text-shadow:none!important}
+body[data-fw-global-theme="cosmic-eternity"] .card .tag.difficulty{color:#111!important}
+
 
 /* Premium backgrounds: readable foreground on cards and inputs. */
 body[data-fw-global-theme] :is(.card,.panel,.food,.station,.modal,.dialog) :is(.description,.name,.state,.item-desc,.subtitle){text-shadow:none!important}
