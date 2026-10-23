@@ -640,6 +640,17 @@ const emptyElement =
 
 const sortElement =
   document.getElementById("sort");
+const sortDirectionButton = document.getElementById("sortDirection");
+let sortAscending = false;
+function updateSortDirectionButton(){
+  if (!sortDirectionButton) return;
+  sortDirectionButton.textContent = sortAscending ? "↑" : "↓";
+  sortDirectionButton.title = sortAscending ? "오름차순 · 클릭하면 내림차순" : "내림차순 · 클릭하면 오름차순";
+  sortDirectionButton.setAttribute("aria-label", sortDirectionButton.title);
+  sortDirectionButton.setAttribute("aria-pressed", String(sortAscending));
+}
+sortDirectionButton?.addEventListener("click",()=>{sortAscending=!sortAscending;updateSortDirectionButton();render();});
+updateSortDirectionButton();
 
 const filterButtons =
   [...document.querySelectorAll(".categoryButtons .filterButton[data-filter]")];
@@ -885,6 +896,12 @@ function render(){
   }
 
 
+  if(sortElement.value === "maturity"){
+    list.sort((a,b) => (projectMaturity[b.name] ?? 60) - (projectMaturity[a.name] ?? 60) || a.name.localeCompare(b.name,"ko"));
+  }
+  // Reverse the active order while keeping pinned cards at the top.
+  if(sortAscending) list.reverse();
+
   /* Keep pinned games above other visible cards, regardless of sort. */
   list.sort((a,b) => {
     const ai = pinnedGames.indexOf(a.name);
@@ -1092,6 +1109,8 @@ resetFilters.addEventListener("click", () => {
   currentFilter = "all";
   [modeFilter, connectionFilter, difficultyFilter].forEach(select => select.value = "all");
   sortElement.value = "creator";
+  sortAscending = false;
+  updateSortDirectionButton();
   filterButtons.forEach(button => {
     const active = button.dataset.filter === "all";
     button.classList.toggle("active", active);
