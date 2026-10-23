@@ -203,6 +203,30 @@ body[data-fw-global-theme="cosmic-eternity"] :is(.tag,.badge,.fw-maturity-captio
 body[data-fw-global-theme="cosmic-eternity"] :is(.muted,.sub,.theme-note,.item-desc,.upgrade-desc,.score-label,.click-info){color:#252238!important}
 
 body[data-fw-global-theme] .food.selected,body[data-fw-global-theme] .food.selected :is(span,small,strong,b,.name,.state,.components){color:#142341!important}
+/* Premium cosmic card controls: pale chips must never inherit light card lettering.
+   Scope to four cosmic themes; retain each theme's animated background. */
+body:is([data-fw-global-theme="cosmic-eternity"],[data-fw-global-theme="cosmic-paradox"],[data-fw-global-theme="cosmic-omega"],[data-fw-global-theme="cosmic-infinity"]) .card :is(.tag,.badge,.fw-maturity-caption){
+  color:#292929!important;text-shadow:none!important;
+}
+body:is([data-fw-global-theme="cosmic-eternity"],[data-fw-global-theme="cosmic-paradox"],[data-fw-global-theme="cosmic-omega"],[data-fw-global-theme="cosmic-infinity"]) .card .tag.difficulty{
+  background:#fff7e8!important;color:#292929!important;
+}
+body:is([data-fw-global-theme="cosmic-eternity"],[data-fw-global-theme="cosmic-paradox"],[data-fw-global-theme="cosmic-omega"],[data-fw-global-theme="cosmic-infinity"]) .card .tag.online{
+  background:#eef9f2!important;color:#205c39!important;
+}
+body:is([data-fw-global-theme="cosmic-eternity"],[data-fw-global-theme="cosmic-paradox"],[data-fw-global-theme="cosmic-omega"],[data-fw-global-theme="cosmic-infinity"]) .card .tag.offline{
+  background:#f1f2f4!important;color:#454b58!important;
+}
+body:is([data-fw-global-theme="cosmic-eternity"],[data-fw-global-theme="cosmic-paradox"],[data-fw-global-theme="cosmic-omega"],[data-fw-global-theme="cosmic-infinity"]) .card :is(a.openButton,button.openButton,.openButton){
+  background:#f3edf9!important;color:#292929!important;border:1px solid #777197!important;text-shadow:none!important;
+}
+body:is([data-fw-global-theme="cosmic-eternity"],[data-fw-global-theme="cosmic-paradox"],[data-fw-global-theme="cosmic-omega"],[data-fw-global-theme="cosmic-infinity"]) .card .openButton :is(span,small,strong,b){
+  color:#292929!important;
+}
+body:is([data-fw-global-theme="cosmic-eternity"],[data-fw-global-theme="cosmic-paradox"],[data-fw-global-theme="cosmic-omega"],[data-fw-global-theme="cosmic-infinity"]) .card .openButton:hover{
+  background:#e5d9f4!important;color:#292929!important;
+}
+
 @media(prefers-reduced-motion:reduce){body[data-fw-global-theme]::before{animation:none!important;transform:none!important}}
 `;
 document.head.append(themeStyle);
