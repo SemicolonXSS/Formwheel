@@ -71,7 +71,7 @@ const projects = [
     mode:"multi",
     connection:"online",
     difficulty:"쉬움",
-    description:"설문을 만들고 응답을 받을 수 있는 FormWheel 설문 도구.",
+    description:"질문을 추가해 설문을 만들고 링크로 공유하며 응답을 확인하는 도구.",
     url:"https://semicolonxss.github.io/Formwheel_Form/",
     addedAt:"2026-09-07T10:49:23Z",
     recent:false
@@ -131,7 +131,7 @@ const projects = [
     mode:"solo",
     connection:"offline",
     difficulty:"보통",
-    description:"콘텐츠를 만들고 편집하기 위한 FormWheel 편집 도구.",
+    description:"텍스트와 스티커를 배치하고 이동·삭제하며 콘텐츠를 편집하는 도구.",
     url:"https://semicolonxss.github.io/Formwheel_Edit/",
     addedAt:"2026-09-24T08:11:08Z",
     recent:false
@@ -452,7 +452,7 @@ const projects = [
     mode:"solo",
     connection:"offline",
     difficulty:"쉬움",
-    description:"클릭을 통해 점수와 업그레이드를 쌓는 클릭 게임.",
+    description:"클릭과 자동 생산 업그레이드로 점수를 모으고 성장하는 방치형 클릭 게임.",
     url:"https://semicolonxss.github.io/Formwheel_Clicker/",
     addedAt:"2026-09-15T12:00:53Z",
     recent:false
@@ -512,7 +512,7 @@ const projects = [
     mode:"multi",
     connection:"online",
     difficulty:"보통",
-    description:"랜덤한 선택과 결과를 이용해 플레이하는 운 게임.",
+    description:"최대 6명이 매 라운드 운명을 선택하고, 이전 행동에 따라 룰렛이 바뀌는 대전 게임.",
     url:"https://semicolonxss.github.io/Formwheel_Fate/",
     addedAt:"2026-09-17T00:37:08Z",
     recent:false
@@ -542,7 +542,7 @@ const projects = [
     mode:"solo",
     connection:"online",
     difficulty:"어려움",
-    description:"한 손·두 손·포 핸드 악보를 만들고 드럼·피아노로 재생하며 리듬을 연주하는 음악 도구.",
+    description:"음악을 만들고 재생하고 직접 연주하는 프로젝트. 음악 플레이와 배틀 모드도 지원.",
     url:"https://semicolonxss.github.io/Formwheel_Music/",
     addedAt:"2026-09-26T09:38:35Z",
     recent:false
@@ -572,7 +572,7 @@ const projects = [
     mode:"multi",
     connection:"online",
     difficulty:"어려움",
-    description:"공격, 방어, 점수 등 선택을 이용해 균형을 겨루는 게임.",
+    description:"친구와 방 코드로 만나 라운드마다 행동을 선택하고 위험도와 점수를 조절하는 게임.",
     url:"https://semicolonxss.github.io/Formwheel_Balance/",
     addedAt:"2026-09-20T08:29:49Z",
     recent:false
@@ -587,7 +587,7 @@ const projects = [
     mode:"multi",
     connection:"online",
     difficulty:"보통",
-    description:"금고와 잠금 장치를 이용하는 퍼즐형 실험 게임.",
+    description:"공용 금고를 탐험해 열쇠와 보물을 모으고, 나만의 금고를 성장시키는 게임.",
     url:"https://semicolonxss.github.io/Formwheel_Vault/",
     addedAt:"2026-09-21T05:21:53Z",
     recent:false
@@ -602,7 +602,7 @@ const projects = [
     mode:"multi",
     connection:"online",
     difficulty:"어려움",
-    description:"선택과 위험 요소를 이용해 경쟁하는 전략 게임.",
+    description:"친구들과 점수를 걸고 7라운드 동안 운과 배짱을 겨루는 온라인 게임.",
     url:"https://semicolonxss.github.io/Formwheel_Risk/",
     addedAt:"2026-09-10T04:38:03Z",
     recent:false
