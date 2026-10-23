@@ -30,9 +30,11 @@ const palettes={
  "cosmic-infinity":["#0b122a","#182345","#7de8ed","#b26df0"],
  "cosmic-paradox":["#0c102e","#302254","#7de8e0","#8257c5"],
  "cosmic-omega":["#08071d","#321f71","#ffe6b8","#bb5ce5"],
- "cosmic-eternity":["#171739","#fffaf0","#292929","#88d7e7"]
+ "cosmic-eternity":["#171739","#fffaf0","#292929","#88d7e7"],
+ "cosmic-genesis":["#070f28","#17274a","#90ddff","#b384ff"]
 };
 const gradients={
+ "cosmic-genesis":"conic-gradient(from 90deg,#07152c,#3079aa,#b384ff,#091432,#07152c)",
  sunset:"linear-gradient(120deg,#f5a669,#ce6899,#5853b1)",
  forest:"linear-gradient(120deg,#173d30,#489467,#b3c785)",
  neon:"linear-gradient(120deg,#0e1a30,#165c75,#58246e)",
@@ -202,35 +204,45 @@ body[data-fw-global-theme="cosmic-eternity"] :is(button,[role="button"],.openBut
 body[data-fw-global-theme="cosmic-eternity"] :is(.tag,.badge,.fw-maturity-caption){color:#292929!important;text-shadow:none!important}
 body[data-fw-global-theme="cosmic-eternity"] :is(.muted,.sub,.theme-note,.item-desc,.upgrade-desc,.score-label,.click-info){color:#252238!important}
 
+
+/* Restore distinct cosmic identities; light text only on each dark theme's surface. */
+body:is([data-fw-global-theme="cosmic-paradox"],[data-fw-global-theme="cosmic-omega"],[data-fw-global-theme="cosmic-infinity"],[data-fw-global-theme="cosmic-genesis"]) .card .tag.difficulty{background:#fff7e8!important;color:#292929!important}
+body:is([data-fw-global-theme="cosmic-paradox"],[data-fw-global-theme="cosmic-omega"],[data-fw-global-theme="cosmic-infinity"],[data-fw-global-theme="cosmic-genesis"]) .card .tag.online{background:#eef9f2!important;color:#205c39!important}
+body:is([data-fw-global-theme="cosmic-paradox"],[data-fw-global-theme="cosmic-omega"],[data-fw-global-theme="cosmic-infinity"],[data-fw-global-theme="cosmic-genesis"]) .card .tag.offline{background:#f1f2f4!important;color:#454b58!important}
+body[data-fw-global-theme="cosmic-paradox"] .card .openButton{background:#423267!important;color:#fff!important;border-color:#9776e6!important}
+body[data-fw-global-theme="cosmic-omega"] .card .openButton{background:#5b357b!important;color:#fff!important;border-color:#e4b6f3!important}
+body[data-fw-global-theme="cosmic-infinity"] .card .openButton{background:#164c66!important;color:#fff!important;border-color:#7de8ed!important}
+body[data-fw-global-theme="cosmic-genesis"] .card .openButton{background:#225c85!important;color:#fff!important;border-color:#90ddff!important}
+body:is([data-fw-global-theme="cosmic-paradox"],[data-fw-global-theme="cosmic-omega"],[data-fw-global-theme="cosmic-infinity"],[data-fw-global-theme="cosmic-genesis"]) .card .openButton :is(span,small,strong,b){color:inherit!important}
 body[data-fw-global-theme] .food.selected,body[data-fw-global-theme] .food.selected :is(span,small,strong,b,.name,.state,.components){color:#142341!important}
 /* Premium cosmic card controls: pale chips must never inherit light card lettering.
    Scope to four cosmic themes; retain each theme's animated background. */
-body:is([data-fw-global-theme="cosmic-eternity"],[data-fw-global-theme="cosmic-paradox"],[data-fw-global-theme="cosmic-omega"],[data-fw-global-theme="cosmic-infinity"]) .card :is(.tag,.badge,.fw-maturity-caption){
+body[data-fw-global-theme="cosmic-eternity"] .card :is(.tag,.badge,.fw-maturity-caption){
   color:#292929!important;text-shadow:none!important;
 }
-body:is([data-fw-global-theme="cosmic-eternity"],[data-fw-global-theme="cosmic-paradox"],[data-fw-global-theme="cosmic-omega"],[data-fw-global-theme="cosmic-infinity"]) .card .tag.difficulty{
+body[data-fw-global-theme="cosmic-eternity"] .card .tag.difficulty{
   background:#fff7e8!important;color:#292929!important;
 }
-body:is([data-fw-global-theme="cosmic-eternity"],[data-fw-global-theme="cosmic-paradox"],[data-fw-global-theme="cosmic-omega"],[data-fw-global-theme="cosmic-infinity"]) .card .tag.online{
+body[data-fw-global-theme="cosmic-eternity"] .card .tag.online{
   background:#eef9f2!important;color:#205c39!important;
 }
-body:is([data-fw-global-theme="cosmic-eternity"],[data-fw-global-theme="cosmic-paradox"],[data-fw-global-theme="cosmic-omega"],[data-fw-global-theme="cosmic-infinity"]) .card .tag.offline{
+body[data-fw-global-theme="cosmic-eternity"] .card .tag.offline{
   background:#f1f2f4!important;color:#454b58!important;
 }
-body:is([data-fw-global-theme="cosmic-eternity"],[data-fw-global-theme="cosmic-paradox"],[data-fw-global-theme="cosmic-omega"],[data-fw-global-theme="cosmic-infinity"]) .card :is(a.openButton,button.openButton,.openButton){
+body[data-fw-global-theme="cosmic-eternity"] .card :is(a.openButton,button.openButton,.openButton){
   background:#f3edf9!important;color:#292929!important;border:1px solid #777197!important;text-shadow:none!important;
 }
-body:is([data-fw-global-theme="cosmic-eternity"],[data-fw-global-theme="cosmic-paradox"],[data-fw-global-theme="cosmic-omega"],[data-fw-global-theme="cosmic-infinity"]) .card .openButton :is(span,small,strong,b){
+body[data-fw-global-theme="cosmic-eternity"] .card .openButton :is(span,small,strong,b){
   color:#292929!important;
 }
-body:is([data-fw-global-theme="cosmic-eternity"],[data-fw-global-theme="cosmic-paradox"],[data-fw-global-theme="cosmic-omega"],[data-fw-global-theme="cosmic-infinity"]) .card .openButton:hover{
+body[data-fw-global-theme="cosmic-eternity"] .card .openButton:hover{
   background:#e5d9f4!important;color:#292929!important;
 }
 
 @media(prefers-reduced-motion:reduce){body[data-fw-global-theme]::before{animation:none!important;transform:none!important}}
 `;
 document.head.append(themeStyle);
-const effects={'cosmic-infinity':'spin','cosmic-paradox':'reverse-spin','cosmic-omega':'pulse','cosmic-eternity':'slow-spin',overdrive:'spin',quantum:'reverse-spin',singularity:'slow-spin',nova:'pulse',echo:'pulse',comet:'drift',celestial:'shimmer',eclipse:'pulse',rift:'drift',aurora:'drift',prismatic:'shimmer',cyber:'shimmer','void-premium':'pulse'};
+const effects={'cosmic-infinity':'spin','cosmic-paradox':'reverse-spin','cosmic-omega':'pulse','cosmic-eternity':'slow-spin','cosmic-genesis':'reverse-spin',overdrive:'spin',quantum:'reverse-spin',singularity:'slow-spin',nova:'pulse',echo:'pulse',comet:'drift',celestial:'shimmer',eclipse:'pulse',rift:'drift',aurora:'drift',prismatic:'shimmer',cyber:'shimmer','void-premium':'pulse'};
 const textThemes={
  sunset:['#281523','#432638','#6b2850'],forest:['#fff','#173e30','#145039'],
  neon:['#fff','#291c48','#5720a2'],galaxy:['#fff','#262151','#45369b'],
@@ -244,7 +256,7 @@ const textThemes={
  eclipse:['#fff','#ffffff','#ffdf9b'],quantum:['#fff','#29335e','#96f7f0'],
  celestial:['#fff','#ffffff','#ffdba7'],singularity:['#fff','#1c1533','#d8b8ff'],
  overdrive:['#201329','#ffffff','#ffe5a3'],
- 'cosmic-infinity':['#ffffff','#ffffff','#90ebf0'],'cosmic-paradox':['#ffffff','#ffffff','#83e8e1'],'cosmic-omega':['#ffffff','#ffffff','#ffe6b8'],'cosmic-eternity':['#292929','#292929','#292929']
+ 'cosmic-infinity':['#ffffff','#ffffff','#90ebf0'],'cosmic-paradox':['#ffffff','#ffffff','#83e8e1'],'cosmic-omega':['#ffffff','#ffffff','#ffe6b8'],'cosmic-eternity':['#292929','#292929','#292929'],'cosmic-genesis':['#ffffff','#ffffff','#90ddff']
 };
 
 // Derive readable text from each theme's *actual* surface color.
@@ -267,7 +279,7 @@ function apply(){
   document.body.dataset.fwGlobalTheme=current;
   const effect=effects[current];
   if(effect)document.body.dataset.fwEffect=effect;else delete document.body.dataset.fwEffect;
-  const darkThemesForButtons=new Set(['midnight','echo','nova','void-premium','rift','comet','eclipse','quantum','celestial','singularity','overdrive','cosmic-infinity','cosmic-paradox','cosmic-omega','cosmic-eternity']);
+  const darkThemesForButtons=new Set(['midnight','echo','nova','void-premium','rift','comet','eclipse','quantum','celestial','singularity','overdrive','cosmic-infinity','cosmic-paradox','cosmic-omega','cosmic-eternity','cosmic-genesis']);
   const [onBackground,onSurface,linkAccent]=textThemes[current]||['#fff','#fff','#333'];
   document.body.style.setProperty('--fw-theme-on-background',onBackground);
   document.body.style.setProperty('--fw-theme-text',onSurface);
@@ -279,7 +291,7 @@ function apply(){
   document.body.style.setProperty('--fw-theme-surface',surface);
   document.body.style.setProperty('--fw-theme-accent',linkAccent);
   document.body.style.setProperty('--fw-theme-secondary',secondary);
-  const darkThemes=new Set(['midnight','echo','nova','void-premium','rift','comet','eclipse','quantum','celestial','singularity','overdrive','cosmic-infinity','cosmic-paradox','cosmic-omega','cosmic-eternity']);
+  const darkThemes=new Set(['midnight','echo','nova','void-premium','rift','comet','eclipse','quantum','celestial','singularity','overdrive','cosmic-infinity','cosmic-paradox','cosmic-omega','cosmic-eternity','cosmic-genesis']);
   const surfaceText=readableOn(surface);
   const mutedText=surfaceText==='#ffffff'?'#e9e9f5':'#414b60';
   document.body.style.setProperty('--fw-theme-text',surfaceText);
