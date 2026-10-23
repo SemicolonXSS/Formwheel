@@ -170,6 +170,12 @@ body[data-fw-global-theme="cosmic-eternity"] :is(button,[role="button"]){
 body[data-fw-global-theme="cosmic-eternity"] :is(input,select,textarea){background:#fff!important;color:#202337!important}
 body[data-fw-global-theme="cosmic-eternity"] :is(input,textarea)::placeholder{color:#626979!important}
 
+/* Premium backgrounds: readable foreground on cards and inputs. */
+body[data-fw-global-theme] :is(.card,.panel,.food,.station,.modal,.dialog) :is(.description,.name,.state,.item-desc,.subtitle){text-shadow:none!important}
+body[data-fw-global-theme="cosmic-eternity"] :is(.card,.panel,.fw-footer,.station,.modal,.dialog) :is(a,button:not(.selected)){text-shadow:none}
+body[data-fw-global-theme="cosmic-eternity"] :is(.hero,.hero-copy) :is(h1,h2,h3,p,span){color:#251b47!important;text-shadow:0 1px 2px #fff!important}
+body[data-fw-global-theme="cosmic-paradox"] :is(.hero,.hero-copy) :is(h1,h2,h3,p,span){color:#fff!important;text-shadow:0 1px 3px #07071c,0 2px 8px #07071c!important}
+body[data-fw-global-theme] :is(input,select,textarea,option){color:#202337!important;background:#fff!important}
 @media(prefers-reduced-motion:reduce){body[data-fw-global-theme]::before{animation:none!important;transform:none!important}}
 `;
 document.head.append(themeStyle);
