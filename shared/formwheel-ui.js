@@ -112,6 +112,10 @@ document.head.append(sheet);
 const themeStyle=document.createElement('style');
 themeStyle.textContent=`
 body[data-fw-global-theme]{isolation:isolate;background:var(--fw-theme-preview-gradient)!important;color:var(--fw-theme-on-background)!important}
+/* Animated effects sit behind content, not behind an opaque body background. */
+html:has(body[data-fw-global-theme][data-fw-effect]){background:#10152e}
+body[data-fw-global-theme][data-fw-effect]{background:transparent!important;isolation:isolate}
+body[data-fw-global-theme][data-fw-effect]::before{z-index:-1!important}
 body[data-fw-global-theme]::before{content:"";position:fixed;inset:-60vmax;z-index:-1;pointer-events:none;background:var(--fw-theme-preview-gradient);background-position:center;background-size:cover;transform-origin:center;opacity:0}
 body[data-fw-global-theme][data-fw-effect]::before{opacity:1}
 body[data-fw-global-theme][data-fw-effect="spin"]::before{animation:fw-theme-spin 18s linear infinite}
@@ -169,7 +173,7 @@ body[data-fw-global-theme="cosmic-eternity"] :is(input,textarea)::placeholder{co
 @media(prefers-reduced-motion:reduce){body[data-fw-global-theme]::before{animation:none!important;transform:none!important}}
 `;
 document.head.append(themeStyle);
-const effects={'cosmic-infinity':'spin','cosmic-paradox':'reverse-spin','cosmic-omega':'pulse','cosmic-eternity':'shimmer',overdrive:'spin',quantum:'reverse-spin',singularity:'slow-spin',nova:'pulse',echo:'pulse',comet:'drift',celestial:'shimmer',eclipse:'pulse',rift:'drift',aurora:'drift',prismatic:'shimmer',cyber:'shimmer','void-premium':'pulse'};
+const effects={'cosmic-infinity':'spin','cosmic-paradox':'reverse-spin','cosmic-omega':'pulse','cosmic-eternity':'slow-spin',overdrive:'spin',quantum:'reverse-spin',singularity:'slow-spin',nova:'pulse',echo:'pulse',comet:'drift',celestial:'shimmer',eclipse:'pulse',rift:'drift',aurora:'drift',prismatic:'shimmer',cyber:'shimmer','void-premium':'pulse'};
 const textThemes={
  sunset:['#281523','#432638','#6b2850'],forest:['#fff','#173e30','#145039'],
  neon:['#fff','#291c48','#5720a2'],galaxy:['#fff','#262151','#45369b'],
@@ -301,3 +305,4 @@ if(name!=='Formwheel'){try{if(!localStorage.getItem(key))start(false);}catch{sta
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();
+
