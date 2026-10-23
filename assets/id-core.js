@@ -120,12 +120,41 @@ onAuthStateChanged(auth,user=>{
  if(!user||user.isAnonymous){if(activeAccount){applying=true;home.apply(readGuest()||{pinned:[],excluded:[],visits:{}});applying=false;activeAccount=false}login.hidden=false;logout.hidden=true;show(user?.isAnonymous?"게스트 모드 · 기기에만 저장":"로그인하면 다른 기기와 홈 설정이 동기화돼요.");return}
  connect(user);
 });
+/* Keep popup sign-in tied directly to a user gesture; show actionable errors. */
+const redirectLogin=document.createElement("button");
+redirectLogin.type="button";
+redirectLogin.textContent="다른 로그인 방법";
+redirectLogin.hidden=true;
+redirectLogin.style.cssText="margin-left:8px;padding:7px 10px;border:1px solid currentColor;border-radius:9px;background:transparent;color:inherit;cursor:pointer";
+login?.insertAdjacentElement("afterend",redirectLogin);
+const popupIssues=new Set(["auth/popup-blocked","auth/popup-closed-by-user","auth/cancelled-popup-request","auth/operation-not-supported-in-this-environment"]);
 login?.addEventListener("click",async()=>{
- try{await signInWithPopup(auth,new GoogleAuthProvider())}
- catch(e){
-  if(["auth/popup-blocked","auth/operation-not-supported-in-this-environment"].includes(e.code)){show("로그인 페이지로 이동합니다.");await signInWithRedirect(auth,new GoogleAuthProvider())}
-  else show("로그인 실패: "+(e.code||"다시 시도해 주세요"));
- }
+ if(login.disabled)return;
+ login.disabled=true;
+ redirectLogin.hidden=true;
+ show("Google 로그인 창을 여는 중…");
+ try{
+  await signInWithPopup(auth,new GoogleAuthProvider());
+ }catch(e){
+  console.error("Formwheel Google popup sign-in failed",e);
+  const code=e?.code||"unknown";
+  if(popupIssues.has(code)){
+   show("로그인 창을 열지 못했어요 ("+code+"). 브라우저의 팝업 허용을 확인하고 다시 시도하세요. 다른 로그인 방법도 선택할 수 있어요.");
+   redirectLogin.hidden=false;
+  }else if(code==="auth/unauthorized-domain"){
+   show("로그인 실패: Firebase Authentication 승인된 도메인에 semicolonxss.github.io를 추가해야 해요.");
+  }else if(code==="auth/network-request-failed"){
+   show("로그인 네트워크 오류: 연결 및 브라우저 확장 프로그램을 확인해 주세요.");
+  }else{
+   show("로그인 실패: "+code);
+  }
+ }finally{login.disabled=false}
+});
+redirectLogin.addEventListener("click",async()=>{
+ redirectLogin.disabled=true;
+ show("Google 로그인 페이지로 이동하는 중…");
+ try{await signInWithRedirect(auth,new GoogleAuthProvider())}
+ catch(e){console.error("Formwheel redirect sign-in failed",e);show("로그인 페이지 전환 실패: "+(e?.code||"알 수 없는 오류"));redirectLogin.disabled=false}
 });
 logout?.addEventListener("click",async()=>{
  try{await signOut(auth);show("로그아웃했어요.")}catch(e){show("로그아웃 실패: "+e.code)}
