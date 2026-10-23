@@ -62,6 +62,30 @@
 | Vault | 개인 금고 프로젝트 | [열기](https://semicolonxss.github.io/Formwheel_Vault/) |
 | Edit | 편집 도구 프로젝트 | [열기](https://semicolonxss.github.io/Formwheel_Edit/) |
 
+### 🆕 확장 프로젝트
+
+Formwheel은 게임뿐 아니라 협업과 창작 프로젝트도 확장하고 있습니다. 실제 이용 가능 여부는 Hub의 최신 카드를 확인하세요.
+
+| 프로젝트 | 소개 | 링크 |
+| --- | --- | --- |
+| AQS | 업적·퀘스트·시크릿을 통합한 도전 시스템 | [저장소](https://github.com/SemicolonXSS/Formwheel_AQS) |
+| Spotlight | 오늘의 주인공과 일일 미션 | [저장소](https://github.com/SemicolonXSS/Formwheel_Spotlight) |
+| Story | Formwheel 세계관 기반 스토리 | [저장소](https://github.com/SemicolonXSS/Formwheel_Story) |
+| Territory | 영토 점령 전략 게임 | [열기](https://semicolonxss.github.io/Formwheel_Territory/) |
+| Scribble | 친구들과 함께하는 그림·추측 프로젝트 | [저장소](https://github.com/SemicolonXSS/Formwheel_Scribble) |
+| Whiteboard | 여러 보드에서 함께 작업하는 협업 화이트보드 | [저장소](https://github.com/SemicolonXSS/Formwheel_Whiteboard) |
+| Animation | 키프레임 기반 애니메이션 제작 도구 | [저장소](https://github.com/SemicolonXSS/Formwheel_Animation) |
+| Sync | 동기화 관련 프로젝트 | [저장소](https://github.com/SemicolonXSS/Formwheel_Sync) |
+
+### 💠 Rapid · 테마 · 개인화
+
+- **Rapid:** Formwheel 내에서 사용하는 가상 재화로, 실제 현금 가치가 없습니다. 지원 프로젝트에서 획득하거나 테마 등에 사용할 수 있습니다.
+- **테마:** 프로젝트별 지원 범위에 따라 테마와 시각 효과가 적용됩니다. 테마 구매·계정 동기화 상태는 프로젝트별로 확인해야 합니다.
+- **AQS:** 업적, 퀘스트, 숨겨진 시크릿을 탐색하는 확장 시스템입니다.
+- **Hub 탐색:** 프로젝트 검색과 분류, 완성도 표시·정렬, 추천 및 개인화 기능을 단계적으로 제공합니다.
+
+> 일부 기능은 개발·시험 단계입니다. Rapid 잔액이나 테마 소유권의 브라우저 간 동기화 및 서버 검증을 모든 프로젝트에서 보장하지 않습니다.
+
 ## 🚀 시작하기
 
 1. [Formwheel Hub](https://semicolonxss.github.io/Formwheel/)에 접속합니다.
@@ -138,6 +162,12 @@ node scripts/check-hub-catalog.cjs
 - 사용자 권한 및 점수 검증처럼 신뢰가 필요한 작업은 클라이언트 표시만으로 보장되지 않습니다.
 
 문제 제보 시 비밀번호, 인증 토큰, 개인정보 및 민감한 데이터는 포함하지 마세요.
+
+## 🤝 프로젝트 참여
+
+Formwheel은 프로젝트별 독립 저장소를 중심으로 개발됩니다. 문제를 발견하면 어떤 프로젝트에서 어떤 동작을 했는지, 기대한 결과와 실제 결과가 무엇인지 알려주세요. 재현 가능한 단계와 기기·브라우저 정보가 있으면 문제 해결에 도움이 됩니다.
+
+협업 시에는 기존 기능을 유지하고, 변경 전후 동작과 모바일 화면을 함께 확인하는 것을 권장합니다. 로그인, 실시간 방, Rapid 등 데이터와 연결되는 기능은 실제 운영 환경에서 별도 검증이 필요합니다.
 
 ## 🗺️ 개발 현황과 피드백
 
