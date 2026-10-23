@@ -176,6 +176,15 @@ body[data-fw-global-theme="cosmic-eternity"] :is(.card,.panel,.fw-footer,.statio
 body[data-fw-global-theme="cosmic-eternity"] :is(.hero,.hero-copy) :is(h1,h2,h3,p,span){color:#251b47!important;text-shadow:0 1px 2px #fff!important}
 body[data-fw-global-theme="cosmic-paradox"] :is(.hero,.hero-copy) :is(h1,h2,h3,p,span){color:#fff!important;text-shadow:0 1px 3px #07071c,0 2px 8px #07071c!important}
 body[data-fw-global-theme] :is(input,select,textarea,option){color:#202337!important;background:#fff!important}
+/* Contrast v4: make each text color match its own backdrop. */
+body[data-fw-global-theme] :is(.card,.panel,.fw-footer,.upgrade,.item,.theme-item,.station,.notice,.status,.receipt,.modal,.dialog){color:var(--fw-theme-text)!important}
+body[data-fw-global-theme] :is(.card,.panel,.fw-footer,.upgrade,.item,.theme-item,.station,.notice,.status,.receipt,.modal,.dialog) :is(h1,h2,h3,h4,p,span,small,strong,label,.title,.description):not(.muted):not(.sub):not(.theme-note):not(.item-desc){color:inherit!important}
+body[data-fw-global-theme] :is(.card,.panel,.fw-footer) a:not(.openButton):not(.logo):not(.fw-hub-logo){color:var(--fw-theme-readable-link)!important;text-decoration-thickness:1px}
+body[data-fw-global-theme] :is(.muted,.sub,.theme-note,.item-desc,.upgrade-desc,.score-label,.click-info){color:var(--fw-theme-muted)!important}
+body[data-fw-global-theme] :is(.tag,.badge,.fw-maturity-caption){text-shadow:none!important}
+body[data-fw-global-theme] :is(input,textarea,select,option){color:#172033!important;background:#fff!important}
+body[data-fw-global-theme] :is(button,[role="button"]):not(.food):not(.selected){color:var(--fw-theme-button-text)!important}
+body[data-fw-global-theme] .food.selected,body[data-fw-global-theme] .food.selected :is(span,small,strong,b,.name,.state,.components){color:#142341!important}
 @media(prefers-reduced-motion:reduce){body[data-fw-global-theme]::before{animation:none!important;transform:none!important}}
 `;
 document.head.append(themeStyle);
@@ -196,6 +205,18 @@ const textThemes={
  'cosmic-infinity':['#ffffff','#ffffff','#90ebf0'],'cosmic-paradox':['#ffffff','#ffffff','#83e8e1'],'cosmic-omega':['#ffffff','#ffffff','#ffe6b8'],'cosmic-eternity':['#251b47','#ffffff','#faf4c1']
 };
 
+// Derive readable text from each theme's *actual* surface color.
+function themeLuminance(hex){
+ const parts=/^#([0-9a-f]{6})$/i.exec(hex||'');
+ if(!parts)return 0.15;
+ const rgb=[1,3,5].map(i=>parseInt(parts[1].slice(i-1,i+1),16)/255).map(x=>x<=.04045?x/12.92:((x+.055)/1.055)**2.4);
+ return rgb[0]*.2126+rgb[1]*.7152+rgb[2]*.0722;
+}
+function themeContrast(foreground,background){
+ const a=themeLuminance(foreground),b=themeLuminance(background);
+ return (Math.max(a,b)+.05)/(Math.min(a,b)+.05);
+}
+function readableOn(hex){return themeContrast('#ffffff',hex)>=themeContrast('#172033',hex)?'#ffffff':'#172033';}
 function apply(){
  refresh();
  if(!document.body)return;
@@ -217,7 +238,12 @@ function apply(){
   document.body.style.setProperty('--fw-theme-accent',linkAccent);
   document.body.style.setProperty('--fw-theme-secondary',secondary);
   const darkThemes=new Set(['midnight','echo','nova','void-premium','rift','comet','eclipse','quantum','celestial','singularity','overdrive','cosmic-infinity','cosmic-paradox','cosmic-omega','cosmic-eternity']);
-  document.body.style.setProperty('--fw-theme-muted',darkThemes.has(current)?'#d5cce8':'#526078');
+  const surfaceText=readableOn(surface);
+  const mutedText=surfaceText==='#ffffff'?'#e9e9f5':'#414b60';
+  document.body.style.setProperty('--fw-theme-text',surfaceText);
+  document.body.style.setProperty('--fw-theme-muted',mutedText);
+  document.body.style.setProperty('--fw-theme-readable-link',themeContrast(linkAccent,surface)>=4.5?linkAccent:surfaceText);
+  document.body.style.setProperty('--fw-theme-readable-on-bg',readableOn(bg));
  }else {delete document.body.dataset.fwEffect;document.body.removeAttribute('data-fw-global-theme');document.body.style.removeProperty('--fw-theme-preview-gradient');}
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply,{once:true});else apply();
