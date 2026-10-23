@@ -13,7 +13,7 @@
 <meta name="apple-mobile-web-app-title" content="Formwheel">
 
 
-<link rel="stylesheet" href="./assets/styles.css?v=20261023-maturity1">
+<link rel="stylesheet" href="./assets/styles.css?v=20261023-sortdirection1">
 <link rel="stylesheet" href="https://semicolonxss.github.io/Formwheel/shared/formwheel-ui.css">
 <script defer src="https://semicolonxss.github.io/Formwheel/shared/formwheel-ui.js?v=20261023-spin-contrast2"></script>
 <meta property="og:site_name" content="Formwheel">
@@ -378,6 +378,7 @@ Formwheel의 모든 프로젝트를 한곳에서 만나보세요.
 <select id="sort" class="sortSelect">
 
 <option value="creator" selected>제작자 추천 순</option>
+<option value="maturity">개발 완성도 순 (추정)</option>
 <option value="popular">
 내가 자주 연 순
 </option>
@@ -395,6 +396,7 @@ Formwheel의 모든 프로젝트를 한곳에서 만나보세요.
 </option>
 
 </select>
+<button id="sortDirection" class="sortDirectionButton" type="button" aria-label="내림차순 · 클릭하면 오름차순" title="내림차순 · 클릭하면 오름차순" aria-pressed="false">↓</button>
 
 </div>
 
@@ -505,7 +507,7 @@ document.querySelectorAll(".categoryButtons .filterButton").forEach(button=>{
   });
 });
 </script>
-<script src="./assets/app.js?v=20261023-maturity1"></script>
+<script src="./assets/app.js?v=20261023-sortdirection1"></script>
 <script src="./assets/theme-bulk.js?v=20261022-premium13"></script>
 <script>
 (function(){
