@@ -37,8 +37,9 @@ p,small{color:#59617a}a{color:#453ac4}
 <p id="find10-send-status" role="status" aria-live="polite"></p><button type="button" class="secondary" id="find10-retry" hidden>결과 다시 전송</button>
 <button type="button" id="find10-random">🎲 랜덤 챌린지 뽑기</button>
 <small>선택 참여 · 계정 필요 없음 · 챌린지 완료 후 이 화면으로 돌아오면 결과가 운영자용 피드백 저장소에 전송됩니다. 닉네임 없이 목표·시간·성공 여부만 전송합니다. 전송 실패 시 다시 시도할 수 있습니다.</small>
-<p style="font-size:12px"><a href="./find10-stats.html">📊 10초 챌린지 결과 통계 (조회 권한 필요)</a></p>
+
 </section>
+<section id="find10-admin"><h2>📊 플레이테스트 결과 확인</h2><p>이 화면에서 목표별 성공률과 평균 탐색 시간을 확인할 수 있어요. Firebase 조회 권한이 필요합니다.</p><button type="button" id="find10-login">Google 로그인 후 통계 보기</button><button type="button" class="secondary" id="find10-reload" hidden>통계 새로고침</button><p id="find10-admin-status" role="status"></p><div id="find10-dashboard" hidden><strong id="find10-summary"></strong><div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;text-align:left"><thead><tr><th>프로젝트</th><th>시도</th><th>성공률</th><th>평균 시간</th><th>초과</th></tr></thead><tbody id="find10-stats"></tbody></table></div></div></section>
 <form id="apply">
 <label for="nickname">표시 이름 (실명 불필요)</label><input id="nickname" maxlength="24" required placeholder="닉네임">
 <label for="field">테스트 분야</label><select id="field"><option>게임 플레이</option><option>모바일·UI</option><option>버그 찾기</option><option>접근성·튜토리얼</option></select>
@@ -94,7 +95,7 @@ $('find10-result').hidden=false;
 $('find10-result').textContent=r.success
 ?'✅ 성공! '+r.elapsed.toFixed(1)+'초 만에 올바른 프로젝트를 찾았어요.'
 :r.timeout?'⏰ 10초가 지났어요. Hub에서 원하는 프로젝트를 찾기 어려웠나요?'
-:'🔎 다른 프로젝트를 선택했어요. 다시 도전할 수 있어요.';
+:r.elapsed>10?'⏱️ 10초 초과 · '+r.elapsed.toFixed(1)+'초 후 선택했어요.':'🔎 다른 프로젝트를 선택했어요. 다시 도전할 수 있어요.';
 if(!sessionStorage.getItem('fw-find10-delivered'))sessionStorage.setItem('fw-find10-pending',JSON.stringify(r));
 else {sessionStorage.removeItem('fw-find10-delivered');document.getElementById('find10-send-status').textContent='✅ 결과가 운영자에게 저장됐어요.';}
 sessionStorage.removeItem(RESULT);
@@ -111,4 +112,5 @@ catch{$('status').textContent='아래 내용을 복사해 운영자에게 전달
 })();
 </script>
 <script type="module" src="./assets/find10-submit.js?v=20261024-1"></script>
+<script type="module" src="./assets/find10-admin.js?v=20261024-1"></script>
 </body></html>
