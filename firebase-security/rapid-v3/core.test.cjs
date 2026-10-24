@@ -45,3 +45,22 @@ test('invalid receipt amount never grants a refund',()=>{
  const bad={...a,transactions:{...a.transactions,purchase_00001:{...a.transactions.purchase_00001,amount:'oops'}}};
  assert.throws(()=>apply(bad,{type:'refund',itemId:'sunset',purchaseId:'purchase_00001',requestId:'refund_00003'},now+1000),/receipt amount/);
 });
+
+test('competing purchases re-evaluated at same wallet root cannot overspend',()=>{
+ const initial={balance:'800',version:0,inventory:{},transactions:{}};
+ const first=apply(initial,{type:'purchase',itemId:'sunset',requestId:'concurrent_one'},now);
+ assert.throws(()=>apply(first,{type:'purchase',itemId:'forest',requestId:'concurrent_two'},now+1),/insufficient funds/);
+ assert.equal(first.balance,'300');
+});
+test('duplicate requests after transaction retry cause one debit',()=>{
+ const first=apply(seed,buy,now);
+ const retried=apply(first,buy,now+10);
+ assert.strictEqual(retried,first);
+ assert.equal(Object.keys(retried.transactions).length,1);
+ assert.equal(retried.version,1);
+});
+test('client amount and unknown item protection',()=>{
+ assert.throws(()=>apply(seed,{...buy,itemId:'unknown',amount:'0'},now),/unknown item/);
+ const a=apply(seed,{...buy,amount:'9999999'},now);
+ assert.equal(a.balance,'500');
+});
