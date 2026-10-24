@@ -42,7 +42,14 @@ const descriptions={
  "양쪽 모두 둘 수 없거나 판이 꽉 차면 종료합니다. 내 색 돌이 더 많은 쪽이 이깁니다."
  ]}
 };
-let game="chess",state=null,history=[],selected=-1,promotionMoves=null,notice="";
+let game="chess",state=null,history=[],selected=-1,promotionMoves=null,notice="",replaying=false;
+const online=()=>window.FormwheelBoardOnline;
+const requestOnline=action=>{
+ if(replaying||!online()?.isOnline())return false;
+ online().submit(action);
+ return true;
+};
+const onlineBlocked=()=>!replaying&&online()?.isOnline()&&!online().canMove();
 const clone=o=>JSON.parse(JSON.stringify(o));
 const dirs8=[[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]];
 const inBounds=(r,c,n)=>r>=0&&c>=0&&r<n&&c<n;
@@ -68,8 +75,9 @@ function save(){history.push(clone(state));notice="";}
 function marker(val){return val===1?"흑":"백";}
 function pushScore(parts){scoreEl.replaceChildren();parts.forEach(s=>{const span=document.createElement("span");span.textContent=s;scoreEl.append(span);});}
 function render(){
- undoBtn.disabled=history.length===0;
- passBtn.disabled=game!=="go"||state.done;
+ if(replaying)return;
+ undoBtn.disabled=history.length===0||!!online()?.isOnline();
+ passBtn.disabled=game!=="go"||state.done||!!onlineBlocked();
  claimBtn.hidden=true;
  boardEl.className=game==="go"?"go-board":game==="omok"?"omok-board":"";
  if(game==="chess"){renderChess();return;}
@@ -104,6 +112,7 @@ function makeGoGroup(b,n,point) {
 }
 function goMove(at){
  if(state.done||state.board[at])return;
+ if(requestOnline({kind:"place",index:at}))return;
  const n=state.n,b=state.board.slice(),who=state.t;
  b[at]=who;
  let captured=0,scanned=new Set();
@@ -145,6 +154,7 @@ function goArea(){
 }
 function goPass(){
  if(game!=="go"||state.done)return;
+ if(requestOnline({kind:"pass"}))return;
  save();state.passes++;state.t=-state.t;state.last=-1;
  if(state.passes===2){state.done=true;notice="양쪽이 연속 패스하여 계가했어요. 사석 판정은 포함되지 않습니다.";}
  else notice="패스했어요. 다음 차례로 넘어갑니다.";
@@ -164,7 +174,7 @@ function renderGo(){
   btn.setAttribute("aria-label",(r+1)+"행 "+(c+1)+"열 "+(b[i]===0?"빈 점":marker(b[i])+"돌"));
   if(stars.includes(r)&&stars.includes(c))btn.append(node("i","star"));
   if(b[i])piece(btn,b[i],"stone");
-  btn.disabled=state.done||b[i]!==0;
+  btn.disabled=state.done||b[i]!==0||!!onlineBlocked();
   btn.addEventListener("click",()=>goMove(i));return btn;
  });
 }
@@ -182,6 +192,7 @@ function win5(b,i,color,n){
 }
 function omokMove(i){
  if(state.done||state.board[i])return;
+ if(requestOnline({kind:"place",index:i}))return;
  save();state.board[i]=state.t;state.last=i;
  if(win5(state.board,i,state.t,15)){state.winner=state.t;state.done=true;}
  else if(state.board.every(Boolean)){state.done=true;}
@@ -199,7 +210,7 @@ function renderOmok(){
   btn.setAttribute("aria-label",(r+1)+"행 "+(c+1)+"열 "+(state.board[i]===0?"빈 교차점":marker(state.board[i])+"돌"));
   if([3,7,11].includes(r)&&[3,7,11].includes(c))btn.append(node("i","star"));
   if(state.board[i])piece(btn,state.board[i],"stone");
-  btn.disabled=state.done||state.board[i]!==0;
+  btn.disabled=state.done||state.board[i]!==0||!!onlineBlocked();
   btn.addEventListener("click",()=>omokMove(i));return btn;
  });
 }
@@ -216,6 +227,7 @@ function othelloFlips(b,i,who){
 function othelloLegal(who){const out=[];for(let i=0;i<64;i++)if(othelloFlips(state.board,i,who).length)out.push(i);return out;}
 function othelloMove(i){
  if(state.done)return;
+ if(requestOnline({kind:"place",index:i}))return;
  const flips=othelloFlips(state.board,i,state.t);if(!flips.length)return;
  save();state.board[i]=state.t;flips.forEach(p=>state.board[p]=state.t);
  state.last=i;const next=-state.t;
@@ -236,7 +248,7 @@ function renderOthello(){
   btn.setAttribute("aria-label",(r+1)+"행 "+(c+1)+"열 "+(state.board[i]===0?"빈 칸":marker(state.board[i])+"돌"));
   piece(btn,state.board[i]);
   if(can.has(i))btn.append(node("span","legal-dot"));
-  btn.disabled=state.done||!can.has(i);
+  btn.disabled=state.done||!can.has(i)||!!onlineBlocked();
   btn.addEventListener("click",()=>othelloMove(i));return btn;
  });
 }
@@ -337,10 +349,11 @@ function chessStatus(){
  return {done:false,text:(state.t===1?"백":"흑")+" 차례"+(check?" · 체크!":""),claim:repeats>=3?"같은 위치 3회 반복":state.half>=100?"50수 규칙":"",moves};
 }
 function chessMove(m){
+ if(requestOnline({kind:"chess",from:m[0],to:m[1],promotion:m[2]||""}))return;
  save();state=applyChess(state,m);selected=-1;promotionMoves=null;modal.hidden=true;render();
 }
 function clickChess(i){
- const st=chessStatus();if(st.done||state.draw)return;
+ const st=chessStatus();if(st.done||state.draw||onlineBlocked())return;
  if(side(state.b[i])===state.t){selected=selected===i?-1:i;notice="";render();return;}
  const opts=st.moves.filter(m=>m[0]===selected&&m[1]===i);
  if(opts.length>1){
@@ -368,23 +381,68 @@ function renderChess(){
   const cls="square "+((Math.floor(j/8)+j%8)%2?"dark":"light")+(selected===i?" selected":"")+(targets.has(i)?" target":"")+(p!=="."?" occupied":"");
   const btn=node("button",cls);btn.type="button";btn.setAttribute("aria-label",square(i)+" "+(p==="."?"빈 칸":p));
   if(p!==".")btn.append(node("span",side(p)===1?"piece-white":"piece-black",glyph[p]));
-  btn.disabled=isDone;btn.addEventListener("click",()=>clickChess(i));frag.append(btn);
+  btn.disabled=isDone||!!onlineBlocked();btn.addEventListener("click",()=>clickChess(i));frag.append(btn);
  }
  boardEl.append(frag);
 }
-tabs.forEach(b=>b.addEventListener("click",()=>reset(b.dataset.game)));
-$("new-game").addEventListener("click",()=>reset(game));
+tabs.forEach(b=>b.addEventListener("click",()=>{if(!online()?.isOnline())reset(b.dataset.game);}));
+$("new-game").addEventListener("click",()=>{if(!online()?.isOnline())reset(game);});
 undoBtn.addEventListener("click",()=>{
- if(!history.length)return;
+ if(!history.length||online()?.isOnline())return;
  state=history.pop();selected=-1;promotionMoves=null;modal.hidden=true;notice="직전 수를 되돌렸어요.";render();
 });
 passBtn.addEventListener("click",goPass);
-sizeInput.addEventListener("change",()=>{if(game==="go")reset("go");});
+sizeInput.addEventListener("change",()=>{if(game==="go"&&!online()?.isOnline())reset("go");});
 claimBtn.addEventListener("click",()=>{
  if(game!=="chess")return;
  const st=chessStatus();if(!st.claim||st.done)return;
+ if(requestOnline({kind:"claim"}))return;
  save();state.draw="무승부 · "+st.claim;render();
 });
 $("cancel-promotion").addEventListener("click",()=>{promotionMoves=null;modal.hidden=true;});
+/* Adapter: replay only validated actions, in strict order, through the existing rules. */
+window.FormwheelBoardBridge=Object.freeze({
+  load(type,size,actions,hostUid,guestUid){
+    if(!descriptions[type]||!Array.isArray(actions)||actions.length>1200)return false;
+    replaying=true;
+    try{
+      if(type==="go"){
+        if(![9,13,19].includes(Number(size)))throw Error("invalid board size");
+        sizeInput.value=String(size);
+      }
+      reset(type);
+      for(const a of actions){
+        if(!a||typeof a!=="object"||!["place","chess","pass","claim"].includes(a.kind))throw Error("invalid action");
+        if((state.done||state.draw)||(game==="chess"&&chessStatus().done))throw Error("action after game ended");
+        const expected=state.t===1?hostUid:guestUid;
+        if(!expected||a.uid!==expected)throw Error("wrong player turn");
+        const before=history.length;
+        if(a.kind==="chess"&&game==="chess"){
+          const move=chessLegal(state).find(m=>m[0]===a.from&&m[1]===a.to&&(m[2]||"")===(a.promotion||""));
+          if(!move)throw Error("illegal chess move");
+          chessMove(move);
+        }else if(a.kind==="place"&&Number.isInteger(a.index)&&game==="go")goMove(a.index);
+        else if(a.kind==="place"&&Number.isInteger(a.index)&&game==="omok")omokMove(a.index);
+        else if(a.kind==="place"&&Number.isInteger(a.index)&&game==="othello")othelloMove(a.index);
+        else if(a.kind==="pass"&&game==="go")goPass();
+        else if(a.kind==="claim"&&game==="chess"&&chessStatus().claim){save();state.draw="무승부 · "+chessStatus().claim;}
+        else throw Error("wrong action type");
+        if(history.length!==before+1)throw Error("illegal action rejected");
+      }
+      notice="";
+      return true;
+    }catch(err){
+      console.warn("Board replay rejected",err);
+      notice="잘못된 온라인 수순이 감지되었습니다.";
+      return false;
+    }finally{
+      replaying=false;selected=-1;promotionMoves=null;modal.hidden=true;render();
+    }
+  },
+  getTurn:()=>state?.t||1,
+  getStatus:()=>({done:!!state?.done||!!state?.draw||(game==="chess"&&chessStatus().done),game,size:game==="go"?state.n:game==="omok"?15:8}),
+  render:()=>render(),
+  resetLocal:()=>reset(game)
+});
 reset("chess");
 })();
