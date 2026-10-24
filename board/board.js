@@ -112,7 +112,6 @@ function makeGoGroup(b,n,point) {
 }
 function goMove(at){
  if(state.done||!Number.isInteger(at)||at<0||at>=state.board.length||state.board[at])return;
- if(requestOnline({kind:"place",index:at}))return;
  const n=state.n,b=state.board.slice(),who=state.t;
  b[at]=who;
  let captured=0,scanned=new Set();
@@ -127,6 +126,7 @@ function goMove(at){
  if(history.some(h=>h.board&&h.n===n&&h.board.join(",")===b.join(",")) || state.board.join(",")===b.join(",")){
    tip.textContent="동형반복 금지: 이전과 같은 돌 배치로 돌아갈 수 없어요.";return;
  }
+ if(requestOnline({kind:"place",index:at}))return;
  save();state.board=b;state.t=-who;state.passes=0;state.last=at;
  state.captures[who===1?"black":"white"]+=captured;
  if(captured)notice=marker(who)+"이 "+captured+"개 돌을 잡았어요.";
@@ -227,8 +227,8 @@ function othelloFlips(b,i,who){
 function othelloLegal(who){const out=[];for(let i=0;i<64;i++)if(othelloFlips(state.board,i,who).length)out.push(i);return out;}
 function othelloMove(i){
  if(state.done||!Number.isInteger(i)||i<0||i>=state.board.length)return;
- if(requestOnline({kind:"place",index:i}))return;
  const flips=othelloFlips(state.board,i,state.t);if(!flips.length)return;
+ if(requestOnline({kind:"place",index:i}))return;
  save();state.board[i]=state.t;flips.forEach(p=>state.board[p]=state.t);
  state.last=i;const next=-state.t;
  if(othelloLegal(next).length)state.t=next;
