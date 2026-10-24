@@ -846,12 +846,12 @@ if(data?.slug){
   const result={slug:data.slug,success,timeout,elapsed};
   sessionStorage.setItem(RESULT,JSON.stringify(result));
   sessionStorage.setItem(PENDING,JSON.stringify(result));sessionStorage.removeItem(KEY);
-  clockText.textContent='결과 저장 중…';
+  clockText.textContent=elapsed>10?'10초 초과 · '+elapsed.toFixed(1)+'초에 선택':'10초 이내 · '+elapsed.toFixed(1)+'초에 선택';
   try{await Promise.race([submitFind10(result),new Promise((_,reject)=>setTimeout(()=>reject(new Error('timeout')),4500))]);sessionStorage.removeItem(PENDING);sessionStorage.setItem('fw-find10-delivered',JSON.stringify(result))}
   catch{sessionStorage.setItem(PENDING,JSON.stringify(result))}
   location.assign(destination||'./playtest.html');
  }
- function tick(){const left=Math.max(0,10-(Date.now()-data.startedAt)/1000);clockText.textContent=left.toFixed(1)+'초';if(!left)finish(false,true)}
+ function tick(){const elapsed=(Date.now()-data.startedAt)/1000;clockText.textContent=elapsed<=10?(10-elapsed).toFixed(1)+'초 남음':'10초 초과 · '+elapsed.toFixed(1)+'초 경과';}
  const clock=setInterval(tick,65);tick();
  cancel.addEventListener('click',e=>{e.preventDefault();finished=true;clearInterval(clock);sessionStorage.removeItem(KEY);location.assign('./playtest.html')});
  document.addEventListener('click',e=>{
