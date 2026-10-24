@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#202940">
+  <meta name="description" content="Formwheel Board: 체스, 바둑, 오목, 오델로를 규칙과 함께 즐기는 한 기기 2인용 보드게임 모음">
+  <title>Board · Formwheel</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/formwheel-favicon.svg">
+  <link rel="stylesheet" href="./board.css?v=1">
+  <script src="./board.js?v=1" defer></script>
+</head>
+<body>
+<header class="top">
+  <a href="../" class="brand" aria-label="Formwheel 허브로 돌아가기">◉ Formwheel</a>
+  <span class="tag">BOARD · 클래식 보드게임</span>
+</header>
+<main>
+  <section class="intro">
+    <h1>🎲 Board</h1>
+    <p>체스부터 바둑까지! <strong>규칙을 읽고 바로 두는</strong> 클래식 보드게임 모음입니다.</p>
+    <p class="note">현재는 같은 기기에서 번갈아 두는 2인 대전입니다. 온라인 방, AI, 순위표는 아직 지원하지 않습니다.</p>
+  </section>
+  <nav id="game-tabs" class="tabs" aria-label="게임 선택">
+    <button type="button" data-game="chess" aria-pressed="true">♟ 체스</button>
+    <button type="button" data-game="go" aria-pressed="false">⚫ 바둑</button>
+    <button type="button" data-game="omok" aria-pressed="false">⚪ 오목</button>
+    <button type="button" data-game="othello" aria-pressed="false">◉ 오델로</button>
+  </nav>
+  <section class="workspace">
+    <div class="play-area">
+      <div class="play-top">
+        <div><h2 id="game-title">체스</h2><p id="turn" role="status" aria-live="polite"></p></div>
+        <div class="controls">
+          <label id="size-wrap" hidden>바둑판
+            <select id="board-size" aria-label="바둑판 크기"><option value="9">9×9 (입문)</option><option value="13">13×13</option><option value="19">19×19</option></select>
+          </label>
+          <button type="button" id="new-game">새 게임</button>
+          <button type="button" id="undo">한 수 무르기</button>
+          <button type="button" id="pass" hidden>패스</button>
+          <button type="button" id="claim" hidden>무승부 주장</button>
+        </div>
+      </div>
+      <div id="score" class="score" aria-live="polite"></div>
+      <div class="board-wrap"><div id="board" role="group" aria-label="보드게임 판"></div></div>
+      <p id="tip" class="tip"></p>
+    </div>
+    <aside class="rules-area">
+      <details open id="rules-panel">
+        <summary>📚 게임 규칙 보기</summary>
+        <h3 id="rule-title"></h3>
+        <ol id="rule-list"></ol>
+        <p id="rule-note"></p>
+      </details>
+      <div class="help">
+        <strong>💡 플레이 방법</strong>
+        <p>자기 차례에 말을 선택하고 이동하거나, 빈 칸을 눌러 착수하세요. 한 수 무르기는 로컬 대전에서만 작동합니다.</p>
+      </div>
+    </aside>
+  </section>
+  <p class="bottom-note">판정 참고: 바둑은 자살수·따냄·동형반복 금지 및 간이 중국식 집계를 사용합니다. 사석 판정은 자동으로 처리하지 않으므로 결과가 공식 대국과 다를 수 있습니다.</p>
+</main>
+<div id="promotion" class="modal" hidden>
+  <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="promotion-title">
+    <h2 id="promotion-title">폰 승격</h2>
+    <p>승격할 기물을 선택하세요.</p>
+    <div id="promotion-options" class="promotion-options"></div>
+    <button type="button" id="cancel-promotion">취소</button>
+  </div>
+</div>
+</body>
+</html>
