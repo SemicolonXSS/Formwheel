@@ -33,7 +33,7 @@ IMPORTANT:
 
 
 const projects = [
-  {name:"Sports",icon:"⚽",className:"green",category:"game",mode:"solo",connection:"offline",difficulty:"쉬움",description:"축구·농구 2종목! CPU 대전, 슛과 킥, 모바일 조작을 지원하는 스포츠 게임 베타.",url:"https://semicolonxss.github.io/Formwheel/sports/",addedAt:"2026-10-24T06:45:00Z",recent:true},
+  {name:"Sports",icon:"⚽",className:"green",category:"game",mode:"both",connection:"offline",difficulty:"쉬움",description:"축구·농구 2종목! CPU 대전과 한 기기 2인 대전, 슛·킥·점프가 가능한 스포츠 게임.",url:"https://semicolonxss.github.io/Formwheel/sports/",addedAt:"2026-10-24T06:45:00Z",recent:true},
   {name:"Board",icon:"♟️",className:"purple",category:"game",mode:"both",connection:"online",difficulty:"보통",description:"체스·바둑·오목·오델로 4종! 규칙을 읽고 로컬 2인 대전 또는 방 코드로 친구와 온라인 플레이.",url:"https://semicolonxss.github.io/Formwheel/board/",addedAt:"2026-10-24T05:30:00Z",recent:true},
   {name:"SYNC",icon:"🧠",className:"purple",category:"game",mode:"both",connection:"online",difficulty:"쉬움",description:"친구들과 텔레파시가 통할까? 같은 답을 고르는 6라운드 싱크 파티 게임! 한 기기 파티와 온라인 방 코드.",url:"https://semicolonxss.github.io/Formwheel_Sync/",addedAt:"2026-10-22T06:00:00Z",recent:true},
   {name:"Scribble",icon:"🎨",className:"purple",category:"game",mode:"multi",connection:"online",difficulty:"쉬움",description:"친구와 문장·그림을 번갈아 전달하는 낙서 릴레이! 2~8인 방 코드, 실시간 턴 진행과 앨범 공개.",url:"https://semicolonxss.github.io/Formwheel_Scribble/",addedAt:"2026-10-22T04:00:00Z",recent:true},
