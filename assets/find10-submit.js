@@ -11,6 +11,7 @@ export async function submitFind10(result){
  const slug=String(result.slug||"unknown").slice(0,40);
  const elapsed=Math.min(120,Math.max(0,Number(result.elapsed)||0));
  const ageGroup=["10대 미만","10대","20대","30대","40대","50대","60대 이상"].includes(result.ageGroup)?result.ageGroup:"";
+ const selectedSlug=String(result.selectedSlug||"").replace(/[^a-zA-Z0-9_-]/g,"").slice(0,40);
  const outcome=result.success?"성공":result.timeout?"시간 초과":"다른 프로젝트 선택";
  await set(push(ref(db,"formwheelFeedback/items")),{uid:u.uid,project:"Hub",subject:"[10초 챌린지] "+slug,body:"목표 프로젝트: "+slug+"\n결과: "+outcome+"\n소요 시간: "+elapsed.toFixed(2)+"초\n연령대: "+(ageGroup||"미응답")+"\n자동 수집된 UX 테스트 결과 (닉네임 없음)",createdAt:serverTimestamp()});
 }
