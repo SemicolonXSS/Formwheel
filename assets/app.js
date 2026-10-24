@@ -832,7 +832,30 @@ function thumbnailURL(project){
 }
 
 function isRecent(project,now=Date.now()){const age=now-Date.parse(project.addedAt);return Number.isFinite(age)&&age>=0&&age<=14*86400000;}
+const hubViewStorageKey = "formwheel-hub-view-v1";
+function saveHubView(){
+  try { localStorage.setItem(hubViewStorageKey, JSON.stringify({
+    category: currentFilter, search: searchElement.value, mode: modeFilter.value,
+    connection: connectionFilter.value, difficulty: difficultyFilter.value,
+    sort: sortElement.value, ascending: sortAscending
+  })); } catch (_) {}
+}
+function restoreHubView(){
+  try {
+    const state = JSON.parse(localStorage.getItem(hubViewStorageKey) || "null");
+    if (!state || typeof state !== "object" || Array.isArray(state)) return;
+    for (const [el, value] of [[modeFilter,state.mode],[connectionFilter,state.connection],[difficultyFilter,state.difficulty],[sortElement,state.sort]]) {
+      if (typeof value === "string" && [...el.options].some(option => option.value === value)) el.value = value;
+    }
+    if (typeof state.search === "string") searchElement.value = state.search.slice(0,200);
+    if (typeof state.ascending === "boolean") sortAscending = state.ascending;
+    if (filterButtons.some(b => b.dataset.filter === state.category)) currentFilter = state.category;
+    filterButtons.forEach(b => { const active = b.dataset.filter === currentFilter; b.classList.toggle("active", active); b.setAttribute("aria-pressed",String(active)); });
+    updateSortDirectionButton();
+  } catch (_) {}
+}
 function render(){
+  saveHubView();
   const appliedCount = [modeFilter, connectionFilter, difficultyFilter]
     .filter(select => select.value !== "all").length;
   const filterCount = document.getElementById("fw-filter-count");
@@ -1175,6 +1198,7 @@ cardsElement.addEventListener("error", event => {
 window.addEventListener('formwheel-creator-sort-updated', render);
 window.FormwheelHubProjects=projects;
 window.FormwheelHubResetFilters=()=>resetFilters.click();
+restoreHubView();
 
 render();
 
