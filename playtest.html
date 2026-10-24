@@ -37,6 +37,7 @@ p,small{color:#59617a}a{color:#453ac4}
 <p id="find10-send-status" role="status" aria-live="polite"></p><button type="button" class="secondary" id="find10-retry" hidden>결과 다시 전송</button>
 <button type="button" id="find10-random">🎲 랜덤 챌린지 뽑기</button>
 <small>선택 참여 · 계정 필요 없음 · 챌린지 완료 후 이 화면으로 돌아오면 결과가 운영자용 피드백 저장소에 전송됩니다. 닉네임 없이 목표·시간·성공 여부만 전송합니다. 전송 실패 시 다시 시도할 수 있습니다.</small>
+<p style="font-size:12px"><a href="./find10-stats.html">📊 10초 챌린지 결과 통계 (조회 권한 필요)</a></p>
 </section>
 <form id="apply">
 <label for="nickname">표시 이름 (실명 불필요)</label><input id="nickname" maxlength="24" required placeholder="닉네임">
@@ -94,7 +95,8 @@ $('find10-result').textContent=r.success
 ?'✅ 성공! '+r.elapsed.toFixed(1)+'초 만에 올바른 프로젝트를 찾았어요.'
 :r.timeout?'⏰ 10초가 지났어요. Hub에서 원하는 프로젝트를 찾기 어려웠나요?'
 :'🔎 다른 프로젝트를 선택했어요. 다시 도전할 수 있어요.';
-sessionStorage.setItem('fw-find10-pending',JSON.stringify(r));
+if(!sessionStorage.getItem('fw-find10-delivered'))sessionStorage.setItem('fw-find10-pending',JSON.stringify(r));
+else {sessionStorage.removeItem('fw-find10-delivered');document.getElementById('find10-send-status').textContent='✅ 결과가 운영자에게 저장됐어요.';}
 sessionStorage.removeItem(RESULT);
 }
 }catch{}
