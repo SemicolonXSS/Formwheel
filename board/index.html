@@ -8,7 +8,8 @@
   <title>Board · Formwheel</title>
   <link rel="icon" type="image/svg+xml" href="../assets/formwheel-favicon.svg">
   <link rel="stylesheet" href="./board.css?v=20261024-squaregrid3">
-  <script src="./board.js?v=20261024-squaregrid3" defer></script>
+  <script src="./board.js?v=20261024-online1" defer></script>
+  <script src="./online.js?v=20261024-online1" type="module"></script>
 </head>
 <body>
 <header class="top">
@@ -19,7 +20,7 @@
   <section class="intro">
     <h1>🎲 Board</h1>
     <p>체스부터 바둑까지! <strong>규칙을 읽고 바로 두는</strong> 클래식 보드게임 모음입니다.</p>
-    <p class="note">현재는 같은 기기에서 번갈아 두는 2인 대전입니다. 온라인 방, AI, 순위표는 아직 지원하지 않습니다.</p>
+    <p class="note">로컬 2인 대전과 온라인 방 코드 대전을 지원합니다. AI와 순위표는 아직 지원하지 않습니다.</p>
   </section>
   <nav id="game-tabs" class="tabs" aria-label="게임 선택">
     <button type="button" data-game="chess" aria-pressed="true">♟ 체스</button>
@@ -27,6 +28,22 @@
     <button type="button" data-game="omok" aria-pressed="false">⚪ 오목</button>
     <button type="button" data-game="othello" aria-pressed="false">◉ 오델로</button>
   </nav>
+  <section class="online-panel" aria-labelledby="online-heading">
+    <div class="online-heading"><div><h2 id="online-heading">🌐 친구와 온라인 보드게임</h2><p>게임을 고른 뒤 방을 만들거나 친구가 보낸 8자리 코드를 입력하세요. 2명까지 참가할 수 있습니다.</p></div><span class="online-label">2인 대전</span></div>
+    <div id="online-setup" class="online-controls">
+      <button type="button" class="primary" id="online-create">방 만들기</button>
+      <label for="online-code">초대 코드</label>
+      <input id="online-code" type="text" maxlength="8" autocomplete="off" spellcheck="false" inputmode="text" placeholder="8자리 코드" aria-label="온라인 방 초대 코드">
+      <button type="button" id="online-join">코드로 참가</button>
+    </div>
+    <div id="online-active" class="online-controls" hidden>
+      <strong id="online-room" class="online-room"></strong>
+      <button id="online-copy" type="button">초대 링크 복사</button>
+      <button id="online-leave" type="button">로컬 모드로 나가기</button>
+    </div>
+    <p id="online-status" role="status" aria-live="polite">Firebase 연결 중… 로컬 대전은 계속 가능합니다.</p>
+    <p class="online-notice">방을 만든 사람이 선공입니다. 온라인 대전에서는 되돌리기·새 게임을 잠시 사용할 수 없습니다. 현재는 기록·보상 없는 친선 대전이며, 계정 인증 및 Firebase Database Rules가 필요합니다.</p>
+  </section>
   <section class="workspace">
     <div class="play-area">
       <div class="play-top">
@@ -54,7 +71,7 @@
       </details>
       <div class="help">
         <strong>💡 플레이 방법</strong>
-        <p>자기 차례에 말을 선택하고 이동하거나, 빈 칸을 눌러 착수하세요. 한 수 무르기는 로컬 대전에서만 작동합니다.</p>
+        <p>자기 차례에 말을 선택하고 이동하거나, 빈 칸을 눌러 착수하세요. 한 수 무르기는 로컬 대전에서만 작동합니다. 온라인 방에서는 선공과 후공이 고정됩니다.</p>
       </div>
     </aside>
   </section>
