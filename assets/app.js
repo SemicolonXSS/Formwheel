@@ -614,14 +614,57 @@ const projects = [
 
 
 window.FormwheelHubProjects = projects;
-/* Project maturity is an editorial estimate, not a measured completion rate. */
+/* Editorial development maturity estimates (2026-10-24).
+   Weighted judgment: core feature coverage 40%, reliability 30%, UX 20%,
+   multiplayer/essential flows 10%. Not automated tests or release guarantees.
+   Adjust conservatively where user-reported regressions remain unresolved. */
 const projectMaturity = {
-  SYNC:65,Scribble:68,Whiteboard:70,Paint:82,Animation:72,Mix:78,Glitch:79,Maze:76,
-  Form:87,Wheel:92,Quiz:88,Decode:93,Edit:73,Tool:86,Vote:82,Check:85,Note:78,
-  Chat:80,AI:57,Wiki:77,AQS:74,Spotlight:75,Story:62,PVP:55,Territory:76,
-  Cook:84,Button:79,Casino:82,Battle:88,Bomb:85,"Wheel Battle":77,Reflex:89,
-  Spy:81,Clicker:90,"Dice Duel":75,Marble:70,GCrown:79,Fate:80,Time:86,
-  Music:75,Piano:73,Balance:69,Vault:77,Risk:81
+  Sports:62,
+  Board:70,
+  SYNC:70,
+  Scribble:58,
+  Whiteboard:64,
+  Paint:84,
+  Animation:73,
+  Mix:80,
+  Glitch:69,
+  Maze:82,
+  Form:88,
+  Wheel:93,
+  Quiz:88,
+  Decode:95,
+  Edit:76,
+  Tool:86,
+  Vote:83,
+  Check:87,
+  Note:82,
+  Chat:73,
+  AI:60,
+  Wiki:68,
+  AQS:78,
+  Spotlight:78,
+  Story:66,
+  PVP:62,
+  Territory:65,
+  Cook:86,
+  Button:82,
+  Casino:81,
+  Battle:85,
+  Bomb:87,
+  "Wheel Battle":79,
+  Reflex:90,
+  Spy:69,
+  Clicker:81,
+  "Dice Duel":68,
+  Marble:66,
+  GCrown:79,
+  Fate:81,
+  Time:87,
+  Music:65,
+  Piano:76,
+  Balance:62,
+  Vault:80,
+  Risk:82
 };
 
 /* ======================================================
