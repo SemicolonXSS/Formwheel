@@ -122,6 +122,67 @@
           }
         }
       }
+    },
+    "boardRooms": {
+      "$code": {
+        ".read": "auth != null && $code.matches(/^[A-HJ-NP-Z2-9]{8}$/)",
+        ".write": "auth != null && $code.matches(/^[A-HJ-NP-Z2-9]{8}$/) && newData.exists() && ((!data.exists() && newData.child('hostUid').val() === auth.uid && newData.child('guestUid').val() === '' && newData.child('status').val() === 'waiting' && newData.child('actions').numChildren() === 0 && newData.child('createdAt').val() >= now - 300000 && newData.child('createdAt').val() <= now + 300000) || (data.exists() && newData.child('version').val() === data.child('version').val() && newData.child('game').val() === data.child('game').val() && newData.child('size').val() === data.child('size').val() && newData.child('hostUid').val() === data.child('hostUid').val() && newData.child('createdAt').val() === data.child('createdAt').val() && newData.child('updatedAt').val() >= data.child('updatedAt').val() && ((data.child('status').val() === 'waiting' && data.child('guestUid').val() === '' && auth.uid !== data.child('hostUid').val() && newData.child('guestUid').val() === auth.uid && newData.child('status').val() === 'playing' && data.child('actions').numChildren() === 0 && newData.child('actions').numChildren() === 0) || (data.child('status').val() === 'playing' && newData.child('status').val() === 'playing' && data.child('guestUid').val() !== '' && newData.child('guestUid').val() === data.child('guestUid').val() && (auth.uid === data.child('hostUid').val() || auth.uid === data.child('guestUid').val()) && data.child('actions').numChildren() < 1200 && newData.child('actions').numChildren() === data.child('actions').numChildren() + 1 && newData.child('actions').child('' + data.child('actions').numChildren()).child('uid').val() === auth.uid))))",
+        ".validate": "newData.hasChildren(['version','game','size','hostUid','guestUid','status','createdAt','updatedAt']) && newData.child('version').val() === 1 && (newData.child('game').val() === 'chess' || newData.child('game').val() === 'go' || newData.child('game').val() === 'omok' || newData.child('game').val() === 'othello') && ((newData.child('game').val() === 'go' && (newData.child('size').val() === 9 || newData.child('size').val() === 13 || newData.child('size').val() === 19)) || (newData.child('game').val() !== 'go' && newData.child('size').val() === 8 && newData.child('game').val() !== 'omok') || (newData.child('game').val() === 'omok' && newData.child('size').val() === 15)) && newData.child('hostUid').isString() && newData.child('guestUid').isString() && (newData.child('status').val() === 'waiting' || newData.child('status').val() === 'playing')",
+        "version": {
+          ".validate": "newData.val() === 1"
+        },
+        "game": {
+          ".validate": "newData.isString()"
+        },
+        "size": {
+          ".validate": "newData.isNumber()"
+        },
+        "hostUid": {
+          ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 128"
+        },
+        "guestUid": {
+          ".validate": "newData.isString() && newData.val().length <= 128"
+        },
+        "status": {
+          ".validate": "newData.val() === 'waiting' || newData.val() === 'playing'"
+        },
+        "createdAt": {
+          ".validate": "newData.isNumber() && newData.val() > 0"
+        },
+        "updatedAt": {
+          ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= now + 300000"
+        },
+        "actions": {
+          ".validate": "newData.numChildren() <= 1200",
+          "$index": {
+            ".validate": "$index.matches(/^(0|[1-9][0-9]{0,3})$/) && newData.hasChildren(['uid','kind']) && newData.child('uid').val() === auth.uid && ( (newData.child('kind').val() === 'place' && newData.child('index').isNumber() && newData.child('index').val() >= 0 && newData.child('index').val() <= 360) || (newData.child('kind').val() === 'chess' && newData.child('from').isNumber() && newData.child('from').val() >= 0 && newData.child('from').val() <= 127 && newData.child('to').isNumber() && newData.child('to').val() >= 0 && newData.child('to').val() <= 127 && (newData.child('promotion').val() === '' || newData.child('promotion').val() === 'q' || newData.child('promotion').val() === 'r' || newData.child('promotion').val() === 'b' || newData.child('promotion').val() === 'n')) || newData.child('kind').val() === 'pass' || newData.child('kind').val() === 'claim')",
+            "uid": {
+              ".validate": "newData.isString()"
+            },
+            "kind": {
+              ".validate": "newData.isString()"
+            },
+            "index": {
+              ".validate": "newData.isNumber()"
+            },
+            "from": {
+              ".validate": "newData.isNumber()"
+            },
+            "to": {
+              ".validate": "newData.isNumber()"
+            },
+            "promotion": {
+              ".validate": "newData.isString()"
+            },
+            "$other": {
+              ".validate": false
+            }
+          }
+        },
+        "$other": {
+          ".validate": false
+        }
+      }
     }
   }
 }
