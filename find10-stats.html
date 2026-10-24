@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FIND IT! 통계 · Formwheel</title>
+<link rel="icon" href="./assets/formwheel-favicon.svg"><style>
+*{box-sizing:border-box}body{font:15px/1.6 system-ui,sans-serif;color:#242842;background:#f6f7fc;margin:0}main{max-width:920px;margin:24px auto;padding:20px}
+a{color:#3c33a7}.panel{background:#fff;border:1px solid #e4e6f3;border-radius:16px;padding:20px;margin:16px 0}
+button{font:inherit;background:#453ac4;color:white;border:0;border-radius:10px;padding:9px 17px;cursor:pointer}
+table{border-collapse:collapse;width:100%;font-size:14px}th,td{padding:10px;text-align:left;border-bottom:1px solid #e6e7ef}
+th{background:#f2f1ff}#summary{font-weight:750;font-size:18px}#status{color:#5f6580}[hidden]{display:none!important}
+</style></head><body><main><a href="./playtest.html">← 플레이테스터 모집</a><h1>⏱️ FIND IT! 결과 통계</h1>
+<p>운영자 확인용 화면입니다. Firebase에서 조회 권한이 허용된 계정만 데이터를 불러올 수 있습니다.</p>
+<div class="panel"><button id="login" type="button">Google 계정으로 로그인 후 조회</button>
+<button id="reload" type="button" hidden>새로고침</button><p id="status" role="status"></p></div>
+<div class="panel" id="dashboard" hidden><div id="summary"></div>
+<div style="overflow-x:auto"><table><thead><tr><th>목표</th><th>시도</th><th>성공률</th><th>평균 탐색 시간</th><th>시간 초과</th></tr></thead><tbody id="stats"></tbody></table></div>
+<p style="font-size:12px;color:#69718a">Firebase에 저장된 결과만 집계합니다. 표시 시간은 저장된 기록 기준이며, 제출 실패·이탈·클라이언트 조작 결과는 정확도를 낮출 수 있습니다.</p></div>
+</main><script type="module">
+import {initializeApp,getApps} from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js';
+import {getAuth,GoogleAuthProvider,signInWithPopup} from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js';
+import {getDatabase,ref,get} from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js';
+const app=getApps()[0]||initializeApp({apiKey:'AIzaSyBreTSe1m0-xlbF4aupnU5isRZCihR25IE',authDomain:'formwheel.firebaseapp.com',databaseURL:'https://formwheel-default-rtdb.firebaseio.com',projectId:'formwheel',appId:'1:431583088241:web:74e0e34ea1e3e1170c55d0'});
+const auth=getAuth(app),db=getDatabase(app),$=id=>document.getElementById(id);
+async function load(){
+ $('status').textContent='통계 조회 중…';$('dashboard').hidden=true;
+ try{
+ const snapshot=await get(ref(db,'formwheelFeedback/items'));
+ const groups=new Map();
+ snapshot.forEach(child=>{
+  const item=child.val();if(typeof item?.subject!=='string'||!item.subject.startsWith('[10초 챌린지] '))return;
+  const target=item.subject.slice(10).trim();
+  const body=String(item.body||'');
+  const state=body.match(/결과: (성공|시간 초과|다른 프로젝트 선택)/)?.[1];
+  const seconds=Number(body.match(/소요 시간: ([\d.]+)초/)?.[1]);
+  if(!target||!state||!Number.isFinite(seconds)||seconds<0||seconds>120)return;
+  const g=groups.get(target)||{n:0,wins:0,seconds:0,timeouts:0};
+  g.n++;g.wins+=Number(state==='성공');g.timeouts+=Number(state==='시간 초과');g.seconds+=seconds;groups.set(target,g);
+ });
+ let total=0,success=0,sum=0;
+ const tbody=$('stats');tbody.replaceChildren();
+ for(const [target,g] of [...groups].sort((a,b)=>b[1].n-a[1].n)){
+  total+=g.n;success+=g.wins;sum+=g.seconds;
+  const tr=document.createElement('tr');
+  for(const value of [target,String(g.n),(100*g.wins/g.n).toFixed(1)+'%',(g.seconds/g.n).toFixed(2)+'초',String(g.timeouts)]){
+   const td=document.createElement('td');td.textContent=value;tr.append(td)
+  }tbody.append(tr);
+ }
+ $('summary').textContent=total?'전체 '+total+'회 · 성공률 '+(100*success/total).toFixed(1)+'% · 평균 '+(sum/total).toFixed(2)+'초':'아직 저장된 10초 챌린지 기록이 없어요.';
+ $('dashboard').hidden=false;$('reload').hidden=false;$('status').textContent='조회 완료';
+ }catch(e){$('status').textContent='조회 실패: '+(e.code||e.message||'권한/연결 오류')+'. Firebase에서 운영자 조회 권한을 확인해 주세요.'}
+}
+$('login').addEventListener('click',async()=>{
+ $('status').textContent='로그인 중…';
+ try{await signInWithPopup(auth,new GoogleAuthProvider());await load()}catch(e){$('status').textContent='로그인/조회 실패: '+(e.code||e.message)}
+});
+$('reload').addEventListener('click',load);
+</script></body></html>
