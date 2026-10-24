@@ -13,7 +13,7 @@
 <meta name="apple-mobile-web-app-title" content="Formwheel">
 
 
-<link rel="stylesheet" href="./assets/styles.css?v=20261023-sortdirection1">
+<link rel="stylesheet" href="./assets/styles.css?v=20261024-hub-five1">
 <link rel="stylesheet" href="https://semicolonxss.github.io/Formwheel/shared/formwheel-ui.css">
 <script defer src="https://semicolonxss.github.io/Formwheel/shared/formwheel-ui.js?v=20261024-daynight-true-semicircle4"></script>
 <meta property="og:site_name" content="Formwheel">
@@ -270,9 +270,9 @@ Formwheel의 모든 프로젝트를 한곳에서 만나보세요.
 </section>
 
 <!-- Compact game discovery: short, optional choices above the full catalogue -->
-<section id="fw-quick-picks" aria-labelledby="fw-quick-title">
+<section id="fw-quick-picks" aria-labelledby="fw-quick-title" data-ui="compact">
   <div class="fw-picks-heading"><strong id="fw-quick-title">🎮 지금 뭐 하지?</strong><button id="fw-picks-refresh" type="button" aria-label="다른 게임 추천 보기">🔄 다른 추천</button></div>
-  <div id="fw-picks-list" class="fw-picks-list">
+  <div id="fw-picks-list" class="fw-picks-list" aria-live="polite">
     <a href="https://semicolonxss.github.io/Formwheel_Maze/">🌀 Maze <small>미로 탈출</small></a>
     <a href="https://semicolonxss.github.io/Formwheel_Reflex/">⚡ Reflex <small>반응속도 도전</small></a>
     <a href="https://semicolonxss.github.io/Formwheel_Cook/">🍳 Cook <small>자유 요리</small></a>
@@ -281,7 +281,7 @@ Formwheel의 모든 프로젝트를 한곳에서 만나보세요.
 
 <!-- Compact utility links above projects; detailed feature panels remain below. -->
 <nav id="fw-hub-shortcuts" aria-label="빠른 참여 및 이벤트">
-  <a href="./playtest.html">🧪 플레이테스터 모집</a>
+  <a href="./playtest.html">🧪 플레이테스터 · 10초 도전</a>
   <a href="./party.html">👥 파티</a>
   <a href="./festival.html">🎮 페스티벌</a>
 </nav>
@@ -395,7 +395,7 @@ Formwheel의 모든 프로젝트를 한곳에서 만나보세요.
 
 <!-- CARDS -->
 
-<div id="cards" class="cards"></div>
+<div id="cards" class="cards" aria-live="off"></div>
 
 
 <div id="empty" class="empty">
@@ -824,7 +824,7 @@ document.getElementById("fw-match-close").onclick=()=>{modal.hidden=true};
  window.addEventListener('storage',e=>{if(e.key===KEY){data=read();renderNext()}});
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',renderNext);else renderNext();
 })();
-</script><script type="module" src="https://semicolonxss.github.io/Formwheel/shared/account-theme-sync.js?v=20261022-account1"></script><script type="module" src="https://semicolonxss.github.io/Formwheel/shared/account-rapid-sync.js?v=20261023-maxmerge1"></script><script type="module" src="./assets/peak-witness.js?v=20261024-compact2"></script><script defer src="./shared/secol-crown.js?v=20261024-profile-unified2"></script><aside id="fw-playtest-entry" style="max-width:650px;margin:18px auto;padding:16px;border:1px solid #d7d6f4;border-radius:16px;background:#f8f7ff;color:#252747;text-align:center"><strong>🧪 Formwheel 플레이테스터 모집</strong><p style="margin:6px 0 12px">직접 플레이하고 버그와 아이디어를 알려주세요!</p><a href="./playtest.html" style="display:inline-block;background:#4637b8;color:#fff;padding:10px 18px;border-radius:10px;text-decoration:none;font-weight:700">지원 안내 · 튜토리얼 보기 →</a></aside>
+</script><script type="module" src="https://semicolonxss.github.io/Formwheel/shared/account-theme-sync.js?v=20261022-account1"></script><script type="module" src="https://semicolonxss.github.io/Formwheel/shared/account-rapid-sync.js?v=20261023-maxmerge1"></script><script type="module" src="./assets/peak-witness.js?v=20261024-compact2"></script><script defer src="./shared/secol-crown.js?v=20261024-profile-unified2"></script><aside id="fw-playtest-entry" style="max-width:650px;margin:18px auto;padding:16px;border:1px solid #d7d6f4;border-radius:16px;background:#f8f7ff;color:#252747;text-align:center"><strong>🧪 Formwheel 플레이테스터 모집 · 10초 챌린지</strong><p style="margin:6px 0 12px">지원 화면에서 10초 테스트를 하고 버그와 아이디어를 알려주세요!</p><a href="./playtest.html" style="display:inline-block;background:#4637b8;color:#fff;padding:10px 18px;border-radius:10px;text-decoration:none;font-weight:700">지원 안내 · 튜토리얼 보기 →</a></aside>
 </body>
 </html>
 
