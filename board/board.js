@@ -111,7 +111,7 @@ function makeGoGroup(b,n,point) {
  return {stones:[...seen],liberties:libs.size};
 }
 function goMove(at){
- if(state.done||state.board[at])return;
+ if(state.done||!Number.isInteger(at)||at<0||at>=state.board.length||state.board[at])return;
  if(requestOnline({kind:"place",index:at}))return;
  const n=state.n,b=state.board.slice(),who=state.t;
  b[at]=who;
@@ -191,7 +191,7 @@ function win5(b,i,color,n){
  return false;
 }
 function omokMove(i){
- if(state.done||state.board[i])return;
+ if(state.done||!Number.isInteger(i)||i<0||i>=state.board.length||state.board[i])return;
  if(requestOnline({kind:"place",index:i}))return;
  save();state.board[i]=state.t;state.last=i;
  if(win5(state.board,i,state.t,15)){state.winner=state.t;state.done=true;}
@@ -226,7 +226,7 @@ function othelloFlips(b,i,who){
 }
 function othelloLegal(who){const out=[];for(let i=0;i<64;i++)if(othelloFlips(state.board,i,who).length)out.push(i);return out;}
 function othelloMove(i){
- if(state.done)return;
+ if(state.done||!Number.isInteger(i)||i<0||i>=state.board.length)return;
  if(requestOnline({kind:"place",index:i}))return;
  const flips=othelloFlips(state.board,i,state.t);if(!flips.length)return;
  save();state.board[i]=state.t;flips.forEach(p=>state.board[p]=state.t);
@@ -413,6 +413,7 @@ window.FormwheelBoardBridge=Object.freeze({
       reset(type);
       for(const a of actions){
         if(!a||typeof a!=="object"||!["place","chess","pass","claim"].includes(a.kind))throw Error("invalid action");
+        if(a.kind==="place"&&(!Number.isInteger(a.index)||a.index<0||a.index>=state.board.length))throw Error("place outside board");
         if((state.done||state.draw)||(game==="chess"&&chessStatus().done))throw Error("action after game ended");
         const expected=state.t===1?hostUid:guestUid;
         if(!expected||a.uid!==expected)throw Error("wrong player turn");
