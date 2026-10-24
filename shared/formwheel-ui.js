@@ -233,12 +233,35 @@ body[data-fw-global-theme="daynight"][data-fw-effect="daynight"]::after{content:
 52%,68%{background:linear-gradient(180deg,#e37191,#f9ab68)}
 80%,92%{background:linear-gradient(180deg,#101b43,#39447a)}
 }
-@keyframes fw-daynight-sun{0%,100%{transform:translate(-35vw,52vh);opacity:.8}25%{transform:translate(0,0);opacity:1}55%{transform:translate(35vw,50vh);opacity:.75}73%,95%{transform:translate(35vw,50vh);opacity:0}}
+/* Sun follows a full off-screen arc; moon rises after sunset. */
+@keyframes fw-daynight-sun{
+0%{transform:translate(-55vw,105vh);opacity:0}
+8%{transform:translate(-35vw,55vh);opacity:1}
+25%{transform:translate(0,0);opacity:1}
+48%{transform:translate(30vw,48vh);opacity:1}
+58%{transform:translate(55vw,105vh);opacity:0}
+58.01%,100%{transform:translate(55vw,105vh);opacity:0}
+}
+body[data-fw-global-theme="daynight"] .fw-daynight-moon{
+position:fixed;top:12vh;left:calc(50% - 34px);width:68px;height:68px;border-radius:50%;
+z-index:-1;pointer-events:none;background:#f3f2dc;box-shadow:0 0 30px 6px #eff0f2a8;
+animation:fw-daynight-moonrise 30s linear infinite;
+}
+body[data-fw-global-theme="daynight"] .fw-daynight-moon::after{
+content:"";position:absolute;top:7px;left:17px;width:57px;height:57px;border-radius:50%;background:#26335e;
+}
+@keyframes fw-daynight-moonrise{
+0%,60%{transform:translate(-55vw,105vh);opacity:0}
+67%{transform:translate(-32vw,52vh);opacity:1}
+82%{transform:translate(0,0);opacity:1}
+94%{transform:translate(34vw,52vh);opacity:1}
+100%{transform:translate(55vw,105vh);opacity:0}
+}
 body[data-fw-global-theme="daynight"] :is(.card,.panel,.fw-footer,.upgrade,.item,.theme-item,.station,.modal,.dialog,.notice,.status){background:#fffaf1!important;color:#292929!important;border-color:#d5a37a!important}
 body[data-fw-global-theme="daynight"] :is(.card,.panel,.fw-footer,.upgrade,.item,.theme-item,.station,.modal,.dialog) :is(h1,h2,h3,h4,p,span,small,strong,label,.muted,.sub,.item-desc,.theme-note){color:#292929!important;text-shadow:none!important}
 body[data-fw-global-theme="daynight"] :is(button,[role="button"],.openButton){background:#ffe6c8!important;color:#292929!important;border-color:#bd8d65!important}
 body[data-fw-global-theme="daynight"] .card .openButton{background:#ffe6c8!important;color:#292929!important}
-@media(prefers-reduced-motion:reduce){body[data-fw-global-theme="daynight"][data-fw-effect="daynight"]::before,body[data-fw-global-theme="daynight"][data-fw-effect="daynight"]::after{animation:none!important}}
+@media(prefers-reduced-motion:reduce){body[data-fw-global-theme="daynight"][data-fw-effect="daynight"]::before,body[data-fw-global-theme="daynight"][data-fw-effect="daynight"]::after,body[data-fw-global-theme="daynight"] .fw-daynight-moon{animation:none!important}}
 /* DAYNIGHT: charcoal text on the animated sky and all readable surfaces. */
 body[data-fw-global-theme="daynight"] :is(header,main,.hero,.toolbar,.fw-install,.fw-footer){color:#292929!important}
 body[data-fw-global-theme="daynight"] :is(.hero h1,.hero h2,.hero p,main > h1,main > h2,main > p){color:#292929!important;text-shadow:0 1px 2px #fff8!important}
@@ -272,6 +295,13 @@ body[data-fw-global-theme="cosmic-eternity"] .card .openButton:hover{
 @media(prefers-reduced-motion:reduce){body[data-fw-global-theme]::before{animation:none!important;transform:none!important}}
 `;
 document.head.append(themeStyle);
+// Mount moon only after body exists; CSS limits visibility to DAYNIGHT.
+function mountDaynightMoon(){
+ if(document.querySelector('.fw-daynight-moon'))return;
+ const moon=document.createElement('span');moon.className='fw-daynight-moon';moon.setAttribute('aria-hidden','true');document.body.append(moon);
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mountDaynightMoon,{once:true});else mountDaynightMoon();
+
 const effects={'cosmic-infinity':'spin','cosmic-paradox':'reverse-spin','cosmic-omega':'pulse','cosmic-eternity':'slow-spin','cosmic-genesis':'reverse-spin',daynight:'daynight',overdrive:'spin',quantum:'reverse-spin',singularity:'slow-spin',nova:'pulse',echo:'pulse',comet:'drift',celestial:'shimmer',eclipse:'pulse',rift:'drift',aurora:'drift',prismatic:'shimmer',cyber:'shimmer','void-premium':'pulse'};
 const textThemes={
  sunset:['#281523','#432638','#6b2850'],forest:['#fff','#173e30','#145039'],
