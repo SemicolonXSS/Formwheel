@@ -27,3 +27,13 @@ node --test firebase-security/rapid-v3/core.test.cjs
 6. Test real catalog, huge BigInt prices, concurrent requests and timeout/retry behavior before connecting Shop/Clicker.
 
 No deploy commands, live Firebase access or changes to production entrypoints are part of this prototype.
+
+## HARMONY 01-4 verification report (2026-10-24)
+- Reconstructed the branch's pure core and unit tests in an isolated Node.js v22.16.0 environment. **7/7 tests actually passed** after two refund-safety corrections.
+- Fix 1: a reused refund request ID now must also match the original `purchaseId`.
+- Fix 2: refunds credit the historical receipt amount, not the current product catalog price. Corrupt receipt amounts are rejected.
+- `node --check core.cjs` and `node --check core.test.cjs` both passed in the isolated environment.
+- **Rules Emulator tests NOT RUN:** Firebase CLI and `@firebase/rules-unit-testing` are not installed in this execution environment; it cannot download package dependencies. Java is present. No claims of Rules permission-test success.
+- **Callable integration NOT RUN:** the example is not connected to a deployed Firebase endpoint. Its production initialization, rate limiting, authentication and actual concurrent retry behavior require further work and tests.
+- Only this non-default prototype branch was changed; no Firebase live data or live rules was accessed or altered.
+- The standalone Rules fixture MUST NOT replace the live Rules; an existing permissive ancestor rule could override narrower child restrictions. Merge only after examining the true live Rules and running comprehensive Emulator tests.
