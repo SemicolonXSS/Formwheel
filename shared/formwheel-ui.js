@@ -31,9 +31,11 @@ const palettes={
  "cosmic-paradox":["#0c102e","#302254","#7de8e0","#8257c5"],
  "cosmic-omega":["#08071d","#321f71","#ffe6b8","#bb5ce5"],
  "cosmic-eternity":["#171739","#fffaf0","#292929","#88d7e7"],
- "cosmic-genesis":["#070f28","#fffaf5","#292929","#b384ff"]
+ "cosmic-genesis":["#070f28","#fffaf5","#292929","#b384ff"],
+ "daynight":["#142c57","#fffaf1","#292929","#ffad66"]
 };
 const gradients={
+ daynight:"linear-gradient(180deg,#76b7f8,#f7de9d,#ee957e)",
  "cosmic-genesis":"conic-gradient(from 90deg,#07152c,#3079aa,#b384ff,#091432,#07152c)",
  sunset:"linear-gradient(120deg,#f5a669,#ce6899,#5853b1)",
  forest:"linear-gradient(120deg,#173d30,#489467,#b3c785)",
@@ -222,6 +224,21 @@ body[data-fw-global-theme="cosmic-genesis"] :is(button,[role="button"],.openButt
 body[data-fw-global-theme="cosmic-genesis"] .card .openButton{background:#e7f0ff!important;color:#292929!important;border-color:#7fa4d9!important}
 body[data-fw-global-theme="cosmic-genesis"] :is(.tag,.badge,.fw-maturity-caption){color:#292929!important;text-shadow:none!important}
 body[data-fw-global-theme="cosmic-genesis"] :is(input,textarea,select){background:#fff!important;color:#202337!important}
+/* DAYNIGHT: 30 seconds = 24 hours; stable light cards keep labels readable. */
+body[data-fw-global-theme="daynight"][data-fw-effect="daynight"]::before{inset:0;opacity:1;background:linear-gradient(180deg,#76b7f8 0%,#f7de9d 100%);animation:fw-daynight-sky 30s linear infinite;transform:none!important}
+body[data-fw-global-theme="daynight"][data-fw-effect="daynight"]::after{content:"";position:fixed;pointer-events:none;z-index:-1;top:12vh;left:calc(50% - 40px);width:80px;height:80px;border-radius:50%;background:#fff8b0;box-shadow:0 0 55px 12px #ffe8a8;animation:fw-daynight-sun 30s linear infinite}
+@keyframes fw-daynight-sky{
+0%,100%{background:linear-gradient(180deg,#f2a3a0,#ffd796)}
+18%,35%{background:linear-gradient(180deg,#65b6fa,#e3f5ff)}
+52%,68%{background:linear-gradient(180deg,#e37191,#f9ab68)}
+80%,92%{background:linear-gradient(180deg,#101b43,#39447a)}
+}
+@keyframes fw-daynight-sun{0%,100%{transform:translate(-35vw,52vh);opacity:.8}25%{transform:translate(0,0);opacity:1}55%{transform:translate(35vw,50vh);opacity:.75}73%,95%{transform:translate(35vw,50vh);opacity:0}}
+body[data-fw-global-theme="daynight"] :is(.card,.panel,.fw-footer,.upgrade,.item,.theme-item,.station,.modal,.dialog,.notice,.status){background:#fffaf1!important;color:#292929!important;border-color:#d5a37a!important}
+body[data-fw-global-theme="daynight"] :is(.card,.panel,.fw-footer,.upgrade,.item,.theme-item,.station,.modal,.dialog) :is(h1,h2,h3,h4,p,span,small,strong,label,.muted,.sub,.item-desc,.theme-note){color:#292929!important;text-shadow:none!important}
+body[data-fw-global-theme="daynight"] :is(button,[role="button"],.openButton){background:#ffe6c8!important;color:#292929!important;border-color:#bd8d65!important}
+body[data-fw-global-theme="daynight"] .card .openButton{background:#ffe6c8!important;color:#292929!important}
+@media(prefers-reduced-motion:reduce){body[data-fw-global-theme="daynight"][data-fw-effect="daynight"]::before,body[data-fw-global-theme="daynight"][data-fw-effect="daynight"]::after{animation:none!important}}
 body[data-fw-global-theme] .food.selected,body[data-fw-global-theme] .food.selected :is(span,small,strong,b,.name,.state,.components){color:#142341!important}
 /* Premium cosmic card controls: pale chips must never inherit light card lettering.
    Scope to four cosmic themes; retain each theme's animated background. */
@@ -250,7 +267,7 @@ body[data-fw-global-theme="cosmic-eternity"] .card .openButton:hover{
 @media(prefers-reduced-motion:reduce){body[data-fw-global-theme]::before{animation:none!important;transform:none!important}}
 `;
 document.head.append(themeStyle);
-const effects={'cosmic-infinity':'spin','cosmic-paradox':'reverse-spin','cosmic-omega':'pulse','cosmic-eternity':'slow-spin','cosmic-genesis':'reverse-spin',overdrive:'spin',quantum:'reverse-spin',singularity:'slow-spin',nova:'pulse',echo:'pulse',comet:'drift',celestial:'shimmer',eclipse:'pulse',rift:'drift',aurora:'drift',prismatic:'shimmer',cyber:'shimmer','void-premium':'pulse'};
+const effects={'cosmic-infinity':'spin','cosmic-paradox':'reverse-spin','cosmic-omega':'pulse','cosmic-eternity':'slow-spin','cosmic-genesis':'reverse-spin',daynight:'daynight',overdrive:'spin',quantum:'reverse-spin',singularity:'slow-spin',nova:'pulse',echo:'pulse',comet:'drift',celestial:'shimmer',eclipse:'pulse',rift:'drift',aurora:'drift',prismatic:'shimmer',cyber:'shimmer','void-premium':'pulse'};
 const textThemes={
  sunset:['#281523','#432638','#6b2850'],forest:['#fff','#173e30','#145039'],
  neon:['#fff','#291c48','#5720a2'],galaxy:['#fff','#262151','#45369b'],
@@ -264,7 +281,7 @@ const textThemes={
  eclipse:['#fff','#ffffff','#ffdf9b'],quantum:['#fff','#29335e','#96f7f0'],
  celestial:['#fff','#ffffff','#ffdba7'],singularity:['#fff','#1c1533','#d8b8ff'],
  overdrive:['#201329','#ffffff','#ffe5a3'],
- 'cosmic-infinity':['#ffffff','#ffffff','#90ebf0'],'cosmic-paradox':['#ffffff','#ffffff','#83e8e1'],'cosmic-omega':['#ffffff','#ffffff','#ffe6b8'],'cosmic-eternity':['#292929','#292929','#292929'],'cosmic-genesis':['#292929','#292929','#292929']
+ 'cosmic-infinity':['#ffffff','#ffffff','#90ebf0'],'cosmic-paradox':['#ffffff','#ffffff','#83e8e1'],'cosmic-omega':['#ffffff','#ffffff','#ffe6b8'],'cosmic-eternity':['#292929','#292929','#292929'],'cosmic-genesis':['#292929','#292929','#292929'],daynight:['#ffffff','#292929','#a04b24']
 };
 
 // Derive readable text from each theme's *actual* surface color.
@@ -287,7 +304,7 @@ function apply(){
   document.body.dataset.fwGlobalTheme=current;
   const effect=effects[current];
   if(effect)document.body.dataset.fwEffect=effect;else delete document.body.dataset.fwEffect;
-  const darkThemesForButtons=new Set(['midnight','echo','nova','void-premium','rift','comet','eclipse','quantum','celestial','singularity','overdrive','cosmic-infinity','cosmic-paradox','cosmic-omega','cosmic-eternity','cosmic-genesis']);
+  const darkThemesForButtons=new Set(['midnight','echo','nova','void-premium','rift','comet','eclipse','quantum','celestial','singularity','overdrive','cosmic-infinity','cosmic-paradox','cosmic-omega','cosmic-eternity','cosmic-genesis','daynight']);
   const [onBackground,onSurface,linkAccent]=textThemes[current]||['#fff','#fff','#333'];
   document.body.style.setProperty('--fw-theme-on-background',onBackground);
   document.body.style.setProperty('--fw-theme-text',onSurface);
