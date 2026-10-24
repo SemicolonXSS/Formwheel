@@ -15,7 +15,9 @@ async function load(){
   const state=body.match(/결과: (성공|시간 초과|다른 프로젝트 선택)/)?.[1];
   const seconds=Number(body.match(/소요 시간: ([\d.]+)초/)?.[1]);
   if(!target||!state||!Number.isFinite(seconds)||seconds<0||seconds>120)return;
-  const g=groups.get(target)||{n:0,wins:0,seconds:0,timeouts:0};
+  const selected=body.match(/선택한 프로젝트: ([^\n]+)/)?.[1]?.trim()||'';
+  const g=groups.get(target)||{n:0,wins:0,seconds:0,timeouts:0,confusions:new Map()};
+  if(state!=='성공'&&selected&&selected!=='미기록'&&selected!==target)g.confusions.set(selected,(g.confusions.get(selected)||0)+1);
   g.n++;g.wins+=Number(state==='성공');g.timeouts+=Number(state==='시간 초과');g.seconds+=seconds;groups.set(target,g);
  });
  let total=0,success=0,sum=0;
@@ -23,7 +25,7 @@ async function load(){
  for(const [target,g] of [...groups].sort((a,b)=>b[1].n-a[1].n)){
   total+=g.n;success+=g.wins;sum+=g.seconds;
   const tr=document.createElement('tr');
-  for(const value of [target,String(g.n),(100*g.wins/g.n).toFixed(1)+'%',(g.seconds/g.n).toFixed(2)+'초',String(g.timeouts)]){
+  for(const value of [target,String(g.n),(100*g.wins/g.n).toFixed(1)+'%',(g.seconds/g.n).toFixed(2)+'초',String(g.timeouts),[...g.confusions].sort((a,b)=>b[1]-a[1]).map(([name,n])=>name+' ('+n+')').join(', ')||'—']){
    const td=document.createElement('td');td.textContent=value;tr.append(td)
   }tbody.append(tr);
  }
