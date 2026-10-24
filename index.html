@@ -840,10 +840,10 @@ if(data?.slug){
  const cancel=document.createElement('a');cancel.href='./playtest.html';cancel.textContent='챌린지 취소';cancel.style.cssText='font-size:12px;color:#5549ac';
  panel.append(hint,clockText,cancel);document.body.append(panel);
  let finished=false;
- async function finish(success,timeout,destination){
+ async function finish(success,timeout,destination,selectedSlug){
   if(finished)return;finished=true;clearInterval(clock);
   const elapsed=(Date.now()-data.startedAt)/1000;
-  const result={slug:data.slug,success,timeout,elapsed,ageGroup:data.ageGroup||''};
+  const result={slug:data.slug,selectedSlug:selectedSlug||'',success,timeout,elapsed,ageGroup:data.ageGroup||''};
   sessionStorage.setItem(RESULT,JSON.stringify(result));
   sessionStorage.setItem(PENDING,JSON.stringify(result));sessionStorage.removeItem(KEY);
   clockText.textContent=elapsed>10?'10초 초과 · '+elapsed.toFixed(1)+'초에 선택':'10초 이내 · '+elapsed.toFixed(1)+'초에 선택';
@@ -863,7 +863,7 @@ if(data?.slug){
   const match=u.pathname.match(/\/Formwheel_([^/]+)\/?/i);if(!match||u.hostname!==location.hostname)return;
   e.preventDefault();e.stopImmediatePropagation();
   const success=match[1].toLowerCase()===data.slug.toLowerCase()&&Date.now()-data.startedAt<=10000;
-  finish(success,false,link.href);
+  finish(success,false,link.href,match[1]);
  },true);
 }
 }
