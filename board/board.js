@@ -79,6 +79,7 @@ function render(){
 }
 function appendGrid(n,cell){
  boardEl.style.gridTemplateColumns="repeat("+n+",minmax(0,1fr))";
+ boardEl.style.gridTemplateRows="repeat("+n+",minmax(0,1fr))";
  boardEl.replaceChildren();
  const frag=document.createDocumentFragment();
  for(let i=0;i<n*n;i++)frag.append(cell(i));
@@ -360,6 +361,7 @@ function renderChess(){
  tip.textContent=notice||(isDone?"새 게임으로 다시 시작할 수 있습니다.":"이동할 말을 누르고 초록색 표시된 칸을 누르세요. 백이 먼저 둡니다.");
  const targets=new Set(valid.filter(m=>m[0]===selected).map(m=>m[1]));
  boardEl.style.gridTemplateColumns="repeat(8,minmax(0,1fr))";
+ boardEl.style.gridTemplateRows="repeat(8,minmax(0,1fr))";
  boardEl.replaceChildren();const frag=document.createDocumentFragment();
  for(let j=0;j<64;j++){
   const i=Math.floor(j/8)*16+j%8,p=state.b[i];
