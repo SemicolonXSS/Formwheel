@@ -1,0 +1,13 @@
+{
+  "name": "formwheel-rapid-v3-prototype",
+  "private": true,
+  "scripts": {
+    "test:unit": "node --test core.test.cjs",
+    "test:rules": "firebase emulators:exec --project demo-formwheel-rapid-v3 --only database --config firebase.json 'node --test emulator.rules.test.cjs'"
+  },
+  "devDependencies": {
+    "@firebase/rules-unit-testing": "^4.0.1",
+    "firebase": "^10.14.1",
+    "firebase-tools": "^14.0.0"
+  }
+}
