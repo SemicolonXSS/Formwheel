@@ -868,6 +868,25 @@ if(data?.slug){
 }
 }
 </script>
+<script id="fw-card-click-20261025">
+document.addEventListener('click',function(e){
+ if(e.defaultPrevented||e.target.closest('a,button,input,select,textarea,label,[role="button"]'))return;
+ const card=e.target.closest('#projects .card');
+ if(!card)return;
+ const link=card.querySelector('a[href*="Formwheel_"]')||card.querySelector('a[href]');
+ if(link)link.click();
+});
+document.addEventListener('keydown',function(e){
+ if(e.key!=='Enter'&&e.key!==' ')return;
+ const card=e.target.closest('#projects .card');
+ if(!card||e.target!==card)return;
+ e.preventDefault();const link=card.querySelector('a[href*="Formwheel_"]')||card.querySelector('a[href]');if(link)link.click();
+});
+document.querySelectorAll('#projects .card').forEach(card=>{
+ if(!card.hasAttribute('tabindex'))card.tabIndex=0;
+ card.style.cursor='pointer';
+});
+</script>
 </body>
 </html>
 
