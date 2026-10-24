@@ -825,6 +825,58 @@ document.getElementById("fw-match-close").onclick=()=>{modal.hidden=true};
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',renderNext);else renderNext();
 })();
 </script><script type="module" src="https://semicolonxss.github.io/Formwheel/shared/account-theme-sync.js?v=20261022-account1"></script><script type="module" src="https://semicolonxss.github.io/Formwheel/shared/account-rapid-sync.js?v=20261023-maxmerge1"></script><script type="module" src="./assets/peak-witness.js?v=20261024-compact2"></script><script defer src="./shared/secol-crown.js?v=20261024-profile-unified2"></script><aside id="fw-playtest-entry" style="max-width:650px;margin:18px auto;padding:16px;border:1px solid #d7d6f4;border-radius:16px;background:#f8f7ff;color:#252747;text-align:center"><strong>🧪 Formwheel 플레이테스터 모집</strong><p style="margin:6px 0 12px">직접 플레이하고 버그와 아이디어를 알려주세요!</p><a href="./playtest.html" style="display:inline-block;background:#4637b8;color:#fff;padding:10px 18px;border-radius:10px;text-decoration:none;font-weight:700">지원 안내 · 튜토리얼 보기 →</a></aside>
+<script id="fw-find10-controller">
+(()=>{
+'use strict';
+if(new URLSearchParams(location.search).get('fwFind10')!=='1')return;
+const KEY='fw-find10-challenge', RESULT='fw-find10-result';
+let data;try{data=JSON.parse(sessionStorage.getItem(KEY)||'null')}catch{}
+if(!data||!data.slug)return;
+data.startedAt=Date.now();
+sessionStorage.setItem(KEY,JSON.stringify(data));
+const panel=document.createElement('div');
+panel.setAttribute('role','status');
+panel.setAttribute('aria-live','off');
+panel.style.cssText='position:fixed;left:50%;top:12px;transform:translateX(-50%);z-index:2147483647;width:min(94vw,580px);border:2px solid #5751d5;background:#fff;color:#252047;border-radius:16px;padding:11px 14px;box-shadow:0 8px 40px #1115;font:700 14px/1.5 system-ui,sans-serif;text-align:center';
+const hint=document.createElement('div');
+hint.textContent='⏱️ 10초 안에 찾으세요: '+data.hint;
+const remaining=document.createElement('div');
+remaining.style.cssText='font-size:22px;color:#453ac4;font-variant-numeric:tabular-nums';
+const cancel=document.createElement('a');
+cancel.href='./playtest.html';
+cancel.style.cssText='font-size:12px;color:#5549ac';
+cancel.textContent='챌린지 취소 · 접수 화면으로';
+panel.append(hint,remaining,cancel);
+document.body.append(panel);
+let finished=false;
+function complete(success,timeout){
+if(finished)return;
+finished=true;
+const elapsed=(Date.now()-data.startedAt)/1000;
+sessionStorage.setItem(RESULT,JSON.stringify({success,timeout,elapsed,slug:data.slug}));
+sessionStorage.removeItem(KEY);
+clearInterval(clock);
+}
+function tick(){
+const remain=Math.max(0,10-(Date.now()-data.startedAt)/1000);
+remaining.textContent=remain.toFixed(1)+'초';
+if(remain<=0){complete(false,true);location.assign('./playtest.html')}
+}
+const clock=setInterval(tick,70);tick();
+cancel.addEventListener('click',()=>{complete(false,false);sessionStorage.removeItem(RESULT)});
+document.addEventListener('click',event=>{
+if(finished)return;
+const a=event.target.closest('a[href]');
+if(!a||panel.contains(a))return;
+let url;try{url=new URL(a.href,location.href)}catch{return}
+if(url.origin!==location.origin)return;
+const match=url.pathname.match(/\/Formwheel_([^/]+)\/?/i);
+if(!match)return;
+const success=match[1].toLowerCase()===data.slug.toLowerCase() && Date.now()-data.startedAt<=10000;
+complete(success,false);
+},true);
+})();
+</script>
 </body>
 </html>
 
