@@ -843,7 +843,7 @@ if(data?.slug){
  async function finish(success,timeout,destination){
   if(finished)return;finished=true;clearInterval(clock);
   const elapsed=(Date.now()-data.startedAt)/1000;
-  const result={slug:data.slug,success,timeout,elapsed};
+  const result={slug:data.slug,success,timeout,elapsed,ageGroup:data.ageGroup||''};
   sessionStorage.setItem(RESULT,JSON.stringify(result));
   sessionStorage.setItem(PENDING,JSON.stringify(result));sessionStorage.removeItem(KEY);
   clockText.textContent=elapsed>10?'10초 초과 · '+elapsed.toFixed(1)+'초에 선택':'10초 이내 · '+elapsed.toFixed(1)+'초에 선택';
@@ -856,7 +856,9 @@ if(data?.slug){
  cancel.addEventListener('click',e=>{e.preventDefault();finished=true;clearInterval(clock);sessionStorage.removeItem(KEY);location.assign('./playtest.html')});
  document.addEventListener('click',e=>{
   if(finished)return;
-  const link=e.target.closest('a[href]');if(!link||panel.contains(link))return;
+  let link=e.target.closest('a[href]');if(panel.contains(e.target))return;
+  if(!link){const card=e.target.closest('#projects .card');if(card&&!e.target.closest('button,input,select,textarea,label'))link=card.querySelector('a[href*="Formwheel_"]')||card.querySelector('a[href]');}
+  if(!link)return;
   let u;try{u=new URL(link.href,location.href)}catch{return}
   const match=u.pathname.match(/\/Formwheel_([^/]+)\/?/i);if(!match||u.hostname!==location.hostname)return;
   e.preventDefault();e.stopImmediatePropagation();
