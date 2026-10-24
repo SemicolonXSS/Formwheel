@@ -37,3 +37,10 @@ No deploy commands, live Firebase access or changes to production entrypoints ar
 - **Callable integration NOT RUN:** the example is not connected to a deployed Firebase endpoint. Its production initialization, rate limiting, authentication and actual concurrent retry behavior require further work and tests.
 - Only this non-default prototype branch was changed; no Firebase live data or live rules was accessed or altered.
 - The standalone Rules fixture MUST NOT replace the live Rules; an existing permissive ancestor rule could override narrower child restrictions. Merge only after examining the true live Rules and running comprehensive Emulator tests.
+
+## HARMONY 01-5 verification report (2026-10-24)
+- Runtime checked: Node.js v22.16.0 and Java 21 available; Firebase CLI missing. npm registry lookup timed out. **Firebase Emulator tests were NOT run.**
+- Pure reducer tests actually run with Node: **10 passed, 0 failed**. This includes three new tests simulating sequential conflict re-evaluation, transaction retry idempotency, and ignoring untrusted client prices.
+- Emulator rule tests expanded to reject unauthenticated nested writes, signed-in owner edits to inventory and transaction receipts, and cross-account enumeration. **These are written only; not yet passed.**
+- Limitation: pure reducer conflict tests do not demonstrate actual concurrent Admin SDK RTDB transactions. No deployed Callable API or live Rules/data touched.
+- Only `harmony-01-rapid-v3-prototype` changed; main and existing production application files are untouched.
