@@ -1,0 +1,473 @@
+[
+  {
+    "repository": "Formwheel",
+    "head": "82cb2ab2090724d88bba6ea41c9c9e8884039093",
+    "javascriptBlocks": 71,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": [
+      {
+        "file": "tests/service-worker.test.cjs",
+        "exitCode": 0,
+        "output": "✔ versioned assets update online and use exact cached version offline (5.398398ms)\n✔ preloaded app shell supports versioned HTML references offline (1.266031ms)\n✔ unknown navigation gets connection guidance and not a fake home page (1.690442ms)\nℹ tests 3\nℹ suites 0\nℹ pass 3\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 15.684006\n"
+      }
+    ]
+  },
+  {
+    "repository": "Formwheel_AI",
+    "head": "6417d2c433340880478cbde087c611e8f06809cf",
+    "javascriptBlocks": 3,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": []
+  },
+  {
+    "repository": "Formwheel_AQS",
+    "head": "57127ff26f58325d5699ea753e668dcb82602840",
+    "javascriptBlocks": 1,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": []
+  },
+  {
+    "repository": "Formwheel_Animation",
+    "head": "f7112bf086cf3f044dd359a7d3c93b3a7bab40b6",
+    "javascriptBlocks": 4,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": []
+  },
+  {
+    "repository": "Formwheel_Balance",
+    "head": "9dd91108c4ce17debf550a1dfaf91ea406b70d24",
+    "javascriptBlocks": 3,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": []
+  },
+  {
+    "repository": "Formwheel_Battle",
+    "head": "7abe49f269081fd1b57387d1c9f964fef19179b6",
+    "javascriptBlocks": 2,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": []
+  },
+  {
+    "repository": "Formwheel_Bomb",
+    "head": "0eeff649e821591541ac64bfbb75c67cff5047ec",
+    "javascriptBlocks": 5,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": [
+      {
+        "file": "tests/regression.test.cjs",
+        "exitCode": 0,
+        "output": "PASS expiration boundary, pass-before-expiry, concurrent explosion replay and one survivor\n"
+      }
+    ]
+  },
+  {
+    "repository": "Formwheel_Button",
+    "head": "70aa26faf683f229ca9c19bc1c8a56955ab363f4",
+    "javascriptBlocks": 2,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": []
+  },
+  {
+    "repository": "Formwheel_Casino",
+    "head": "a420e469da26ed66b3ebd3a040951c5cf6c3a634",
+    "javascriptBlocks": 6,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": [
+      {
+        "file": "tests/regression.test.cjs",
+        "exitCode": 0,
+        "output": "PASS purchases, ownership, balance, receipt replay, daily idempotence, no legacy-password DB reads/writes\n"
+      }
+    ]
+  },
+  {
+    "repository": "Formwheel_Chat",
+    "head": "48120a3cded078dd2d709f3d154fdae7a865f14c",
+    "javascriptBlocks": 2,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": []
+  },
+  {
+    "repository": "Formwheel_Check",
+    "head": "e176a27e8a960eef4b48b1b0d41682f15f5d8122",
+    "javascriptBlocks": 8,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": [
+      {
+        "file": "tests/personal-storage.test.cjs",
+        "exitCode": 0,
+        "output": "✔ blocked browser storage still renders the personal checklist (2.311158ms)\nℹ tests 1\nℹ suites 0\nℹ pass 1\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 6.655395\n"
+      },
+      {
+        "file": "tests/regression.test.cjs",
+        "exitCode": 0,
+        "output": "{\"syntax\":\"pass\",\"stableIds\":377,\"verified\":144,\"newlyImplemented\":52,\"evidence\":286,\"checks\":[\"offline initial render\",\"migration preserves unrelated data\",\"dated migration only once\",\"manual uncheck/reset retained\",\"pending overrides stale snapshots\",\"concurrent toggles retained\",\"automatic write retry\",\"disconnect state\",\"incomplete filter\"]}\nFirebase 저장 실패: Error: simulated write failure\n    at Object.update (/workspace/scratch/63c5857e2e06/Formwheel_Check/tests/regression.test.cjs:10:437)\n    at flushPending (evalmachine.<anonymous>:3579:34)\n    at save (evalmachine.<anonymous>:3570:2)\n    at evalmachine.<anonymous>:1:1\n    at Script.runInContext (node:vm:149:12)\n    at Object.runInContext (node:vm:301:6)\n    at run (/workspace/scratch/63c5857e2e06/Formwheel_Check/tests/regression.test.cjs:11:17)\n    at /workspace/scratch/63c5857e2e06/Formwheel_Check/tests/regression.test.cjs:26:18\n"
+      }
+    ]
+  },
+  {
+    "repository": "Formwheel_Clicker",
+    "head": "12607dc6b2842bf8f599d62b4d907ccb6c27c285",
+    "javascriptBlocks": 7,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": [
+      {
+        "file": "tests/leaderboard.test.cjs",
+        "exitCode": 0,
+        "output": "✔ leaderboard reads only 20 entries and repeated daily submission is rejected (18.909089ms)\nℹ tests 1\nℹ suites 0\nℹ pass 1\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 23.578676\n"
+      }
+    ]
+  },
+  {
+    "repository": "Formwheel_Cook",
+    "head": "558d59a5c3f693a093b70a958dfca454fe434cce",
+    "javascriptBlocks": 8,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": [
+      {
+        "file": "tests/battle.test.cjs",
+        "exitCode": 0,
+        "output": "✔ refresh restores the same player and the room (17.808879ms)\n✔ a remaining non-host ends an expired battle (2.802976ms)\n✔ deleted room is cleared from the resume session (1.097286ms)\nℹ tests 3\nℹ suites 0\nℹ pass 3\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 26.425979\n"
+      }
+    ]
+  },
+  {
+    "repository": "Formwheel_Decode",
+    "head": "ed315847ed4a111fc40619827c77a1e6f7404da1",
+    "javascriptBlocks": 4,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": [
+      {
+        "file": "tests/regression.test.cjs",
+        "exitCode": 0,
+        "output": "PASS 9 Unicode round trips, reversible ciphers, empty/control characters, malformed inputs and invalid UTF-8\n"
+      }
+    ]
+  },
+  {
+    "repository": "Formwheel_DiceDuel",
+    "head": "63ed29f51f759480d6847d6539709635f5c51537",
+    "javascriptBlocks": 5,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": []
+  },
+  {
+    "repository": "Formwheel_Edit",
+    "head": "57e5c390604bc3bea73c944f14455ada5609ff16",
+    "javascriptBlocks": 2,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": []
+  },
+  {
+    "repository": "Formwheel_Fate",
+    "head": "c7d3b92c5826ba739e7d66e5a125d3ae05b3dec8",
+    "javascriptBlocks": 4,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": []
+  },
+  {
+    "repository": "Formwheel_Form",
+    "head": "96497f8efb4cd97fe948ca22c3ef3816a2b0c490",
+    "javascriptBlocks": 3,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": []
+  },
+  {
+    "repository": "Formwheel_GCrown",
+    "head": "eb3c066e44eff9d2da12db609dc10b0fd36d8380",
+    "javascriptBlocks": 4,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": [
+      {
+        "file": "tests/regression.test.cjs",
+        "exitCode": 0,
+        "output": "PASS 5/6/7 boards, movement boundary, last action, crown score, replay, shield/steal, tie and all-left result\n"
+      }
+    ]
+  },
+  {
+    "repository": "Formwheel_Glitch",
+    "head": "9625a575929609de61b93917f09f372335f90532",
+    "javascriptBlocks": 1,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": []
+  },
+  {
+    "repository": "Formwheel_Marble",
+    "head": "e077cecfc668d39e6cf1dd8e08184e895ac13903",
+    "javascriptBlocks": 8,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": [
+      {
+        "file": "tests/regression.test.cjs",
+        "exitCode": 0,
+        "output": "PASS actual seeded physics at 30/60/120 FPS: positions, moving obstacles, collision, finish order and times match\n"
+      },
+      {
+        "file": "tests/battle.test.cjs",
+        "exitCode": 0,
+        "output": "✔ refresh restores the same player and the room (4.646012ms)\n✔ a remaining non-host ends an expired battle (2.247162ms)\n✔ deleted room is cleared from the resume session (1.097406ms)\n✔ all marbles eliminated produces a completed draw (1.491531ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 14.598923\n"
+      }
+    ]
+  },
+  {
+    "repository": "Formwheel_Maze",
+    "head": "8aafd3c876029da631956907bff6b798a49a2744",
+    "javascriptBlocks": 2,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": []
+  },
+  {
+    "repository": "Formwheel_Mix",
+    "head": "cf20b5f4b2ccafebd6dc6895cff7291443b6b279",
+    "javascriptBlocks": 1,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": []
+  },
+  {
+    "repository": "Formwheel_Music",
+    "head": "982771e1d98082cf2df74e7b3572b296bf062433",
+    "javascriptBlocks": 13,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": [
+      {
+        "file": "tests/regression.test.cjs",
+        "exitCode": 0,
+        "output": "PASS note validation, hand limits/partition, 15/30/60/120 FPS-independent audio schedule, judging and replay\n"
+      }
+    ]
+  },
+  {
+    "repository": "Formwheel_Note",
+    "head": "d9fea1f125837f57d187e87a3007212cad6a031f",
+    "javascriptBlocks": 2,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": [
+      {
+        "file": "tests/regression.test.cjs",
+        "exitCode": 0,
+        "output": "✔ import warns before discarding unsaved edits, merges records and clears the editor (11.640299ms)\n✔ cancelling import keeps unsaved text and stored records intact (1.631943ms)\nℹ tests 2\nℹ suites 0\nℹ pass 2\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 20.170112\n"
+      }
+    ]
+  },
+  {
+    "repository": "Formwheel_PVP",
+    "head": "8bbe04f65003a94d004862fb4a28bfde11244f63",
+    "javascriptBlocks": 3,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": []
+  },
+  {
+    "repository": "Formwheel_Paint",
+    "head": "ff144b4bb19012d94eb545663a047e2a8de07e3f",
+    "javascriptBlocks": 3,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": []
+  },
+  {
+    "repository": "Formwheel_Piano",
+    "head": "7f058a3488c86974d0389e0c49ac9eaf21825d18",
+    "javascriptBlocks": 5,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": []
+  },
+  {
+    "repository": "Formwheel_Quiz",
+    "head": "afa970a54ca54a970485504c0febfaf2d70b2303",
+    "javascriptBlocks": 6,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": []
+  },
+  {
+    "repository": "Formwheel_Reflex",
+    "head": "4a656f4fadb56d8e14039c0305dee1a6fb97b8ab",
+    "javascriptBlocks": 6,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": [
+      {
+        "file": "tests/regression.test.cjs",
+        "exitCode": 0,
+        "output": "PASS duplicate/outsider/stale answers, early penalty, deadlines, five-round settlement and ranking\n"
+      }
+    ]
+  },
+  {
+    "repository": "Formwheel_Risk",
+    "head": "84cd0af8111a37549f9c2415ddd573e1469e944c",
+    "javascriptBlocks": 3,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": []
+  },
+  {
+    "repository": "Formwheel_Scribble",
+    "head": "12679234e29deea4e4657e66cb498ee834a739f4",
+    "javascriptBlocks": 1,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": []
+  },
+  {
+    "repository": "Formwheel_Spotlight",
+    "head": "e720895e31386f9274cb0058642af84e19350be7",
+    "javascriptBlocks": 1,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": []
+  },
+  {
+    "repository": "Formwheel_Spy",
+    "head": "260f69d397b803e66d533d0bfc054fcb72306649",
+    "javascriptBlocks": 7,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": [
+      {
+        "file": "tests/tab-identity.cjs",
+        "exitCode": 0,
+        "output": "PASS separate tabs, repeated calls, duplicated tab, reload identity\n"
+      },
+      {
+        "file": "tests/join-room.cjs",
+        "exitCode": 0,
+        "output": "PASS cold cache, missing room, active room, capacity, existing-player reentry (5 phases), permission error\n"
+      }
+    ]
+  },
+  {
+    "repository": "Formwheel_Story",
+    "head": "966ef7705f4a3f23b58f35f854250c03705a3368",
+    "javascriptBlocks": 1,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": []
+  },
+  {
+    "repository": "Formwheel_Sync",
+    "head": "5919f7ac6a147b5983c93f89e2acd2b56d8da08f",
+    "javascriptBlocks": 1,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": []
+  },
+  {
+    "repository": "Formwheel_Territory",
+    "head": "b2bbc9bd20098242c96f7ae456fcb9c61532b9e2",
+    "javascriptBlocks": 2,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": []
+  },
+  {
+    "repository": "Formwheel_Time",
+    "head": "08116e941c17abaf735fe3f7d56379a5cfa701ff",
+    "javascriptBlocks": 4,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": [
+      {
+        "file": "tests/regression.test.cjs",
+        "exitCode": 0,
+        "output": "PASS combo points/charge, one-use shield, hazard reset and star time\nPASS atomic battle restart restores players, clears prior attacks and rejects concurrent start\n"
+      }
+    ]
+  },
+  {
+    "repository": "Formwheel_Tool",
+    "head": "496fdbb1a390e3e01b56fbe791b3cbea76ddace2",
+    "javascriptBlocks": 6,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": [
+      {
+        "file": "tests/regression.test.cjs",
+        "exitCode": 0,
+        "output": "PASS gender patterns, blank seats, capacity, corrupt saves, unbiased permutations and rejection sampling\n"
+      }
+    ]
+  },
+  {
+    "repository": "Formwheel_Vault",
+    "head": "964354b072d729dc0dfc522d160c8cea1ef66ed9",
+    "javascriptBlocks": 2,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": []
+  },
+  {
+    "repository": "Formwheel_Vote",
+    "head": "e58c78c89b09f63a22da2864798c2be6f44db45d",
+    "javascriptBlocks": 2,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": []
+  },
+  {
+    "repository": "Formwheel_Wheel",
+    "head": "126d6a967996329059851c9b8c5e2c43c8fdcf36",
+    "javascriptBlocks": 11,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": [
+      {
+        "file": "tests/regression.test.cjs",
+        "exitCode": 0,
+        "output": "PASS weighted exact boundaries, exclusion, empty candidates, distribution and invalid weights\n"
+      }
+    ]
+  },
+  {
+    "repository": "Formwheel_WheelB",
+    "head": "749163007c19c93b05a80722be1f2aa5e179ef49",
+    "javascriptBlocks": 2,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": []
+  },
+  {
+    "repository": "Formwheel_Whiteboard",
+    "head": "972215daec346c9708f6d9dffac8a1fff8477266",
+    "javascriptBlocks": 1,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": []
+  },
+  {
+    "repository": "Formwheel_Wiki",
+    "head": "2757a6263e621605137db2b792ccef7ddcc193d6",
+    "javascriptBlocks": 5,
+    "syntaxFailures": [],
+    "missingRelativeAssets": [],
+    "tests": []
+  }
+]

@@ -1,10 +1,12 @@
-const CACHE = "formwheel-hub-v5-audit-20261022";
+const CACHE = "formwheel-hub-v6-audit-20261024";
 const APP_SHELL = [
   "/Formwheel/",
   "/Formwheel/index.html",
   "/Formwheel/profile.html",
   "/Formwheel/manifest.json",
   "/Formwheel/assets/styles.css",
+  "/Formwheel/assets/app.js",
+  "/Formwheel/assets/hub-visit-bridge.js",
   "/Formwheel/assets/home.css",
   "/Formwheel/assets/home.js",
   "/Formwheel/assets/spotlight.js",
@@ -27,11 +29,32 @@ self.addEventListener("fetch", event => {
   if (request.method !== "GET") return;
   const url = new URL(request.url);
   if (url.origin !== self.location.origin || !url.pathname.startsWith("/Formwheel/")) return;
+  // Network first keeps deployed assets fresh; cache fallback makes saved pages usable offline.
+  // Restrict this to static assets; never cache Firebase/API responses.
+  if (request.mode !== "navigate" && /^\/Formwheel\/(assets|shared)\/.+\.(js|css|svg|png|webp|woff2?)$/.test(url.pathname)) {
+    event.respondWith((async () => {
+      const cache = await caches.open(CACHE).catch(() => null);
+      try {
+        const response = await fetch(request);
+        if (response.ok && cache) {
+          const copy = response.clone();
+          event.waitUntil(cache.put(request, copy).catch(() => {}));
+        }
+        return response;
+      } catch (error) {
+        const cached = cache && (await cache.match(request) ||
+          (APP_SHELL.includes(url.pathname) ? await cache.match(url.pathname) : undefined));
+        if (cached) return cached;
+        throw error;
+      }
+    })());
+    return;
+  }
   if (request.mode === "navigate") {
     event.respondWith(fetch(request).then(response => {
       if (response.ok) {
         const copy = response.clone();
-        event.waitUntil(caches.open(CACHE).then(cache => cache.put(request, copy)));
+        event.waitUntil(caches.open(CACHE).then(cache => cache.put(request, copy).catch(() => {})));
       }
       return response;
     }).catch(async () => {
