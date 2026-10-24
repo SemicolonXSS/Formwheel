@@ -190,11 +190,15 @@ function omokMove(i){
 function renderOmok(){
  turnText.textContent=state.done?(state.winner?marker(state.winner)+" 승리!":"무승부 · 판이 가득 찼어요."):marker(state.t)+" 차례";
  pushScore(["15×15 자유룰","흑 선공","5개 이상 연속이면 승리"]);
- tip.textContent="가로·세로·대각선 중 다섯 개 이상을 연결하세요. 금수는 없습니다.";
+ tip.textContent="바둑판 선의 교차점을 눌러 돌을 놓으세요. 가로·세로·대각선 5개 이상을 연결하면 승리합니다.";
  appendGrid(15,i=>{
-  const btn=node("button",state.last===i?"last-move":"");btn.type="button";
-  btn.setAttribute("aria-label",(Math.floor(i/15)+1)+"행 "+(i%15+1)+"열 "+(state.board[i]===0?"빈 칸":marker(state.board[i])+"돌"));
-  piece(btn,state.board[i]);btn.disabled=state.done||state.board[i]!==0;
+  const r=Math.floor(i/15),c=i%15;
+  const cl=["omok-cell",r===0?"top-edge":"",r===14?"bottom-edge":"",c===0?"left-edge":"",c===14?"right-edge":"",state.last===i?"last-move":""].filter(Boolean).join(" ");
+  const btn=node("button",cl);btn.type="button";
+  btn.setAttribute("aria-label",(r+1)+"행 "+(c+1)+"열 "+(state.board[i]===0?"빈 교차점":marker(state.board[i])+"돌"));
+  if([3,7,11].includes(r)&&[3,7,11].includes(c))btn.append(node("i","star"));
+  if(state.board[i])piece(btn,state.board[i],"stone");
+  btn.disabled=state.done||state.board[i]!==0;
   btn.addEventListener("click",()=>omokMove(i));return btn;
  });
 }
