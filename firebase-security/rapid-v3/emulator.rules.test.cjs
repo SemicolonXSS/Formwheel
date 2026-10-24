@@ -31,3 +31,17 @@ test('only owner can read and client cannot write root or child',async()=>{
  await assertFails(set(ref(alice,'rapidV3/alice'),{balance:'99999'}));
  await assertFails(set(ref(bob,'rapidV3/alice/balance'),'999999'));
 });
+
+test('anonymous and unauthenticated writes are rejected at all relevant depths',async()=>{
+ const guest=env.unauthenticatedContext().database();
+ const registered=env.authenticatedContext('alice',{firebase:{sign_in_provider:'password'}}).database();
+ await assertFails(set(ref(guest,'rapidV3/alice/balance'),'100'));
+ await assertFails(set(ref(registered,'rapidV3/alice/inventory/sunset/owned'),true));
+ await assertFails(set(ref(registered,'rapidV3/alice/transactions/fake'),{type:'purchase'}));
+ await assertFails(set(ref(registered,'rapidV3'),{}));
+});
+test('an authenticated user cannot enumerate other account wallets',async()=>{
+ const bob=env.authenticatedContext('bob',{firebase:{sign_in_provider:'password'}}).database();
+ await assertFails(get(ref(bob,'rapidV3')));
+ await assertFails(get(ref(bob,'rapidV3/alice/inventory')));
+});
