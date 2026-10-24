@@ -99,7 +99,7 @@ $('find10-result').hidden=false;
 $('find10-result').textContent=r.success
 ?'✅ 성공! '+r.elapsed.toFixed(1)+'초 만에 올바른 프로젝트를 찾았어요.'
 :r.timeout?'⏰ 10초가 지났어요. Hub에서 원하는 프로젝트를 찾기 어려웠나요?'
-:r.elapsed>10?'⏱️ 10초 초과 · '+r.elapsed.toFixed(1)+'초 후 선택했어요.':'🔎 다른 프로젝트를 선택했어요. 다시 도전할 수 있어요.';
+:r.elapsed>10?'⏱️ 목표: '+r.slug+' / 선택: '+(r.selectedSlug||'미기록')+' · '+r.elapsed.toFixed(1)+'초 후 선택했어요.' :'🔎 목표: '+r.slug+' / 선택: '+(r.selectedSlug||'미기록')+' · 다시 도전할 수 있어요.';
 if(!sessionStorage.getItem('fw-find10-delivered'))sessionStorage.setItem('fw-find10-pending',JSON.stringify(r));
 else {sessionStorage.removeItem('fw-find10-delivered');document.getElementById('find10-send-status').textContent='✅ 결과가 운영자에게 저장됐어요.';}
 sessionStorage.removeItem(RESULT);
