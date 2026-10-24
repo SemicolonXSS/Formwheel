@@ -233,29 +233,34 @@ body[data-fw-global-theme="daynight"][data-fw-effect="daynight"]::after{content:
 52%,68%{background:linear-gradient(180deg,#e37191,#f9ab68)}
 80%,92%{background:linear-gradient(180deg,#101b43,#39447a)}
 }
-/* Sun follows a full off-screen arc; moon rises after sunset. */
+/* Smooth rising/setting arcs. Celestial bodies remain opaque until fully below viewport. */
 @keyframes fw-daynight-sun{
-0%{transform:translate(-55vw,105vh);opacity:0}
-8%{transform:translate(-35vw,55vh);opacity:1}
-25%{transform:translate(0,0);opacity:1}
-48%{transform:translate(30vw,48vh);opacity:1}
-58%{transform:translate(55vw,105vh);opacity:0}
-58.01%,100%{transform:translate(55vw,105vh);opacity:0}
+0%{transform:translate(-34vw,110vh);opacity:0}
+0.01%{transform:translate(-34vw,110vh);opacity:1}
+12%{transform:translate(-22vw,42vh);opacity:1}
+28%{transform:translate(0,0);opacity:1}
+43%{transform:translate(20vw,36vh);opacity:1}
+59%{transform:translate(34vw,110vh);opacity:1}
+59.01%,100%{transform:translate(34vw,110vh);opacity:0}
 }
 body[data-fw-global-theme="daynight"] .fw-daynight-moon{
 position:fixed;top:12vh;left:calc(50% - 34px);width:68px;height:68px;border-radius:50%;
-z-index:-1;pointer-events:none;background:#f3f2dc;box-shadow:0 0 30px 6px #eff0f2a8;
+z-index:-1;pointer-events:none;background:radial-gradient(circle at 35% 30%,#fffef3,#e6e6dc 75%,#c9cccf);
+box-shadow:0 0 35px 8px #f3f3dca8;
 animation:fw-daynight-moonrise 30s linear infinite;
 }
 body[data-fw-global-theme="daynight"] .fw-daynight-moon::after{
-content:"";position:absolute;top:7px;left:17px;width:57px;height:57px;border-radius:50%;background:#26335e;
+content:"";position:absolute;inset:0;border-radius:50%;
+background:radial-gradient(circle at 25% 35%,#bec2c657 0 6%,transparent 8%),radial-gradient(circle at 65% 60%,#aeb4bb55 0 9%,transparent 11%),radial-gradient(circle at 56% 19%,#adb3bd50 0 5%,transparent 7%);
 }
 @keyframes fw-daynight-moonrise{
-0%,60%{transform:translate(-55vw,105vh);opacity:0}
-67%{transform:translate(-32vw,52vh);opacity:1}
+0%,59.99%{transform:translate(-34vw,110vh);opacity:0}
+60%{transform:translate(-34vw,110vh);opacity:1}
+70%{transform:translate(-20vw,41vh);opacity:1}
 82%{transform:translate(0,0);opacity:1}
-94%{transform:translate(34vw,52vh);opacity:1}
-100%{transform:translate(55vw,105vh);opacity:0}
+91%{transform:translate(20vw,40vh);opacity:1}
+99.99%{transform:translate(34vw,110vh);opacity:1}
+100%{transform:translate(34vw,110vh);opacity:0}
 }
 body[data-fw-global-theme="daynight"] :is(.card,.panel,.fw-footer,.upgrade,.item,.theme-item,.station,.modal,.dialog,.notice,.status){background:#fffaf1!important;color:#292929!important;border-color:#d5a37a!important}
 body[data-fw-global-theme="daynight"] :is(.card,.panel,.fw-footer,.upgrade,.item,.theme-item,.station,.modal,.dialog) :is(h1,h2,h3,h4,p,span,small,strong,label,.muted,.sub,.item-desc,.theme-note){color:#292929!important;text-shadow:none!important}
