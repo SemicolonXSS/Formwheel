@@ -235,13 +235,31 @@ body[data-fw-global-theme="daynight"][data-fw-effect="daynight"]::after{content:
 }
 /* Smooth rising/setting arcs. Celestial bodies remain opaque until fully below viewport. */
 @keyframes fw-daynight-sun{
-0%{transform:translate(-34vw,110vh);opacity:0}
-0.01%{transform:translate(-34vw,110vh);opacity:1}
-12%{transform:translate(-22vw,42vh);opacity:1}
-28%{transform:translate(0,0);opacity:1}
-43%{transform:translate(20vw,36vh);opacity:1}
-59%{transform:translate(34vw,110vh);opacity:1}
-59.01%,100%{transform:translate(34vw,110vh);opacity:0}
+0%{transform:translate(-37.000vw,112.000vh);opacity:1}
+2.479%{transform:translate(-33.917vw,93.472vh);opacity:1}
+4.958%{transform:translate(-30.833vw,76.556vh);opacity:1}
+7.438%{transform:translate(-27.750vw,61.250vh);opacity:1}
+9.917%{transform:translate(-24.667vw,47.556vh);opacity:1}
+12.396%{transform:translate(-21.583vw,35.472vh);opacity:1}
+14.875%{transform:translate(-18.500vw,25.000vh);opacity:1}
+17.354%{transform:translate(-15.417vw,16.139vh);opacity:1}
+19.833%{transform:translate(-12.333vw,8.889vh);opacity:1}
+22.313%{transform:translate(-9.250vw,3.250vh);opacity:1}
+24.792%{transform:translate(-6.167vw,-0.778vh);opacity:1}
+27.271%{transform:translate(-3.083vw,-3.194vh);opacity:1}
+29.75%{transform:translate(0.000vw,-4.000vh);opacity:1}
+32.229%{transform:translate(3.083vw,-3.194vh);opacity:1}
+34.708%{transform:translate(6.167vw,-0.778vh);opacity:1}
+37.188%{transform:translate(9.250vw,3.250vh);opacity:1}
+39.667%{transform:translate(12.333vw,8.889vh);opacity:1}
+42.146%{transform:translate(15.417vw,16.139vh);opacity:1}
+44.625%{transform:translate(18.500vw,25.000vh);opacity:1}
+47.104%{transform:translate(21.583vw,35.472vh);opacity:1}
+49.583%{transform:translate(24.667vw,47.556vh);opacity:1}
+52.063%{transform:translate(27.750vw,61.250vh);opacity:1}
+54.542%{transform:translate(30.833vw,76.556vh);opacity:1}
+57.021%{transform:translate(33.917vw,93.472vh);opacity:1}
+59.5%{transform:translate(37.000vw,112.000vh);opacity:1}
 }
 body[data-fw-global-theme="daynight"] .fw-daynight-moon{
 position:fixed;top:12vh;left:calc(50% - 34px);width:68px;height:68px;border-radius:50%;
@@ -254,13 +272,32 @@ content:"";position:absolute;inset:0;border-radius:50%;
 background:radial-gradient(circle at 25% 35%,#bec2c657 0 6%,transparent 8%),radial-gradient(circle at 65% 60%,#aeb4bb55 0 9%,transparent 11%),radial-gradient(circle at 56% 19%,#adb3bd50 0 5%,transparent 7%);
 }
 @keyframes fw-daynight-moonrise{
-0%,59.99%{transform:translate(-34vw,110vh);opacity:0}
-60%{transform:translate(-34vw,110vh);opacity:1}
-70%{transform:translate(-20vw,41vh);opacity:1}
-82%{transform:translate(0,0);opacity:1}
-91%{transform:translate(20vw,40vh);opacity:1}
-99.99%{transform:translate(34vw,110vh);opacity:1}
-100%{transform:translate(34vw,110vh);opacity:0}
+0%,59.49%{transform:translate(-37vw,112vh);opacity:0}
+59.5%{transform:translate(-37vw,112vh);opacity:1}
+61.188%{transform:translate(-33.917vw,93.472vh);opacity:1}
+62.875%{transform:translate(-30.833vw,76.556vh);opacity:1}
+64.563%{transform:translate(-27.750vw,61.250vh);opacity:1}
+66.25%{transform:translate(-24.667vw,47.556vh);opacity:1}
+67.938%{transform:translate(-21.583vw,35.472vh);opacity:1}
+69.625%{transform:translate(-18.500vw,25.000vh);opacity:1}
+71.313%{transform:translate(-15.417vw,16.139vh);opacity:1}
+73%{transform:translate(-12.333vw,8.889vh);opacity:1}
+74.688%{transform:translate(-9.250vw,3.250vh);opacity:1}
+76.375%{transform:translate(-6.167vw,-0.778vh);opacity:1}
+78.063%{transform:translate(-3.083vw,-3.194vh);opacity:1}
+79.75%{transform:translate(0.000vw,-4.000vh);opacity:1}
+81.438%{transform:translate(3.083vw,-3.194vh);opacity:1}
+83.125%{transform:translate(6.167vw,-0.778vh);opacity:1}
+84.813%{transform:translate(9.250vw,3.250vh);opacity:1}
+86.5%{transform:translate(12.333vw,8.889vh);opacity:1}
+88.188%{transform:translate(15.417vw,16.139vh);opacity:1}
+89.875%{transform:translate(18.500vw,25.000vh);opacity:1}
+91.563%{transform:translate(21.583vw,35.472vh);opacity:1}
+93.25%{transform:translate(24.667vw,47.556vh);opacity:1}
+94.938%{transform:translate(27.750vw,61.250vh);opacity:1}
+96.625%{transform:translate(30.833vw,76.556vh);opacity:1}
+98.313%{transform:translate(33.917vw,93.472vh);opacity:1}
+100%{transform:translate(37.000vw,112.000vh);opacity:1}
 }
 body[data-fw-global-theme="daynight"] :is(.card,.panel,.fw-footer,.upgrade,.item,.theme-item,.station,.modal,.dialog,.notice,.status){background:#fffaf1!important;color:#292929!important;border-color:#d5a37a!important}
 body[data-fw-global-theme="daynight"] :is(.card,.panel,.fw-footer,.upgrade,.item,.theme-item,.station,.modal,.dialog) :is(h1,h2,h3,h4,p,span,small,strong,label,.muted,.sub,.item-desc,.theme-note){color:#292929!important;text-shadow:none!important}
