@@ -27,3 +27,21 @@ test('rejects malformed balance and arbitrary amounts',()=>{
  const a=apply(seed,{...buy,amount:'0',price:'0'},now);
  assert.equal(a.balance,'500');
 });
+
+test('refund uses historical receipt amount rather than current catalog price',()=>{
+ const a=apply(seed,buy,now);
+ const old={...a,transactions:{...a.transactions,purchase_00001:{...a.transactions.purchase_00001,amount:'300'}}};
+ const b=apply(old,{type:'refund',itemId:'sunset',purchaseId:'purchase_00001',requestId:'refund_oldprice'},now+1000);
+ assert.equal(b.balance,'800');
+ assert.equal(b.transactions.refund_oldprice.amount,'300');
+});
+test('refund idempotency cannot reuse ID for another purchase',()=>{
+ const a=apply(seed,buy,now);
+ const b=apply(a,{type:'refund',itemId:'sunset',purchaseId:'purchase_00001',requestId:'refund_00001'},now+1000);
+ assert.throws(()=>apply(b,{type:'refund',itemId:'sunset',purchaseId:'different_purchase',requestId:'refund_00001'},now+2000),/conflict/);
+});
+test('invalid receipt amount never grants a refund',()=>{
+ const a=apply(seed,buy,now);
+ const bad={...a,transactions:{...a.transactions,purchase_00001:{...a.transactions.purchase_00001,amount:'oops'}}};
+ assert.throws(()=>apply(bad,{type:'refund',itemId:'sunset',purchaseId:'purchase_00001',requestId:'refund_00003'},now+1000),/receipt amount/);
+});
