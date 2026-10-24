@@ -5,8 +5,8 @@
 *{box-sizing:border-box}body{margin:0;background:#0d182b;color:#f6f8ff;font-family:system-ui,'Apple SD Gothic Neo',sans-serif}main{max-width:980px;margin:auto;padding:18px}a{color:#b6dbff}header{display:flex;justify-content:space-between;align-items:center;gap:12px}h1{margin:10px 0}p{color:#b6c6df}.panel{background:#192b46;border:1px solid #3d5374;border-radius:18px;padding:15px;margin:12px 0}button,select{font:inherit;border-radius:10px;padding:10px 14px;border:1px solid #587397;background:#263e62;color:white;cursor:pointer}button.active,button.primary{background:#4d6ef2;border-color:#90a8ff}button:focus-visible{outline:3px solid #ffd46d}nav,.controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.score{font-size:22px;font-weight:850;text-align:center;margin:10px 0}.field{position:relative;width:100%;touch-action:none}canvas{width:100%;display:block;background:#196244;border-radius:14px;border:3px solid #aac6d7;touch-action:none}.hint{font-size:13px;line-height:1.7}.touch{display:grid;grid-template-columns:repeat(3,54px);gap:5px;justify-content:center;align-items:center;margin:12px 0}.touch button{padding:12px 0;user-select:none;touch-action:none}.touch button[data-key=ArrowUp]{grid-column:2}.touch button[data-key=ArrowLeft]{grid-column:1;grid-row:2}.touch button[data-key=ArrowDown]{grid-column:2;grid-row:2}.touch button[data-key=ArrowRight]{grid-column:3;grid-row:2}.touch button[data-key=Space]{grid-column:1/4;grid-row:3}#status{min-height:25px;font-weight:700;color:#ffe29c}@media(min-width:700px){.touch{display:none}}
 </style></head><body><main>
 <header><a href="../">← Formwheel Hub</a><strong>FORMWHEEL SPORTS · BETA</strong></header>
-<h1>🏟️ Formwheel Sports</h1><p>축구와 농구를 브라우저에서 바로 플레이! 컴퓨터 상대와 짧은 경기를 즐겨보세요.</p>
-<section class="panel"><nav aria-label="종목 선택"><button type="button" class="active" data-sport="soccer">⚽ 축구</button><button type="button" data-sport="basketball">🏀 농구</button><label>경기 시간 <select id="duration"><option value="60">60초</option><option value="120">120초</option><option value="180">180초</option></select></label><button type="button" class="primary" id="start">경기 시작 / 재시작</button><button type="button" id="pause">일시정지</button></nav>
+<h1>🏟️ Formwheel Sports</h1><p>축구와 농구를 브라우저에서 바로 플레이! CPU 또는 같은 기기의 친구와 축구·농구 대전을 즐겨보세요.</p>
+<section class="panel"><nav aria-label="종목 선택"><button type="button" class="active" data-sport="soccer">⚽ 축구</button><button type="button" data-sport="basketball">🏀 농구</button><label>대전 방식 <select id="opponent"><option value="cpu">CPU 대전</option><option value="local">로컬 2인 대전</option></select></label><label>경기 시간 <select id="duration"><option value="60">60초</option><option value="120">120초</option><option value="180">180초</option></select></label><button type="button" class="primary" id="start">경기 시작 / 재시작</button><button type="button" id="pause">일시정지</button></nav>
 <div class="score" id="score" aria-live="polite">나 0 : 0 CPU · 60초</div><div id="status" role="status" aria-live="polite">경기 시작을 눌러주세요.</div>
 <div class="field"><canvas id="game" width="900" height="520" aria-label="스포츠 경기장"></canvas></div>
 <div class="touch" aria-label="모바일 조작"><button data-key="ArrowUp">▲</button><button data-key="ArrowLeft">◀</button><button data-key="ArrowDown">▼</button><button data-key="ArrowRight">▶</button><button data-key="Space">슛 / 킥</button></div>
@@ -16,12 +16,12 @@
 (()=>{'use strict';
 const canvas=document.getElementById('game'),ctx=canvas.getContext('2d'),scoreEl=document.getElementById('score'),status=document.getElementById('status'),rules=document.getElementById('rules'),keys=new Set();
 const W=900,H=520,FLOOR=450,GRAVITY=880,HOOP_Z=235;
-let sport='soccer',running=false,paused=false,last=0,time=60,me=0,cpuScore=0,cooldown=0,cpuThink=0,shot=null,possessor=null,frameGeneration=0,cpuVelocity=0;
+let opponent='cpu',sport='soccer',running=false,paused=false,last=0,time=60,me=0,cpuScore=0,cooldown=0,cpuThink=0,shot=null,possessor=null,frameGeneration=0,cpuVelocity=0;
 const player={x:185,z:0,vz:0,r:20},cpu={x:715,z:0,vz:0,r:20},ball={x:450,z:12,vx:0,vz:0,r:11};
 const sy=z=>FLOOR-z,clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),distance=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
 function place(){cpuVelocity=0;player.x=185;player.z=player.vz=0;cpu.x=715;cpu.z=cpu.vz=0;ball.x=450;ball.z=12;ball.vx=ball.vz=0;shot=null;possessor=null;cooldown=.4;cpuThink=1.5}
-function score(){scoreEl.textContent='나 '+me+' : '+cpuScore+' CPU · '+Math.ceil(time)+'초'}
-function setSport(s){frameGeneration++;sport=s;running=false;paused=false;me=cpuScore=0;time=Number(document.getElementById('duration').value);place();document.querySelectorAll('[data-sport]').forEach(b=>b.classList.toggle('active',b.dataset.sport===s));rules.textContent=s==='soccer'?'축구 · X축 이동(← → / A D), Z축 점프(↑ / W), 스페이스로 킥! 오른쪽 골문을 노리세요.':'농구 · X축 이동(← → / A D), Z축 점프(↑ / W), 공에 접근하여 소유한 뒤 스페이스로 슛! 오른쪽 림을 위에서 아래로 통과해야 득점합니다.';status.textContent='경기 시작을 눌러주세요.';document.getElementById('pause').textContent='일시정지';score();draw()}
+function score(){scoreEl.textContent=(opponent==='local'?'P1':'나')+' '+me+' : '+cpuScore+' '+(opponent==='local'?'P2':'CPU')+' · '+Math.ceil(time)+'초'}
+function setSport(s){frameGeneration++;sport=s;running=false;paused=false;me=cpuScore=0;time=Number(document.getElementById('duration').value);place();document.querySelectorAll('[data-sport]').forEach(b=>b.classList.toggle('active',b.dataset.sport===s));rules.textContent=s==='soccer'?'축구 · X축 이동(← → / A D), Z축 점프(↑ / W), 스페이스로 킥! 오른쪽 골문을 노리세요.':'농구 · X축 이동(← → / A D), Z축 점프(↑ / W), 공에 접근하여 소유한 뒤 스페이스로 슛! 오른쪽 림을 위에서 아래로 통과해야 득점합니다.';if(opponent==='local')rules.textContent+='  |  P1: A/D 이동, W 점프, F 슛·킥 / P2: ←/→ 이동, ↑ 점프, Enter 슛·킥.';status.textContent='경기 시작을 눌러주세요.';document.getElementById('pause').textContent='일시정지';score();draw()}
 function start(){const generation=++frameGeneration;time=Number(document.getElementById('duration').value);me=cpuScore=0;running=true;paused=false;last=0;place();status.textContent='경기 진행 중!';document.getElementById('pause').textContent='일시정지';score();requestAnimationFrame(ts=>frame(ts,generation))}
 function jump(p){if(p.z<=.01){p.vz=365}}
 function shoot(p){if(!running||paused||cooldown>0)return;
@@ -42,22 +42,23 @@ if(sport==='basketball'){
 function award(who,points){if(who===player)me+=points;else cpuScore+=points;status.textContent=(who===player?'나':'CPU')+' 득점! +'+points;place()}
 function move(dt){
  cooldown=Math.max(0,cooldown-dt);cpuThink=Math.max(0,cpuThink-dt);
- const right=keys.has('ArrowRight')||keys.has('d'),left=keys.has('ArrowLeft')||keys.has('a');
+ const right=opponent==='local'?keys.has('d'):keys.has('ArrowRight')||keys.has('d'),left=opponent==='local'?keys.has('a'):keys.has('ArrowLeft')||keys.has('a');
  player.x=clamp(player.x+(Number(right)-Number(left))*255*dt,25,875);
- if(keys.has('ArrowUp')||keys.has('w'))jump(player);
+ if(keys.has('w')||(opponent==='cpu'&&keys.has('ArrowUp')))jump(player);
  // CPU pursues loose balls; with possession, it advances toward opponent basket.
  const cpuTarget=possessor===cpu?(sport==='basketball'?240:80):possessor===player?player.x:ball.x;
  // Smooth pursuit with a dead zone. Avoid fixed-size steps that oscillate across the target.
  const delta=cpuTarget-cpu.x;
- const desiredVelocity=Math.abs(delta)<8?0:clamp(delta*3.3,-175,175);
- const maxAcceleration=650*dt;
+ const desiredVelocity=opponent==='local'?(Number(keys.has('ArrowRight'))-Number(keys.has('ArrowLeft')))*255:(Math.abs(delta)<8?0:clamp(delta*3.3,-175,175));
+ const maxAcceleration=(opponent==='local'?1800:650)*dt;
  cpuVelocity+=clamp(desiredVelocity-cpuVelocity,-maxAcceleration,maxAcceleration);
  const step=cpuVelocity*dt;
- if(Math.abs(delta)<=Math.abs(step)&&Math.abs(desiredVelocity)<85){cpu.x=cpuTarget;cpuVelocity=0}
+ if(opponent==='cpu'&&Math.abs(delta)<=Math.abs(step)&&Math.abs(desiredVelocity)<85){cpu.x=cpuTarget;cpuVelocity=0}
  else cpu.x=clamp(cpu.x+step,25,875);
  if(cpu.x<=25||cpu.x>=875)cpuVelocity=0;
- if(sport==='basketball'&&possessor===cpu&&cpuThink===0&&cpu.x<620){shoot(cpu);cpuThink=2}
- if(sport==='soccer'&&Math.abs(ball.x-cpu.x)<50&&ball.z<65&&cooldown===0)shoot(cpu);
+ if(opponent==='local'&&keys.has('ArrowUp'))jump(cpu);
+ if(opponent==='cpu'&&sport==='basketball'&&possessor===cpu&&cpuThink===0&&cpu.x<620){shoot(cpu);cpuThink=2}
+ if(opponent==='cpu'&&sport==='soccer'&&Math.abs(ball.x-cpu.x)<50&&ball.z<65&&cooldown===0)shoot(cpu);
  for(const p of [player,cpu]){p.z+=p.vz*dt;p.vz-=GRAVITY*dt;if(p.z<0){p.z=0;p.vz=0}}
  if(sport==='basketball'&&possessor){
    ball.x=possessor.x+(possessor===player?19:-19);ball.z=possessor.z+39;ball.vx=ball.vz=0;
@@ -102,7 +103,7 @@ function draw(){
  }
  for(const [p,color,label] of [[player,'#3982ed','YOU'],[cpu,'#df5260','CPU']]){
    const y=sy(p.z);ctx.fillStyle='#0004';ctx.beginPath();ctx.ellipse(p.x,FLOOR+4,25,6,0,0,Math.PI*2);ctx.fill();
-   ctx.fillStyle=color;ctx.fillRect(p.x-15,y-49,30,34);ctx.beginPath();ctx.arc(p.x,y-61,12,0,Math.PI*2);ctx.fill();ctx.strokeStyle='#19324a';ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(p.x-9,y-15);ctx.lineTo(p.x-13,y);ctx.moveTo(p.x+9,y-15);ctx.lineTo(p.x+13,y);ctx.stroke();ctx.font='bold 13px system-ui';ctx.textAlign='center';ctx.fillStyle='#172b46';ctx.fillText(label,p.x,y-81)
+   ctx.fillStyle=color;ctx.fillRect(p.x-15,y-49,30,34);ctx.beginPath();ctx.arc(p.x,y-61,12,0,Math.PI*2);ctx.fill();ctx.strokeStyle='#19324a';ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(p.x-9,y-15);ctx.lineTo(p.x-13,y);ctx.moveTo(p.x+9,y-15);ctx.lineTo(p.x+13,y);ctx.stroke();ctx.font='bold 13px system-ui';ctx.textAlign='center';ctx.fillStyle='#172b46';ctx.fillText(opponent==='local'?(p===player?'P1':'P2'):label,p.x,y-81)
  }
  ctx.fillStyle=sport==='soccer'?'#f7fcff':'#ed923b';ctx.strokeStyle='#263349';ctx.lineWidth=2;ctx.beginPath();ctx.arc(ball.x,sy(ball.z),ball.r,0,Math.PI*2);ctx.fill();ctx.stroke();
  if(!running||paused){ctx.fillStyle='#07162baa';ctx.fillRect(0,0,W,H);ctx.fillStyle='white';ctx.font='bold 30px system-ui';ctx.textAlign='center';ctx.fillText(paused?'일시정지':time<=0?'경기 종료':'SPORTS',450,245)}
@@ -112,7 +113,8 @@ document.querySelectorAll('[data-sport]').forEach(b=>b.addEventListener('click',
 document.getElementById('start').addEventListener('click',start);
 document.getElementById('pause').addEventListener('click',()=>{if(!running)return;paused=!paused;last=0;status.textContent=paused?'일시정지 중':'경기 진행 중!';document.getElementById('pause').textContent=paused?'계속하기':'일시정지';draw()});
 const norm=k=>k===' '?'Space':k.startsWith('Arrow')?k:k.toLowerCase();
-window.addEventListener('keydown',e=>{const k=norm(e.key);if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space','w','a','s','d'].includes(k)&&e.target.tagName!=='SELECT'){e.preventDefault();keys.add(k);if(k==='Space'&&!e.repeat)shoot(player)}});window.addEventListener('keyup',e=>keys.delete(norm(e.key)));window.addEventListener('blur',()=>keys.clear());
+window.addEventListener('keydown',e=>{const k=norm(e.key);if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space','Enter','f','w','a','s','d'].includes(k)&&e.target.tagName!=='SELECT'){e.preventDefault();keys.add(k);if(!e.repeat&&k==='f'&&opponent==='local')shoot(player);if(!e.repeat&&k==='Enter'&&opponent==='local')shoot(cpu);if(!e.repeat&&k==='Space'&&opponent==='cpu')shoot(player)}});window.addEventListener('keyup',e=>keys.delete(norm(e.key)));window.addEventListener('blur',()=>keys.clear());
 document.querySelectorAll('.touch button').forEach(b=>{const k=b.dataset.key;b.addEventListener('pointerdown',e=>{e.preventDefault();keys.add(k);if(k==='Space')shoot(player);b.setPointerCapture?.(e.pointerId)});for(const event of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(event,()=>keys.delete(k))});
+document.getElementById('opponent').addEventListener('change',e=>{opponent=e.target.value;setSport(sport)});
 setSport('soccer');
 })();</script></body></html>
