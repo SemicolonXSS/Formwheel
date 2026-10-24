@@ -53,7 +53,6 @@ overlay.addEventListener("keydown",e=>{if(e.key==="Escape"){e.preventDefault();f
 window.addEventListener("resize",position);window.addEventListener("scroll",position,true);
 const replay=document.createElement("button");replay.type="button";replay.className="fw-tour-replay";replay.textContent="❔ Hub 튜토리얼 보기";replay.addEventListener("click",start);
 (document.querySelector("#projects")||document.querySelector("main")||document.body).before(replay);
-let done=false;try{done=localStorage.getItem(KEY)==="done"}catch{}
-if(!done)window.addEventListener("load",()=>setTimeout(()=>{if(!document.hidden&&document.querySelector("#fw-nav-solo"))start()},1500),{once:true});
+// Opt-in only: the Hub tour starts exclusively when the user clicks its button.
 window.fwStartHubTour=start;
 })();
