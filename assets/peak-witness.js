@@ -18,10 +18,18 @@ css.textContent=`
 #fw-peak-awards a{color:#5739b3;font-weight:700}
 #fw-peak-award-toast{position:fixed;z-index:2147483001;top:15px;left:50%;transform:translateX(-50%);max-width:90vw;border-radius:14px;padding:14px 18px;background:#302058;color:#fff;box-shadow:0 10px 35px #1e143b55;font-weight:700}
 `;
+css.textContent+=`
+#fw-peak-awards.fw-peak-compact{box-sizing:border-box;width:min(92%,760px);max-width:760px;margin:18px auto 22px;padding:9px 12px;border-radius:11px;box-shadow:none}
+#fw-peak-awards.fw-peak-compact h3{font-size:12px;margin:0 0 3px}
+#fw-peak-awards.fw-peak-compact p{font-size:10px;line-height:1.4;margin:2px 0}
+#fw-peak-awards.fw-peak-compact .fw-peak-steps{gap:4px;margin-top:5px}
+#fw-peak-awards.fw-peak-compact .fw-peak-step{font-size:10px;padding:3px 6px}
+@media(max-width:480px){#fw-peak-awards.fw-peak-compact{width:calc(100% - 28px);padding:8px 10px;margin:14px auto}}
+`;
 document.head.appendChild(css);
 const root=document.createElement("section");root.id="fw-peak-awards";root.setAttribute("aria-label","최고 동접 목격 배지");
 root.innerHTML='<h3>👑 PEAK WITNESS · 최고 동접 목격자</h3><p id="fw-peak-awards-status">배지 기록 확인 중…</p><div class="fw-peak-steps" id="fw-peak-awards-steps"></div><p>최고 동접 신기록 순간 접속한 사람에게 일반 배지, 5·10·20·50·100명 기록에는 특별 배지가 지급됩니다.</p>';
-const mount=()=>{const anchor=isAqs?document.querySelector(".hero"):document.getElementById("fw-live-presence");if(anchor)anchor.insertAdjacentElement("afterend",root);else document.querySelector("main")?.prepend(root)};
+const mount=()=>{if(isAqs){const anchor=document.querySelector(".hero");if(anchor)anchor.insertAdjacentElement("afterend",root);else document.querySelector("main")?.prepend(root);return;}const footer=document.querySelector("footer");if(footer){footer.insertAdjacentElement("beforebegin",root)}else{(document.querySelector("main")||document.body).appendChild(root)}root.classList.add("fw-peak-compact");};
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",mount,{once:true});else mount();
 const status=root.querySelector("#fw-peak-awards-status"),steps=root.querySelector("#fw-peak-awards-steps");
 let off=null,previous=null;
