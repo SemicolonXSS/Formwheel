@@ -239,6 +239,11 @@ body[data-fw-global-theme="daynight"] :is(.card,.panel,.fw-footer,.upgrade,.item
 body[data-fw-global-theme="daynight"] :is(button,[role="button"],.openButton){background:#ffe6c8!important;color:#292929!important;border-color:#bd8d65!important}
 body[data-fw-global-theme="daynight"] .card .openButton{background:#ffe6c8!important;color:#292929!important}
 @media(prefers-reduced-motion:reduce){body[data-fw-global-theme="daynight"][data-fw-effect="daynight"]::before,body[data-fw-global-theme="daynight"][data-fw-effect="daynight"]::after{animation:none!important}}
+/* DAYNIGHT: charcoal text on the animated sky and all readable surfaces. */
+body[data-fw-global-theme="daynight"] :is(header,main,.hero,.toolbar,.fw-install,.fw-footer){color:#292929!important}
+body[data-fw-global-theme="daynight"] :is(.hero h1,.hero h2,.hero p,main > h1,main > h2,main > p){color:#292929!important;text-shadow:0 1px 2px #fff8!important}
+body[data-fw-global-theme="daynight"] :is(.card,.panel,.fw-footer,.upgrade,.item,.theme-item,.station,.modal,.dialog,.notice,.status,.fw-install,.fw-install-info,.fw-favorites-panel) :is(h1,h2,h3,h4,p,span,small,strong,label,a,.title,.description,.muted,.sub,.item-desc,.upgrade-desc,.theme-note,.score-label,.click-info){color:#292929!important;text-shadow:none!important}
+body[data-fw-global-theme="daynight"] :is(button,[role="button"],.openButton) :is(span,strong,small,b){color:#292929!important}
 body[data-fw-global-theme] .food.selected,body[data-fw-global-theme] .food.selected :is(span,small,strong,b,.name,.state,.components){color:#142341!important}
 /* Premium cosmic card controls: pale chips must never inherit light card lettering.
    Scope to four cosmic themes; retain each theme's animated background. */
@@ -281,7 +286,7 @@ const textThemes={
  eclipse:['#fff','#ffffff','#ffdf9b'],quantum:['#fff','#29335e','#96f7f0'],
  celestial:['#fff','#ffffff','#ffdba7'],singularity:['#fff','#1c1533','#d8b8ff'],
  overdrive:['#201329','#ffffff','#ffe5a3'],
- 'cosmic-infinity':['#ffffff','#ffffff','#90ebf0'],'cosmic-paradox':['#ffffff','#ffffff','#83e8e1'],'cosmic-omega':['#ffffff','#ffffff','#ffe6b8'],'cosmic-eternity':['#292929','#292929','#292929'],'cosmic-genesis':['#292929','#292929','#292929'],daynight:['#ffffff','#292929','#a04b24']
+ 'cosmic-infinity':['#ffffff','#ffffff','#90ebf0'],'cosmic-paradox':['#ffffff','#ffffff','#83e8e1'],'cosmic-omega':['#ffffff','#ffffff','#ffe6b8'],'cosmic-eternity':['#292929','#292929','#292929'],'cosmic-genesis':['#292929','#292929','#292929'],daynight:['#292929','#292929','#292929']
 };
 
 // Derive readable text from each theme's *actual* surface color.
@@ -308,8 +313,8 @@ function apply(){
   const [onBackground,onSurface,linkAccent]=textThemes[current]||['#fff','#fff','#333'];
   document.body.style.setProperty('--fw-theme-on-background',onBackground);
   document.body.style.setProperty('--fw-theme-text',onSurface);
-  document.body.style.setProperty('--fw-theme-button-bg',current==='cosmic-eternity'?'#f3edf9':current==='cosmic-genesis'?'#e7f0ff':darkThemesForButtons.has(current)?'#251c45':'#f0edff');
-  document.body.style.setProperty('--fw-theme-button-text',current==='cosmic-eternity'?'#292929':current==='cosmic-genesis'?'#292929':darkThemesForButtons.has(current)?'#fff':'#252040');
+  document.body.style.setProperty('--fw-theme-button-bg',current==='cosmic-eternity'?'#f3edf9':current==='cosmic-genesis'?'#e7f0ff':current==='daynight'?'#ffe6c8':darkThemesForButtons.has(current)?'#251c45':'#f0edff');
+  document.body.style.setProperty('--fw-theme-button-text',current==='cosmic-eternity'?'#292929':current==='cosmic-genesis'?'#292929':current==='daynight'?'#292929':darkThemesForButtons.has(current)?'#fff':'#252040');
   const [bg,surface,accent,secondary]=palettes[current];
   document.body.style.setProperty('--fw-theme-preview-gradient',gradients[current]);
   document.body.style.setProperty('--fw-theme-bg',bg);
