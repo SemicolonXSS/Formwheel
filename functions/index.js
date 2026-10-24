@@ -88,3 +88,56 @@ exports.claimQuestDailyXP=onCall(async req=>{
  const state=result.snapshot.val()||{};
  return {day,awarded,xp:Math.max(0,Number(state.xp)||0),dailyXP:10};
 });
+
+
+/* PEAK WITNESS C: server-owned records, never client-awarded.
+ * Deploy Cloud Functions + matching database rules before enabling.
+ * A distinct Firebase UID counts once even with multiple tabs.
+ */
+const {onValueWritten}=require("firebase-functions/v2/database");
+const peakRoot="formwheelV2/peakWitness";
+const peakSteps=[5,10,20,50,100];
+const peakFreshMs=5*60*1000;
+exports.awardPeakWitness=onValueWritten({
+  ref:"/formwheelV2/liveHubSessions/{uid}",
+  instance:"formwheel-default-rtdb",
+  region:"us-central1",
+  maxInstances:3
+},async()=>{
+  const at=now();
+  const snap=await db.ref("formwheelV2/liveHubSessions").get();
+  const active=[];
+  snap.forEach(user=>{
+    const sessions=user.val();
+    if(sessions&&typeof sessions==="object"&&Object.values(sessions).some(s=>
+      s&&typeof s.lastSeen==="number"&&s.lastSeen<=at&&at-s.lastSeen<peakFreshMs
+    ))active.push(user.key);
+  });
+  const count=active.length;
+  if(count<=4)return;
+  const recordRef=db.ref(peakRoot+"/record");
+  let previous=4;
+  const changed=await recordRef.transaction(current=>{
+    previous=Math.max(4,Number(current?.count)||0);
+    if(count<=previous)return;
+    return {count,recordedAt:at};
+  },undefined,false);
+  if(!changed.committed)return;
+  // Each individual record is monotonic and idempotent across retries.
+  const milestones=peakSteps.filter(n=>n>previous&&n<=count);
+  await Promise.all(active.map(async uid=>{
+    const target=db.ref(peakRoot+"/users/"+uid);
+    await target.transaction(current=>{
+      const old=current&&typeof current==="object"?current:{};
+      const existing=old.milestones&&typeof old.milestones==="object"?old.milestones:{};
+      const next={...existing};
+      for(const n of milestones)if(!next[n])next[n]={awardedAt:at,peak:count};
+      return {
+        firstWitnessedAt:old.firstWitnessedAt||at,
+        bestWitnessed:Math.max(Number(old.bestWitnessed)||0,count),
+        lastWitnessedAt:count>Number(old.bestWitnessed||0)?at:old.lastWitnessedAt||at,
+        milestones:next
+      };
+    },undefined,false);
+  }));
+});
