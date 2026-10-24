@@ -24,19 +24,26 @@ main{max-width:1200px;margin:auto;padding:16px}.intro{text-align:center;padding:
 #board .target::after{content:"";position:absolute;width:24%;height:24%;border-radius:50%;background:#1b6e41a8;z-index:2;pointer-events:none}
 #board .target.occupied::after{width:85%;height:85%;border:4px solid #206d46;background:transparent}
 #board.omok-board{background:#d7af72;border-color:#8c6131}
-#board.omok-board button{background:#d7af72;border:1px solid #b1874f}
+/* Both Go and Gomoku stones sit on line intersections, never inside square cells. */
+#board.omok-board button{background:transparent;border:0}
+#board .go-cell,#board .omok-cell{background:transparent;overflow:visible}
+#board .go-cell::before,#board .go-cell::after,#board .omok-cell::before,#board .omok-cell::after{content:"";position:absolute;background:#654927;pointer-events:none}
+#board .go-cell::before,#board .omok-cell::before{height:1px;width:100%;top:50%;left:0}
+#board .go-cell::after,#board .omok-cell::after{width:1px;height:100%;left:50%;top:0}
+#board .go-cell.left-edge::before,#board .omok-cell.left-edge::before{width:50%;left:50%}
+#board .go-cell.right-edge::before,#board .omok-cell.right-edge::before{width:50%}
+#board .go-cell.top-edge::after,#board .omok-cell.top-edge::after{height:50%;top:50%}
+#board .go-cell.bottom-edge::after,#board .omok-cell.bottom-edge::after{height:50%}
+#board .omok-cell .stone,#board .go-cell .stone{position:relative}
+#board .omok-cell.last-move .stone::after,#board .go-cell.last-move .stone::after{content:"";display:block;width:20%;height:20%;background:#ffcb37;border-radius:50%;position:absolute;top:40%;left:40%}
 #board .disk{width:79%;height:79%;border-radius:50%;display:block;z-index:3;box-shadow:0 2px 3px #131c2660}
 #board .disk.black,#board .stone.black{background:radial-gradient(circle at 35% 25%,#555,#080808 72%);border:1px solid #181818}
 #board .disk.white,#board .stone.white{background:radial-gradient(circle at 30% 20%,white,#e5e5e5 75%);border:1px solid #aaa}
 #board .last-move .disk{outline:3px solid #ffcb37;outline-offset:-3px}
 #board.go-board{background:#d4ac68;border-color:#84602c}
-#board .go-cell{background:#d4ac68;overflow:visible}
-#board .go-cell::before,#board .go-cell::after{content:"";position:absolute;background:#654927;pointer-events:none}
-#board .go-cell::before{height:1px;width:100%;top:50%;left:0}#board .go-cell::after{width:1px;height:100%;left:50%;top:0}
-#board .go-cell.left-edge::before{width:50%;left:50%}#board .go-cell.right-edge::before{width:50%}#board .go-cell.top-edge::after{height:50%;top:50%}#board .go-cell.bottom-edge::after{height:50%}
 #board .stone{width:90%;height:90%;z-index:3;border-radius:50%;box-shadow:0 1px 3px #0004;display:block}
 #board .star{position:absolute;width:14%;height:14%;background:#654927;border-radius:50%;z-index:1}
-#board .last-move .stone::after{content:"";display:block;width:20%;height:20%;background:#ffcb37;border-radius:50%;position:absolute;top:40%;left:40%}
+
 #board .legal-dot{width:19%;height:19%;background:#416b4d99;border-radius:50%;position:absolute;z-index:3}
 .rules-area details summary{font-size:16px;font-weight:900;cursor:pointer}.rules-area h3{margin:12px 0 6px}
 .rules-area ol{padding-left:21px;line-height:1.67;font-size:14px}.rules-area li{margin-bottom:8px}
