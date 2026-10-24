@@ -260,6 +260,7 @@ body[data-fw-global-theme="daynight"][data-fw-effect="daynight"]::after{content:
 54.542%{transform:translate(30.833vw,76.556vh);opacity:1}
 57.021%{transform:translate(33.917vw,93.472vh);opacity:1}
 59.5%{transform:translate(37.000vw,112.000vh);opacity:1}
+59.501%,100%{transform:translate(37vw,112vh);opacity:0}
 }
 body[data-fw-global-theme="daynight"] .fw-daynight-moon{
 position:fixed;top:12vh;left:calc(50% - 34px);width:68px;height:68px;border-radius:50%;
