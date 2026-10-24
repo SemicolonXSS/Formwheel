@@ -47,3 +47,13 @@ main{max-width:1200px;margin:auto;padding:16px}.intro{text-align:center;padding:
 button:focus-visible,summary:focus-visible,select:focus-visible{outline:3px solid #6486f9;outline-offset:2px}
 @media(max-width:830px){.workspace{grid-template-columns:1fr}.rules-area{order:2}}
 @media(max-width:500px){main{padding:10px}.play-area{padding:10px}.tabs{gap:5px}.tabs button{padding:9px 5px;font-size:13px}.controls{width:100%}.controls button{flex:1}.top{padding:12px}.tag{font-size:10px}#board .square{font-size:clamp(25px,9vw,40px)}}
+
+
+.planned{margin:22px 0 12px}.planned-head{margin:0 0 12px}.planned h2{margin:0 0 4px}.planned p{color:#5b6576;font-size:13px;margin:0}
+.planned-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.planned-grid details{background:white;border:1px solid #dfe4ef;border-radius:13px;padding:12px}
+.planned-grid summary{cursor:pointer;font-weight:800;color:#303c67}
+.planned-grid summary small{font-size:11px;font-weight:600;color:#768092;display:block;margin-top:4px}
+.planned-grid ol{padding-left:20px;font-size:13px;line-height:1.6;color:#49546a}
+@media(max-width:830px){.planned-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:550px){.planned-grid{grid-template-columns:1fr}}
