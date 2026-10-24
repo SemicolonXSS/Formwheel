@@ -874,3 +874,18 @@ footer{
 
 /* Sort direction toggle: touch friendly and compact */
 .subToolbar .sortDirectionButton{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:30px;padding:0 8px;border:1px solid #dfe2e8;border-radius:7px;background:#fff;color:#253251;font-size:17px;font-weight:800;cursor:pointer;flex-shrink:0}.subToolbar .sortDirectionButton:hover{background:#f1f4fc}.subToolbar .sortDirectionButton:focus-visible{outline:3px solid #6086df;outline-offset:2px}body[data-fw-global-theme] .subToolbar .sortDirectionButton{background:var(--fw-theme-surface,#fff);color:var(--fw-theme-text,#253251);border-color:var(--fw-theme-accent,#6086df)}
+
+/* Hub discovery refresh: compact entry, mobile spacing, legible dynamic themes. */
+#fw-quick-picks{max-width:960px;margin:12px auto;padding:11px 14px;border:1px solid var(--fw-border,#dce1ed);border-radius:15px;background:var(--fw-surface,#fff);color:var(--fw-text,#24283a)}
+#fw-quick-picks .fw-picks-heading{display:flex;justify-content:space-between;align-items:center;gap:8px}
+#fw-picks-list{display:flex;gap:8px;flex-wrap:wrap;margin-top:9px}
+#fw-picks-list a{flex:1 1 170px;min-width:0;border:1px solid #d7dcec;border-radius:10px;padding:9px 12px;background:#f6f7ff;color:#252b59;font-weight:700}
+#fw-picks-list small{color:#454c68}
+#fw-hub-shortcuts{max-width:960px;margin:7px auto 15px;display:flex;gap:7px;flex-wrap:wrap;justify-content:center}
+#fw-hub-shortcuts a{padding:7px 11px;border:1px solid #d8dcf0;border-radius:999px;background:#fff;color:#26375e;font-size:12px;font-weight:700}
+#projects .card{min-width:0;contain:layout style}
+#projects .fw-card-thumbnail img{display:block;max-width:100%;height:auto}
+#projects :is(.filterButton,.openButton,.sortDirectionButton):focus-visible,#fw-hub-shortcuts a:focus-visible,#fw-picks-list a:focus-visible{outline:3px solid #f08b29;outline-offset:3px}
+#projects :is(.tag,.fw-maturity-caption,.cardTitle h3){text-shadow:none}
+@media(max-width:700px){#fw-quick-picks{margin:8px 10px;padding:10px}#fw-picks-list a{flex-basis:110px;font-size:12px;padding:8px}#fw-picks-list small{display:block;font-size:10px}#fw-hub-shortcuts{margin:6px 10px 12px}#projects .toolbar{gap:8px}#projects .subToolbar{gap:8px}#projects .sortSelect{min-width:0;max-width:calc(100vw - 110px)}#projects .cards{min-width:0}}
+@media(prefers-reduced-motion:reduce){#projects .card,#fw-quick-picks *{animation:none!important;transition:none!important}}
