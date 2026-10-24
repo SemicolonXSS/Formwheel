@@ -1208,14 +1208,27 @@ render();
   const panel = document.getElementById("fw-filter-panel");
   if (!toggle || !panel) return;
   const mobile = window.matchMedia("(max-width:700px)");
-  const sync = () => {
-    panel.hidden = mobile.matches;
-    toggle.setAttribute("aria-expanded", String(!panel.hidden));
-  };
-  toggle.addEventListener("click", () => {
-    panel.hidden = !panel.hidden;
-    toggle.setAttribute("aria-expanded", String(!panel.hidden));
-  });
+  const storageKey = "formwheel-hub-detail-filter-expanded-v1";
+  function savedPreference(){
+    try {
+      const value = localStorage.getItem(storageKey);
+      return value === null ? null : value === "true";
+    } catch (_) { return null; }
+  }
+  function setExpanded(expanded, persist = false){
+    panel.hidden = !expanded;
+    toggle.setAttribute("aria-expanded", String(expanded));
+    if (persist) {
+      try { localStorage.setItem(storageKey, String(expanded)); } catch (_) {}
+    }
+  }
+  // On the first visit keep filters visible on desktop and compact on mobile.
+  // A user's explicit choice survives reloads and viewport changes.
+  const sync = () => setExpanded(savedPreference() ?? !mobile.matches);
+  toggle.addEventListener("click", () => setExpanded(panel.hidden, true));
   mobile.addEventListener?.("change", sync);
+  window.addEventListener("storage", event => {
+    if (event.key === storageKey) sync();
+  });
   sync();
 })();
