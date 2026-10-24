@@ -1,1 +1,108 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Formwheel 플레이테스터 모집</title><style>body{font:16px/1.65 system-ui;background:#f5f6ff;color:#20263a;margin:0}main{max-width:650px;margin:35px auto;padding:24px;background:white;border-radius:22px;box-shadow:0 12px 40px #25326716}h1{margin-top:0}label{display:block;margin:14px 0 5px;font-weight:700}input,select,textarea,button{box-sizing:border-box;width:100%;padding:12px;border-radius:10px;border:1px solid #cbd2e5;font:inherit}button{background:#453ac4;color:white;font-weight:700;cursor:pointer;margin-top:18px}p,small{color:#59617a}a{color:#453ac4}#status{font-weight:700}</style></head><body><main><a href="./">← Hub</a><h1>🧪 플레이테스터 모집</h1><p>Formwheel의 게임과 도구를 먼저 테스트하고 오류, 사용성, 아이디어를 알려주세요. 실명·연락처는 받지 않습니다.</p><form id="apply"><label for="nickname">표시 이름 (실명 불필요)</label><input id="nickname" maxlength="24" required placeholder="닉네임"><label for="field">테스트 분야</label><select id="field"><option>게임 플레이</option><option>모바일·UI</option><option>버그 찾기</option><option>접근성·튜토리얼</option></select><label for="reason">지원 동기 (선택)</label><textarea id="reason" maxlength="300" rows="3"></textarea><button id="submit">지원서 작성하기</button></form><p id="status" role="status"></p><small>지원 내용은 이 기기에서 작성 후 복사됩니다. 현재 자동 제출·관리자 승인·배지 지급은 지원하지 않습니다.</small><section><h2>📖 튜토리얼</h2><p>튜토리얼은 자동으로 시작되지 않습니다. 필요한 경우 아래 버튼으로 안내를 확인하세요.</p><button type="button" id="tutorial">튜토리얼 보기</button><div id="guide" hidden><p>① Hub에서 프로젝트를 고르세요.<br>② 카드의 설명과 난이도를 확인하세요.<br>③ 플레이 후 발견한 오류나 아이디어를 알려주세요.</p></div></section></main><script>document.getElementById('tutorial').onclick=()=>{const g=document.getElementById('guide');g.hidden=!g.hidden};document.getElementById('apply').onsubmit=async e=>{e.preventDefault();const v=id=>document.getElementById(id).value.trim();const msg='Formwheel 플레이테스터 지원\\n닉네임: '+v('nickname')+'\\n분야: '+v('field')+'\\n지원 동기: '+v('reason');try{await navigator.clipboard.writeText(msg);document.getElementById('status').textContent='지원 내용이 복사됐어요. Formwheel 운영자에게 전달해 주세요.'}catch{document.getElementById('status').textContent='아래 내용을 복사해 운영자에게 전달해 주세요.';const t=document.createElement('textarea');t.value=msg;t.readOnly=true;document.getElementById('status').after(t)}};</script></body></html>
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Formwheel 플레이테스터 모집</title>
+<link rel="icon" href="./assets/formwheel-favicon.svg" type="image/svg+xml">
+<style>
+*{box-sizing:border-box}body{font:16px/1.65 system-ui,sans-serif;background:#f5f6ff;color:#20263a;margin:0}
+main{max-width:680px;margin:28px auto;padding:24px;background:white;border-radius:22px;box-shadow:0 12px 40px #25326716}
+h1{margin:9px 0}h2{font-size:21px}label{display:block;margin:14px 0 5px;font-weight:700}
+input,select,textarea,button{width:100%;padding:12px;border-radius:10px;border:1px solid #cbd2e5;font:inherit}
+button{background:#453ac4;color:white;font-weight:700;cursor:pointer;margin-top:12px}
+button:focus-visible,a:focus-visible{outline:3px solid #f5a623;outline-offset:3px}
+p,small{color:#59617a}a{color:#453ac4}
+#status{font-weight:700}section{margin:24px 0;border-top:1px solid #e4e7f1;padding-top:15px}
+.challenge{background:#f7f6ff;border:1px solid #d6d3f5;padding:18px;border-radius:16px}
+.challenge h2{margin:0 0 8px}.challenge strong{color:#2d2479}
+#find10-result{padding:9px 0;font-weight:700}#find10-target{font-size:18px;font-weight:750;color:#252058}
+#find10-prepare[hidden],#find10-result[hidden],#guide[hidden]{display:none}
+.secondary{background:white;color:#453ac4;border:1px solid #aca6df}
+</style>
+</head>
+<body><main>
+<a href="./">← Hub</a>
+<h1>🧪 플레이테스터 모집</h1>
+<p>Formwheel의 게임과 도구를 테스트하고 오류, 사용성, 아이디어를 알려주세요. 실명·연락처는 받지 않습니다.</p>
+<section class="challenge" aria-labelledby="find10-title">
+<h2 id="find10-title">⏱️ 10초 챌린지 · FIND IT!</h2>
+<p>처음 Formwheel에 온 사람처럼, <strong>게임 종류만 보고 10초 안에 원하는 프로젝트를 찾아보세요.</strong> 프로젝트는 무작위로 정해집니다.</p>
+<div id="find10-prepare" hidden>
+<p>당신이 찾아야 할 게임 종류</p>
+<div id="find10-target" aria-live="polite"></div>
+<p>‘Hub에서 찾기’를 누르면 실제 Hub가 열리고 10초 카운트다운이 시작됩니다. 검색과 필터를 자유롭게 이용할 수 있어요.</p>
+<button type="button" id="find10-go">🔎 Hub에서 찾기</button>
+</div>
+<div id="find10-result" role="status" aria-live="polite" hidden></div>
+<button type="button" id="find10-random">🎲 랜덤 챌린지 뽑기</button>
+<small>선택 참여 · 계정 필요 없음 · 측정 결과는 이 탭에만 임시 보관 · 운영자에게 자동 전송되지 않음</small>
+</section>
+<form id="apply">
+<label for="nickname">표시 이름 (실명 불필요)</label><input id="nickname" maxlength="24" required placeholder="닉네임">
+<label for="field">테스트 분야</label><select id="field"><option>게임 플레이</option><option>모바일·UI</option><option>버그 찾기</option><option>접근성·튜토리얼</option></select>
+<label for="reason">지원 동기 (선택)</label><textarea id="reason" maxlength="300" rows="3"></textarea>
+<button id="submit">지원서 작성하기</button>
+</form>
+<p id="status" role="status"></p>
+<small>지원 내용은 이 기기에서 작성 후 복사됩니다. 현재 자동 제출·관리자 승인·배지 지급은 지원하지 않습니다.</small>
+<section><h2>📖 튜토리얼</h2><p>튜토리얼은 자동으로 시작되지 않습니다. 필요한 경우 아래 버튼으로 안내를 확인하세요.</p>
+<button type="button" id="tutorial" class="secondary">튜토리얼 보기</button>
+<div id="guide" hidden><p>① Hub에서 프로젝트를 고르세요.<br>② 카드의 설명과 난이도를 확인하세요.<br>③ 플레이 후 발견한 오류나 아이디어를 알려주세요.</p></div></section>
+</main>
+<script>
+(()=>{
+'use strict';
+const KEY='fw-find10-challenge', RESULT='fw-find10-result';
+const choices=[
+{slug:'Battle',hint:'친구와 실시간으로 퀴즈 대결하는 게임'},
+{slug:'Cook',hint:'재료를 골라 요리를 만드는 게임'},
+{slug:'Reflex',hint:'반응 속도를 측정하는 게임'},
+{slug:'Spy',hint:'친구들과 숨어 있는 스파이를 찾는 추리 게임'},
+{slug:'Marble',hint:'구슬을 굴려 경주하는 게임'},
+{slug:'GCrown',hint:'왕관을 차지하는 전략 보드게임'},
+{slug:'DiceDuel',hint:'특수 효과가 있는 주사위 대결 게임'},
+{slug:'Clicker',hint:'클릭과 업그레이드로 성장하는 게임'},
+{slug:'Bomb',hint:'제한 시간과 폭탄을 이용하는 게임'},
+{slug:'Territory',hint:'땅을 점령하며 겨루는 전략 게임'},
+{slug:'Scribble',hint:'그림을 그리고 서로 맞히는 게임'},
+{slug:'Sports',hint:'축구나 농구를 즐기는 스포츠 게임'}
+];
+let selected=null;
+const $=id=>document.getElementById(id);
+$('find10-random').addEventListener('click',()=>{
+const previous=selected?.slug;
+const available=choices.filter(x=>x.slug!==previous);
+selected=available[Math.floor(Math.random()*available.length)];
+$('find10-target').textContent=selected.hint;
+$('find10-prepare').hidden=false;
+$('find10-result').hidden=true;
+$('find10-go').focus();
+});
+$('find10-go').addEventListener('click',()=>{
+if(!selected)return;
+sessionStorage.setItem(KEY,JSON.stringify({slug:selected.slug,hint:selected.hint,startedAt:null}));
+sessionStorage.removeItem(RESULT);
+location.assign('./?fwFind10=1#projects');
+});
+try{
+const raw=sessionStorage.getItem(RESULT);
+if(raw){
+const r=JSON.parse(raw);
+$('find10-result').hidden=false;
+$('find10-result').textContent=r.success
+?'✅ 성공! '+r.elapsed.toFixed(1)+'초 만에 올바른 프로젝트를 찾았어요.'
+:r.timeout?'⏰ 10초가 지났어요. Hub에서 원하는 프로젝트를 찾기 어려웠나요?'
+:'🔎 다른 프로젝트를 선택했어요. 다시 도전할 수 있어요.';
+sessionStorage.removeItem(RESULT);
+}
+}catch{}
+$('tutorial').onclick=()=>{$('guide').hidden=!$('guide').hidden};
+$('apply').onsubmit=async e=>{
+e.preventDefault();
+const v=id=>$(id).value.trim();
+const msg='Formwheel 플레이테스터 지원\n닉네임: '+v('nickname')+'\n분야: '+v('field')+'\n지원 동기: '+v('reason');
+try{await navigator.clipboard.writeText(msg);$('status').textContent='지원 내용이 복사됐어요. Formwheel 운영자에게 전달해 주세요.'}
+catch{$('status').textContent='아래 내용을 복사해 운영자에게 전달해 주세요.';const t=document.createElement('textarea');t.value=msg;t.readOnly=true;$('status').after(t)}
+};
+})();
+</script></body></html>
