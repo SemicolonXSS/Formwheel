@@ -12,7 +12,7 @@ function apply(wallet,request,now){
   if(balance===null)throw Error('invalid stored balance');
   if(original.transactions?.[request.requestId]){
     const prior=original.transactions[request.requestId];
-    if(prior.type!==request.type||prior.itemId!==request.itemId)throw Error('request ID conflict');
+    if(prior.type!==request.type||prior.itemId!==request.itemId||(request.type==='refund'&&prior.purchaseId!==request.purchaseId))throw Error('request ID conflict');
     return original;
   }
   const inventory={...(original.inventory||{})},transactions={...(original.transactions||{})};
@@ -20,6 +20,7 @@ function apply(wallet,request,now){
   const price=money(CATALOG[itemId]);
   if(price===null)throw Error('unknown item');
   let next=balance;
+  let charged=price;
   if(request.type==='purchase'){
     if(inventory[itemId]?.owned)throw Error('already owned');
     if(balance<price)throw Error('insufficient funds');
@@ -31,10 +32,12 @@ function apply(wallet,request,now){
     const previous=transactions[request.purchaseId];
     if(!previous||previous.type!=='purchase'||previous.itemId!==itemId)throw Error('missing receipt');
     if(now<owned.purchasedAt||now-owned.purchasedAt>86400000)throw Error('refund expired');
-    next=balance+price;
+    charged=money(previous.amount);
+    if(charged===null||charged<=0n)throw Error('invalid receipt amount');
+    next=balance+charged;
     inventory[itemId]={...owned,owned:false,refundedAt:now};
   }else throw Error('unsupported operation');
-  transactions[request.requestId]={type:request.type,itemId,amount:price.toString(),at:now,
+  transactions[request.requestId]={type:request.type,itemId,amount:charged.toString(),at:now,
     ...(request.type==='refund'?{purchaseId:request.purchaseId}:{})};
   return {...original,balance:next.toString(),version:(original.version||0)+1,inventory,transactions,updatedAt:now};
 }
