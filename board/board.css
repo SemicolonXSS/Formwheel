@@ -64,3 +64,18 @@ button:focus-visible,summary:focus-visible,select:focus-visible{outline:3px soli
 .planned-grid ol{padding-left:20px;font-size:13px;line-height:1.6;color:#49546a}
 @media(max-width:830px){.planned-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:550px){.planned-grid{grid-template-columns:1fr}}
+
+
+/* Board online rooms — accessible room controls */
+.online-panel{background:#fff;border:1px solid #dce2f0;border-radius:17px;padding:16px;margin:0 0 17px;box-shadow:0 7px 20px #1721450c}
+.online-heading{display:flex;gap:12px;align-items:start;justify-content:space-between}.online-heading h2{font-size:18px;margin:0 0 5px}.online-heading p{font-size:13px;color:#5c6579;line-height:1.55;margin:0 0 10px}.online-label{border:1px solid #cbcff6;border-radius:999px;padding:5px 9px;background:#f2f0ff;color:#3836a3;font-size:11px;font-weight:800;white-space:nowrap}
+.online-controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.online-controls label{font-weight:700;color:#39445f;font-size:13px}
+.online-controls button,.online-controls input{border:1px solid #ced5e8;border-radius:10px;padding:10px 12px;background:#f5f6fb;color:#26324e;font-size:14px}
+.online-controls button{cursor:pointer;font-weight:800}.online-controls .primary{background:#3439bd;color:#fff;border-color:#3439bd}
+.online-controls input{width:150px;max-width:100%;font-weight:750;letter-spacing:.12em;text-transform:uppercase;background:white}
+.online-controls input::placeholder{letter-spacing:normal;text-transform:none}
+.online-controls button:disabled{opacity:.5;cursor:not-allowed}.online-room{color:#252a58;font-size:13px;margin-right:auto}
+#online-status{font-weight:700;color:#405188;font-size:13px;min-height:19px;margin:12px 0 4px;line-height:1.5}
+.online-notice{font-size:12px;line-height:1.5;color:#647089;margin:6px 0 0}
+.tabs button:disabled{opacity:.5;cursor:not-allowed}.tabs button[aria-pressed="true"]:disabled{opacity:1}
+@media(max-width:550px){.online-controls{gap:7px}.online-controls button{flex:1 1 auto}.online-controls input{flex:1;min-width:105px}.online-controls label{width:100%}.online-heading h2{font-size:16px}}
