@@ -8,8 +8,8 @@ const games={Reflex:['⚡ Reflex','Formwheel_Reflex'],Button:['🔘 Button','For
 const courses={arcade:['Reflex','Button','Marble','Time','Cook'],brain:['Quiz','Decode','Check','Balance','Reflex'],party:['Spy','Fate','Risk','GCrown','DiceDuel']};
 const KEY='formwheel.festival.s2.v1',$=id=>document.getElementById(id);
 function load(){try{const d=JSON.parse(localStorage.getItem(KEY)||'{}');return d&&typeof d==='object'?d:{}}catch{return {}}}
-let data=load();if(!courses[data.course])data.course='arcade';if(!data.runs||typeof data.runs!=='object')data.runs={};
-function state(){const r=data.runs[data.course];return r&&typeof r==='object'?r:{done:[],opened:[],finishedAt:null}}
+let data=load();if(!courses[data.course])data.course='arcade';if(!data.runs||typeof data.runs!=='object'||Array.isArray(data.runs))data.runs={};
+function state(){const r=data.runs[data.course];if(!r||typeof r!=='object'||Array.isArray(r))return {done:[],opened:[],finishedAt:null};const ids=courses[data.course],opened=Array.isArray(r.opened)?r.opened.filter(x=>ids.includes(x)):[],raw=Array.isArray(r.done)?r.done:[];const done=[];for(const id of ids){if(raw.includes(id)&&opened.includes(id)&&(done.length===ids.indexOf(id)))done.push(id);else break}return {...r,done,opened,finishedAt:done.length===ids.length&&Number.isFinite(r.finishedAt)?r.finishedAt:null}}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(data))}catch{$('status').textContent='저장소를 사용할 수 없어 진행 기록을 저장하지 못했어요.'}}
 function update(run){data.runs[data.course]=run;save();render()}
 function render(){
@@ -20,6 +20,6 @@ $('award').textContent=done.length===ids.length?'🏆 '+data.course.toUpperCase(
 $('course').addEventListener('change',e=>{data.course=courses[e.target.value]?e.target.value:'arcade';save();render()});
 $('restart').onclick=()=>{if(!confirm('선택한 코스의 현재 진행 기록을 초기화할까요?'))return;delete data.runs[data.course];save();render()};
 $('share').onclick=async()=>{const r=state(),msg='🎡 Formwheel GAME FESTIVAL '+$('course').selectedOptions[0].text+' '+(Array.isArray(r.done)?r.done.length:0)+'/5 완료! https://semicolonxss.github.io/Formwheel/festival.html';try{if(navigator.share)await navigator.share({text:msg,url:'https://semicolonxss.github.io/Formwheel/festival.html'});else{await navigator.clipboard.writeText(msg);$('status').textContent='결과를 복사했어요!'}}catch(e){if(e.name!=='AbortError')$('status').textContent='공유할 수 없어요. 주소창의 링크를 복사해 주세요.'}};
-window.addEventListener('storage',e=>{if(e.key===KEY){data=load();if(!courses[data.course])data.course='arcade';if(!data.runs)data.runs={};render()}});render();
+window.addEventListener('storage',e=>{if(e.key===KEY){data=load();if(!courses[data.course])data.course='arcade';if(!data.runs||typeof data.runs!=='object'||Array.isArray(data.runs))data.runs={};render()}});render();
 })();
 </script></body></html>
