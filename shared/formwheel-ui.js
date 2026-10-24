@@ -226,79 +226,29 @@ body[data-fw-global-theme="cosmic-genesis"] :is(.tag,.badge,.fw-maturity-caption
 body[data-fw-global-theme="cosmic-genesis"] :is(input,textarea,select){background:#fff!important;color:#202337!important}
 /* DAYNIGHT: 30 seconds = 24 hours; stable light cards keep labels readable. */
 body[data-fw-global-theme="daynight"][data-fw-effect="daynight"]::before{inset:0;opacity:1;background:linear-gradient(180deg,#76b7f8 0%,#f7de9d 100%);animation:fw-daynight-sky 30s linear infinite;transform:none!important}
-body[data-fw-global-theme="daynight"][data-fw-effect="daynight"]::after{content:"";position:fixed;pointer-events:none;z-index:-1;top:12vh;left:calc(50% - 40px);width:80px;height:80px;border-radius:50%;background:#fff8b0;box-shadow:0 0 55px 12px #ffe8a8;animation:fw-daynight-sun 30s linear infinite}
+/* Exact semicircular orbital paths are driven by trigonometry, not linear keyframe corners. */
+body[data-fw-global-theme="daynight"][data-fw-effect="daynight"]::after{
+ content:"";position:fixed;pointer-events:none;z-index:-1;top:0;left:50%;
+ width:80px;height:80px;border-radius:50%;background:#fff8b0;box-shadow:0 0 55px 12px #ffe8a8;
+ animation:none!important;transform:translate(calc(-50% + var(--fw-sun-x,0px)),var(--fw-sun-y,110vh));
+ opacity:var(--fw-sun-visible,0);
+}
 @keyframes fw-daynight-sky{
 0%,100%{background:linear-gradient(180deg,#f2a3a0,#ffd796)}
 18%,35%{background:linear-gradient(180deg,#65b6fa,#e3f5ff)}
 52%,68%{background:linear-gradient(180deg,#e37191,#f9ab68)}
 80%,92%{background:linear-gradient(180deg,#101b43,#39447a)}
 }
-/* Smooth rising/setting arcs. Celestial bodies remain opaque until fully below viewport. */
-@keyframes fw-daynight-sun{
-0%{transform:translate(-37.000vw,112.000vh);opacity:1}
-2.479%{transform:translate(-33.917vw,93.472vh);opacity:1}
-4.958%{transform:translate(-30.833vw,76.556vh);opacity:1}
-7.438%{transform:translate(-27.750vw,61.250vh);opacity:1}
-9.917%{transform:translate(-24.667vw,47.556vh);opacity:1}
-12.396%{transform:translate(-21.583vw,35.472vh);opacity:1}
-14.875%{transform:translate(-18.500vw,25.000vh);opacity:1}
-17.354%{transform:translate(-15.417vw,16.139vh);opacity:1}
-19.833%{transform:translate(-12.333vw,8.889vh);opacity:1}
-22.313%{transform:translate(-9.250vw,3.250vh);opacity:1}
-24.792%{transform:translate(-6.167vw,-0.778vh);opacity:1}
-27.271%{transform:translate(-3.083vw,-3.194vh);opacity:1}
-29.75%{transform:translate(0.000vw,-4.000vh);opacity:1}
-32.229%{transform:translate(3.083vw,-3.194vh);opacity:1}
-34.708%{transform:translate(6.167vw,-0.778vh);opacity:1}
-37.188%{transform:translate(9.250vw,3.250vh);opacity:1}
-39.667%{transform:translate(12.333vw,8.889vh);opacity:1}
-42.146%{transform:translate(15.417vw,16.139vh);opacity:1}
-44.625%{transform:translate(18.500vw,25.000vh);opacity:1}
-47.104%{transform:translate(21.583vw,35.472vh);opacity:1}
-49.583%{transform:translate(24.667vw,47.556vh);opacity:1}
-52.063%{transform:translate(27.750vw,61.250vh);opacity:1}
-54.542%{transform:translate(30.833vw,76.556vh);opacity:1}
-57.021%{transform:translate(33.917vw,93.472vh);opacity:1}
-59.5%{transform:translate(37.000vw,112.000vh);opacity:1}
-59.501%,100%{transform:translate(37vw,112vh);opacity:0}
-}
 body[data-fw-global-theme="daynight"] .fw-daynight-moon{
-position:fixed;top:12vh;left:calc(50% - 34px);width:68px;height:68px;border-radius:50%;
-z-index:-1;pointer-events:none;background:radial-gradient(circle at 35% 30%,#fffef3,#e6e6dc 75%,#c9cccf);
-box-shadow:0 0 35px 8px #f3f3dca8;
-animation:fw-daynight-moonrise 30s linear infinite;
+ position:fixed;top:0;left:50%;width:68px;height:68px;border-radius:50%;
+ z-index:-1;pointer-events:none;background:radial-gradient(circle at 35% 30%,#fffef3,#e6e6dc 75%,#c9cccf);
+ box-shadow:0 0 35px 8px #f3f3dca8;animation:none!important;
+ transform:translate(calc(-50% + var(--fw-moon-x,0px)),var(--fw-moon-y,110vh));
+ opacity:var(--fw-moon-visible,0);
 }
 body[data-fw-global-theme="daynight"] .fw-daynight-moon::after{
-content:"";position:absolute;inset:0;border-radius:50%;
-background:radial-gradient(circle at 25% 35%,#bec2c657 0 6%,transparent 8%),radial-gradient(circle at 65% 60%,#aeb4bb55 0 9%,transparent 11%),radial-gradient(circle at 56% 19%,#adb3bd50 0 5%,transparent 7%);
-}
-@keyframes fw-daynight-moonrise{
-0%,59.49%{transform:translate(-37vw,112vh);opacity:0}
-59.5%{transform:translate(-37vw,112vh);opacity:1}
-61.188%{transform:translate(-33.917vw,93.472vh);opacity:1}
-62.875%{transform:translate(-30.833vw,76.556vh);opacity:1}
-64.563%{transform:translate(-27.750vw,61.250vh);opacity:1}
-66.25%{transform:translate(-24.667vw,47.556vh);opacity:1}
-67.938%{transform:translate(-21.583vw,35.472vh);opacity:1}
-69.625%{transform:translate(-18.500vw,25.000vh);opacity:1}
-71.313%{transform:translate(-15.417vw,16.139vh);opacity:1}
-73%{transform:translate(-12.333vw,8.889vh);opacity:1}
-74.688%{transform:translate(-9.250vw,3.250vh);opacity:1}
-76.375%{transform:translate(-6.167vw,-0.778vh);opacity:1}
-78.063%{transform:translate(-3.083vw,-3.194vh);opacity:1}
-79.75%{transform:translate(0.000vw,-4.000vh);opacity:1}
-81.438%{transform:translate(3.083vw,-3.194vh);opacity:1}
-83.125%{transform:translate(6.167vw,-0.778vh);opacity:1}
-84.813%{transform:translate(9.250vw,3.250vh);opacity:1}
-86.5%{transform:translate(12.333vw,8.889vh);opacity:1}
-88.188%{transform:translate(15.417vw,16.139vh);opacity:1}
-89.875%{transform:translate(18.500vw,25.000vh);opacity:1}
-91.563%{transform:translate(21.583vw,35.472vh);opacity:1}
-93.25%{transform:translate(24.667vw,47.556vh);opacity:1}
-94.938%{transform:translate(27.750vw,61.250vh);opacity:1}
-96.625%{transform:translate(30.833vw,76.556vh);opacity:1}
-98.313%{transform:translate(33.917vw,93.472vh);opacity:1}
-100%{transform:translate(37.000vw,112.000vh);opacity:1}
+ content:"";position:absolute;inset:0;border-radius:50%;
+ background:radial-gradient(circle at 25% 35%,#bec2c657 0 6%,transparent 8%),radial-gradient(circle at 65% 60%,#aeb4bb55 0 9%,transparent 11%),radial-gradient(circle at 56% 19%,#adb3bd50 0 5%,transparent 7%);
 }
 body[data-fw-global-theme="daynight"] :is(.card,.panel,.fw-footer,.upgrade,.item,.theme-item,.station,.modal,.dialog,.notice,.status){background:#fffaf1!important;color:#292929!important;border-color:#d5a37a!important}
 body[data-fw-global-theme="daynight"] :is(.card,.panel,.fw-footer,.upgrade,.item,.theme-item,.station,.modal,.dialog) :is(h1,h2,h3,h4,p,span,small,strong,label,.muted,.sub,.item-desc,.theme-note){color:#292929!important;text-shadow:none!important}
@@ -343,7 +293,38 @@ function mountDaynightMoon(){
  if(document.querySelector('.fw-daynight-moon'))return;
  const moon=document.createElement('span');moon.className='fw-daynight-moon';moon.setAttribute('aria-hidden','true');document.body.append(moon);
 }
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mountDaynightMoon,{once:true});else mountDaynightMoon();
+// True semicircle: x = r*cos(theta), y = horizon - r*sin(theta).
+// Animate only while DAYNIGHT is active; no corners, snapping, or opaque resets.
+function startDaynightOrbit(){
+ mountDaynightMoon();
+ const origin=performance.now();
+ const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
+ function frame(now){
+  const body=document.body;
+  const active=body?.dataset.fwGlobalTheme==='daynight' && !reduced.matches;
+  if(active){
+   const phase=((now-origin)%30000)/30000;
+   const radius=Math.max(window.innerHeight*.90,window.innerWidth*.52);
+   const horizon=window.innerHeight+100;
+   function place(kind,start,end){
+    const t=(phase-start)/(end-start);
+    const visible=t>=0&&t<=1;
+    const theta=Math.PI*(1-Math.min(1,Math.max(0,t)));
+    body.style.setProperty('--fw-'+kind+'-x',(radius*Math.cos(theta)).toFixed(2)+'px');
+    body.style.setProperty('--fw-'+kind+'-y',(horizon-radius*Math.sin(theta)).toFixed(2)+'px');
+    body.style.setProperty('--fw-'+kind+'-visible',visible?'1':'0');
+   }
+   place('sun',0,.59);
+   place('moon',.60,1);
+  }else if(body){
+   body.style.setProperty('--fw-sun-visible','0');
+   body.style.setProperty('--fw-moon-visible','0');
+  }
+  requestAnimationFrame(frame);
+ }
+ requestAnimationFrame(frame);
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',startDaynightOrbit,{once:true});else startDaynightOrbit();
 
 const effects={'cosmic-infinity':'spin','cosmic-paradox':'reverse-spin','cosmic-omega':'pulse','cosmic-eternity':'slow-spin','cosmic-genesis':'reverse-spin',daynight:'daynight',overdrive:'spin',quantum:'reverse-spin',singularity:'slow-spin',nova:'pulse',echo:'pulse',comet:'drift',celestial:'shimmer',eclipse:'pulse',rift:'drift',aurora:'drift',prismatic:'shimmer',cyber:'shimmer','void-premium':'pulse'};
 const textThemes={
