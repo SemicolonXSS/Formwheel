@@ -1,0 +1,47 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>UNITE FINALE · Formwheel</title><link rel="icon" href="./assets/formwheel-favicon.svg"><style>*{box-sizing:border-box}body{margin:0;background:#f7f6ff;color:#28243f;font:15px system-ui,-apple-system,sans-serif}header{padding:16px 20px;background:#29215d;color:#fff;display:flex;align-items:center;justify-content:space-between}header a{color:#fff}main{max-width:940px;margin:auto;padding:17px}.hero{border-radius:20px;background:linear-gradient(115deg,#4b32a0,#805dce);color:#fff;padding:25px}.hero h1{margin:5px 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}.card{background:white;border:1px solid #e0daef;border-radius:17px;padding:16px;margin:12px 0}.grid .card{margin:0}.muted{color:#686581;font-size:13px}.hero .muted{color:#eee5ff}.card a{color:#4938a0;font-weight:700;text-decoration:none}.card a:hover{text-decoration:underline}button{cursor:pointer;padding:10px 14px;border-radius:10px;border:0;background:#5541b4;color:#fff;font:inherit;font-weight:700}button:disabled{opacity:.55}progress{width:100%;height:14px}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:space-between}.check{padding:12px;border:1px solid #e3e0ef;border-radius:11px;margin:8px 0}.check.done{background:#eaf8ef;border-color:#b3dfc2}#message{min-height:22px;color:#3f3285}</style></head><body><header><strong>✦ FORMWHEEL · UNITE</strong><a href="./">← 허브</a></header><main>
+<section class="hero"><small>SEASON 2 · PROJECT: UNITE</small><h1>🎆 UNITE FINALE</h1><p>11탄부터 20탄까지. 흩어져 있던 Formwheel의 경험을 하나로 연결하는 시즌의 피날레!</p><p class="muted">AQS · Formwheel ID · DAILY · HUB NEXT · PARTY · Rapid · Secret · Festival · Stability</p></section>
+<section class="card"><h2>🪐 시즌 2 통합 대시보드</h2><p class="muted">내가 지금 쓰는 브라우저의 일부 기록과 각 기능 바로가기를 함께 보여줘. 계정 전체 기록은 각 서비스에서 확인해 줘.</p><div class="grid" id="dashboard"></div><p id="lastRefresh" class="muted"></p><button id="refresh">↻ 기록 새로고침</button></section>
+<section class="card"><h2>🏆 시즌 2 피날레 탐험 이벤트</h2><p class="muted">아래 다섯 서비스를 이 페이지에서 방문하고 각각 확인 표시를 눌러 봐. 이벤트 진행과 기념 완주증은 이 브라우저에만 저장돼. 공식 배지·AQS XP·Rapid는 지급하지 않아.</p><div id="missions"></div><progress id="eventProgress" max="5" value="0"></progress><p id="eventCount"></p><p id="message" role="status" aria-live="polite"></p><div class="row"><button id="certificate" disabled>🎖️ 완주증 복사</button><button id="reset" style="background:#eeeafb;color:#302573">이벤트 기록 초기화</button></div></section>
+</main><script>
+(function(){'use strict';
+const KEY='formwheel.unite.finale.v1',$=id=>document.getElementById(id);
+const links=[
+{id:'aqs',name:'🏆 AQS 2.0',description:'업적·Secret·XP',url:'https://semicolonxss.github.io/Formwheel_AQS/'},
+{id:'profile',name:'👤 Formwheel ID',description:'프로필·대표 업적',url:'./profile.html'},
+{id:'daily',name:'🎯 DAILY',description:'매일 바뀌는 AQS 미션',url:'https://semicolonxss.github.io/Formwheel_AQS/'},
+{id:'hub',name:'🏠 HUB NEXT',description:'최근 플레이·추천',url:'./#fw-hub-next'},
+{id:'party',name:'👥 PARTY',description:'초대·게임 순서',url:'./party.html'},
+{id:'rapid',name:'🪙 Rapid 2.0',description:'목표·찜 목록',url:'./rapid-2.html'},
+{id:'secret',name:'🔮 Secret Expansion',description:'비밀 탐험',url:'https://semicolonxss.github.io/Formwheel_AQS/'},
+{id:'festival',name:'🎡 GAME FESTIVAL',description:'연속 게임 도전',url:'./festival.html'}
+];
+const missionIds=['aqs','party','rapid','secret','festival'];
+function stored(){try{const x=JSON.parse(localStorage.getItem(KEY)||'{}');return x&&typeof x==='object'&&!Array.isArray(x)?x:{}}catch{return {}}}
+let state=stored();function save(){try{localStorage.setItem(KEY,JSON.stringify(state));return true}catch{$('message').textContent='저장소를 사용할 수 없어 이벤트 기록을 저장하지 못했어요.';return false}}
+function parsed(key){try{return JSON.parse(localStorage.getItem(key)||'null')}catch{return null}}
+function stat(){
+ const aqs=parsed('formwheel.aqs.v1'),hub=parsed('formwheel.hub.next.v1'),festival=parsed('formwheel.festival.s2.v1'),rapid=parsed('formwheel.rapid2.planner.v1');
+ const finished=festival?.runs&&typeof festival.runs==='object'?Object.values(festival.runs).filter(v=>Array.isArray(v?.done)&&v.done.length===5).length:0;
+ return {aqs:aqs&&typeof aqs==='object'?Object.keys(aqs.unlocked||{}).length+'개 업적 (기기)':'AQS에서 확인',
+ hub:hub?.visits&&typeof hub.visits==='object'?Object.keys(hub.visits).length+'개 최근 기록':'기록 없음',
+ festival:finished+'개 코스 완주 표시',
+ rapid:rapid?.target?'목표 설정됨':'목표 미설정'};
+}
+function render(){
+ const summary=stat();$('dashboard').replaceChildren();
+ for(const item of links){const card=document.createElement('article');card.className='card';const title=document.createElement('h3');title.textContent=item.name;const desc=document.createElement('p');desc.className='muted';desc.textContent=item.description;const a=document.createElement('a');a.href=item.url;a.textContent='열기 →';if(!item.url.startsWith('#'))a.rel='noopener';card.append(title,desc,a);
+ const count={aqs:summary.aqs,hub:summary.hub,festival:summary.festival,rapid:summary.rapid}[item.id];if(count){const p=document.createElement('p');p.className='muted';p.textContent=count;card.append(p)}$('dashboard').append(card)}
+ $('lastRefresh').textContent='기기 기록 확인: '+new Date().toLocaleString('ko-KR');
+ const visits=state.visited&&typeof state.visited==='object'?state.visited:{},done=state.done&&typeof state.done==='object'?state.done:{};
+ $('missions').replaceChildren();let completed=0;
+ for(const id of missionIds){const item=links.find(x=>x.id===id),ready=!!visits[id],finished=!!done[id];if(finished)completed++;
+ const box=document.createElement('div');box.className='check'+(finished?' done':'');const row=document.createElement('div');row.className='row';const title=document.createElement('strong');title.textContent=item.name;const a=document.createElement('a');a.href=item.url;a.textContent='방문하기 ↗';a.target='_blank';a.rel='noopener noreferrer';a.addEventListener('click',()=>{state.visited=state.visited||{};state.visited[id]=Date.now();save();render()});const b=document.createElement('button');b.textContent=finished?'✓ 확인 완료':ready?'방문 확인':'방문 후 확인';b.disabled=finished||!ready;b.addEventListener('click',()=>{if(!state.visited?.[id])return;state.done=state.done||{};state.done[id]=Date.now();if(missionIds.every(k=>state.done[k])&&!state.completedAt)state.completedAt=Date.now();save();render()});row.append(title,a,b);box.append(row);$('missions').append(box)}
+ $('eventProgress').value=completed;$('eventCount').textContent=completed+' / 5 완료';$('certificate').disabled=completed!==5;
+ $('message').textContent=completed===5?'🎉 UNITE FINALE 완주! 기념 완주증을 복사할 수 있어요.':'다섯 서비스를 모두 탐험해 보세요.';
+}
+$('refresh').onclick=render;
+$('reset').onclick=()=>{if(!confirm('이 브라우저의 피날레 이벤트 기록만 초기화할까요?'))return;state={};save();render()};
+$('certificate').onclick=async()=>{if(!missionIds.every(k=>state.done?.[k]))return;const date=new Date(state.completedAt||Date.now()).toLocaleDateString('ko-KR');const message='🎖️ Formwheel SEASON 2 · UNITE FINALE 완주증\\n5개 서비스 탐험 완료 · '+date+'\\nhttps://semicolonxss.github.io/Formwheel/unite.html';try{await navigator.clipboard.writeText(message);$('message').textContent='완주증 문구를 복사했어요!'}catch{$('message').textContent='복사를 지원하지 않는 브라우저예요.'}};
+window.addEventListener('pageshow',render);window.addEventListener('storage',e=>{if(e.key===KEY){state=stored();render()}else if(['formwheel.aqs.v1','formwheel.hub.next.v1','formwheel.festival.s2.v1','formwheel.rapid2.planner.v1'].includes(e.key))render()});render();
+})();
+</script></body></html>
