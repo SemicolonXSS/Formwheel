@@ -64,6 +64,18 @@
           ".read": "auth != null && auth.uid === $uid",
           ".write": false
         }
+      },
+      "peakWitness": {
+        "record": {
+          ".read": true,
+          ".write": false
+        },
+        "users": {
+          "$uid": {
+            ".read": "auth != null && auth.uid === $uid",
+            ".write": false
+          }
+        }
       }
     },
     "hubCreatorSort": {
