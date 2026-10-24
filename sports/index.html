@@ -16,13 +16,13 @@
 (()=>{'use strict';
 const canvas=document.getElementById('game'),ctx=canvas.getContext('2d'),scoreEl=document.getElementById('score'),status=document.getElementById('status'),rules=document.getElementById('rules'),keys=new Set();
 const W=900,H=520,FLOOR=450,GRAVITY=880,HOOP_Z=235;
-let sport='soccer',running=false,paused=false,last=0,time=60,me=0,cpuScore=0,cooldown=0,cpuThink=0,shot=null,possessor=null;
+let sport='soccer',running=false,paused=false,last=0,time=60,me=0,cpuScore=0,cooldown=0,cpuThink=0,shot=null,possessor=null,frameGeneration=0,cpuVelocity=0;
 const player={x:185,z:0,vz:0,r:20},cpu={x:715,z:0,vz:0,r:20},ball={x:450,z:12,vx:0,vz:0,r:11};
 const sy=z=>FLOOR-z,clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),distance=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
-function place(){player.x=185;player.z=player.vz=0;cpu.x=715;cpu.z=cpu.vz=0;ball.x=450;ball.z=12;ball.vx=ball.vz=0;shot=null;possessor=null;cooldown=.4;cpuThink=1.5}
+function place(){cpuVelocity=0;player.x=185;player.z=player.vz=0;cpu.x=715;cpu.z=cpu.vz=0;ball.x=450;ball.z=12;ball.vx=ball.vz=0;shot=null;possessor=null;cooldown=.4;cpuThink=1.5}
 function score(){scoreEl.textContent='나 '+me+' : '+cpuScore+' CPU · '+Math.ceil(time)+'초'}
-function setSport(s){sport=s;running=false;paused=false;me=cpuScore=0;time=Number(document.getElementById('duration').value);place();document.querySelectorAll('[data-sport]').forEach(b=>b.classList.toggle('active',b.dataset.sport===s));rules.textContent=s==='soccer'?'축구 · X축 이동(← → / A D), Z축 점프(↑ / W), 스페이스로 킥! 오른쪽 골문을 노리세요.':'농구 · X축 이동(← → / A D), Z축 점프(↑ / W), 공에 접근하여 소유한 뒤 스페이스로 슛! 오른쪽 림을 위에서 아래로 통과해야 득점합니다.';status.textContent='경기 시작을 눌러주세요.';document.getElementById('pause').textContent='일시정지';score();draw()}
-function start(){time=Number(document.getElementById('duration').value);me=cpuScore=0;running=true;paused=false;last=0;place();status.textContent='경기 진행 중!';document.getElementById('pause').textContent='일시정지';score();requestAnimationFrame(frame)}
+function setSport(s){frameGeneration++;sport=s;running=false;paused=false;me=cpuScore=0;time=Number(document.getElementById('duration').value);place();document.querySelectorAll('[data-sport]').forEach(b=>b.classList.toggle('active',b.dataset.sport===s));rules.textContent=s==='soccer'?'축구 · X축 이동(← → / A D), Z축 점프(↑ / W), 스페이스로 킥! 오른쪽 골문을 노리세요.':'농구 · X축 이동(← → / A D), Z축 점프(↑ / W), 공에 접근하여 소유한 뒤 스페이스로 슛! 오른쪽 림을 위에서 아래로 통과해야 득점합니다.';status.textContent='경기 시작을 눌러주세요.';document.getElementById('pause').textContent='일시정지';score();draw()}
+function start(){const generation=++frameGeneration;time=Number(document.getElementById('duration').value);me=cpuScore=0;running=true;paused=false;last=0;place();status.textContent='경기 진행 중!';document.getElementById('pause').textContent='일시정지';score();requestAnimationFrame(ts=>frame(ts,generation))}
 function jump(p){if(p.z<=.01){p.vz=365}}
 function shoot(p){if(!running||paused||cooldown>0)return;
 if(sport==='basketball'){
@@ -47,7 +47,15 @@ function move(dt){
  if(keys.has('ArrowUp')||keys.has('w'))jump(player);
  // CPU pursues loose balls; with possession, it advances toward opponent basket.
  const cpuTarget=possessor===cpu?(sport==='basketball'?240:80):possessor===player?player.x:ball.x;
- cpu.x=clamp(cpu.x+clamp(cpuTarget-cpu.x,-1,1)*175*dt,25,875);
+ // Smooth pursuit with a dead zone. Avoid fixed-size steps that oscillate across the target.
+ const delta=cpuTarget-cpu.x;
+ const desiredVelocity=Math.abs(delta)<8?0:clamp(delta*3.3,-175,175);
+ const maxAcceleration=650*dt;
+ cpuVelocity+=clamp(desiredVelocity-cpuVelocity,-maxAcceleration,maxAcceleration);
+ const step=cpuVelocity*dt;
+ if(Math.abs(delta)<=Math.abs(step)&&Math.abs(desiredVelocity)<85){cpu.x=cpuTarget;cpuVelocity=0}
+ else cpu.x=clamp(cpu.x+step,25,875);
+ if(cpu.x<=25||cpu.x>=875)cpuVelocity=0;
  if(sport==='basketball'&&possessor===cpu&&cpuThink===0&&cpu.x<620){shoot(cpu);cpuThink=2}
  if(sport==='soccer'&&Math.abs(ball.x-cpu.x)<50&&ball.z<65&&cooldown===0)shoot(cpu);
  for(const p of [player,cpu]){p.z+=p.vz*dt;p.vz-=GRAVITY*dt;if(p.z<0){p.z=0;p.vz=0}}
@@ -99,7 +107,7 @@ function draw(){
  ctx.fillStyle=sport==='soccer'?'#f7fcff':'#ed923b';ctx.strokeStyle='#263349';ctx.lineWidth=2;ctx.beginPath();ctx.arc(ball.x,sy(ball.z),ball.r,0,Math.PI*2);ctx.fill();ctx.stroke();
  if(!running||paused){ctx.fillStyle='#07162baa';ctx.fillRect(0,0,W,H);ctx.fillStyle='white';ctx.font='bold 30px system-ui';ctx.textAlign='center';ctx.fillText(paused?'일시정지':time<=0?'경기 종료':'SPORTS',450,245)}
 }
-function frame(ts){if(!running)return;if(!last)last=ts;const dt=Math.min((ts-last)/1000,.045);last=ts;if(!paused){time=Math.max(0,time-dt);move(dt);score();if(time===0){running=false;status.textContent='경기 종료! '+(me>cpuScore?'승리!':me<cpuScore?'패배!':'무승부!')}}draw();if(running)requestAnimationFrame(frame)}
+function frame(ts,generation){if(!running||generation!==frameGeneration)return;if(!last)last=ts;const dt=Math.min((ts-last)/1000,.045);last=ts;if(!paused){time=Math.max(0,time-dt);move(dt);score();if(time===0){running=false;status.textContent='경기 종료! '+(me>cpuScore?'승리!':me<cpuScore?'패배!':'무승부!')}}draw();if(running&&generation===frameGeneration)requestAnimationFrame(next=>frame(next,generation))}
 document.querySelectorAll('[data-sport]').forEach(b=>b.addEventListener('click',()=>setSport(b.dataset.sport)));
 document.getElementById('start').addEventListener('click',start);
 document.getElementById('pause').addEventListener('click',()=>{if(!running)return;paused=!paused;last=0;status.textContent=paused?'일시정지 중':'경기 진행 중!';document.getElementById('pause').textContent=paused?'계속하기':'일시정지';draw()});
