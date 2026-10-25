@@ -832,7 +832,7 @@ if(new URLSearchParams(location.search).get('fwFind10')==='1'){
 const KEY='fw-find10-challenge', RESULT='fw-find10-result', PENDING='fw-find10-pending';
 let data;try{data=JSON.parse(sessionStorage.getItem(KEY)||'null')}catch{}
 if(data?.slug){
- data.startedAt=Date.now();sessionStorage.setItem(KEY,JSON.stringify(data));
+ if(!Number.isFinite(data.startedAt)||data.startedAt<=0||data.startedAt>Date.now())data.startedAt=Date.now();sessionStorage.setItem(KEY,JSON.stringify(data));
  const panel=document.createElement('div');
  panel.style.cssText='position:fixed;left:50%;top:12px;transform:translateX(-50%);z-index:2147483647;width:min(94vw,580px);border:2px solid #5751d5;background:#fff;color:#252047;border-radius:16px;padding:11px 14px;box-shadow:0 8px 40px #1115;font:700 14px/1.5 system-ui,sans-serif;text-align:center';
  const hint=document.createElement('div');hint.textContent='⏱️ 찾아보세요: '+data.hint;
@@ -842,7 +842,7 @@ if(data?.slug){
  let finished=false;
  async function finish(success,timeout,destination,selectedSlug){
   if(finished)return;finished=true;clearInterval(clock);
-  const elapsed=(Date.now()-data.startedAt)/1000;
+  const elapsed=Math.max(0,(Date.now()-data.startedAt)/1000);
   const result={slug:data.slug,selectedSlug:selectedSlug||'',success,timeout,elapsed,ageGroup:data.ageGroup||''};
   sessionStorage.setItem(RESULT,JSON.stringify(result));
   sessionStorage.setItem(PENDING,JSON.stringify(result));sessionStorage.removeItem(KEY);
@@ -851,8 +851,8 @@ if(data?.slug){
   catch{sessionStorage.setItem(PENDING,JSON.stringify(result))}
   location.assign(destination||'./playtest.html');
  }
- function tick(){const elapsed=(Date.now()-data.startedAt)/1000;clockText.textContent=elapsed<=10?(10-elapsed).toFixed(1)+'초 남음':'10초 초과 · '+elapsed.toFixed(1)+'초 경과';}
- const clock=setInterval(tick,65);tick();
+ function tick(){const elapsed=Math.max(0,(Date.now()-data.startedAt)/1000);clockText.textContent=elapsed<=10?(10-elapsed).toFixed(1)+'초 남음':'10초 초과 · '+elapsed.toFixed(1)+'초 경과';}
+ const clock=setInterval(tick,150);tick();
  cancel.addEventListener('click',e=>{e.preventDefault();finished=true;clearInterval(clock);sessionStorage.removeItem(KEY);location.assign('./playtest.html')});
  document.addEventListener('click',e=>{
   if(finished)return;
