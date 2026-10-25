@@ -140,7 +140,7 @@ const status=$('status'),submit=$('submit'),v=id=>$(id).value.trim();
 const application={nickname:v('nickname').slice(0,24),ageGroup:v('apply-age'),deviceType:v('apply-device'),field:v('field'),reason:v('reason').slice(0,300),notes:v('apply-notes').slice(0,300)};
 submit.disabled=true;status.textContent='⏳ 지원서를 제출하고 있어요…';
 try{
- const {submitTesterApplication}=await import('./assets/tester-applications.js?v=20261025-wikiadmin');
+ const {submitTesterApplication}=await import('./assets/tester-applications.js?v=20261026-entitlement1');
  await submitTesterApplication(application);
  status.textContent='✅ 지원서가 접수됐어요! 관리자 검토를 기다려 주세요.';
  $('apply').reset();
@@ -151,5 +151,5 @@ finally{submit.disabled=false}
 </script>
 <script type="module" src="./assets/find10-submit.js?v=20261025-device"></script>
 <script type="module" src="./assets/find10-admin.js?v=20261024-1"></script>
-<script type="module" src="./assets/tester-applications.js?v=20261025-wikiadmin"></script>
+<script type="module" src="./assets/tester-applications.js?v=20261026-entitlement1"></script>
 </body></html>
