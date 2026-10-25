@@ -31,7 +31,7 @@ p,small{color:#59617a}a{color:#453ac4}
 <p>Formwheel의 게임과 도구를 테스트하고 오류, 사용성, 아이디어를 알려주세요. 실명·연락처는 받지 않습니다.</p>
 <section class="challenge" aria-labelledby="find10-title">
 <h2 id="find10-title">⏱️ 10초 챌린지 · FIND IT!</h2>
-<p>처음 Formwheel에 온 사람처럼, <strong>게임 종류만 보고 10초 안에 원하는 프로젝트를 찾아보세요.</strong> 프로젝트는 무작위로 정해집니다.</p>
+<p>처음 Formwheel에 온 사람처럼, <strong>게임 종류만 보고 10초 안에 원하는 프로젝트를 찾아보세요.</strong> 프로젝트는 무작위로 정해집니다.</p><p>🎯 <strong>진행 방법:</strong> 미션 설명을 읽고 Hub에서 검색창·키워드·필터·카드를 이용해 알맞은 프로젝트를 찾으세요. 정답이 여러 개인 미션은 어느 하나를 골라도 인정됩니다. 잘못 고르면 ❌가 표시되고 시간이 멈추며, Hub로 돌아오면 이어서 진행됩니다. 10초를 넘어도 계속 찾을 수 있지만 제한 시간 내에 찾아야 성공입니다.</p>
 <div class="compact-field"><label for="find10-age">연령대 (선택)</label><select id="find10-age"><option value="">응답하지 않음</option><option>10대 미만</option><option>10대</option><option>20대</option><option>30대</option><option>40대</option><option>50대</option><option>60대 이상</option></select><button type="button" class="secondary compact-clear" id="find10-age-clear">선택 취소</button></div>
 <div class="compact-field"><label for="find10-device">기기 종류 (선택)</label><select id="find10-device"><option value="">응답하지 않음</option><option>휴대폰</option><option>노트북</option><option>데스크톱 컴퓨터</option><option>기타</option></select></div>
 <label for="find10-notes">특이사항 (선택)</label><textarea id="find10-notes" maxlength="200" rows="1" placeholder="테스트 환경이나 참고사항 (개인정보 제외)"></textarea>
@@ -69,7 +69,7 @@ p,small{color:#59617a}a{color:#453ac4}
 'use strict';
 const KEY='fw-find10-challenge', RESULT='fw-find10-result';
 const choices=[
-{slug:'Battle',hint:'친구와 실시간으로 퀴즈 대결하는 게임'},
+{slug:'Battle',hint:'친구와 문제를 풀고 정답을 겨루는 퀴즈 대결을 하고 싶어요.'},
 {slug:'Cook',hint:'재료를 골라 요리를 만드는 게임'},
 {slug:'Reflex',hint:'반응 속도를 측정하는 게임'},
 {slug:'Spy',hint:'친구들과 숨어 있는 스파이를 찾는 추리 게임'},
@@ -81,20 +81,20 @@ const choices=[
 {slug:'Territory',hint:'땅을 점령하며 겨루는 전략 게임'},
 {slug:'Scribble',hint:'그림을 그리고 서로 맞히는 게임'},
 {slug:'Sports',hint:'축구나 농구를 즐기는 스포츠 게임'},
-{slug:'Wheel',hint:'항목을 돌려 무작위 결과를 뽑는 도구'},
+{slug:'Wheel',answers:['Wheel','Form'],hint:'선택지를 넣고 돌려 무작위 결과를 뽑고 싶어요. 추첨이나 룰렛에 쓰는 기능을 찾아보세요.'},
 {slug:'Decode',hint:'문자와 코드를 여러 방식으로 변환하는 도구'},
-{slug:'Form',hint:'나만의 선택용 돌림판을 만드는 도구'},
+{slug:'Form',answers:['Form','Wheel'],hint:'선택 항목을 직접 구성하고 결과를 뽑는 나만의 돌림판을 만들고 싶어요.'},
 {slug:'Wiki',hint:'정보 문서를 읽고 편집을 제안하는 프로젝트'},
-{slug:'Quiz',hint:'퀴즈를 풀거나 만드는 프로젝트'},
-{slug:'Piano',hint:'화면의 건반으로 연주하는 프로젝트'},
-{slug:'Music',hint:'음악과 리듬을 즐기는 게임'},
+{slug:'Quiz',hint:'문제를 풀거나 퀴즈를 만들 수 있는 프로젝트를 찾아보세요.'},
+{slug:'Piano',answers:['Piano','Music'],hint:'화면의 피아노 건반을 눌러 음을 연주하고 싶어요.'},
+{slug:'Music',hint:'음악을 연주하거나 리듬과 관련된 활동을 즐기고 싶어요.'},
 {slug:'Time',hint:'시간을 활용해 도전하는 게임'},
 {slug:'Button',hint:'버튼을 누르며 도전하는 게임'},
 {slug:'Balance',hint:'둘 중 하나를 고르는 밸런스 게임'},
 {slug:'Check',hint:'항목을 확인하는 도구'},
 {slug:'Maze',hint:'미로를 탐험하는 게임'},
 {slug:'Glitch',hint:'위험을 피하며 진행하는 게임'},
-{slug:'Board',hint:'체스나 바둑 같은 보드게임을 즐기는 프로젝트'}
+{slug:'Board',answers:['Board','GCrown'],hint:'친구와 체스·바둑·오목·오델로처럼 규칙이 있는 보드게임을 하고 싶어요.'}
 ];
 let selected=null;
 const $=id=>document.getElementById(id);
@@ -111,7 +111,7 @@ $('find10-go').focus();
 });
 $('find10-go').addEventListener('click',()=>{
 if(!selected)return;
-sessionStorage.setItem(KEY,JSON.stringify({slug:selected.slug,hint:selected.hint,ageGroup:$('find10-age').value,deviceType:$('find10-device').value,notes:$('find10-notes').value.trim().slice(0,200),startedAt:null}));
+sessionStorage.setItem(KEY,JSON.stringify({slug:selected.slug,hint:selected.hint,answers:selected.answers||[selected.slug],ageGroup:$('find10-age').value,deviceType:$('find10-device').value,notes:$('find10-notes').value.trim().slice(0,200),startedAt:null}));
 sessionStorage.removeItem(RESULT);
 location.assign('./?fwFind10=1#projects');
 });
