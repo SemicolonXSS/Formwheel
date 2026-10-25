@@ -997,8 +997,19 @@ function render(){
 
   /* HTML */
 
+  // Group the visible cards by category without changing their filters or order within each group.
+  const categoryOrder = ['game','tool','app'];
+  const visibleCategories = categoryOrder.filter(category => list.some(project => project.category === category));
+  const groupedList = visibleCategories.flatMap(category => [
+    {sectionCategory:category,sectionCount:list.filter(project => project.category === category).length},
+    ...list.filter(project => project.category === category)
+  ]);
   cardsElement.innerHTML =
-    list.map(project => {
+    groupedList.map(project => {
+      if(project.sectionCategory){
+        const emoji = {game:'🎮',tool:'🛠️',app:'📱'}[project.sectionCategory] || '📁';
+        return `<h3 class="fw-category-heading" style="grid-column:1/-1;margin:18px 0 0;padding:10px 12px;border-bottom:2px solid #dcdcf3;font-size:18px;color:inherit">${emoji} ${escapeHTML(categoryLabel[project.sectionCategory]||project.sectionCategory)} <small style="font-size:13px;opacity:.7">(${project.sectionCount}개)</small></h3>`;
+      }
 
       const difficultyStars =
         project.difficulty === "쉬움"
