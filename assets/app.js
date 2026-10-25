@@ -33,18 +33,18 @@ IMPORTANT:
 
 
 const projects = [
-  {name:"Sports",icon:"⚽",className:"green",category:"game",mode:"both",connection:"offline",difficulty:"쉬움",description:"축구·농구 2종목! CPU 대전과 한 기기 2인 대전, 슛·킥·점프가 가능한 스포츠 게임.",url:"https://semicolonxss.github.io/Formwheel/sports/",addedAt:"2026-10-24T06:45:00Z",recent:true},
-  {name:"Board",icon:"♟️",className:"purple",category:"game",mode:"both",connection:"online",difficulty:"보통",description:"체스·바둑·오목·오델로 4종! 규칙을 읽고 로컬 2인 대전 또는 방 코드로 친구와 온라인 플레이.",url:"https://semicolonxss.github.io/Formwheel/board/",addedAt:"2026-10-24T05:30:00Z",recent:true},
-  {name:"SYNC",icon:"🧠",className:"purple",category:"game",mode:"both",connection:"online",difficulty:"쉬움",description:"친구들과 텔레파시가 통할까? 같은 답을 고르는 6라운드 싱크 파티 게임! 한 기기 파티와 온라인 방 코드.",url:"https://semicolonxss.github.io/Formwheel_Sync/",addedAt:"2026-10-22T06:00:00Z",recent:true},
-  {name:"Scribble",icon:"🎨",className:"purple",category:"game",mode:"multi",connection:"online",difficulty:"쉬움",description:"친구와 문장·그림을 번갈아 전달하는 낙서 릴레이! 2~8인 방 코드, 실시간 턴 진행과 앨범 공개.",url:"https://semicolonxss.github.io/Formwheel_Scribble/",addedAt:"2026-10-22T04:00:00Z",recent:true},
-  {name:"Whiteboard",icon:"🖌️",className:"purple",category:"tool",mode:"multi",connection:"online",difficulty:"쉬움",description:"친구와 같은 캔버스에서 실시간으로 함께 그리는 협업 화이트보드! 방 코드와 초대 링크, 그림 저장 지원.",url:"https://semicolonxss.github.io/Formwheel_Whiteboard/",addedAt:"2026-10-22T06:00:00Z",recent:true},
-  {name:"Paint",icon:"🎨",className:"purple",category:"tool",mode:"solo",connection:"offline",difficulty:"쉬움",description:"펜·도형·페인트통으로 자유롭게 그리는 그림판! PNG 저장, 이미지 불러오기, 자동 임시 저장 지원.",url:"https://semicolonxss.github.io/Formwheel_Paint/",addedAt:"2026-10-21T04:26:00Z",recent:true},
-  {name:"Animation",icon:"🎬",className:"purple",category:"tool",mode:"solo",connection:"offline",difficulty:"보통",description:"프레임별 그림과 타임라인으로 애니메이션 제작! 어니언 스킨, GIF·WebM 내보내기 지원.",url:"https://semicolonxss.github.io/Formwheel_Animation/",addedAt:"2026-10-21T04:15:00Z",recent:true},
+  {name:"Sports",keywords:"운동 축구 농구 공 슛 스포츠",icon:"⚽",className:"green",category:"game",mode:"both",connection:"offline",difficulty:"쉬움",description:"축구·농구 2종목! CPU 대전과 한 기기 2인 대전, 슛·킥·점프가 가능한 스포츠 게임.",url:"https://semicolonxss.github.io/Formwheel/sports/",addedAt:"2026-10-24T06:45:00Z",recent:true},
+  {name:"Board",keywords:"체스 바둑 오목 오델로 보드게임",icon:"♟️",className:"purple",category:"game",mode:"both",connection:"online",difficulty:"보통",description:"체스·바둑·오목·오델로 4종! 규칙을 읽고 로컬 2인 대전 또는 방 코드로 친구와 온라인 플레이.",url:"https://semicolonxss.github.io/Formwheel/board/",addedAt:"2026-10-24T05:30:00Z",recent:true},
+  {name:"SYNC",keywords:"텔레파시 같은답 파티 싱크",icon:"🧠",className:"purple",category:"game",mode:"both",connection:"online",difficulty:"쉬움",description:"친구들과 텔레파시가 통할까? 같은 답을 고르는 6라운드 싱크 파티 게임! 한 기기 파티와 온라인 방 코드.",url:"https://semicolonxss.github.io/Formwheel_Sync/",addedAt:"2026-10-22T06:00:00Z",recent:true},
+  {name:"Scribble",keywords:"그림 릴레이 낙서 전달",icon:"🎨",className:"purple",category:"game",mode:"multi",connection:"online",difficulty:"쉬움",description:"친구와 문장·그림을 번갈아 전달하는 낙서 릴레이! 2~8인 방 코드, 실시간 턴 진행과 앨범 공개.",url:"https://semicolonxss.github.io/Formwheel_Scribble/",addedAt:"2026-10-22T04:00:00Z",recent:true},
+  {name:"Whiteboard",keywords:"화이트보드 협업 그림 공유",icon:"🖌️",className:"purple",category:"tool",mode:"multi",connection:"online",difficulty:"쉬움",description:"친구와 같은 캔버스에서 실시간으로 함께 그리는 협업 화이트보드! 방 코드와 초대 링크, 그림 저장 지원.",url:"https://semicolonxss.github.io/Formwheel_Whiteboard/",addedAt:"2026-10-22T06:00:00Z",recent:true},
+  {name:"Paint",keywords:"그림판 드로잉 페인트",icon:"🎨",className:"purple",category:"tool",mode:"solo",connection:"offline",difficulty:"쉬움",description:"펜·도형·페인트통으로 자유롭게 그리는 그림판! PNG 저장, 이미지 불러오기, 자동 임시 저장 지원.",url:"https://semicolonxss.github.io/Formwheel_Paint/",addedAt:"2026-10-21T04:26:00Z",recent:true},
+  {name:"Animation",keywords:"애니메이션 움직이는그림 GIF",icon:"🎬",className:"purple",category:"tool",mode:"solo",connection:"offline",difficulty:"보통",description:"프레임별 그림과 타임라인으로 애니메이션 제작! 어니언 스킨, GIF·WebM 내보내기 지원.",url:"https://semicolonxss.github.io/Formwheel_Animation/",addedAt:"2026-10-21T04:15:00Z",recent:true},
 
-  {name:"Mix",icon:"🎲",className:"purple",category:"game",mode:"solo",connection:"offline",difficulty:"쉬움",description:"랜덤 게임 5개를 중복 없이 뽑아 연속 도전! 진행도 저장과 재추첨 지원.",url:"https://semicolonxss.github.io/Formwheel_Mix/",addedAt:"2026-10-21T00:30:00Z",recent:true},
+  {name:"Mix",keywords:"랜덤 추천 연속 게임",icon:"🎲",className:"purple",category:"game",mode:"solo",connection:"offline",difficulty:"쉬움",description:"랜덤 게임 5개를 중복 없이 뽑아 연속 도전! 진행도 저장과 재추첨 지원.",url:"https://semicolonxss.github.io/Formwheel_Mix/",addedAt:"2026-10-21T00:30:00Z",recent:true},
 
   {
-    name:"Glitch", icon:"⚡", className:"purple", category:"game", mode:"solo",
+    name:"Glitch",keywords:"생존 장애물 회피", icon:"⚡", className:"purple", category:"game", mode:"solo",
     connection:"offline", difficulty:"보통",
     description:"5~10초마다 글리치가 누적되는 120초 생존 게임! 장애물을 피하고 에너지 조각을 모아봐.",
     url:"https://semicolonxss.github.io/Formwheel_Glitch/",
@@ -52,7 +52,7 @@ const projects = [
   },
 
   {
-    name:"Maze", icon:"🌀", className:"purple", category:"game", mode:"both",
+    name:"Maze",keywords:"미로 탈출 길찾기", icon:"🌀", className:"purple", category:"game", mode:"both",
     connection:"offline", difficulty:"어려움",
     description:"방해 봇과 함정을 피해 탈출! 미로를 직접 조작하는 2인 로컬 배틀도 즐겨봐.",
     url:"https://semicolonxss.github.io/Formwheel_Maze/",
@@ -66,7 +66,7 @@ const projects = [
   ===================== */
 
   {
-    name:"Form",
+    name:"Form",keywords:"폼 돌림판 QR 생성",
     icon:"📝",
     className:"blue",
     category:"tool",
@@ -81,7 +81,7 @@ const projects = [
 
 
   {
-    name:"Wheel",
+    name:"Wheel",keywords:"돌림판 룰렛 추첨 랜덤",
     icon:"🎡",
     className:"blue",
     category:"tool",
@@ -96,7 +96,7 @@ const projects = [
 
 
   {
-    name:"Quiz",
+    name:"Quiz",keywords:"퀴즈 문제 정답",
     icon:"🧠",
     className:"purple",
     category:"tool",
@@ -111,7 +111,7 @@ const projects = [
 
 
   {
-    name:"Decode",
+    name:"Decode",keywords:"암호 해독 인코딩 변환",
     icon:"🔐",
     className:"gray",
     category:"tool",
@@ -171,7 +171,7 @@ const projects = [
 
 
   {
-    name:"Check",
+    name:"Check",keywords:"체크 확인 검사",
     thumbnail:"./assets/check-thumbnail.svg",
     icon:"✅",
     className:"green",
@@ -187,7 +187,7 @@ const projects = [
 
 
   {
-    name:"Note",
+    name:"Note",keywords:"메모 노트 기록",
     icon:"📔",
     className:"purple",
     category:"app",
@@ -205,7 +205,7 @@ const projects = [
   ===================== */
 
   {
-    name:"Chat",
+    name:"Chat",keywords:"채팅 대화 메시지",
     icon:"💬",
     className:"cyan",
     category:"app",
@@ -235,7 +235,7 @@ const projects = [
 
 
   {
-    name:"Wiki",
+    name:"Wiki",keywords:"위키 문서 정보",
     icon:"📚",
     className:"blue",
     category:"tool",
@@ -295,7 +295,7 @@ const projects = [
   ===================== */
 
   {
-    name:"PVP",
+    name:"PVP",keywords:"대전 멀티플레이",
     icon:"⚔️",
     className:"purple",
     category:"game",
@@ -311,7 +311,7 @@ const projects = [
 
 
   {
-    name:"Territory",
+    name:"Territory",keywords:"영토 땅 점령",
     icon:"🗺️",
     className:"blue",
     category:"game",
@@ -327,7 +327,7 @@ const projects = [
 
 
   {
-    name:"Cook",
+    name:"Cook",keywords:"요리 음식 레시피 재료",
     icon:"🍳",
     className:"orange",
     category:"game",
@@ -342,7 +342,7 @@ const projects = [
 
 
   {
-    name:"Button",
+    name:"Button",keywords:"버튼 누르기",
     icon:"🔘",
     className:"purple",
     category:"game",
@@ -372,7 +372,7 @@ const projects = [
 
 
   {
-    name:"Battle",
+    name:"Battle",keywords:"퀴즈 대결 문제",
     icon:"⚔️",
     className:"orange",
     category:"game",
@@ -387,7 +387,7 @@ const projects = [
 
 
   {
-    name:"Bomb",
+    name:"Bomb",keywords:"폭탄 타이머 제한시간",
     icon:"💣",
     className:"red",
     category:"game",
@@ -417,7 +417,7 @@ const projects = [
 
 
   {
-    name:"Reflex",
+    name:"Reflex",keywords:"반응속도 순발력 클릭",
     icon:"⚡",
     className:"blue",
     category:"game",
@@ -432,7 +432,7 @@ const projects = [
 
 
   {
-    name:"Spy",
+    name:"Spy",keywords:"스파이 추리 단어",
     icon:"🕵️",
     className:"purple",
     category:"game",
@@ -447,7 +447,7 @@ const projects = [
 
 
   {
-    name:"Clicker",
+    name:"Clicker",keywords:"클리커 업그레이드 성장",
     icon:"🖱️",
     className:"cyan",
     category:"game",
@@ -477,7 +477,7 @@ const projects = [
 
 
   {
-    name:"Marble",
+    name:"Marble",keywords:"구슬 레이스 경주",
     icon:"🎱",
     className:"purple",
     category:"game",
@@ -492,7 +492,7 @@ const projects = [
 
 
   {
-    name:"GCrown",
+    name:"GCrown",keywords:"왕관 전략 보드",
     icon:"👑",
     className:"orange",
     category:"game",
@@ -507,7 +507,7 @@ const projects = [
 
 
   {
-    name:"Fate",
+    name:"Fate",keywords:"카드 운명 전략",
     icon:"🎡",
     className:"purple",
     category:"game",
@@ -522,7 +522,7 @@ const projects = [
 
 
   {
-    name:"Time",
+    name:"Time",keywords:"시간 타이머",
     icon:"⏱️",
     className:"red",
     category:"game",
@@ -537,7 +537,7 @@ const projects = [
 
 
   {
-    name:"Music",
+    name:"Music",keywords:"음악 리듬 악기",
     icon:"🎵",
     className:"pink",
     category:"game",
@@ -552,7 +552,7 @@ const projects = [
 
 
   {
-    name:"Piano",
+    name:"Piano",keywords:"피아노 건반 연주",
     icon:"🎹",
     className:"pink",
     category:"game",
@@ -567,7 +567,7 @@ const projects = [
 
 
   {
-    name:"Balance",
+    name:"Balance",keywords:"밸런스 선택 질문",
     icon:"⚖️",
     className:"green",
     category:"game",
@@ -582,7 +582,7 @@ const projects = [
 
 
   {
-    name:"Vault",
+    name:"Vault",keywords:"금고 보관",
     icon:"🔒",
     className:"gray",
     category:"game",
@@ -597,7 +597,7 @@ const projects = [
 
 
   {
-    name:"Risk",
+    name:"Risk",keywords:"위험 점수 베팅",
     icon:"🎲",
     className:"green",
     category:"game",
@@ -885,6 +885,7 @@ function render(){
             project.name +
             " " +
             project.description +
+            " " + (project.keywords || "") +
             " " +
             categoryLabel[project.category] + " " + modeLabel[project.mode] + " " + connectionLabel[project.connection] + " " + project.difficulty
           ).toLowerCase();
