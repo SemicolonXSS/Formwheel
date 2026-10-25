@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Formwheel BETA | 무료 웹게임 · 친구와 온라인 대전 · 돌림판</title>
+<meta name="description" content="설치 없이 바로 즐기는 무료 웹게임과 도구! Formwheel에서 친구와 퀴즈 대결을 하고, 요리 게임 Cook과 돌림판 Wheel 등 다양한 프로젝트를 만나보세요.">
+<link rel="canonical" href="https://semicolonxss.github.io/Formwheel/">
+<link rel="manifest" href="/Formwheel/manifest.json">
+<meta name="theme-color" content="#f7f8fc">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Formwheel">
+
+
+<link rel="stylesheet" href="./assets/styles.css?v=20261023-sortdirection1">
+<link rel="stylesheet" href="https://semicolonxss.github.io/Formwheel/shared/formwheel-ui.css">
+<script defer src="https://semicolonxss.github.io/Formwheel/shared/formwheel-ui.js?v=20261024-daynight-true-semicircle4"></script>
+<meta property="og:site_name" content="Formwheel">
+<meta property="og:title" content="Formwheel">
+<meta property="og:description" content="설치 없이 즐기는 무료 웹게임 & 도구. 돌리고, 도전하고, 발견하세요!">
+<meta property="og:image" content="https://semicolonxss.github.io/Formwheel/og-image.png">
+<meta property="og:image:secure_url" content="https://semicolonxss.github.io/Formwheel/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Formwheel — 설치 없이 즐기는 무료 웹게임 & 도구">
+<meta property="og:url" content="https://semicolonxss.github.io/Formwheel/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Formwheel">
+<meta name="twitter:description" content="설치 없이 즐기는 무료 웹게임 & 도구. 돌리고, 도전하고, 발견하세요!">
+<meta name="twitter:image" content="https://semicolonxss.github.io/Formwheel/og-image.png">
+<link rel="stylesheet" href="assets/formwheel-brand.css?v=20261008-hub-logo">
+<link rel="icon" type="image/svg+xml" href="https://semicolonxss.github.io/Formwheel/assets/formwheel-favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="/Formwheel/assets/formwheel-apple-touch-icon.svg?v=20261011-ios">
+<style id="formwheel-install-styles">
+.fw-install{max-width:510px;margin:18px auto 4px;padding:18px;border:1px solid #e4e7ef;border-radius:18px;background:rgba(255,255,255,.94);box-shadow:0 10px 28px rgba(35,48,90,.06);text-align:center;color:#202638}
+.fw-install h3{margin:0 0 7px;font-size:19px}.fw-install p{margin:0 0 13px;font-size:13px;color:#5c6476;line-height:1.6}
+.fw-install button{font:inherit;cursor:pointer}.fw-install-primary,.fw-install-option{display:block;width:100%;border:0;border-radius:12px;padding:12px 14px;background:#3439bd;color:white;font-weight:750}
+.fw-install-more{display:inline-flex;align-items:center;justify-content:center;border:0;background:transparent;color:#596177;font-size:12px;padding:9px 14px;margin-top:5px;cursor:pointer}
+.fw-install-options[hidden],.fw-install-info[hidden],.fw-install-option[hidden]{display:none}
+.fw-install-options{display:grid;gap:8px;margin:5px 0 0}.fw-install-option{background:#f0f2fc;color:#263184;border:1px solid #e0e3f3}
+.fw-install-info{margin:12px 0 0;padding:12px;text-align:left;white-space:pre-line;background:#f5f6fb;border-radius:12px;font-size:13px;line-height:1.7;color:#323b4e}
+.fw-settings-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px}
+.fw-settings-row #fw-filter-toggle{margin-top:0}
+#fw-favorites-toggle{border:1px solid #c7ccec;border-radius:10px;background:#f2f0ff;color:#383278;padding:10px 13px;font-weight:700;cursor:pointer}
+.fw-favorites-panel{margin:10px 0 14px;padding:15px;border:1px solid #d9dcf1;background:#f9f9ff;border-radius:14px}
+.fw-favorites-panel[hidden]{display:none!important}
+.fw-favorites-panel p{margin:5px 0 12px;font-size:13px;color:#5a6276}
+.fw-favorites-options{display:grid;grid-template-columns:repeat(auto-fill,minmax(135px,1fr));gap:8px;max-height:230px;overflow:auto}
+.fw-favorites-options label{display:flex;gap:7px;align-items:center;padding:9px;border:1px solid #d9deed;border-radius:9px;background:white;cursor:pointer;font-size:13px}
+#fw-favorites-clear{margin-top:10px;padding:7px 10px;cursor:pointer}
+.card.fw-pinned{outline:2px solid #8a72ee;outline-offset:-2px}
+.fw-pin-mark{font-size:12px;color:#5946ab;font-weight:700;margin-left:auto}
+</style>
+<link rel="stylesheet" href="./assets/home.css?v=20261014-compact-recommend">
+<style>
+/* Compact visitor counters: retain existing Firebase count bindings */
+#fw-live-presence{display:inline-flex!important;gap:6px!important;padding:5px 10px!important;margin-bottom:8px!important;font-size:11px!important;line-height:1.35!important;box-shadow:none!important;max-width:calc(100% - 16px);border-radius:12px!important}
+#fw-live-presence strong{font-size:11px;font-weight:650;white-space:nowrap}
+#fw-live-presence small{display:none!important}
+#fw-live-presence span[aria-hidden="true"]{font-size:10px}
+@media(max-width:480px){#fw-live-presence{gap:5px!important;padding:5px 8px!important;font-size:10px!important}#fw-live-presence strong{font-size:10px}}
+.fw-language-control{display:inline-flex;gap:5px;align-items:center;padding:6px 9px;border:1px solid #e0e4ec;border-radius:10px;background:#fff;color:#273044;white-space:nowrap}
+.fw-language-control select{border:0;outline:0;background:transparent;color:inherit;font:inherit;font-size:12px;cursor:pointer;max-width:92px}
+.fw-language-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+@media(max-width:700px){.fw-language-control{padding:5px 4px;gap:2px}.fw-language-control select{max-width:64px;font-size:11px}}
+/* Hub first-screen simplification: keep full functionality below the project catalogue. */
+@media(max-width:700px){
+  main .hero{padding-top:18px!important;padding-bottom:12px!important}
+  main .hero h1{margin-top:5px!important;margin-bottom:6px!important}
+  main .hero h2{margin:5px 0!important;font-size:clamp(16px,4.6vw,21px)!important}
+  main .hero > p:not(:first-child){display:none!important}
+  main .heroButtons{margin-top:12px!important;margin-bottom:2px!important}
+  main .heroBadge{display:none!important}
+  #projects{scroll-margin-top:75px}
+}
+</style>
+<script defer src="./shared/formwheel-i18n.js?v=20261013-1"></script>
+<style id="fw-hub-cleanup-20261019">
+/* Prioritize actual projects, not decorative panels. */
+main .hero{padding-bottom:18px!important}
+main .heroButtons{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+#projects{scroll-margin-top:82px}
+#projects .toolbar{gap:12px}
+#projects .searchBox{min-width:0}
+#projects .categoryButtons{display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;padding-bottom:5px}
+#projects .categoryButtons button{flex-shrink:0}
+#fw-filter-toggle{margin-top:8px}
+#fw-filter-panel:not(.open):not([data-open="true"]){/* Existing filter JS controls visibility; do not override it. */}
+@media(max-width:700px){
+ header{gap:5px!important}
+ header nav{scrollbar-width:none!important;gap:2px!important}
+ header nav::-webkit-scrollbar{display:none}
+ header nav a{padding:8px 6px!important;font-size:11px!important}
+ header .fw-hub-logo{flex-shrink:0}
+ main .hero{padding:14px 12px 16px!important}
+ main .hero h1{font-size:clamp(27px,8vw,39px)!important}
+ main .hero h2{font-size:15px!important;line-height:1.5}
+ main .heroButtons a{flex:0 1 auto!important;width:auto!important;min-width:0!important;max-width:100%!important;min-height:44px!important;box-sizing:border-box!important;text-align:center;padding:9px 12px!important;font-size:13px!important;line-height:1.25!important;border-radius:11px!important;white-space:normal!important}
+ main .heroButtons{gap:7px!important;align-items:center}
+ @media(max-width:390px){main .heroButtons a{font-size:12px!important;padding:8px 10px!important}}
+ #projects .toolbar{display:flex;flex-direction:column;align-items:stretch}
+ #projects .searchBox{width:100%;max-width:none}
+ #projects .categoryButtons{width:100%}
+ #projects .subToolbar{gap:8px}
+ #projects .sortSelect{max-width:175px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}}
+</style>
+<style id="fw-discovery-20261020">
+#fw-quick-picks{max-width:920px;margin:0 auto 11px;padding:9px 13px;border:1px solid #e3e7f1;border-radius:15px;background:#fff}
+.fw-picks-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:7px;font-size:13px;color:#252c40}
+#fw-picks-refresh{border:0;border-radius:9px;background:#f0f2fa;color:#3d4581;font:inherit;font-size:11px;padding:5px 9px;cursor:pointer}
+.fw-picks-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+.fw-picks-list a{display:flex;align-items:center;justify-content:center;gap:5px;flex-wrap:wrap;padding:8px 7px;border-radius:10px;text-decoration:none;background:#f7f8fd;border:1px solid #e9eaf6;color:#293354;font-size:12px;font-weight:750;text-align:center}
+.fw-picks-list a small{font-size:10px;color:#656d84;font-weight:500}
+.fw-picks-list a:hover,.fw-picks-list a:focus-visible{border-color:#7d83d4;background:#eef0ff}
+@media(max-width:580px){#fw-quick-picks{margin:0 10px 10px;padding:8px} .fw-picks-list a{flex-direction:column;gap:2px;font-size:11px;padding:7px 3px} .fw-picks-list a small{font-size:9px}}
+</style>
+<style id="fw-50days-style">
+#fw-50days{position:relative;isolation:isolate;overflow:hidden;max-width:1000px;margin:14px auto 16px;padding:23px 20px;border-radius:21px;background:radial-gradient(circle at 85% 10%,#6738a9 0,transparent 33%),linear-gradient(125deg,#101932,#28325d 56%,#452e6d);color:#fff;text-align:center;box-shadow:0 13px 34px #262b6340}
+#fw-50days[hidden]{display:none!important}
+#fw-50days h2{position:relative;z-index:1;margin:5px 0;font-size:clamp(26px,6vw,44px);font-weight:900;letter-spacing:-.035em;color:#fff}
+#fw-50days .fw50-eyebrow{position:relative;z-index:1;color:#ffd98b;font-size:11px;letter-spacing:.19em;font-weight:800}
+#fw-50days .fw50-desc{position:relative;z-index:1;margin:8px auto 13px;font-size:13px;line-height:1.65;color:#edf0ff}
+#fw-50days .fw50-actions{position:relative;z-index:1;display:flex;justify-content:center;gap:9px;flex-wrap:wrap}
+#fw-50days button,#fw-50days a.fw50-link{font:inherit;font-weight:800;font-size:12px;border-radius:999px;padding:10px 16px;cursor:pointer;text-decoration:none}
+#fw-50days #fw50-celebrate{border:0;background:#ffcf69;color:#38233b}
+#fw-50days a.fw50-link{border:1px solid #ffffff80;color:#fff;background:#ffffff17}
+#fw-50days #fw50-close{position:absolute;right:12px;top:10px;z-index:3;background:#ffffff1c;color:#fff;border:0;border-radius:50%;width:30px;height:30px;padding:0;font-size:18px}
+#fw50-sparks{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.fw50-spark{position:absolute;top:-20px;font-size:18px;animation:fw50-fall 2.6s ease-in forwards;will-change:transform;opacity:0}
+@keyframes fw50-fall{0%{transform:translateY(-30px) rotate(0);opacity:0}12%{opacity:1}100%{transform:translateY(230px) rotate(540deg);opacity:0}}
+@media(max-width:600px){#fw-50days{margin:10px 10px 12px;padding:19px 16px}#fw-50days .fw50-desc{font-size:12px}#fw-50days button,#fw-50days a.fw50-link{padding:9px 13px}}
+@media(prefers-reduced-motion:reduce){.fw50-spark{animation:none!important;display:none!important}}
+</style>
+<style id="fw-hub-20261020-six-fixes">
+@media(max-width:700px){main .hero{padding-block:12px!important} main .heroButtons{gap:7px!important} #fw-quick-picks{margin-block:6px!important} #projects{scroll-margin-top:60px}}
+</style>
+<style id="fw-road300-style">
+#fw-road300{max-width:920px;margin:0 auto 12px;padding:10px 13px;border:1px solid #dfe7fa;border-radius:15px;background:#f8faff;color:#253251;font-size:13px}
+.fw-road300-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:7px}
+.fw-road300-links a{flex:1 1 165px;text-decoration:none;text-align:center;padding:9px 8px;background:white;border:1px solid #e2e7f2;border-radius:10px;color:#273b7a;font-weight:750}
+.fw-road300-links small{font-weight:500;color:#667085;margin-left:5px}
+.fw-road300-links a:focus-visible{outline:3px solid #3146c9;outline-offset:2px}
+@media(max-width:580px){#fw-road300{margin:0 10px 9px;padding:9px} .fw-road300-links{gap:5px}.fw-road300-links a{flex:1 1 90px;font-size:11px;padding:9px 5px}.fw-road300-links small{display:none}}
+</style>
+<script type="application/ld+json" id="fw-seo-schema-20261022">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Formwheel",
+  "url": "https://semicolonxss.github.io/Formwheel/",
+  "description": "설치 없이 즐기는 무료 웹게임, 온라인 대전과 돌림판 등 다양한 도구를 제공하는 Formwheel 플랫폼",
+  "inLanguage": "ko-KR",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://semicolonxss.github.io/Formwheel/#projects"
+  }
+}
+</script>
+<style id="fw-hub-shortcuts-style">
+#fw-hub-shortcuts{max-width:920px;margin:0 auto 10px;padding:0 10px;display:flex;justify-content:center;gap:7px;flex-wrap:wrap}
+#fw-hub-shortcuts a{display:inline-flex;align-items:center;justify-content:center;gap:4px;padding:7px 11px;border:1px solid #d9dced;border-radius:999px;background:#fff;color:#343a65;text-decoration:none;font-size:12px;font-weight:700;line-height:1.25;white-space:nowrap}
+#fw-hub-shortcuts a:hover,#fw-hub-shortcuts a:focus-visible{background:#f1efff;border-color:#9c93dc;outline-offset:2px}
+@media(max-width:540px){#fw-hub-shortcuts{gap:5px;margin-bottom:8px}#fw-hub-shortcuts a{font-size:11px;padding:7px 9px}}
+</style>
+
+<style id="fw-beta-orbit-styles">
+#fw-beta-switch{position:sticky;top:0;z-index:9998;display:flex;align-items:center;justify-content:center;gap:8px;padding:10px 12px;background:#f8faff;border-bottom:1px solid #cfd9ed;box-shadow:0 2px 8px #102e5310;color:#253251;font-family:system-ui,sans-serif}
+#fw-beta-switch strong{font-size:13px;margin-right:8px}#fw-beta-switch button{appearance:none;border:1px solid #cad5e9;border-radius:12px;background:#fff;color:#263a60;padding:11px 16px;font:700 14px system-ui,sans-serif;cursor:pointer;min-height:44px}
+#fw-beta-switch button[aria-pressed="true"]{background:#2856ae;color:white;border-color:#2856ae}
+body.fw-beta-simple #cards{display:grid!important;grid-template-columns:repeat(auto-fill,minmax(170px,1fr))!important;gap:10px!important}
+body.fw-beta-simple #cards .card{min-width:0!important;min-height:0!important;padding:12px!important;border-radius:14px!important;box-shadow:none!important;display:flex!important;flex-direction:column!important;gap:7px!important}
+body.fw-beta-simple #cards .cardTop{margin:0!important;padding:0!important;min-height:0!important}
+body.fw-beta-simple #cards .cardTitle{font-size:15px!important;line-height:1.35!important}
+body.fw-beta-simple #cards .cardBottom{margin-top:auto!important;padding-top:5px!important}
+body.fw-beta-simple #cards .cardDescription,body.fw-beta-simple #cards .cardDesc{display:none!important}
+@media(max-width:540px){#fw-beta-switch{gap:5px;flex-wrap:wrap}#fw-beta-switch strong{width:100%;text-align:center}#fw-beta-switch button{flex:1}body.fw-beta-simple #cards{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+<a class="logo fw-hub-logo" href="https://semicolonxss.github.io/Formwheel/" aria-label="FormWheel 메인으로 이동"><span class="fw-hub-form">Form</span><span class="fw-hub-icon" aria-hidden="true"></span><span class="fw-hub-wheel">Wheel</span></a>
+
+
+<nav aria-label="메인 메뉴">
+<a href="#" id="fw-nav-quick">⚔️ 빠른 대전</a>
+<a href="#" id="fw-nav-friend">🎲 랜덤 플레이</a>
+<a href="#" id="fw-nav-solo" title="혼자 할 수 있는 게임으로 바로 이동">🌀 혼자 플레이</a>
+<a href="#projects">🔎 찾기</a>
+<a href="./more.html">☰ 더보기</a>
+</nav>
+<a href="./profile.html" class="fw-profile-trigger" aria-label="내 프로필 및 커스터마이징 페이지 열기" title="내 프로필"><span id="fw-header-avatar">🎡</span><span id="fw-header-featured" hidden aria-label="대표 업적"></span></a>
+</header>
+<style>
+#fw-header-avatar{display:grid;place-items:center;width:39px;height:39px;border-radius:50%;flex-shrink:0;line-height:1;transition:border .15s ease}#fw-header-featured{position:absolute;bottom:-6px;right:-7px;display:grid;place-items:center;width:23px;height:23px;border:2px solid white;border-radius:50%;background:#f0e9ff;font-size:13px;box-shadow:0 2px 8px #2222}#fw-header-featured[hidden]{display:none!important}.fw-profile-trigger{position:relative;overflow:visible!important}
+
+header nav{display:flex;align-items:center;gap:8px;margin-left:auto}
+header nav a{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;padding:10px 12px;font-size:13px;border-radius:10px}
+header .fw-profile-trigger{margin-left:0}
+@media(max-width:700px){header{gap:8px}header nav{gap:3px;overflow-x:auto;min-width:0;flex:1}header nav a{font-size:11px;padding:8px 7px}header nav{scrollbar-width:thin}}
+#fw-matchmaking[hidden],#fw-matchmaking [hidden]{display:none!important}#fw-matchmaking{box-sizing:border-box}#fw-matchmaking button{cursor:pointer}#fw-matchmaking{top:max(12px,env(safe-area-inset-top))!important;max-height:calc(100dvh - 24px)!important}@media(max-width:700px){#fw-matchmaking{padding:16px!important;width:calc(100vw - 24px)!important}}
+</style>
+<section id="fw-matchmaking" hidden style="position:fixed;z-index:9999;top:75px;left:50%;transform:translateX(-50%);width:min(92vw,580px);max-height:calc(100vh - 95px);overflow:auto;padding:24px;border:1px solid #dfe5f1;border-radius:22px;background:white;box-shadow:0 15px 55px #1d265340">
+<button type="button" id="fw-match-close" aria-label="매칭 창 닫기" style="float:right;border:0;background:transparent;font-size:24px;cursor:pointer">×</button><h2 style="margin:0 0 8px">🎮 Formwheel 랜덤 대전</h2><p style="color:#667085">빠른 대전은 모르는 상대와, 랜덤 플레이는 친구와 코드를 공유해 랜덤 게임을 선택해요.</p>
+<div id="fw-match-actions" style="display:flex;gap:10px;flex-wrap:wrap">
+<button id="fw-match-quick" type="button" style="background:#373cc3;color:white;border:0;border-radius:12px;padding:14px 20px;font:inherit;font-weight:800;cursor:pointer">⚔️ 빠른 대전 · 자동 상대</button>
+<button id="fw-match-friend" type="button" style="background:#eff1ff;color:#303a86;border:0;border-radius:12px;padding:14px 20px;font:inherit;font-weight:800;cursor:pointer">🎲 랜덤 플레이 · 코드 생성</button>
+<label style="display:flex;gap:5px;align-items:center"><input id="fw-match-input" inputmode="numeric" maxlength="6" placeholder="친구 코드 6자리" style="max-width:145px;padding:12px;border:1px solid #d7dcee;border-radius:10px"><button id="fw-match-friend-join" type="button" style="padding:12px;border:0;border-radius:10px;cursor:pointer">코드 참가</button></label>
+</div>
+<label style="display:block;margin:11px 0;font-size:13px;color:#526078"><input type="checkbox" id="fw-match-testmode"> 🧪 같은 계정의 다른 탭과 테스트 허용 (빠른 대전)</label>
+<div id="fw-match-panel" hidden style="border-top:1px solid #e4e7ef;margin-top:14px;padding-top:14px"><strong>매칭 코드: <span id="fw-match-code">—</span></strong> <button id="fw-match-copy" type="button">복사</button><p>매칭 완료 시 두 플레이어에게 동일한 게임이 선택됩니다.</p><a id="fw-match-launch" hidden target="_blank" rel="noopener" style="display:inline-block;padding:11px 16px;border-radius:10px;background:#373cc3;color:white;text-decoration:none;font-weight:800">선택된 게임 열기 →</a> <button id="fw-match-stop" type="button">나가기 / 매칭 취소</button></div>
+<p id="fw-match-status" role="status" aria-live="polite" style="margin:12px 0 0;color:#4a5670"></p>
+</section>
+
+
+
+
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+
+<main>
+<section id="fw-50days" aria-label="Formwheel 50일 기념 행사" hidden>
+  <button type="button" id="fw50-close" aria-label="기념 배너 닫기">×</button>
+  <div id="fw50-sparks" aria-hidden="true"></div>
+  <div class="fw50-eyebrow">✦ FORMWHEEL ANNIVERSARY ✦</div>
+  <h2 id="fw50-title">🎉 50 DAYS!</h2>
+  <p class="fw50-desc" id="fw50-desc">Formwheel과 함께한 50일! 오늘의 축제를 즐겨보세요.</p>
+  <div class="fw50-actions"><a class="fw50-link" href="./share.html">📣 친구에게 공유하기 →</a><button type="button" id="fw50-celebrate">🎆 축하 폭죽!</button><a class="fw50-link" href="./anniversary-40-50.html">🎁 이벤트 페이지로 이동 →</a><a class="fw50-link" href="#projects">🎮 프로젝트 즐기기 →</a></div>
+</section>
+
+
+
+<section class="hero">
+
+
+<div id="fw-live-presence" aria-live="polite" style="display:inline-flex;align-items:center;flex-wrap:wrap;justify-content:center;gap:10px;background:#fff;border:1px solid #dfe7f0;border-radius:999px;padding:10px 14px;margin-bottom:16px;box-shadow:0 5px 20px #1d26530c"><span style="width:9px;height:9px;border-radius:50%;background:#24b47e;display:inline-block"></span><strong>Formwheel 전체 실시간 접속자 <span id="fw-live-count">확인 중…</span></strong><small id="fw-live-note" style="color:#6b7280">모든 게임 포함 · Firebase 연결 중</small><span aria-hidden="true" style="color:#d0d5e2">│</span><strong>🏆 최고 동접 <span id="fw-live-peak">확인 중…</span></strong><span aria-hidden="true" style="color:#d0d5e2">│</span><strong>📈 누적 방문자 <span id="fw-total-visitor-count">확인 중…</span></strong><small id="fw-total-visitor-note" style="color:#6b7280">집계 시작 이후</small></div>
+<div class="heroBadge">
+  <span class="heroDot"></span>
+  FORMWHEEL PLATFORM
+</div>
+
+<h1>FormWheel</h1>
+
+<h2>
+설치 없이, 친구와 함께 즐기는 무료 웹게임!
+</h2>
+
+<p>
+설문부터 추첨, 퀴즈, 게임, 음악, 도구와 실험 프로젝트까지.<br>
+Formwheel의 모든 프로젝트를 한곳에서 만나보세요.
+</p>
+
+
+<div class="heroButtons">
+<a class="heroButton primary" href="#" id="fw-hero-solo">🌀 게임 바로 시작</a>
+<a class="heroButton secondary" href="#projects">🔎 프로젝트 찾아보기</a>
+<a class="heroButton secondary" href="./workshop/" style="border-color:#f2bf8d;color:#a95517">🎨 작품 만들기</a>
+
+
+
+</div>
+
+
+
+</section>
+
+<!-- Compact game discovery: short, optional choices above the full catalogue -->
+<section id="fw-quick-picks" aria-labelledby="fw-quick-title">
+  <div class="fw-picks-heading"><strong id="fw-quick-title">🎮 지금 뭐 하지?</strong><button id="fw-picks-refresh" type="button" aria-label="다른 게임 추천 보기">🔄 다른 추천</button></div>
+  <div id="fw-picks-list" class="fw-picks-list">
+    <a href="https://semicolonxss.github.io/Formwheel_Maze/">🌀 Maze <small>미로 탈출</small></a>
+    <a href="https://semicolonxss.github.io/Formwheel_Reflex/">⚡ Reflex <small>반응속도 도전</small></a>
+    <a href="https://semicolonxss.github.io/Formwheel_Cook/">🍳 Cook <small>자유 요리</small></a>
+  </div>
+</section>
+
+<!-- Compact utility links above projects; detailed feature panels remain below. -->
+<nav id="fw-hub-shortcuts" aria-label="빠른 참여 및 이벤트">
+  <a href="./playtest.html">🧪 플레이테스터 모집</a>
+  <a href="./playtest.html#find10-title" aria-label="10초 챌린지에 참여하기" style="display:inline-flex;align-items:center;gap:4px;padding:5px 9px;font-size:12px;line-height:1.3;border-radius:999px;white-space:nowrap;background:#ebe8ff;color:#3b318a;border:1px solid #d7d0ff;text-decoration:none">⏱️ 10초 챌린지</a>
+  <a href="./party.html">👥 파티</a>
+  <a href="./festival.html">🎮 페스티벌</a>
+</nav>
+<div id="fw-rapid-quicklinks" style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:10px auto 14px;padding:0 12px"><a href="./rapid-2.html" style="display:inline-block;padding:8px 13px;border:1px solid #d9d5f7;border-radius:12px;background:#f4f2ff;color:#43358c;text-decoration:none;font-weight:750">🪙 Rapid 2.0 · 목표 플래너 →</a><a href="https://semicolonxss.github.io/Formwheel_Clicker/rapid-shop.html" style="display:inline-block;background:#f4f2ff;color:#43358c;font-weight:800;text-decoration:none;padding:8px 13px;border-radius:12px;border:1px solid #d9d5f7">🎨 Rapid 상점 →</a></div>
+<div id="fw-tester-benefits" hidden style="max-width:920px;margin:8px auto;padding:12px 15px;border:1px solid #a9a0ee;border-radius:14px;background:#f2efff;color:#3b327b"><strong>🧪 공식 플레이테스터</strong> <span id="fw-tester-badge">🏅 플레이테스터 배지</span><p style="margin:6px 0;font-size:13px">전용 Hub 테마가 적용되었습니다. Rapid 무제한은 안전한 서버 거래 연동 후 제공됩니다.</p><a href="./feedback.html" style="display:inline-block;background:#4335a5;color:#fff;text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:700">💡 개선점 보고하기</a></div>
+<section id="projects">
+<div style="max-width:920px;margin:8px auto;padding:0 12px"><a href="./text-sorter.html" style="display:inline-block;padding:10px 15px;background:#eeeaff;border:1px solid #c8c1fa;border-radius:12px;color:#4134a0;font-weight:700;text-decoration:none">🔤 Tools · 텍스트 정렬기 (가나다순·글자 수·숫자순)</a></div>
+
+
+<!-- TOOLBAR -->
+
+<div class="toolbar">
+
+<input
+  id="search"
+  class="searchBox"
+  type="search"
+  placeholder="🔎 이름 · 기능 · 키워드 검색..."
+  autocomplete="off"
+>
+
+
+<div class="categoryButtons" role="group" aria-label="프로젝트 종류">
+
+<button
+  class="filterButton active"
+  data-filter="all"
+>
+전체
+</button>
+
+<button
+  class="filterButton"
+  data-filter="game"
+>
+게임
+</button>
+
+<button
+  class="filterButton"
+  data-filter="tool"
+>
+도구
+</button>
+
+<button
+  class="filterButton"
+  data-filter="app"
+>
+앱
+</button>
+
+<button
+  class="filterButton"
+  data-filter="recent"
+>
+최근 추가
+</button>
+
+</div>
+
+</div>
+
+
+<div class="fw-settings-row">
+<button type="button" id="fw-filter-toggle" aria-controls="fw-filter-panel" aria-expanded="false">⚙️ 인원 · 연결 · 난이도 <span id="fw-filter-count"></span> ▾</button>
+<button type="button" id="fw-favorites-toggle" aria-controls="fw-favorites-panel" aria-expanded="false">📌 즐겨찾기 설정 <span id="fw-favorites-count"></span></button>
+</div>
+<div id="fw-favorites-panel" class="fw-favorites-panel" hidden>
+  <strong>📌 맨 위에 고정할 게임 선택</strong>
+  <p>선택한 게임은 검색·필터 결과에서 다른 카드보다 위에 표시돼요. 이 기기에 저장됩니다.</p>
+  <div id="fw-favorites-options" class="fw-favorites-options"></div>
+  <button type="button" id="fw-favorites-clear">고정 전체 해제</button>
+</div>
+<div class="detailFilters" id="fw-filter-panel" aria-label="상세 필터">
+<label>인원 <select id="modeFilter"><option value="all">전체 인원</option><option value="solo">1인 가능</option><option value="multi">다인 가능</option><option value="both">1인·다인 모두</option></select></label>
+<label>연결 <select id="connectionFilter"><option value="all">전체 연결</option><option value="online">온라인</option><option value="offline">오프라인</option></select></label>
+<label>난이도 <select id="difficultyFilter"><option value="all">전체 난이도</option><option value="쉬움">쉬움</option><option value="보통">보통</option><option value="어려움">어려움</option></select></label>
+<button id="resetFilters" type="button" class="filterButton">필터 초기화</button>
+</div>
+<div class="subToolbar">
+
+<div class="resultText">
+  현재 <strong id="count" aria-live="polite">0</strong>개
+</div>
+
+
+<select id="sort" class="sortSelect">
+
+<option value="creator" selected>제작자 추천 순</option>
+<option value="maturity">개발 완성도 순 (추정)</option>
+<option value="popular">
+내가 자주 연 순
+</option>
+
+<option value="default">
+기본순
+</option>
+
+<option value="name">
+이름순
+</option>
+
+<option value="recent">
+최근 추가순
+</option>
+
+</select>
+<button id="sortDirection" class="sortDirectionButton" type="button" aria-label="내림차순 · 클릭하면 오름차순" title="내림차순 · 클릭하면 오름차순" aria-pressed="false">↓</button>
+
+</div>
+
+
+
+<!-- CARDS -->
+
+<div id="cards" class="cards"></div>
+
+
+<div id="empty" class="empty">
+
+검색 결과가 없어요.<br>
+다른 이름이나 필터로 찾아보거나 필터를 초기화해보세요.
+
+</div>
+
+
+
+<!-- FEATURES -->
+<section class="features" aria-label="Formwheel 숨겨진 기능 안내" style="grid-template-columns:minmax(0,1fr);max-width:680px;margin:24px auto 8px">
+  <div class="feature" style="text-align:center;padding:17px 16px">
+    <div class="featureIcon" aria-hidden="true">🔎</div>
+    <strong style="font-size:14px;color:#282f46;margin-bottom:7px">숨겨진 비밀...?</strong>
+    <span style="display:block;margin-bottom:8px">Formwheel 곳곳에 누군가 남긴 흔적이 있습니다.</span>
+    <a href="https://semicolonxss.github.io/Formwheel_AQS/" style="color:#2563eb;text-decoration:underline;text-underline-offset:3px;font-size:13px;font-weight:650">비밀을 찾아보시겠어요...? →</a>
+  </div>
+</section>
+
+
+
+
+<p style="text-align:center;margin:16px auto 20px"><a href="./anniversary-40-50.html" style="display:inline-block;background:linear-gradient(110deg,#3439bd,#7354c7);color:#fff;text-decoration:none;font-weight:800;font-size:13px;padding:11px 22px;border-radius:12px;box-shadow:0 5px 15px #3439bd24">🎉 기념 이벤트 →</a></p>
+<p style="text-align:center;margin:8px auto 18px"><a href="https://semicolonxss.github.io/Formwheel_AQS/" style="display:inline-flex;gap:7px;align-items:center;padding:10px 16px;border:1px solid #dfe3ee;border-radius:12px;background:#fff;color:#3439bd;text-decoration:none;font-size:13px;font-weight:750">🏆 업적 · 퀘스트 · 비밀 확인 →</a></p>
+<section id="fw-spotlight" hidden aria-label="오늘의 Spotlight" style="max-width:890px;margin:12px auto 24px;padding:18px 22px;border:1px solid #dfe3f0;border-radius:20px;background:linear-gradient(120deg,#fff,#f4f1ff);box-shadow:0 8px 26px #3439bd10;color:#222842">
+  <div style="display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap"><strong style="font-size:13px;color:#4f46a5">🌟 PROJECT SPOTLIGHT</strong><small data-spotlight-date style="color:#69718a"></small></div>
+  <h2 data-spotlight-title style="font-size:25px;margin:12px 0 5px"></h2>
+  <p data-spotlight-description style="font-size:14px;line-height:1.65;margin:0 0 9px"></p>
+  <p data-spotlight-challenge style="font-weight:700;font-size:13px;color:#4a43a8;margin:0 0 14px"></p>
+  <a data-spotlight-link href="#projects" style="display:inline-block;background:#3439bd;color:white;font-size:13px;font-weight:800;text-decoration:none;padding:10px 17px;border-radius:11px">Spotlight 자세히 보기 →</a>
+</section>
+
+
+
+
+</section>
+
+<!-- Additional Hub content follows the project cards to prioritize discovery. -->
+<!-- ROAD TO 300: lightweight first-visit paths; no change to game or visitor logic -->
+<section id="fw-road300" aria-label="처음 방문자를 위한 빠른 시작">
+  <strong>🚀 처음 왔다면? 10초 안에 시작해요!</strong>
+  <div class="fw-road300-links">
+    <a href="https://semicolonxss.github.io/Formwheel_Reflex/" aria-label="Reflex 반응속도 게임 바로 플레이">⚡ 10초 도전 <small>Reflex</small></a>
+    <a href="https://semicolonxss.github.io/Formwheel_Cook/" aria-label="Cook 요리 게임 바로 플레이">🍳 자유롭게 요리 <small>Cook</small></a>
+    <a href="./share.html" aria-label="Formwheel 친구에게 공유하기">💌 친구에게 공유</a>
+  </div>
+</section>
+<section id="fw-hub-next" aria-label="HUB NEXT 개인화" style="max-width:900px;margin:6px auto;padding:8px 11px;border:1px solid #deddf0;border-radius:12px;background:#fff;color:#23243b;font-size:12px">
+ <div style="display:flex;align-items:center;justify-content:space-between;gap:7px;flex-wrap:wrap"><strong style="font-size:14px">✨ HUB NEXT</strong><button type="button" id="fw-next-expand" aria-expanded="false" aria-controls="fw-next-details" style="border:1px solid #d1d2e5;border-radius:8px;background:#f6f6ff;padding:5px 9px;color:#30366a">펼치기 ▾</button></div>
+ <p id="fw-next-daily" style="padding:5px 7px;background:#f3f2ff;border-radius:8px;margin:5px 0 0"></p>
+ <div id="fw-next-details" hidden>
+  <p id="fw-next-status" role="status" style="color:#626982;font-size:12px;margin:7px 0">프로젝트를 열면 맞춤 추천이 시작돼요.</p>
+  <strong>🕒 최근 플레이</strong><div id="fw-next-recent" style="display:flex;gap:5px;flex-wrap:wrap;margin:5px 0 8px"></div>
+  <strong>🎯 내 취향 추천</strong><div id="fw-next-recommend" style="display:flex;gap:5px;flex-wrap:wrap;margin:5px 0 8px"></div>
+  <button type="button" id="fw-next-clear" style="padding:5px 8px;border:1px solid #bbb;border-radius:8px;background:#fff;color:#333;font-size:12px">최근 기록 초기화</button>
+ </div>
+</section>
+<!-- Primary discovery: show playable projects immediately after welcome -->
+<div id="fw-party-entry" style="max-width:960px;margin:10px auto;padding:12px 15px;background:#eeecff;border:1px solid #d4cef5;border-radius:15px;display:flex;gap:12px;flex-wrap:wrap;justify-content:space-between;align-items:center;color:#272452"><div><strong>👥 PARTY · 친구와 게임 이어하기</strong><div style="font-size:12px;margin-top:3px">파티 만들기 · 초대 링크 · 공동 게임 순서</div></div><a href="./party.html" style="display:inline-block;padding:10px 15px;border-radius:10px;background:#4637b8;color:#fff;text-decoration:none;font-weight:700">🎉 파티 시작 →</a></div>
+<div style="max-width:960px;margin:8px auto;padding:10px 13px;border:1px solid #d8d4f4;border-radius:12px;background:#f3f1ff;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;color:#292451"><span><strong>🎡 GAME FESTIVAL</strong> <small>게임 5개 연속 도전 · 3개 코스</small></span><a href="./festival.html" style="padding:8px 12px;background:#503cbb;border-radius:9px;color:white;text-decoration:none;font-weight:700">🎮 페스티벌 입장 →</a></div>
+<div id="fw-unite-entry" style="max-width:960px;margin:8px auto;padding:11px 14px;border-radius:13px;border:1px solid #d6cdec;background:#f6f0ff;color:#292451;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><div><strong>🎆 UNITE FINALE · 시즌 2 피날레</strong><div style="font-size:12px;margin-top:3px">통합 대시보드 · 5개 서비스 탐험 · 완주증</div></div><a href="./unite.html" style="padding:9px 12px;background:#4e3ba6;color:#fff;border-radius:10px;text-decoration:none;font-weight:750">피날레 입장 →</a></div>
+
+<p style="text-align:center;font-size:12px">최근 추가·NEW: 저장소 생성일 기준 14일 · 실제 서비스 공개일과 다를 수 있습니다.</p></main>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+<!-- Sign-in controls remain available through profile.html; legacy DOM retained for auth compatibility. -->
+<section id="fw-account" hidden aria-labelledby="fw-account-title"><h3 id="fw-account-title">Formwheel ID 로그인</h3><div class="fw-id-panel"><span id="fw-id-status" role="status">계정 연결 확인 중…</span><button id="fw-id-login" type="button" hidden>Google 로그인</button><button id="fw-id-logout" type="button" hidden>로그아웃</button></div></section>
+<section class="fw-install" id="fw-install" aria-labelledby="fw-install-title">
+<h3 id="fw-install-title">📥 Formwheel 앱 설치</h3>
+<p>현재 기기에 맞는 설치 방법을 안내해 드려요.</p>
+<button type="button" class="fw-install-primary" id="fw-install-primary">설치 방법 확인</button>
+<button type="button" class="fw-install-more" id="fw-install-more" aria-controls="fw-install-options" aria-expanded="false">다른 기기 보기 ▾</button>
+<div id="fw-install-options" class="fw-install-options" hidden>
+<button type="button" class="fw-install-option" data-install-target="pc">💻 PC에서 다운로드</button>
+<button type="button" class="fw-install-option" data-install-target="android">🤖 Android에서 다운로드</button>
+<button type="button" class="fw-install-option" data-install-target="ios">🍎 iPhone에서 추가</button>
+</div>
+<div class="fw-install-info" id="fw-install-info" role="status" aria-live="polite" hidden></div>
+</section>
+<section aria-label="개선점 보내기" style="max-width:510px;margin:14px auto;padding:18px;background:#fff;border:1px solid #e4e7ef;border-radius:16px;color:#202638">
+<h3 style="margin:0 0 7px">💡 Formwheel 개선점 제출</h3>
+<p style="font-size:13px;color:#60677c;margin:0 0 12px">불편했던 점이나 새로운 아이디어를 알려주세요.</p>
+<a href="./feedback.html" style="display:inline-block;padding:10px 14px;background:#3439bd;color:white;border-radius:10px;text-decoration:none;font-weight:700">개선점 제출하기 →</a>
+<p style="font-size:12px;text-align:center;margin:14px 0 0"><a href="./feedback.html#admin" style="color:#777f93;text-decoration:underline">개선점 확인</a></p>
+</section>
+<p style="text-align:center"><a href="./more.html">Wiki · ID 센터 · 기타 안내 →</a></p>
+<details style="margin:8px auto;max-width:240px;font-size:10px;opacity:.55"><summary style="cursor:pointer">· · ·</summary><span style="letter-spacing:.07em">FORM-TRACE</span></details>
+<p style="text-align:center;margin:16px 0 10px"><a href="./badge-admin.html" style="font-size:12px;color:#6054ab;text-decoration:underline;text-underline-offset:3px">🏅 배지 통계 · 관리자</a></p>
+<div class="footerLogo">
+  FormWheel
+</div>
+
+<div>
+  Make · Join · Play · Explore
+</div>
+
+<div style="margin-top:6px;">
+  © FormWheel
+</div>
+
+</footer>
+
+
+
+<script>
+/* Hub usability: keep the main shortcut and filters functional without changing game logic. */
+document.getElementById("fw-hero-solo")?.addEventListener("click",function(e){
+  e.preventDefault();
+  document.getElementById("fw-nav-solo")?.click();
+});
+const hubSearch = document.getElementById("search");
+hubSearch?.setAttribute("aria-label","프로젝트 이름 검색");
+document.querySelectorAll(".categoryButtons .filterButton").forEach(button=>{
+  button.setAttribute("type","button");
+  button.setAttribute("aria-pressed",String(button.classList.contains("active")));
+  button.addEventListener("click",()=>{
+    document.querySelectorAll(".categoryButtons .filterButton").forEach(b=>b.setAttribute("aria-pressed",String(b===button)));
+  });
+});
+</script>
+<script src="./assets/app.js?v=20261025-categorytoggle1"></script>
+<script src="./assets/theme-bulk.js?v=20261022-premium13"></script>
+<script>
+(function(){
+ const container=document.getElementById('projects');
+ if(!container)return;
+ const btn=document.createElement('button');
+ btn.type='button';btn.textContent='↻ 전체 프로젝트 다시 표시';
+ btn.style.cssText='margin:8px 0;padding:9px 12px;border:1px solid #ccd1e2;border-radius:10px;background:#fff;color:#263b7e;cursor:pointer';
+ btn.onclick=()=>{if(window.FormwheelHubResetFilters){window.FormwheelHubResetFilters();}else location.reload();};
+ container.prepend(btn);
+})();
+</script>
+<script type="module" src="./assets/creator-sort.js?v=20261022-1"></script>
+<script defer src="./assets/hub-tour.js?v=20261018-spotlight2"></script>
+<script defer src="./assets/spotlight.js?v=20261016-2"></script>
+<script src="./assets/hub-visit-bridge.js?v=20261020-1"></script>
+<script type="module" src="./assets/id-core.js?v=20261023-popup-only2"></script>
+<script type="module" src="./assets/badge-notifications.js?v=20261020-achievement2"></script>
+<script type="module" src="./assets/live-presence.js?v=20261021-livepeak1"></script>
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/Formwheel/sw.js").catch(console.warn);
+  });
+}
+</script>
+
+
+<script>
+document.getElementById("fw-share-hub")?.addEventListener("click",async function(){
+ const url="https://semicolonxss.github.io/Formwheel/";
+ const data={title:"Formwheel | 무료 웹게임",text:"설치 없이 친구랑 즐기는 무료 웹게임! Formwheel에서 같이 플레이하자 🎮",url};
+ try{if(navigator.share){await navigator.share(data);return;}if(navigator.clipboard?.writeText){await navigator.clipboard.writeText(url);this.textContent="✓ 링크 복사 완료";return;}window.prompt("Formwheel 링크 복사",url);}catch(e){if(e.name!=="AbortError")window.prompt("Formwheel 링크 복사",url);}
+});
+</script>
+<script>
+/* Hub: 랜덤 혼자 플레이 — 스킵 가능한 두구두구 연출 */
+(() => {
+  const button = document.getElementById("fw-nav-solo");
+  if (!button) return;
+  const style = document.createElement("style");
+  style.textContent = `
+    .fw-solo-backdrop{position:fixed;inset:0;z-index:100000;background:rgba(8,11,30,.86);display:grid;place-items:center;padding:20px;box-sizing:border-box;backdrop-filter:blur(10px)}
+    .fw-solo-backdrop[hidden]{display:none!important}
+    .fw-solo-panel{width:min(440px,100%);padding:34px 24px;text-align:center;border:1px solid rgba(255,255,255,.22);border-radius:26px;background:linear-gradient(150deg,#26205b,#121b39);color:#fff;box-shadow:0 22px 90px #0008;box-sizing:border-box}
+    .fw-solo-drum{font-size:33px;margin-bottom:12px;animation:fw-solo-bounce .38s ease-in-out infinite alternate}
+    .fw-solo-title{font-size:22px;font-weight:800;margin:0 0 10px}
+    .fw-solo-choice{min-height:96px;display:grid;place-items:center;font-size:30px;font-weight:850;color:#ffdf83;overflow-wrap:anywhere}
+    .fw-solo-hint{font-size:13px;opacity:.8;margin:8px 0 24px}
+    .fw-solo-skip{width:100%;padding:13px 18px;border:0;border-radius:14px;background:#ffcf6b;color:#211a32;font-size:16px;font-weight:800;cursor:pointer}
+    .fw-solo-skip:focus-visible{outline:3px solid #fff;outline-offset:3px}
+    @keyframes fw-solo-bounce{to{transform:scale(1.14) rotate(7deg)}}
+    @media(prefers-reduced-motion:reduce){.fw-solo-drum{animation:none}}
+  `;
+  document.head.appendChild(style);
+  const overlay = document.createElement("div");
+  overlay.className = "fw-solo-backdrop";
+  overlay.hidden = true;
+  overlay.innerHTML = `<div class="fw-solo-panel" role="dialog" aria-modal="true" aria-labelledby="fw-solo-heading">
+    <div class="fw-solo-drum" aria-hidden="true">🥁</div>
+    <h2 class="fw-solo-title" id="fw-solo-heading">두구두구... 오늘의 게임은?</h2>
+    <div class="fw-solo-choice" id="fw-solo-choice" aria-live="off">🎲</div>
+    <p class="fw-solo-hint">잠시 후 랜덤 게임으로 텔레포트!</p>
+    <button type="button" class="fw-solo-skip">⏩ 스킵하고 바로 이동</button>
+  </div>`;
+  document.body.appendChild(overlay);
+  const choice = overlay.querySelector("#fw-solo-choice");
+  const skip = overlay.querySelector(".fw-solo-skip");
+  const title = overlay.querySelector("#fw-solo-heading");
+  let ticker = null, revealTimer = null, goTimer = null, target = null, previousFocus = null;
+  function clearTimers() {
+    clearInterval(ticker); clearTimeout(revealTimer); clearTimeout(goTimer);
+    ticker = revealTimer = goTimer = null;
+  }
+  function navigate() {
+    if (!target) return;
+    clearTimers();
+    window.location.assign(target.url);
+  }
+  function close() {
+    clearTimers();
+    overlay.hidden = true;
+    target = null;
+    if (previousFocus && previousFocus.isConnected) previousFocus.focus();
+  }
+  skip.addEventListener("click", navigate);
+  overlay.addEventListener("keydown", event => {
+    if (event.key === "Escape") { event.preventDefault(); close(); }
+    if (event.key === "Tab") { event.preventDefault(); skip.focus(); }
+  });
+  overlay.addEventListener("click", event => {
+    if (event.target === overlay) close();
+  });
+  button.addEventListener("click", event => {
+    event.preventDefault();
+    if (!overlay.hidden) return;
+    const candidates = (typeof projects !== "undefined" ? projects : [])
+      .filter(project => project.category === "game"
+        && (project.mode === "solo" || project.mode === "both")
+        && project.name !== "Casino"
+        && project.name !== "Story"
+        && typeof project.url === "string"
+        && /^https:\/\//.test(project.url));
+    if (!candidates.length) {
+      alert("지금은 이동할 수 있는 혼자 플레이 게임이 없어요.");
+      return;
+    }
+    const random = new Uint32Array(1);
+    const index = (window.crypto && crypto.getRandomValues)
+      ? (crypto.getRandomValues(random), random[0] % candidates.length)
+      : Math.floor(Math.random() * candidates.length);
+    target = candidates[index];
+    previousFocus = document.activeElement;
+    overlay.hidden = false;
+    title.textContent = "두구두구... 오늘의 게임은?";
+    choice.textContent = "🎲";
+    skip.focus();
+    let count = 0;
+    ticker = setInterval(() => {
+      const display = candidates[Math.floor(Math.random() * candidates.length)];
+      choice.textContent = (display.icon || "🎮") + " " + display.name;
+      count++;
+    }, 110);
+    revealTimer = setTimeout(() => {
+      clearInterval(ticker);
+      ticker = null;
+      title.textContent = "🎉 당첨!";
+      choice.textContent = (target.icon || "🎮") + " " + target.name;
+      goTimer = setTimeout(navigate, 850);
+    }, 2700);
+  });
+})();
+</script>
+<script type="module" src="./assets/random-match.js?v=20261012-autoredirect"></script>
+<script>
+(()=>{const modal=document.getElementById("fw-matchmaking");const quick=document.getElementById("fw-nav-quick"),friend=document.getElementById("fw-nav-friend");
+function open(mode){modal.hidden=false;document.getElementById("fw-match-actions").hidden=false;if(mode==="quick"){document.getElementById("fw-match-quick").click()}}
+quick?.addEventListener("click",e=>{e.preventDefault();open("quick")});
+friend?.addEventListener("click",e=>{e.preventDefault();open("friend")});
+document.getElementById("fw-match-close").onclick=()=>{modal.hidden=true};
+})();
+</script><script id="fw-install-logic">
+(() => {
+  const root = document.getElementById("fw-install");
+  if (!root) return;
+  const primary = document.getElementById("fw-install-primary");
+  const more = document.getElementById("fw-install-more");
+  const options = document.getElementById("fw-install-options");
+  const info = document.getElementById("fw-install-info");
+  const ua = navigator.userAgent || "";
+  const target = /Android/i.test(ua) ? "android" : /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1) ? "ios" : "pc";
+  const labels = {pc:"💻 PC에서 다운로드",android:"🤖 Android에서 다운로드",ios:"🍎 iPhone에서 추가"};
+  const guides = {
+    pc:"PC Chrome 또는 Edge에서 Formwheel을 열고 주소창의 설치 아이콘을 누르세요. 없다면 브라우저 메뉴에서 '페이지를 앱으로 설치' 또는 '앱' 메뉴를 확인해 주세요. 설치 항목이 없으면 해당 브라우저에서 아직 지원되지 않을 수 있습니다.",
+    android:"Android Chrome에서 Formwheel을 열고 오른쪽 위 ⋮ 메뉴 → '홈 화면에 추가' 또는 '앱 설치'를 누르세요. Daum 등 일부 인앱 브라우저에서는 Chrome으로 열어야 할 수 있습니다.",
+    ios:"iPhone Safari에서 Formwheel을 연 뒤 공유 버튼 → '홈 화면에 추가' → '추가'를 누르세요. 다른 브라우저에서는 Safari로 열어 주세요."
+  };
+  let installPrompt = null;
+  window.addEventListener("beforeinstallprompt", event => { event.preventDefault(); installPrompt = event; });
+  window.addEventListener("appinstalled", () => { installPrompt = null; root.hidden = true; });
+  const installed = () => window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+  const refreshVisibility = () => { root.hidden = installed(); };
+  refreshVisibility();
+  window.matchMedia("(display-mode: standalone)").addEventListener?.("change", refreshVisibility);
+  function showGuide(device) {
+    info.hidden = false;
+    info.textContent = guides[device];
+  }
+  async function install(device) {
+    if (installed()) { root.hidden = true; return; }
+    if (device === target && installPrompt) {
+      const prompt = installPrompt;
+      installPrompt = null;
+      try { await prompt.prompt(); await prompt.userChoice; }
+      catch { showGuide(device); }
+      return;
+    }
+    showGuide(device);
+  }
+  primary.textContent = labels[target];
+  primary.addEventListener("click", () => install(target));
+  more.addEventListener("click", () => {
+    const expanded = more.getAttribute("aria-expanded") === "true";
+    more.setAttribute("aria-expanded", String(!expanded));
+    options.hidden = expanded;
+    more.textContent = expanded ? "다른 기기 보기 ▾" : "접기 ▴";
+  });
+  options.querySelectorAll("[data-install-target]").forEach(button => {
+    if (button.dataset.installTarget === target) button.hidden = true;
+    button.addEventListener("click", () => install(button.dataset.installTarget));
+  });
+})();
+</script>
+<script id="fw-discovery-script-20261020">
+(() => {
+  const root = document.getElementById("fw-picks-list");
+  const refresh = document.getElementById("fw-picks-refresh");
+  if (!root || !refresh) return;
+  const choices = [
+    ["🌀","Maze","미로 탈출","https://semicolonxss.github.io/Formwheel_Maze/"],
+    ["⚡","Reflex","반응속도 도전","https://semicolonxss.github.io/Formwheel_Reflex/"],
+    ["🍳","Cook","자유 요리","https://semicolonxss.github.io/Formwheel_Cook/"],
+    ["🎵","Music","리듬 게임","https://semicolonxss.github.io/Formwheel_Music/"],
+    ["⏱️","Time","시간 도전","https://semicolonxss.github.io/Formwheel_Time/"],
+    ["🧠","Quiz","친구와 퀴즈","https://semicolonxss.github.io/Formwheel_Quiz/"]
+  ];
+  let last = "";
+  refresh.addEventListener("click", () => {
+    let options = choices.slice();
+    for(let i=options.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[options[i],options[j]]=[options[j],options[i]];}
+    let picks=options.slice(0,3);
+    if(picks.map(x=>x[1]).join(",")===last) picks=options.slice(3,6);
+    last=picks.map(x=>x[1]).join(",");
+    root.replaceChildren(...picks.map(([icon,name,description,url])=>{
+      const a=document.createElement("a");a.href=url;
+      a.append(document.createTextNode(icon+" "+name+" "));
+      const small=document.createElement("small");small.textContent=description;a.append(small);
+      return a;
+    }));
+  });
+})();
+</script>
+<script id="fw-50days-script">
+(() => {
+  const banner=document.getElementById('fw-50days');
+  if(!banner)return;
+  const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+  if(today!=='2026-10-20'&&today!=='2026-10-21')return;
+  try{if(sessionStorage.getItem('fw50-banner-closed-'+today)==='1')return;}catch{}
+  if(today==='2026-10-21'){
+    document.getElementById('fw50-title').textContent='🏆 50 DAYS FINALE!';
+    document.getElementById('fw50-desc').textContent='50일 기념 피날레! Semicolon × Secol, 다음 목표는 방문자 300명! 🚀';
+  }else{
+    document.getElementById('fw50-desc').textContent='10월 20일 · 50 DAYS 기념 축제! 내일은 특별 피날레 🎊';
+  }
+  banner.hidden=false;
+  const sparks=document.getElementById('fw50-sparks');
+  let cleanup;
+  const celebrate=()=>{
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    sparks.replaceChildren();
+    const shapes=['✨','🎉','⭐','🎊','✦'];
+    for(let i=0;i<23;i++){
+      const el=document.createElement('span');el.className='fw50-spark';el.textContent=shapes[i%shapes.length];
+      el.style.left=(4+Math.random()*92)+'%';
+      el.style.animationDelay=(Math.random()*.6)+'s';
+      el.style.animationDuration=(2+Math.random()*1.2)+'s';
+      sparks.append(el);
+    }
+    clearTimeout(cleanup);cleanup=setTimeout(()=>sparks.replaceChildren(),4000);
+  };
+  document.getElementById('fw50-celebrate').addEventListener('click',celebrate);
+  document.getElementById('fw50-close').addEventListener('click',()=>{
+    banner.hidden=true;clearTimeout(cleanup);sparks.replaceChildren();
+    try{sessionStorage.setItem('fw50-banner-closed-'+today,'1');}catch{}
+  });
+  celebrate();
+})();
+</script>
+<script defer src="./shared/rapid-extras.js?v=20261023-rapid-eformat1"></script><script>
+/* HUB NEXT S2-14: additive discovery; no changes to the existing filter or sort pipeline. */
+(function(){
+ const KEY='formwheel.hub.next.v1', $=id=>document.getElementById(id);
+ const catalog=()=>typeof projects!=='undefined'&&Array.isArray(projects)?projects:[];
+ const read=()=>{try{const d=JSON.parse(localStorage.getItem(KEY)||'{}');return d&&typeof d==='object'&&!Array.isArray(d)?d:{}}catch{return {}}};
+ let data=read();
+ const store=()=>{try{localStorage.setItem(KEY,JSON.stringify(data))}catch{}};
+ const day=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+ const link=(p)=>{const a=document.createElement('a');a.href=p.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=(p.icon||'🎮')+' '+p.name;a.style.cssText='display:inline-block;padding:6px 9px;border:1px solid #d9daf0;border-radius:9px;text-decoration:none;background:#f8f8ff;color:#30366a;font-weight:700';a.dataset.fwNext=p.name;return a};
+ function renderNext(){
+  const all=catalog();if(!all.length)return;
+  const recent=Object.entries(data.visits||{}).filter(([n,v])=>all.some(p=>p.name===n)&&v&&Number.isFinite(v.last)).sort((a,b)=>b[1].last-a[1].last);
+  const recentBox=$('fw-next-recent');recentBox.replaceChildren(...recent.slice(0,5).map(([name])=>link(all.find(p=>p.name===name))));
+  if(!recent.length)recentBox.textContent='아직 기록이 없어요. 아래 프로젝트를 열어 보세요!';
+  const categoryCounts={};for(const [name,v]of recent){const p=all.find(x=>x.name===name);if(p)categoryCounts[p.category]=(categoryCounts[p.category]||0)+Math.min(10,Math.max(1,Number(v.count)||1))}
+  const favorite=Object.entries(categoryCounts).sort((a,b)=>b[1]-a[1])[0]?.[0]||'game';
+  const seen=new Set(recent.slice(0,3).map(([n])=>n));const suggestions=all.filter(p=>p.category===favorite&&!seen.has(p.name)).sort((a,b)=>(Number(b.recent===true)-Number(a.recent===true))||a.name.localeCompare(b.name,'ko')).slice(0,3);
+  $('fw-next-recommend').replaceChildren(...suggestions.map(link));$('fw-next-status').textContent=recent.length?'최근 이용 '+recent.length+'개 프로젝트 기록 · '+({game:'게임',tool:'도구',app:'앱'}[favorite]||'게임')+' 취향 추천':'방문 기록은 현재 브라우저에만 저장돼요.';
+  const current=day(),daily=all[(Math.floor(Date.parse(current+'T00:00:00Z')/86400000)%all.length+all.length)%all.length],completed=data.daily?.[current]===daily.name;
+  const dailyBox=$('fw-next-daily');dailyBox.replaceChildren(document.createTextNode((completed?'✅':'🎯')+' 오늘의 탐험: '));dailyBox.append(link(daily));dailyBox.append(document.createTextNode(completed?' · 오늘 방문 완료!':' · 열어 보고 새로운 프로젝트를 발견해 보세요.'));
+ }
+ document.addEventListener('click',e=>{
+  const a=e.target.closest('a[data-fw-project],a[data-fw-next]');if(!a)return;
+  const name=a.dataset.fwNext||a.dataset.fwProject;const p=catalog().find(x=>x.name===name);
+  if(!p||new URL(a.href,location.href).href!==new URL(p.url,location.href).href)return;
+  data.visits=data.visits||{};const old=data.visits[name]||{};data.visits[name]={last:Date.now(),count:Math.min(99999,(Number(old.count)||0)+1)};
+  const current=day();const daily=catalog()[(Math.floor(Date.parse(current+'T00:00:00Z')/86400000)%catalog().length+catalog().length)%catalog().length];
+  if(daily?.name===name){data.daily=data.daily||{};data.daily[current]=name}
+  store();renderNext();
+ },true);
+ $('fw-next-expand')?.addEventListener('click',()=>{const details=$('fw-next-details'),expanded=details.hidden;details.hidden=!expanded;$('fw-next-expand').setAttribute('aria-expanded',String(expanded));$('fw-next-expand').textContent=expanded?'접기 ▴':'펼치기 ▾';});
+ $('fw-next-clear')?.addEventListener('click',()=>{if(!confirm('이 브라우저의 HUB NEXT 최근 기록과 오늘의 탐험 표시를 초기화할까요?'))return;data={};store();renderNext()});
+ window.addEventListener('storage',e=>{if(e.key===KEY){data=read();renderNext()}});
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',renderNext);else renderNext();
+})();
+</script><script type="module" src="https://semicolonxss.github.io/Formwheel/shared/account-theme-sync.js?v=20261022-account1"></script><script type="module" src="https://semicolonxss.github.io/Formwheel/shared/account-rapid-sync.js?v=20261023-maxmerge1"></script><script type="module" src="./assets/peak-witness.js?v=20261024-compact2"></script><script defer src="./shared/secol-crown.js?v=20261024-profile-unified2"></script><aside id="fw-playtest-entry" style="max-width:650px;margin:18px auto;padding:16px;border:1px solid #d7d6f4;border-radius:16px;background:#f8f7ff;color:#252747;text-align:center"><strong>🧪 Formwheel 플레이테스터 모집</strong><p style="margin:6px 0 12px">직접 플레이하고 버그와 아이디어를 알려주세요!</p><a href="./playtest.html" style="display:inline-block;background:#4637b8;color:#fff;padding:10px 18px;border-radius:10px;text-decoration:none;font-weight:700">지원 안내 · 튜토리얼 보기 →</a></aside>
+<script id="fw-find10-controller">
+const KEY='fw-find10-challenge',RESULT='fw-find10-result',PENDING='fw-find10-pending';
+let data;try{data=JSON.parse(sessionStorage.getItem(KEY)||'null')}catch(err){console.warn('Find10 state unavailable',err)}
+if(data?.slug&&(new URLSearchParams(location.search).get('fwFind10')==='1'||data.paused)){
+ try{
+ const now=Date.now();
+ if(!Number.isFinite(data.elapsedMs))data.elapsedMs=Number.isFinite(data.startedAt)&&data.startedAt>0?Math.max(0,now-data.startedAt):0;
+ data.startedAt=now;data.paused=false;sessionStorage.setItem(KEY,JSON.stringify(data));
+ const panel=document.createElement('div');
+ panel.style.cssText='position:fixed;left:50%;top:12px;transform:translateX(-50%);z-index:2147483647;width:min(94vw,580px);border:2px solid #5751d5;background:#fff;color:#252047;border-radius:16px;padding:11px 14px;box-shadow:0 8px 40px #1115;font:700 14px/1.5 system-ui,sans-serif;text-align:center';
+ const hint=document.createElement('div');hint.textContent='⏱️ 찾아보세요: '+data.hint;
+ const clockText=document.createElement('div');clockText.style.cssText='font-size:22px;color:#453ac4;font-variant-numeric:tabular-nums';
+ const feedback=document.createElement('div');feedback.setAttribute('role','status');feedback.style.cssText='font-size:14px';
+ const cancel=document.createElement('a');cancel.href='./playtest.html';cancel.textContent='챌린지 취소';cancel.style.cssText='font-size:12px;color:#5549ac';
+ panel.append(hint,clockText,feedback,cancel);document.body.append(panel);
+ let finished=false;
+ const elapsed=()=>Math.max(0,(data.elapsedMs+Date.now()-data.startedAt)/1000);
+ function tick(){const t=elapsed();clockText.textContent=t<=10?(10-t).toFixed(1)+'초 남음':'10초 초과 · '+t.toFixed(1)+'초 경과';}
+ const clock=setInterval(tick,150);tick();
+ async function finish(destination,selectedSlug){
+  if(finished)return;finished=true;clearInterval(clock);
+  const t=elapsed(),success=t<=10;
+  const result={slug:data.slug,selectedSlug,success,timeout:t>10,elapsed:t,ageGroup:data.ageGroup||'',deviceType:data.deviceType||'',notes:data.notes||'',mistakes:data.mistakes||[]};
+  sessionStorage.setItem(RESULT,JSON.stringify(result));sessionStorage.setItem(PENDING,JSON.stringify(result));sessionStorage.removeItem(KEY);
+  if(success){panel.remove();try{const {submitFind10}=await import('./assets/find10-submit.js?v=20261025-device');await Promise.race([submitFind10(result),new Promise((_,reject)=>setTimeout(()=>reject(Error('timeout')),4500))]);sessionStorage.removeItem(PENDING);sessionStorage.setItem('fw-find10-delivered',JSON.stringify(result))}catch{}location.assign(destination);}
+  else{feedback.textContent='⏰ 10초를 초과했어요. 결과를 저장합니다.';try{const {submitFind10}=await import('./assets/find10-submit.js?v=20261025-device');await Promise.race([submitFind10(result),new Promise((_,reject)=>setTimeout(()=>reject(Error('timeout')),4500))]);sessionStorage.removeItem(PENDING);sessionStorage.setItem('fw-find10-delivered',JSON.stringify(result))}catch{}location.assign('./playtest.html');}
+ }
+ cancel.addEventListener('click',e=>{e.preventDefault();finished=true;clearInterval(clock);sessionStorage.removeItem(KEY);panel.remove();location.assign('./playtest.html')});
+ document.addEventListener('click',e=>{
+  if(finished||panel.contains(e.target))return;
+  let link=e.target.closest('a[href]');
+  if(!link){const card=e.target.closest('#projects .card');if(card&&!e.target.closest('button,input,select,textarea,label'))link=card.querySelector('a[href*="Formwheel_"]')||card.querySelector('a[href]');}
+  if(!link)return;
+  let u;try{u=new URL(link.href,location.href)}catch{return}
+  if(u.hostname!==location.hostname)return;
+  const cards=[...document.querySelectorAll('#projects .card')];
+  const card=link.closest('#projects .card')||cards.find(el=>[...el.querySelectorAll('a[href]')].some(a=>{try{return new URL(a.href,location.href).pathname===u.pathname}catch{return false}}));
+  const catalogName=card?.querySelector('h3,h2')?.textContent?.trim();
+  const match=u.pathname.match(/\/Formwheel_([^/]+)\/?/i);
+  const chosenSlug=match?.[1]||({'sports':'Sports','board':'Board'}[u.pathname.split('/').filter(Boolean).at(-1)?.toLowerCase()]||catalogName);
+  if(!chosenSlug)return;
+  e.preventDefault();e.stopImmediatePropagation();
+  const chosen=chosenSlug,correct=(Array.isArray(data.answers)&&data.answers.length?data.answers:[data.slug]).some(answer=>String(answer).toLowerCase()===chosen.toLowerCase());
+  if(correct){finish(link.href,chosen);return;}
+  clearInterval(clock);finished=true;
+  data.elapsedMs+=Date.now()-data.startedAt;data.paused=true;data.startedAt=null;
+  data.mistakes=[...(data.mistakes||[]),chosen].slice(-20);sessionStorage.setItem(KEY,JSON.stringify(data));
+  clockText.textContent='⏸ '+(data.elapsedMs/1000).toFixed(1)+'초에서 일시정지';
+  feedback.style.cssText='font-size:62px;color:#d72d40;line-height:1.1;font-weight:900';
+  feedback.textContent='❌';
+  const msg=document.createElement('div');msg.textContent='다른 프로젝트('+chosen+')를 선택했어요. Hub로 돌아오면 이어서 진행돼요.';panel.append(msg);
+  const back=document.createElement('button');back.type='button';back.textContent='▶ Hub에서 계속 찾기';back.style.cssText='width:100%;padding:9px;margin-top:8px;background:#453ac4;color:white;border:0;border-radius:9px;font-weight:700';
+  back.onclick=()=>location.assign('./?fwFind10=1#projects');panel.append(back);
+  setTimeout(()=>{if(document.body.contains(panel))location.assign(link.href)},1400);
+ },true);
+ }catch(err){console.error('Find10 startup error',err);const warning=document.createElement('div');warning.setAttribute('role','alert');warning.style.cssText='position:fixed;top:12px;left:5%;width:90%;z-index:2147483647;background:#fff3f3;color:#8b1e25;border:2px solid #e78d93;border-radius:12px;padding:14px;font:600 14px system-ui';warning.textContent='10초 챌린지 화면을 여는 중 오류가 발생했어요. 새로고침하거나 챌린지를 다시 시작해 주세요.';document.body.append(warning)}
+}
+</script>
+<script id="fw-card-click-20261025">
+document.addEventListener('click',function(e){
+ if(e.defaultPrevented||e.target.closest('a,button,input,select,textarea,label,[role="button"]'))return;
+ const card=e.target.closest('#projects .card');
+ if(!card)return;
+ const link=card.querySelector('a[href*="Formwheel_"]')||card.querySelector('a[href]');
+ if(link)link.click();
+});
+document.addEventListener('keydown',function(e){
+ if(e.key!=='Enter'&&e.key!==' ')return;
+ const card=e.target.closest('#projects .card');
+ if(!card||e.target!==card)return;
+ e.preventDefault();const link=card.querySelector('a[href*="Formwheel_"]')||card.querySelector('a[href]');if(link)link.click();
+});
+document.querySelectorAll('#projects .card').forEach(card=>{
+ if(!card.hasAttribute('tabindex'))card.tabIndex=0;
+ card.style.cursor='pointer';
+});
+</script>
+<script type="module" src="./assets/playtester-hub.js?v=20261025-1"></script>
+
+<script id="fw-beta-orbit-switch-script">
+(function(){
+'use strict';
+var key='formwheel-hub-display-version';
+function saved(){try{return localStorage.getItem(key)==='simple'?'simple':'card'}catch(e){return 'card'}}
+function apply(mode){mode=mode==='simple'?'simple':'card';document.body.classList.toggle('fw-beta-simple',mode==='simple');document.body.classList.toggle('fw-beta-card',mode==='card');document.querySelectorAll('#fw-beta-switch button[data-mode]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.mode===mode))});try{localStorage.setItem(key,mode)}catch(e){}}
+function init(){if(document.getElementById('fw-beta-switch'))return;var bar=document.createElement('nav');bar.id='fw-beta-switch';bar.setAttribute('aria-label','Hub 표시 버전');bar.innerHTML='<strong>🌌 ORBIT FLOW · BETA</strong><button type="button" data-mode="card" aria-pressed="false">🃏 카드 Ver.</button><button type="button" data-mode="simple" aria-pressed="false">⚡ 간편 Ver.</button>';bar.addEventListener('click',function(e){var b=e.target.closest('button[data-mode]');if(b)apply(b.dataset.mode)});document.body.insertBefore(bar,document.body.firstChild);apply(saved())}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+</body>
+</html>
+
+
+
