@@ -9,7 +9,7 @@ const retry=document.getElementById("find10-retry");
 export async function submitFind10(result){
  const u=auth.currentUser||(await signInAnonymously(auth)).user;
  const slug=String(result.slug||"unknown").slice(0,40);
- const elapsed=Math.min(120,Math.max(0,Number(result.elapsed)||0));
+ const elapsed=Math.max(0,Number(result.elapsed)||0);
  const ageGroup=["10대 미만","10대","20대","30대","40대","50대","60대 이상"].includes(result.ageGroup)?result.ageGroup:"";
  const selectedSlug=String(result.selectedSlug||"").replace(/[^a-zA-Z0-9_-]/g,"").slice(0,40);
  const outcome=result.success?"성공":result.timeout?"시간 초과":"다른 프로젝트 선택";
