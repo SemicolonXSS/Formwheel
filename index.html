@@ -860,9 +860,15 @@ if(data?.slug&&(new URLSearchParams(location.search).get('fwFind10')==='1'||data
   if(!link){const card=e.target.closest('#projects .card');if(card&&!e.target.closest('button,input,select,textarea,label'))link=card.querySelector('a[href*="Formwheel_"]')||card.querySelector('a[href]');}
   if(!link)return;
   let u;try{u=new URL(link.href,location.href)}catch{return}
-  const match=u.pathname.match(/\\/Formwheel_([^/]+)\\/?/i);if(!match||u.hostname!==location.hostname)return;
+  if(u.hostname!==location.hostname)return;
+  const cards=[...document.querySelectorAll('#projects .card')];
+  const card=link.closest('#projects .card')||cards.find(el=>[...el.querySelectorAll('a[href]')].some(a=>{try{return new URL(a.href,location.href).pathname===u.pathname}catch{return false}}));
+  const catalogName=card?.querySelector('h3,h2')?.textContent?.trim();
+  const match=u.pathname.match(/\/Formwheel_([^/]+)\/?/i);
+  const chosenSlug=match?.[1]||({'sports':'Sports','board':'Board'}[u.pathname.split('/').filter(Boolean).at(-1)?.toLowerCase()]||catalogName);
+  if(!chosenSlug)return;
   e.preventDefault();e.stopImmediatePropagation();
-  const chosen=match[1],correct=(Array.isArray(data.answers)&&data.answers.length?data.answers:[data.slug]).some(answer=>String(answer).toLowerCase()===chosen.toLowerCase());
+  const chosen=chosenSlug,correct=(Array.isArray(data.answers)&&data.answers.length?data.answers:[data.slug]).some(answer=>String(answer).toLowerCase()===chosen.toLowerCase());
   if(correct){finish(link.href,chosen);return;}
   clearInterval(clock);finished=true;
   data.elapsedMs+=Date.now()-data.startedAt;data.paused=true;data.startedAt=null;
