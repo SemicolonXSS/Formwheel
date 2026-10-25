@@ -55,14 +55,15 @@ p,small{color:#59617a}a{color:#453ac4}
 <label for="field">테스트 분야</label><select id="field"><option>게임 플레이</option><option>모바일·UI</option><option>버그 찾기</option><option>접근성·튜토리얼</option></select>
 <label for="reason">지원 동기 (선택)</label><textarea id="reason" maxlength="300" rows="2"></textarea>
 <label for="apply-notes">특이사항 (선택)</label><textarea id="apply-notes" maxlength="300" rows="1" placeholder="테스트 환경, 참고사항 등 (실명·연락처 제외)"></textarea>
-<button id="submit">지원서 작성하기</button>
+<button id="submit">플레이테스터 지원서 제출하기</button>
 </form>
 <p id="status" role="status"></p>
-<small>지원 내용은 이 기기에서 작성 후 복사됩니다. 현재 자동 제출·관리자 승인·배지 지급은 지원하지 않습니다.</small>
+<small>지원서는 Firebase로 전송됩니다. 관리자 승인·배지·전용 테마·Rapid 혜택은 보안 권한 검증을 완료한 뒤 활성화됩니다.</small>
 <section><h2>📖 튜토리얼</h2><p>튜토리얼은 자동으로 시작되지 않습니다. 필요한 경우 아래 버튼으로 안내를 확인하세요.</p>
 <button type="button" id="tutorial" class="secondary">튜토리얼 보기</button>
 <div id="guide" hidden><p>① Hub에서 프로젝트를 고르세요.<br>② 카드의 설명과 난이도를 확인하세요.<br>③ 플레이 후 발견한 오류나 아이디어를 알려주세요.</p></div></section>
 <section id="find10-admin"><h2>📊 플레이테스트 결과 확인</h2><p>이 화면에서 목표별 성공률과 평균 탐색 시간을 확인할 수 있어요. Firebase 조회 권한이 필요합니다.</p><button type="button" id="find10-login">Google 로그인 후 통계 보기</button><button type="button" class="secondary" id="find10-reload" hidden>통계 새로고침</button><p id="find10-admin-status" role="status"></p><div id="find10-dashboard" hidden><strong id="find10-summary"></strong><div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;text-align:left"><thead><tr><th>프로젝트</th><th>시도</th><th>성공률</th><th>평균 시간</th><th>초과</th><th>헷갈린 프로젝트</th></tr></thead><tbody id="find10-stats"></tbody></table></div></div></section>
+<section id="tester-admin"><h2>🧪 플레이테스터 지원서 확인</h2><p>위 10초 챌린지 통계와 별도로 지원서를 조회합니다. 운영자 권한이 필요합니다.</p><button type="button" id="tester-review-open" class="secondary">📋 지원서 보기</button><p id="tester-review-status" role="status"></p><div id="tester-review-list"></div><small>승인·거절 및 보상 지급은 서버 권한 검증이 준비되기 전까지 비활성화됩니다.</small></section>
 </main>
 <script>
 (()=>{
@@ -132,13 +133,20 @@ sessionStorage.removeItem(RESULT);
 $('tutorial').onclick=()=>{$('guide').hidden=!$('guide').hidden};
 $('apply').onsubmit=async e=>{
 e.preventDefault();
-const v=id=>$(id).value.trim();
-const msg='Formwheel 플레이테스터 지원\n닉네임: '+v('nickname')+'\n연령대: '+(v('apply-age')||'미응답') +'\n기기 종류: '+(v('apply-device')||'미응답')+'\n분야: '+v('field')+'\n지원 동기: '+v('reason')+'\n특이사항: '+(v('apply-notes')||'없음');
-try{await navigator.clipboard.writeText(msg);$('status').textContent='지원 내용이 복사됐어요. Formwheel 운영자에게 전달해 주세요.'}
-catch{$('status').textContent='아래 내용을 복사해 운영자에게 전달해 주세요.';const t=document.createElement('textarea');t.value=msg;t.readOnly=true;$('status').after(t)}
+const status=$('status'),submit=$('submit'),v=id=>$(id).value.trim();
+const application={nickname:v('nickname').slice(0,24),ageGroup:v('apply-age'),deviceType:v('apply-device'),field:v('field'),reason:v('reason').slice(0,300),notes:v('apply-notes').slice(0,300)};
+submit.disabled=true;status.textContent='⏳ 지원서를 제출하고 있어요…';
+try{
+ const {submitTesterApplication}=await import('./assets/tester-applications.js?v=20261025-1');
+ await submitTesterApplication(application);
+ status.textContent='✅ 지원서가 접수됐어요! 관리자 검토를 기다려 주세요.';
+ $('apply').reset();
+}catch(err){status.textContent='⚠️ 제출 실패: '+(err.code||err.message||'네트워크/권한 오류')+' · 잠시 후 다시 시도해 주세요.'}
+finally{submit.disabled=false}
 };
 })();
 </script>
 <script type="module" src="./assets/find10-submit.js?v=20261025-device"></script>
 <script type="module" src="./assets/find10-admin.js?v=20261024-1"></script>
+<script type="module" src="./assets/tester-applications.js?v=20261025-1"></script>
 </body></html>
