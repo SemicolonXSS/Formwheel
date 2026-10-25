@@ -826,10 +826,11 @@ document.getElementById("fw-match-close").onclick=()=>{modal.hidden=true};
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',renderNext);else renderNext();
 })();
 </script><script type="module" src="https://semicolonxss.github.io/Formwheel/shared/account-theme-sync.js?v=20261022-account1"></script><script type="module" src="https://semicolonxss.github.io/Formwheel/shared/account-rapid-sync.js?v=20261023-maxmerge1"></script><script type="module" src="./assets/peak-witness.js?v=20261024-compact2"></script><script defer src="./shared/secol-crown.js?v=20261024-profile-unified2"></script><aside id="fw-playtest-entry" style="max-width:650px;margin:18px auto;padding:16px;border:1px solid #d7d6f4;border-radius:16px;background:#f8f7ff;color:#252747;text-align:center"><strong>🧪 Formwheel 플레이테스터 모집</strong><p style="margin:6px 0 12px">직접 플레이하고 버그와 아이디어를 알려주세요!</p><a href="./playtest.html" style="display:inline-block;background:#4637b8;color:#fff;padding:10px 18px;border-radius:10px;text-decoration:none;font-weight:700">지원 안내 · 튜토리얼 보기 →</a></aside>
-<script type="module" id="fw-find10-controller">
+<script id="fw-find10-controller">
 const KEY='fw-find10-challenge',RESULT='fw-find10-result',PENDING='fw-find10-pending';
-let data;try{data=JSON.parse(sessionStorage.getItem(KEY)||'null')}catch{}
+let data;try{data=JSON.parse(sessionStorage.getItem(KEY)||'null')}catch(err){console.warn('Find10 state unavailable',err)}
 if(data?.slug&&(new URLSearchParams(location.search).get('fwFind10')==='1'||data.paused)){
+ try{
  const now=Date.now();
  if(!Number.isFinite(data.elapsedMs))data.elapsedMs=Number.isFinite(data.startedAt)&&data.startedAt>0?Math.max(0,now-data.startedAt):0;
  data.startedAt=now;data.paused=false;sessionStorage.setItem(KEY,JSON.stringify(data));
@@ -880,6 +881,7 @@ if(data?.slug&&(new URLSearchParams(location.search).get('fwFind10')==='1'||data
   back.onclick=()=>location.assign('./?fwFind10=1#projects');panel.append(back);
   setTimeout(()=>{if(document.body.contains(panel))location.assign(link.href)},1400);
  },true);
+ }catch(err){console.error('Find10 startup error',err);const warning=document.createElement('div');warning.setAttribute('role','alert');warning.style.cssText='position:fixed;top:12px;left:5%;width:90%;z-index:2147483647;background:#fff3f3;color:#8b1e25;border:2px solid #e78d93;border-radius:12px;padding:14px;font:600 14px system-ui';warning.textContent='10초 챌린지 화면을 여는 중 오류가 발생했어요. 새로고침하거나 챌린지를 다시 시작해 주세요.';document.body.append(warning)}
 }
 </script>
 <script id="fw-card-click-20261025">
