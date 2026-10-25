@@ -38,8 +38,8 @@ p,small{color:#59617a}a{color:#453ac4}
 <div id="find10-prepare" hidden>
 <p>당신이 찾아야 할 게임 종류</p>
 <div id="find10-target" aria-live="polite"></div>
-<p>‘Hub에서 찾기’를 누르면 실제 Hub가 열리고 10초 카운트다운이 시작됩니다. 검색과 필터를 자유롭게 이용할 수 있어요.</p>
-<button type="button" id="find10-go">🔎 Hub에서 찾기</button>
+<p>원하는 홈을 선택하면 10초 카운트다운이 시작됩니다. 검색과 필터를 자유롭게 이용할 수 있어요.</p>
+<div class="find10-home-choices" style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" id="find10-go-simple">⚡ 간편 홈에서 하기</button><button type="button" id="find10-go-card">🃏 카드 홈에서 하기</button></div>
 </div>
 <div id="find10-result" role="status" aria-live="polite" hidden></div>
 <p id="find10-send-status" role="status" aria-live="polite"></p><button type="button" class="secondary" id="find10-retry" hidden>결과 다시 전송</button>
@@ -108,14 +108,17 @@ selected=available[Math.floor(Math.random()*available.length)];
 $('find10-target').textContent=selected.hint;
 $('find10-prepare').hidden=false;
 $('find10-result').hidden=true;
-$('find10-go').focus();
+$('find10-go-simple').focus();
 });
-$('find10-go').addEventListener('click',()=>{
+function startFind10(homeMode){
 if(!selected)return;
-sessionStorage.setItem(KEY,JSON.stringify({slug:selected.slug,hint:selected.hint,answers:selected.answers||[selected.slug],ageGroup:$('find10-age').value,deviceType:$('find10-device').value,notes:$('find10-notes').value.trim().slice(0,200),startedAt:null}));
+sessionStorage.setItem(KEY,JSON.stringify({slug:selected.slug,hint:selected.hint,answers:selected.answers||[selected.slug],ageGroup:$('find10-age').value,deviceType:$('find10-device').value,notes:$('find10-notes').value.trim().slice(0,200),startedAt:null,elapsedMs:0,homeMode:homeMode,mistakes:[]}));
 sessionStorage.removeItem(RESULT);
-location.assign('./?fwFind10=1#projects');
-});
+try{localStorage.setItem('formwheel-hub-display-version',homeMode)}catch(e){}
+location.assign('./?fwFind10=1'+(homeMode==='card'?'#projects':''));
+}
+$('find10-go-simple').addEventListener('click',()=>startFind10('simple'));
+$('find10-go-card').addEventListener('click',()=>startFind10('card'));
 try{
 const raw=sessionStorage.getItem(RESULT);
 if(raw){
