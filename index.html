@@ -202,6 +202,7 @@ body.fw-beta-simple > :not(#fw-beta-switch):not(#fw-beta-simple-view):not(script
 
 #fw-beta-simple-view .fw-b-category-choice{flex-direction:column;gap:6px;line-height:1.25}
 #fw-beta-simple-view .fw-b-category-choice small{font-size:12px;font-weight:500;opacity:.8;white-space:nowrap}
+#fw-beta-simple-view .fw-b-item small{display:block;line-height:1.5;overflow-wrap:anywhere;margin-top:5px}
 </style>
 </head>
 
@@ -946,15 +947,15 @@ function getSaved(){try{var stored=localStorage.getItem(key);return stored==='ca
 function apply(next){mode=next==='simple'?'simple':'card';document.body.classList.toggle('fw-beta-simple',mode==='simple');document.body.classList.toggle('fw-beta-card',mode==='card');document.getElementById('fw-beta-simple-view').hidden=mode!=='simple';document.querySelectorAll('#fw-beta-switch button[data-mode]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.mode===mode))});try{localStorage.setItem(key,mode)}catch(e){}if(mode==='simple')render()}
 function extract(){
 var cards=Array.from(document.querySelectorAll('#cards .card'));
-return cards.map(function(c){var a=c.querySelector('a[href*="Formwheel_"]')||c.querySelector('a[href]');if(!a)return null;var title=c.querySelector('.cardTitle')||c.querySelector('h3')||c.querySelector('h2');var name=(title?title.textContent:a.textContent).replace(/\\s+/g,' ').trim().slice(0,85);var raw=(c.className+' '+c.textContent).toLowerCase();var type=/도구|tool/.test(raw)?'tool':/앱|app/.test(raw)?'app':'game';return {name:name||'프로젝트',url:a.href,type:type}}).filter(Boolean)
+return cards.map(function(c){var a=c.querySelector('a[href*="Formwheel_"]')||c.querySelector('a[href]');if(!a)return null;var title=c.querySelector('.cardTitle')||c.querySelector('h3')||c.querySelector('h2');var name=(title?title.textContent:a.textContent).replace(/\\s+/g,' ').trim().slice(0,85);var raw=(c.className+' '+c.textContent).toLowerCase();var type=/도구|tool/.test(raw)?'tool':/앱|app/.test(raw)?'app':'game';var descNode=c.querySelector('.fw-thumbnail-description');var description=descNode?descNode.textContent.replace(/\\s+/g,' ').trim():'';return {name:name||'프로젝트',url:a.href,type:type,description:description}}).filter(Boolean)
 }
-var fallback=[['🎮 Maze','Formwheel_Maze','game'],['⚡ Reflex','Formwheel_Reflex','game'],['🎡 Wheel','Formwheel_Wheel','tool'],['🧩 Decode','Formwheel_Decode','tool'],['📖 Wiki','Formwheel_Wiki','app'],['🏆 AQS','Formwheel_AQS','app']].map(function(p){return{name:p[0],url:'https://semicolonxss.github.io/'+p[1]+'/',type:p[2]}})
+var fallback=[['🎮 Maze','Formwheel_Maze','game'],['⚡ Reflex','Formwheel_Reflex','game'],['🎡 Wheel','Formwheel_Wheel','tool'],['🧩 Decode','Formwheel_Decode','tool'],['📖 Wiki','Formwheel_Wiki','app'],['🏆 AQS','Formwheel_AQS','app']].map(function(p){return{name:p[0],url:'https://semicolonxss.github.io/'+p[1]+'/',type:p[2],description:''}})
 function render(){
 var list=extract();if(!list.length)list=fallback;
 var q=(document.getElementById('fw-b-search').value||'').trim().toLowerCase();
 var visible=list.filter(function(p){return(category==='all'||p.type===category)&&p.name.toLowerCase().includes(q)});
 var grid=document.getElementById('fw-b-grid');grid.replaceChildren();
-visible.forEach(function(p){var a=document.createElement('a');a.className='fw-b-item';a.href=p.url;var title=document.createElement('strong');title.textContent=p.name;var meta=document.createElement('small');meta.textContent='프로젝트 열기 ↗';a.append(title,meta);grid.append(a)});
+visible.forEach(function(p){var a=document.createElement('a');a.className='fw-b-item';a.href=p.url;var title=document.createElement('strong');title.textContent=p.name;var meta=document.createElement('small');meta.textContent=p.description?p.description.replace(/[.!?。]+$/,'').split(/[·,，\\s]+/).filter(Boolean).slice(0,3).join(' · '):'프로젝트 열기';a.append(title,meta);grid.append(a)});
 document.getElementById('fw-b-count').textContent=visible.length+'개 프로젝트'+(extract().length?' · 기존 Hub 카드 목록 연동':' · 목록 준비 중');
 document.querySelectorAll('#fw-beta-simple-view button[data-category]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.category===category))});
 document.getElementById('fw-b-home').hidden=tab!=='home';document.getElementById('fw-b-explore').hidden=tab!=='explore'
