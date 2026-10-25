@@ -11,7 +11,7 @@ th{background:#f2f1ff}#summary{font-weight:750;font-size:18px}#status{color:#5f6
 <div class="panel"><button id="login" type="button">Google 계정으로 로그인 후 조회</button>
 <button id="reload" type="button" hidden>새로고침</button><p id="status" role="status"></p></div>
 <div class="panel" id="dashboard" hidden><div id="summary"></div>
-<div style="overflow-x:auto"><table><thead><tr><th>목표</th><th>시도</th><th>성공률</th><th>평균 탐색 시간</th><th>시간 초과</th></tr></thead><tbody id="stats"></tbody></table></div>
+<div style="overflow-x:auto"><table><thead><tr><th>목표</th><th>시도</th><th>성공률</th><th>평균 탐색 시간</th><th>시간 초과</th><th>시간 초과율</th></tr></thead><tbody id="stats"></tbody></table></div>
 <p style="font-size:12px;color:#69718a">Firebase에 저장된 결과만 집계합니다. 표시 시간은 저장된 기록 기준이며, 제출 실패·이탈·클라이언트 조작 결과는 정확도를 낮출 수 있습니다.</p></div>
 </main><script type="module">
 import {initializeApp,getApps} from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js';
@@ -34,16 +34,16 @@ async function load(){
   const g=groups.get(target)||{n:0,wins:0,seconds:0,timeouts:0};
   g.n++;g.wins+=Number(state==='성공');g.timeouts+=Number(state==='시간 초과');g.seconds+=seconds;groups.set(target,g);
  });
- let total=0,success=0,sum=0;
+ let total=0,success=0,sum=0,timeouts=0;
  const tbody=$('stats');tbody.replaceChildren();
  for(const [target,g] of [...groups].sort((a,b)=>b[1].n-a[1].n)){
-  total+=g.n;success+=g.wins;sum+=g.seconds;
+  total+=g.n;success+=g.wins;sum+=g.seconds;timeouts+=g.timeouts;
   const tr=document.createElement('tr');
-  for(const value of [target,String(g.n),(100*g.wins/g.n).toFixed(1)+'%',(g.seconds/g.n).toFixed(2)+'초',String(g.timeouts)]){
+  for(const value of [target,String(g.n),(100*g.wins/g.n).toFixed(1)+'%',(g.seconds/g.n).toFixed(2)+'초',String(g.timeouts),(100*g.timeouts/g.n).toFixed(1)+'%']){
    const td=document.createElement('td');td.textContent=value;tr.append(td)
   }tbody.append(tr);
  }
- $('summary').textContent=total?'전체 '+total+'회 · 성공률 '+(100*success/total).toFixed(1)+'% · 평균 '+(sum/total).toFixed(2)+'초':'아직 저장된 10초 챌린지 기록이 없어요.';
+ $('summary').textContent=total?'전체 '+total+'회 · 성공률 '+(100*success/total).toFixed(1)+'% · 평균 '+(sum/total).toFixed(2)+'초 · 시간 초과율 '+(100*timeouts/total).toFixed(1)+'%':'아직 저장된 10초 챌린지 기록이 없어요.';
  $('dashboard').hidden=false;$('reload').hidden=false;$('status').textContent='조회 완료';
  }catch(e){$('status').textContent='조회 실패: '+(e.code||e.message||'권한/연결 오류')+'. Firebase에서 운영자 조회 권한을 확인해 주세요.'}
 }
