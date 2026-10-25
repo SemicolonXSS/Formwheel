@@ -49,6 +49,7 @@ p,small{color:#59617a}a{color:#453ac4}
 <form id="apply">
 <label for="nickname">표시 이름 (실명 불필요)</label><input id="nickname" maxlength="24" required placeholder="닉네임">
 <div class="compact-field"><label for="apply-age">연령대 (선택)</label><select id="apply-age"><option value="">응답하지 않음</option><option>10대 미만</option><option>10대</option><option>20대</option><option>30대</option><option>40대</option><option>50대</option><option>60대 이상</option></select><button type="button" class="secondary compact-clear" id="apply-age-clear">선택 취소</button></div>
+<div class="compact-field"><label for="apply-device">기기 종류 (선택)</label><select id="apply-device"><option value="">응답하지 않음</option><option>휴대폰</option><option>노트북</option><option>데스크톱 컴퓨터</option><option>기타</option></select></div>
 <label for="field">테스트 분야</label><select id="field"><option>게임 플레이</option><option>모바일·UI</option><option>버그 찾기</option><option>접근성·튜토리얼</option></select>
 <label for="reason">지원 동기 (선택)</label><textarea id="reason" maxlength="300" rows="2"></textarea>
 <label for="apply-notes">특이사항 (선택)</label><textarea id="apply-notes" maxlength="300" rows="1" placeholder="테스트 환경, 참고사항 등 (실명·연락처 제외)"></textarea>
@@ -116,7 +117,7 @@ $('tutorial').onclick=()=>{$('guide').hidden=!$('guide').hidden};
 $('apply').onsubmit=async e=>{
 e.preventDefault();
 const v=id=>$(id).value.trim();
-const msg='Formwheel 플레이테스터 지원\n닉네임: '+v('nickname')+'\n연령대: '+(v('apply-age')||'미응답')+'\n분야: '+v('field')+'\n지원 동기: '+v('reason')+'\n특이사항: '+(v('apply-notes')||'없음');
+const msg='Formwheel 플레이테스터 지원\n닉네임: '+v('nickname')+'\n연령대: '+(v('apply-age')||'미응답') +'\n기기 종류: '+(v('apply-device')||'미응답')+'\n분야: '+v('field')+'\n지원 동기: '+v('reason')+'\n특이사항: '+(v('apply-notes')||'없음');
 try{await navigator.clipboard.writeText(msg);$('status').textContent='지원 내용이 복사됐어요. Formwheel 운영자에게 전달해 주세요.'}
 catch{$('status').textContent='아래 내용을 복사해 운영자에게 전달해 주세요.';const t=document.createElement('textarea');t.value=msg;t.readOnly=true;$('status').after(t)}
 };
