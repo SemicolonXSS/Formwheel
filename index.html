@@ -828,44 +828,53 @@ document.getElementById("fw-match-close").onclick=()=>{modal.hidden=true};
 </script><script type="module" src="https://semicolonxss.github.io/Formwheel/shared/account-theme-sync.js?v=20261022-account1"></script><script type="module" src="https://semicolonxss.github.io/Formwheel/shared/account-rapid-sync.js?v=20261023-maxmerge1"></script><script type="module" src="./assets/peak-witness.js?v=20261024-compact2"></script><script defer src="./shared/secol-crown.js?v=20261024-profile-unified2"></script><aside id="fw-playtest-entry" style="max-width:650px;margin:18px auto;padding:16px;border:1px solid #d7d6f4;border-radius:16px;background:#f8f7ff;color:#252747;text-align:center"><strong>🧪 Formwheel 플레이테스터 모집</strong><p style="margin:6px 0 12px">직접 플레이하고 버그와 아이디어를 알려주세요!</p><a href="./playtest.html" style="display:inline-block;background:#4637b8;color:#fff;padding:10px 18px;border-radius:10px;text-decoration:none;font-weight:700">지원 안내 · 튜토리얼 보기 →</a></aside>
 <script type="module" id="fw-find10-controller">
 import {submitFind10} from './assets/find10-submit.js?v=20261025-device';
-if(new URLSearchParams(location.search).get('fwFind10')==='1'){
-const KEY='fw-find10-challenge', RESULT='fw-find10-result', PENDING='fw-find10-pending';
+const KEY='fw-find10-challenge',RESULT='fw-find10-result',PENDING='fw-find10-pending';
 let data;try{data=JSON.parse(sessionStorage.getItem(KEY)||'null')}catch{}
-if(data?.slug){
- if(!Number.isFinite(data.startedAt)||data.startedAt<=0||data.startedAt>Date.now())data.startedAt=Date.now();sessionStorage.setItem(KEY,JSON.stringify(data));
+if(data?.slug&&(new URLSearchParams(location.search).get('fwFind10')==='1'||data.paused)){
+ const now=Date.now();
+ if(!Number.isFinite(data.elapsedMs))data.elapsedMs=Number.isFinite(data.startedAt)&&data.startedAt>0?Math.max(0,now-data.startedAt):0;
+ data.startedAt=now;data.paused=false;sessionStorage.setItem(KEY,JSON.stringify(data));
  const panel=document.createElement('div');
  panel.style.cssText='position:fixed;left:50%;top:12px;transform:translateX(-50%);z-index:2147483647;width:min(94vw,580px);border:2px solid #5751d5;background:#fff;color:#252047;border-radius:16px;padding:11px 14px;box-shadow:0 8px 40px #1115;font:700 14px/1.5 system-ui,sans-serif;text-align:center';
  const hint=document.createElement('div');hint.textContent='⏱️ 찾아보세요: '+data.hint;
  const clockText=document.createElement('div');clockText.style.cssText='font-size:22px;color:#453ac4;font-variant-numeric:tabular-nums';
+ const feedback=document.createElement('div');feedback.setAttribute('role','status');feedback.style.cssText='font-size:14px';
  const cancel=document.createElement('a');cancel.href='./playtest.html';cancel.textContent='챌린지 취소';cancel.style.cssText='font-size:12px;color:#5549ac';
- panel.append(hint,clockText,cancel);document.body.append(panel);
+ panel.append(hint,clockText,feedback,cancel);document.body.append(panel);
  let finished=false;
- async function finish(success,timeout,destination,selectedSlug){
-  if(finished)return;finished=true;clearInterval(clock);
-  const elapsed=Math.max(0,(Date.now()-data.startedAt)/1000);
-  const result={slug:data.slug,selectedSlug:selectedSlug||'',success,timeout,elapsed,ageGroup:data.ageGroup||'',deviceType:data.deviceType||'',notes:data.notes||''};
-  sessionStorage.setItem(RESULT,JSON.stringify(result));
-  sessionStorage.setItem(PENDING,JSON.stringify(result));sessionStorage.removeItem(KEY);
-  clockText.textContent=elapsed>10?'10초 초과 · '+elapsed.toFixed(1)+'초에 선택':'10초 이내 · '+elapsed.toFixed(1)+'초에 선택';
-  try{await Promise.race([submitFind10(result),new Promise((_,reject)=>setTimeout(()=>reject(new Error('timeout')),4500))]);sessionStorage.removeItem(PENDING);sessionStorage.setItem('fw-find10-delivered',JSON.stringify(result))}
-  catch{sessionStorage.setItem(PENDING,JSON.stringify(result))}
-  location.assign(destination||'./playtest.html');
- }
- function tick(){const elapsed=Math.max(0,(Date.now()-data.startedAt)/1000);clockText.textContent=elapsed<=10?(10-elapsed).toFixed(1)+'초 남음':'10초 초과 · '+elapsed.toFixed(1)+'초 경과';}
+ const elapsed=()=>Math.max(0,(data.elapsedMs+Date.now()-data.startedAt)/1000);
+ function tick(){const t=elapsed();clockText.textContent=t<=10?(10-t).toFixed(1)+'초 남음':'10초 초과 · '+t.toFixed(1)+'초 경과';}
  const clock=setInterval(tick,150);tick();
- cancel.addEventListener('click',e=>{e.preventDefault();finished=true;clearInterval(clock);sessionStorage.removeItem(KEY);location.assign('./playtest.html')});
+ async function finish(destination,selectedSlug){
+  if(finished)return;finished=true;clearInterval(clock);
+  const t=elapsed(),success=t<=10;
+  const result={slug:data.slug,selectedSlug,success,timeout:t>10,elapsed:t,ageGroup:data.ageGroup||'',deviceType:data.deviceType||'',notes:data.notes||'',mistakes:data.mistakes||[]};
+  sessionStorage.setItem(RESULT,JSON.stringify(result));sessionStorage.setItem(PENDING,JSON.stringify(result));sessionStorage.removeItem(KEY);
+  if(success){panel.remove();try{await Promise.race([submitFind10(result),new Promise((_,reject)=>setTimeout(()=>reject(Error('timeout')),4500))]);sessionStorage.removeItem(PENDING);sessionStorage.setItem('fw-find10-delivered',JSON.stringify(result))}catch{}location.assign(destination);}
+  else{feedback.textContent='⏰ 10초를 초과했어요. 결과를 저장합니다.';try{await Promise.race([submitFind10(result),new Promise((_,reject)=>setTimeout(()=>reject(Error('timeout')),4500))]);sessionStorage.removeItem(PENDING);sessionStorage.setItem('fw-find10-delivered',JSON.stringify(result))}catch{}location.assign('./playtest.html');}
+ }
+ cancel.addEventListener('click',e=>{e.preventDefault();finished=true;clearInterval(clock);sessionStorage.removeItem(KEY);panel.remove();location.assign('./playtest.html')});
  document.addEventListener('click',e=>{
-  if(finished)return;
-  let link=e.target.closest('a[href]');if(panel.contains(e.target))return;
+  if(finished||panel.contains(e.target))return;
+  let link=e.target.closest('a[href]');
   if(!link){const card=e.target.closest('#projects .card');if(card&&!e.target.closest('button,input,select,textarea,label'))link=card.querySelector('a[href*="Formwheel_"]')||card.querySelector('a[href]');}
   if(!link)return;
   let u;try{u=new URL(link.href,location.href)}catch{return}
-  const match=u.pathname.match(/\/Formwheel_([^/]+)\/?/i);if(!match||u.hostname!==location.hostname)return;
+  const match=u.pathname.match(/\\/Formwheel_([^/]+)\\/?/i);if(!match||u.hostname!==location.hostname)return;
   e.preventDefault();e.stopImmediatePropagation();
-  const success=match[1].toLowerCase()===data.slug.toLowerCase()&&Date.now()-data.startedAt<=10000;
-  finish(success,false,link.href,match[1]);
+  const chosen=match[1],correct=chosen.toLowerCase()===data.slug.toLowerCase();
+  if(correct){finish(link.href,chosen);return;}
+  clearInterval(clock);finished=true;
+  data.elapsedMs+=Date.now()-data.startedAt;data.paused=true;data.startedAt=null;
+  data.mistakes=[...(data.mistakes||[]),chosen].slice(-20);sessionStorage.setItem(KEY,JSON.stringify(data));
+  clockText.textContent='⏸ '+(data.elapsedMs/1000).toFixed(1)+'초에서 일시정지';
+  feedback.style.cssText='font-size:62px;color:#d72d40;line-height:1.1;font-weight:900';
+  feedback.textContent='❌';
+  const msg=document.createElement('div');msg.textContent='다른 프로젝트('+chosen+')를 선택했어요. Hub로 돌아오면 이어서 진행돼요.';panel.append(msg);
+  const back=document.createElement('button');back.type='button';back.textContent='▶ Hub에서 계속 찾기';back.style.cssText='width:100%;padding:9px;margin-top:8px;background:#453ac4;color:white;border:0;border-radius:9px;font-weight:700';
+  back.onclick=()=>location.assign('./?fwFind10=1#projects');panel.append(back);
+  setTimeout(()=>{if(document.body.contains(panel))location.assign(link.href)},1400);
  },true);
-}
 }
 </script>
 <script id="fw-card-click-20261025">
