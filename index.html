@@ -850,7 +850,7 @@ if(data?.slug&&(new URLSearchParams(location.search).get('fwFind10')==='1'||data
   const result={slug:data.slug,selectedSlug,success,timeout:t>10,elapsed:t,ageGroup:data.ageGroup||'',deviceType:data.deviceType||'',notes:data.notes||'',mistakes:data.mistakes||[]};
   sessionStorage.setItem(RESULT,JSON.stringify(result));sessionStorage.setItem(PENDING,JSON.stringify(result));sessionStorage.removeItem(KEY);
   if(success){panel.remove();try{const {submitFind10}=await import('./assets/find10-submit.js?v=20261025-device');await Promise.race([submitFind10(result),new Promise((_,reject)=>setTimeout(()=>reject(Error('timeout')),4500))]);sessionStorage.removeItem(PENDING);sessionStorage.setItem('fw-find10-delivered',JSON.stringify(result))}catch{}location.assign(destination);}
-  else{feedback.textContent='⏰ 10초를 초과했어요. 결과를 저장합니다.';try{await Promise.race([submitFind10(result),new Promise((_,reject)=>setTimeout(()=>reject(Error('timeout')),4500))]);sessionStorage.removeItem(PENDING);sessionStorage.setItem('fw-find10-delivered',JSON.stringify(result))}catch{}location.assign('./playtest.html');}
+  else{feedback.textContent='⏰ 10초를 초과했어요. 결과를 저장합니다.';try{const {submitFind10}=await import('./assets/find10-submit.js?v=20261025-device');await Promise.race([submitFind10(result),new Promise((_,reject)=>setTimeout(()=>reject(Error('timeout')),4500))]);sessionStorage.removeItem(PENDING);sessionStorage.setItem('fw-find10-delivered',JSON.stringify(result))}catch{}location.assign('./playtest.html');}
  }
  cancel.addEventListener('click',e=>{e.preventDefault();finished=true;clearInterval(clock);sessionStorage.removeItem(KEY);panel.remove();location.assign('./playtest.html')});
  document.addEventListener('click',e=>{
