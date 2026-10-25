@@ -843,7 +843,7 @@ if(data?.slug){
  async function finish(success,timeout,destination,selectedSlug){
   if(finished)return;finished=true;clearInterval(clock);
   const elapsed=Math.max(0,(Date.now()-data.startedAt)/1000);
-  const result={slug:data.slug,selectedSlug:selectedSlug||'',success,timeout,elapsed,ageGroup:data.ageGroup||''};
+  const result={slug:data.slug,selectedSlug:selectedSlug||'',success,timeout,elapsed,ageGroup:data.ageGroup||'',deviceType:data.deviceType||'',notes:data.notes||''};
   sessionStorage.setItem(RESULT,JSON.stringify(result));
   sessionStorage.setItem(PENDING,JSON.stringify(result));sessionStorage.removeItem(KEY);
   clockText.textContent=elapsed>10?'10초 초과 · '+elapsed.toFixed(1)+'초에 선택':'10초 이내 · '+elapsed.toFixed(1)+'초에 선택';
