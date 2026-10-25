@@ -1,25 +1,36 @@
 import {initializeApp,getApps} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 import {getAuth,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
-import {getFunctions,httpsCallable} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-functions.js";
-const cfg={apiKey:"AIzaSyBreTSe1m0-xlbF4aupnU5isRZCihR25IE",authDomain:"formwheel.firebaseapp.com",databaseURL:"https://formwheel-default-rtdb.firebaseio.com",projectId:"formwheel",appId:"1:431583088241:web:74e0e34ea1e3e1170c55d0"};
-const app=getApps().find(a=>a.name==="[DEFAULT]")||initializeApp(cfg),auth=getAuth(app),fn=getFunctions(app);
-const el=id=>document.getElementById(id),call=(name,data)=>httpsCallable(fn,name,{timeout:12000})(data||{}).then(r=>r.data);
-let me=null,selected=null,view=null;
-const msg=s=>{const target=el("social-status");if(target)target.textContent=s};
-const showUnavailable=message=>{msg(message);const handle=el("my-handle");if(handle)handle.textContent="공개 ID를 확인할 수 없습니다.";["friend-inbox","friend-list","invite-list"].forEach(id=>{const target=el(id);if(target)target.textContent="현재 목록을 불러올 수 없습니다. 새로고침을 눌러 다시 시도해 주세요."})};
-const node=(tag,text)=>{const x=document.createElement(tag);x.textContent=text;return x};
-const btn=(label,handler)=>{const x=node("button",label);x.addEventListener("click",async()=>{x.disabled=true;try{await handler();await refresh()}catch(e){msg("요청 실패: "+(e.message||e.code||"서버 연결 확인 필요"))}finally{x.disabled=false}});return x};
-function fill(container,items,empty,render){container.replaceChildren();if(!items.length){container.append(node("p",empty));return}items.forEach(x=>container.append(render(x)))}
-async function refresh(){if(!me){msg("정식 계정으로 로그인해야 친구 및 초대 기능을 사용할 수 있습니다.");return}
-try{view=await call("socialOverview");el("my-handle").textContent=view.handle?"@"+view.handle:"아직 공개 ID가 없습니다.";msg("Firebase 소셜 서비스 연결됨");
-fill(el("friend-inbox"),view.requests||[],"받은 친구 신청이 없어요.",r=>{const line=node("div","친구 요청 · "+r.uid.slice(0,12)+"… ");line.append(btn("수락",()=>call("friendAction",{uid:r.uid,action:"accept"})),btn("거절",()=>call("friendAction",{uid:r.uid,action:"decline"})));return line});
-fill(el("friend-list"),view.friends||[],"등록된 친구가 없어요.",f=>{const line=node("div",f.nickname+" · "+f.uid.slice(0,10)+"… ");line.style.margin="10px 0";line.append(btn("초대",async()=>{const game=el("invite-game").value,minutes=Number(el("invite-minutes").value);const room=await call("createInviteRoom",{game,reserve:el("reserve").checked});await call("sendInvite",{toUid:f.uid,roomId:room.roomId,minutes});msg("Formwheel Invite 대기실 초대를 보냈습니다. 실제 게임 방 연동은 별도입니다.")}),btn("차단",()=>call("friendAction",{uid:f.uid,action:"block"})),btn("친구 삭제",()=>call("friendAction",{uid:f.uid,action:"remove"})));return line});
-fill(el("invite-list"),view.invitations||[],"받은 초대가 없어요.",i=>{const line=node("div",i.game+" · "+(i.status==="pending"&&Date.now()<i.expiresAt?"대기 중":i.status)+" ");line.style.margin="10px 0";if(i.status==="pending"&&Date.now()<i.expiresAt)line.append(btn("수락",async()=>{const result=await call("respondInvite",{inviteId:i.id,action:"accept"});msg(result.note||"대기실 참가 완료")}),btn("거절",()=>call("respondInvite",{inviteId:i.id,action:"decline"})));return line});
-}catch(e){showUnavailable("소셜 서버 연결 실패: "+(e.code||e.message||"Cloud Functions 미배포/권한 오류")+". 잠시 후 새로고침해 주세요.")}}
-el("handle-button").addEventListener("click",async()=>{try{const r=await call("claimHandle",{handle:el("claim-handle").value});msg("공개 ID 등록됨: @"+r.handle);await refresh()}catch(e){msg("ID 등록 오류: "+(e.message||e.code))}});
-el("friend-find").addEventListener("click",async()=>{const box=el("friend-search-result");box.replaceChildren();try{const r=await call("findFriend",{handle:el("friend-query").value});if(!r.found){box.textContent="검색 결과가 없어요.";document.getElementById("fw-public-badges")?.replaceChildren();return}window.dispatchEvent(new CustomEvent("fw:friend-found",{detail:{uid:r.uid,nickname:r.nickname,handle:r.handle}}));box.append(node("span",r.icon+" "+r.nickname+" (@"+r.handle+") "),btn("친구 신청",()=>call("friendAction",{uid:r.uid,action:"request"})))}catch(e){msg("검색 실패: "+(e.message||e.code))}});
-el("social-refresh").addEventListener("click",refresh);
-onAuthStateChanged(auth,u=>{me=u&&!u.isAnonymous?u:null;if(me)refresh();else{view=null;msg("정식 계정으로 로그인해 주세요. Hub 아래쪽에서 Google 로그인 가능.");["friend-inbox","friend-list","invite-list"].forEach(id=>el(id).textContent="정식 계정 로그인 후 이용 가능")};},e=>showUnavailable("Firebase 로그인 상태 확인 실패: "+(e.code||e.message||"알 수 없는 오류")));
-
-// Authentication initialization watchdog: prevent indefinite loading if SDK/network stalls.
-setTimeout(()=>{if(el("my-handle")?.textContent==="로그인 상태 확인 중…")showUnavailable("로그인 상태 확인이 지연되고 있습니다. 네트워크를 확인한 뒤 다시 시도해 주세요.")},15000);
+import {getDatabase,ref,get,set,runTransaction,push,serverTimestamp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
+const config={apiKey:"AIzaSyBreTSe1m0-xlbF4aupnU5isRZCihR25IE",authDomain:"formwheel.firebaseapp.com",databaseURL:"https://formwheel-default-rtdb.firebaseio.com",projectId:"formwheel",appId:"1:431583088241:web:74e0e34ea1e3e1170c55d0"};
+const app=getApps().find(a=>a.name==="[DEFAULT]")||initializeApp(config),auth=getAuth(app),db=getDatabase(app),root="formwheelV2/socialFree";
+const el=id=>document.getElementById(id),path=p=>ref(db,root+"/"+p),read=async p=>(await get(path(p))).val();
+let me=null,initialized=false;
+const msg=s=>{if(el("social-status"))el("social-status").textContent=s};
+const node=(tag,value)=>{const n=document.createElement(tag);n.textContent=value;return n};
+const button=(title,fn)=>{const b=node("button",title);b.type="button";b.addEventListener("click",async()=>{b.disabled=true;try{await fn();await refresh()}catch(e){msg("작업 실패: "+(e.code||e.message||"연결 확인 필요"))}finally{b.disabled=false}});return b};
+const fill=(id,rows,empty,render)=>{const box=el(id);if(!box)return;box.replaceChildren();if(!rows.length)box.append(node("p",empty));else rows.forEach(row=>box.append(render(row)))};
+function unavailable(reason){msg(reason);if(el("my-handle"))el("my-handle").textContent="현재 확인할 수 없습니다.";["friend-inbox","friend-list","invite-list"].forEach(id=>{if(el(id))el(id).textContent="목록을 불러올 수 없습니다. 새로고침을 눌러 주세요."})}
+async function getFriends(){
+ const [inbox,sent]=await Promise.all([read("requests/"+me.uid),read("sent/"+me.uid)]);
+ const requests=Object.entries(inbox||{}).filter(([,v])=>v?.status==="pending").map(([uid])=>uid);
+ const friends=new Set(Object.entries(inbox||{}).filter(([,v])=>v?.status==="accepted").map(([uid])=>uid));
+ for(const uid of Object.keys(sent||{})){const r=await read("requests/"+uid+"/"+me.uid);if(r?.status==="accepted")friends.add(uid)}
+ return {requests,friends:[...friends]};
+}
+async function refresh(){
+ if(!me)return;
+ msg("친구 목록 불러오는 중…");
+ try{
+ const [handle,data,invites]=await Promise.all([read("handleByUid/"+me.uid),getFriends(),read("invites/"+me.uid)]);
+ el("my-handle").textContent=handle?"@"+handle:"아직 공개 ID가 없습니다.";
+ fill("friend-inbox",data.requests,"받은 친구 요청이 없어요.",uid=>{const line=node("div","친구 요청 · "+uid.slice(0,12)+"… ");line.append(button("수락",()=>set(path("requests/"+me.uid+"/"+uid+"/status"),"accepted")),button("거절",()=>set(path("requests/"+me.uid+"/"+uid+"/status"),"declined")));return line});
+ fill("friend-list",data.friends,"등록된 친구가 없어요.",uid=>{const line=node("div","친구 · "+uid.slice(0,12)+"… ");line.style.margin="10px 0";line.append(button("초대",async()=>{const game=el("invite-game").value,minutes=Number(el("invite-minutes").value),reserve=el("reserve").checked;const item=push(path("invites/"+uid));await set(item,{from:me.uid,game,status:"pending",createdAt:serverTimestamp(),expiresAt:Date.now()+minutes*60000,reserve});msg("게임 초대를 보냈어요. 게임 방 자동 입장은 아직 지원하지 않아요.")}));return line});
+ fill("invite-list",Object.entries(invites||{}).map(([id,v])=>({id,...v})).sort((a,b)=>b.createdAt-a.createdAt).slice(0,40),"받은 게임 초대가 없어요.",i=>{const line=node("div",i.game+" · "+(i.status==="pending"&&Date.now()<i.expiresAt?"대기 중":i.status)+" ");if(i.status==="pending"&&Date.now()<i.expiresAt)line.append(button("수락",()=>set(path("invites/"+me.uid+"/"+i.id+"/status"),"accepted")),button("거절",()=>set(path("invites/"+me.uid+"/"+i.id+"/status"),"declined")));return line});
+ msg("Firebase 무료 친구 시스템 연결됨");
+ }catch(e){unavailable("친구 데이터 조회 실패: "+(e.code||e.message||"알 수 없는 오류")+". Firebase Rules 배포 여부를 확인해 주세요.")}
+}
+el("handle-button")?.addEventListener("click",async()=>{const handle=el("claim-handle").value.trim().toLowerCase();if(!/^[a-z0-9_]{3,20}$/.test(handle)){msg("ID는 영문 소문자·숫자·_ 3~20자입니다.");return}try{const existing=await read("handleByUid/"+me.uid);if(existing){msg("이미 등록한 ID: @"+existing);return}const result=await runTransaction(path("handles/"+handle),v=>v===null?me.uid:undefined,{applyLocally:false});if(!result.committed){msg("이미 사용 중인 ID입니다.");return}await set(path("handleByUid/"+me.uid),handle);await refresh()}catch(e){msg("ID 등록 실패: "+(e.code||e.message))}});
+el("friend-find")?.addEventListener("click",async()=>{const result=el("friend-search-result");result.replaceChildren();const handle=el("friend-query").value.trim().replace(/^@/,"").toLowerCase();if(!/^[a-z0-9_]{3,20}$/.test(handle)){result.textContent="올바른 ID를 입력해 주세요.";return}try{const uid=await read("handles/"+handle);if(!uid||uid===me.uid){result.textContent="검색 결과가 없어요.";return}result.append(node("span","@"+handle+" "),button("친구 신청",async()=>{await set(path("requests/"+uid+"/"+me.uid),{from:me.uid,to:uid,status:"pending",at:serverTimestamp()});await set(path("sent/"+me.uid+"/"+uid),true);msg("친구 요청을 보냈어요.")}))}catch(e){msg("검색 실패: "+(e.code||e.message))}});
+el("social-refresh")?.addEventListener("click",refresh);
+onAuthStateChanged(auth,u=>{initialized=true;me=u&&!u.isAnonymous?u:null;if(me)refresh();else{msg("Google 또는 이메일 계정으로 로그인해 주세요.");if(el("my-handle"))el("my-handle").textContent="로그인 후 이용 가능";["friend-inbox","friend-list","invite-list"].forEach(id=>{if(el(id))el(id).textContent="정식 계정 로그인 후 이용 가능"})}},e=>{initialized=true;unavailable("로그인 확인 실패: "+(e.code||e.message))});
+setTimeout(()=>{if(!initialized)unavailable("로그인 상태 확인 지연: 네트워크를 확인해 주세요.")},15000);
