@@ -997,18 +997,19 @@ function render(){
 
   /* HTML */
 
+  const collapsedCategories = (() => { try { return JSON.parse(localStorage.getItem('fw-hub-collapsed-categories') || '{}') || {}; } catch { return {}; } })();
   // Group the visible cards by category without changing their filters or order within each group.
   const categoryOrder = ['game','tool','app'];
   const visibleCategories = categoryOrder.filter(category => list.some(project => project.category === category));
   const groupedList = visibleCategories.flatMap(category => [
     {sectionCategory:category,sectionCount:list.filter(project => project.category === category).length},
-    ...list.filter(project => project.category === category)
+    ...(!keyword && collapsedCategories[category] ? [] : list.filter(project => project.category === category))
   ]);
   cardsElement.innerHTML =
     groupedList.map(project => {
       if(project.sectionCategory){
         const emoji = {game:'🎮',tool:'🛠️',app:'📱'}[project.sectionCategory] || '📁';
-        return `<h3 class="fw-category-heading" style="grid-column:1/-1;margin:18px 0 0;padding:10px 12px;border-bottom:2px solid #dcdcf3;font-size:18px;color:inherit">${emoji} ${escapeHTML(categoryLabel[project.sectionCategory]||project.sectionCategory)} <small style="font-size:13px;opacity:.7">(${project.sectionCount}개)</small></h3>`;
+        return `<h3 class="fw-category-heading" style="grid-column:1/-1;margin:18px 0 0;padding:10px 12px;border-bottom:2px solid #dcdcf3;font-size:18px;color:inherit"><button type="button" class="fw-category-toggle" data-category="${project.sectionCategory}" aria-expanded="${keyword || !collapsedCategories[project.sectionCategory]}" style="display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;border:0;background:transparent;color:inherit;font:inherit;text-align:left;cursor:pointer;padding:3px 0"><span>${emoji} ${escapeHTML(categoryLabel[project.sectionCategory]||project.sectionCategory)} <small style="font-size:13px;opacity:.7">(${project.sectionCount}개)</small></span><span>${keyword || !collapsedCategories[project.sectionCategory] ? "접기 ▲" : "펴기 ▼"}</span></button></h3>`;
       }
 
       const difficultyStars =
@@ -1109,6 +1110,18 @@ function render(){
 
 }
 
+
+cardsElement.addEventListener('click',event => {
+  const button=event.target.closest('.fw-category-toggle');
+  if(!button)return;
+  const category=button.dataset.category;
+  if(!category)return;
+  let saved={};
+  try{saved=JSON.parse(localStorage.getItem('fw-hub-collapsed-categories')||'{}')||{}}catch{}
+  saved[category]=!saved[category];
+  try{localStorage.setItem('fw-hub-collapsed-categories',JSON.stringify(saved))}catch{}
+  render();
+});
 
 /* ======================================================
    ESCAPE
