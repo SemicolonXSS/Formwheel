@@ -44,7 +44,19 @@ if(button)button.addEventListener('click',async()=>{
       const verified=await get(ref(db,'wikiV1/admins/'+auth.currentUser.uid));
       if(verified.val()!==true)throw Error('Wiki 관리자 권한이 없습니다.');
       await update(ref(db,root+'/'+entry.id),{reviewStatus:value,reviewedBy:auth.currentUser.uid,reviewedAt:serverTimestamp()});
-      state.textContent='현재 상태: '+label;status.textContent=label+' 기록을 저장했어요. 배지·테마·Rapid 혜택은 별도 권한 연동이 필요합니다.';
+      state.textContent='현재 상태: '+label;
+      if(value==='approved'&&entry.uid){
+       try{
+        await update(ref(db,'formwheelV2/playtesterEntitlements/'+entry.uid),{approved:true,revoked:false,approvedBy:auth.currentUser.uid,approvedAt:serverTimestamp()});
+        status.textContent='승인과 Hub 배지·테마·개선점 보고 권한을 저장했어요. 지원서 UID와 Hub 로그인 UID가 같아야 적용됩니다. Rapid 혜택은 별도입니다.';
+       }catch(grantError){
+        status.textContent='승인 기록은 저장됐지만 Hub 혜택 권한 지급은 실패했어요: '+(grantError.code||grantError.message)+'. Firebase Rules에서 관리자 전용 권한 지급을 허용해야 합니다.';
+       }
+      }else if(value==='rejected'){
+       status.textContent='거절 기록을 저장했어요. 기존에 지급된 혜택이 있다면 별도로 회수해야 합니다.';
+      }else{
+       status.textContent='승인 기록을 저장했지만 지원서에 계정 UID가 없어 혜택을 지급하지 못했어요.';
+      }
       [...actions.querySelectorAll('button')].forEach(b=>b.disabled=b===action);
      }catch(err){status.textContent=label+' 실패: '+(err.code||err.message||'권한 오류')+'. Firebase Rules에서 관리자만 reviewStatus를 수정할 수 있어야 합니다.';action.disabled=false}
     });
