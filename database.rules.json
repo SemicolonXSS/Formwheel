@@ -98,7 +98,8 @@
               ".read": "auth != null && (auth.uid === $to || auth.uid === $from)",
               ".write": "auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && $to !== $from && ((auth.uid === $from && !data.exists() && newData.child('status').val() === 'pending' && newData.child('at').val() === now) || (auth.uid === $to && data.child('status').val() === 'pending' && (newData.child('status').val() === 'accepted' || newData.child('status').val() === 'declined') && newData.child('at').val() === data.child('at'))) && newData.child('from').val() === $from && newData.child('to').val() === $to",
               ".validate": "newData.hasChildren(['from','to','status','at']) && newData.childrenCount === 4 && newData.child('at').isNumber() && newData.child('status').isString()"
-            }
+            },
+            ".read": "auth != null && auth.uid === $to"
           }
         },
         "invites": {
@@ -107,6 +108,16 @@
               ".read": "auth != null && auth.uid === $to",
               ".write": "auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && ((auth.uid === newData.child('from').val() && !data.exists() && newData.child('status').val() === 'pending' && newData.child('createdAt').val() === now && newData.child('expiresAt').val() > now && newData.child('expiresAt').val() <= now + 1800000 && (root.child('formwheelV2/socialFree/requests/'+$to+'/'+auth.uid+'/status').val() === 'accepted' || root.child('formwheelV2/socialFree/requests/'+auth.uid+'/'+$to+'/status').val() === 'accepted')) || (auth.uid === $to && data.child('status').val() === 'pending' && (newData.child('status').val() === 'accepted' || newData.child('status').val() === 'declined') && newData.child('from').val() === data.child('from') && newData.child('game').val() === data.child('game') && newData.child('createdAt').val() === data.child('createdAt') && newData.child('expiresAt').val() === data.child('expiresAt') && newData.child('reserve').val() === data.child('reserve'))) && newData.child('game').val().matches(/^(Spy|Battle|GCrown|Dice Duel|Risk)$/)",
               ".validate": "newData.hasChildren(['from','game','status','createdAt','expiresAt','reserve']) && newData.childrenCount === 6 && newData.child('reserve').isBoolean() && newData.child('createdAt').isNumber() && newData.child('expiresAt').isNumber()"
+            },
+            ".read": "auth != null && auth.uid === $to"
+          }
+        },
+        "sent": {
+          "$from": {
+            ".read": "auth != null && auth.uid === $from",
+            "$to": {
+              ".write": "auth != null && auth.uid === $from && auth.token.firebase.sign_in_provider !== 'anonymous' && !data.exists() && newData.val() === true && root.child('formwheelV2/socialFree/requests/'+$to+'/'+$from+'/status').val() === 'pending'",
+              ".validate": "newData.isBoolean()"
             }
           }
         }
