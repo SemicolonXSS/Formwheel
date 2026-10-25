@@ -23,6 +23,7 @@ async function refresh(){
  try{
  const [handle,data,invites]=await Promise.all([read("handleByUid/"+me.uid),getFriends(),read("invites/"+me.uid)]);
  el("my-handle").textContent=handle?"@"+handle:"아직 공개 ID가 없습니다.";
+ const share=el("copy-friend-link");if(share){share.disabled=!handle;share.dataset.handle=handle||"";}
  fill("friend-inbox",data.requests,"받은 친구 요청이 없어요.",uid=>{const line=node("div","친구 요청 · "+uid.slice(0,12)+"… ");line.append(button("수락",()=>set(path("requests/"+me.uid+"/"+uid+"/status"),"accepted")),button("거절",()=>set(path("requests/"+me.uid+"/"+uid+"/status"),"declined")));return line});
  fill("friend-list",data.friends,"등록된 친구가 없어요.",uid=>{const line=node("div","친구 · "+uid.slice(0,12)+"… ");line.style.margin="10px 0";line.append(button("초대",async()=>{const game=el("invite-game").value,minutes=Number(el("invite-minutes").value),reserve=el("reserve").checked;const item=push(path("invites/"+uid));await set(item,{from:me.uid,game,status:"pending",createdAt:serverTimestamp(),expiresAt:Date.now()+minutes*60000,reserve});msg("게임 초대를 보냈어요. 게임 방 자동 입장은 아직 지원하지 않아요.")}));return line});
  fill("invite-list",Object.entries(invites||{}).map(([id,v])=>({id,...v})).sort((a,b)=>b.createdAt-a.createdAt).slice(0,40),"받은 게임 초대가 없어요.",i=>{const line=node("div",i.game+" · "+(i.status==="pending"&&Date.now()<i.expiresAt?"대기 중":i.status)+" ");if(i.status==="pending"&&Date.now()<i.expiresAt)line.append(button("수락",()=>set(path("invites/"+me.uid+"/"+i.id+"/status"),"accepted")),button("거절",()=>set(path("invites/"+me.uid+"/"+i.id+"/status"),"declined")));return line});
@@ -32,5 +33,13 @@ async function refresh(){
 el("handle-button")?.addEventListener("click",async()=>{const handle=el("claim-handle").value.trim().toLowerCase();if(!/^[a-z0-9_]{3,20}$/.test(handle)){msg("ID는 영문 소문자·숫자·_ 3~20자입니다.");return}try{const existing=await read("handleByUid/"+me.uid);if(existing){msg("이미 등록한 ID: @"+existing);return}const result=await runTransaction(path("handles/"+handle),v=>v===null?me.uid:undefined,{applyLocally:false});if(!result.committed){msg("이미 사용 중인 ID입니다.");return}await set(path("handleByUid/"+me.uid),handle);await refresh()}catch(e){msg("ID 등록 실패: "+(e.code||e.message))}});
 el("friend-find")?.addEventListener("click",async()=>{const result=el("friend-search-result");result.replaceChildren();const handle=el("friend-query").value.trim().replace(/^@/,"").toLowerCase();if(!/^[a-z0-9_]{3,20}$/.test(handle)){result.textContent="올바른 ID를 입력해 주세요.";return}try{const uid=await read("handles/"+handle);if(!uid||uid===me.uid){result.textContent="검색 결과가 없어요.";return}result.append(node("span","@"+handle+" "),button("친구 신청",async()=>{await set(path("requests/"+uid+"/"+me.uid),{from:me.uid,to:uid,status:"pending",at:serverTimestamp()});await set(path("sent/"+me.uid+"/"+uid),true);msg("친구 요청을 보냈어요.")}))}catch(e){msg("검색 실패: "+(e.code||e.message))}});
 el("social-refresh")?.addEventListener("click",refresh);
+el("copy-friend-link")?.addEventListener("click",async()=>{
+ const button=el("copy-friend-link"),handle=button.dataset.handle,status=el("friend-link-status");
+ if(!/^[a-z0-9_]{3,20}$/.test(handle||"")){status.textContent="공개 ID를 먼저 등록해 주세요.";return}
+ const url=new URL("./id-center.html",location.href);url.searchParams.set("friend",handle);url.hash="fw-live-social";
+ try{await navigator.clipboard.writeText(url.href);status.textContent="초대 링크가 복사됐어요. 받는 사람은 로그인 후 친구 신청을 선택해야 해요."}
+ catch{status.textContent="링크 복사가 허용되지 않았어요: "+url.href}
+});
+try{const invited=new URL(location.href).searchParams.get("friend");if(invited&&/^[a-z0-9_]{3,20}$/.test(invited.toLowerCase())){el("friend-query").value=invited.toLowerCase();el("friend-search-result").textContent="초대 링크로 왔어요. 로그인한 뒤 '찾기'를 눌러 친구 신청을 진행해 주세요."}}catch{}
 onAuthStateChanged(auth,u=>{initialized=true;me=u&&!u.isAnonymous?u:null;if(me)refresh();else{msg("Google 또는 이메일 계정으로 로그인해 주세요.");if(el("my-handle"))el("my-handle").textContent="로그인 후 이용 가능";["friend-inbox","friend-list","invite-list"].forEach(id=>{if(el(id))el(id).textContent="정식 계정 로그인 후 이용 가능"})}},e=>{initialized=true;unavailable("로그인 확인 실패: "+(e.code||e.message))});
 setTimeout(()=>{if(!initialized)unavailable("로그인 상태 확인 지연: 네트워크를 확인해 주세요.")},15000);
