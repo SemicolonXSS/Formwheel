@@ -6,18 +6,23 @@
 <link rel="icon" href="./assets/formwheel-favicon.svg" type="image/svg+xml">
 <style>
 *{box-sizing:border-box}body{font:16px/1.65 system-ui,sans-serif;background:#f5f6ff;color:#20263a;margin:0}
-main{max-width:680px;margin:28px auto;padding:24px;background:white;border-radius:22px;box-shadow:0 12px 40px #25326716}
-h1{margin:9px 0}h2{font-size:21px}label{display:block;margin:14px 0 5px;font-weight:700}
-input,select,textarea,button{width:100%;padding:12px;border-radius:10px;border:1px solid #cbd2e5;font:inherit}
-button{background:#453ac4;color:white;font-weight:700;cursor:pointer;margin-top:12px}
+main{max-width:680px;margin:18px auto;padding:20px;background:white;border-radius:22px;box-shadow:0 12px 40px #25326716}
+h1{margin:7px 0;font-size:26px}h2{font-size:19px}label{display:block;margin:10px 0 4px;font-weight:700}
+input,select,textarea,button{width:100%;padding:9px 11px;border-radius:10px;border:1px solid #cbd2e5;font:inherit}
+button{background:#453ac4;color:white;font-weight:700;cursor:pointer;margin-top:8px}
 button:focus-visible,a:focus-visible{outline:3px solid #f5a623;outline-offset:3px}
 p,small{color:#59617a}a{color:#453ac4}
-#status{font-weight:700}section{margin:24px 0;border-top:1px solid #e4e7f1;padding-top:15px}
-.challenge{background:#f7f6ff;border:1px solid #d6d3f5;padding:18px;border-radius:16px}
+#status{font-weight:700}section{margin:16px 0;border-top:1px solid #e4e7f1;padding-top:12px}
+.challenge{background:#f7f6ff;border:1px solid #d6d3f5;padding:13px;border-radius:16px}
 .challenge h2{margin:0 0 8px}.challenge strong{color:#2d2479}
 #find10-result{padding:9px 0;font-weight:700}#find10-target{font-size:18px;font-weight:750;color:#252058}
 #find10-prepare[hidden],#find10-result[hidden],#guide[hidden]{display:none}
 .secondary{background:white;color:#453ac4;border:1px solid #aca6df}
+.compact-field{max-width:230px}.compact-field select{padding:7px 9px}
+.compact-clear{width:auto;padding:5px 10px;font-size:13px;margin-top:5px}
+#apply-notes{min-height:38px;resize:vertical}
+.challenge p{margin:7px 0}.challenge small{display:block;margin-top:8px}
+@media(max-width:480px){main{margin:8px;padding:15px;border-radius:14px}.compact-field{max-width:100%}h1{font-size:23px}}
 </style>
 </head>
 <body><main>
@@ -27,7 +32,7 @@ p,small{color:#59617a}a{color:#453ac4}
 <section class="challenge" aria-labelledby="find10-title">
 <h2 id="find10-title">⏱️ 10초 챌린지 · FIND IT!</h2>
 <p>처음 Formwheel에 온 사람처럼, <strong>게임 종류만 보고 10초 안에 원하는 프로젝트를 찾아보세요.</strong> 프로젝트는 무작위로 정해집니다.</p>
-<label for="find10-age">연령대 (선택)</label><select id="find10-age"><option value="">응답하지 않음</option><option>10대 미만</option><option>10대</option><option>20대</option><option>30대</option><option>40대</option><option>50대</option><option>60대 이상</option></select><button type="button" class="secondary" id="find10-age-clear">연령대 선택 취소</button>
+<div class="compact-field"><label for="find10-age">연령대 (선택)</label><select id="find10-age"><option value="">응답하지 않음</option><option>10대 미만</option><option>10대</option><option>20대</option><option>30대</option><option>40대</option><option>50대</option><option>60대 이상</option></select><button type="button" class="secondary compact-clear" id="find10-age-clear">선택 취소</button></div>
 <div id="find10-prepare" hidden>
 <p>당신이 찾아야 할 게임 종류</p>
 <div id="find10-target" aria-live="polite"></div>
@@ -43,9 +48,10 @@ p,small{color:#59617a}a{color:#453ac4}
 
 <form id="apply">
 <label for="nickname">표시 이름 (실명 불필요)</label><input id="nickname" maxlength="24" required placeholder="닉네임">
-<label for="apply-age">연령대 (선택)</label><select id="apply-age"><option value="">응답하지 않음</option><option>10대 미만</option><option>10대</option><option>20대</option><option>30대</option><option>40대</option><option>50대</option><option>60대 이상</option></select><button type="button" class="secondary" id="apply-age-clear">연령대 선택 취소</button>
+<div class="compact-field"><label for="apply-age">연령대 (선택)</label><select id="apply-age"><option value="">응답하지 않음</option><option>10대 미만</option><option>10대</option><option>20대</option><option>30대</option><option>40대</option><option>50대</option><option>60대 이상</option></select><button type="button" class="secondary compact-clear" id="apply-age-clear">선택 취소</button></div>
 <label for="field">테스트 분야</label><select id="field"><option>게임 플레이</option><option>모바일·UI</option><option>버그 찾기</option><option>접근성·튜토리얼</option></select>
-<label for="reason">지원 동기 (선택)</label><textarea id="reason" maxlength="300" rows="3"></textarea>
+<label for="reason">지원 동기 (선택)</label><textarea id="reason" maxlength="300" rows="2"></textarea>
+<label for="apply-notes">특이사항 (선택)</label><textarea id="apply-notes" maxlength="300" rows="1" placeholder="테스트 환경, 참고사항 등 (실명·연락처 제외)"></textarea>
 <button id="submit">지원서 작성하기</button>
 </form>
 <p id="status" role="status"></p>
@@ -110,7 +116,7 @@ $('tutorial').onclick=()=>{$('guide').hidden=!$('guide').hidden};
 $('apply').onsubmit=async e=>{
 e.preventDefault();
 const v=id=>$(id).value.trim();
-const msg='Formwheel 플레이테스터 지원\n닉네임: '+v('nickname')+'\n연령대: '+(v('apply-age')||'미응답')+'\n분야: '+v('field')+'\n지원 동기: '+v('reason');
+const msg='Formwheel 플레이테스터 지원\n닉네임: '+v('nickname')+'\n연령대: '+(v('apply-age')||'미응답')+'\n분야: '+v('field')+'\n지원 동기: '+v('reason')+'\n특이사항: '+(v('apply-notes')||'없음');
 try{await navigator.clipboard.writeText(msg);$('status').textContent='지원 내용이 복사됐어요. Formwheel 운영자에게 전달해 주세요.'}
 catch{$('status').textContent='아래 내용을 복사해 운영자에게 전달해 주세요.';const t=document.createElement('textarea');t.value=msg;t.readOnly=true;$('status').after(t)}
 };
