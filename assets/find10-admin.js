@@ -14,7 +14,7 @@ async function load(){
   const body=String(item.body||'');
   const state=body.match(/결과: (성공|시간 초과|다른 프로젝트 선택)/)?.[1];
   const seconds=Number(body.match(/소요 시간: ([\d.]+)초/)?.[1]);
-  if(!target||!state||!Number.isFinite(seconds)||seconds<0||seconds>120)return;
+  if(!target||!state||!Number.isFinite(seconds)||seconds<0||seconds>86400)return;
   const selected=body.match(/선택한 프로젝트: ([^\n]+)/)?.[1]?.trim()||'';
   const g=groups.get(target)||{n:0,wins:0,seconds:0,timeouts:0,confusions:new Map()};
   if(state!=='성공'&&selected&&selected!=='미기록'&&selected!==target)g.confusions.set(selected,(g.confusions.get(selected)||0)+1);
