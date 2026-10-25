@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,follow">
+<meta name="theme-color" content="#111827">
+<title>404 · 길을 잃은 페이지 | Formwheel</title>
+<link rel="icon" href="/Formwheel/favicon.ico">
+<style>
+:root{color-scheme:dark;--accent:#ffad4d}*{box-sizing:border-box}body{min-height:100svh;margin:0;background:radial-gradient(circle at 50% 10%,#263146,#0c101b 70%);color:#f8fafc;font:16px/1.6 system-ui,-apple-system,"Noto Sans KR",sans-serif;display:grid;place-items:center;padding:25px 16px}main{width:min(100%,610px);background:#151c2b;border:1px solid #3a4559;border-radius:24px;padding:clamp(22px,5vw,38px);box-shadow:0 18px 70px #0005}.top{display:flex;justify-content:space-between;color:#bac7da;font-size:.8rem;letter-spacing:.13em}.glyph{font-size:clamp(5rem,21vw,9rem);line-height:1.12;font-weight:900;text-align:center;margin:22px 0 5px;color:var(--accent);text-shadow:0 0 42px #ffad4d30}h1{text-align:center;line-height:1.3;font-size:1.55rem;margin:0 0 10px}#message{text-align:center;color:#c4cddd;min-height:3rem}#status{text-align:center;color:#a8b5c9;font-size:.8rem}button,a.action{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:10px 16px;border-radius:12px;border:1px solid #596579;background:#273247;color:white;font:inherit;font-weight:650;cursor:pointer;text-decoration:none}button:hover,a.action:hover{filter:brightness(1.15)}button:focus-visible,a:focus-visible{outline:3px solid #fcbf79;outline-offset:3px}.actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:25px 0 18px}.primary{background:#f99e38!important;color:#191a20!important;border-color:#f99e38!important}.mini{font-size:.88rem}details{border-top:1px solid #354056;padding-top:18px}summary{cursor:pointer;font-weight:700}#collection{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:12px 0 4px}.slot{border:1px solid #435064;border-radius:10px;padding:9px;font-size:.82rem;color:#bdc7d6}.slot.found{border-color:#df9f52;color:#fff}#play{display:none;text-align:center;margin:14px 0}#catch{position:relative;max-width:320px;width:100%;height:108px;margin:auto;border:1px dashed #738299;background:#202c3b;overflow:hidden;border-radius:12px}#target{position:absolute;left:10%;top:20px;min-height:42px}.hint{text-align:center;font-size:.85rem;color:#aebdd1;margin-top:16px}body[data-type="null"]{--accent:#b89afa}body[data-type="mirror"]{--accent:#71d7f7}body[data-type="game"]{--accent:#72dba6}body[data-type="console"]{--accent:#b1ec66}body[data-type="secret"]{--accent:#f18aa6}body[data-type="mirror"] .glyph{transform:scaleX(-1)}@media(prefers-reduced-motion:no-preference){body[data-type="null"] .glyph{animation:glitch 2.5s 1}@keyframes glitch{10%,20%{text-shadow:5px 0 #ee80e0,-5px 0 #58d4ef}15%,25%{text-shadow:none}}} @media(max-width:360px){#collection{grid-template-columns:1fr}.actions>*{width:100%}}
+</style>
+</head>
+<body data-type="basic">
+<main>
+<div class="top"><span>FORMWHEEL</span><span>ERROR / 404</span></div>
+<div class="glyph" aria-hidden="true">404</div>
+<h1 id="title">프로젝트를 찾을 수 없습니다.</h1>
+<p id="message">주소가 잘못되었거나 페이지가 이동했을 수 있어요.</p>
+<div id="status" role="status" aria-live="polite">존재하지 않는 페이지입니다.</div>
+<div id="play"><p>움직이는 404를 눌러 보세요!</p><div id="catch"><button id="target" type="button">404</button></div><p id="gameResult" role="status"></p></div>
+<div class="actions">
+<a class="action primary" href="/Formwheel/">⌂ Hub로 돌아가기</a>
+<button id="reroll" type="button">↻ 다시 뽑기</button>
+</div>
+<details><summary>404 도감 <span id="count">0/6</span></summary><p class="mini">이 브라우저에서 발견한 화면만 저장돼요. 로그인이나 서버 저장은 사용하지 않습니다.</p><div id="collection"></div><button class="mini" id="clear" type="button">발견 기록 초기화</button></details>
+<p class="hint">실제 주소가 없는 페이지입니다. 오류 연출은 재미를 위한 것이며 AQS 보상이나 Secret 해금에는 영향을 주지 않습니다.</p>
+</main>
+<script>
+(()=>{
+"use strict";
+const variants=[
+{id:"basic",weight:35,name:"기본 오류형",title:"페이지가 사라졌습니다.",message:"찾으신 주소가 존재하지 않아요. Hub에서 다른 프로젝트를 탐험해 보세요."},
+{id:"null",weight:20,name:"NULL 침입형",title:"NULL HAS ENTERED",message:"NULL: 네가 찾는 주소는 원래 존재했을까?"},
+{id:"mirror",weight:15,name:"거울 세계형",title:"반대편의 주소",message:"이곳은 익숙하지만 조금 다른 세계입니다. 길을 잃었다면 Hub로 돌아가세요."},
+{id:"game",weight:15,name:"미니게임형",title:"404를 잡아라!",message:"404가 도망치고 있습니다. 숫자를 눌러 보세요!"},
+{id:"console",weight:10,name:"개발자 콘솔형",title:"SYSTEM: TARGET NOT FOUND",message:"[CHECK] 경로 분석 완료 · [RESULT] 찾을 수 없는 주소"},
+{id:"secret",weight:5,name:"희귀 Secret형",title:"404는 정말 오류일까?",message:"숨겨진 문을 발견했습니다. 아직 열쇠는 존재하지 않습니다."}
+];
+const key="formwheel-404-collection-v1";
+const $=id=>document.getElementById(id);
+let found=[];
+try{const saved=JSON.parse(localStorage.getItem(key)||"[]");if(Array.isArray(saved))found=saved.filter(id=>variants.some(v=>v.id===id))}catch{}
+function drawCollection(){
+$("count").textContent=found.length+"/6";
+$("collection").replaceChildren();
+variants.forEach(v=>{const el=document.createElement("div");el.className="slot"+(found.includes(v.id)?" found":"");el.textContent=(found.includes(v.id)?"✓ "+v.name:"? 미발견")+" · "+v.weight+"%";$("collection").appendChild(el)});
+}
+function choose(){
+let r=Math.random()*100;
+for(const v of variants){r-=v.weight;if(r<0)return v}
+return variants[0];
+}
+let gameTimer;
+function render(){
+clearTimeout(gameTimer);
+const v=choose();
+document.body.dataset.type=v.id;
+$("title").textContent=v.title;
+$("message").textContent=v.message;
+$("status").textContent="랜덤 연출: "+v.name+" · 등장 확률 "+v.weight+"%";
+$("play").style.display=v.id==="game"?"block":"none";
+$("gameResult").textContent="";
+$("target").disabled=false;
+$("target").style.left="10%";
+$("target").style.top="20px";
+if(!found.includes(v.id)){found.push(v.id);try{localStorage.setItem(key,JSON.stringify(found))}catch{}}
+drawCollection();
+if(v.id==="game"){
+let moves=0;const start=Date.now();
+function move(){
+if(document.body.dataset.type!=="game"||moves>=7||Date.now()-start>=10000){$("target").disabled=true;$("gameResult").textContent="도전 종료! 다시 뽑거나 Hub로 돌아갈 수 있어요.";return}
+$("target").style.left=(5+Math.random()*68)+"%";
+$("target").style.top=(5+Math.random()*45)+"px";
+moves++;
+gameTimer=setTimeout(move,1200);
+}
+gameTimer=setTimeout(move,1200);
+}
+}
+$("target").addEventListener("click",()=>{clearTimeout(gameTimer);$("target").disabled=true;$("gameResult").textContent="성공! 도망가는 404를 잡았습니다 🎉"});
+$("reroll").addEventListener("click",render);
+$("clear").addEventListener("click",()=>{if(!confirm("이 브라우저의 404 발견 기록을 초기화할까요?"))return;found=[];try{localStorage.removeItem(key)}catch{}drawCollection()});
+drawCollection();render();
+})();
+</script>
+</body>
+</html>
