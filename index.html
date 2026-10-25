@@ -939,7 +939,7 @@ document.querySelectorAll('#projects .card').forEach(card=>{
 (function(){
 'use strict';
 var key='formwheel-hub-display-version',mode='card',category='all',tab='home';
-function getSaved(){try{return localStorage.getItem(key)==='simple'?'simple':'card'}catch(e){return 'card'}}
+function getSaved(){try{var stored=localStorage.getItem(key);return stored==='card'||stored==='simple'?stored:'simple'}catch(e){return 'simple'}}
 function apply(next){mode=next==='simple'?'simple':'card';document.body.classList.toggle('fw-beta-simple',mode==='simple');document.body.classList.toggle('fw-beta-card',mode==='card');document.getElementById('fw-beta-simple-view').hidden=mode!=='simple';document.querySelectorAll('#fw-beta-switch button[data-mode]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.mode===mode))});try{localStorage.setItem(key,mode)}catch(e){}if(mode==='simple')render()}
 function extract(){
 var cards=Array.from(document.querySelectorAll('#cards .card'));
