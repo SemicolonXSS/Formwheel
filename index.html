@@ -827,7 +827,6 @@ document.getElementById("fw-match-close").onclick=()=>{modal.hidden=true};
 })();
 </script><script type="module" src="https://semicolonxss.github.io/Formwheel/shared/account-theme-sync.js?v=20261022-account1"></script><script type="module" src="https://semicolonxss.github.io/Formwheel/shared/account-rapid-sync.js?v=20261023-maxmerge1"></script><script type="module" src="./assets/peak-witness.js?v=20261024-compact2"></script><script defer src="./shared/secol-crown.js?v=20261024-profile-unified2"></script><aside id="fw-playtest-entry" style="max-width:650px;margin:18px auto;padding:16px;border:1px solid #d7d6f4;border-radius:16px;background:#f8f7ff;color:#252747;text-align:center"><strong>🧪 Formwheel 플레이테스터 모집</strong><p style="margin:6px 0 12px">직접 플레이하고 버그와 아이디어를 알려주세요!</p><a href="./playtest.html" style="display:inline-block;background:#4637b8;color:#fff;padding:10px 18px;border-radius:10px;text-decoration:none;font-weight:700">지원 안내 · 튜토리얼 보기 →</a></aside>
 <script type="module" id="fw-find10-controller">
-import {submitFind10} from './assets/find10-submit.js?v=20261025-device';
 const KEY='fw-find10-challenge',RESULT='fw-find10-result',PENDING='fw-find10-pending';
 let data;try{data=JSON.parse(sessionStorage.getItem(KEY)||'null')}catch{}
 if(data?.slug&&(new URLSearchParams(location.search).get('fwFind10')==='1'||data.paused)){
@@ -850,7 +849,7 @@ if(data?.slug&&(new URLSearchParams(location.search).get('fwFind10')==='1'||data
   const t=elapsed(),success=t<=10;
   const result={slug:data.slug,selectedSlug,success,timeout:t>10,elapsed:t,ageGroup:data.ageGroup||'',deviceType:data.deviceType||'',notes:data.notes||'',mistakes:data.mistakes||[]};
   sessionStorage.setItem(RESULT,JSON.stringify(result));sessionStorage.setItem(PENDING,JSON.stringify(result));sessionStorage.removeItem(KEY);
-  if(success){panel.remove();try{await Promise.race([submitFind10(result),new Promise((_,reject)=>setTimeout(()=>reject(Error('timeout')),4500))]);sessionStorage.removeItem(PENDING);sessionStorage.setItem('fw-find10-delivered',JSON.stringify(result))}catch{}location.assign(destination);}
+  if(success){panel.remove();try{const {submitFind10}=await import('./assets/find10-submit.js?v=20261025-device');await Promise.race([submitFind10(result),new Promise((_,reject)=>setTimeout(()=>reject(Error('timeout')),4500))]);sessionStorage.removeItem(PENDING);sessionStorage.setItem('fw-find10-delivered',JSON.stringify(result))}catch{}location.assign(destination);}
   else{feedback.textContent='⏰ 10초를 초과했어요. 결과를 저장합니다.';try{await Promise.race([submitFind10(result),new Promise((_,reject)=>setTimeout(()=>reject(Error('timeout')),4500))]);sessionStorage.removeItem(PENDING);sessionStorage.setItem('fw-find10-delivered',JSON.stringify(result))}catch{}location.assign('./playtest.html');}
  }
  cancel.addEventListener('click',e=>{e.preventDefault();finished=true;clearInterval(clock);sessionStorage.removeItem(KEY);panel.remove();location.assign('./playtest.html')});
