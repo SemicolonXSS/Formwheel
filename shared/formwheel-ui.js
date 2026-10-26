@@ -33,14 +33,14 @@ const palettes={
  "cosmic-eternity":["#171739","#fffaf0","#292929","#88d7e7"],
  "cosmic-genesis":["#070f28","#fffaf5","#292929","#b384ff"],
  "daynight":["#142c57","#fffaf1","#292929","#ffad66"],
- "playtester-purple":["#271342","#342052","#f6e9ff","#b98aff"],
- "playtester-red":["#430e28","#531d38","#fff0ee","#ff7466"],
- "playtester-blue":["#09244d","#153b65","#e6faff","#69d8f3"]
+ "playtester-purple":["#eee4ff","#fcf9ff","#49316d","#b98aff"],
+ "playtester-red":["#ffe9ed","#fff9fa","#823347","#ff7466"],
+ "playtester-blue":["#e2f4ff","#f8fcff","#255c82","#69d8f3"]
 };
 const gradients={
- "playtester-purple":"radial-gradient(circle at 24% 25%,#e7c5ff 0%,transparent 36%),linear-gradient(125deg,#271342,#7650c7 58%,#bb81ff)",
- "playtester-red":"radial-gradient(circle at 25% 22%,#ffc6b2 0%,transparent 35%),linear-gradient(125deg,#430e28,#ba3055 55%,#ff7466)",
- "playtester-blue":"radial-gradient(circle at 25% 22%,#b9f3ff 0%,transparent 35%),linear-gradient(125deg,#09244d,#256fbd 58%,#69d8f3)",
+ "playtester-purple":"radial-gradient(circle at 24% 25%,#ffffffd9 0%,transparent 36%),linear-gradient(125deg,#e9d8ff,#c5a9f7 58%,#f6d8ff)",
+ "playtester-red":"radial-gradient(circle at 25% 22%,#ffffffd9 0%,transparent 35%),linear-gradient(125deg,#ffe0e5,#ffb3bf 55%,#ffd6bf)",
+ "playtester-blue":"radial-gradient(circle at 25% 22%,#ffffffd9 0%,transparent 35%),linear-gradient(125deg,#d9f1ff,#a7d6ff 58%,#c6f4f4)",
  daynight:"linear-gradient(180deg,#76b7f8,#f7de9d,#ee957e)",
  "cosmic-genesis":"conic-gradient(from 90deg,#07152c,#3079aa,#b384ff,#091432,#07152c)",
  sunset:"linear-gradient(120deg,#f5a669,#ce6899,#5853b1)",
@@ -122,6 +122,17 @@ body[data-fw-global-theme] .hero h1,body[data-fw-global-theme] h1{ text-shadow:0
 document.head.append(sheet);
 
 // Theme-aware contrast and decorative backgrounds. Animations never intercept input.
+const playtesterStyle=document.createElement('style');
+playtesterStyle.textContent=`
+body[data-fw-global-theme^="playtester-"]{--fw-theme-on-background:#303038!important;--fw-theme-text:#303038!important;--fw-theme-muted:#454550!important;--fw-theme-button-text:#303038!important;--fw-theme-button-bg:#ffffffd9!important;color:#303038!important}
+body[data-fw-global-theme^="playtester-"] :is(h1,h2,h3,h4,p,span,strong,small,label,.hero p,.score,.stat strong){color:#303038!important}
+body[data-fw-global-theme^="playtester-"] :is(.card,.panel,.fw-footer,header){background:#ffffffd9!important;color:#303038!important;border:1px solid #ffffffcc!important;box-shadow:0 8px 32px #34304b1b,0 1px 0 #fff inset;backdrop-filter:blur(10px)}
+body[data-fw-global-theme^="playtester-"]::before{inset:-15vmax!important;background-size:180% 180%!important;animation:fw-playtester-flow 14s ease-in-out infinite alternate!important;opacity:1!important;transform:none!important}
+body[data-fw-global-theme^="playtester-"]::after{content:"✦    ✧        ✦       ✧     ✦";position:fixed;inset:0;z-index:-1;pointer-events:none;white-space:pre-wrap;letter-spacing:8vw;line-height:25vh;font-size:24px;color:#ffffffb5;text-shadow:0 0 18px #fff;animation:fw-playtester-stars 8s ease-in-out infinite alternate}
+@keyframes fw-playtester-flow{from{background-position:0% 25%;filter:saturate(1.1)}to{background-position:100% 75%;filter:saturate(1.35)}}
+@keyframes fw-playtester-stars{from{opacity:.35;transform:translateY(12px)}to{opacity:.9;transform:translateY(-12px)}}
+@media(prefers-reduced-motion:reduce){body[data-fw-global-theme^="playtester-"]::before,body[data-fw-global-theme^="playtester-"]::after{animation:none!important}}
+`;document.head.append(playtesterStyle);
 const themeStyle=document.createElement('style');
 themeStyle.textContent=`
 body[data-fw-global-theme]{isolation:isolate;background:var(--fw-theme-preview-gradient)!important;color:var(--fw-theme-on-background)!important}
@@ -358,6 +369,9 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
 const effects={'playtester-purple':'shimmer','playtester-red':'pulse','playtester-blue':'drift','cosmic-infinity':'spin','cosmic-paradox':'reverse-spin','cosmic-omega':'pulse','cosmic-eternity':'slow-spin','cosmic-genesis':'reverse-spin',daynight:'daynight',overdrive:'spin',quantum:'reverse-spin',singularity:'slow-spin',nova:'pulse',echo:'pulse',comet:'drift',celestial:'shimmer',eclipse:'pulse',rift:'drift',aurora:'drift',prismatic:'shimmer',cyber:'shimmer','void-premium':'pulse'};
 const textThemes={
+ 'playtester-purple':['#303038','#303038','#49316d'],
+ 'playtester-red':['#303038','#303038','#823347'],
+ 'playtester-blue':['#303038','#303038','#255c82'],
  sunset:['#281523','#432638','#6b2850'],forest:['#fff','#173e30','#145039'],
  neon:['#fff','#291c48','#5720a2'],galaxy:['#fff','#262151','#45369b'],
  ocean:['#063d50','#073c4a','#075577'],sakura:['#492039','#4b2346','#913565'],
@@ -418,7 +432,7 @@ function apply(){
   document.body.dataset.fwGlobalTheme=current;
   const effect=effects[current];
   if(effect)document.body.dataset.fwEffect=effect;else delete document.body.dataset.fwEffect;
-  const darkThemesForButtons=new Set(['playtester-purple','playtester-red','playtester-blue','midnight','echo','nova','void-premium','rift','comet','eclipse','quantum','celestial','singularity','overdrive','cosmic-infinity','cosmic-paradox','cosmic-omega','cosmic-eternity','cosmic-genesis','daynight']);
+  const darkThemesForButtons=new Set(['midnight','echo','nova','void-premium','rift','comet','eclipse','quantum','celestial','singularity','overdrive','cosmic-infinity','cosmic-paradox','cosmic-omega','cosmic-eternity','cosmic-genesis','daynight']);
   const [onBackground,onSurface,linkAccent]=textThemes[current]||['#fff','#fff','#333'];
   document.body.style.setProperty('--fw-theme-on-background',onBackground);
   document.body.style.setProperty('--fw-theme-text',onSurface);
