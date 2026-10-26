@@ -24,16 +24,16 @@ function giveBasketTurn(side,message){
  basketTurn=side;place();possessor=side===0?player:cpu;cooldown=.7;cpuThink=1;status.textContent=message+' · '+(side===0?'P1':'P2')+' 공격!';
 }
 function score(){scoreEl.textContent=(opponent==='local'?'P1':'나')+' '+me+' : '+cpuScore+' '+(opponent==='local'?'P2':'CPU')+' · '+Math.ceil(time)+'초'+(sport==='basketball'?' · 공격: '+(basketTurn===0?'P1':'P2'):'')}
-function setSport(s){frameGeneration++;sport=s;running=false;paused=false;me=cpuScore=0;time=Number(document.getElementById('duration').value);basketTurn=0;place();document.querySelectorAll('[data-sport]').forEach(b=>b.classList.toggle('active',b.dataset.sport===s));rules.textContent=s==='soccer'?'축구 · X축 이동(← → / A D), Z축 점프(↑ / W), 스페이스로 킥! 오른쪽 골문을 노리세요.':'농구 · X축 이동(← → / A D), Z축 점프(↑ / W), 공을 가진 상대에게 닿은 상태에서 슛·뺏기 키를 누르면 공을 빼앗아요. 스페이스를 눌렀다 놓아 슛! 길게 누를수록 슛이 훨씬 높아져요 (최대 1.8초 충전). 림 주변에서 내려오며 통과하면 득점! 오른쪽 림을 위에서 아래로 통과해야 득점합니다.';rules.textContent+=' 점프 키를 오래 누른 뒤 놓으면 더 높이 점프합니다 (최대 1.3초).';if(opponent==='local')rules.textContent+='  |  P1: A/D 이동, W 점프, F 슛·킥 / P2: ←/→ 이동, ↑ 점프, Enter 슛·킥.';status.textContent='경기 시작을 눌러주세요.';document.getElementById('pause').textContent='일시정지';score();draw()}
+function setSport(s){frameGeneration++;sport=s;running=false;paused=false;me=cpuScore=0;time=Number(document.getElementById('duration').value);basketTurn=0;place();document.querySelectorAll('[data-sport]').forEach(b=>b.classList.toggle('active',b.dataset.sport===s));rules.textContent=s==='soccer'?'축구 · X축 이동(← → / A D), Z축 점프(↑ / W), 공을 소유하면 이동하며 드리블! 상대와 접촉한 채 스페이스로 공을 빼앗고, 스페이스를 길게 눌렀다가 놓으면 강하게 슛! 오른쪽 골문을 노리세요.':'농구 · X축 이동(← → / A D), Z축 점프(↑ / W), 공을 가진 상대에게 닿은 상태에서 슛·뺏기 키를 누르면 공을 빼앗아요. 스페이스를 눌렀다 놓아 슛! 길게 누를수록 슛이 훨씬 높아져요 (최대 1.8초 충전). 림 주변에서 내려오며 통과하면 득점! 오른쪽 림을 위에서 아래로 통과해야 득점합니다.';rules.textContent+=' 점프 키를 오래 누른 뒤 놓으면 더 높이 점프합니다 (최대 1.3초).';if(opponent==='local')rules.textContent+='  |  P1: A/D 이동, W 점프, F 슛·킥 / P2: ←/→ 이동, ↑ 점프, Enter 슛·킥.';status.textContent='경기 시작을 눌러주세요.';document.getElementById('pause').textContent='일시정지';score();draw()}
 function start(){const generation=++frameGeneration;time=Number(document.getElementById('duration').value);me=cpuScore=0;running=true;paused=false;last=0;basketTurn=0;place();if(sport==='basketball')giveBasketTurn(0,'경기 시작');else status.textContent='경기 진행 중!';document.getElementById('pause').textContent='일시정지';score();requestAnimationFrame(ts=>frame(ts,generation))}
 function jump(p,power=0){if(p.z<=.01){p.vz=280+clamp(power,0,1)*245}}
 function difficulty(){return document.getElementById('difficulty').value}
 function touching(a,b){return Math.abs(a.x-b.x)<a.r+b.r&&Math.abs(a.z-b.z)<44}
 function steal(by){
- if(!running||paused||sport!=='basketball'||stealCooldown>0||!possessor||possessor===by||!touching(by,possessor))return false;
- possessor=by;basketTurn=by===player?0:1;stealCooldown=.75;cooldown=Math.max(cooldown,.2);
+ if(!running||paused||stealCooldown>0||!possessor||possessor===by||!touching(by,possessor))return false;
+ possessor=by;basketTurn=by===player?0:1;stealCooldown=.75;cooldown=Math.max(cooldown,.2);ball.vx=ball.vz=0;
  cpuPossessionTime=0;chargeKey=null;chargeStart=0;
- status.textContent=(by===player?'🏀 공을 빼앗았어요!':'🏀 상대가 공을 빼앗았어요!')+' 공격권 전환!';
+ status.textContent=(by===player?'공을 빼앗았어요!':'상대가 공을 빼앗았어요!')+' 공격권 전환!';
  return true;
 }
 function jumpKey(key){return key==='w'||(key==='ArrowUp'&&(opponent==='cpu'||opponent==='local'))}
@@ -52,8 +52,9 @@ if(sport==='basketball'){
  shot={owner:p,hoopX:rimX,points:Math.abs(dx)>300?3:2};
  possessor=null;cooldown=.55;status.textContent='🏀 슛! 골대를 통과시켜 보세요.';
 }else{
- if(distance({x:p.x,z:p.z+15},ball)>p.r+ball.r+44)return;
- ball.vx=(p===player?1:-1)*480;ball.vz=125+(p.z>10?120:0);cooldown=.33;status.textContent='⚽ 킥!';
+ if(possessor!==p&&distance({x:p.x,z:p.z+15},ball)>p.r+ball.r+44)return;
+ ball.x=p.x+(p===player?22:-22);ball.z=p.z+16;possessor=null;
+ ball.vx=(p===player?1:-1)*(360+clamp(charge/1.8,0,1)*400);ball.vz=100+clamp(charge/1.8,0,1)*230+(p.z>10?90:0);cooldown=.33;stealCooldown=.35;status.textContent='⚽ 슛!';
 }}
 function award(who,points){if(who===player)me+=points;else cpuScore+=points;const label=who===player?'P1':'P2';if(sport==='basketball')giveBasketTurn(who===player?1:0,label+' 득점! +'+points);else{status.textContent=label+' 득점! +'+points;place()}}
 function move(dt){
@@ -80,16 +81,16 @@ function move(dt){
    if(cooldown<=0&&(cpu.x<=(difficulty()==='hard'?410:345)||cpuPossessionTime>=(difficulty()==='easy'?4:3.0))){
      shoot(cpu,difficulty()==='easy'?.1:difficulty()==='hard'?.8:.25);cpuThink=1.3;cpuPossessionTime=0;
    }
- }else cpuPossessionTime=0;
- if(opponent==='cpu'&&sport==='soccer'&&Math.abs(ball.x-cpu.x)<50&&ball.z<65&&cooldown===0)shoot(cpu);
+ }else if(opponent==='cpu'&&sport==='soccer'&&possessor===cpu)cpuPossessionTime+=dt;else cpuPossessionTime=0;
+ if(opponent==='cpu'&&sport==='soccer'&&possessor===cpu&&cooldown<=0&&(cpu.x<=(difficulty()==='hard'?370:240)||cpuPossessionTime>=(difficulty()==='easy'?3.7:2.4)))shoot(cpu,difficulty()==='hard'?1.2:difficulty()==='easy'?.35:.7);
  for(const p of [player,cpu]){p.z+=p.vz*dt;p.vz-=GRAVITY*dt;if(p.z<0){p.z=0;p.vz=0}}
  // CPU attempts a tackle only when in contact, with difficulty-dependent reaction time.
- if(opponent==='cpu'&&sport==='basketball'&&possessor===player&&touching(cpu,player)&&stealCooldown<=0&&botStealWait<=0){
+ if(opponent==='cpu'&&possessor===player&&touching(cpu,player)&&stealCooldown<=0&&botStealWait<=0){
    const level=difficulty();const chance=level==='easy'?.25:level==='normal'?.62:.95;
    botStealWait=level==='easy'?1.2:level==='normal'?.65:.25;
    if(Math.random()<chance)steal(cpu);
  }
- if(sport==='basketball'&&possessor){
+ if(possessor){
    ball.x=possessor.x+(possessor===player?19:-19);ball.z=possessor.z+39;ball.vx=ball.vz=0;
  }else{
    const prevX=ball.x,prevZ=ball.z;
@@ -112,8 +113,8 @@ function move(dt){
    if(!shot){
      if(sport==='basketball'){
        for(const p of [player,cpu]){if((p===player?0:1)!==basketTurn)continue;if(Math.abs(ball.x-p.x)<p.r+ball.r+15&&Math.abs(ball.z-(p.z+36))<65&&cooldown<=0){possessor=p;if(p===cpu&&opponent==='cpu'){cpuThink=.45;cpuPossessionTime=0;cpuVelocity=0;}status.textContent=(p===player?'공을 잡았어요! 슛 버튼을 누른 뒤 놓으세요':'CPU가 공을 잡았어요!');break}}
-     }else{
-       for(const p of [player,cpu]){if(Math.abs(ball.x-p.x)<p.r+ball.r&&ball.z<p.z+50){ball.vx+=(ball.x>=p.x?1:-1)*95;ball.vz=Math.max(ball.vz,80)}}
+     }else if(cooldown<=0&&stealCooldown<=0){
+       for(const p of [player,cpu]){if(Math.abs(ball.x-p.x)<p.r+ball.r+12&&Math.abs(ball.z-(p.z+16))<50){possessor=p;cpuPossessionTime=0;status.textContent=(p===player?'⚽ 공을 잡았어요!':'⚽ 상대가 공을 잡았어요!');break}}
      }
    }
  }
@@ -136,7 +137,7 @@ function draw(){
  }
  ctx.fillStyle=sport==='soccer'?'#f7fcff':'#ed923b';ctx.strokeStyle='#263349';ctx.lineWidth=2;ctx.beginPath();ctx.arc(ball.x,sy(ball.z),ball.r,0,Math.PI*2);ctx.fill();ctx.stroke();
  if(jumpCharge.size&&running&&!paused){const started=Math.min(...jumpCharge.values());const power=clamp((performance.now()-started)/1300,0,1);ctx.fillStyle='#12233bba';ctx.fillRect(270,75,360,40);ctx.fillStyle='#fff';ctx.font='bold 14px system-ui';ctx.textAlign='left';ctx.fillText('점프 높이 '+Math.round(power*100)+'%',282,91);ctx.fillStyle='#4b6688';ctx.fillRect(282,99,335,8);ctx.fillStyle='#73d9ff';ctx.fillRect(282,99,335*power,8)}
- if(chargeKey&&sport==='basketball'&&running&&!paused){const power=clamp((performance.now()-chargeStart)/1800,0,1);ctx.fillStyle='#12233bba';ctx.fillRect(270,19,360,44);ctx.fillStyle='#e7f1ff';ctx.font='bold 14px system-ui';ctx.textAlign='left';ctx.fillText('슛 높이 '+Math.round(power*100)+'%',282,37);ctx.fillStyle='#4b6688';ctx.fillRect(282,44,335,9);ctx.fillStyle=power>.75?'#ffae58':'#73d9ff';ctx.fillRect(282,44,335*power,9)}
+ if(chargeKey&&running&&!paused){const power=clamp((performance.now()-chargeStart)/1800,0,1);ctx.fillStyle='#12233bba';ctx.fillRect(270,19,360,44);ctx.fillStyle='#e7f1ff';ctx.font='bold 14px system-ui';ctx.textAlign='left';ctx.fillText((sport==='basketball'?'슛 높이 ':'킥 파워 ')+Math.round(power*100)+'%',282,37);ctx.fillStyle='#4b6688';ctx.fillRect(282,44,335,9);ctx.fillStyle=power>.75?'#ffae58':'#73d9ff';ctx.fillRect(282,44,335*power,9)}
  if(!running||paused){ctx.fillStyle='#07162baa';ctx.fillRect(0,0,W,H);ctx.fillStyle='white';ctx.font='bold 30px system-ui';ctx.textAlign='center';ctx.fillText(paused?'일시정지':time<=0?'경기 종료':'SPORTS',450,245)}
 }
 function frame(ts,generation){if(!running||generation!==frameGeneration)return;if(!last)last=ts;const dt=Math.min((ts-last)/1000,.045);last=ts;if(!paused){time=Math.max(0,time-dt);move(dt);score();if(time===0){running=false;status.textContent='경기 종료! '+(me>cpuScore?'승리!':me<cpuScore?'패배!':'무승부!')}}draw();if(running&&generation===frameGeneration)requestAnimationFrame(next=>frame(next,generation))}
@@ -148,12 +149,11 @@ function chargeFor(key){return (opponent==='cpu'&&key==='Space')||(opponent==='l
 function beginAction(key){
  if(jumpKey(key)){if(running&&!paused&&!jumpCharge.has(key)&&jumpOwner(key).z<=.01)jumpCharge.set(key,performance.now());return}
  const isP1=chargeFor(key),isP2=opponent==='local'&&key==='enter';
- if((isP1||isP2)&&sport==='basketball'){
+ if(isP1||isP2){
    const actor=isP1?player:cpu;
    if(steal(actor))return;
-   if(possessor!==actor)return;
-   if(isP1){chargeKey=key;chargeStart=performance.now()}
-   else {chargeKey=key;chargeStart=performance.now()}
+   if(possessor!==actor&&sport==='basketball')return;
+   chargeKey=key;chargeStart=performance.now()
  }else if(isP2)shoot(cpu);else if(isP1)shoot(player);
 }
 function endAction(key){
