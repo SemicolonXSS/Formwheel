@@ -226,6 +226,7 @@ body.fw-beta-simple > :not(#fw-beta-switch):not(#fw-beta-simple-view):not(script
 <a href="#projects">🔎 찾기</a>
 <a href="./more.html">☰ 더보기</a>
 </nav>
+<a href="#fw-account" class="fw-header-login-link" aria-label="Formwheel ID 로그인 영역으로 이동" style="display:inline-flex;align-items:center;justify-content:center;padding:8px 11px;border-radius:10px;background:#f0e9ff;color:#49319b;font-weight:750;text-decoration:none;font-size:13px;white-space:nowrap">로그인</a>
 <a href="./profile.html" class="fw-profile-trigger" aria-label="내 프로필 및 커스터마이징 페이지 열기" title="내 프로필"><span id="fw-header-avatar">🎡</span><span id="fw-header-featured" hidden aria-label="대표 업적"></span></a>
 </header>
 <style>
@@ -508,8 +509,8 @@ Formwheel의 모든 프로젝트를 한곳에서 만나보세요.
 ========================= -->
 
 <footer>
-<!-- Sign-in controls remain available through profile.html; legacy DOM retained for auth compatibility. -->
-<section id="fw-account" hidden aria-labelledby="fw-account-title"><h3 id="fw-account-title">Formwheel ID 로그인</h3><div class="fw-id-panel"><span id="fw-id-status" role="status">계정 연결 확인 중…</span><button id="fw-id-login" type="button" hidden>Google 로그인</button><button id="fw-id-logout" type="button" hidden>로그아웃</button></div></section>
+<!-- Keep the existing auth controls and IDs: assets/id-core.js handles Google sign-in and auth state. -->
+<section id="fw-account" aria-labelledby="fw-account-title"><h3 id="fw-account-title">Formwheel ID 로그인</h3><div class="fw-id-panel"><span id="fw-id-status" role="status">계정 연결 확인 중…</span><button id="fw-id-login" type="button" hidden>Google 로그인</button><button id="fw-id-logout" type="button" hidden>로그아웃</button></div></section>
 <section class="fw-install" id="fw-install" aria-labelledby="fw-install-title">
 <h3 id="fw-install-title">📥 Formwheel 앱 설치</h3>
 <p>현재 기기에 맞는 설치 방법을 안내해 드려요.</p>
