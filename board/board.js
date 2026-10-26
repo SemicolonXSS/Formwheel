@@ -33,6 +33,10 @@ const descriptions={
  "이 게임은 흑의 금수를 적용하지 않는 자유룰입니다. 육목 이상도 승리합니다.",
  "판이 가득 차도록 승자가 없으면 무승부입니다."
  ]},
+ checkers:{title:"🔴 체커",note:"미국식 체커: 일반 말은 전진, 킹은 양방향 이동합니다. 잡을 수 있으면 반드시 잡아야 하며 연속 잡기도 적용됩니다.",
+ rules:["빨강이 먼저 둡니다. 어두운 칸의 말을 대각선 앞으로 한 칸 옮깁니다.","상대 말을 뛰어넘어 잡을 수 있으면 반드시 잡아야 합니다.","잡은 뒤 다시 잡을 수 있으면 같은 말로 연속 잡아야 합니다.","상대 끝줄에 도착하면 킹으로 승격해 앞뒤로 이동합니다. 승격한 턴에는 연속 잡기가 종료됩니다.","상대의 말이 없어지거나 상대가 둘 수 없으면 승리합니다."]},
+ ttt:{title:"❎ 틱택토",note:"3×3 격자에서 가로·세로·대각선 3개를 먼저 연결하면 이깁니다.",
+ rules:["X가 먼저 빈 칸에 표시합니다.","X와 O가 번갈아 빈 칸 하나를 선택합니다.","가로·세로·대각선으로 3개를 잇는 쪽이 승리합니다.","9칸이 가득 찰 때까지 아무도 잇지 못하면 무승부입니다."]},
  othello:{title:"◉ 오델로",note:"8×8 표준 오델로의 뒤집기·강제 패스·최종 돌 수 판정을 적용합니다. 모서리에서 시작하지 않으며 흑이 선공합니다.",
  rules:[
  "8×8 판 중앙 네 칸에 흑 2개와 백 2개를 대각선으로 놓고, 흑이 먼저 둡니다.",
@@ -120,6 +124,18 @@ function botPlay(){
       return (wins?100000:0)+(target!=="."?(val[target.toLowerCase()]||0)*12:0)+(m[2]?70:0)+(check?4:0)+center*.4+(m[3]==="castle"?8:0)-(attacked(next,m[1],1)?(val[piece.toLowerCase()]||0)*5:0);
     });
     if(move)chessMove(move);
+  }else if(game==="checkers"){
+    const opts=checkerLegal(state),choice=botChoice(opts,m=>{
+      const b=state.board,rr=Math.floor(m.to/8);
+      return (m.capture>=0?50:0)+(Math.abs(b[m.from])===1&&(rr===7)?35:0)+(3.5-Math.abs(m.to%8-3.5))*2;
+    });
+    if(choice)checkerMove(choice);
+  }else if(game==="ttt"){
+    const empties=state.board.map((v,i)=>v===0?i:-1).filter(i=>i>=0);
+    const wins=i=>{const b=state.board.slice();b[i]=-1;return tttWinner(b)===-1;};
+    const blocks=i=>{const b=state.board.slice();b[i]=1;return tttWinner(b)===1;};
+    const move=botChoice(empties,i=>(wins(i)?1000:0)+(blocks(i)?100:0)+(i===4?12:0)+([0,2,6,8].includes(i)?4:0));
+    if(move!==null)tttMove(move);
   }else if(game==="go"){
     const n=state.n,b=state.board;
     const candidates=[];
@@ -167,6 +183,8 @@ const dirs8=[[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]];
 const inBounds=(r,c,n)=>r>=0&&c>=0&&r<n&&c<n;
 function initial(type) {
  if(type==="go")return {board:Array(Number(sizeInput.value)**2).fill(0),n:Number(sizeInput.value),t:1,passes:0,captures:{black:0,white:0},done:false,last:-1};
+ if(type==="checkers"){const b=Array(64).fill(0);for(let r=0;r<8;r++)for(let c=0;c<8;c++)if((r+c)%2===1){if(r<3)b[r*8+c]=-1;if(r>4)b[r*8+c]=1;}return {board:b,n:8,t:1,done:false,winner:0,last:-1,forced:-1};}
+ if(type==="ttt")return {board:Array(9).fill(0),n:3,t:1,done:false,winner:0,last:-1};
  if(type==="omok")return {board:Array(225).fill(0),n:15,t:1,done:false,winner:0,last:-1};
  if(type==="othello"){const b=Array(64).fill(0);b[3*8+3]=-1;b[4*8+4]=-1;b[3*8+4]=1;b[4*8+3]=1;return {board:b,n:8,t:1,done:false,last:-1};}
  return chessStart();
@@ -198,6 +216,8 @@ function render(){
  if(game==="chess"){renderChess();return;}
  if(game==="go"){renderGo();return;}
  if(game==="omok"){renderOmok();return;}
+ if(game==="checkers"){renderCheckers();return;}
+ if(game==="ttt"){renderTTT();return;}
  renderOthello();
 }
 function appendGrid(n,cell){
@@ -367,6 +387,86 @@ function renderOthello(){
   btn.addEventListener("click",()=>othelloMove(i));return btn;
  });
 }
+
+/* Local-only American-style checkers: forced captures and chained jumps. */
+function checkerLegal(s){
+ const b=s.board,out=[],captures=[];
+ for(let i=0;i<64;i++){
+  const p=b[i];if(!p||Math.sign(p)!==s.t||(s.forced>=0&&i!==s.forced))continue;
+  const r=Math.floor(i/8),c=i%8,drs=Math.abs(p)===2?[-1,1]:[s.t===1?-1:1];
+  for(const dr of drs)for(const dc of [-1,1]){
+   const rr=r+dr,cc=c+dc;if(!inBounds(rr,cc,8))continue;
+   const mid=rr*8+cc,farR=r+2*dr,farC=c+2*dc;
+   if(b[mid]===0&&s.forced<0)out.push({from:i,to:mid,capture:-1});
+   if(Math.sign(b[mid])===-s.t&&inBounds(farR,farC,8)&&b[farR*8+farC]===0)
+    captures.push({from:i,to:farR*8+farC,capture:mid});
+  }
+ }
+ return captures.length?captures:(s.forced>=0?[]:out);
+}
+function checkerMove(m){
+ if(botBlocked()||state.done)return;
+ const valid=checkerLegal(state).find(q=>q.from===m.from&&q.to===m.to&&q.capture===m.capture);
+ if(!valid)return;
+ save();
+ const b=state.board,p=b[m.from];b[m.from]=0;b[m.to]=p;
+ if(m.capture>=0)b[m.capture]=0;
+ const promoted=Math.abs(p)===1&&(state.t===1?Math.floor(m.to/8)===0:Math.floor(m.to/8)===7);
+ if(promoted)b[m.to]=2*state.t;
+ state.last=m.to;selected=-1;state.forced=-1;
+ if(m.capture>=0&&!promoted){
+   state.forced=m.to;
+   if(checkerLegal(state).some(q=>q.capture>=0)){notice="연속 잡기! 같은 말을 다시 움직이세요.";render();return;}
+ }
+ state.t=-state.t;
+ if(!checkerLegal(state).length||!state.board.some(v=>Math.sign(v)===state.t)){state.done=true;state.winner=-state.t;}
+ render();
+}
+function renderCheckers(){
+ const b=state.board,legal=checkerLegal(state);
+ turnText.textContent=state.done?(state.winner===1?"빨강 승리!":"검정 승리!"):(state.t===1?"빨강":"검정")+" 차례";
+ pushScore(["빨강 "+b.filter(v=>v>0).length+"개","검정 "+b.filter(v=>v<0).length+"개",legal.some(m=>m.capture>=0)?"잡기 필수":"대각선 이동"]);
+ tip.textContent=notice||"말을 누른 후 이동할 어두운 칸을 선택하세요. 잡을 수 있으면 반드시 잡아야 합니다.";
+ const targets=new Set(legal.filter(m=>m.from===selected).map(m=>m.to));
+ appendGrid(8,i=>{
+  const r=Math.floor(i/8),c=i%8,p=b[i],btn=node("button","square "+((r+c)%2?"dark":"light")+(selected===i?" selected":"")+(targets.has(i)?" target":""));
+  btn.type="button";btn.setAttribute("aria-label",(r+1)+"행 "+(c+1)+"열 "+(p?(p>0?"빨강":"검정")+(Math.abs(p)===2?" 킹":" 말"):"빈 칸"));
+  if(p){const disk=node("span","disk",Math.abs(p)===2?"★":"");disk.style.cssText="width:77%;height:77%;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:clamp(12px,3vw,27px);font-weight:900;background:"+(p>0?"#d83c55":"#252b39")+";border:3px solid #ffffff70;box-shadow:0 2px 5px #0005";btn.append(disk);}
+  btn.disabled=state.done||!!onlineBlocked()||(r+c)%2===0;
+  btn.onclick=()=>{
+   if(b[i]&&Math.sign(b[i])===state.t){if(legal.some(m=>m.from===i)){selected=i;render();}return;}
+   const m=legal.find(q=>q.from===selected&&q.to===i);if(m)checkerMove(m);
+  };
+  return btn;
+ });
+}
+function tttWinner(b){
+ for(const a of [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]){
+  if(b[a[0]]&&b[a[0]]===b[a[1]]&&b[a[1]]===b[a[2]])return b[a[0]];
+ }return 0;
+}
+function tttMove(i){
+ if(botBlocked()||state.done||state.board[i]!==0)return;
+ save();state.board[i]=state.t;state.last=i;
+ state.winner=tttWinner(state.board);
+ state.done=!!state.winner||state.board.every(Boolean);
+ if(!state.done)state.t=-state.t;
+ render();
+}
+function renderTTT(){
+ turnText.textContent=state.done?(state.winner?(state.winner===1?"X":"O")+" 승리!":"무승부"):(state.t===1?"X":"O")+" 차례";
+ pushScore(["3×3 판","X 선공","3개 연결하면 승리"]);
+ tip.textContent="빈 칸을 눌러 X 또는 O를 놓으세요.";
+ appendGrid(3,i=>{
+  const btn=node("button","square "+((Math.floor(i/3)+i%3)%2?"dark":"light"),state.board[i]===1?"X":state.board[i]===-1?"O":"");
+  btn.type="button";btn.style.fontSize="clamp(28px,9vw,90px)";btn.style.fontWeight="900";
+  btn.style.color=state.board[i]===1?"#b32643":"#173c9c";
+  btn.disabled=state.done||state.board[i]!==0||!!onlineBlocked();
+  btn.setAttribute("aria-label",(Math.floor(i/3)+1)+"행 "+(i%3+1)+"열 "+(state.board[i]===0?"빈 칸":state.board[i]===1?"X":"O"));
+  btn.onclick=()=>tttMove(i);return btn;
+ });
+}
+
 /* Chess: 0x88 board; filtered legal moves prevent king exposure. */
 const glyph={K:"♔",Q:"♕",R:"♖",B:"♗",N:"♘",P:"♙",k:"♚",q:"♛",r:"♜",b:"♝",n:"♞",p:"♟︎",".":""};
 const cd={n:[-33,-31,-18,-14,14,18,31,33],b:[-17,-15,15,17],r:[-16,-1,1,16],k:[-17,-16,-15,-1,1,15,16,17]};
@@ -520,7 +620,7 @@ $("cancel-promotion").addEventListener("click",()=>{promotionMoves=null;modal.hi
 /* Adapter: replay only validated actions, in strict order, through the existing rules. */
 window.FormwheelBoardBridge=Object.freeze({
   load(type,size,actions,hostUid,guestUid){
-    if(!descriptions[type]||!Array.isArray(actions)||actions.length>1200)return false;
+    if(!["chess","go","omok","othello"].includes(type)||!Array.isArray(actions)||actions.length>1200)return false;
     replaying=true;
     try{
       if(type==="go"){
