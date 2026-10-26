@@ -2,12 +2,15 @@
 (()=>{"use strict";
 const KEY="fw-hub-tour-v1";
 const steps=[
- {selector:"#fw-nav-solo",title:"🌀 혼자 플레이",desc:"상단의 이 버튼을 누르면 혼자 할 수 있는 게임으로 랜덤 텔레포트해요. 두구두구 연출은 스킵할 수 있어요!"},
- {selector:"#fw-nav-quick",title:"⚔️ 빠른 대전",desc:"이 버튼은 자동으로 상대를 찾아 대전할 때 사용해요."},
- {selector:"#fw-nav-friend",title:"🎲 랜덤 플레이",desc:"여기를 누르면 친구와 코드로 랜덤 게임을 함께 시작할 수 있어요."},
- {selector:"#fw-recommended-cards",title:"✨ 오늘의 추천",desc:"여기에 추천 프로젝트 카드가 나타나요. 새로운 게임과 익숙한 프로젝트를 탐험해 보세요!"},
- {selector:"#search",title:"🔎 프로젝트 검색",desc:"찾고 싶은 프로젝트 이름을 여기에 입력하세요."},
- {selector:'.filterButton[data-filter="game"]',title:"🎮 프로젝트 종류",desc:"이 버튼으로 게임만 골라 볼 수 있어요. 옆에 도구와 앱 필터도 있어요."}
+ {selector:'.fw-bet',title:'🃏 카드·간편 화면',desc:'상단에서 카드 Ver.와 간편 Ver.를 바꿀 수 있어요. 원하는 화면으로 프로젝트를 둘러보세요!'},
+ {selector:'#fw-nav-solo',title:'🌀 혼자 플레이',desc:'무엇을 할지 고민된다면 혼자 플레이로 랜덤 게임을 찾아보세요.'},
+ {selector:'#fw-nav-quick',title:'⚔️ 빠른 대전',desc:'상대와 온라인 대전을 시작하는 바로가기예요.'},
+ {selector:'#fw-nav-friend',title:'🎲 랜덤 플레이',desc:'친구와 함께할 게임을 무작위로 고를 수 있어요.'},
+ {selector:'#fw-quick-picks',title:'✨ 지금 뭐 하지?',desc:'추천 프로젝트를 빠르게 열거나 다른 추천을 받아 보세요.'},
+ {selector:'#search',title:'🔎 이름·기능 검색',desc:'프로젝트 이름뿐 아니라 기능이나 키워드도 검색해 보세요.'},
+ {selector:'.filterButton[data-filter="game"]',title:'🎮 게임·도구·앱',desc:'전체, 게임, 도구, 앱 중 원하는 종류만 골라 볼 수 있어요.'},
+ {selector:'#fw-filter-toggle',title:'⚙️ 상세 필터',desc:'플레이 방식과 조건을 더 세밀하게 설정할 수 있어요.'},
+ {selector:'#fw-favorites-toggle',title:'📌 즐겨찾기 고정',desc:'자주 찾는 프로젝트를 선택해 목록 위쪽에 고정할 수 있어요.'}
 ];
 const css=document.createElement("style");
 css.textContent=`
@@ -32,7 +35,7 @@ const q=s=>overlay.querySelector(s);let index=0,returnFocus=null,frame=0;
 function position(){
  if(overlay.hidden)return;
  const target=document.querySelector(steps[index].selector),highlight=q(".fw-tour-highlight"),panel=q(".fw-tour-panel");
- if(!target){highlight.style.display="none";panel.style.left="14px";panel.style.top=Math.max(10,(innerHeight-panel.offsetHeight)/2)+"px";return}
+ if(!target||!target.getClientRects().length){highlight.style.display="none";panel.style.left="14px";panel.style.top=Math.max(10,(innerHeight-panel.offsetHeight)/2)+"px";return}
  const r=target.getBoundingClientRect(),pad=5;
  highlight.style.display="block";highlight.style.left=Math.max(0,r.left-pad)+"px";highlight.style.top=Math.max(0,r.top-pad)+"px";highlight.style.width=Math.min(innerWidth-Math.max(0,r.left-pad),r.width+pad*2)+"px";highlight.style.height=Math.min(innerHeight-Math.max(0,r.top-pad),r.height+pad*2)+"px";
  const pw=panel.offsetWidth,ph=panel.offsetHeight,gap=19;
@@ -43,7 +46,7 @@ function position(){
 function render(){
  const step=steps[index];q(".fw-tour-counter").textContent=(index+1)+" / "+steps.length;q("#fw-tour-title").textContent=step.title;q("#fw-tour-description").textContent=step.desc;
  q('[data-action="prev"]').hidden=index===0;q('[data-action="next"]').textContent=index===steps.length-1?"완료 ✓":"다음 →";
- const target=document.querySelector(step.selector);if(target)target.scrollIntoView({block:"center",behavior:"instant"});
+ const target=document.querySelector(step.selector);if(target&&target.getClientRects().length)target.scrollIntoView({block:"center",behavior:"instant"});
  cancelAnimationFrame(frame);frame=requestAnimationFrame(position);
 }
 function finish(){overlay.hidden=true;cancelAnimationFrame(frame);try{localStorage.setItem(KEY,"done")}catch{}if(returnFocus?.isConnected)returnFocus.focus()}
@@ -51,7 +54,7 @@ function start(){if(!overlay.hidden)return;returnFocus=document.activeElement;in
 overlay.addEventListener("click",e=>{const action=e.target.closest("button")?.dataset.action;if(action==="skip")finish();else if(action==="prev"){index=Math.max(0,index-1);render()}else if(action==="next"){if(index===steps.length-1)finish();else{index++;render()}}});
 overlay.addEventListener("keydown",e=>{if(e.key==="Escape"){e.preventDefault();finish()}if(e.key==="Tab"){const buttons=[...overlay.querySelectorAll("button")].filter(b=>!b.hidden);const first=buttons[0],last=buttons[buttons.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}});
 window.addEventListener("resize",position);window.addEventListener("scroll",position,true);
-const replay=document.createElement("button");replay.type="button";replay.className="fw-tour-replay";replay.textContent="❔ Hub 튜토리얼 보기";replay.addEventListener("click",start);
+const replay=document.createElement("button");replay.type="button";replay.className="fw-tour-replay";replay.textContent="❔ Hub 튜토리얼 보기 (업데이트)";replay.addEventListener("click",start);
 (document.querySelector("#projects")||document.querySelector("main")||document.body).before(replay);
 // Opt-in only: the Hub tour starts exclusively when the user clicks its button.
 window.fwStartHubTour=start;
