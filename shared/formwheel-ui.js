@@ -227,11 +227,11 @@ body[data-fw-global-theme="cosmic-genesis"] :is(input,textarea,select){backgroun
 /* DAYNIGHT: 30 seconds = 24 hours; stable light cards keep labels readable. */
 body[data-fw-global-theme="daynight"][data-fw-effect="daynight"]::before{inset:0;opacity:1;background:linear-gradient(180deg,#76b7f8 0%,#f7de9d 100%);animation:fw-daynight-sky 30s linear infinite;transform:none!important}
 /* Exact semicircular orbital paths are driven by trigonometry, not linear keyframe corners. */
-body[data-fw-global-theme="daynight"][data-fw-effect="daynight"]::after{
- content:"";position:fixed;pointer-events:none;z-index:-1;top:0;left:50%;
- width:80px;height:80px;border-radius:50%;background:#fff8b0;box-shadow:0 0 55px 12px #ffe8a8;
- animation:none!important;transform:translate(calc(-50% + var(--fw-sun-x,0px)),var(--fw-sun-y,110vh));
- opacity:var(--fw-sun-visible,0);
+body[data-fw-global-theme="daynight"][data-fw-effect="daynight"]::after{display:none!important}
+body[data-fw-global-theme="daynight"] .fw-daynight-sun{
+ position:fixed;top:0;left:0;width:80px;height:80px;border-radius:50%;
+ pointer-events:none;z-index:-1;background:#fff8b0;box-shadow:0 0 55px 12px #ffe8a8;
+ opacity:0;transform:translate3d(-200px,-200px,0);will-change:transform,opacity;
 }
 @keyframes fw-daynight-sky{
 0%,100%{background:linear-gradient(180deg,#f2a3a0,#ffd796)}
@@ -243,8 +243,7 @@ body[data-fw-global-theme="daynight"] .fw-daynight-moon{
  position:fixed;top:0;left:50%;width:68px;height:68px;border-radius:50%;
  z-index:-1;pointer-events:none;background:radial-gradient(circle at 35% 30%,#fffef3,#e6e6dc 75%,#c9cccf);
  box-shadow:0 0 35px 8px #f3f3dca8;animation:none!important;
- transform:translate(calc(-50% + var(--fw-moon-x,0px)),var(--fw-moon-y,110vh));
- opacity:var(--fw-moon-visible,0);
+ transform:translate3d(-200px,-200px,0);opacity:0;will-change:transform,opacity;
 }
 body[data-fw-global-theme="daynight"] .fw-daynight-moon::after{
  content:"";position:absolute;inset:0;border-radius:50%;
@@ -289,37 +288,59 @@ body[data-fw-global-theme="cosmic-eternity"] .card .openButton:hover{
 `;
 document.head.append(themeStyle);
 // Mount moon only after body exists; CSS limits visibility to DAYNIGHT.
-function mountDaynightMoon(){
- if(document.querySelector('.fw-daynight-moon'))return;
- const moon=document.createElement('span');moon.className='fw-daynight-moon';moon.setAttribute('aria-hidden','true');document.body.append(moon);
+function mountDaynightBodies(){
+ for(const kind of ['sun','moon']){
+  if(document.querySelector('.fw-daynight-'+kind))continue;
+  const node=document.createElement('span');
+  node.className='fw-daynight-'+kind;
+  node.setAttribute('aria-hidden','true');
+  document.body.append(node);
+ }
 }
-// True semicircle: x = r*cos(theta), y = horizon - r*sin(theta).
-// Animate only while DAYNIGHT is active; no corners, snapping, or opaque resets.
+// Keep the same 30-second semicircle, but move only compositor-friendly DOM layers.
+// Avoid six CSS custom-property writes and a full style recalculation every frame.
 function startDaynightOrbit(){
- mountDaynightMoon();
+ mountDaynightBodies();
+ const bodies={
+  sun:document.querySelector('.fw-daynight-sun'),
+  moon:document.querySelector('.fw-daynight-moon')
+ };
  const origin=performance.now();
  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
+ let lastActive=false;
+ let radius=0,horizon=0,center=0;
+ function measure(){
+  radius=Math.max(window.innerHeight*.90,window.innerWidth*.52);
+  horizon=window.innerHeight+100;
+  center=window.innerWidth/2;
+ }
+ measure();
+ window.addEventListener('resize',measure,{passive:true});
  function frame(now){
-  const body=document.body;
-  const active=body?.dataset.fwGlobalTheme==='daynight' && !reduced.matches;
+  const active=document.body?.dataset.fwGlobalTheme==='daynight' && !reduced.matches;
   if(active){
    const phase=((now-origin)%30000)/30000;
-   const radius=Math.max(window.innerHeight*.90,window.innerWidth*.52);
-   const horizon=window.innerHeight+100;
    function place(kind,start,end){
+    const node=bodies[kind];
+    if(!node)return;
     const t=(phase-start)/(end-start);
-    const visible=t>=0&&t<=1;
-    const theta=Math.PI*(1-Math.min(1,Math.max(0,t)));
-    body.style.setProperty('--fw-'+kind+'-x',(radius*Math.cos(theta)).toFixed(2)+'px');
-    body.style.setProperty('--fw-'+kind+'-y',(horizon-radius*Math.sin(theta)).toFixed(2)+'px');
-    body.style.setProperty('--fw-'+kind+'-visible',visible?'1':'0');
+    if(t<0||t>1){
+     if(node.style.opacity!=='0')node.style.opacity='0';
+     return;
+    }
+    if(node.style.opacity!=='1')node.style.opacity='1';
+    const theta=Math.PI*(1-t);
+    const size=kind==='sun'?80:68;
+    const x=center+radius*Math.cos(theta)-size/2;
+    const y=horizon-radius*Math.sin(theta);
+    node.style.transform='translate3d('+x.toFixed(2)+'px,'+y.toFixed(2)+'px,0)';
    }
    place('sun',0,.59);
    place('moon',.60,1);
-  }else if(body){
-   body.style.setProperty('--fw-sun-visible','0');
-   body.style.setProperty('--fw-moon-visible','0');
+  }else if(lastActive){
+   for(const node of Object.values(bodies))if(node)node.style.opacity='0';
   }
+  lastActive=active;
   requestAnimationFrame(frame);
  }
  requestAnimationFrame(frame);
