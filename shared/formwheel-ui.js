@@ -231,7 +231,7 @@ body[data-fw-global-theme="daynight"][data-fw-effect="daynight"]::after{display:
 body[data-fw-global-theme="daynight"] .fw-daynight-sun{
  position:fixed;top:0;left:0;width:80px;height:80px;border-radius:50%;
  pointer-events:none;z-index:-1;background:#fff8b0;box-shadow:0 0 55px 12px #ffe8a8;
- opacity:0;transform:translate3d(-200px,-200px,0);will-change:transform,opacity;
+ opacity:0;transform:translate3d(-200px,-200px,0);will-change:transform,opacity;contain:layout paint;
 }
 @keyframes fw-daynight-sky{
 0%,100%{background:linear-gradient(180deg,#f2a3a0,#ffd796)}
@@ -243,7 +243,7 @@ body[data-fw-global-theme="daynight"] .fw-daynight-moon{
  position:fixed;top:0;left:50%;width:68px;height:68px;border-radius:50%;
  z-index:-1;pointer-events:none;background:radial-gradient(circle at 35% 30%,#fffef3,#e6e6dc 75%,#c9cccf);
  box-shadow:0 0 35px 8px #f3f3dca8;animation:none!important;
- transform:translate3d(-200px,-200px,0);opacity:0;will-change:transform,opacity;
+ transform:translate3d(-200px,-200px,0);opacity:0;will-change:transform,opacity;contain:layout paint;
 }
 body[data-fw-global-theme="daynight"] .fw-daynight-moon::after{
  content:"";position:absolute;inset:0;border-radius:50%;
@@ -333,7 +333,7 @@ function startDaynightOrbit(){
     const size=kind==='sun'?80:68;
     const x=center+radius*Math.cos(theta)-size/2;
     const y=horizon-radius*Math.sin(theta);
-    node.style.transform='translate3d('+x.toFixed(2)+'px,'+y.toFixed(2)+'px,0)';
+    node.style.transform='translate3d('+x.toFixed(4)+'px,'+y.toFixed(4)+'px,0)';
    }
    place('sun',0,.59);
    place('moon',.60,1);
