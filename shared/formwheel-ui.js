@@ -358,6 +358,9 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
 const effects={'playtester-purple':'shimmer','playtester-red':'pulse','playtester-blue':'drift','cosmic-infinity':'spin','cosmic-paradox':'reverse-spin','cosmic-omega':'pulse','cosmic-eternity':'slow-spin','cosmic-genesis':'reverse-spin',daynight:'daynight',overdrive:'spin',quantum:'reverse-spin',singularity:'slow-spin',nova:'pulse',echo:'pulse',comet:'drift',celestial:'shimmer',eclipse:'pulse',rift:'drift',aurora:'drift',prismatic:'shimmer',cyber:'shimmer','void-premium':'pulse'};
 const textThemes={
+ 'playtester-purple':['#303038','#303038','#303038'],
+ 'playtester-red':['#303038','#303038','#303038'],
+ 'playtester-blue':['#303038','#303038','#303038'],
  sunset:['#281523','#432638','#6b2850'],forest:['#fff','#173e30','#145039'],
  neon:['#fff','#291c48','#5720a2'],galaxy:['#fff','#262151','#45369b'],
  ocean:['#063d50','#073c4a','#075577'],sakura:['#492039','#4b2346','#913565'],
@@ -431,7 +434,7 @@ function apply(){
   document.body.style.setProperty('--fw-theme-accent',linkAccent);
   document.body.style.setProperty('--fw-theme-secondary',secondary);
   const darkThemes=new Set(['midnight','echo','nova','void-premium','rift','comet','eclipse','quantum','celestial','singularity','overdrive','cosmic-infinity','cosmic-paradox','cosmic-omega','cosmic-eternity','cosmic-genesis']);
-  const surfaceText=readableOn(surface);
+  const surfaceText=isPlaytesterTheme(current)?'#303038':readableOn(surface);
   const mutedText=surfaceText==='#ffffff'?'#e9e9f5':'#414b60';
   document.body.style.setProperty('--fw-theme-text',surfaceText);
   document.body.style.setProperty('--fw-theme-muted',mutedText);
