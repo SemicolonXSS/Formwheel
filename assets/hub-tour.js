@@ -2,7 +2,7 @@
 (()=>{"use strict";
 const KEY="fw-hub-tour-v1";
 const steps=[
- {selector:'.fw-bet',title:'🃏 카드·간편 화면',desc:'상단에서 카드 Ver.와 간편 Ver.를 바꿀 수 있어요. 원하는 화면으로 프로젝트를 둘러보세요!'},
+ {selector:'#fw-beta-switch',title:'🃏 카드·간편 화면',desc:'상단에서 카드 Ver.와 간편 Ver.를 바꿀 수 있어요. 원하는 화면으로 프로젝트를 둘러보세요!'},
  {selector:'#fw-nav-solo',title:'🌀 혼자 플레이',desc:'무엇을 할지 고민된다면 혼자 플레이로 랜덤 게임을 찾아보세요.'},
  {selector:'#fw-nav-quick',title:'⚔️ 빠른 대전',desc:'상대와 온라인 대전을 시작하는 바로가기예요.'},
  {selector:'#fw-nav-friend',title:'🎲 랜덤 플레이',desc:'친구와 함께할 게임을 무작위로 고를 수 있어요.'},
