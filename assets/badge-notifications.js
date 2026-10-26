@@ -62,6 +62,7 @@ onAuthStateChanged(auth,user=>{
  userKey=user&&!user.isAnonymous?user.uid:"guest";
  state={};ready={};
  if(user&&!user.isAnonymous){
+  unsubs.push(onValue(ref(db,"formwheelV2/visitorStats/livePeak"),snap=>{if(gen===generation)received("peak",snap.val())},()=>{if(gen===generation)received("peak",{})}));
   for(const [key,path] of [
    ["home","formwheelV2/hubHomes/"+user.uid],
    ["profile","formwheelV2/hubProfiles/"+user.uid],
