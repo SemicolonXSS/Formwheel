@@ -123,6 +123,7 @@ function setBusy(flag){
 }
 async function createRoom(){
  if(busy||roomCode)return;
+ if(!["chess","go","omok","othello"].includes(bridge.getStatus().game)){say("이 게임은 로컬·봇 대전 전용입니다. 기존 4종에서 온라인 방을 이용해 주세요.");return;}
  setBusy(true);say("방을 만드는 중…");
  try{
   await signIn();
@@ -150,6 +151,7 @@ async function joinRoom(){
   await signIn();
   const existing=(await get(roomRef(code))).val();
   if(!existing){say("존재하지 않는 방 코드예요.");return;}
+  if(!["chess","go","omok","othello"].includes(existing.game)){say("지원하지 않는 온라인 게임입니다.");return;}
   if(existing.hostUid!==uid&&existing.guestUid!==uid){
    if(existing.guestUid){say("이미 2명이 참가한 방이에요.");return;}
    const now=Date.now();
