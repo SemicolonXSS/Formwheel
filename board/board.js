@@ -33,6 +33,8 @@ const descriptions={
  "이 게임은 흑의 금수를 적용하지 않는 자유룰입니다. 육목 이상도 승리합니다.",
  "판이 가득 차도록 승자가 없으면 무승부입니다."
  ]},
+ connect4:{title:"🔵 커넥트 포",note:"7열 6행 판에 말을 아래부터 놓는 4목 게임입니다.",rules:["빨강과 노랑이 번갈아 열을 누르면 말이 가장 아래 빈 칸에 놓입니다.","가로·세로·대각선으로 4개를 먼저 연결하면 승리합니다.","모든 칸이 차면 무승부입니다."]},
+ territory:{title:"🏰 영토 쟁탈전",note:"Formwheel 창작 전략 게임. 5×5 판에서 서로 자신의 요새로부터 영토를 넓힙니다.",rules:["파랑과 주황은 대각선 반대편 요새에서 시작합니다.","자신의 땅에 상하좌우로 붙은 빈 칸을 하나씩 점령합니다.","둘 수 없는 플레이어는 차례를 건너뜁니다.","양쪽 모두 확장할 수 없으면 더 많은 땅을 점령한 쪽이 승리합니다."]},
  checkers:{title:"🔴 체커",note:"미국식 체커: 일반 말은 전진, 킹은 양방향 이동합니다. 잡을 수 있으면 반드시 잡아야 하며 연속 잡기도 적용됩니다.",
  rules:["빨강이 먼저 둡니다. 어두운 칸의 말을 대각선 앞으로 한 칸 옮깁니다.","상대 말을 뛰어넘어 잡을 수 있으면 반드시 잡아야 합니다.","잡은 뒤 다시 잡을 수 있으면 같은 말로 연속 잡아야 합니다.","상대 끝줄에 도착하면 킹으로 승격해 앞뒤로 이동합니다. 승격한 턴에는 연속 잡기가 종료됩니다.","상대의 말이 없어지거나 상대가 둘 수 없으면 승리합니다."]},
  ttt:{title:"❎ 틱택토",note:"3×3 격자에서 가로·세로·대각선 3개를 먼저 연결하면 이깁니다.",
@@ -124,6 +126,19 @@ function botPlay(){
       return (wins?100000:0)+(target!=="."?(val[target.toLowerCase()]||0)*12:0)+(m[2]?70:0)+(check?4:0)+center*.4+(m[3]==="castle"?8:0)-(attacked(next,m[1],1)?(val[piece.toLowerCase()]||0)*5:0);
     });
     if(move)chessMove(move);
+  }else if(game==="connect4"){
+    const moves=c4Legal(state.board);
+    const move=botChoice(moves,c=>{
+      const pos=c4Target(state.board,c),b=state.board.slice();b[pos]=-1;
+      if(c4Win(b,pos,-1))return 10000;
+      b[pos]=1;if(c4Win(b,pos,1))return 1000;
+      return 5-Math.abs(c-3);
+    });
+    if(move!==null)c4Move(move);
+  }else if(game==="territory"){
+    const moves=territoryLegal(state.board,-1);
+    const move=botChoice(moves,i=>territoryNeighbors(i).filter(q=>state.board[q]===1).length*3+2-Math.abs(Math.floor(i/5)-2));
+    if(move!==null)territoryMove(move);
   }else if(game==="checkers"){
     const opts=checkerLegal(state),choice=botChoice(opts,m=>{
       const b=state.board,rr=Math.floor(m.to/8);
@@ -183,6 +198,8 @@ const dirs8=[[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]];
 const inBounds=(r,c,n)=>r>=0&&c>=0&&r<n&&c<n;
 function initial(type) {
  if(type==="go")return {board:Array(Number(sizeInput.value)**2).fill(0),n:Number(sizeInput.value),t:1,passes:0,captures:{black:0,white:0},done:false,last:-1};
+ if(type==="connect4")return {board:Array(42).fill(0),n:7,t:1,done:false,winner:0,last:-1};
+ if(type==="territory"){const b=Array(25).fill(0);b[0]=1;b[24]=-1;return {board:b,n:5,t:1,done:false,winner:0,last:-1};}
  if(type==="checkers"){const b=Array(64).fill(0);for(let r=0;r<8;r++)for(let c=0;c<8;c++)if((r+c)%2===1){if(r<3)b[r*8+c]=-1;if(r>4)b[r*8+c]=1;}return {board:b,n:8,t:1,done:false,winner:0,last:-1,forced:-1};}
  if(type==="ttt")return {board:Array(9).fill(0),n:3,t:1,done:false,winner:0,last:-1};
  if(type==="omok")return {board:Array(225).fill(0),n:15,t:1,done:false,winner:0,last:-1};
@@ -217,6 +234,8 @@ function render(){
  if(game==="go"){renderGo();return;}
  if(game==="omok"){renderOmok();return;}
  if(game==="checkers"){renderCheckers();return;}
+ if(game==="connect4"){renderConnect4();return;}
+ if(game==="territory"){renderTerritory();return;}
  if(game==="ttt"){renderTTT();return;}
  renderOthello();
 }
@@ -386,6 +405,26 @@ function renderOthello(){
   btn.disabled=state.done||!can.has(i)||!!onlineBlocked();
   btn.addEventListener("click",()=>othelloMove(i));return btn;
  });
+}
+
+
+function c4Target(b,c){if(!Number.isInteger(c)||c<0||c>=7)return -1;for(let r=5;r>=0;r--)if(b[r*7+c]===0)return r*7+c;return -1;}
+function c4Legal(b){return Array.from({length:7},(_,i)=>i).filter(c=>c4Target(b,c)>=0);}
+function c4Win(b,i,who){const r=Math.floor(i/7),c=i%7;for(const [dr,dc] of [[0,1],[1,0],[1,1],[1,-1]]){let n=1;for(const sign of [-1,1]){let rr=r+dr*sign,cc=c+dc*sign;while(rr>=0&&rr<6&&cc>=0&&cc<7&&b[rr*7+cc]===who){n++;rr+=dr*sign;cc+=dc*sign;}}if(n>=4)return true;}return false;}
+function c4Move(c){if(botBlocked()||state.done)return;const i=c4Target(state.board,c);if(i<0)return;save();const t=state.t;state.board[i]=t;state.last=i;if(c4Win(state.board,i,t)){state.done=true;state.winner=t;}else if(state.board.every(Boolean))state.done=true;else state.t=-t;render();}
+function renderConnect4(){
+ const b=state.board;turnText.textContent=state.done?(state.winner?(state.winner===1?"빨강":"노랑")+" 승리!":"무승부"):(state.t===1?"빨강":"노랑")+" 차례";
+ pushScore(["빨강 "+b.filter(x=>x===1).length,"노랑 "+b.filter(x=>x===-1).length,"4개 연결 승리"]);tip.textContent="원하는 열을 눌러 말을 떨어뜨리세요.";
+ boardEl.style.gridTemplateColumns="repeat(7,minmax(0,1fr))";boardEl.style.gridTemplateRows="repeat(6,minmax(0,1fr))";boardEl.replaceChildren();
+ for(let i=0;i<42;i++){const c=i%7,v=b[i],btn=node("button","square",v?"●":"○");btn.type="button";btn.style.cssText="background:#245fbd;color:"+(v===1?"#ff526c":v===-1?"#ffe56b":"#b9d4ff")+";font-size:clamp(19px,5vw,53px);font-weight:900";btn.disabled=state.done||c4Target(b,c)<0||!!onlineBlocked();btn.setAttribute("aria-label",(c+1)+"번째 열");btn.onclick=()=>c4Move(c);boardEl.append(btn);}
+}
+function territoryNeighbors(i){const r=Math.floor(i/5),c=i%5,out=[];for(const [dr,dc] of [[-1,0],[1,0],[0,-1],[0,1]]){const rr=r+dr,cc=c+dc;if(inBounds(rr,cc,5))out.push(rr*5+cc);}return out;}
+function territoryLegal(b,who){const out=[];for(let i=0;i<25;i++)if(!b[i]&&territoryNeighbors(i).some(q=>b[q]===who))out.push(i);return out;}
+function territoryMove(i){if(state.done||botBlocked()||!territoryLegal(state.board,state.t).includes(i))return;save();state.board[i]=state.t;state.last=i;state.t=-state.t;const a=territoryLegal(state.board,1),b=territoryLegal(state.board,-1);if(!a.length&&!b.length){state.done=true;const p=state.board.filter(v=>v===1).length,q=state.board.filter(v=>v===-1).length;state.winner=p===q?0:p>q?1:-1;}else if(!territoryLegal(state.board,state.t).length){state.t=-state.t;notice="상대가 둘 곳이 없어 차례를 넘겼어요.";}render();}
+function renderTerritory(){
+ const b=state.board,legal=territoryLegal(b,state.t);turnText.textContent=state.done?(state.winner?(state.winner===1?"파랑":"주황")+" 승리!":"무승부"):(state.t===1?"파랑":"주황")+" 차례";
+ pushScore(["파랑 "+b.filter(v=>v===1).length+"칸","주황 "+b.filter(v=>v===-1).length+"칸"]);tip.textContent=notice||"내 영토의 상하좌우에 붙은 빈 칸을 점령하세요.";
+ appendGrid(5,i=>{const v=b[i],btn=node("button","square",i===0?"🏰":i===24?"🏯":v?"■":"·");btn.type="button";btn.style.cssText="font-size:clamp(19px,5vw,48px);font-weight:900;background:"+(v===1?"#5da5fa":v===-1?"#ffac63":legal.includes(i)?"#eaf3ed":"#d5ddd8")+";color:#18344f;border:1px solid #ffffff90";btn.disabled=state.done||!legal.includes(i)||!!onlineBlocked();btn.setAttribute("aria-label",(Math.floor(i/5)+1)+"행 "+(i%5+1)+"열");btn.onclick=()=>territoryMove(i);return btn;});
 }
 
 /* Local-only American-style checkers: forced captures and chained jumps. */
