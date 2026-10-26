@@ -417,6 +417,8 @@ function checkerMove(m){
  if(m.capture>=0&&!promoted){
    state.forced=m.to;
    if(checkerLegal(state).some(q=>q.capture>=0)){notice="연속 잡기! 같은 말을 다시 움직이세요.";render();return;}
+   // No further capture: clear the forced-piece lock before switching turns.
+   state.forced=-1;
  }
  state.t=-state.t;
  if(!checkerLegal(state).length||!state.board.some(v=>Math.sign(v)===state.t)){state.done=true;state.winner=-state.t;}
