@@ -7,8 +7,8 @@
   <meta name="description" content="Formwheel Board: 체스, 바둑, 오목, 오델로를 규칙과 함께 즐기는 한 기기 2인용 보드게임 모음">
   <title>Board · Formwheel</title>
   <link rel="icon" type="image/svg+xml" href="../assets/formwheel-favicon.svg">
-  <link rel="stylesheet" href="./board.css?v=20261024-online2">
-  <script src="./board.js?v=20261024-online3" defer></script>
+  <link rel="stylesheet" href="./board.css?v=20261026-bot1">
+  <script src="./board.js?v=20261026-bot1" defer></script>
   <script src="./online.js?v=20261024-online3" type="module"></script>
 </head>
 <body>
@@ -20,7 +20,7 @@
   <section class="intro">
     <h1>🎲 Board</h1>
     <p>체스부터 바둑까지! <strong>규칙을 읽고 바로 두는</strong> 클래식 보드게임 모음입니다.</p>
-    <p class="note">로컬 2인 대전과 온라인 방 코드 대전을 지원합니다. AI와 순위표는 아직 지원하지 않습니다.</p>
+    <p class="note">로컬 2인 대전과 온라인 방 코드 대전을 지원합니다. 혼자서 AI 봇과도 대전할 수 있습니다. 순위표는 아직 지원하지 않습니다.</p>
   </section>
   <nav id="game-tabs" class="tabs" aria-label="게임 선택">
     <button type="button" data-game="chess" aria-pressed="true">♟ 체스</button>
@@ -28,6 +28,15 @@
     <button type="button" data-game="omok" aria-pressed="false">⚪ 오목</button>
     <button type="button" data-game="othello" aria-pressed="false">◉ 오델로</button>
   </nav>
+  <section class="online-panel" aria-label="AI 봇 상대" id="bot-panel">
+    <div class="online-heading"><div><h2>🤖 AI 봇 대전</h2><p>체스 · 바둑 · 오목 · 오델로에서 봇과 대결하세요. 온라인 방에서는 봇이 꺼집니다.</p></div><span class="online-label">혼자 플레이</span></div>
+    <div class="online-controls">
+      <label for="bot-difficulty">난이도</label>
+      <select id="bot-difficulty"><option value="easy">쉬움</option><option value="normal" selected>보통</option><option value="hard">어려움</option></select>
+      <button id="bot-toggle" class="primary" type="button" aria-pressed="false">🤖 봇 대전 시작</button>
+      <span id="bot-status" role="status" aria-live="polite">현재: 로컬 2인 대전</span>
+    </div>
+  </section>
   <section class="online-panel" aria-labelledby="online-heading">
     <div class="online-heading"><div><h2 id="online-heading">🌐 친구와 온라인 보드게임</h2><p>게임을 고른 뒤 방을 만들거나 친구가 보낸 8자리 코드를 입력하세요. 2명까지 참가할 수 있습니다.</p></div><span class="online-label">2인 대전</span></div>
     <div id="online-setup" class="online-controls">
