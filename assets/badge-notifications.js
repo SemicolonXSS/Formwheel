@@ -35,11 +35,12 @@ async function notify(b){
  running=false;
 }
 let unsubs=[],state={},ready={},userKey="guest",generation=0;
-const sources=["home","profile","stats","awards"];
+const sources=["home","profile","stats","awards","peak"];
 function getLocal(key){try{return JSON.parse(localStorage.getItem(key))}catch{return null}}
 function check(){
  if(!sources.every(k=>ready[k]))return;
- const current=BADGES.filter(b=>earnedBadge(b,state.awards,state.home,state.profile,state.stats)).map(b=>b.id);
+ const achievementStats={...state.stats,communityLivePeak:state.peak?.count};
+ const current=BADGES.filter(b=>earnedBadge(b,state.awards,state.home,state.profile,achievementStats)).map(b=>b.id);
  const storageKey="fw:badge:seen:v2:"+userKey;
  const old=getLocal(storageKey);
  if(Array.isArray(old)){
@@ -69,6 +70,7 @@ onAuthStateChanged(auth,user=>{
    unsubs.push(onValue(ref(db,path),snap=>{if(gen===generation)received(key,snap.val())},()=>{if(gen===generation)received(key,{})}));
   }
  }else{
+  received("peak",{});
   received("profile",getLocal("fw:profile:guest:v1"));
   received("stats",{});
   received("awards",{});
