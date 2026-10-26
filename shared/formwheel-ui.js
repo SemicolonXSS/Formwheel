@@ -240,7 +240,7 @@ body[data-fw-global-theme="daynight"] .fw-daynight-sun{
 80%,92%{background:linear-gradient(180deg,#101b43,#39447a)}
 }
 body[data-fw-global-theme="daynight"] .fw-daynight-moon{
- position:fixed;top:0;left:50%;width:68px;height:68px;border-radius:50%;
+ position:fixed;top:0;left:0;width:68px;height:68px;border-radius:50%;
  z-index:-1;pointer-events:none;background:radial-gradient(circle at 35% 30%,#fffef3,#e6e6dc 75%,#c9cccf);
  box-shadow:0 0 35px 8px #f3f3dca8;animation:none!important;
  transform:translate3d(-200px,-200px,0);opacity:0;will-change:transform,opacity;contain:layout paint;
