@@ -43,13 +43,125 @@ const descriptions={
  ]}
 };
 let game="chess",state=null,history=[],selected=-1,promotionMoves=null,notice="",replaying=false;
+let botEnabled=false,botActing=false,botTimer=null,botVersion=0;
+const botDifficulty=$("bot-difficulty"),botToggle=$("bot-toggle"),botStatus=$("bot-status");
+function botCancel(){clearTimeout(botTimer);botTimer=null;botVersion++;}
+function botModeOff(){
+  botEnabled=false;botCancel();
+  botToggle.textContent="🤖 봇 대전 시작";botToggle.setAttribute("aria-pressed","false");
+  botStatus.textContent="현재: 로컬 2인 대전";
+}
+function botBlocked(){return botEnabled&&!botActing&&!replaying&&state?.t===-1;}
+function botSchedule(){
+  botCancel();
+  if(!botEnabled||replaying||online()?.isOnline()||!state||state.t!==-1||state.done||state.draw||(game==="chess"&&chessStatus().done))return;
+  const version=botVersion;
+  botStatus.textContent="🤖 봇이 생각 중…";
+  botTimer=setTimeout(()=>{
+    if(version!==botVersion||!botEnabled||online()?.isOnline()||state.t!==-1)return;
+    botActing=true;
+    try{botPlay()}catch(e){console.error("Board bot error",e);botStatus.textContent="봇 오류 · 새 게임으로 다시 시도해 주세요.";}
+    finally{botActing=false;}
+  },350);
+}
+function botChoice(items,score){
+  if(!items.length)return null;
+  const ranked=items.map(x=>({x,v:score(x)+Math.random()*0.25})).sort((a,b)=>b.v-a.v);
+  const d=botDifficulty.value;
+  if(d==="easy")return ranked[Math.floor(Math.random()*ranked.length)].x;
+  if(d==="normal")return ranked[Math.floor(Math.random()*Math.min(3,ranked.length))].x;
+  return ranked[0].x;
+}
+function lineStrength(b,i,color,n){
+  const r=Math.floor(i/n),c=i%n;
+  let best=0;
+  for(const [dr,dc] of [[1,0],[0,1],[1,1],[1,-1]]){
+    let count=1,open=0;
+    for(const sign of [-1,1]){
+      let rr=r+dr*sign,cc=c+dc*sign;
+      while(inBounds(rr,cc,n)&&b[rr*n+cc]===color){count++;rr+=dr*sign;cc+=dc*sign;}
+      if(inBounds(rr,cc,n)&&b[rr*n+cc]===0)open++;
+    }
+    best=Math.max(best,count>=5?100000:count*count*(open+1));
+  }
+  return best;
+}
+function botPlay(){
+  if(!state||state.done||!botEnabled||online()?.isOnline())return;
+  if(game==="omok"){
+    const b=state.board,empty=b.map((v,i)=>v===0?i:-1).filter(i=>i>=0);
+    const nearby=empty.filter(i=>{const r=Math.floor(i/15),c=i%15;for(let dr=-2;dr<=2;dr++)for(let dc=-2;dc<=2;dc++){const rr=r+dr,cc=c+dc;if(inBounds(rr,cc,15)&&b[rr*15+cc]!==0)return true;}return false;});
+    const options=nearby.length?nearby:[112];
+    const move=botChoice(options,i=>{
+      const attack=lineStrength(b,i,-1,15),defend=lineStrength(b,i,1,15);
+      return (attack>=100000?1e7:0)+(defend>=100000?1e6:0)+attack*1.25+defend+ (7-Math.hypot(Math.floor(i/15)-7,i%15-7))*0.2;
+    });
+    if(move!==null)omokMove(move);
+  }else if(game==="othello"){
+    const legal=othelloLegal(-1),corners=new Set([0,7,56,63]);
+    const move=botChoice(legal,i=>{
+      const flip=othelloFlips(state.board,i,-1).length;
+      const r=Math.floor(i/8),c=i%8;
+      const edge=r===0||r===7||c===0||c===7;
+      const tmp=state.board.slice();tmp[i]=-1;othelloFlips(state.board,i,-1).forEach(q=>tmp[q]=-1);
+      return (corners.has(i)?1000:0)+(edge?20:0)+flip*2;
+    });
+    if(move!==null)othelloMove(move);
+  }else if(game==="chess"){
+    const legal=chessLegal(state);
+    const val={p:1,n:3,b:3.2,r:5,q:9,k:0};
+    const move=botChoice(legal,m=>{
+      const target=state.b[m[1]],piece=state.b[m[0]];
+      const next=applyChess(state,m);
+      const check=inCheck(next,1);
+      const replies=chessLegal(next);
+      const wins=check&&!replies.length;
+      const center=3.5-Math.abs((m[1]&7)-3.5)+3.5-Math.abs((m[1]>>4)-3.5);
+      return (wins?100000:0)+(target!=="."?(val[target.toLowerCase()]||0)*12:0)+(m[2]?70:0)+(check?4:0)+center*.4+(m[3]==="castle"?8:0)-(attacked(next,m[1],1)?(val[piece.toLowerCase()]||0)*5:0);
+    });
+    if(move)chessMove(move);
+  }else if(game==="go"){
+    const n=state.n,b=state.board;
+    const candidates=[];
+    for(let i=0;i<b.length;i++){
+      if(b[i])continue;
+      const r=Math.floor(i/n),c=i%n;
+      let local=0;
+      for(const [dr,dc] of [[-1,0],[1,0],[0,-1],[0,1]]){const rr=r+dr,cc=c+dc;if(inBounds(rr,cc,n)&&b[rr*n+cc])local++;}
+      const snapshot=history.length,old=state,oldNotice=notice;
+      // Evaluate legal moves without changing the live board.
+      const copy=b.slice();copy[i]=-1;let captures=0;
+      const seen=new Set();
+      for(const [dr,dc] of [[-1,0],[1,0],[0,-1],[0,1]]){
+        const rr=r+dr,cc=c+dc;if(!inBounds(rr,cc,n))continue;
+        const at=rr*n+cc;if(copy[at]!==1||seen.has(at))continue;
+        const group=makeGoGroup(copy,n,at);group.stones.forEach(q=>seen.add(q));
+        if(group.liberties===0){captures+=group.stones.length;group.stones.forEach(q=>copy[q]=0);}
+      }
+      if(makeGoGroup(copy,n,i).liberties===0)continue;
+      if(history.some(x=>x.board&&x.n===n&&x.board.join(",")===copy.join(","))||b.join(",")===copy.join(","))continue;
+      candidates.push({i,score:captures*12+local*2+(n/2-Math.hypot(r-(n-1)/2,c-(n-1)/2))*.3+Math.random()});
+    }
+    const chosen=botChoice(candidates,x=>x.score);
+    if(chosen)goMove(chosen.i);else goPass();
+  }
+  if(botEnabled&&!state.done)botStatus.textContent="🤖 봇 대전 중 · "+botDifficulty.selectedOptions[0].textContent;
+}
+botToggle.addEventListener("click",()=>{
+  if(online()?.isOnline()){botStatus.textContent="온라인 방에서는 봇을 사용할 수 없어요.";return;}
+  if(botEnabled){botModeOff();render();return;}
+  botEnabled=true;botToggle.textContent="✕ 봇 대전 종료";botToggle.setAttribute("aria-pressed","true");
+  reset(game);
+  botStatus.textContent="봇과 대전 시작! 당신이 선공이에요.";
+});
+
 const online=()=>window.FormwheelBoardOnline;
 const requestOnline=action=>{
  if(replaying||!online()?.isOnline())return false;
  online().submit(action);
  return true;
 };
-const onlineBlocked=()=>!replaying&&online()?.isOnline()&&!online().canMove();
+const onlineBlocked=()=>botBlocked()||(!replaying&&online()?.isOnline()&&!online().canMove());
 const clone=o=>JSON.parse(JSON.stringify(o));
 const dirs8=[[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]];
 const inBounds=(r,c,n)=>r>=0&&c>=0&&r<n&&c<n;
@@ -60,6 +172,7 @@ function initial(type) {
  return chessStart();
 }
 function reset(type){
+ botCancel();
  game=type;state=initial(type);history=[];selected=-1;promotionMoves=null;notice="";
  modal.hidden=true;
  tabs.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.game===game)));
@@ -76,6 +189,8 @@ function marker(val){return val===1?"흑":"백";}
 function pushScore(parts){scoreEl.replaceChildren();parts.forEach(s=>{const span=document.createElement("span");span.textContent=s;scoreEl.append(span);});}
 function render(){
  if(replaying)return;
+ if(botEnabled&&online()?.isOnline())botModeOff();
+ botSchedule();
  undoBtn.disabled=history.length===0||!!online()?.isOnline();
  passBtn.disabled=game!=="go"||state.done||!!onlineBlocked();
  claimBtn.hidden=true;
@@ -111,7 +226,7 @@ function makeGoGroup(b,n,point) {
  return {stones:[...seen],liberties:libs.size};
 }
 function goMove(at){
- if(state.done||!Number.isInteger(at)||at<0||at>=state.board.length||state.board[at])return;
+ if(botBlocked()||state.done||!Number.isInteger(at)||at<0||at>=state.board.length||state.board[at])return;
  const n=state.n,b=state.board.slice(),who=state.t;
  b[at]=who;
  let captured=0,scanned=new Set();
@@ -153,7 +268,7 @@ function goArea(){
  return {black,white:white+6.5,neutral};
 }
 function goPass(){
- if(game!=="go"||state.done)return;
+ if(botBlocked()||game!=="go"||state.done)return;
  if(requestOnline({kind:"pass"}))return;
  save();state.passes++;state.t=-state.t;state.last=-1;
  if(state.passes===2){state.done=true;notice="양쪽이 연속 패스하여 계가했어요. 사석 판정은 포함되지 않습니다.";}
@@ -191,7 +306,7 @@ function win5(b,i,color,n){
  return false;
 }
 function omokMove(i){
- if(state.done||!Number.isInteger(i)||i<0||i>=state.board.length||state.board[i])return;
+ if(botBlocked()||state.done||!Number.isInteger(i)||i<0||i>=state.board.length||state.board[i])return;
  if(requestOnline({kind:"place",index:i}))return;
  save();state.board[i]=state.t;state.last=i;
  if(win5(state.board,i,state.t,15)){state.winner=state.t;state.done=true;}
@@ -389,13 +504,15 @@ tabs.forEach(b=>b.addEventListener("click",()=>{if(!online()?.isOnline())reset(b
 $("new-game").addEventListener("click",()=>{if(!online()?.isOnline())reset(game);});
 undoBtn.addEventListener("click",()=>{
  if(!history.length||online()?.isOnline())return;
+ botCancel();
+ if(botEnabled&&history.length>=2&&state.t===1)history.pop();
  state=history.pop();selected=-1;promotionMoves=null;modal.hidden=true;notice="직전 수를 되돌렸어요.";render();
 });
 passBtn.addEventListener("click",goPass);
 sizeInput.addEventListener("change",()=>{if(game==="go"&&!online()?.isOnline())reset("go");});
 claimBtn.addEventListener("click",()=>{
  if(game!=="chess")return;
- const st=chessStatus();if(!st.claim||st.done)return;
+ const st=chessStatus();if(botBlocked()||!st.claim||st.done)return;
  if(requestOnline({kind:"claim"}))return;
  save();state.draw="무승부 · "+st.claim;render();
 });
@@ -443,7 +560,7 @@ window.FormwheelBoardBridge=Object.freeze({
   getTurn:()=>state?.t||1,
   getStatus:()=>({done:!!state?.done||!!state?.draw||(game==="chess"&&chessStatus().done),game,size:game==="go"?state.n:game==="omok"?15:8}),
   render:()=>render(),
-  resetLocal:()=>reset(game)
+  resetLocal:()=>{botModeOff();reset(game)}
 });
 reset("chess");
 })();
