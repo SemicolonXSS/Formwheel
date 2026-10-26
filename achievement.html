@@ -23,6 +23,6 @@ card.append(icon,title,tag);el("grid").append(card);
 ["search","group","state"].forEach(id=>el(id).addEventListener(id==="search"?"input":"change",render));
 render();
 onAuthStateChanged(auth,async user=>{ready=false;awards={};home=null;profile=null;stats=null;render();if(!user||user.isAnonymous){el("status").textContent="Formwheel ID로 로그인하면 업적을 확인할 수 있어요. Hub 하단에서 로그인하세요.";return}
-const uid=user.uid,base="formwheelV2/";const paths=[base+"anniversary4050/"+uid+"/badges",base+"hubHomes/"+uid,base+"hubProfiles/"+uid,base+"achievementStats/"+uid];
-try{const results=await Promise.allSettled(paths.map(p=>get(ref(db,p))));[awards,home,profile,stats]=results.map(x=>x.status==="fulfilled"?(x.value.val()||{}):{});ready=true;render();const failed=results.filter(x=>x.status==="rejected").length;el("status").textContent=failed?"일부 기록("+failed+"개)을 읽지 못했어요. Firebase Rules를 확인해 주세요.":"Formwheel ID 업적을 불러왔어요."}catch(e){el("status").textContent="업적 조회 실패: "+(e.code||e.message)}});
+const uid=user.uid,base="formwheelV2/";const paths=[base+"anniversary4050/"+uid+"/badges",base+"hubHomes/"+uid,base+"hubProfiles/"+uid,base+"achievementStats/"+uid,base+"visitorStats/livePeak"];
+try{const results=await Promise.allSettled(paths.map(p=>get(ref(db,p))));const [a,h,p,s,peak]=results.map(x=>x.status==="fulfilled"?(x.value.val()||{}):{});awards=a;home=h;profile=p;stats={...s,communityLivePeak:peak.count};ready=true;render();const failed=results.filter(x=>x.status==="rejected").length;el("status").textContent=failed?"일부 기록("+failed+"개)을 읽지 못했어요. Firebase Rules를 확인해 주세요.":"Formwheel ID 업적을 불러왔어요."}catch(e){el("status").textContent="업적 조회 실패: "+(e.code||e.message)}});
 </script></body></html>
