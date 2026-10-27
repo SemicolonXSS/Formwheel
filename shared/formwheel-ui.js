@@ -133,7 +133,10 @@ function refresh(){
   else if(Object.hasOwn(palettes,incoming) && entitled(incoming) && !params.has('fwProject'))localStorage.setItem(key,incoming);
   requested=projectTheme() || (incoming && incoming!=='classic' ? incoming : null) || shopEquipped() || localStorage.getItem(key);
  }catch{}
- current=entitled(requested)?requested:null;
+ // A validated theme ID in a project link is the only portable cross-page hint.
+ // The purchasing page still controls purchase/refund and exclusive access.
+ const incoming=new URLSearchParams(location.search).get('fwTheme');
+ current=(incoming && Object.hasOwn(palettes,incoming) && !isPlaytesterTheme(incoming))?incoming:(entitled(requested)?requested:null);
  // Preserve the preference until asynchronous entitlement verification completes.
  return current;
 }
@@ -388,6 +391,7 @@ function startDaynightOrbit(){
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',startDaynightOrbit,{once:true});else startDaynightOrbit();
 
 const effects={'playtester-purple':'shimmer','playtester-red':'pulse','playtester-blue':'drift','cosmic-infinity':'spin','cosmic-paradox':'reverse-spin','cosmic-omega':'pulse','cosmic-eternity':'slow-spin','cosmic-genesis':'reverse-spin',daynight:'daynight',overdrive:'spin',quantum:'reverse-spin',singularity:'slow-spin',nova:'pulse',echo:'pulse',comet:'drift',celestial:'shimmer',eclipse:'pulse',rift:'drift',aurora:'drift',prismatic:'shimmer',cyber:'shimmer','void-premium':'pulse'};
+const premiumStyle=document.createElement('style');premiumStyle.textContent="\n/* Shared premium visual layers: identical definitions used by Rapid Shop preview. */\nbody[data-fw-global-theme]{--fw-lux-glow:rgba(255,255,255,.34)}\nbody[data-fw-global-theme][data-fw-effect]:not([data-fw-effect=\"daynight\"])::after{content:\"✦  ✧  ·  ✦   ·  ✧\";position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;font-size:clamp(20px,3vw,48px);letter-spacing:clamp(16px,5vw,75px);line-height:3;color:var(--fw-lux-glow);text-shadow:0 0 20px #fff8;opacity:.45;animation:fw-lux-stars 16s linear infinite}\nbody[data-fw-global-theme] > *{position:relative;z-index:1}\nbody[data-fw-global-theme][data-fw-lux=\"high\"]::after{opacity:.7;animation-duration:10s}\nbody[data-fw-global-theme][data-fw-lux=\"ultra\"]::after{opacity:.92;animation-duration:6s;text-shadow:0 0 18px #fff,0 0 38px #fff8}\nbody[data-fw-global-theme][data-fw-lux=\"ultra\"]{background-size:220% 220%!important}\n@keyframes fw-lux-stars{0%{transform:translate3d(-3%,6%,0) rotate(-3deg)}50%{transform:translate3d(4%,-5%,0) rotate(3deg)}100%{transform:translate3d(-3%,6%,0) rotate(-3deg)}}\n@media(prefers-reduced-motion:reduce){body[data-fw-global-theme]::after,body[data-fw-global-theme]::before{animation:none!important}}\n";document.head.append(premiumStyle);
 const textThemes={
  'playtester-purple':['#303038','#303038','#303038'],
  'playtester-red':['#303038','#303038','#303038'],
@@ -450,7 +454,8 @@ function apply(){
  document.body.toggleAttribute('data-fw-global-theme',Boolean(current));
  if(current){
   document.body.dataset.fwGlobalTheme=current;
-  const effect=effects[current];
+  const effect=effects[current] || 'shimmer';
+  document.body.dataset.fwLux=/^(cosmic-|daynight)/.test(current)?'ultra':(['singularity','overdrive','quantum','celestial','void-premium','event-horizon','solar-flare','eclipse','playtester-purple','playtester-red','playtester-blue'].includes(current)?'high':'normal');
   if(effect)document.body.dataset.fwEffect=effect;else delete document.body.dataset.fwEffect;
   const darkThemesForButtons=new Set(['playtester-purple','playtester-red','playtester-blue','midnight','echo','nova','void-premium','rift','comet','eclipse','quantum','celestial','singularity','overdrive','cosmic-infinity','cosmic-paradox','cosmic-omega','cosmic-eternity','cosmic-genesis','daynight']);
   const [onBackground,onSurface,linkAccent]=textThemes[current]||['#fff','#fff','#333'];
@@ -471,7 +476,7 @@ function apply(){
   document.body.style.setProperty('--fw-theme-muted',mutedText);
   document.body.style.setProperty('--fw-theme-readable-link',themeContrast(linkAccent,surface)>=4.5?linkAccent:surfaceText);
   document.body.style.setProperty('--fw-theme-readable-on-bg',readableOn(bg));
- }else {delete document.body.dataset.fwEffect;document.body.removeAttribute('data-fw-global-theme');document.body.style.removeProperty('--fw-theme-preview-gradient');}
+ }else {delete document.body.dataset.fwLux;delete document.body.dataset.fwEffect;document.body.removeAttribute('data-fw-global-theme');document.body.style.removeProperty('--fw-theme-preview-gradient');}
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply,{once:true});else apply();
 document.addEventListener('click',e=>{
@@ -495,7 +500,8 @@ window.addEventListener('formwheel-theme-changed',apply);
 window.FormwheelTheme={get:()=>refresh(),apply,set:id=>{
  try{if(id==='classic'||id===null)localStorage.removeItem(key);
  else if(entitled(id))localStorage.setItem(key,id);
- // Do not clear an existing selection when authorization is unavailable.}catch{}
+ // Preserve existing selection on failed entitlement verification.
+ }catch{}
  apply();
  return current;
 }};
