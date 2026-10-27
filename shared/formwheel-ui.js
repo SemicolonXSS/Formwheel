@@ -392,6 +392,18 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
 const effects={'playtester-purple':'shimmer','playtester-red':'pulse','playtester-blue':'drift','cosmic-infinity':'spin','cosmic-paradox':'reverse-spin','cosmic-omega':'pulse','cosmic-eternity':'slow-spin','cosmic-genesis':'reverse-spin',daynight:'daynight',overdrive:'spin',quantum:'reverse-spin',singularity:'slow-spin',nova:'pulse',echo:'pulse',comet:'drift',celestial:'shimmer',eclipse:'pulse',rift:'drift',aurora:'drift',prismatic:'shimmer',cyber:'shimmer','void-premium':'pulse'};
 const premiumStyle=document.createElement('style');premiumStyle.textContent="\n/* Shared premium visual layers: identical definitions used by Rapid Shop preview. */\nbody[data-fw-global-theme]{--fw-lux-glow:rgba(255,255,255,.34)}\nbody[data-fw-global-theme][data-fw-effect]:not([data-fw-effect=\"daynight\"])::after{content:\"✦  ✧  ·  ✦   ·  ✧\";position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;font-size:clamp(20px,3vw,48px);letter-spacing:clamp(16px,5vw,75px);line-height:3;color:var(--fw-lux-glow);text-shadow:0 0 20px #fff8;opacity:.45;animation:fw-lux-stars 16s linear infinite}\nbody[data-fw-global-theme] > *{position:relative;z-index:1}\nbody[data-fw-global-theme][data-fw-lux=\"high\"]::after{opacity:.7;animation-duration:10s}\nbody[data-fw-global-theme][data-fw-lux=\"ultra\"]::after{opacity:.92;animation-duration:6s;text-shadow:0 0 18px #fff,0 0 38px #fff8}\nbody[data-fw-global-theme][data-fw-lux=\"ultra\"]{background-size:220% 220%!important}\n@keyframes fw-lux-stars{0%{transform:translate3d(-3%,6%,0) rotate(-3deg)}50%{transform:translate3d(4%,-5%,0) rotate(3deg)}100%{transform:translate3d(-3%,6%,0) rotate(-3deg)}}\n@media(prefers-reduced-motion:reduce){body[data-fw-global-theme]::after,body[data-fw-global-theme]::before{animation:none!important}}\n";document.head.append(premiumStyle);
+/* Consistent charcoal typography across all themes, with light readable surfaces. */
+const charcoalThemeStyles=document.createElement('style');
+charcoalThemeStyles.textContent=`body[data-fw-global-theme]{--fw-theme-text:#303038!important;--fw-theme-muted:#414650!important;--fw-theme-on-background:#303038!important;--fw-theme-button-text:#303038!important;--fw-theme-button-bg:#f3f0ed!important;--fw-theme-surface:#fffaf5!important;--fw-theme-accent:#303038!important;--fw-theme-readable-link:#303038!important}
+body[data-fw-global-theme] :is(header,main,.hero,.toolbar,.card,.panel,.fw-footer,.upgrade,.item,.theme-item,.notice,.status,.receipt,.station,.modal,.dialog,.fw-install,.fw-favorites-panel){color:#303038!important}
+body[data-fw-global-theme] :is(.card,.panel,.fw-footer,.upgrade,.item,.theme-item,.notice,.status,.receipt,.station,.modal,.dialog,.fw-install,.fw-favorites-panel){background-color:#fffaf5!important}
+body[data-fw-global-theme] :is(h1,h2,h3,h4,p,span,small,strong,label,.muted,.sub,.description,.item-desc,.upgrade-desc,.score,.stat,.stat strong,.tag,.badge){color:#303038!important;text-shadow:none!important}
+body[data-fw-global-theme] :is(button,[role="button"],.openButton){background-color:#f3f0ed!important;color:#303038!important;border-color:#aaa2ab!important}
+body[data-fw-global-theme] :is(button,[role="button"],.openButton) :is(span,small,strong,b){color:#303038!important}
+body[data-fw-global-theme] :is(a:not(.logo):not(.fw-hub-logo),input,textarea,select,option){color:#303038!important}
+body[data-fw-global-theme] input,body[data-fw-global-theme] textarea,body[data-fw-global-theme] select{background-color:#fffaf5!important}
+body[data-fw-global-theme] .fw-theme-effect,body[data-fw-global-theme]::before,body[data-fw-global-theme]::after{pointer-events:none}`;
+document.head.append(charcoalThemeStyles);
 const textThemes={
  'playtester-purple':['#303038','#303038','#303038'],
  'playtester-red':['#303038','#303038','#303038'],
@@ -459,7 +471,7 @@ function apply(){
   if(effect)document.body.dataset.fwEffect=effect;else delete document.body.dataset.fwEffect;
   const darkThemesForButtons=new Set(['playtester-purple','playtester-red','playtester-blue','midnight','echo','nova','void-premium','rift','comet','eclipse','quantum','celestial','singularity','overdrive','cosmic-infinity','cosmic-paradox','cosmic-omega','cosmic-eternity','cosmic-genesis','daynight']);
   const [onBackground,onSurface,linkAccent]=textThemes[current]||['#fff','#fff','#333'];
-  document.body.style.setProperty('--fw-theme-on-background',onBackground);
+  document.body.style.setProperty('--fw-theme-on-background','#303038');
   document.body.style.setProperty('--fw-theme-text',onSurface);
   document.body.style.setProperty('--fw-theme-button-bg',current==='cosmic-eternity'?'#f3edf9':current==='cosmic-genesis'?'#e7f0ff':current==='daynight'?'#ffe6c8':darkThemesForButtons.has(current)?'#251c45':'#f0edff');
   document.body.style.setProperty('--fw-theme-button-text',current==='cosmic-eternity'?'#292929':current==='cosmic-genesis'?'#292929':current==='daynight'?'#292929':darkThemesForButtons.has(current)?'#fff':'#252040');
@@ -470,8 +482,8 @@ function apply(){
   document.body.style.setProperty('--fw-theme-accent',linkAccent);
   document.body.style.setProperty('--fw-theme-secondary',secondary);
   const darkThemes=new Set(['midnight','echo','nova','void-premium','rift','comet','eclipse','quantum','celestial','singularity','overdrive','cosmic-infinity','cosmic-paradox','cosmic-omega','cosmic-eternity','cosmic-genesis']);
-  const surfaceText=isPlaytesterTheme(current)?'#303038':readableOn(surface);
-  const mutedText=surfaceText==='#ffffff'?'#e9e9f5':'#414b60';
+  const surfaceText='#303038';
+  const mutedText='#414650';
   document.body.style.setProperty('--fw-theme-text',surfaceText);
   document.body.style.setProperty('--fw-theme-muted',mutedText);
   document.body.style.setProperty('--fw-theme-readable-link',themeContrast(linkAccent,surface)>=4.5?linkAccent:surfaceText);
