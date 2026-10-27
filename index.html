@@ -60,6 +60,11 @@
 /* Compact visitor counters: retain existing Firebase count bindings */
 #fw-live-presence{display:inline-flex!important;gap:6px!important;padding:5px 10px!important;margin-bottom:8px!important;font-size:11px!important;line-height:1.35!important;box-shadow:none!important;max-width:calc(100% - 16px);border-radius:12px!important}
 #fw-live-presence strong{font-size:11px;font-weight:650;white-space:nowrap}
+/* Keep visitor counters readable regardless of the selected cosmetic theme. */
+#fw-live-presence{background:#fffaf5!important;color:#303038!important;border-color:#d9d3cd!important}
+#fw-live-presence strong,#fw-live-presence strong span,#fw-live-presence #fw-live-count,#fw-live-presence #fw-live-peak,#fw-live-presence #fw-total-visitor-count,#fw-live-presence small{color:#303038!important;text-shadow:none!important}
+body[data-fw-global-theme] #fw-live-presence,body[data-fw-global-theme] #fw-live-presence *:not([aria-hidden="true"]){color:#303038!important;text-shadow:none!important}
+
 #fw-live-presence small{display:none!important}
 #fw-live-presence span[aria-hidden="true"]{font-size:10px}
 @media(max-width:480px){#fw-live-presence{gap:5px!important;padding:5px 8px!important;font-size:10px!important}#fw-live-presence strong{font-size:10px}}
