@@ -36,8 +36,32 @@ const palettes={
  "playtester-purple":["#271342","#342052","#f6e9ff","#b98aff"],
  "playtester-red":["#430e28","#531d38","#fff0ee","#ff7466"],
  "playtester-blue":["#09244d","#153b65","#e6faff","#69d8f3"]
-};
+,
+ "mint-breeze":["#166c65","#e2f8df","#103e3c","#7fd8c0"],
+ "rose-gold":["#7f375b","#f5d6e5","#672a4c","#d38a9e"],
+ "retro-pixel":["#18204c","#efeaff","#604c9e","#e68b88"],
+ "deep-sea":["#04192e","#e4fcfa","#08627e","#27b2ad"],
+ "golden-hour":["#6d3470","#ffefd6","#9b4954","#ffd080"],
+ frost:["#366d9d","#eefaff","#285276","#a9dbf5"],
+ volcanic:["#210d1c","#fff0e5","#a33330","#ff8c42"],
+ "starlit-library":["#1c294a","#f5ebff","#514a8b","#b79bc9"],
+ dreamscape:["#5d74c7","#faf0ff","#72539d","#f2c3d7"],
+ "crystal-cave":["#0c4d68","#eff4ff","#447cb6","#b6a6eb"],
+ "solar-flare":["#64204d","#fff3db","#b85232","#ffe59d"],
+ "event-horizon":["#090b1b","#ece1ff","#65439a","#aa7ef0"],};
 const gradients={
+ "mint-breeze":"linear-gradient(125deg,#166c65,#7fd8c0,#e2f8df)",
+ "rose-gold":"linear-gradient(125deg,#7f375b,#d38a9e,#f5d6b4)",
+ "retro-pixel":"linear-gradient(135deg,#18204c 0 35%,#604c9e 35% 65%,#e68b88 65%)",
+ "deep-sea":"linear-gradient(145deg,#04192e,#08627e,#27b2ad)",
+ "golden-hour":"linear-gradient(120deg,#6d3470,#d87968,#ffd080)",
+ frost:"linear-gradient(125deg,#366d9d,#a9dbf5,#eefaff)",
+ volcanic:"linear-gradient(125deg,#210d1c,#a33330,#ff8c42)",
+ "starlit-library":"linear-gradient(125deg,#1c294a,#514a8b,#b79bc9)",
+ dreamscape:"linear-gradient(125deg,#5d74c7,#bd93d9,#f2c3d7)",
+ "crystal-cave":"linear-gradient(125deg,#0c4d68,#447cb6,#b6a6eb)",
+ "solar-flare":"radial-gradient(circle at 70% 30%,#ffe59d,#e77942,#64204d)",
+ "event-horizon":"radial-gradient(circle at 55% 50%,#090b1b 0 22%,#aa7ef0 28%,#1b2458 55%,#080e23 100%)",
  "playtester-purple":"radial-gradient(circle at 24% 25%,#e7c5ff 0%,transparent 36%),linear-gradient(125deg,#271342,#7650c7 58%,#bb81ff)",
  "playtester-red":"radial-gradient(circle at 25% 22%,#ffc6b2 0%,transparent 35%),linear-gradient(125deg,#430e28,#ba3055 55%,#ff7466)",
  "playtester-blue":"radial-gradient(circle at 25% 22%,#b9f3ff 0%,transparent 35%),linear-gradient(125deg,#09244d,#256fbd 58%,#69d8f3)",
@@ -93,6 +117,13 @@ function projectTheme(){
   return (name && map[name]) || map[path] || null;
  }catch{return null;}
 }
+// Rapid Shop is the canonical source of the equipped cosmetic.
+function shopEquipped(){
+ try{
+  const shop=JSON.parse(localStorage.getItem(shopKey)||'null');
+  return shop && typeof shop.equipped==='string' && shop.equipped ? shop.equipped : null;
+ }catch{return null;}
+}
 function refresh(){
  let requested=null;
  try{
@@ -100,7 +131,7 @@ function refresh(){
   const incoming=params.get('fwTheme');
   if(incoming==='classic')localStorage.removeItem(key);
   else if(Object.hasOwn(palettes,incoming) && entitled(incoming) && !params.has('fwProject'))localStorage.setItem(key,incoming);
-  requested=projectTheme() || localStorage.getItem(key);
+  requested=projectTheme() || shopEquipped() || localStorage.getItem(key);
  }catch{}
  current=entitled(requested)?requested:null;
  // Preserve the preference until asynchronous entitlement verification completes.
