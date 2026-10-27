@@ -145,7 +145,7 @@ const gradients={
  "void": "linear-gradient(120deg,#0b0b15,#29223d,#565071)"
 };
 let approvedPlaytester=false;
-const level2Style=document.createElement('style');level2Style.textContent="\n/* LEVEL 2: synchronized premium renderer and preview layers. */\nbody[data-fw-global-theme^=\"level2-\"]::before{background:var(--fw-theme-preview-gradient)!important;background-size:180% 180%!important;animation:fw-level2-flow 7s ease-in-out infinite alternate!important}\nbody[data-fw-global-theme^=\"level2-\"]::after{content:\"✦  ✧  ✺  ◇  ✦  ✺  ✧\"!important;color:#bd9bffbb!important;font-size:clamp(24px,4vw,54px)!important;text-shadow:0 0 14px #8beaff,0 0 30px #b08aff,0 0 50px #fa9bdc!important;opacity:.92!important;animation:fw-lux-stars 5s linear infinite!important}\nbody[data-fw-global-theme^=\"level2-\"] :is(.card,.panel){box-shadow:0 0 18px #a67cf050,0 0 35px #7dd6ff25!important;border:1px solid #a48be7!important}\n@keyframes fw-level2-flow{from{background-position:0% 15%;filter:hue-rotate(0deg) brightness(.9)}to{background-position:100% 85%;filter:hue-rotate(22deg) brightness(1.2)}}\n@media(prefers-reduced-motion:reduce){body[data-fw-global-theme^=\"level2-\"]::before,body[data-fw-global-theme^=\"level2-\"]::after{animation:none!important}}\n";document.head.append(level2Style);
+const level2Style=document.createElement('style');level2Style.textContent="\n/* LEVEL 2: synchronized premium renderer and preview layers. */\nbody[data-fw-global-theme^=\"level2-\"]::before{background:var(--fw-theme-preview-gradient)!important;background-size:180% 180%!important;animation:fw-level2-flow var(--fw-level2-speed,7s) ease-in-out infinite alternate!important}\nbody[data-fw-global-theme^=\"level2-\"]::after{content:\"✦  ✧  ✺  ◇  ✦  ✺  ✧\"!important;color:#bd9bffbb!important;font-size:clamp(24px,4vw,54px)!important;text-shadow:0 0 14px #8beaff,0 0 30px #b08aff,0 0 50px #fa9bdc!important;opacity:.92!important;animation:fw-lux-stars var(--fw-level2-speed,5s) linear infinite!important}\nbody[data-fw-global-theme^=\"level2-\"] :is(.card,.panel){box-shadow:0 0 18px #a67cf050,0 0 35px #7dd6ff25!important;border:1px solid #a48be7!important}\n@keyframes fw-level2-flow{from{background-position:0% 15%;filter:hue-rotate(0deg) brightness(.9)}to{background-position:100% 85%;filter:hue-rotate(22deg) brightness(1.2)}}\n@media(prefers-reduced-motion:reduce){body[data-fw-global-theme^=\"level2-\"]::before,body[data-fw-global-theme^=\"level2-\"]::after{animation:none!important}}\n";document.head.append(level2Style);
 const isPlaytesterTheme=id=>typeof id==='string'&&['playtester-purple','playtester-red','playtester-blue'].includes(id);
 const shopKey='formwheel_rapid_shop_beta_v1';
 function entitled(id){
@@ -518,6 +518,12 @@ function apply(){
  document.body.toggleAttribute('data-fw-global-theme',Boolean(current));
  if(current){
   document.body.dataset.fwGlobalTheme=current;
+  // Price-weighted Level 2 effects, using the same speed curve as shop previews.
+  if(current.startsWith('level2-')){
+   const level2Exp={nebula:500,pulsar:650,chrono:800,abyss:1000,stellar:1250,prism:1500,supernova:1800,hyperion:2200,zenith:2800,omniverse:3500,paragon:4500,absolute:6000,'eclipse-king':7000,'aurora-prime':8500,'void-emperor':10000,'time-collapse':12500,'celestial-core':15000,'infinity-gate':20000,'dimension-zero':30000,'paradox-god':50000,'quantum-throne':75000,transcendence:100000,'origin-breaker':250000,'final-singularity':1000000};
+   const exp=level2Exp[current.slice(7)]||500;
+   document.body.style.setProperty('--fw-level2-speed',Math.max(2,7-Math.log10(exp))+'s');
+  }else document.body.style.removeProperty('--fw-level2-speed');
   const effect=effects[current] || 'shimmer';
   document.body.dataset.fwLux=( ['cosmic-infinity','cosmic-paradox','cosmic-omega','cosmic-eternity','cosmic-genesis','daynight'].includes(current)?'ultra': ['singularity','overdrive','event-horizon','solar-flare','celestial','quantum','eclipse','crystal-cave','dreamscape','starlit-library'].includes(current)?'high': ['echo','nova','void-premium','rift','comet','volcanic','frost','golden-hour','deep-sea','playtester-purple','playtester-red','playtester-blue'].includes(current)?'medium':'normal');
   if(effect)document.body.dataset.fwEffect=effect;else delete document.body.dataset.fwEffect;
