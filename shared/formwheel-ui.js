@@ -103,7 +103,7 @@ function refresh(){
   requested=projectTheme() || localStorage.getItem(key);
  }catch{}
  current=entitled(requested)?requested:null;
- if(!current && !projectTheme()){try{localStorage.removeItem(key);}catch{}}
+ // Preserve the preference until asynchronous entitlement verification completes.
  return current;
 }
 refresh();
@@ -464,7 +464,7 @@ window.addEventListener('formwheel-theme-changed',apply);
 window.FormwheelTheme={get:()=>refresh(),apply,set:id=>{
  try{if(id==='classic'||id===null)localStorage.removeItem(key);
  else if(entitled(id))localStorage.setItem(key,id);
- else localStorage.removeItem(key);}catch{}
+ // Do not clear an existing selection when authorization is unavailable.}catch{}
  apply();
  return current;
 }};
