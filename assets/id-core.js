@@ -1,11 +1,14 @@
 import {BADGES} from "./badge-catalog.js";
 /* Formwheel ID/Core bridge for Hub. Firebase SDK v10 modules. */
 import {initializeApp,getApps,getApp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
-import {getAuth,onAuthStateChanged,GoogleAuthProvider,signInWithPopup,signOut} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import {getAuth,onAuthStateChanged,GoogleAuthProvider,signInWithPopup,signOut,setPersistence,browserLocalPersistence} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 import {getDatabase,ref,get,set,onValue,runTransaction} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
 const config={apiKey:"AIzaSyBreTSe1m0-xlbF4aupnU5isRZCihR25IE",authDomain:"formwheel.firebaseapp.com",databaseURL:"https://formwheel-default-rtdb.firebaseio.com",projectId:"formwheel",storageBucket:"formwheel.firebasestorage.app",messagingSenderId:"431583088241",appId:"1:431583088241:web:74e0e34ea1e3e1170c55d0"};
 const app=getApps().find(x=>x.name==="[DEFAULT]")||initializeApp(config);
 const auth=getAuth(app), db=getDatabase(app);
+// Explicitly retain Firebase authentication across reloads and browser restarts.
+// A rejected persistence setup must be reported, not silently treated as logout.
+const authPersistenceReady=setPersistence(auth,browserLocalPersistence);
 const home=window.FormwheelHubHome, status=document.getElementById("fw-id-status"), login=document.getElementById("fw-id-login"), logout=document.getElementById("fw-id-logout");
 const show=t=>{if(status)status.textContent=t};
 let uid=null,unsubscribe=null,applying=false,ready=false,previousUid=null,writeQueue=Promise.resolve();
@@ -112,6 +115,7 @@ function syncProfile(user){
  if(!user||user.isAnonymous){display(guestProfile());return}
  profileUnsubscribe=onValue(ref(db,"formwheelV2/hubProfiles/"+user.uid),snap=>display(snap.val()),()=>display({}));
 }
+authPersistenceReady.catch(error=>{console.warn("Formwheel auth persistence unavailable",error);show("로그인 저장소를 사용할 수 없어요. 브라우저의 사이트 데이터 저장 설정을 확인해 주세요.");});
 onAuthStateChanged(auth,user=>{
  syncProfile(user);
  syncFeatured(user);
@@ -129,6 +133,7 @@ login?.addEventListener("click",async()=>{
  login.disabled=true;
  show("Google 로그인 창을 여는 중…");
  try{
+  await authPersistenceReady;
   await signInWithPopup(auth,new GoogleAuthProvider());
   show("로그인 확인 중…");
  }catch(e){
@@ -138,6 +143,8 @@ login?.addEventListener("click",async()=>{
    show("로그인 팝업을 완료하지 못했어요 ("+code+"). 브라우저 주소창 옆 팝업 차단 표시에서 이 사이트의 팝업을 허용한 뒤 다시 눌러 주세요. 다른 사이트로 이동하는 로그인은 현재 지원하지 않아요.");
   }else if(code==="auth/unauthorized-domain"){
    show("Firebase Authentication의 승인된 도메인에 semicolonxss.github.io를 등록해 주세요.");
+  }else if(code==="auth/unsupported-persistence"||code==="auth/web-storage-unsupported"){
+   show("브라우저에서 로그인 저장소를 사용할 수 없어요. 시크릿 모드를 끄고 사이트 데이터/쿠키 차단 설정을 확인해 주세요.");
   }else if(code==="auth/network-request-failed"){
    show("네트워크 또는 브라우저 확장 프로그램이 인증 요청을 차단했어요.");
   }else{
