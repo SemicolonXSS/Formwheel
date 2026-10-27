@@ -48,8 +48,33 @@ const palettes={
  dreamscape:["#5d74c7","#faf0ff","#72539d","#f2c3d7"],
  "crystal-cave":["#0c4d68","#eff4ff","#447cb6","#b6a6eb"],
  "solar-flare":["#64204d","#fff3db","#b85232","#ffe59d"],
- "event-horizon":["#090b1b","#ece1ff","#65439a","#aa7ef0"],};
+ "event-horizon":["#090b1b","#ece1ff","#65439a","#aa7ef0"],
+ "level2-nebula":["#0b1029","#fffaf5","#303038","#af83ff"],
+ "level2-pulsar":["#0b1029","#fffaf5","#303038","#65dfff"],
+ "level2-chrono":["#0b1029","#fffaf5","#303038","#c5a4ff"],
+ "level2-abyss":["#0b1029","#fffaf5","#303038","#a88aff"],
+ "level2-stellar":["#0b1029","#fffaf5","#303038","#ffb0e4"],
+ "level2-prism":["#0b1029","#fffaf5","#303038","#f2c2ff"],
+ "level2-supernova":["#0b1029","#fffaf5","#303038","#ffd89b"],
+ "level2-hyperion":["#0b1029","#fffaf5","#303038","#9deafa"],
+ "level2-zenith":["#0b1029","#fffaf5","#303038","#cbf0ff"],
+ "level2-omniverse":["#0b1029","#fffaf5","#303038","#dba5ff"],
+ "level2-paragon":["#0b1029","#fffaf5","#303038","#d0b9ff"],
+ "level2-absolute":["#0b1029","#fffaf5","#303038","#eed0ff"]
+};
 const gradients={
+ "level2-nebula":"radial-gradient(circle at 22% 20%,#a18cff,#18123d 34%,#070b20 78%)",
+ "level2-pulsar":"repeating-radial-gradient(circle at 53% 47%,#143451 0 22px,#3657aa 24px 28px,#080d22 34px 68px)",
+ "level2-chrono":"conic-gradient(from 30deg,#090f27,#305083,#bba4f3,#1b2753,#090f27)",
+ "level2-abyss":"radial-gradient(circle at 48% 52%,#070411 0 15%,#6436b0 25%,#081c42 47%,#03030c 80%)",
+ "level2-stellar":"radial-gradient(circle at 26% 38%,#ffb0dd,transparent 26%),radial-gradient(circle at 73% 25%,#75e9ff,transparent 31%),linear-gradient(125deg,#171034,#57278b,#071e37)",
+ "level2-prism":"conic-gradient(from 60deg,#1c1459,#4c6dcd,#9f65d1,#f1a9da,#1c1459)",
+ "level2-supernova":"radial-gradient(circle at 50% 48%,#fff0ab 0 7%,#fa66aa 12%,#6f3bbe 31%,#101435 65%)",
+ "level2-hyperion":"repeating-conic-gradient(from 20deg,#080f2f 0deg 24deg,#173b71 26deg 52deg,#824ad3 56deg 80deg)",
+ "level2-zenith":"radial-gradient(circle at 60% 20%,#e6ceff,transparent 26%),linear-gradient(135deg,#060e2b,#4742a3,#182748,#080c24)",
+ "level2-omniverse":"conic-gradient(from 130deg,#080622,#5621a4,#008ba2,#e1a6ff,#080622)",
+ "level2-paragon":"repeating-radial-gradient(circle at 50% 50%,#090a26 0 21px,#705ac1 25px 30px,#111440 34px 57px)",
+ "level2-absolute":"conic-gradient(#070719,#252f89,#d49eea,#3cc4df,#070719)",
  "mint-breeze": "linear-gradient(125deg,#166c65,#7fd8c0,#e2f8df)",
  "rose-gold": "linear-gradient(125deg,#7f375b,#d38a9e,#f5d6b4)",
  "retro-pixel": "linear-gradient(135deg,#18204c 0 35%,#604c9e 35% 65%,#e68b88 65%)",
@@ -96,6 +121,7 @@ const gradients={
  "void": "linear-gradient(120deg,#0b0b15,#29223d,#565071)"
 };
 let approvedPlaytester=false;
+const level2Style=document.createElement('style');level2Style.textContent="\n/* LEVEL 2: synchronized premium renderer and preview layers. */\nbody[data-fw-global-theme^=\"level2-\"]::before{background:var(--fw-theme-preview-gradient)!important;background-size:180% 180%!important;animation:fw-level2-flow 7s ease-in-out infinite alternate!important}\nbody[data-fw-global-theme^=\"level2-\"]::after{content:\"✦  ✧  ✺  ◇  ✦  ✺  ✧\"!important;color:#bd9bffbb!important;font-size:clamp(24px,4vw,54px)!important;text-shadow:0 0 14px #8beaff,0 0 30px #b08aff,0 0 50px #fa9bdc!important;opacity:.92!important;animation:fw-lux-stars 5s linear infinite!important}\nbody[data-fw-global-theme^=\"level2-\"] :is(.card,.panel){box-shadow:0 0 18px #a67cf050,0 0 35px #7dd6ff25!important;border:1px solid #a48be7!important}\n@keyframes fw-level2-flow{from{background-position:0% 15%;filter:hue-rotate(0deg) brightness(.9)}to{background-position:100% 85%;filter:hue-rotate(22deg) brightness(1.2)}}\n@media(prefers-reduced-motion:reduce){body[data-fw-global-theme^=\"level2-\"]::before,body[data-fw-global-theme^=\"level2-\"]::after{animation:none!important}}\n";document.head.append(level2Style);
 const isPlaytesterTheme=id=>typeof id==='string'&&['playtester-purple','playtester-red','playtester-blue'].includes(id);
 const shopKey='formwheel_rapid_shop_beta_v1';
 function entitled(id){
