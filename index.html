@@ -209,6 +209,29 @@ body.fw-beta-simple > :not(#fw-beta-switch):not(#fw-beta-simple-view):not(script
 #fw-beta-simple-view .fw-b-category-choice small{font-size:12px;font-weight:500;opacity:.8;white-space:nowrap}
 #fw-beta-simple-view .fw-b-item small{display:block;line-height:1.5;overflow-wrap:anywhere;margin-top:5px}
 </style>
+<style id="fw-compact-flow-20261028">
+/* Compact Flow 1.0: only the simple view. Category navigation remains JS-driven. */
+#fw-beta-simple-view{max-width:1100px;padding:12px 12px 72px}
+#fw-beta-simple-view .fw-b-panel{padding:13px;margin-bottom:10px;border-radius:14px}
+#fw-beta-simple-view .fw-b-hero{padding:18px 16px}
+#fw-beta-simple-view h2{font-size:17px;margin-bottom:9px}
+#fw-beta-simple-view .fw-b-actions,#fw-beta-simple-view .fw-b-categories{gap:8px}
+#fw-beta-simple-view button,#fw-beta-simple-view a.fw-b-action{min-height:44px;padding:10px 8px;font-size:13px;border-radius:11px;box-sizing:border-box}
+#fw-beta-simple-view .fw-b-category-choice{min-height:56px;gap:3px}
+#fw-beta-simple-view .fw-b-category-choice small{font-size:10px;white-space:normal}
+#fw-beta-simple-view input{box-sizing:border-box;padding:11px 12px;margin:6px 0 10px;min-height:44px}
+#fw-beta-simple-view .fw-b-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+#fw-beta-simple-view .fw-b-item{box-sizing:border-box;min-width:0;min-height:66px;padding:10px;border-radius:11px;display:flex;flex-direction:column;justify-content:center;gap:3px}
+#fw-beta-simple-view .fw-b-item strong{font-size:13px;margin:0;overflow-wrap:anywhere}
+#fw-beta-simple-view .fw-b-item small{font-size:11px;margin:0;line-height:1.35}
+#fw-beta-simple-view .fw-b-item:hover{border-color:#8496cf;background:#f6f8ff}
+#fw-beta-simple-view .fw-b-item:focus-visible,#fw-beta-simple-view button:focus-visible{outline:3px solid #315bd2;outline-offset:2px}
+#fw-beta-simple-view .fw-b-item:active{transform:scale(.985)}
+@media(max-width:900px){#fw-beta-simple-view .fw-b-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:600px){#fw-beta-simple-view .fw-b-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#fw-beta-simple-view{padding:10px 9px 64px}#fw-beta-simple-view .fw-b-panel{padding:11px}#fw-beta-simple-view .fw-b-actions,#fw-beta-simple-view .fw-b-categories{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:320px){#fw-beta-simple-view .fw-b-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){#fw-beta-simple-view .fw-b-item:active{transform:none}}
+</style>
 </head>
 
 
