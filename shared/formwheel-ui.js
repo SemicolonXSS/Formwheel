@@ -131,7 +131,7 @@ function refresh(){
   const incoming=params.get('fwTheme');
   if(incoming==='classic')localStorage.removeItem(key);
   else if(Object.hasOwn(palettes,incoming) && entitled(incoming) && !params.has('fwProject'))localStorage.setItem(key,incoming);
-  requested=projectTheme() || shopEquipped() || localStorage.getItem(key);
+  requested=projectTheme() || (incoming && incoming!=='classic' ? incoming : null) || shopEquipped() || localStorage.getItem(key);
  }catch{}
  current=entitled(requested)?requested:null;
  // Preserve the preference until asynchronous entitlement verification completes.
