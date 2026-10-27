@@ -7,7 +7,7 @@ import {getDatabase,ref,get,set,onValue} from "https://www.gstatic.com/firebasej
 const config={apiKey:"AIzaSyBreTSe1m0-xlbF4aupnU5isRZCihR25IE",authDomain:"formwheel.firebaseapp.com",databaseURL:"https://formwheel-default-rtdb.firebaseio.com",projectId:"formwheel",storageBucket:"formwheel.firebasestorage.app",messagingSenderId:"431583088241",appId:"1:431583088241:web:74e0e34ea1e3e1170c55d0"};
 const app=getApps().find(a=>a.name==="[DEFAULT]")||initializeApp(config);
 const auth=getAuth(app),db=getDatabase(app);
-const MAIN="fw-global-theme-v1",BULK="fw-project-themes-v1",ALLOWED=new Set(["sunset","forest","neon","galaxy","ocean","sakura","midnight","aurora","ember","cyber","royal","void","prismatic","echo","nova","void-premium","rift","comet","eclipse","quantum","celestial","singularity","overdrive","cosmic-infinity","cosmic-paradox","cosmic-omega","cosmic-eternity"]);
+const MAIN="fw-global-theme-v1",BULK="fw-project-themes-v1",ALLOWED=new Set(["sunset","forest","neon","galaxy","ocean","sakura","midnight","aurora","ember","cyber","royal","void","prismatic","echo","nova","void-premium","rift","comet","eclipse","quantum","celestial","singularity","overdrive","cosmic-infinity","cosmic-paradox","cosmic-omega","cosmic-eternity","cosmic-genesis","daynight","playtester-purple","playtester-red","playtester-blue","mint-breeze","rose-gold","retro-pixel","deep-sea","golden-hour","frost","volcanic","starlit-library","dreamscape","crystal-cave","solar-flare","event-horizon"]);
 const clean=x=>{const projects={};if(x?.projects&&typeof x.projects==="object"){for(const [k,v] of Object.entries(x.projects).slice(0,250)){if(k.length<=120&&ALLOWED.has(v))projects[k]=v;}}return {selected:ALLOWED.has(x?.selected)?x.selected:null,projects};};
 const local=()=>{let projects={};try{projects=JSON.parse(localStorage.getItem(BULK)||"{}")}catch{}return clean({selected:localStorage.getItem(MAIN),projects});};
 let user=null,unsubscribe=null,loading=true,remoteValue=null,writeTimer=null,applying=false;
@@ -26,9 +26,9 @@ onAuthStateChanged(auth,async next=>{
  try{
   const first=await get(target);
   if(auth.currentUser?.uid!==next.uid)return;
-  if(first.exists()){remoteValue=clean(first.val());apply(remoteValue);}
+  if(first.exists()){remoteValue=clean(first.val());const shop=JSON.parse(localStorage.getItem("formwheel_rapid_shop_beta_v1")||"null");if(shop?.equipped){remoteValue.selected=shop.equipped;await set(target,remoteValue);}apply(remoteValue);}
   else {const initial=local();await set(target,initial);remoteValue=initial;}
   loading=false;status("ready");
-  unsubscribe=onValue(target,snap=>{if(auth.currentUser?.uid!==next.uid||!snap.exists())return;const incoming=clean(snap.val());if(JSON.stringify(incoming)!==JSON.stringify(local()))apply(incoming);},e=>{console.warn("Theme realtime sync unavailable",e);status("error");});
+  unsubscribe=onValue(target,snap=>{if(auth.currentUser?.uid!==next.uid||!snap.exists())return;const incoming=clean(snap.val());const shop=JSON.parse(localStorage.getItem("formwheel_rapid_shop_beta_v1")||"null");if(shop?.equipped&&ALLOWED.has(shop.equipped))incoming.selected=shop.equipped;if(JSON.stringify(incoming)!==JSON.stringify(local()))apply(incoming);},e=>{console.warn("Theme realtime sync unavailable",e);status("error");});
  }catch(e){loading=false;console.warn("Account themes unavailable",e);status("error");}
 });
