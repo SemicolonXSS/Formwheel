@@ -293,6 +293,21 @@ function renderVisitorAdmin(){
  const search=document.createElement("input");search.type="search";search.placeholder="UID 일부 검색 (관리용)";search.setAttribute("aria-label","방문자 검색");search.value=visitorView.query;search.style.cssText="display:block;box-sizing:border-box;width:100%;padding:10px;margin:9px 0;border:1px solid #ccd2e2;border-radius:10px;font:inherit;font-size:12px";search.onchange=()=>{visitorView.query=search.value.trim().toLowerCase();visitorView.page=0;renderVisitorAdmin()};root.appendChild(search);
  let filtered=all.filter(x=>visitorView.period==="all"||x.last>=start||x.first>=start).filter(x=>visitorView.type==="all"||(visitorView.type==="guest"?x.v.accountType==="guest":visitorView.type==="account"?x.v.accountType!=="guest":x.visits>1)).filter(x=>!visitorView.query||x.uid.toLowerCase().includes(visitorView.query));
  const order=visitorView.sort==="recent"?"last":visitorView.sort==="duration"?"ms":visitorView.sort==="visits"?"visits":"first";filtered.sort((a,b)=>b[order]-a[order]);
+
+ // Export the currently filtered records, across all pages. Do not export Firebase UIDs.
+ const exportBar=document.createElement("div");exportBar.style.cssText="display:flex;flex-wrap:wrap;gap:8px;margin:10px 0";
+ function csvCell(value){const str=String(value??"");return '"'+( /^[=+@-]/.test(str)?("'"+str):str).replace(/"/g,'""')+'"'}
+ function downloadCsv(filename,rows){const csv="\uFEFF"+rows.map(row=>row.map(csvCell).join(",")).join("\r\n");const url=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));const a=document.createElement("a");a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+ function exportButton(label,callback){const b=document.createElement("button");b.type="button";b.textContent=label;b.style.cssText="padding:10px 12px;border-radius:9px;background:#3439bd;color:white;border:0;font:inherit;font-size:12px;cursor:pointer";b.onclick=callback;exportBar.appendChild(b)}
+ const dayGroups=new Map();
+ for(const x of all){const day=kstDay(x.first)||"날짜 미상";const v=dayGroups.get(day)||{newCount:0,guest:0,account:0};v.newCount++;if(x.v.accountType==="guest")v.guest++;else v.account++;dayGroups.set(day,v)}
+ exportButton("⬇ 방문 기록 CSV",()=>downloadCsv("formwheel-visitors-"+today+".csv",[["번호","계정 유형","최초 방문 (KST)","최근 방문 (KST)","추정 방문 횟수","재방문 횟수","누적 체류 (초)","프로젝트별 체류 (초)"],...filtered.map((x,i)=>[i+1,x.v.accountType==="guest"?"게스트":"로그인/기타",displayWhen(x.first),displayWhen(x.last),x.visits,Math.max(0,x.visits-1),Math.round(x.ms/1000),Object.entries(x.projects).map(([p,ms])=>p+":"+Math.round(safeNumber(ms)/1000)).join(" | ")])]));
+ exportButton("⬇ 일별 신규 방문 CSV",()=>downloadCsv("formwheel-daily-"+today+".csv",[["날짜 (KST)","신규 UID","게스트","로그인/기타"],...[...dayGroups].sort((a,b)=>a[0].localeCompare(b[0])).map(([d,v])=>[d,v.newCount,v.guest,v.account])]));
+ root.appendChild(exportBar);
+ const daily=document.createElement("details");daily.style.cssText="margin:12px 0;padding:10px;border:1px solid #e7eaf1;border-radius:10px";
+ const dailyHead=document.createElement("summary");dailyHead.textContent="📅 날짜별 신규 방문 추이 ("+dayGroups.size+"일)";dailyHead.style.cursor="pointer";daily.appendChild(dailyHead);
+ const dailyList=document.createElement("div");dailyList.style.cssText="max-height:210px;overflow:auto;font-size:12px;margin-top:8px";
+ [...dayGroups].sort((a,b)=>b[0].localeCompare(a[0])).forEach(([d,v])=>{const p=document.createElement("p");p.textContent=d+" · 신규 "+v.newCount+"명 (게스트 "+v.guest+" / 로그인·기타 "+v.account+")";dailyList.appendChild(p)});daily.appendChild(dailyList);root.appendChild(daily);
  const pageCount=Math.max(1,Math.ceil(filtered.length/VISITOR_PAGE_SIZE));visitorView.page=Math.min(visitorView.page,pageCount-1);
  const summary=document.createElement("p");summary.style.cssText="font-size:11px;color:#687388";summary.textContent="조건에 맞는 방문자 "+filtered.length+"명 · "+(visitorView.page+1)+"/"+pageCount+" 페이지";root.appendChild(summary);
  for(const [index,x] of filtered.slice(visitorView.page*VISITOR_PAGE_SIZE,(visitorView.page+1)*VISITOR_PAGE_SIZE).entries()){
