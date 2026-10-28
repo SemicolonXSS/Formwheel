@@ -1,7 +1,8 @@
-const CACHE = "formwheel-hub-v6-audit-20261024";
+const CACHE = "formwheel-hub-v7-offline-ping-20261029";
 const APP_SHELL = [
   "/Formwheel/",
   "/Formwheel/index.html",
+  "/Formwheel/offline.html",
   "/Formwheel/profile.html",
   "/Formwheel/manifest.json",
   "/Formwheel/assets/styles.css",
@@ -64,6 +65,8 @@ self.addEventListener("fetch", event => {
         const home = await caches.match("/Formwheel/index.html");
         if (home) return home;
       }
+      const offline = await caches.match('/Formwheel/offline.html');
+      if (offline) return offline;
       return new Response('<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>연결 확인 | Formwheel</title><h1>인터넷 연결을 확인해 주세요</h1><p>이 페이지는 아직 기기에 저장되지 않았어요. 연결 후 다시 시도해 주세요.</p><button onclick="location.reload()">다시 시도</button> <a href="/Formwheel/">허브로 이동</a></html>', {
         status: 503,
         headers: {"Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store"}
