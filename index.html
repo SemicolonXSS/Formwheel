@@ -1143,7 +1143,7 @@ document.getElementById('fw21-activity').textContent='개인 활동 통계는 �
 document.getElementById('fw21-logout').onclick=async()=>{if(!confirm('Formwheel에서 로그아웃할까요?'))return;try{const m=await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js');const a=await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js');const app=m.getApps()[0];if(!app){alert('이 페이지에서 로그인 연결을 찾지 못했습니다. Hub의 로그아웃을 이용해 주세요.');return;}await a.signOut(a.getAuth(app));alert('로그아웃 완료');location.href='./index.html';}catch(e){alert('로그아웃을 확인할 수 없습니다. Hub에서 로그아웃해 주세요.');}};
 
 })();
-</script><script defer src="./assets/halloween-2026.js?v=1"></script></body>
+</script><script defer src="./assets/halloween-2026.js?v=1"></script><script defer src="./assets/edu-hub-beta.js?v=20261030"></script></body>
 </html>
 
 
