@@ -186,7 +186,7 @@ body.fw-beta-simple #cards .cardDescription,body.fw-beta-simple #cards .cardDesc
 @media(max-width:540px){#fw-beta-switch{gap:5px;flex-wrap:wrap}#fw-beta-switch strong{width:100%;text-align:center}#fw-beta-switch button{flex:1}body.fw-beta-simple #cards{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 </style>
 <style id="fw-beta-simple-20261025">
-body.fw-beta-simple > :not(#fw-beta-switch):not(#fw-beta-simple-view):not(script):not(style){display:none!important}
+body.fw-beta-simple > :not(#fw-beta-switch):not(#fw-beta-simple-view):not(#fw-halloween):not(.fw-hw-ghost):not(script):not(style){display:none!important}
 #fw-beta-simple-view{max-width:1060px;margin:0 auto;padding:20px 16px 95px;font-family:system-ui,-apple-system,sans-serif;color:#263451}
 #fw-beta-simple-view[hidden]{display:none!important}
 #fw-beta-simple-view .fw-b-panel{background:#fff;border:1px solid #e0e7f3;border-radius:19px;padding:19px;margin-bottom:15px;box-shadow:0 5px 22px #233c6610}
@@ -443,9 +443,9 @@ header .fw-profile-trigger{margin-left:0}
 <select id="sort" class="sortSelect">
 
 <option value="creator" selected>제작자 추천 순</option>
-<option value="maturity">개발 완성도 순 (추정)</option>
+<option value="maturity">개발 상태 순 (제작자 분류)</option>
 <option value="popular">
-내가 자주 연 순
+내가 자주 연 순 (이 기기)
 </option>
 
 <option value="default">
@@ -598,7 +598,7 @@ document.querySelectorAll(".categoryButtons .filterButton").forEach(button=>{
   });
 });
 </script>
-<script src="./assets/app.js?v=20261025-categorytoggle1"></script>
+<script src="./assets/app.js?v=20261030-hub-fixes"></script>
 <script src="./assets/theme-bulk.js?v=20261022-premium13"></script>
 <script>
 (function(){
@@ -982,16 +982,15 @@ var key='formwheel-hub-display-version',mode='card',category='all',tab='home';
 function getSaved(){try{var stored=localStorage.getItem(key);return stored==='card'||stored==='simple'?stored:'simple'}catch(e){return 'simple'}}
 function apply(next){mode=next==='simple'?'simple':'card';document.body.classList.toggle('fw-beta-simple',mode==='simple');document.body.classList.toggle('fw-beta-card',mode==='card');document.getElementById('fw-beta-simple-view').hidden=mode!=='simple';document.querySelectorAll('#fw-beta-switch button[data-mode]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.mode===mode))});try{localStorage.setItem(key,mode)}catch(e){}if(mode==='simple')render()}
 function extract(){
-var cards=Array.from(document.querySelectorAll('#cards .card'));
-return cards.map(function(c){var a=c.querySelector('a[href*="Formwheel_"]')||c.querySelector('a[href]');if(!a)return null;var title=c.querySelector('.cardTitle')||c.querySelector('h3')||c.querySelector('h2');var name=(title?title.textContent:a.textContent).replace(/\\s+/g,' ').trim().slice(0,85);var raw=(c.className+' '+c.textContent).toLowerCase();var type=/도구|tool/.test(raw)?'tool':/앱|app/.test(raw)?'app':'game';var descNode=c.querySelector('.fw-thumbnail-description');var description=descNode?descNode.textContent.replace(/\\s+/g,' ').trim():'';return {name:name||'프로젝트',url:a.href,type:type,description:description}}).filter(Boolean)
+return (window.FormwheelHubProjects||[]).map(function(p){return {name:p.name,url:p.url,type:p.category,description:p.description||'',keywords:p.keywords||''};});
 }
 var fallback=[['🎮 Maze','Formwheel_Maze','game'],['⚡ Reflex','Formwheel_Reflex','game'],['🎡 Wheel','Formwheel_Wheel','tool'],['🧩 Decode','Formwheel_Decode','tool'],['📖 Wiki','Formwheel_Wiki','app'],['🏆 AQS','Formwheel_AQS','app']].map(function(p){return{name:p[0],url:'https://semicolonxss.github.io/'+p[1]+'/',type:p[2],description:''}})
 function render(){
 var list=extract();if(!list.length)list=fallback;
 var q=(document.getElementById('fw-b-search').value||'').trim().toLowerCase();
-var visible=list.filter(function(p){return(category==='all'||p.type===category)&&p.name.toLowerCase().includes(q)});
+var visible=list.filter(function(p){return(category==='all'||p.type===category)&&(p.name+' '+p.description+' '+(p.keywords||'')).toLowerCase().includes(q)});
 var grid=document.getElementById('fw-b-grid');grid.replaceChildren();
-visible.forEach(function(p){var a=document.createElement('a');a.className='fw-b-item';a.href=p.url;var title=document.createElement('strong');title.textContent=p.name;var meta=document.createElement('small');meta.textContent=p.description?p.description.replace(/[.!?。]+$/,'').split(/[·,，\\s]+/).filter(Boolean).slice(0,3).join(' · '):'프로젝트 열기';a.append(title,meta);grid.append(a)});
+visible.forEach(function(p){var a=document.createElement('a');a.className='fw-b-item';a.href=p.url;a.target='_blank';a.rel='noopener noreferrer';a.dataset.fwProject=p.name;var title=document.createElement('strong');title.textContent=p.name;var meta=document.createElement('small');meta.textContent=p.description?p.description.replace(/[.!?。]+$/,'').split(/[·,，\\s]+/).filter(Boolean).slice(0,3).join(' · '):'프로젝트 열기';a.append(title,meta);grid.append(a)});
 document.getElementById('fw-b-count').textContent=visible.length+'개 프로젝트'+(extract().length?' · 기존 Hub 카드 목록 연동':' · 목록 준비 중');
 document.querySelectorAll('#fw-beta-simple-view button[data-category]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.category===category))});
 document.getElementById('fw-b-home').hidden=tab!=='home';document.getElementById('fw-b-explore').hidden=tab!=='explore'
@@ -1001,10 +1000,13 @@ var bar=document.createElement('nav');bar.id='fw-beta-switch';bar.setAttribute('
 bar.addEventListener('click',function(e){var b=e.target.closest('button[data-mode]');if(b)apply(b.dataset.mode)});
 document.body.insertBefore(bar,document.body.firstChild);
 var view=document.createElement('section');view.id='fw-beta-simple-view';view.hidden=true;
-view.innerHTML='<div id="fw-b-home"><div class="fw-b-panel fw-b-hero"><small>YOUR UNIVERSE, YOUR PLAY</small><h1>오늘은 무엇을 해볼까?</h1><p>찾는 건 빠르게, 새로운 발견은 즐겁게.</p></div><div class="fw-b-panel"><h2>🔎 바로 찾기</h2><input id="fw-b-home-search" placeholder="원하는 프로젝트 검색" aria-label="프로젝트 검색"><div class="fw-b-actions"><button data-tab="explore">🪐 프로젝트 탐색</button><a class="fw-b-action" href="./playtest.html">🧪 플레이테스터</a><a class="fw-b-action" href="./playtest.html">⏱️ 10초 챌린지</a><a class="fw-b-action" href="https://semicolonxss.github.io/Formwheel_AQS/">🏆 AQS</a></div></div><div class="fw-b-panel"><h2>🪐 빠른 탐색</h2><div class="fw-b-categories"><button data-category="game" class="fw-b-category-choice"><span>🎮 게임</span><small>Reflex · 반응속도</small></button><button data-category="tool" class="fw-b-category-choice"><span>🛠️ 도구</span><small>Wheel · 돌림판 행운</small></button><button data-category="app" class="fw-b-category-choice"><span>📱 앱</span><small>Wiki · 문서 편집</small></button><button data-category="all" class="fw-b-category-choice"><span>🌟 전체</span><small>게임 · 도구 · 앱</small></button></div></div><div class="fw-b-panel"><h2>👥 친구와 플레이</h2><div class="fw-b-actions"><a class="fw-b-action" href="https://semicolonxss.github.io/Formwheel_Battle/">⚔️ Battle</a><a class="fw-b-action" href="https://semicolonxss.github.io/Formwheel_Spy/">🕵️ Spy</a><button data-tab="explore">📚 전체 목록</button><button data-mode-go="card">🃏 원래 Hub</button></div></div></div><div id="fw-b-explore" hidden><div class="fw-b-panel"><h1>🪐 프로젝트 탐색</h1><p class="fw-b-muted">기존 Hub 카드의 프로젝트 링크를 이용한 간편 목록</p><input id="fw-b-search" placeholder="프로젝트 이름 검색" aria-label="프로젝트 이름 검색"><div class="fw-b-categories"><button data-category="game" class="fw-b-category-choice"><span>🎮 게임</span><small>Reflex · 반응속도</small></button><button data-category="tool" class="fw-b-category-choice"><span>🛠️ 도구</span><small>Wheel · 돌림판 행운</small></button><button data-category="app" class="fw-b-category-choice"><span>📱 앱</span><small>Wiki · 문서 편집</small></button><button data-category="all" class="fw-b-category-choice"><span>🌟 전체</span><small>게임 · 도구 · 앱</small></button></div><p class="fw-b-muted" id="fw-b-count"></p><div id="fw-b-grid" class="fw-b-grid"></div></div></div><div class="fw-b-panel"><div class="fw-b-actions"><button data-tab="home">🏠 홈</button><button data-tab="explore">🪐 탐색</button><a class="fw-b-action" href="https://semicolonxss.github.io/Formwheel_AQS/">🏆 AQS</a><button data-mode-go="card">🃏 카드 Ver.</button></div></div>';
+view.innerHTML='<div id="fw-b-home"><div class="fw-b-panel fw-b-hero"><small>YOUR UNIVERSE, YOUR PLAY</small><h1>오늘은 무엇을 해볼까?</h1><p>찾는 건 빠르게, 새로운 발견은 즐겁게.</p></div><div class="fw-b-panel"><h2>🔎 바로 찾기</h2><input id="fw-b-home-search" placeholder="원하는 프로젝트 검색" aria-label="프로젝트 검색"><div class="fw-b-actions"><button data-tab="explore">🪐 프로젝트 탐색</button><a class="fw-b-action" href="./playtest.html">🧪 플레이테스터</a><a class="fw-b-action" href="./playtest.html">⏱️ 10초 챌린지</a><a class="fw-b-action" href="https://semicolonxss.github.io/Formwheel_AQS/">🏆 AQS</a></div></div><div class="fw-b-panel"><h2>🪐 빠른 탐색</h2><div class="fw-b-categories"><button data-category="game" class="fw-b-category-choice"><span>🎮 게임</span><small>Reflex · 반응속도</small></button><button data-category="tool" class="fw-b-category-choice"><span>🛠️ 도구</span><small>Wheel · 돌림판 행운</small></button><button data-category="app" class="fw-b-category-choice"><span>📱 앱</span><small>Wiki · 문서 편집</small></button><button data-category="all" class="fw-b-category-choice"><span>🌟 전체</span><small>게임 · 도구 · 앱</small></button></div></div><div class="fw-b-panel"><h2>👥 친구와 플레이</h2><div class="fw-b-actions"><a class="fw-b-action" href="https://semicolonxss.github.io/Formwheel_Battle/">⚔️ Battle</a><a class="fw-b-action" href="https://semicolonxss.github.io/Formwheel_Spy/">🕵️ Spy</a><button data-tab="explore">📚 전체 목록</button><button data-mode-go="card">🃏 원래 Hub</button></div></div></div><div id="fw-b-explore" hidden><div class="fw-b-panel"><h1>🪐 프로젝트 탐색</h1><p class="fw-b-muted">게임·도구·앱을 검색하고 원하는 프로젝트를 열어보세요.</p><input id="fw-b-search" placeholder="프로젝트 이름 검색" aria-label="프로젝트 이름 검색"><div class="fw-b-categories"><button data-category="game" class="fw-b-category-choice"><span>🎮 게임</span><small>Reflex · 반응속도</small></button><button data-category="tool" class="fw-b-category-choice"><span>🛠️ 도구</span><small>Wheel · 돌림판 행운</small></button><button data-category="app" class="fw-b-category-choice"><span>📱 앱</span><small>Wiki · 문서 편집</small></button><button data-category="all" class="fw-b-category-choice"><span>🌟 전체</span><small>게임 · 도구 · 앱</small></button></div><p class="fw-b-muted" id="fw-b-count"></p><div id="fw-b-grid" class="fw-b-grid"></div></div></div><div class="fw-b-panel"><div class="fw-b-actions"><button data-tab="home">🏠 홈</button><button data-tab="explore">🪐 탐색</button><a class="fw-b-action" href="https://semicolonxss.github.io/Formwheel_AQS/">🏆 AQS</a><button data-mode-go="card">🃏 카드 Ver.</button></div></div>';
 document.body.insertBefore(view,bar.nextSibling);
 view.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;if(b.dataset.modeGo){apply(b.dataset.modeGo);return}if(b.dataset.category){category=b.dataset.category;tab='explore';render();return}if(b.dataset.tab){tab=b.dataset.tab;render()}});
-document.getElementById('fw-b-home-search').addEventListener('input',function(e){tab='explore';document.getElementById('fw-b-search').value=e.target.value;render()});
+var homeSearch=document.getElementById('fw-b-home-search');
+function enterSearch(e){if(e.isComposing)return;var source=e.target;var start=source.selectionStart,end=source.selectionEnd;tab='explore';category='all';var target=document.getElementById('fw-b-search');target.value=source.value;render();target.focus({preventScroll:true});target.setSelectionRange(start,end);}
+homeSearch.addEventListener('input',enterSearch);
+homeSearch.addEventListener('compositionend',enterSearch);
 document.getElementById('fw-b-search').addEventListener('input',render);
 apply(getSaved());
 var cards=document.getElementById('cards');if(cards){var observer=new MutationObserver(function(){if(mode==='simple')render()});observer.observe(cards,{childList:true,subtree:false})}
@@ -1143,7 +1145,7 @@ document.getElementById('fw21-activity').textContent='개인 활동 통계는 �
 document.getElementById('fw21-logout').onclick=async()=>{if(!confirm('Formwheel에서 로그아웃할까요?'))return;try{const m=await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js');const a=await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js');const app=m.getApps()[0];if(!app){alert('이 페이지에서 로그인 연결을 찾지 못했습니다. Hub의 로그아웃을 이용해 주세요.');return;}await a.signOut(a.getAuth(app));alert('로그아웃 완료');location.href='./index.html';}catch(e){alert('로그아웃을 확인할 수 없습니다. Hub에서 로그아웃해 주세요.');}};
 
 })();
-</script><script defer src="./assets/halloween-2026.js?v=1"></script><script defer src="./assets/edu-hub-beta.js?v=20261030"></script></body>
+</script><script defer src="./assets/halloween-2026.js?v=20261030-lifecycle2"></script><script defer src="./assets/edu-hub-beta.js?v=20261030"></script></body>
 </html>
 
 

@@ -33,6 +33,7 @@ IMPORTANT:
 
 
 const projects = [
+  {name:"EDU",keywords:"공부 학습 고등수학 합성함수 역함수 교육",icon:"🎓",className:"orange",category:"app",mode:"solo",connection:"offline",difficulty:"보통",description:"합성함수·역함수를 개념부터 응용까지 배우는 고등수학 학습 로드맵. 단계를 자유롭게 건너뛸 수 있는 베타.",url:"https://semicolonxss.github.io/Formwheel/edu.html",addedAt:"2026-10-30T00:00:00Z",recent:true},
   {name:"Sports",keywords:"운동 축구 농구 공 슛 스포츠",icon:"⚽",className:"green",category:"game",mode:"both",connection:"offline",difficulty:"쉬움",description:"축구·농구 2종목! CPU 대전과 한 기기 2인 대전, 슛·킥·점프가 가능한 스포츠 게임.",url:"https://semicolonxss.github.io/Formwheel/sports/",addedAt:"2026-10-24T06:45:00Z",recent:true},
   {name:"Board",keywords:"체스 바둑 오목 오델로 보드게임",icon:"♟️",className:"purple",category:"game",mode:"both",connection:"online",difficulty:"보통",description:"체스·바둑·오목·오델로 4종! 규칙을 읽고 로컬 2인 대전 또는 방 코드로 친구와 온라인 플레이.",url:"https://semicolonxss.github.io/Formwheel/board/",addedAt:"2026-10-24T05:30:00Z",recent:true},
   {name:"SYNC",keywords:"텔레파시 같은답 파티 싱크",icon:"🧠",className:"purple",category:"game",mode:"both",connection:"online",difficulty:"쉬움",description:"친구들과 텔레파시가 통할까? 같은 답을 고르는 6라운드 싱크 파티 게임! 한 기기 파티와 온라인 방 코드.",url:"https://semicolonxss.github.io/Formwheel_Sync/",addedAt:"2026-10-22T06:00:00Z",recent:true},
@@ -1084,9 +1085,8 @@ function render(){
           </div>
 
 
-          <div class="fw-maturity" title="제작자가 추정한 개발 완성도 · 자동 측정값이 아닙니다">
-            <div class="fw-maturity-caption"><span>개발 완성도 <small>(추정)</small></span><strong>${projectMaturity[project.name] ?? 60}%</strong></div>
-            <div class="fw-maturity-track" role="progressbar" aria-label="${escapeHTML(project.name)} 개발 완성도 추정" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${projectMaturity[project.name] ?? 60}"><div class="fw-maturity-fill" style="width:${projectMaturity[project.name] ?? 60}%"></div></div>
+          <div class="fw-maturity" title="제작자 분류이며 자동 측정한 품질 점수가 아닙니다">
+            <div class="fw-maturity-caption"><span>개발 상태 <small>(제작자 분류)</small></span><strong>${project.name === 'EDU' ? '베타' : projectMaturity[project.name] == null ? '미분류' : projectMaturity[project.name] >= 90 ? '안정화 단계' : projectMaturity[project.name] >= 70 ? '베타' : '실험 중'}</strong></div>
           </div>
           <div class="cardBottom">
 
