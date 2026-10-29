@@ -260,7 +260,7 @@ body.fw-beta-simple > :not(#fw-beta-switch):not(#fw-beta-simple-view):not(script
   <strong>⚙️ 설정</strong>
   <div class="fw-settings-item"><span>🌐 언어</span><div id="fw-settings-language">언어 설정 불러오는 중…</div></div>
   <div id="fw-settings-resume"></div>
-  <div class="fw-settings-item"><a href="./settings-2.html" style="font-weight:700;color:#4934ae">⚙️ 설정 2.0 전체 보기 →</a></div>
+  <details id="fw-settings-v2" style="margin-top:10px"><summary style="cursor:pointer;font-weight:750;color:#4934ae;padding:10px 0">⚙️ 설정 2.0 · 화면 / 편의 / 계정 / 고급</summary><iframe title="Formwheel 설정 2.0" loading="lazy" src="./settings-2.html" style="width:100%;height:460px;border:1px solid #dce2eb;border-radius:12px;background:white"></iframe><p><a href="./settings-2.html">설정 전체 화면에서 열기</a></p></details>
  </section>
 </div>
 <a href="#fw-account" class="fw-header-login-link" aria-label="Formwheel ID 로그인 영역으로 이동" style="display:inline-flex;align-items:center;justify-content:center;padding:8px 11px;border-radius:10px;background:#f0e9ff;color:#49319b;font-weight:750;text-decoration:none;font-size:13px;white-space:nowrap">로그인</a>
@@ -1032,7 +1032,7 @@ header:has(#fw-settings-panel:not([hidden])){z-index:2147483000!important;overfl
 #fw-settings-panel{z-index:2147483002!important}
 #fw-settings-button{font:inherit;font-size:13px;font-weight:750;color:#29334a;background:#f0f3f8;border:1px solid #d8dfeb;border-radius:10px;padding:8px 10px;cursor:pointer;white-space:nowrap}
 #fw-settings-button:focus-visible{outline:3px solid #8675ef;outline-offset:2px}
-.fw-settings-panel{position:absolute;right:0;top:calc(100% + 9px);z-index:10000;width:min(320px,calc(100vw - 24px));padding:15px;border:1px solid #dce2eb;border-radius:16px;background:#fff;color:#243047;box-shadow:0 12px 36px #11182730;font-size:13px;text-align:left}
+.fw-settings-panel{max-height:min(85vh,780px);overflow-y:auto;width:min(600px,calc(100vw - 24px));position:absolute;right:0;top:calc(100% + 9px);z-index:10000;width:min(320px,calc(100vw - 24px));padding:15px;border:1px solid #dce2eb;border-radius:16px;background:#fff;color:#243047;box-shadow:0 12px 36px #11182730;font-size:13px;text-align:left}
 .fw-settings-panel[hidden]{display:none!important}
 .fw-settings-panel>strong{display:block;font-size:16px;margin-bottom:12px}
 .fw-settings-item{display:flex;justify-content:space-between;gap:12px;align-items:center;padding-bottom:12px;border-bottom:1px solid #e5e7eb}
@@ -1065,6 +1065,28 @@ header:has(#fw-settings-panel:not([hidden])){z-index:2147483000!important;overfl
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
 </script>
+<script>
+/* Settings 2.0: apply locally saved presentation preferences to Hub without touching gameplay data. */
+(function(){
+const key='fw.settings.v2';
+function apply(){
+let s={};try{s=JSON.parse(localStorage.getItem(key)||'{}')||{}}catch{}
+document.documentElement.style.fontSize=s.font==='large'?'18px':s.font==='small'?'14px':'';
+document.body.classList.toggle('fw-v2-compact',s.density==='compact');
+document.body.classList.toggle('fw-v2-spacious',s.density==='spacious');
+document.body.classList.toggle('fw-v2-contrast',!!s.highContrast);
+document.body.classList.toggle('fw-v2-reduced',!!s.reducedMotion||s.animation==='off');
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply);else apply();
+window.addEventListener('storage',e=>{if(e.key===key)apply()});
+window.addEventListener('focus',apply);
+window.addEventListener('message',e=>{if(e.origin===location.origin&&e.data==='fw-settings-v2-changed')apply()});
+})();
+</script>
+<style>
+.fw-v2-compact #cards{gap:8px!important}.fw-v2-spacious #cards{gap:24px!important}
+.fw-v2-contrast{filter:contrast(1.2)}.fw-v2-reduced *, .fw-v2-reduced *::before,.fw-v2-reduced *::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}
+</style>
 </body>
 </html>
 
