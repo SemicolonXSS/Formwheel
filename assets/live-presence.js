@@ -92,6 +92,20 @@ onValue(ref(db,visitorBase),snapshot=>{
  if(visitorNote)visitorNote.textContent="집계 시작 이후 · UID당 1명";
  if(adminUnlocked)renderAdmin();
 },error=>{if(visitorCount)visitorCount.textContent="조회 불가";if(visitorNote)visitorNote.textContent="Firebase 읽기 권한 확인 ("+(error.code||"오류")+")";});
+function getEntryChannel(){
+ const q=new URLSearchParams(location.search);
+ const source=(q.get("utm_source")||"").toLowerCase().replace(/[^a-z0-9_-]/g,"").slice(0,32);
+ let host="";try{host=new URL(document.referrer).hostname.toLowerCase()}catch{}
+ if(source)return {channel:source,method:"utm"};
+ if(!host||host==="semicolonxss.github.io")return {channel:"direct_or_unknown",method:"referrer"};
+ if(host.includes("blogspot."))return {channel:"blogger",method:"referrer"};
+ if(host.includes("google.")||host.includes("naver.")||host.includes("bing."))return {channel:"search",method:"referrer"};
+ if(host.includes("youtube.")||host==="youtu.be")return {channel:"youtube",method:"referrer"};
+ if(host.includes("threads."))return {channel:"threads",method:"referrer"};
+ if(host.includes("instagram."))return {channel:"instagram",method:"referrer"};
+ return {channel:"other_external",method:"referrer"};
+}
+const entryChannel=getEntryChannel();
 async function recordVisitor(user){
  if(!user||recordedVisitorUid===user.uid)return;
  const uid=user.uid,now=Date.now();
@@ -99,11 +113,12 @@ async function recordVisitor(user){
   const node=ref(db,visitorBase+"/"+uid);
   await runTransaction(node,current=>current===null?{
    firstSeen:now,accountType:user.isAnonymous?"guest":"account",
-   totalMs:0,projectMs:{},visitCount:1,lastCountedAt:now,lastVisitAt:now
+   totalMs:0,projectMs:{},visitCount:1,lastCountedAt:now,lastVisitAt:now,firstAttribution:entryChannel
   }:current&&typeof current==="object"?{
    ...current,totalMs:Number(current.totalMs)||0,
    visitCount:(Number(current.visitCount)||1)+(now-(Number(current.lastVisitAt)||0)>30*60*1000?1:0),
-   lastCountedAt:now,lastVisitAt:now
+   lastCountedAt:now,lastVisitAt:now,
+   lastAttribution:entryChannel
   }:undefined,{applyLocally:false});
   recordedVisitorUid=uid;lastActiveTick=Date.now();
   if(durationTimer)clearInterval(durationTimer);
