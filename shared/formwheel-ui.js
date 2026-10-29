@@ -330,7 +330,7 @@ body[data-fw-global-theme="cosmic-genesis"] .card .openButton{background:#e7f0ff
 body[data-fw-global-theme="cosmic-genesis"] :is(.tag,.badge,.fw-maturity-caption){color:#292929!important;text-shadow:none!important}
 body[data-fw-global-theme="cosmic-genesis"] :is(input,textarea,select){background:#fff!important;color:#202337!important}
 /* DAYNIGHT: 30 seconds = 24 hours; stable light cards keep labels readable. */
-body[data-fw-global-theme="daynight"][data-fw-effect="daynight"]::before{inset:0;opacity:1;background:linear-gradient(180deg,#76b7f8 0%,#f7de9d 100%);animation:fw-daynight-sky 30s linear infinite;transform:none!important}
+body[data-fw-global-theme="daynight"][data-fw-effect="daynight"]::before{inset:0;opacity:1;background:linear-gradient(180deg,transparent 0%,rgba(255,235,190,.22) 100%);background-color:#f3a2a2;animation:fw-daynight-sky 30s linear infinite;transform:none!important}
 /* Exact semicircular orbital paths are driven by trigonometry, not linear keyframe corners. */
 body[data-fw-global-theme="daynight"][data-fw-effect="daynight"]::after{display:none!important}
 body[data-fw-global-theme="daynight"] .fw-daynight-sun{
@@ -338,11 +338,14 @@ body[data-fw-global-theme="daynight"] .fw-daynight-sun{
  pointer-events:none;z-index:-1;background:#fff8b0;box-shadow:0 0 55px 12px #ffe8a8;
  opacity:0;transform:translate3d(-200px,-200px,0);will-change:transform,opacity;contain:layout paint;
 }
+/* Sun is visible from 0–59% of the 30s orbit: 0–45° sunrise,
+   45–135° daylight, 135–180° sunset. Moon starts at 60%.
+   Animate background-color (interpolable) rather than snapping gradients. */
 @keyframes fw-daynight-sky{
-0%,100%{background:linear-gradient(180deg,#f2a3a0,#ffd796)}
-18%,35%{background:linear-gradient(180deg,#65b6fa,#e3f5ff)}
-52%,68%{background:linear-gradient(180deg,#e37191,#f9ab68)}
-80%,92%{background:linear-gradient(180deg,#101b43,#39447a)}
+ 0%,3%{background-color:#f3a2a2}
+ 14.75%,44.25%{background-color:#65b6fa}
+ 59%{background-color:#ed8f75}
+ 60%,100%{background-color:#101b43}
 }
 body[data-fw-global-theme="daynight"] .fw-daynight-moon{
  position:fixed;top:0;left:0;width:68px;height:68px;border-radius:50%;
