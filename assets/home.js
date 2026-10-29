@@ -7,15 +7,17 @@ const key="fw:hub:home:v1", cacheKey="fw:hub:recommend:v2";
 const all=new Map(projects.map(p=>[p.name.toLowerCase(),p]));
 const defaults=["wheel","spy","reflex"];
 const valid=(arr,max=100)=>[...new Set((Array.isArray(arr)?arr:[]).filter(id=>typeof id==="string"&&all.has(id)))].slice(0,max);
-const load=(k,fallback)=>{try{return JSON.parse(localStorage.getItem(k))||fallback}catch{return fallback}};
-const save=(k,value)=>{try{localStorage.setItem(k,JSON.stringify(value))}catch{byId("fw-home-status").textContent="기기 저장소에 저장하지 못했어요."}};
+const isRecord=value=>value!==null&&typeof value==="object"&&!Array.isArray(value);
+const load=(k,fallback)=>{try{const value=JSON.parse(localStorage.getItem(k));return isRecord(value)?value:fallback}catch{return fallback}};
+const cleanVisits=value=>Object.fromEntries(Object.entries(isRecord(value)?value:{}).filter(([id,v])=>all.has(id)&&isRecord(v)).map(([id,v])=>[id,{count:Math.min(100000,Math.max(0,Number.isFinite(v.count)?Math.floor(v.count):0)),last:Math.max(0,Number.isFinite(v.last)?v.last:0)}]));
+const save=(k,value)=>{try{localStorage.setItem(k,JSON.stringify(value))}catch{byId("fw-home-status")?.replaceChildren("기기 저장소에 저장하지 못했어요.")}};
 let state=load(key,{pinned:[],excluded:[],visits:{},version:1});
-state={pinned:[],excluded:valid(state.excluded),visits:state.visits&&typeof state.visits==="object"?state.visits:{},version:1};
+state={pinned:[],excluded:valid(state.excluded),visits:cleanVisits(state.visits),version:1};
 let cache=load(cacheKey,{}),draft=null;
 const today=()=>new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Seoul",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
 const persist=()=>{save(key,state);render();window.dispatchEvent(new CustomEvent("fw:hub:changed",{detail:{state:exportState()}}))};
 const exportState=()=>JSON.parse(JSON.stringify({version:1,pinned:state.pinned,excluded:state.excluded,visits:state.visits}));
-window.FormwheelHubHome={read:exportState,apply(remote){if(!remote||typeof remote!=="object")return;state={version:1,pinned:[],excluded:valid(remote.excluded),visits:remote.visits&&typeof remote.visits==="object"?remote.visits:{}};save(key,state);cache={};render()},localKey:key};
+window.FormwheelHubHome={read:exportState,apply(remote){if(!remote||typeof remote!=="object")return;state={version:1,pinned:[],excluded:valid(remote.excluded),visits:cleanVisits(remote.visits)};save(key,state);cache={};render()},localKey:key};
 const list=()=>projects.filter(p=>!state.excluded.includes(p.name.toLowerCase()));
 // GitHub repository pushed_at records are cached for one day to limit API requests.
 let updatedByRepo={};
@@ -41,7 +43,7 @@ const updated=p=>{
 };
 function recompute(){
  const date=today(),pool=list(),fingerprint=[...state.excluded].join("|")+"|"+Object.keys(state.visits).map(id=>id+":"+(state.visits[id]?.count||0)).sort().join("|")+"|"+Object.keys(updatedByRepo).length;
- if(cache.date!==date||cache.fingerprint!==fingerprint||!Array.isArray(cache.slots)||cache.slots.some(slot=>!all.has(slot.id))){
+ if(cache.date!==date||cache.fingerprint!==fingerprint||!Array.isArray(cache.slots)||cache.slots.some(slot=>!isRecord(slot)||!all.has(slot.id))){
   const chosen=new Set();
   const choose=(kind,rank)=>{
    const options=pool.filter(p=>!chosen.has(p.name.toLowerCase())&&((kind!=="new"&&kind!=="familiar")||p.category==="game"));
@@ -96,5 +98,5 @@ function syncFilterCount(){const count=["modeFilter","connectionFilter","difficu
 syncFilterCount();
 render();
 refreshRepositoryUpdates();
-window.addEventListener("storage",e=>{if(e.key===key){const incoming=load(key,null);if(incoming){state={pinned:valid(incoming.pinned,3),excluded:valid(incoming.excluded),visits:incoming.visits||{},version:1};render()}}});
+window.addEventListener("storage",e=>{if(e.key===key){const incoming=load(key,null);if(incoming){state={pinned:valid(incoming.pinned,3),excluded:valid(incoming.excluded),visits:cleanVisits(incoming.visits),version:1};render()}}});
 })();

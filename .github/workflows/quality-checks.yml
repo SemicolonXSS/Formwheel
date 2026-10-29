@@ -30,7 +30,7 @@ jobs:
       - name: Validate Hub catalog and sitemap
         run: node scripts/check-hub-catalog.cjs
       - name: Offline cache regression tests
-        run: node --test tests/service-worker.test.cjs
+        run: node --test tests/*.test.cjs
       - name: Security core regression tests
         run: node firebase-security/tests/core.test.cjs
       - name: Validate database rules JSON syntax
