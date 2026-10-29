@@ -258,9 +258,7 @@ body.fw-beta-simple > :not(#fw-beta-switch):not(#fw-beta-simple-view):not(script
  <button type="button" id="fw-settings-button" aria-expanded="false" aria-controls="fw-settings-panel" aria-label="설정 열기">⚙️ 설정</button>
  <section id="fw-settings-panel" class="fw-settings-panel" hidden aria-label="Hub 설정">
   <strong>⚙️ 설정</strong>
-  <div class="fw-settings-item"><span>🌐 언어</span><div id="fw-settings-language">언어 설정 불러오는 중…</div></div>
-  <div id="fw-settings-resume"></div>
-  <details id="fw-settings-v2" style="margin-top:10px"><summary style="cursor:pointer;font-weight:750;color:#4934ae;padding:10px 0">⚙️ 설정 2.0 · 화면 / 편의 / 계정 / 고급</summary><iframe title="Formwheel 설정 2.0" loading="lazy" src="./settings-2.html" style="width:100%;height:460px;border:1px solid #dce2eb;border-radius:12px;background:white"></iframe><p><a href="./settings-2.html">설정 전체 화면에서 열기</a></p></details>
+  <div class="fw21-tabs" role="tablist"><button type="button" role="tab" data-fw21="general" aria-selected="true">일반</button><button type="button" role="tab" data-fw21="appearance" aria-selected="false">화면</button><button type="button" role="tab" data-fw21="convenience" aria-selected="false">편의</button><button type="button" role="tab" data-fw21="data" aria-selected="false">데이터</button><button type="button" role="tab" data-fw21="advanced" aria-selected="false">고급</button></div><section id="fw21-view-general" class="fw21-view" role="tabpanel" ><div class="fw-settings-item"><span>🌐 언어</span><div id="fw-settings-language"></div></div></section><section id="fw21-view-appearance" class="fw21-view" role="tabpanel" hidden><h2>🎨 화면</h2><div id="fw21-appearance"></div></section><section id="fw21-view-convenience" class="fw21-view" role="tabpanel" hidden><h2>🧭 편의 및 알림</h2><div id="fw21-convenience"></div><div id="fw-settings-resume"></div></section><section id="fw21-view-data" class="fw21-view" role="tabpanel" hidden><h2>🔐 계정 및 데이터</h2><p id="fw21-save">기기 설정 저장 상태: 확인 중</p><button id="fw21-export">설정 및 이용 가능한 활동 데이터 내보내기 (JSON)</button> <button id="fw21-logout">로그아웃</button><p><small>내보내기는 이 기기에 저장된 Formwheel 설정과 확인 가능한 활동 정보만 포함합니다. Rapid 및 Firebase 전체 데이터 백업을 의미하지 않습니다.</small></p><h2>📊 내 활동 통계</h2><p id="fw21-activity">이 기기에서 확인 가능한 기록을 조사 중…</p></section><section id="fw21-view-advanced" class="fw21-view" role="tabpanel" hidden><h2>🛠️ 고급</h2><div id="fw21-advanced"></div><button id="fw21-diagnostics">오류 진단 보기</button> <button id="fw21-reset">설정 초기화</button><pre id="fw21-errors" style="white-space:pre-wrap;overflow-wrap:anywhere"></pre></section><p id="fw21-status" role="status"></p>
  </section>
 </div>
 <a href="#fw-account" class="fw-header-login-link" aria-label="Formwheel ID 로그인 영역으로 이동" style="display:inline-flex;align-items:center;justify-content:center;padding:8px 11px;border-radius:10px;background:#f0e9ff;color:#49319b;font-weight:750;text-decoration:none;font-size:13px;white-space:nowrap">로그인</a>
@@ -1019,10 +1017,21 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 /* SECOL SMART RETURN: opt-in only; independent of existing save data. */
 (function(){
  const KEY='fw.smartReturn.enabled.v1', LAST='fw.smartReturn.last.v1';
+ const isOn=localStorage.getItem(KEY)==='true';
+ if(isOn&&!new URL(location.href).searchParams.has('stay')&&!sessionStorage.getItem('fw.smartReturn.redirected.v2')){
+ let last=null;try{last=JSON.parse(localStorage.getItem(LAST)||'null')}catch{}
+ if(last&&typeof last.url==='string'){try{
+ const u=new URL(last.url);
+ if(u.protocol==='https:'&&u.hostname==='semicolonxss.github.io'&&/^\/Formwheel_[\w-]+\//i.test(u.pathname)){
+ sessionStorage.setItem('fw.smartReturn.redirected.v2','1');location.replace(u.href);
+ }
+ }catch{}}
+ }
+
  const panel=document.createElement('section');
  panel.style.cssText='margin:12px auto;padding:12px 16px;max-width:1080px;border:1px solid #cbd5e1;border-radius:14px;background:#f8fafc;color:#243047;font:inherit';
  panel.innerHTML='<label style="display:flex;align-items:center;gap:9px;font-weight:700"><input type="checkbox" id="fw-resume-enabled"> 🧭 스마트 복귀 사용</label><div id="fw-resume-detail" style="margin-top:8px"></div>';
- const mount=()=>{document.body.insertBefore(panel,document.body.firstChild);const toggle=panel.querySelector('#fw-resume-enabled'),detail=panel.querySelector('#fw-resume-detail');toggle.checked=localStorage.getItem(KEY)==='true';function render(){detail.replaceChildren();if(!toggle.checked){detail.textContent='기본 꺼짐 · 켜면 마지막으로 연 프로젝트를 기억합니다.';return}let saved;try{saved=JSON.parse(localStorage.getItem(LAST)||'null')}catch{}if(saved&&typeof saved.url==='string'&&/^https:\/\/semicolonxss\.github\.io\/Formwheel_[\w-]+\//i.test(saved.url)){const a=document.createElement('a');a.href=saved.url;a.textContent='▶ '+String(saved.name||'최근 프로젝트').slice(0,60)+' 이어서 열기';a.style.cssText='color:#334bb0;font-weight:700;margin-right:14px';detail.append(a);const b=document.createElement('button');b.textContent='기록 삭제';b.type='button';b.addEventListener('click',()=>{localStorage.removeItem(LAST);render()});detail.append(b)}else detail.textContent='아직 최근 프로젝트가 없습니다.'}toggle.addEventListener('change',()=>{localStorage.setItem(KEY,String(toggle.checked));render()});document.addEventListener('click',e=>{if(!toggle.checked)return;const a=e.target.closest('a[href]');if(!a)return;try{const u=new URL(a.href,location.href);if(u.hostname==='semicolonxss.github.io'&&/^\/Formwheel_[\w-]+\//i.test(u.pathname)){localStorage.setItem(LAST,JSON.stringify({url:u.href,name:a.textContent.trim().slice(0,60),at:Date.now()}))}}catch{}} ,true);render()};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();
+ const mount=()=>{document.body.insertBefore(panel,document.body.firstChild);const toggle=panel.querySelector('#fw-resume-enabled'),detail=panel.querySelector('#fw-resume-detail');toggle.checked=localStorage.getItem(KEY)==='true';function render(){detail.replaceChildren();if(!toggle.checked){detail.textContent='기본 꺼짐 · 켜면 다음 방문에 마지막 프로젝트로 자동 복귀합니다.';return}let saved;try{saved=JSON.parse(localStorage.getItem(LAST)||'null')}catch{}if(saved&&typeof saved.url==='string'&&/^https:\/\/semicolonxss\.github\.io\/Formwheel_[\w-]+\//i.test(saved.url)){const a=document.createElement('a');a.href=saved.url;a.textContent='▶ '+String(saved.name||'최근 프로젝트').slice(0,60)+' 이어서 열기';a.style.cssText='color:#334bb0;font-weight:700;margin-right:14px';detail.append(a);const b=document.createElement('button');b.textContent='기록 삭제';b.type='button';b.addEventListener('click',()=>{localStorage.removeItem(LAST);render()});detail.append(b)}else detail.textContent='아직 최근 프로젝트가 없습니다.'}toggle.addEventListener('change',()=>{localStorage.setItem(KEY,String(toggle.checked));sessionStorage.removeItem('fw.smartReturn.redirected.v2');render()});document.addEventListener('click',e=>{if(!toggle.checked)return;const a=e.target.closest('a[href]');if(!a)return;try{const u=new URL(a.href,location.href);if(u.hostname==='semicolonxss.github.io'&&/^\/Formwheel_[\w-]+\//i.test(u.pathname)){localStorage.setItem(LAST,JSON.stringify({url:u.href,name:a.textContent.trim().slice(0,60),at:Date.now()}))}}catch{}} ,true);render()};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();
 })();
 </script>
 <style>
@@ -1079,7 +1088,7 @@ document.body.classList.toggle('fw-v2-reduced',!!s.reducedMotion||s.animation===
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply);else apply();
 window.addEventListener('storage',e=>{if(e.key===key)apply()});
-window.addEventListener('focus',apply);
+window.addEventListener('focus',apply);window.addEventListener('fw-settings-v2-changed',apply);
 window.addEventListener('message',e=>{if(e.origin===location.origin&&e.data==='fw-settings-v2-changed')apply()});
 })();
 </script>
@@ -1087,7 +1096,55 @@ window.addEventListener('message',e=>{if(e.origin===location.origin&&e.data==='f
 .fw-v2-compact #cards{gap:8px!important}.fw-v2-spacious #cards{gap:24px!important}
 .fw-v2-contrast{filter:contrast(1.2)}.fw-v2-reduced *, .fw-v2-reduced *::before,.fw-v2-reduced *::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}
 </style>
-</body>
+<style>
+.fw-settings-panel{width:min(570px,calc(100vw - 24px))!important;max-height:82vh}
+.fw21-tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:10px}
+.fw21-tabs button{flex:1 0 auto;border:1px solid #dce2eb;background:#f5f7fc;border-radius:9px;padding:9px;color:#334155;cursor:pointer;font:inherit;font-weight:700}
+.fw21-tabs button[aria-selected=true]{background:#ebe7ff;color:#4934ae;border-color:#8b79dd}
+.fw21-view[hidden]{display:none!important}
+.fw21-view{padding:5px 0 10px}
+.fw21-view h2{font-size:16px;margin:8px 0}
+.fw21-view label{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid #edf0f5}
+.fw21-view select,.fw21-view button{font:inherit;border:1px solid #ccd3df;border-radius:8px;background:#fff;color:#273246;padding:7px;margin:3px}
+.fw21-view small,#fw21-status{font-size:11px;color:#58657a}
+@media(max-width:650px){.fw21-view label{flex-wrap:wrap}}
+</style><script>
+(function(){
+document.querySelectorAll('[data-fw21]').forEach(t=>t.addEventListener('click',()=>{
+document.querySelectorAll('[data-fw21]').forEach(b=>b.setAttribute('aria-selected',String(b===t)));
+document.querySelectorAll('.fw21-view').forEach(p=>p.hidden=p.id!=='fw21-view-'+t.dataset.fw21);
+}));
+
+const KEY='fw.settings.v2',SMART='fw.smartReturn.enabled.v1';
+const defaults={animation:'normal',sound:true,start:'hub',notifications:{achievement:true,reward:true,update:false,event:false},performance:'auto',reducedMotion:false,highContrast:false,density:'normal',font:'normal',recommend:true};
+let state;try{state={...defaults,...JSON.parse(localStorage.getItem(KEY)||'{}')};}catch{state={...defaults};}
+const smart=()=>localStorage.getItem(SMART)==='true';
+const specs=[
+['appearance','animation','애니메이션 강도',{off:'끄기',low:'낮음',normal:'보통',high:'높음'}],
+['appearance','sound','효과음',null],
+['appearance','density','화면 밀도',{spacious:'넓게',normal:'기본',compact:'촘촘하게'}],
+['appearance','font','글자 크기',{small:'작게',normal:'기본',large:'크게'}],
+['convenience','start','시작 화면',{hub:'Hub',recent:'최근 플레이',favorites:'즐겨찾기'}],
+['convenience','smart','스마트 복귀 (기존 설정)',null],
+['convenience','recommend','프로젝트 종료 후 추천',null],
+['advanced','performance','성능 모드',{auto:'자동',saving:'절전',balanced:'균형',high:'고성능'}],
+['advanced','reducedMotion','움직임 줄이기',null],
+['advanced','highContrast','고대비 모드',null]
+];
+const status=document.getElementById('fw21-status');
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state));status.textContent='이 기기에 설정 저장 완료 · '+new Date().toLocaleString();document.getElementById('fw21-save').textContent=status.textContent;}catch(e){status.textContent='저장 실패: '+e.message;}}
+function apply(){document.documentElement.style.fontSize=state.font==='large'?'18px':state.font==='small'?'14px':'16px';document.body.classList.toggle('compact',state.density==='compact');document.body.classList.toggle('spacious',state.density==='spacious');document.body.classList.toggle('highcontrast',state.highContrast);document.documentElement.style.setProperty('scroll-behavior',state.reducedMotion?'auto':'smooth');}
+function add(group,key,title,options){const label=document.createElement('label');label.append(document.createTextNode(title));let control;if(options){control=document.createElement('select');for(const [v,t] of Object.entries(options)){const o=document.createElement('option');o.value=v;o.textContent=t;control.append(o);}control.value=state[key];}else{control=document.createElement('input');control.type='checkbox';control.checked=key==='smart'?smart():!!state[key];}control.addEventListener('change',()=>{if(key==='smart'){localStorage.setItem(SMART,String(control.checked));status.textContent='스마트 복귀 설정 저장 완료';return;}state[key]=options?control.value:control.checked;save();apply();window.dispatchEvent(new Event('fw-settings-v2-changed'));});label.append(control);document.getElementById(group).append(label);}
+specs.filter(s=>s[1]!=='smart').forEach(s=>add(...s));for(const [key,name] of Object.entries({achievement:'업적 알림',reward:'보상 알림',update:'업데이트 알림',event:'이벤트 알림'})){const label=document.createElement('label');label.textContent=name;const input=document.createElement('input');input.type='checkbox';input.checked=!!state.notifications?.[key];input.addEventListener('change',()=>{state.notifications={...state.notifications,[key]:input.checked};save();});label.append(input);document.getElementById('fw21-convenience').append(label);}
+apply();status.textContent='기기 설정 준비 완료 (Firebase 동기화와 별도)';
+document.getElementById('fw21-export').onclick=()=>{const data={exportedAt:new Date().toISOString(),settings:state,smartReturn:smart(),note:'Local settings export only; not a complete Firebase account backup'};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='formwheel-settings-'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
+document.getElementById('fw21-reset').onclick=()=>{if(!confirm('화면·편의 설정만 초기화할까요? Rapid·업적·플레이 기록은 유지됩니다.'))return;localStorage.removeItem(KEY);localStorage.setItem(SMART,'false');location.reload();};
+document.getElementById('fw21-diagnostics').onclick=()=>{document.getElementById('fw21-errors').textContent='설정 버전: 2\n로컬 저장소 사용: '+(typeof localStorage!=='undefined')+'\nFirebase 저장/오류 로그는 이 페이지에서 조회하지 않습니다.\n개인정보 및 인증 토큰은 수집하지 않습니다.';};
+document.getElementById('fw21-activity').textContent='개인 활동 통계는 기존 프로젝트 기록과의 안전한 연동이 필요합니다. 현재 이 화면에서 임의의 수치를 표시하지 않습니다.';
+document.getElementById('fw21-logout').onclick=async()=>{if(!confirm('Formwheel에서 로그아웃할까요?'))return;try{const m=await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js');const a=await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js');const app=m.getApps()[0];if(!app){alert('이 페이지에서 로그인 연결을 찾지 못했습니다. Hub의 로그아웃을 이용해 주세요.');return;}await a.signOut(a.getAuth(app));alert('로그아웃 완료');location.href='./index.html';}catch(e){alert('로그아웃을 확인할 수 없습니다. Hub에서 로그아웃해 주세요.');}};
+
+})();
+</script></body>
 </html>
 
 
