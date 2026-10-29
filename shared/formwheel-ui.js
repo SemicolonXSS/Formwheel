@@ -331,6 +331,11 @@ body[data-fw-global-theme="cosmic-genesis"] :is(.tag,.badge,.fw-maturity-caption
 body[data-fw-global-theme="cosmic-genesis"] :is(input,textarea,select){background:#fff!important;color:#202337!important}
 /* DAYNIGHT: 30 seconds = 24 hours; stable light cards keep labels readable. */
 body[data-fw-global-theme="daynight"][data-fw-effect="daynight"]::before{inset:0;opacity:1;background:linear-gradient(180deg,transparent 0%,rgba(255,235,190,.22) 100%);background-color:#f3a2a2;animation:fw-daynight-sky 30s linear infinite;transform:none!important}
+/* On the night portion of DayNight, keep the Hub's heading and intro readable. */
+body[data-fw-global-theme="daynight"][data-fw-daynight-phase="night"] main .hero :is(h1,h2,p){
+ color:#fff!important;
+ text-shadow:0 2px 10px rgba(0,0,0,.42)!important;
+}
 /* Exact semicircular orbital paths are driven by trigonometry, not linear keyframe corners. */
 body[data-fw-global-theme="daynight"][data-fw-effect="daynight"]::after{display:none!important}
 body[data-fw-global-theme="daynight"] .fw-daynight-sun{
@@ -428,6 +433,10 @@ function startDaynightOrbit(){
   const active=document.body?.dataset.fwGlobalTheme==='daynight' && !reduced.matches;
   if(active){
    const phase=((now-origin)%30000)/30000;
+   // One DOM state update only when the sky crosses day/sunset/night boundaries.
+   const sunAngle=phase<=.59?180*phase/.59:null;
+   const skyPhase=sunAngle===null?'night':sunAngle<=45?'sunrise':sunAngle<=135?'day':'sunset';
+   if(document.body.dataset.fwDaynightPhase!==skyPhase)document.body.dataset.fwDaynightPhase=skyPhase;
    function place(kind,start,end){
     const node=bodies[kind];
     if(!node)return;
@@ -446,6 +455,7 @@ function startDaynightOrbit(){
    place('sun',0,.59);
    place('moon',.60,1);
   }else if(lastActive){
+   delete document.body.dataset.fwDaynightPhase;
    for(const node of Object.values(bodies))if(node)node.style.opacity='0';
   }
   lastActive=active;
