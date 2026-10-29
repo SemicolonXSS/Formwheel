@@ -1,4 +1,4 @@
-const CACHE = "formwheel-hub-v7-offline-ping-20261029";
+const CACHE = "formwheel-hub-v8-offline-recovery-20261030";
 const APP_SHELL = [
   "/Formwheel/",
   "/Formwheel/index.html",
@@ -55,17 +55,19 @@ self.addEventListener("fetch", event => {
     event.respondWith(fetch(request).then(response => {
       if (response.ok) {
         const copy = response.clone();
-        event.waitUntil(caches.open(CACHE).then(cache => cache.put(request, copy).catch(() => {})));
+        event.waitUntil(caches.open(CACHE).then(cache => cache.put(request, copy)).catch(() => {}));
       }
       return response;
     }).catch(async () => {
-      const cached = await caches.match(request);
+      const cache = await caches.open(CACHE).catch(() => null);
+      const match = async key => cache ? cache.match(key).catch(() => undefined) : undefined;
+      const cached = await match(request) || await match(url.pathname);
       if (cached) return cached;
       if (url.pathname === "/Formwheel/" || url.pathname === "/Formwheel/index.html") {
-        const home = await caches.match("/Formwheel/index.html");
+        const home = await match("/Formwheel/index.html");
         if (home) return home;
       }
-      const offline = await caches.match('/Formwheel/offline.html');
+      const offline = await match('/Formwheel/offline.html');
       if (offline) return offline;
       return new Response('<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>연결 확인 | Formwheel</title><h1>인터넷 연결을 확인해 주세요</h1><p>이 페이지는 아직 기기에 저장되지 않았어요. 연결 후 다시 시도해 주세요.</p><button onclick="location.reload()">다시 시도</button> <a href="/Formwheel/">허브로 이동</a></html>', {
         status: 503,
