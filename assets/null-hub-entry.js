@@ -1,1 +1,2 @@
-(()=>{if(document.getElementById('fw-null-entry'))return;const a=document.createElement('a');a.id='fw-null-entry';a.href='./null.html';a.textContent='👁 NULL · 특수 업적 / Reward Center';a.setAttribute('aria-label','NULL 특수 업적 페이지 열기');Object.assign(a.style,{position:'fixed',right:'14px',bottom:'72px',zIndex:'1100',padding:'11px 14px',borderRadius:'16px',background:'#241637',color:'#eee',border:'1px solid #a48be7',boxShadow:'0 5px 20px #0006',font:'600 13px system-ui',textDecoration:'none'});document.body.appendChild(a)})();
+/* NULL/Reward Center remains accessible via its existing routes; hide the Hub shortcut without removing achievements or data. */
+(()=>{'use strict';const button=document.getElementById('fw-null-entry');if(button)button.remove();})();
