@@ -620,53 +620,56 @@ window.FormwheelHubProjects = projects;
    multiplayer/essential flows 10%. Not automated tests or release guarantees.
    Adjust conservatively where user-reported regressions remain unresolved. */
 const projectMaturity = {
-  Sports:62,
-  Board:70,
-  SYNC:70,
-  Scribble:58,
-  Whiteboard:64,
-  Paint:84,
-  Animation:73,
-  Mix:80,
-  Glitch:69,
-  Maze:82,
-  Form:88,
-  Wheel:93,
-  Quiz:88,
-  Decode:95,
-  Edit:76,
-  Tool:86,
-  Vote:83,
-  Check:87,
-  Note:82,
-  Chat:73,
-  AI:60,
-  Wiki:68,
-  AQS:78,
-  Spotlight:78,
-  Story:66,
-  PVP:62,
-  Territory:65,
-  Cook:86,
-  Button:82,
-  Casino:81,
-  Battle:85,
-  Bomb:87,
-  "Wheel Battle":79,
-  Reflex:90,
-  Spy:69,
-  Clicker:81,
-  "Dice Duel":68,
-  Marble:66,
-  GCrown:79,
-  Fate:81,
-  Time:87,
-  Music:65,
-  Piano:76,
-  Balance:62,
-  Vault:80,
-  Risk:82
+  Sports: 48,
+  Board: 57,
+  SYNC: 62,
+  Scribble: 56,
+  Whiteboard: 59,
+  Paint: 74,
+  Animation: 65,
+  Mix: 72,
+  Glitch: 65,
+  Maze: 72,
+  Form: 80,
+  Wheel: 84,
+  Quiz: 77,
+  Decode: 83,
+  Edit: 65,
+  Tool: 75,
+  Vote: 72,
+  Check: 75,
+  Note: 74,
+  Chat: 62,
+  AI: 50,
+  Wiki: 62,
+  AQS: 72,
+  Spotlight: 69,
+  Story: 60,
+  PVP: 45,
+  Territory: 55,
+  Cook: 79,
+  Button: 76,
+  Casino: 70,
+  Battle: 73,
+  Bomb: 75,
+  "Wheel Battle": 65,
+  Reflex: 81,
+  Spy: 62,
+  Clicker: 72,
+  "Dice Duel": 60,
+  Marble: 60,
+  GCrown: 67,
+  Fate: 73,
+  Time: 77,
+  Music: 56,
+  Piano: 65,
+  Balance: 57,
+  Vault: 70,
+  Risk: 67,
+  EDU: 35,
 };
+const maturityLabel = score => score == null ? '미분류' : score >= 85 ? '안정화' : score >= 70 ? '개발 중' : score >= 50 ? '베타' : '초기 개발';
+
 
 /* ======================================================
    ELEMENTS
@@ -1085,8 +1088,9 @@ function render(){
           </div>
 
 
-          <div class="fw-maturity" title="제작자 분류이며 자동 측정한 품질 점수가 아닙니다">
-            <div class="fw-maturity-caption"><span>개발 상태 <small>(제작자 분류)</small></span><strong>${project.name === 'EDU' ? '베타' : projectMaturity[project.name] == null ? '미분류' : projectMaturity[project.name] >= 90 ? '안정화 단계' : projectMaturity[project.name] >= 70 ? '베타' : '실험 중'}</strong></div>
+          <div class="fw-maturity" title="2026-10-30 기준 제작자 추정치입니다. 자동 검사·완성 보증이 아니며, 실제 버그와 신규 기능에 따라 달라질 수 있습니다.">
+            <div class="fw-maturity-caption"><span>개발 상태 <small>(추정)</small></span><strong>${maturityLabel(projectMaturity[project.name])} · ${projectMaturity[project.name] == null ? '—' : projectMaturity[project.name] + '%'}</strong></div>
+            <div class="fw-maturity-track" role="progressbar" aria-label="${escapeHTML(project.name)} 개발 진행률 추정" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${projectMaturity[project.name] ?? 0}"><div class="fw-maturity-fill" style="width:${projectMaturity[project.name] ?? 0}%"></div></div>
           </div>
           <div class="cardBottom">
 
