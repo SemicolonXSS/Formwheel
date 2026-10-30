@@ -209,7 +209,8 @@ function refresh(){
  // A validated theme ID in a project link is the only portable cross-page hint.
  // The purchasing page still controls purchase/refund and exclusive access.
  const incoming=new URLSearchParams(location.search).get('fwTheme');
- current=entitled(requested)?requested:null;
+ // Explicit ?fwTheme= links may render a visual-only preview; never grant ownership.
+ current=entitled(requested)?requested:((incoming && Object.hasOwn(palettes,incoming) && incoming.startsWith('level2-'))?incoming:null);
  // Preserve the preference until asynchronous entitlement verification completes.
  return current;
 }
