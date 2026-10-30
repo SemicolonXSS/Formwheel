@@ -70,7 +70,7 @@ onAuthStateChanged(auth,async user=>{
     // Preserve any additional local updates made while the network request ran.
     const latest=read();
     if(latest===local)writeBalance(saved);
-    else if(latest!==null)baseline=(BigInt(saved)+BigInt(latest)-BigInt(local)).toString();
+    else if(latest!==null)writeBalance((BigInt(saved)+BigInt(latest)-BigInt(local)).toString());
     info("saved");
    }catch(err){console.warn("Rapid account update failed",err);info("error");}
    finally{busy=false;}
