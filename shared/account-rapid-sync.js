@@ -39,7 +39,13 @@ onAuthStateChanged(auth,async user=>{
   stop=onValue(node,snap=>{
    if(ticket!==session)return;
    const n=digits(snap.val()?.balance);if(n===null||busy)return;
-   if(n!==known){known=n;baseline=n;writeBalance(n);}
+   if(n!==known){
+    // Never replace a newer local exchange/purchase with a delayed server snapshot.
+    // The polling transaction will reconcile the pending local delta.
+    const pending=read();
+    if(pending!==null&&baseline!==null&&pending!==baseline)return;
+    known=n;baseline=n;writeBalance(n);
+   }
   },err=>{console.warn("Rapid realtime sync failed",err);info("error")});
   poll=setInterval(async()=>{
    if(ticket!==session||busy||document.visibilityState==="hidden")return;
@@ -48,9 +54,24 @@ onAuthStateChanged(auth,async user=>{
    // on every write because doing so would reverse legitimate spending.
    busy=true;
    try{
-    await set(node,{balance:local,updatedAt:Date.now()});
+    const previous=baseline;
+    const delta=BigInt(local)-BigInt(previous);
+    const result=await runTransaction(node,current=>{
+     const remote=digits(current?.balance)||"0";
+     const next=BigInt(remote)+delta;
+     if(next<0n)return; // Do not permit an overdraft under concurrent spending.
+     return {...(current&&typeof current==="object"?current:{}),balance:next.toString(),updatedAt:Date.now()};
+    },{applyLocally:false});
+    if(!result.committed){info("conflict");return;}
+    const saved=digits(result.snapshot.val()?.balance);
+    if(saved===null)throw Error("Invalid synchronized wallet balance");
     if(ticket!==session)return;
-    known=local;baseline=local;info("saved");
+    known=saved;baseline=saved;
+    // Preserve any additional local updates made while the network request ran.
+    const latest=read();
+    if(latest===local)writeBalance(saved);
+    else if(latest!==null)baseline=(BigInt(saved)+BigInt(latest)-BigInt(local)).toString();
+    info("saved");
    }catch(err){console.warn("Rapid account update failed",err);info("error");}
    finally{busy=false;}
   },1500);
