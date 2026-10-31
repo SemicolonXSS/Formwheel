@@ -4,6 +4,7 @@
 'use strict';
 const key='fw-global-theme-v1';
 const palettes={
+ 'haunted-night':['#170c29','#2c1741','#ffcf87','#ff8a32'],
  sunset:['#fff0e8','#fff9f4','#ad3867','#ed9365'],
  forest:['#eaf7eb','#f7fff7','#176b49','#489467'],
  neon:['#f2eaff','#fdfaff','#6730bd','#9a55e5'],
@@ -180,6 +181,9 @@ const isPlaytesterTheme=id=>typeof id==='string'&&['playtester-purple','playtest
 const shopKey='formwheel_rapid_shop_beta_v1';
 function entitled(id){
  if(!Object.hasOwn(palettes,id))return false;
+ if(id==='haunted-night'){
+  try{const h=JSON.parse(localStorage.getItem('fw-halloween-2026-v1')||'{}');if(Number(h.caught)>=30)return true;}catch{}
+ }
  if(isPlaytesterTheme(id))return approvedPlaytester;
  try{
   const shop=JSON.parse(localStorage.getItem(shopKey)||'null');
