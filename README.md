@@ -1,13 +1,44 @@
+<div align="center">
+
 # 🎡 Formwheel
 
-**Make · Join · Play · Explore**
+### Make · Join · Play · Explore
 
-게임, 추첨, 퀴즈, 음악, 제작 도구를 하나의 공간에서 만나는 웹 프로젝트 플랫폼입니다. 각 프로젝트는 독립적으로 개발되며, **Formwheel Hub**에서 찾아 실행할 수 있습니다.
+**게임부터 창작 도구까지, 심심할 때 바로!**
 
-[![Open Hub](https://img.shields.io/badge/🎡_Formwheel-Hub-3439bd?style=for-the-badge)](https://semicolonxss.github.io/Formwheel/)
-[![Project status](https://img.shields.io/badge/개발_현황-Check-566276?style=for-the-badge)](https://semicolonxss.github.io/Formwheel_Check/)
+설치 없이 웹에서 게임을 즐기고, 퀴즈·룰렛·음악 등 나만의 콘텐츠도 만들어 보세요.  
+여러 프로젝트를 하나의 **Formwheel Hub**에서 찾아 실행할 수 있습니다.
 
-> **바로 시작하기:** [Formwheel Hub 열기](https://semicolonxss.github.io/Formwheel/) · [개선점 보내기](https://semicolonxss.github.io/Formwheel/feedback.html)
+[![Formwheel Hub](https://img.shields.io/badge/PLAY-Formwheel_Hub-7C3AED?style=for-the-badge)](https://semicolonxss.github.io/Formwheel/)
+[![Development Status](https://img.shields.io/badge/STATUS-Formwheel_Check-475569?style=for-the-badge)](https://semicolonxss.github.io/Formwheel_Check/)
+[![Feedback](https://img.shields.io/badge/FEEDBACK-의견_보내기-F97316?style=for-the-badge)](https://semicolonxss.github.io/Formwheel/feedback.html)
+
+**[🚀 지금 시작하기](https://semicolonxss.github.io/Formwheel/)** · **[🧭 개발 현황](https://semicolonxss.github.io/Formwheel_Check/)** · **[💬 개선점 제안](https://semicolonxss.github.io/Formwheel/feedback.html)**
+
+</div>
+
+---
+
+## 👋 Formwheel은 어떤 곳인가요?
+
+**하나의 Hub, 여러 가지 즐길 거리.** 혼자 즐기는 게임부터 친구와 함께하는 대결, 직접 만드는 콘텐츠까지 자유롭게 탐색하는 웹 프로젝트 모음입니다.
+
+| 🎮 Play | 🛠️ Create | 🧭 Explore |
+| :--- | :--- | :--- |
+| 반응 속도, 클릭커, 전략·대결 게임 | 룰렛, 퀴즈, 음악, 설문 등 | 검색, 분류, 즐겨찾기와 프로젝트 발견 |
+
+> **처음 방문했나요?** [Hub 열기](https://semicolonxss.github.io/Formwheel/) → 관심 있는 프로젝트 선택 → 바로 시작! 계정이나 온라인 연결이 필요한 기능은 프로젝트별 안내를 확인해 주세요.
+
+## 📚 빠른 이동
+
+[주요 기능](#-formwheel에서-할-수-있는-일) ·
+[프로젝트 목록](#-프로젝트-둘러보기) ·
+[Rapid·테마](#-rapid--테마--개인화) ·
+[시작·설치](#-시작하기) ·
+[개발자 안내](#-기술-스택과-구조) ·
+[보안](#-데이터와-보안) ·
+[자주 묻는 질문](#-자주-묻는-질문) ·
+[피드백](#-개발-현황과-피드백)
 
 ---
 
@@ -178,6 +209,25 @@ Formwheel은 기능을 계속 확장하고 개선 중인 프로젝트입니다. 
 - **소스 코드:** [GitHub · SemicolonXSS](https://github.com/SemicolonXSS)
 
 기능이 화면에 존재하는 것과 실제 운영에서 검증이 완료된 것은 다릅니다. 사용 전 프로젝트별 최신 안내를 확인해 주세요.
+
+## ❓ 자주 묻는 질문
+
+**Q. Formwheel은 무료인가요?**  
+웹에서 제공되는 게임과 도구를 무료로 둘러볼 수 있습니다. Rapid는 일부 프로젝트에서 사용하는 **현금 가치가 없는 가상 재화**입니다.
+
+**Q. 반드시 로그인해야 하나요?**  
+모든 프로젝트에서 필수인 것은 아닙니다. 계정·온라인 기록·친구 기능 등은 프로젝트에 따라 로그인이 필요할 수 있습니다.
+
+**Q. 휴대폰에서도 실행할 수 있나요?**  
+PC와 모바일 브라우저를 지원하도록 개발하고 있습니다. 다만 프로젝트별 완성도와 화면 지원 범위는 다르며, 설치형 웹 앱 지원은 기기·브라우저에 따라 달라집니다.
+
+**Q. 기록은 다른 기기에서도 유지되나요?**  
+저장 방식이 프로젝트마다 다릅니다. 브라우저에만 저장되는 데이터는 다른 기기에 자동으로 나타나지 않을 수 있습니다. 중요한 기록의 동기화를 일률적으로 보장하지 않습니다.
+
+**Q. 문제가 생기면 어디에 알려주나요?**  
+[Hub 피드백](https://semicolonxss.github.io/Formwheel/feedback.html)으로 프로젝트 이름, 재현 방법, 사용 기기와 브라우저를 알려주세요. 비밀번호나 인증 토큰은 보내지 마세요.
+
+---
 
 ## 📜 라이선스
 
