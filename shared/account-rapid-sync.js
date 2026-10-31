@@ -13,6 +13,15 @@ const digits=value=>{
  return v!==null && /^\d{1,500}$/.test(v)?BigInt(v).toString():null;
 };
 const max=(a,b)=>BigInt(a)>=BigInt(b)?a:b;
+const AUDIT_KEY="formwheel_rapid_sync_audit_v1";
+function audit(event,values={}){
+ try{
+  const log=JSON.parse(localStorage.getItem(AUDIT_KEY)||"[]");
+  log.push({time:new Date().toISOString(),event,...values});
+  localStorage.setItem(AUDIT_KEY,JSON.stringify(log.slice(-40)));
+ }catch{}
+}
+
 function read(){
  try{const json=JSON.parse(localStorage.getItem(KEY)||"null");return digits(json?.balance);}catch{return null;}
 }
@@ -26,7 +35,7 @@ onAuthStateChanged(auth,async user=>{
  const ticket=++session;clearInterval(poll);poll=null;baseline=null;busy=false;
  if(!user||user.isAnonymous){info("guest");return;}
  const node=ref(db,"formwheelV2/rapidWallets/"+user.uid);
- const initial=read();info("connecting");
+ const initial=read();audit("connect",{local:initial});info("connecting");
  try{
   const result=await runTransaction(node,current=>{
    const existing=digits(current?.balance)||"0";
@@ -37,7 +46,7 @@ onAuthStateChanged(auth,async user=>{
   if(merged===null)throw Error("Unexpected account wallet format");
   // A conversion may happen while the initial server transaction is in flight.
   // Preserve that local delta rather than overwriting it with the initial snapshot.
-  const now=read();
+  const now=read();audit("initial-merge",{localBefore:initial,localNow:now,server:merged});
   const pending=now!==null&&initial!==null?BigInt(now)-BigInt(initial):0n;
   const initialDisplay=BigInt(merged)+pending;
   if(initialDisplay>=0n)writeBalance(initialDisplay.toString());
@@ -47,6 +56,7 @@ onAuthStateChanged(auth,async user=>{
   poll=setInterval(async()=>{
    if(ticket!==session||busy||document.visibilityState==="hidden")return;
    const local=read();if(local===null||local===baseline)return;
+   audit("local-change",{local,baseline});
    // Post-login changes are real transactions (including purchases); do not apply max
    // on every write because doing so would reverse legitimate spending.
    busy=true;
@@ -61,6 +71,7 @@ onAuthStateChanged(auth,async user=>{
     },{applyLocally:false});
     if(!result.committed){info("conflict");return;}
     const saved=digits(result.snapshot.val()?.balance);
+    audit("transaction",{local,previous,saved,delta:delta.toString()});
     if(saved===null)throw Error("Invalid synchronized wallet balance");
     if(ticket!==session)return;
     baseline=saved;
@@ -69,9 +80,9 @@ onAuthStateChanged(auth,async user=>{
     if(latest===local)writeBalance(saved);
     else if(latest!==null)writeBalance((BigInt(saved)+BigInt(latest)-BigInt(local)).toString());
     info("saved");
-   }catch(err){console.warn("Rapid account update failed",err);info("error");}
+   }catch(err){audit("save-error",{reason:String(err?.code||err?.message||err)});console.warn("Rapid account update failed",err);info("error");}
    finally{busy=false;}
   },1500);
  }catch(err){if(ticket!==session)return;console.warn("Rapid account merge failed",err);info("error");}
 });
-window.FormwheelRapidAccount={getStatus:()=>({signedIn:!!auth.currentUser&&!auth.currentUser.isAnonymous,connected:baseline!==null})};
+window.FormwheelRapidAccount={getStatus:()=>({signedIn:!!auth.currentUser&&!auth.currentUser.isAnonymous,connected:baseline!==null}),getDiagnostics:()=>{try{return JSON.parse(localStorage.getItem(AUDIT_KEY)||"[]")}catch{return []}}};
