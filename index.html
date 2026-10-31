@@ -250,7 +250,7 @@ body.fw-beta-simple > :not(#fw-beta-switch):not(#fw-beta-simple-view):not(#fw-ha
 <nav aria-label="메인 메뉴">
 <a href="#" id="fw-nav-quick">⚔️ 빠른 대전</a>
 <a href="#" id="fw-nav-friend">🎲 랜덤 플레이</a>
-<a href="#" id="fw-nav-solo" title="혼자 할 수 있는 게임으로 바로 이동">🌀 혼자 플레이</a>
+<a href="#" id="fw-nav-solo" title="혼자 할 수 있는 게임을 랜덤으로 선택">🌀 랜덤 혼자 플레이</a>
 <a href="#projects">🔎 찾기</a>
 <a href="./more.html">☰ 더보기</a>
 </nav>
@@ -328,7 +328,7 @@ header .fw-profile-trigger{margin-left:0}
 
 
 <div class="heroButtons">
-<a class="heroButton primary" href="#" id="fw-hero-solo">🌀 게임 바로 시작</a>
+<a class="heroButton primary" href="#" id="fw-hero-solo">🎲 랜덤 게임 시작</a>
 <a class="heroButton secondary" href="#projects">🔎 프로젝트 찾아보기</a>
 <a class="heroButton secondary" href="./workshop/" style="border-color:#f2bf8d;color:#a95517">🎨 작품 만들기</a>
 
@@ -370,6 +370,7 @@ header .fw-profile-trigger{margin-left:0}
   id="search"
   class="searchBox"
   type="search"
+  aria-label="프로젝트 이름, 기능, 키워드 검색"
   placeholder="🔎 이름 · 기능 · 키워드 검색..."
   autocomplete="off"
 >
@@ -428,9 +429,9 @@ header .fw-profile-trigger{margin-left:0}
   <button type="button" id="fw-favorites-clear">고정 전체 해제</button>
 </div>
 <div class="detailFilters" id="fw-filter-panel" aria-label="상세 필터">
-<label>인원 <select id="modeFilter"><option value="all">전체 인원</option><option value="solo">1인 가능</option><option value="multi">다인 가능</option><option value="both">1인·다인 모두</option></select></label>
-<label>연결 <select id="connectionFilter"><option value="all">전체 연결</option><option value="online">온라인</option><option value="offline">오프라인</option></select></label>
-<label>난이도 <select id="difficultyFilter"><option value="all">전체 난이도</option><option value="쉬움">쉬움</option><option value="보통">보통</option><option value="어려움">어려움</option></select></label>
+<label>인원 <select id="modeFilter" aria-label="플레이 인원"><option value="all">전체 인원</option><option value="solo">1인 가능</option><option value="multi">다인 가능</option><option value="both">1인·다인 모두</option></select></label>
+<label>연결 <select id="connectionFilter" aria-label="인터넷 연결 조건"><option value="all">전체 연결</option><option value="online">온라인</option><option value="offline">오프라인</option></select></label>
+<label>난이도 <select id="difficultyFilter" aria-label="프로젝트 난이도"><option value="all">전체 난이도</option><option value="쉬움">쉬움</option><option value="보통">보통</option><option value="어려움">어려움</option></select></label>
 <button id="resetFilters" type="button" class="filterButton">필터 초기화</button>
 </div>
 <div class="subToolbar">
@@ -440,7 +441,7 @@ header .fw-profile-trigger{margin-left:0}
 </div>
 
 
-<select id="sort" class="sortSelect">
+<select id="sort" class="sortSelect" aria-label="프로젝트 정렬 기준">
 
 <option value="creator" selected>제작자 추천 순</option>
 <option value="maturity">개발 상태 순 (제작자 분류)</option>
@@ -598,7 +599,7 @@ document.querySelectorAll(".categoryButtons .filterButton").forEach(button=>{
   });
 });
 </script>
-<script src="./assets/app.js?v=20261030-hub-fixes"></script>
+<script src="./assets/app.js?v=20261031-hub-navigation1"></script>
 <script src="./assets/theme-bulk.js?v=20261022-premium13"></script>
 <script>
 (function(){
@@ -1019,11 +1020,12 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 (function(){
  const KEY='fw.smartReturn.enabled.v1', LAST='fw.smartReturn.last.v1';
  const isOn=localStorage.getItem(KEY)==='true';
+ function canResumeProject(value){try{const u=new URL(value);return u.protocol==='https:'&&u.hostname==='semicolonxss.github.io'&&(/^\/Formwheel_[\w-]+\//i.test(u.pathname)||['/Formwheel/edu.html','/Formwheel/calendar.html','/Formwheel/workshop/'].includes(u.pathname));}catch{return false}}
  if(isOn&&!new URL(location.href).searchParams.has('stay')&&!sessionStorage.getItem('fw.smartReturn.redirected.v2')){
  let last=null;try{last=JSON.parse(localStorage.getItem(LAST)||'null')}catch{}
  if(last&&typeof last.url==='string'){try{
  const u=new URL(last.url);
- if(u.protocol==='https:'&&u.hostname==='semicolonxss.github.io'&&/^\/Formwheel_[\w-]+\//i.test(u.pathname)){
+ if(canResumeProject(u.href)){
  sessionStorage.setItem('fw.smartReturn.redirected.v2','1');location.replace(u.href);
  }
  }catch{}}
@@ -1032,7 +1034,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
  const panel=document.createElement('section');
  panel.style.cssText='margin:12px auto;padding:12px 16px;max-width:1080px;border:1px solid #cbd5e1;border-radius:14px;background:#f8fafc;color:#243047;font:inherit';
  panel.innerHTML='<label style="display:flex;align-items:center;gap:9px;font-weight:700"><input type="checkbox" id="fw-resume-enabled"> 🧭 스마트 복귀 사용</label><div id="fw-resume-detail" style="margin-top:8px"></div>';
- const mount=()=>{document.body.insertBefore(panel,document.body.firstChild);const toggle=panel.querySelector('#fw-resume-enabled'),detail=panel.querySelector('#fw-resume-detail');toggle.checked=localStorage.getItem(KEY)==='true';function render(){detail.replaceChildren();if(!toggle.checked){detail.textContent='기본 꺼짐 · 켜면 다음 방문에 마지막 프로젝트로 자동 복귀합니다.';return}let saved;try{saved=JSON.parse(localStorage.getItem(LAST)||'null')}catch{}if(saved&&typeof saved.url==='string'&&/^https:\/\/semicolonxss\.github\.io\/Formwheel_[\w-]+\//i.test(saved.url)){const a=document.createElement('a');a.href=saved.url;a.textContent='▶ '+String(saved.name||'최근 프로젝트').slice(0,60)+' 이어서 열기';a.style.cssText='color:#334bb0;font-weight:700;margin-right:14px';detail.append(a);const b=document.createElement('button');b.textContent='기록 삭제';b.type='button';b.addEventListener('click',()=>{localStorage.removeItem(LAST);render()});detail.append(b)}else detail.textContent='아직 최근 프로젝트가 없습니다.'}toggle.addEventListener('change',()=>{localStorage.setItem(KEY,String(toggle.checked));sessionStorage.removeItem('fw.smartReturn.redirected.v2');render()});document.addEventListener('click',e=>{if(!toggle.checked)return;const a=e.target.closest('a[href]');if(!a)return;try{const u=new URL(a.href,location.href);if(u.hostname==='semicolonxss.github.io'&&/^\/Formwheel_[\w-]+\//i.test(u.pathname)){localStorage.setItem(LAST,JSON.stringify({url:u.href,name:a.textContent.trim().slice(0,60),at:Date.now()}))}}catch{}} ,true);render()};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();
+ const mount=()=>{document.body.insertBefore(panel,document.body.firstChild);const toggle=panel.querySelector('#fw-resume-enabled'),detail=panel.querySelector('#fw-resume-detail');toggle.checked=localStorage.getItem(KEY)==='true';function render(){detail.replaceChildren();if(!toggle.checked){detail.textContent='기본 꺼짐 · 켜면 다음 방문에 마지막 프로젝트로 자동 복귀합니다.';return}let saved;try{saved=JSON.parse(localStorage.getItem(LAST)||'null')}catch{}if(saved&&typeof saved.url==='string'&&canResumeProject(saved.url)){const a=document.createElement('a');a.href=saved.url;a.textContent='▶ '+String(saved.name||'최근 프로젝트').slice(0,60)+' 이어서 열기';a.style.cssText='color:#334bb0;font-weight:700;margin-right:14px';detail.append(a);const b=document.createElement('button');b.textContent='기록 삭제';b.type='button';b.addEventListener('click',()=>{localStorage.removeItem(LAST);render()});detail.append(b)}else detail.textContent='아직 최근 프로젝트가 없습니다.'}toggle.addEventListener('change',()=>{localStorage.setItem(KEY,String(toggle.checked));sessionStorage.removeItem('fw.smartReturn.redirected.v2');render()});document.addEventListener('click',e=>{if(!toggle.checked)return;const a=e.target.closest('a[href]');if(!a)return;try{const u=new URL(a.href,location.href);if(canResumeProject(u.href)){localStorage.setItem(LAST,JSON.stringify({url:u.href,name:a.textContent.trim().slice(0,60),at:Date.now()}))}}catch{}} ,true);render()};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();
 })();
 </script>
 <style>
