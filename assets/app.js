@@ -1099,7 +1099,6 @@ function render(){
               class="openButton"
               href="${project.url}"
               data-fw-project="${escapeHTML(project.name)}"
-              target="_blank"
               rel="noopener noreferrer"
             >
               열기 →
