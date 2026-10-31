@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#27245b"><title>SEREN RANDOM 40 · Formwheel</title><link rel="icon" href="./assets/formwheel-favicon.svg"><link rel="stylesheet" href="./assets/formwheel-brand.css"><style>
+:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;font:15px/1.55 system-ui,sans-serif;background:#111127;color:#f1f0ff}a{color:#aeb9ff}.top{padding:15px 20px;background:#1b1a37;border-bottom:1px solid #393653}.wrap{max-width:1050px;margin:auto;padding:26px 18px 70px}.eyebrow{color:#bbadff;font-size:12px;font-weight:800;letter-spacing:.1em}h1{font-size:clamp(30px,6vw,52px);margin:5px 0}p{color:#c9c7dc}.panel{border:1px solid #393956;background:#1d1d39;border-radius:20px;padding:19px;margin:20px 0}.toolbar{display:flex;flex-wrap:wrap;gap:10px}input,select,button{font:inherit;border:1px solid #5b567f;border-radius:11px;padding:11px;color:#fff;background:#282749}input{flex:1;min-width:170px}button{cursor:pointer}button:hover{background:#494075}button:focus-visible,a:focus-visible{outline:3px solid #ffa766;outline-offset:2px}.primary{background:#644be0;border-color:#644be0}.stats{font-weight:750;margin:12px 0}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:13px}.item{border:1px solid #41415d;border-radius:15px;background:#20203e;padding:15px;display:flex;flex-direction:column;gap:10px}.item h2{font-size:16px;line-height:1.35;margin:0}.chip{display:inline-block;color:#c7beff;font-size:12px}.state{color:#9ed6c6;font-size:12px}.actions{display:flex;gap:7px;margin-top:auto}.actions button{padding:7px 10px;flex:1;font-size:13px}.fav{color:#ffca74}.note{background:#2a273d;padding:12px;border-radius:12px}small{color:#bab8cf}footer{margin-top:28px;color:#aaa7c0}
+</style></head><body><header class="top"><a href="./">← Formwheel Hub</a> · <a href="./more.html">더보기</a></header><main class="wrap"><span class="eyebrow">SEREN · RANDOM PACK</span><h1>세렌 랜덤 40</h1><p>40개의 후보를 한곳에서 살펴보는 실험실입니다. 카드의 <strong>관심</strong>과 <strong>검토</strong> 표시는 이 브라우저에만 저장되며, 실제 기능 구현이나 Rapid·Firebase 데이터에는 영향을 주지 않습니다.</p>
+<section class="panel"><div class="toolbar"><input id="search" type="search" placeholder="기능 검색" aria-label="기능 검색"><select id="category" aria-label="분야"><option value="">모든 분야</option></select><select id="filter" aria-label="보기"><option value="all">전체 보기</option><option value="fav">관심 기능</option><option value="review">검토 완료</option></select></div><div class="stats" id="stats" aria-live="polite"></div><div class="toolbar"><button id="random" class="primary">🎲 랜덤 한 개 추천</button><button id="export">선택 기록 내보내기</button><button id="clear">개인 선택 초기화</button></div><p id="pick" aria-live="polite"></p></section>
+<section class="note"><strong>안전 원칙</strong><div>기능별 실제 구현은 기존 상태와 인증 권한을 확인한 뒤 별도 단계로 진행합니다. 특히 잔액·방문자·업적 데이터를 덮어쓰지 않습니다.</div></section><section class="grid" id="cards" aria-label="기능 40개"></section><footer>Formwheel SEREN PACK · 검토 대시보드 v1 · <a href="./">Hub 돌아가기</a></footer></main>
+<script id="seren-data" type="application/json">[
+  {
+    "id": 1,
+    "category": "Hub",
+    "name": "프로젝트 미리보기 영상",
+    "status": "planned"
+  },
+  {
+    "id": 2,
+    "category": "Hub",
+    "name": "홈 레이아웃 프리셋",
+    "status": "planned"
+  },
+  {
+    "id": 3,
+    "category": "Hub",
+    "name": "프로젝트 태그 구독",
+    "status": "planned"
+  },
+  {
+    "id": 4,
+    "category": "Hub",
+    "name": "검색 오타 자동 수정",
+    "status": "planned"
+  },
+  {
+    "id": 5,
+    "category": "Hub",
+    "name": "키보드 명령어 팔레트",
+    "status": "planned"
+  },
+  {
+    "id": 6,
+    "category": "Hub",
+    "name": "프로젝트 추천 이유 표시",
+    "status": "planned"
+  },
+  {
+    "id": 7,
+    "category": "Hub",
+    "name": "새 기능 체험 센터",
+    "status": "planned"
+  },
+  {
+    "id": 8,
+    "category": "Hub",
+    "name": "프로젝트별 도움말",
+    "status": "planned"
+  },
+  {
+    "id": 9,
+    "category": "Rapid",
+    "name": "Rapid 지출 분석",
+    "status": "planned"
+  },
+  {
+    "id": 10,
+    "category": "Rapid",
+    "name": "수입 출처 분석",
+    "status": "planned"
+  },
+  {
+    "id": 11,
+    "category": "Rapid",
+    "name": "저축 목표 시스템",
+    "status": "planned"
+  },
+  {
+    "id": 12,
+    "category": "Rapid",
+    "name": "상점 찜 목록",
+    "status": "planned"
+  },
+  {
+    "id": 13,
+    "category": "Rapid",
+    "name": "구매 취소 확인",
+    "status": "planned"
+  },
+  {
+    "id": 14,
+    "category": "Rapid",
+    "name": "잔액 변경 실시간 감사 로그",
+    "status": "planned"
+  },
+  {
+    "id": 15,
+    "category": "Games",
+    "name": "게임별 연습 난이도",
+    "status": "planned"
+  },
+  {
+    "id": 16,
+    "category": "Games",
+    "name": "게임별 입력 설정",
+    "status": "planned"
+  },
+  {
+    "id": 17,
+    "category": "Games",
+    "name": "게임 종료 결과 카드",
+    "status": "planned"
+  },
+  {
+    "id": 18,
+    "category": "Games",
+    "name": "게임별 버그 신고",
+    "status": "planned"
+  },
+  {
+    "id": 19,
+    "category": "Social",
+    "name": "공유용 결과 이미지",
+    "status": "planned"
+  },
+  {
+    "id": 20,
+    "category": "Social",
+    "name": "활동 공개 범위 설정",
+    "status": "planned"
+  },
+  {
+    "id": 21,
+    "category": "Social",
+    "name": "친구 알림 개별 설정",
+    "status": "planned"
+  },
+  {
+    "id": 22,
+    "category": "Achievements",
+    "name": "업적 진행률 상세화",
+    "status": "planned"
+  },
+  {
+    "id": 23,
+    "category": "Achievements",
+    "name": "업적 획득 날짜 표시",
+    "status": "planned"
+  },
+  {
+    "id": 24,
+    "category": "Achievements",
+    "name": "숨겨진 업적 힌트",
+    "status": "planned"
+  },
+  {
+    "id": 25,
+    "category": "Achievements",
+    "name": "시즌별 업적 보관함",
+    "status": "planned"
+  },
+  {
+    "id": 26,
+    "category": "Events",
+    "name": "이벤트 미리 알림",
+    "status": "planned"
+  },
+  {
+    "id": 27,
+    "category": "Events",
+    "name": "이벤트 참여 기록",
+    "status": "planned"
+  },
+  {
+    "id": 28,
+    "category": "Events",
+    "name": "이벤트 미션 진행률",
+    "status": "planned"
+  },
+  {
+    "id": 29,
+    "category": "Events",
+    "name": "지난 이벤트 아카이브",
+    "status": "planned"
+  },
+  {
+    "id": 30,
+    "category": "EDU",
+    "name": "문제 북마크",
+    "status": "planned"
+  },
+  {
+    "id": 31,
+    "category": "EDU",
+    "name": "학습 목표 설정",
+    "status": "planned"
+  },
+  {
+    "id": 32,
+    "category": "EDU",
+    "name": "오답 유형 분석",
+    "status": "planned"
+  },
+  {
+    "id": 33,
+    "category": "EDU",
+    "name": "맞춤형 복습 세트",
+    "status": "planned"
+  },
+  {
+    "id": 34,
+    "category": "Creator",
+    "name": "창작물 임시 저장",
+    "status": "planned"
+  },
+  {
+    "id": 35,
+    "category": "Creator",
+    "name": "색상 팔레트 저장",
+    "status": "planned"
+  },
+  {
+    "id": 36,
+    "category": "Admin",
+    "name": "방문 집계 중복 검사",
+    "status": "planned"
+  },
+  {
+    "id": 37,
+    "category": "Admin",
+    "name": "통계 화면 상태 유지",
+    "status": "planned"
+  },
+  {
+    "id": 38,
+    "category": "Admin",
+    "name": "오류 발생 빈도",
+    "status": "planned"
+  },
+  {
+    "id": 39,
+    "category": "System",
+    "name": "저장 충돌 감지",
+    "status": "planned"
+  },
+  {
+    "id": 40,
+    "category": "System",
+    "name": "기능별 자동 회귀 테스트",
+    "status": "planned"
+  }
+]</script>
+<script>
+(()=>{'use strict';
+const all=JSON.parse(document.getElementById('seren-data').textContent);
+const key='fw-seren-random40-v1';
+let saved={};try{const v=JSON.parse(localStorage.getItem(key)||'{}');if(v&&typeof v==='object')saved=v;}catch{}
+const $=id=>document.getElementById(id),list=$('cards'),search=$('search'),cat=$('category'),filter=$('filter');
+[...new Set(all.map(x=>x.category))].forEach(c=>{const opt=document.createElement('option');opt.value=c;opt.textContent=c;cat.append(opt)});
+const persist=()=>{try{localStorage.setItem(key,JSON.stringify(saved))}catch{ $('pick').textContent='저장 공간에 접근할 수 없어 이번 방문에서만 유지돼요.' }};
+const get=id=>saved[id]||{};
+const shown=()=>all.filter(x=>(!cat.value||x.category===cat.value)&&(!search.value||x.name.toLocaleLowerCase().includes(search.value.trim().toLocaleLowerCase()))&&(filter.value==='all'||(filter.value==='fav'&&get(x.id).fav)||(filter.value==='review'&&get(x.id).review)));
+function render(){
+ list.replaceChildren();
+ const results=shown();
+ $('stats').textContent='총 '+all.length+'개 · 현재 '+results.length+'개 · 관심 '+all.filter(x=>get(x.id).fav).length+'개 · 검토 '+all.filter(x=>get(x.id).review).length+'개';
+ for(const x of results){
+  const card=document.createElement('article');card.className='item';
+  const chip=document.createElement('span');chip.className='chip';chip.textContent='#'+x.id+' · '+x.category+' · 구현 후보';
+  const title=document.createElement('h2');title.textContent=x.name;
+  const status=document.createElement('span');status.className='state';status.textContent=get(x.id).review?'● 검토 표시됨':'○ 아직 검토 전';
+  const actions=document.createElement('div');actions.className='actions';
+  const fav=document.createElement('button');fav.type='button';fav.className=get(x.id).fav?'fav':'';fav.textContent=get(x.id).fav?'★ 관심':'☆ 관심';fav.setAttribute('aria-pressed',String(!!get(x.id).fav));
+  fav.addEventListener('click',()=>{saved[x.id]={...get(x.id),fav:!get(x.id).fav};persist();render()});
+  const review=document.createElement('button');review.type='button';review.textContent=get(x.id).review?'✓ 검토 취소':'✓ 검토';review.setAttribute('aria-pressed',String(!!get(x.id).review));
+  review.addEventListener('click',()=>{saved[x.id]={...get(x.id),review:!get(x.id).review};persist();render()});
+  actions.append(fav,review);card.append(chip,title,status,actions);list.append(card);
+ }
+ if(!results.length){const empty=document.createElement('p');empty.textContent='조건에 맞는 기능이 없어요.';list.append(empty)}
+}
+[search,cat,filter].forEach(el=>el.addEventListener(el===search?'input':'change',render));
+$('random').addEventListener('click',()=>{const entries=shown();if(!entries.length){$('pick').textContent='추천할 후보가 없어요. 필터를 바꿔주세요.';return;}const x=entries[Math.floor(Math.random()*entries.length)];$('pick').textContent='🎲 추천: #'+x.id+' '+x.name});
+$('export').addEventListener('click',()=>{const body=JSON.stringify({version:1,exportedAt:new Date().toISOString(),choices:all.map(x=>({...x,...get(x.id)}))},null,2);const url=URL.createObjectURL(new Blob([body],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='formwheel-seren-random40.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)});
+$('clear').addEventListener('click',()=>{if(!confirm('이 브라우저에 저장된 세렌 관심·검토 선택만 삭제할까요?'))return;saved={};persist();render()});
+render();
+})();
+</script></body></html>
