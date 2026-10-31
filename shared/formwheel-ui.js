@@ -177,6 +177,10 @@ body[data-fw-global-theme^="level2-"]::before{background-image:var(--fw-art-patt
 body[data-fw-global-theme^="level2-"]::after{content:var(--fw-art-symbols)!important;animation:fw-lux-stars var(--fw-art-speed,6s) linear infinite!important}
 @media(prefers-reduced-motion:reduce){body[data-fw-global-theme^="level2-"]::after{animation:none!important}}
 `;
+
+const hauntedStyle=document.createElement('style');
+hauntedStyle.textContent='body[data-fw-global-theme="haunted-night"]{background:radial-gradient(circle at 80% 10%,#6d2d70,transparent 38%),linear-gradient(135deg,#150b27,#3d1948,#170c29)!important;color:#ffe7cf!important}body[data-fw-global-theme="haunted-night"] :is(.card,.panel){border-color:#ff9f50!important;box-shadow:0 8px 28px #15082288,0 0 14px #ff913633!important}body[data-fw-global-theme="haunted-night"]::after{content:"👻 ✦ 🎃 ✧ 👻";position:fixed;right:2%;bottom:3%;pointer-events:none;z-index:2;font-size:clamp(20px,3vw,36px);opacity:.7;animation:fw-haunt-float 6s ease-in-out infinite alternate}@keyframes fw-haunt-float{to{transform:translateY(-20px)}}@media(prefers-reduced-motion:reduce){body[data-fw-global-theme="haunted-night"]::after{animation:none}}';
+document.head.append(hauntedStyle);
 const isPlaytesterTheme=id=>typeof id==='string'&&['playtester-purple','playtester-red','playtester-blue'].includes(id);
 const shopKey='formwheel_rapid_shop_beta_v1';
 function entitled(id){
