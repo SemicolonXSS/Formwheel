@@ -3,7 +3,7 @@
    for trusted economy/leaderboards. Never combines balances by addition. */
 import {initializeApp,getApps} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 import {getAuth,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
-import {getDatabase,ref,runTransaction,onValue,set} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
+import {getDatabase,ref,runTransaction} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
 const config={apiKey:"AIzaSyBreTSe1m0-xlbF4aupnU5isRZCihR25IE",authDomain:"formwheel.firebaseapp.com",databaseURL:"https://formwheel-default-rtdb.firebaseio.com",projectId:"formwheel",storageBucket:"formwheel.firebasestorage.app",messagingSenderId:"431583088241",appId:"1:431583088241:web:74e0e34ea1e3e1170c55d0"};
 const app=getApps().find(x=>x.name==="[DEFAULT]")||initializeApp(config);
 const auth=getAuth(app),db=getDatabase(app);
@@ -20,10 +20,10 @@ function writeBalance(value){
  const n=digits(value);if(n===null)return;
  try{const w=JSON.parse(localStorage.getItem(KEY)||"{}");localStorage.setItem(KEY,JSON.stringify({...w,balance:n}));window.dispatchEvent(new CustomEvent("formwheel-rapid-synced",{detail:{balance:n}}));}catch(e){console.warn("Rapid local write failed",e);}
 }
-let session=0,stop=null,poll=null,known=null,baseline=null,busy=false;
+let session=0,poll=null,baseline=null,busy=false;
 const info=s=>window.dispatchEvent(new CustomEvent("formwheel-rapid-account-sync",{detail:{state:s}}));
 onAuthStateChanged(auth,async user=>{
- const ticket=++session;stop?.();stop=null;clearInterval(poll);poll=null;known=null;baseline=null;
+ const ticket=++session;clearInterval(poll);poll=null;baseline=null;busy=false;
  if(!user||user.isAnonymous){info("guest");return;}
  const node=ref(db,"formwheelV2/rapidWallets/"+user.uid);
  const initial=read();info("connecting");
@@ -35,18 +35,15 @@ onAuthStateChanged(auth,async user=>{
   if(ticket!==session)return;
   const merged=digits(result.snapshot.val()?.balance);
   if(merged===null)throw Error("Unexpected account wallet format");
-  writeBalance(merged);known=merged;baseline=merged;info("ready");
-  stop=onValue(node,snap=>{
-   if(ticket!==session)return;
-   const n=digits(snap.val()?.balance);if(n===null||busy)return;
-   if(n!==known){
-    // Never replace a newer local exchange/purchase with a delayed server snapshot.
-    // The polling transaction will reconcile the pending local delta.
-    const pending=read();
-    if(pending!==null&&baseline!==null&&pending!==baseline)return;
-    known=n;baseline=n;writeBalance(n);
-   }
-  },err=>{console.warn("Rapid realtime sync failed",err);info("error")});
+  // A conversion may happen while the initial server transaction is in flight.
+  // Preserve that local delta rather than overwriting it with the initial snapshot.
+  const now=read();
+  const pending=now!==null&&initial!==null?BigInt(now)-BigInt(initial):0n;
+  const initialDisplay=BigInt(merged)+pending;
+  if(initialDisplay>=0n)writeBalance(initialDisplay.toString());
+  baseline=merged;info("ready");
+  // No live server -> local overwrite: another tab/device could publish an older
+  // snapshot while this tab has a newly earned balance. Poll sends local deltas.
   poll=setInterval(async()=>{
    if(ticket!==session||busy||document.visibilityState==="hidden")return;
    const local=read();if(local===null||local===baseline)return;
@@ -66,7 +63,7 @@ onAuthStateChanged(auth,async user=>{
     const saved=digits(result.snapshot.val()?.balance);
     if(saved===null)throw Error("Invalid synchronized wallet balance");
     if(ticket!==session)return;
-    known=saved;baseline=saved;
+    baseline=saved;
     // Preserve any additional local updates made while the network request ran.
     const latest=read();
     if(latest===local)writeBalance(saved);
