@@ -33,6 +33,7 @@ IMPORTANT:
 
 
 const projects = [
+  {name:"Calendar",keywords:"캘린더 달력 일정 관리 공유 코드 이벤트",icon:"📅",className:"orange",category:"app",mode:"solo",connection:"offline",difficulty:"쉬움",description:"일정을 기록하고 코드로 공유하는 나만의 캘린더. Formwheel 이벤트도 함께 확인!",url:"https://semicolonxss.github.io/Formwheel/calendar.html",addedAt:"2026-10-31T00:00:00Z",recent:true},
   {name:"EDU",keywords:"공부 학습 고등수학 합성함수 역함수 교육",icon:"🎓",className:"orange",category:"app",mode:"solo",connection:"offline",difficulty:"보통",description:"합성함수·역함수를 개념부터 응용까지 배우는 고등수학 학습 로드맵. 단계를 자유롭게 건너뛸 수 있는 베타.",url:"https://semicolonxss.github.io/Formwheel/edu.html",addedAt:"2026-10-30T00:00:00Z",recent:true},
   {name:"Sports",keywords:"운동 축구 농구 공 슛 스포츠",icon:"⚽",className:"green",category:"game",mode:"both",connection:"offline",difficulty:"쉬움",description:"축구·농구 2종목! CPU 대전과 한 기기 2인 대전, 슛·킥·점프가 가능한 스포츠 게임.",url:"https://semicolonxss.github.io/Formwheel/sports/",addedAt:"2026-10-24T06:45:00Z",recent:true},
   {name:"Board",keywords:"체스 바둑 오목 오델로 보드게임",icon:"♟️",className:"purple",category:"game",mode:"both",connection:"online",difficulty:"보통",description:"체스·바둑·오목·오델로 4종! 규칙을 읽고 로컬 2인 대전 또는 방 코드로 친구와 온라인 플레이.",url:"https://semicolonxss.github.io/Formwheel/board/",addedAt:"2026-10-24T05:30:00Z",recent:true},
