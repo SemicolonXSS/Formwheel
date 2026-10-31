@@ -255,6 +255,10 @@ const displayWhen=value=>Number.isFinite(Number(value))&&Number(value)>0?new Dat
 const metric=(label,value)=>{const item=document.createElement("div");item.style.cssText="padding:12px;border-radius:12px;background:#f4f6fd;min-width:0";const l=document.createElement("div");l.style.cssText="font-size:11px;color:#626c83";l.textContent=label;const v=document.createElement("strong");v.style.cssText="font-size:19px;display:block;margin-top:4px;overflow-wrap:anywhere";v.textContent=value;item.append(l,v);return item};
 function renderVisitorAdmin(){
  const root=document.getElementById("visitor-list");if(!root||!adminUnlocked)return;
+ const existingDaily=root.querySelector("#fw-daily-trend");
+ const existingChannels=root.querySelector("#fw-channel-breakdown");
+ if(existingDaily)visitorView.dailyOpen=existingDaily.open;
+ if(existingChannels)visitorView.channelOpen=existingChannels.open;
  root.replaceChildren();
  const now=Date.now(),today=kstDay(now);
  const all=visitorEntries().map(([uid,v])=>({uid,v,first:safeNumber(v.firstSeen),last:safeNumber(v.lastVisitAt),ms:safeNumber(v.totalMs),visits:Math.max(1,safeNumber(v.visitCount)),projects:v.projectMs&&typeof v.projectMs==="object"?v.projectMs:{}}));
@@ -271,8 +275,8 @@ function renderVisitorAdmin(){
  const channelCounts=new Map();
  const channelNames={blogger:"Blogger",blog:"블로그",threads:"Threads",youtube:"YouTube",instagram:"Instagram",search:"검색",other_external:"기타 외부 링크",direct_or_unknown:"직접/알 수 없음",untracked:"이전 방문 기록"};
  for(const x of all){const channel=x.v.firstAttribution?.channel||"untracked";channelCounts.set(channel,(channelCounts.get(channel)||0)+1)}
- const channelPanel=document.createElement("details");channelPanel.open=visitorView.channelOpen;channelPanel.addEventListener("toggle",()=>{if(channelPanel.isConnected)visitorView.channelOpen=channelPanel.open});channelPanel.style.cssText="padding:12px;margin:10px 0;border:1px solid #dce1f3;border-radius:12px";
- const channelHeading=document.createElement("summary");channelHeading.textContent="🔎 신규 방문 유입 경로";channelHeading.style.cssText="font-weight:700;cursor:pointer";channelPanel.appendChild(channelHeading);
+ const channelPanel=document.createElement("details");channelPanel.id="fw-channel-breakdown";channelPanel.open=visitorView.channelOpen;channelPanel.style.cssText="padding:12px;margin:10px 0;border:1px solid #dce1f3;border-radius:12px";
+ const channelHeading=document.createElement("summary");channelHeading.textContent="🔎 신규 방문 유입 경로";channelHeading.style.cssText="font-weight:700;cursor:pointer";channelHeading.addEventListener("click",event=>{event.preventDefault();visitorView.channelOpen=!channelPanel.open;channelPanel.open=visitorView.channelOpen});channelPanel.appendChild(channelHeading);
  [...channelCounts].sort((a,b)=>b[1]-a[1]).forEach(([name,count])=>{const p=document.createElement("p");p.style.cssText="font-size:12px;margin:6px 0";p.textContent=(channelNames[name]||name)+" · "+count+"명";channelPanel.appendChild(p)});
  const channelFoot=document.createElement("p");channelFoot.textContent="최초 방문 기준. 추적 시작 전 기록은 이전 방문 기록으로 표시되며, 직접 방문과 일부 앱 유입은 구별할 수 없습니다.";channelFoot.style.cssText="color:#687388;font-size:11px";channelPanel.appendChild(channelFoot);root.appendChild(channelPanel);
  // Visitor analytics 2.0: interpret only observed records; do not infer missing sessions.
@@ -351,8 +355,8 @@ function renderVisitorAdmin(){
  exportButton("⬇ 유입 경로 CSV",()=>downloadCsv("formwheel-sources-"+today+".csv",[["유입 경로","고유 방문자 수"],...[...channelCounts].sort((a,b)=>b[1]-a[1]).map(([channel,count])=>[channelNames[channel]||channel,count])]));
  exportButton("⬇ 일별 신규 방문 CSV",()=>downloadCsv("formwheel-daily-"+today+".csv",[["날짜 (KST)","신규 UID","게스트","로그인/기타"],...[...dayGroups].sort((a,b)=>a[0].localeCompare(b[0])).map(([d,v])=>[d,v.newCount,v.guest,v.account])]));
  root.appendChild(exportBar);
- const daily=document.createElement("details");daily.open=visitorView.dailyOpen;daily.addEventListener("toggle",()=>{if(daily.isConnected)visitorView.dailyOpen=daily.open});daily.style.cssText="margin:12px 0;padding:10px;border:1px solid #e7eaf1;border-radius:10px";
- const dailyHead=document.createElement("summary");dailyHead.textContent="📅 날짜별 신규 방문 추이 ("+dayGroups.size+"일)";dailyHead.style.cursor="pointer";daily.appendChild(dailyHead);
+ const daily=document.createElement("details");daily.id="fw-daily-trend";daily.open=visitorView.dailyOpen;daily.style.cssText="margin:12px 0;padding:10px;border:1px solid #e7eaf1;border-radius:10px";
+ const dailyHead=document.createElement("summary");dailyHead.textContent="📅 날짜별 신규 방문 추이 ("+dayGroups.size+"일)";dailyHead.style.cursor="pointer";dailyHead.addEventListener("click",event=>{event.preventDefault();visitorView.dailyOpen=!daily.open;daily.open=visitorView.dailyOpen});daily.appendChild(dailyHead);
  const dailyList=document.createElement("div");dailyList.style.cssText="max-height:210px;overflow:auto;font-size:12px;margin-top:8px";
  [...dayGroups].sort((a,b)=>b[0].localeCompare(a[0])).forEach(([d,v])=>{const p=document.createElement("p");p.textContent=d+" · 신규 "+v.newCount+"명 (게스트 "+v.guest+" / 로그인·기타 "+v.account+")";dailyList.appendChild(p)});daily.appendChild(dailyList);root.appendChild(daily);
  const pageCount=Math.max(1,Math.ceil(filtered.length/VISITOR_PAGE_SIZE));visitorView.page=Math.min(visitorView.page,pageCount-1);
