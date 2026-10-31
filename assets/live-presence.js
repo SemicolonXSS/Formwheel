@@ -275,6 +275,30 @@ function renderVisitorAdmin(){
  const channelHeading=document.createElement("summary");channelHeading.textContent="🔎 신규 방문 유입 경로";channelHeading.style.cssText="font-weight:700;cursor:pointer";channelPanel.appendChild(channelHeading);
  [...channelCounts].sort((a,b)=>b[1]-a[1]).forEach(([name,count])=>{const p=document.createElement("p");p.style.cssText="font-size:12px;margin:6px 0";p.textContent=(channelNames[name]||name)+" · "+count+"명";channelPanel.appendChild(p)});
  const channelFoot=document.createElement("p");channelFoot.textContent="최초 방문 기준. 추적 시작 전 기록은 이전 방문 기록으로 표시되며, 직접 방문과 일부 앱 유입은 구별할 수 없습니다.";channelFoot.style.cssText="color:#687388;font-size:11px";channelPanel.appendChild(channelFoot);root.appendChild(channelPanel);
+ // Visitor analytics 2.0: interpret only observed records; do not infer missing sessions.
+ const dayMs=86400000;
+ const validFirst=all.filter(x=>x.first>0);
+ const windowNew=days=>validFirst.filter(x=>x.first>=now-days*dayMs).length;
+ const last7=windowNew(7),prior7=validFirst.filter(x=>x.first>=now-14*dayMs&&x.first<now-7*dayMs).length;
+ const zeroDuration=all.filter(x=>x.ms===0).length;
+ const sourceTracked=all.filter(x=>Boolean(x.v.firstAttribution?.channel)).length;
+ const engagedRatio=all.length?Math.round(engaged/all.length*100):0;
+ const delta=prior7?Math.round((last7-prior7)/prior7*100):null;
+ const insights=document.createElement("section");insights.setAttribute("aria-label","방문 품질 및 성장 분석");
+ insights.style.cssText="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin:12px 0";
+ for(const [name,value,sub] of [
+  ["최근 7일 신규",last7+"명",prior7?"이전 7일 대비 "+(delta>=0?"+":"")+delta+"%":"이전 7일 비교 자료 부족"],
+  ["1분 이상 체류",engagedRatio+"%",engaged+" / "+all.length+"명 · 누적 체류 기준"],
+  ["체류 0초 기록",zeroDuration+"명","이탈과 수집 누락 구별 불가"],
+  ["출처 기록률",all.length?Math.round(sourceTracked/all.length*100)+"%":"0%",sourceTracked+" / "+all.length+"명"]
+ ]){
+  const tile=document.createElement("div");tile.style.cssText="padding:11px;border:1px solid #e0e5f2;border-radius:12px;background:#f7f8fd";
+  const label=document.createElement("div");label.style.cssText="font-size:11px;color:#5d6781";label.textContent=name;
+  const num=document.createElement("strong");num.style.cssText="display:block;font-size:19px;margin:5px 0";num.textContent=value;
+  const explanation=document.createElement("div");explanation.style.cssText="font-size:10px;line-height:1.5;color:#687388";explanation.textContent=sub;
+  tile.append(label,num,explanation);insights.appendChild(tile);
+ }
+ root.appendChild(insights);
  const engagement=document.createElement("p");engagement.style.cssText="font-size:12px;color:#4c5670";engagement.textContent="1분 이상 체류 "+engaged+"명 · 재방문 "+returning+"명 · 목표 300명까지 "+Math.max(0,300-all.length)+"명";root.appendChild(engagement);
  const toolbar=document.createElement("div");toolbar.style.cssText="display:flex;flex-wrap:wrap;gap:8px;margin:12px 0";
  function selector(aria,options,current,key){const s=document.createElement("select");s.setAttribute("aria-label",aria);s.style.cssText="font:inherit;font-size:12px;padding:9px;border:1px solid #ccd2e2;border-radius:9px;max-width:100%";options.forEach(([value,label])=>{const o=document.createElement("option");o.value=value;o.textContent=label;s.appendChild(o)});s.value=current;s.onchange=()=>{visitorView[key]=s.value;visitorView.page=0;renderVisitorAdmin()};toolbar.appendChild(s);}
