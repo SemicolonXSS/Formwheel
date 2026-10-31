@@ -85,4 +85,37 @@ onAuthStateChanged(auth,async user=>{
   },1500);
  }catch(err){if(ticket!==session)return;console.warn("Rapid account merge failed",err);info("error");}
 });
-window.FormwheelRapidAccount={getStatus:()=>({signedIn:!!auth.currentUser&&!auth.currentUser.isAnonymous,connected:baseline!==null}),getDiagnostics:()=>{try{return JSON.parse(localStorage.getItem(AUDIT_KEY)||"[]")}catch{return []}}};
+async function creditExchange(amount,transactionId){
+ const n=digits(amount);
+ if(n===null||BigInt(n)<=0n||!/^[a-zA-Z0-9_-]{10,100}$/.test(transactionId))throw Error("Invalid exchange");
+ const user=auth.currentUser;
+ if(!user||user.isAnonymous||baseline===null)throw Error("Rapid account is not connected");
+ if(busy)throw Error("Rapid wallet is synchronizing; retry shortly");
+ if(read()!==baseline)throw Error("Pending wallet change; retry after synchronization");
+ busy=true;
+ const ticket=session;
+ try{
+  const node=ref(db,"formwheelV2/rapidWallets/"+user.uid);
+  const result=await runTransaction(node,current=>{
+   const wallet=current&&typeof current==="object"?current:{};
+   const receipts=wallet.exchangeReceipts&&typeof wallet.exchangeReceipts==="object"?wallet.exchangeReceipts:{};
+   if(receipts[transactionId])return;
+   const balance=digits(wallet.balance)||"0";
+   const keys=Object.keys(receipts);
+   const kept={};
+   for(const key of keys.slice(-79))kept[key]=receipts[key];
+   kept[transactionId]=n;
+   return {...wallet,balance:(BigInt(balance)+BigInt(n)).toString(),exchangeReceipts:kept,updatedAt:Date.now()};
+  },{applyLocally:false});
+  if(ticket!==session||auth.currentUser?.uid!==user.uid)throw Error("Account changed during exchange");
+  const data=result.snapshot.val();
+  if(!data?.exchangeReceipts?.[transactionId])throw Error("Could not verify exchange receipt");
+  const saved=digits(data.balance);
+  if(saved===null)throw Error("Invalid server balance");
+  baseline=saved;
+  writeBalance(saved);
+  audit("exchange-committed",{amount:n,balance:saved,id:transactionId});
+  return {balance:saved,transactionId};
+ }finally{busy=false;}
+}
+window.FormwheelRapidAccount={creditExchange,getStatus:()=>({signedIn:!!auth.currentUser&&!auth.currentUser.isAnonymous,connected:baseline!==null}),getDiagnostics:()=>{try{return JSON.parse(localStorage.getItem(AUDIT_KEY)||"[]")}catch{return []}}};
