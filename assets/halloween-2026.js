@@ -38,10 +38,10 @@ const ghosts=new Set();const pending=new Set();let timer;
 function placeGhost(btn){
  const pageHeight=Math.max(document.documentElement.scrollHeight,document.body.scrollHeight,window.innerHeight);
  const width=Math.max(100,field.clientWidth||window.innerWidth);
- const maxX=Math.max(0,width-46),maxY=Math.max(0,pageHeight-55);
+ const maxX=Math.max(8,width-46),maxY=Math.max(120,pageHeight-55);
  // Spread ghosts across the entire Hub document, not just the top event strip.
- btn.style.left=Math.round(8+Math.random()*Math.max(0,maxX-16))+'px';
- btn.style.top=Math.round(120+Math.random()*Math.max(0,maxY-140))+'px';
+ btn.style.left=Math.round(8+Math.random()*Math.max(0,maxX-8))+'px';
+ btn.style.top=Math.round(Math.min(maxY,120)+Math.random()*Math.max(0,maxY-120))+'px';
 }
 
 function makeGhost(initialIndex){
