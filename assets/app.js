@@ -90,7 +90,7 @@ const projects = [
     mode:"multi",
     connection:"online",
     difficulty:"쉬움",
-    description:"랜덤 추첨과 선택을 간편하게 진행하는 Wheel 도구.",
+    description:"항목을 입력하고 돌림판을 돌려 무작위로 하나를 선택하는 추첨 도구.",
     url:"https://semicolonxss.github.io/Formwheel_Wheel/?v=20261008-logo2",
     addedAt:"2026-09-06T07:44:57Z",
     recent:false
@@ -105,7 +105,7 @@ const projects = [
     mode:"multi",
     connection:"online",
     difficulty:"보통",
-    description:"퀴즈를 만들고 다른 사람들과 함께 풀어보는 서비스.",
+    description:"문제를 직접 만들고 다른 사람과 공유해 풀 수 있는 퀴즈 도구.",
     url:"https://semicolonxss.github.io/Formwheel_Quiz/",
     addedAt:"2026-09-08T05:27:28Z",
     recent:false
@@ -181,7 +181,7 @@ const projects = [
     mode:"solo",
     connection:"online",
     difficulty:"쉬움",
-    description:"FormWheel 프로젝트의 개선 작업을 체크하고 진행률을 관리하는 도구.",
+    description:"Formwheel 프로젝트의 개선 항목을 체크하고 진행률을 확인하는 관리 도구.",
     url:"https://semicolonxss.github.io/Formwheel_Check/",
     addedAt:"2026-10-04T05:19:59Z",
     recent:false
@@ -196,7 +196,7 @@ const projects = [
     mode:"solo",
     connection:"offline",
     difficulty:"쉬움",
-    description:"날짜와 기분을 기록하고 일기를 검색·백업할 수 있는 나만의 전자일기.",
+    description:"날짜별 일기와 기분을 기록하고 검색·백업할 수 있는 개인 기록 앱.",
     url:"https://semicolonxss.github.io/Formwheel_Note/",
     addedAt:"2026-10-18T07:30:00Z",
     recent:true
@@ -214,7 +214,7 @@ const projects = [
     mode:"multi",
     connection:"online",
     difficulty:"보통",
-    description:"방을 만들고 친구들과 실시간으로 대화하는 채팅 앱.",
+    description:"채팅방에서 닉네임을 사용해 친구들과 실시간으로 메시지를 주고받는 앱.",
     url:"https://semicolonxss.github.io/Formwheel_Chat/",
     addedAt:"2026-09-28T01:14:36Z",
     recent:false
@@ -229,7 +229,7 @@ const projects = [
     mode:"solo",
     connection:"online",
     difficulty:"어려움",
-    description:"기억을 사용하고 대화를 통해 발전하도록 만든 FormWheel AI 실험.",
+    description:"대화와 기억 기능을 시험해 볼 수 있는 Formwheel AI 실험 프로젝트.",
     url:"https://semicolonxss.github.io/Formwheel_AI/",
     addedAt:"2026-10-02T02:27:02Z",
     recent:false
@@ -258,7 +258,7 @@ const projects = [
     mode:"solo",
     connection:"online",
     difficulty:"보통",
-    description:"Achievement · Quest · Secret을 통합한 도전과 발견의 공간.",
+    description:"업적·퀘스트·비밀 요소를 확인하고 도전하는 통합 공간.",
     url:"https://semicolonxss.github.io/Formwheel_AQS/",
     addedAt:"2026-10-17T00:00:00Z",
     recent:true
@@ -272,7 +272,7 @@ const projects = [
     mode:"solo",
     connection:"online",
     difficulty:"쉬움",
-    description:"매일 새로운 주인공과 미션을 만나보는 오늘의 Spotlight.",
+    description:"오늘의 추천 프로젝트와 도전 미션을 확인하는 공간.",
     url:"https://semicolonxss.github.io/Formwheel_Spotlight/",
     addedAt:"2026-10-17T00:00:00Z",
     recent:true
@@ -286,7 +286,7 @@ const projects = [
     mode:"solo",
     connection:"offline",
     difficulty:"보통",
-    description:"Formwheel 세계관을 따라가며 펼쳐지는 이야기 프로젝트.",
+    description:"Formwheel 세계관의 이야기를 진행하는 스토리 게임.",
     url:"https://semicolonxss.github.io/Formwheel_Story/",
     addedAt:"2026-10-17T00:00:00Z",
     recent:true
@@ -351,7 +351,7 @@ const projects = [
     mode:"both",
     connection:"online",
     difficulty:"보통",
-    description:"다양한 지시와 타이밍에 맞춰 버튼을 누르는 솔로·멀티 게임.",
+    description:"화면의 지시에 맞춰 버튼을 누르는 솔로·멀티플레이 게임.",
     url:"https://semicolonxss.github.io/Formwheel_Button/",
     addedAt:"2026-10-01T02:14:02Z",
     recent:false
@@ -381,7 +381,7 @@ const projects = [
     mode:"multi",
     connection:"online",
     difficulty:"보통",
-    description:"친구와 실시간으로 퀴즈를 풀며 대결하는 게임.",
+    description:"친구와 같은 퀴즈 문제를 풀고 점수를 겨루는 실시간 대결 게임.",
     url:"https://semicolonxss.github.io/Formwheel_Battle/",
     addedAt:"2026-09-08T11:38:29Z",
     recent:false
@@ -426,7 +426,7 @@ const projects = [
     mode:"both",
     connection:"online",
     difficulty:"쉬움",
-    description:"솔로 기록과 5라운드 실시간 배틀로 반응속도를 겨루는 게임.",
+    description:"혼자 반응속도를 측정하거나 5라운드 실시간 대결에 참여하는 게임.",
     url:"https://semicolonxss.github.io/Formwheel_Reflex/",
     addedAt:"2026-09-10T11:26:35Z",
     recent:false
@@ -456,7 +456,7 @@ const projects = [
     mode:"solo",
     connection:"offline",
     difficulty:"쉬움",
-    description:"클릭과 자동 생산 업그레이드로 점수를 모으고 성장하는 방치형 클릭 게임.",
+    description:"직접 클릭하거나 자동 생산을 업그레이드해 점수를 모으는 게임.",
     url:"https://semicolonxss.github.io/Formwheel_Clicker/",
     addedAt:"2026-09-15T12:00:53Z",
     recent:false
