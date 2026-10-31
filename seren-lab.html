@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SEREN Lab | Formwheel</title>
+<style>body{font:16px system-ui;background:#101626;color:#f3f6ff;margin:0;padding:24px}main{max-width:850px;margin:auto}section{background:#1c2840;border:1px solid #40516e;border-radius:16px;padding:20px;margin:16px 0}button,input{font:inherit;border-radius:9px;padding:10px;margin:4px}button{background:#ffae57;border:0;color:#182034;cursor:pointer}input{background:#101626;color:white;border:1px solid #7d90af}pre{white-space:pre-wrap;overflow-wrap:anywhere}small{color:#b9c9df}</style></head><body><main><h1>🚀 SEREN Lab</h1><p>개발 브랜치의 독립 테스트 화면입니다. 운영 Rapid 잔액과 Firebase에는 접근하지 않습니다.</p>
+<section><h2>프로젝트 기록</h2><label>프로젝트 ID <input id="project" value="maze"></label><button id="play">최근 플레이 기록</button><button id="favorite">즐겨찾기 전환</button><button id="resume">이어하기 저장</button></section>
+<section><h2>개인 최고 기록</h2><label>점수 <input id="score" type="number" min="0" value="100"></label><button id="best">최고 기록 저장</button></section>
+<section><h2>추가 기능 실험</h2><button id="visit">방문 기록</button><button id="widget">홈 위젯 켜기</button><button id="achievement">업적 진행률</button><button id="event">이벤트 참여</button><button id="rapid">Rapid 형식 진단</button></section><section><h2>저장 상태 및 데이터</h2><button id="diagnose">저장 진단</button><button id="export">데이터 내보내기</button><button id="refresh">현황 새로고침</button><pre id="output" aria-live="polite"></pre></section>
+<small>테스트용 로컬 데이터만 저장됩니다. 기존 Formwheel 데이터를 읽거나 변경하지 않습니다.</small></main>
+<script src="./assets/seren-mega-pack.js"></script><script src="./assets/seren-services.js"></script><script src="./assets/seren-extras.js"></script>
+<script>
+const s=window.FormwheelSerenServices,output=document.getElementById("output");
+function show(x){output.textContent=JSON.stringify(x,null,2)}
+function project(){return document.getElementById("project").value}
+function act(fn){try{show(fn())}catch(e){show({error:e.message})}}
+document.getElementById("play").onclick=()=>act(()=>({saved:s.recent(project()),recent:s.getRecent()}));
+document.getElementById("favorite").onclick=()=>act(()=>({saved:s.toggleFavorite(project()),favorites:s.favorites()}));
+document.getElementById("resume").onclick=()=>act(()=>({saved:s.resume(project(),"/Formwheel/"),resume:s.getResume()}));
+document.getElementById("best").onclick=()=>act(()=>({saved:s.best(project(),Number(document.getElementById("score").value)),bests:s.getBests()}));
+document.getElementById("diagnose").onclick=()=>act(s.diagnostics);
+document.getElementById("refresh").onclick=()=>act(()=>({recent:s.getRecent(),favorites:s.favorites(),resume:s.getResume(),bests:s.getBests(),changelog:s.getChangelog()}));
+document.getElementById("export").onclick=()=>act(()=>{const blob=new Blob([s.exportData()],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="seren-lab-export.json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);return {exported:true}});
+const extra=window.FormwheelSerenExtras;
+document.getElementById("visit").onclick=()=>act(()=>({saved:extra.logVisit(project()),timeline:extra.timeline()}));
+document.getElementById("widget").onclick=()=>act(()=>({saved:extra.setWidget("recent",true),widgets:extra.widgets()}));
+document.getElementById("achievement").onclick=()=>act(()=>({saved:extra.addAchievement("seren-lab",1,5),achievements:extra.achievements()}));
+document.getElementById("event").onclick=()=>act(()=>({saved:extra.logEvent("seren-lab"),events:extra.eventHistory()}));
+document.getElementById("rapid").onclick=()=>act(()=>extra.validateRapidSnapshot({balance:"443"}));
+document.getElementById("refresh").click();
+</script></body></html>
