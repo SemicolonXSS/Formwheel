@@ -107,11 +107,15 @@ function publishCount(key,count){
 }
 const watchVisitors=()=>onValue(ref(db,visitorBase),snapshot=>{
  latestVisitors=snapshot.val()||{};visitorDetailsReady=true;visitorDetailsError="";
- detailTotal=visitorEntries().length;renderTotal();
- if(detailTotal!==lastPublishedTotal){lastPublishedTotal=detailTotal;publishCount("total",detailTotal)}
+ detailTotal=visitorEntries().length;
+ // Never replace a previously confirmed public count with an unexplained empty result.
+ const mismatch=detailTotal===0&&Number.isSafeInteger(publicTotal)&&publicTotal>0;
+ if(mismatch){visitorDetailsReady=false;visitorDetailsError="공개 집계와 상세 기록 불일치";detailTotal=null;}
+ renderTotal();
+ if(!mismatch&&detailTotal>0&&detailTotal!==lastPublishedTotal){lastPublishedTotal=detailTotal;publishCount("total",detailTotal)}
  if(visitorNote)visitorNote.textContent="집계 시작 이후 · UID당 1명";
  if(adminUnlocked)renderAdmin();
-},error=>{visitorDetailsReady=false;visitorDetailsError=error.code||"읽기 실패";reportCount("total","원본 읽기 실패 ("+error.code+")");detailTotal=null;renderTotal();console.debug("방문 상세 조회",error.code)});
+},error=>{visitorDetailsReady=false;visitorDetailsError=error.code||"읽기 실패";if(adminUnlocked)renderAdmin();reportCount("total","원본 읽기 실패 ("+error.code+")");detailTotal=null;renderTotal();console.debug("방문 상세 조회",error.code)});
 function getEntryChannel(){
  const q=new URLSearchParams(location.search);
  const source=(q.get("utm_source")||"").toLowerCase().replace(/[^a-z0-9_-]/g,"").slice(0,32);
