@@ -10,7 +10,7 @@ const auth=getAuth(app),db=getDatabase(app);
 const KEY="formwheel_clicker_rapid_beta_v1";
 const digits=value=>{
  const v=typeof value==="string"?value:(Number.isSafeInteger(value)&&value>=0?String(value):null);
- return v!==null && /^\d{1,500}$/.test(v)?BigInt(v).toString():null;
+ return v!==null && /^\d{1,10000}$/.test(v)?BigInt(v).toString():null;
 };
 const max=(a,b)=>BigInt(a)>=BigInt(b)?a:b;
 const AUDIT_KEY="formwheel_rapid_sync_audit_v1";
@@ -87,7 +87,8 @@ onAuthStateChanged(auth,async user=>{
 });
 async function creditExchange(amount,transactionId){
  const n=digits(amount);
- if(n===null||BigInt(n)<=0n||!/^[a-zA-Z0-9_-]{10,100}$/.test(transactionId))throw Error("Invalid exchange");
+ if(n===null||BigInt(n)<=0n)throw Error("Invalid exchange amount (positive integer required, max 10000 digits)");
+ if(typeof transactionId!=="string"||!/^[a-zA-Z0-9_-]{10,100}$/.test(transactionId))throw Error("Invalid exchange transaction ID");
  const user=auth.currentUser;
  if(!user||user.isAnonymous||baseline===null)throw Error("Rapid account is not connected");
  if(busy)throw Error("Rapid wallet is synchronizing; retry shortly");
