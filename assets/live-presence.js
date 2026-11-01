@@ -217,7 +217,7 @@ for(const [key,element] of [["live",label],["total",visitorCount]]){
   const count=Number.isSafeInteger(raw)&&raw>=0?raw:null;
   if(key==="live")publicLiveAt=count!==null&&Number.isFinite(value?.updatedAt)?value.updatedAt:0;
   if(key==="live"){publicLive=count;liveStatus=status;renderLive()}
-  else{publicTotal=count;totalStatus=status;renderTotal()}
+  else{publicTotal=count;totalStatus=status;renderTotal();if(adminUnlocked)renderVisitorAdmin()}
  }
 }
 let stopDetails=[];
@@ -333,11 +333,14 @@ function renderVisitorAdmin(){
  if(existingChannels)visitorView.channelOpen=existingChannels.open;
  root.replaceChildren();
  if(!visitorDetailsReady){
-  const status=document.createElement("section");status.setAttribute("role","status");status.style.cssText="padding:14px;margin:8px 0;border:1px solid #dce1ee;border-radius:12px;background:#f8f9ff";
-  const signedIn=auth.currentUser&&!auth.currentUser.isAnonymous;
-  const reason=visitorDetailsError?"상세 기록 조회 실패 ("+visitorDetailsError+")":signedIn?"상세 방문자 기록 불러오는 중…":"상세 방문자 기록은 Google 로그인 후 조회할 수 있어요.";
-  status.textContent="📊 방문자 분석: "+reason+" 실제 방문자가 0명이라는 뜻이 아닙니다. 공개 누적 방문자: "+(publicTotal===null?"확인 중":publicTotal.toLocaleString("ko-KR")+"명");
-  root.appendChild(status);return;
+  const status=document.createElement("section");status.setAttribute("role","status");
+  status.style.cssText="padding:14px;margin:8px 0;border:1px solid #dce1ee;border-radius:12px;background:#f8f9ff";
+  const total=publicTotal===null?"조회 대기 중":publicTotal.toLocaleString("ko-KR")+"명";
+  const headline=document.createElement("h3");headline.textContent="📊 공개 방문자 통계";headline.style.margin="0 0 8px";
+  const figures=document.createElement("p");figures.textContent="👥 누적 방문자 "+total+" · 🏆 최고 동접 "+(peakLoaded?recordedPeak.toLocaleString("ko-KR")+"명":"조회 대기 중");
+  const note=document.createElement("p");note.style.cssText="font-size:12px;line-height:1.6;color:#667085";
+  note.textContent=visitorDetailsError?"상세 기록 조회 오류: "+visitorDetailsError+" · 공개 집계만 표시합니다.": "확인 코드로 공개 합계는 볼 수 있어요. 날짜별 상세 기록, 개별 체류 시간, 유입 경로별 분석은 Firebase 관리자 인증이 필요합니다.";
+  status.append(headline,figures,note);root.appendChild(status);return;
  }
  const now=Date.now(),today=kstDay(now);
  const all=visitorEntries().map(([uid,v])=>({uid,v,first:safeNumber(v.firstSeen),last:safeNumber(v.lastVisitAt),ms:safeNumber(v.totalMs),visits:Math.max(1,safeNumber(v.visitCount)),projects:v.projectMs&&typeof v.projectMs==="object"?v.projectMs:{}}));
