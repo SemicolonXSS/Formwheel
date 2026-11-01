@@ -125,7 +125,7 @@ async function recordVisitor(user){
   durationTimer=setInterval(()=>accumulateDuration(uid),DURATION_INTERVAL);
  }catch(error){if(visitorNote)visitorNote.textContent="방문 기록 저장 실패 · Rules 확인 ("+(error.code||"오류")+")";}
 }
-const sessionId=crypto.randomUUID().replace(/-/g,"");
+
 const rawProject=(location.pathname.split("/").filter(Boolean)[0]||"Formwheel");
 const project=(rawProject==="Formwheel"?"Hub":rawProject.replace(/^Formwheel_/i,"")).slice(0,60);
 const sessionKey=()=>auth.currentUser?.uid;
@@ -151,11 +151,13 @@ async function clear(){if(heartbeatTimer)clearInterval(heartbeatTimer);heartbeat
 async function start(user){
  const token=++generation;await clear();
  if(token!==generation||!user||!connection)return;
+ const sessionId=crypto.randomUUID().replace(/-/g,"");
  const node=ref(db,base+"/"+user.uid+"/"+sessionId);
  try{
-  const guard=onDisconnect(node);await guard.remove();
-  if(token!==generation){await guard.cancel();return}
   await set(node,{joinedAt:serverTimestamp(),lastSeen:serverTimestamp(),project,accountType:user.isAnonymous?"guest":"account"});
+  if(token!==generation){await remove(node);return}
+  const guard=onDisconnect(node);
+  try{await guard.remove()}catch(error){await remove(node);throw error}
   if(token!==generation){await guard.cancel();await remove(node);return}
   registered=node;disconnect=guard;
   heartbeatTimer=setInterval(()=>{if(registered===node&&connection)set(ref(db,base+"/"+user.uid+"/"+sessionId+"/lastSeen"),serverTimestamp()).catch(()=>{});},60000);
