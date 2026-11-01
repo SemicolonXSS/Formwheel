@@ -86,12 +86,12 @@ async function accumulateDuration(uid,{allowHidden=false}={}){
   finally{durationBusy=false}
 }
 function visitorEntries(){return Object.entries(latestVisitors).filter(([,v])=>v&&typeof v==="object");}
-onValue(ref(db,visitorBase),snapshot=>{
+const watchVisitors=()=>onValue(ref(db,visitorBase),snapshot=>{
  latestVisitors=snapshot.val()||{};
  if(visitorCount)visitorCount.textContent=visitorEntries().length.toLocaleString("ko-KR")+"명";
  if(visitorNote)visitorNote.textContent="집계 시작 이후 · UID당 1명";
  if(adminUnlocked)renderAdmin();
-},error=>{if(visitorCount)visitorCount.textContent="조회 불가";if(visitorNote)visitorNote.textContent="Firebase 읽기 권한 확인 ("+(error.code||"오류")+")";});
+},error=>console.debug("방문 상세 조회",error.code));
 function getEntryChannel(){
  const q=new URLSearchParams(location.search);
  const source=(q.get("utm_source")||"").toLowerCase().replace(/[^a-z0-9_-]/g,"").slice(0,32);
@@ -136,7 +136,7 @@ const stateOf=v=>!v||typeof v!=="object"?"unknown":typeof v.lastSeen!=="number"?
 const sessionEntries=s=>Object.values(s||{}).filter(v=>v&&typeof v==="object");
 const activeEntries=s=>sessionEntries(s).filter(isFresh);
 const say=(message)=>{if(note)note.textContent=message};
-onValue(ref(db,base),snapshot=>{
+const watchSessions=()=>onValue(ref(db,base),snapshot=>{
  const val=snapshot.val()||{},unique=new Set();
  latestSessions=val;
  if(adminUnlocked)renderAdmin();
@@ -145,7 +145,7 @@ onValue(ref(db,base),snapshot=>{
   peakCandidate=Math.max(peakCandidate,unique.size);
   if(peakLoaded&&peakCandidate>recordedPeak)void savePeak();
  say("최근 5분 내 접속 확인 · 공통 게임 포함");
-},error=>{if(label)label.textContent="조회 불가";say("Firebase 읽기 권한을 확인해 주세요 · "+(error.code||"연결 오류"))});
+},error=>console.debug("접속 상세 조회",error.code));
 onValue(ref(db,".info/connected"),snapshot=>{connection=snapshot.val()===true;if(connection)start(auth.currentUser);else say("연결 재시도 중…")});
 async function clear(){if(heartbeatTimer)clearInterval(heartbeatTimer);heartbeatTimer=null;const old=registered,d=disconnect;registered=null;disconnect=null;if(d)try{await d.cancel()}catch{}if(old)try{await remove(old)}catch{}}
 async function start(user){
@@ -161,7 +161,20 @@ async function start(user){
   heartbeatTimer=setInterval(()=>{if(registered===node&&connection)set(ref(db,base+"/"+user.uid+"/"+sessionId+"/lastSeen"),serverTimestamp()).catch(()=>{});},60000);
  }catch(error){say("접속자 등록 실패 · Firebase Rules 확인 ("+(error.code||"연결 오류")+")")}
 }
+for(const [key,element] of [["live",label],["total",visitorCount]]){
+ if(!element)continue;
+ element.textContent="집계 대기 중";
+ onValue(ref(db,"formwheelV2/publicVisitorCounts/"+key),snapshot=>{
+  const count=snapshot.val();
+  if(Number.isSafeInteger(count)&&count>=0)element.textContent=count.toLocaleString("ko-KR")+"명";
+ },error=>console.warn("공개 방문 통계 읽기 실패",key,error.code));
+}
+let stopDetails=[];
 onAuthStateChanged(auth,async user=>{
+ stopDetails.forEach(stop=>stop());
+ stopDetails=[];
+ latestSessions={};latestVisitors={};
+ if(user&&!user.isAnonymous)stopDetails=[watchSessions(),watchVisitors()];
  if(user){start(user);recordVisitor(user);if(peakLoaded&&peakCandidate>recordedPeak)void savePeak();return}
  if(durationTimer)clearInterval(durationTimer);
  durationTimer=null;recordedVisitorUid=null;
