@@ -105,6 +105,26 @@ function publishCount(key,count){
   reportCount(key,"공개 숫자 저장 실패 ("+(error.code||error.message)+")");
  });
 }
+// Only coarse, anonymized aggregates are eligible for public read.
+// Firebase Rules must authorize a trusted publisher and public read for this node.
+const analyticsPath="formwheelV2/publicVisitorCounts/analytics";
+let publicAnalytics=null,publicAnalyticsError="";
+function coarseAnalytics(){
+ const entries=visitorEntries();
+ const daily={},channels={};let repeat=0,engaged=0;
+ const kst=new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Seoul",year:"numeric",month:"2-digit",day:"2-digit"});
+ for(const [,v] of entries){
+  if(Number(v.visitCount)>1)repeat++;
+  if(Number(v.totalMs)>=60000)engaged++;
+  const t=Number(v.firstSeen);
+  if(Number.isFinite(t)&&t>0){const day=kst.format(new Date(t));daily[day]=(daily[day]||0)+1}
+  const channel=String(v.firstAttribution?.channel||"untracked").replace(/[^a-z0-9_-]/gi,"").slice(0,32);
+  channels[channel]=(channels[channel]||0)+1;
+ }
+ // Hide small segments to avoid exposing individual visit times or origins.
+ const grouped=values=>Object.fromEntries(Object.entries(values).filter(([,count])=>count>=5));
+ return {total:entries.length,returning:repeat>=5?repeat:null,engaged:engaged>=5?engaged:null,daily:grouped(daily),channels:grouped(channels),updatedAt:Date.now(),schema:1};
+}
 const watchVisitors=()=>onValue(ref(db,visitorBase),snapshot=>{
  latestVisitors=snapshot.val()||{};visitorDetailsReady=true;visitorDetailsError="";
  detailTotal=visitorEntries().length;
@@ -113,6 +133,14 @@ const watchVisitors=()=>onValue(ref(db,visitorBase),snapshot=>{
  if(mismatch){visitorDetailsReady=false;visitorDetailsError="공개 집계와 상세 기록 불일치";detailTotal=null;}
  renderTotal();
  if(!mismatch&&detailTotal>0&&detailTotal!==lastPublishedTotal){lastPublishedTotal=detailTotal;publishCount("total",detailTotal)}
+ if(!mismatch&&detailTotal>=5){
+  // Never write individual records to the public location.
+  const aggregate=coarseAnalytics();
+  const previous=publicAnalytics;
+  if(!previous||aggregate.total!==previous.total||Date.now()-Number(previous.updatedAt||0)>3600000){
+   set(ref(db,analyticsPath),aggregate).catch(error=>{console.warn("익명 통계 게시 권한 필요",error.code||error.message)});
+  }
+ }
  if(visitorNote)visitorNote.textContent="집계 시작 이후 · UID당 1명";
  if(adminUnlocked)renderAdmin();
 },error=>{visitorDetailsReady=false;visitorDetailsError=error.code||"읽기 실패";if(adminUnlocked)renderAdmin();reportCount("total","원본 읽기 실패 ("+error.code+")");detailTotal=null;renderTotal();console.debug("방문 상세 조회",error.code)});
@@ -220,6 +248,11 @@ for(const [key,element] of [["live",label],["total",visitorCount]]){
   else{publicTotal=count;totalStatus=status;renderTotal();if(adminUnlocked)renderVisitorAdmin()}
  }
 }
+onValue(ref(db,analyticsPath),snapshot=>{
+ const value=snapshot.val();
+ publicAnalytics=value&&value.schema===1&&typeof value.total==="number"?value:null;
+ publicAnalyticsError="";if(adminUnlocked&&!visitorDetailsReady)renderVisitorAdmin();
+},error=>{publicAnalyticsError=error.code||"조회 실패";if(adminUnlocked&&!visitorDetailsReady)renderVisitorAdmin()});
 let stopDetails=[];
 onAuthStateChanged(auth,async user=>{
  for(const key of ["live","total"])reportCount(key,user&&!user.isAnonymous?"원본 확인 중":"Google 로그인 필요");
@@ -340,7 +373,35 @@ function renderVisitorAdmin(){
   const figures=document.createElement("p");figures.textContent="👥 누적 방문자 "+total+" · 🏆 최고 동접 "+(peakLoaded?recordedPeak.toLocaleString("ko-KR")+"명":"조회 대기 중");
   const note=document.createElement("p");note.style.cssText="font-size:12px;line-height:1.6;color:#667085";
   note.textContent=visitorDetailsError?"상세 기록 조회 오류: "+visitorDetailsError+" · 공개 집계만 표시합니다.": "확인 코드로 공개 합계는 볼 수 있어요. 날짜별 상세 기록, 개별 체류 시간, 유입 경로별 분석은 Firebase 관리자 인증이 필요합니다.";
-  status.append(headline,figures,note);root.appendChild(status);return;
+  status.append(headline,figures,note);
+  if(publicAnalytics){
+   const summary=document.createElement("p");
+   summary.textContent="🔁 재방문 "+(publicAnalytics.returning??"소수 구간 비공개")+"명 · ⏱ 1분 이상 체류 "+(publicAnalytics.engaged??"소수 구간 비공개")+"명";
+   status.appendChild(summary);
+   const display=(label,items)=>{
+    const block=document.createElement("details");block.open=true;block.style.marginTop="12px";
+    const heading=document.createElement("summary");heading.textContent=label;block.appendChild(heading);
+    for(const [name,count] of Object.entries(items||{}).sort((a,b)=>b[0].localeCompare(a[0]))){
+     const row=document.createElement("p");row.style.margin="5px 0";row.textContent=name+" · "+count+"명";block.appendChild(row);
+    }
+    const caption=document.createElement("small");caption.textContent="5명 미만 구간은 개인정보 보호를 위해 생략";block.appendChild(caption);status.appendChild(block);
+   };
+   display("📅 날짜별 신규 방문자",publicAnalytics.daily);
+   display("🔎 유입 경로별 신규 방문자",publicAnalytics.channels);
+   const download=document.createElement("button");download.type="button";download.textContent="⬇ 익명 통계 CSV";
+   download.style.cssText="padding:9px 12px;margin-top:10px;border:0;border-radius:9px;background:#3439bd;color:#fff";
+   download.onclick=()=>{
+    const rows=[["구분","항목","방문자 수"],...Object.entries(publicAnalytics.daily||{}).map(([k,v])=>["날짜",k,v]),...Object.entries(publicAnalytics.channels||{}).map(([k,v])=>["유입 경로",k,v])];
+    const csv="\\uFEFF"+rows.map(row=>row.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(",")).join("\\r\\n");
+    const url=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));
+    const a=document.createElement("a");a.href=url;a.download="formwheel-anonymous-analytics.csv";document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+   };
+   status.appendChild(download);
+  }else{
+   const hint=document.createElement("p");hint.textContent="익명 상세 집계 대기 중"+(publicAnalyticsError?" · "+publicAnalyticsError:"")+" · 공개 통계 Rules 설정과 집계 게시가 필요합니다.";
+   status.appendChild(hint);
+  }
+  root.appendChild(status);return;
  }
  const now=Date.now(),today=kstDay(now);
  const all=visitorEntries().map(([uid,v])=>({uid,v,first:safeNumber(v.firstSeen),last:safeNumber(v.lastVisitAt),ms:safeNumber(v.totalMs),visits:Math.max(1,safeNumber(v.visitCount)),projects:v.projectMs&&typeof v.projectMs==="object"?v.projectMs:{}}));
