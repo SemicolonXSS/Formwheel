@@ -91,9 +91,14 @@ function renderTotal(){
  const count=detailTotal??publicTotal;
  if(visitorCount)visitorCount.textContent=count===null?totalStatus:count.toLocaleString("ko-KR")+"명";
 }
+let lastPublishedTotal=null,publicLiveAt=0;
+function publishCount(key,count){
+ return set(ref(db,"formwheelV2/publicVisitorCounts/"+key),{count,updatedAt:serverTimestamp()}).catch(error=>console.debug("공개 집계 저장 실패",key,error.code));
+}
 const watchVisitors=()=>onValue(ref(db,visitorBase),snapshot=>{
  latestVisitors=snapshot.val()||{};
  detailTotal=visitorEntries().length;renderTotal();
+ if(detailTotal!==lastPublishedTotal){lastPublishedTotal=detailTotal;publishCount("total",detailTotal)}
  if(visitorNote)visitorNote.textContent="집계 시작 이후 · UID당 1명";
  if(adminUnlocked)renderAdmin();
 },error=>{detailTotal=null;renderTotal();console.debug("방문 상세 조회",error.code)});
@@ -145,15 +150,25 @@ function renderLive(){
  if(!label)return;
  const count=detailLive??publicLive;
  if(!connection)label.textContent="연결 대기 중";
+ else if(detailLive===null&&publicLiveAt&&Date.now()-publicLiveAt>120000)label.textContent="마지막 집계 "+count.toLocaleString("ko-KR")+"명";
  else if(count!==null)label.textContent=count.toLocaleString("ko-KR")+"명";
  else label.textContent=liveStatus;
 }
+let lastPublishedLive=null;
+setInterval(()=>{
+ if(detailLive!==null&&connection){
+  detailLive=Object.values(latestSessions).filter(s=>activeEntries(s).length).length;
+  lastPublishedLive=detailLive;publishCount("live",detailLive);
+ }
+ renderLive();
+},60000);
 const watchSessions=()=>onValue(ref(db,base),snapshot=>{
  const val=snapshot.val()||{},unique=new Set();
  latestSessions=val;
  if(adminUnlocked)renderAdmin();
  Object.entries(val).forEach(([uid,sessions])=>{if(activeEntries(sessions).length)unique.add(uid)});
  detailLive=unique.size;renderLive();
+ if(lastPublishedLive!==detailLive){lastPublishedLive=detailLive;publishCount("live",detailLive)}
   peakCandidate=Math.max(peakCandidate,unique.size);
   if(peakLoaded&&peakCandidate>recordedPeak)void savePeak();
  say("최근 5분 내 접속 확인 · 공통 게임 포함");
@@ -183,13 +198,16 @@ for(const [key,element] of [["live",label],["total",visitorCount]]){
   updateCount(snapshot.val(),"공개 집계 없음");
  },error=>{updateCount(null,"공개 집계 조회 실패");console.warn("공개 방문 통계 읽기 실패",key,error.code)});
  function updateCount(value,status){
-  const count=Number.isSafeInteger(value)&&value>=0?value:null;
+  const raw=value?.count??value;
+  const count=Number.isSafeInteger(raw)&&raw>=0?raw:null;
+  if(key==="live")publicLiveAt=count!==null&&Number.isFinite(value?.updatedAt)?value.updatedAt:0;
   if(key==="live"){publicLive=count;liveStatus=status;renderLive()}
   else{publicTotal=count;totalStatus=status;renderTotal()}
  }
 }
 let stopDetails=[];
 onAuthStateChanged(auth,async user=>{
+ lastPublishedTotal=null;lastPublishedLive=null;
  stopDetails.forEach(stop=>stop());
  stopDetails=[];
  latestSessions={};latestVisitors={};detailLive=null;detailTotal=null;liveError="";renderLive();renderTotal();
