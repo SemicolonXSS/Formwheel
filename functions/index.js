@@ -141,3 +141,18 @@ exports.awardPeakWitness=onValueWritten({
     },undefined,false);
   }));
 });
+
+const {onSchedule}=require("firebase-functions/v2/scheduler");
+exports.refreshVisitorCounts=onSchedule({schedule:"every 1 minutes",region:"us-central1",maxInstances:1},async()=>{
+  const root=db.ref("formwheelV2");
+  const [sessions,visitors]=await Promise.all([
+    root.child("liveHubSessions").get(),
+    root.child("visitorStats/uniqueVisitors").get()
+  ]);
+  const timestamp=Date.now();
+  let live=0;
+  sessions.forEach(user=>{
+    if(Object.values(user.val()||{}).some(s=>typeof s?.lastSeen==="number" && timestamp-s.lastSeen<peakFreshMs && s.lastSeen<=timestamp))live++;
+  });
+  await root.child("publicVisitorCounts").update({live,total:visitors.numChildren()});
+});
