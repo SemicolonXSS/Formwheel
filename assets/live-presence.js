@@ -87,6 +87,7 @@ async function accumulateDuration(uid,{allowHidden=false}={}){
 }
 function visitorEntries(){return Object.entries(latestVisitors).filter(([,v])=>v&&typeof v==="object");}
 let detailTotal=null,publicTotal=null,liveStatus="집계 확인 중…",totalStatus=liveStatus;
+let visitorDetailsReady=false,visitorDetailsError="";
 function renderTotal(){
  const count=detailTotal??publicTotal;
  if(visitorCount)visitorCount.textContent=count===null?totalStatus:count.toLocaleString("ko-KR")+"명";
@@ -105,12 +106,12 @@ function publishCount(key,count){
  });
 }
 const watchVisitors=()=>onValue(ref(db,visitorBase),snapshot=>{
- latestVisitors=snapshot.val()||{};
+ latestVisitors=snapshot.val()||{};visitorDetailsReady=true;visitorDetailsError="";
  detailTotal=visitorEntries().length;renderTotal();
  if(detailTotal!==lastPublishedTotal){lastPublishedTotal=detailTotal;publishCount("total",detailTotal)}
  if(visitorNote)visitorNote.textContent="집계 시작 이후 · UID당 1명";
  if(adminUnlocked)renderAdmin();
-},error=>{reportCount("total","원본 읽기 실패 ("+error.code+")");detailTotal=null;renderTotal();console.debug("방문 상세 조회",error.code)});
+},error=>{visitorDetailsReady=false;visitorDetailsError=error.code||"읽기 실패";reportCount("total","원본 읽기 실패 ("+error.code+")");detailTotal=null;renderTotal();console.debug("방문 상세 조회",error.code)});
 function getEntryChannel(){
  const q=new URLSearchParams(location.search);
  const source=(q.get("utm_source")||"").toLowerCase().replace(/[^a-z0-9_-]/g,"").slice(0,32);
@@ -221,7 +222,7 @@ onAuthStateChanged(auth,async user=>{
  lastPublishedTotal=null;lastPublishedLive=null;
  stopDetails.forEach(stop=>stop());
  stopDetails=[];
- latestSessions={};latestVisitors={};detailLive=null;detailTotal=null;liveError="";renderLive();renderTotal();
+ latestSessions={};latestVisitors={};visitorDetailsReady=false;visitorDetailsError="";detailLive=null;detailTotal=null;liveError="";renderLive();renderTotal();
  if(user&&!user.isAnonymous)stopDetails=[watchSessions(),watchVisitors()];
  if(user){start(user);recordVisitor(user);if(peakLoaded&&peakCandidate>recordedPeak)void savePeak();return}
  if(durationTimer)clearInterval(durationTimer);
@@ -327,6 +328,13 @@ function renderVisitorAdmin(){
  if(existingDaily)visitorView.dailyOpen=existingDaily.open;
  if(existingChannels)visitorView.channelOpen=existingChannels.open;
  root.replaceChildren();
+ if(!visitorDetailsReady){
+  const status=document.createElement("section");status.setAttribute("role","status");status.style.cssText="padding:14px;margin:8px 0;border:1px solid #dce1ee;border-radius:12px;background:#f8f9ff";
+  const signedIn=auth.currentUser&&!auth.currentUser.isAnonymous;
+  const reason=visitorDetailsError?"상세 기록 조회 실패 ("+visitorDetailsError+")":signedIn?"상세 방문자 기록 불러오는 중…":"상세 방문자 기록은 Google 로그인 후 조회할 수 있어요.";
+  status.textContent="📊 방문자 분석: "+reason+" 실제 방문자가 0명이라는 뜻이 아닙니다. 공개 누적 방문자: "+(publicTotal===null?"확인 중":publicTotal.toLocaleString("ko-KR")+"명");
+  root.appendChild(status);return;
+ }
  const now=Date.now(),today=kstDay(now);
  const all=visitorEntries().map(([uid,v])=>({uid,v,first:safeNumber(v.firstSeen),last:safeNumber(v.lastVisitAt),ms:safeNumber(v.totalMs),visits:Math.max(1,safeNumber(v.visitCount)),projects:v.projectMs&&typeof v.projectMs==="object"?v.projectMs:{}}));
  const start=visitorView.period==="7d"?now-7*86400000:visitorView.period==="30d"?now-30*86400000:visitorView.period==="today"?new Date(today+"T00:00:00+09:00").getTime():0;
