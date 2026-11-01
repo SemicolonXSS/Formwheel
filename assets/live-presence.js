@@ -92,8 +92,17 @@ function renderTotal(){
  if(visitorCount)visitorCount.textContent=count===null?totalStatus:count.toLocaleString("ko-KR")+"명";
 }
 let lastPublishedTotal=null,publicLiveAt=0;
+const countsReport={live:"대기",total:"대기"};
+function reportCount(key,message){
+ countsReport[key]=message;
+ const output=document.getElementById("fw-count-report");
+ if(output)output.textContent="접속자 · "+countsReport.live+" / 누적 · "+countsReport.total;
+}
 function publishCount(key,count){
- return set(ref(db,"formwheelV2/publicVisitorCounts/"+key),{count,updatedAt:serverTimestamp()}).catch(error=>console.debug("공개 집계 저장 실패",key,error.code));
+ return set(ref(db,"formwheelV2/publicVisitorCounts/"+key),{count,updatedAt:serverTimestamp()}).then(()=>reportCount(key,"저장 완료")).catch(error=>{
+  if(key==="total")lastPublishedTotal=null;else lastPublishedLive=null;
+  reportCount(key,"공개 숫자 저장 실패 ("+(error.code||error.message)+")");
+ });
 }
 const watchVisitors=()=>onValue(ref(db,visitorBase),snapshot=>{
  latestVisitors=snapshot.val()||{};
@@ -101,7 +110,7 @@ const watchVisitors=()=>onValue(ref(db,visitorBase),snapshot=>{
  if(detailTotal!==lastPublishedTotal){lastPublishedTotal=detailTotal;publishCount("total",detailTotal)}
  if(visitorNote)visitorNote.textContent="집계 시작 이후 · UID당 1명";
  if(adminUnlocked)renderAdmin();
-},error=>{detailTotal=null;renderTotal();console.debug("방문 상세 조회",error.code)});
+},error=>{reportCount("total","원본 읽기 실패 ("+error.code+")");detailTotal=null;renderTotal();console.debug("방문 상세 조회",error.code)});
 function getEntryChannel(){
  const q=new URLSearchParams(location.search);
  const source=(q.get("utm_source")||"").toLowerCase().replace(/[^a-z0-9_-]/g,"").slice(0,32);
@@ -156,6 +165,7 @@ function renderLive(){
 }
 let lastPublishedLive=null;
 setInterval(()=>{
+ if(detailTotal!==null&&connection&&lastPublishedTotal===null){lastPublishedTotal=detailTotal;publishCount("total",detailTotal)}
  if(detailLive!==null&&connection){
   detailLive=Object.values(latestSessions).filter(s=>activeEntries(s).length).length;
   lastPublishedLive=detailLive;publishCount("live",detailLive);
@@ -172,7 +182,7 @@ const watchSessions=()=>onValue(ref(db,base),snapshot=>{
   peakCandidate=Math.max(peakCandidate,unique.size);
   if(peakLoaded&&peakCandidate>recordedPeak)void savePeak();
  say("최근 5분 내 접속 확인 · 공통 게임 포함");
-},error=>{detailLive=null;renderLive();console.debug("접속 상세 조회",error.code)});
+},error=>{reportCount("live","원본 읽기 실패 ("+error.code+")");detailLive=null;renderLive();console.debug("접속 상세 조회",error.code)});
 onValue(ref(db,".info/connected"),snapshot=>{connection=snapshot.val()===true;renderLive();if(connection)start(auth.currentUser);else say("연결 재시도 중…")});
 async function clear(){if(heartbeatTimer)clearInterval(heartbeatTimer);heartbeatTimer=null;const old=registered,d=disconnect;registered=null;disconnect=null;confirmedAt=0;renderLive();if(d)try{await d.cancel()}catch{}if(old)try{await remove(old)}catch{}}
 async function start(user){
@@ -207,6 +217,7 @@ for(const [key,element] of [["live",label],["total",visitorCount]]){
 }
 let stopDetails=[];
 onAuthStateChanged(auth,async user=>{
+ for(const key of ["live","total"])reportCount(key,user&&!user.isAnonymous?"원본 확인 중":"Google 로그인 필요");
  lastPublishedTotal=null;lastPublishedLive=null;
  stopDetails.forEach(stop=>stop());
  stopDetails=[];
@@ -244,7 +255,9 @@ if(presenceRoot){
  const panel=document.createElement("section");panel.hidden=true;
  panel.style.cssText="position:fixed;z-index:10002;top:10vh;left:50%;transform:translateX(-50%);width:min(92vw,540px);max-height:80vh;overflow:auto;padding:22px;background:white;color:#242842;border:1px solid #dce1ee;border-radius:20px;box-shadow:0 20px 75px #15204055;text-align:left";
  panel.innerHTML='<button type="button" id="presence-close" style="float:right;border:0;background:transparent;font-size:23px;cursor:pointer" aria-label="닫기">×</button><h2 style="margin:0 0 10px">📊 접속 통계</h2><form id="presence-code-form"><label for="presence-code">확인 코드</label><input id="presence-code" type="password" autocomplete="off" required style="display:block;margin:8px 0;padding:12px;width:100%;box-sizing:border-box;border:1px solid #ccd2e2;border-radius:10px"><button type="submit" style="background:#3439bd;color:white;border:0;border-radius:10px;padding:10px 18px;cursor:pointer">확인</button></form><p id="presence-message" role="status" style="font-size:13px;color:#64708a"></p><div id="presence-list" hidden></div><div id="visitor-list" hidden></div><p style="font-size:11px;color:#687388">공통 접속 기록이 활성화된 게임 기준 · 계정에 여러 세션이 있으면 각 위치가 표시됩니다.</p>';
+ const report=document.createElement("p");report.id="fw-count-report";panel.appendChild(report);
  document.body.appendChild(panel);
+ reportCount("live",countsReport.live);
  const codeForm=panel.querySelector("#presence-code-form"),message=panel.querySelector("#presence-message"),list=panel.querySelector("#presence-list");
  trigger.addEventListener("click",()=>{panel.hidden=false;if(adminUnlocked)renderAdmin();else panel.querySelector("#presence-code").focus()});
  panel.querySelector("#presence-close").addEventListener("click",()=>{panel.hidden=true;adminUnlocked=false;codeForm.hidden=false;list.hidden=true;panel.querySelector("#visitor-list").hidden=true;panel.querySelector("#presence-code").value="";profileLoad++});
