@@ -9,8 +9,15 @@ const friendNames=new Map(),seenInvites=new Set();
 let inviteReady=false;
 async function resolveFriend(uid){
  if(friendNames.has(uid))return friendNames.get(uid);
- let name="친구";
- try{const handle=await read("handleByUid/"+uid);if(typeof handle==="string"&&/^[a-z0-9_]{3,20}$/.test(handle))name="@"+handle}catch(e){console.warn("Friend name lookup",e)}
+ let name="닉네임 확인 불가";
+ try{
+  const snapshot=await get(ref(db,"formwheelV2/hubProfiles/"+uid));
+  const nickname=snapshot.val()?.nickname;
+  if(typeof nickname==="string"&&nickname.trim().length>=2)name=nickname.trim().slice(0,16);
+ }catch(e){console.warn("Profile nickname unavailable",e.code||e.message)}
+ if(name==="닉네임 확인 불가"){
+  try{const handle=await read("handleByUid/"+uid);if(typeof handle==="string"&&/^[a-z0-9_]{3,20}$/.test(handle))name="@"+handle}catch(e){console.warn("Friend handle unavailable",e.code||e.message)}
+ }
  friendNames.set(uid,name);return name;
 }
 function showInvite(i){
@@ -60,5 +67,5 @@ el("handle-button")?.addEventListener("click",async()=>{const handle=el("claim-h
 el("friend-find")?.addEventListener("click",async()=>{const result=el("friend-search-result");result.replaceChildren();const handle=el("friend-query").value.trim().replace(/^@/,"").toLowerCase();if(!/^[a-z0-9_]{3,20}$/.test(handle)){result.textContent="올바른 ID를 입력해 주세요.";return}try{const uid=await read("handles/"+handle);if(!uid||uid===me.uid){result.textContent="검색 결과가 없어요.";return}result.append(node("span","@"+handle+" "),button("친구 신청",async()=>{await set(path("requests/"+uid+"/"+me.uid),{from:me.uid,to:uid,status:"pending",at:serverTimestamp()});await set(path("sent/"+me.uid+"/"+uid),true);msg("친구 요청을 보냈어요.")}))}catch(e){msg("검색 실패: "+(e.code||e.message))}});
 el("social-refresh")?.addEventListener("click",refresh);
 setInterval(()=>{if(me&&document.visibilityState==="visible")refresh()},10000);
-onAuthStateChanged(auth,u=>{initialized=true;me=u&&!u.isAnonymous?u:null;if(me)refresh();else{msg("Google 또는 이메일 계정으로 로그인해 주세요.");if(el("my-handle"))el("my-handle").textContent="로그인 후 이용 가능";["friend-inbox","friend-list","invite-list"].forEach(id=>{if(el(id))el(id).textContent="정식 계정 로그인 후 이용 가능"})}},e=>{initialized=true;unavailable("로그인 확인 실패: "+(e.code||e.message))});
+onAuthStateChanged(auth,u=>{initialized=true;me=u&&!u.isAnonymous?u:null;if(me){friendNames.clear();inviteReady=false;seenInvites.clear();refresh()}else{msg("Google 또는 이메일 계정으로 로그인해 주세요.");if(el("my-handle"))el("my-handle").textContent="로그인 후 이용 가능";["friend-inbox","friend-list","invite-list"].forEach(id=>{if(el(id))el(id).textContent="정식 계정 로그인 후 이용 가능"})}},e=>{initialized=true;unavailable("로그인 확인 실패: "+(e.code||e.message))});
 setTimeout(()=>{if(!initialized)unavailable("로그인 상태 확인 지연: 네트워크를 확인해 주세요.")},15000);
