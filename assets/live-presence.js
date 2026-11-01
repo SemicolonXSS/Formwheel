@@ -128,26 +128,32 @@ async function recordVisitor(user){
 
 const rawProject=(location.pathname.split("/").filter(Boolean)[0]||"Formwheel");
 const project=(rawProject==="Formwheel"?"Hub":rawProject.replace(/^Formwheel_/i,"")).slice(0,60);
-const sessionKey=()=>auth.currentUser?.uid;
-let registered=null,disconnect=null,connection=true,generation=0,heartbeatTimer=null;
+let publicLive=null, detailLive=null, confirmedAt=0, liveError="";
+let registered=null,disconnect=null,connection=false,generation=0,heartbeatTimer=null;
 const STALE_MS=5*60*1000;
 const isFresh=v=>v&&typeof v.lastSeen==="number"&&Date.now()-v.lastSeen<STALE_MS;
 const stateOf=v=>!v||typeof v!=="object"?"unknown":typeof v.lastSeen!=="number"?"legacy":Date.now()-v.lastSeen>=STALE_MS?"stale":"fresh";
 const sessionEntries=s=>Object.values(s||{}).filter(v=>v&&typeof v==="object");
 const activeEntries=s=>sessionEntries(s).filter(isFresh);
 const say=(message)=>{if(note)note.textContent=message};
+function renderLive(){
+ if(!label)return;
+ const count=detailLive??publicLive;
+ const own=registered&&connection&&Date.now()-confirmedAt<STALE_MS;
+ label.textContent=!connection?"연결 대기 중":own&&(count===null||count===0)?"1명 이상 · 내 접속 확인":liveError&&(!count) ? liveError : count===null?"집계 대기 중":count.toLocaleString("ko-KR")+"명";
+}
 const watchSessions=()=>onValue(ref(db,base),snapshot=>{
  const val=snapshot.val()||{},unique=new Set();
  latestSessions=val;
  if(adminUnlocked)renderAdmin();
  Object.entries(val).forEach(([uid,sessions])=>{if(activeEntries(sessions).length)unique.add(uid)});
- if(label)label.textContent=unique.size.toLocaleString("ko-KR")+"명";
+ detailLive=unique.size;renderLive();
   peakCandidate=Math.max(peakCandidate,unique.size);
   if(peakLoaded&&peakCandidate>recordedPeak)void savePeak();
  say("최근 5분 내 접속 확인 · 공통 게임 포함");
-},error=>console.debug("접속 상세 조회",error.code));
-onValue(ref(db,".info/connected"),snapshot=>{connection=snapshot.val()===true;if(connection)start(auth.currentUser);else say("연결 재시도 중…")});
-async function clear(){if(heartbeatTimer)clearInterval(heartbeatTimer);heartbeatTimer=null;const old=registered,d=disconnect;registered=null;disconnect=null;if(d)try{await d.cancel()}catch{}if(old)try{await remove(old)}catch{}}
+},error=>{detailLive=null;renderLive();console.debug("접속 상세 조회",error.code)});
+onValue(ref(db,".info/connected"),snapshot=>{connection=snapshot.val()===true;renderLive();if(connection)start(auth.currentUser);else say("연결 재시도 중…")});
+async function clear(){if(heartbeatTimer)clearInterval(heartbeatTimer);heartbeatTimer=null;const old=registered,d=disconnect;registered=null;disconnect=null;confirmedAt=0;renderLive();if(d)try{await d.cancel()}catch{}if(old)try{await remove(old)}catch{}}
 async function start(user){
  const token=++generation;await clear();
  if(token!==generation||!user||!connection)return;
@@ -159,15 +165,16 @@ async function start(user){
   const guard=onDisconnect(node);
   try{await guard.remove()}catch(error){await remove(node);throw error}
   if(token!==generation){await guard.cancel();await remove(node);return}
-  registered=node;disconnect=guard;
-  heartbeatTimer=setInterval(()=>{if(registered===node&&connection)set(ref(db,base+"/"+user.uid+"/"+sessionId+"/lastSeen"),serverTimestamp()).catch(()=>{});},60000);
- }catch(error){say("접속자 등록 실패 · Firebase Rules 확인 ("+(error.code||"연결 오류")+")")}
+  registered=node;disconnect=guard;confirmedAt=Date.now();liveError="";renderLive();
+  heartbeatTimer=setInterval(()=>{if(registered===node&&connection)set(ref(db,base+"/"+user.uid+"/"+sessionId+"/lastSeen"),serverTimestamp()).then(()=>{if(registered===node){confirmedAt=Date.now();liveError="";renderLive()}}).catch(()=>{if(registered===node){liveError="접속 갱신 실패";renderLive()}});},60000);
+ }catch(error){if(token!==generation)return;liveError="내 접속 등록 실패";renderLive();say("접속자 등록 실패 · Firebase Rules 확인 ("+(error.code||"연결 오류")+")")}
 }
 for(const [key,element] of [["live",label],["total",visitorCount]]){
  if(!element)continue;
  element.textContent="집계 대기 중";
  onValue(ref(db,"formwheelV2/publicVisitorCounts/"+key),snapshot=>{
   const count=snapshot.val();
+  if(key==="live"){publicLive=Number.isSafeInteger(count)&&count>=0?count:null;renderLive();return}
   if(Number.isSafeInteger(count)&&count>=0)element.textContent=count.toLocaleString("ko-KR")+"명";
  },error=>console.warn("공개 방문 통계 읽기 실패",key,error.code));
 }
@@ -175,18 +182,22 @@ let stopDetails=[];
 onAuthStateChanged(auth,async user=>{
  stopDetails.forEach(stop=>stop());
  stopDetails=[];
- latestSessions={};latestVisitors={};
+ latestSessions={};latestVisitors={};detailLive=null;liveError="";renderLive();
  if(user&&!user.isAnonymous)stopDetails=[watchSessions(),watchVisitors()];
  if(user){start(user);recordVisitor(user);if(peakLoaded&&peakCandidate>recordedPeak)void savePeak();return}
  if(durationTimer)clearInterval(durationTimer);
  durationTimer=null;recordedVisitorUid=null;
+ void start(null);
  // Guests count only when anonymous Firebase sign-in is enabled.
- try{await signInAnonymously(auth)}catch(error){say("게스트 집계 비활성 · 익명 인증 설정 확인 ("+(error.code||"인증 실패")+")")}
+ try{await signInAnonymously(auth)}catch(error){liveError="게스트 인증 실패";renderLive();say("게스트 집계 비활성 · 익명 인증 설정 확인 ("+(error.code||"인증 실패")+")")}
 });
 document.addEventListener("visibilitychange",()=>{
  const uid=auth.currentUser?.uid;
  if(document.visibilityState==="hidden")accumulateDuration(uid,{allowHidden:true});
  else lastActiveTick=Date.now();
+});
+window.addEventListener("pageshow",event=>{
+ if(event.persisted&&connection)void start(auth.currentUser);
 });
 window.addEventListener("pagehide",()=>{
  if(registered)remove(registered).catch(()=>{});
