@@ -139,8 +139,11 @@ const say=(message)=>{if(note)note.textContent=message};
 function renderLive(){
  if(!label)return;
  const count=detailLive??publicLive;
- const own=registered&&connection&&Date.now()-confirmedAt<STALE_MS;
- label.textContent=!connection?"연결 대기 중":own&&(count===null||count===0)?"1명 이상 · 내 접속 확인":liveError&&(!count) ? liveError : count===null?"집계 대기 중":count.toLocaleString("ko-KR")+"명";
+ const own=confirmedAt>0&&Date.now()-confirmedAt<STALE_MS;
+ if(!connection)label.textContent="연결 대기 중";
+ else if(count>0)label.textContent=count.toLocaleString("ko-KR")+"명";
+ else if(own)label.textContent="1명 이상 · 내 접속 확인";
+ else label.textContent=liveError||"내 접속 확인 중…";
 }
 const watchSessions=()=>onValue(ref(db,base),snapshot=>{
  const val=snapshot.val()||{},unique=new Set();
@@ -162,12 +165,13 @@ async function start(user){
  try{
   await set(node,{joinedAt:serverTimestamp(),lastSeen:serverTimestamp(),project,accountType:user.isAnonymous?"guest":"account"});
   if(token!==generation){await remove(node);return}
+  confirmedAt=Date.now();liveError="";renderLive();
   const guard=onDisconnect(node);
   try{await guard.remove()}catch(error){await remove(node);throw error}
   if(token!==generation){await guard.cancel();await remove(node);return}
-  registered=node;disconnect=guard;confirmedAt=Date.now();liveError="";renderLive();
+  registered=node;disconnect=guard;
   heartbeatTimer=setInterval(()=>{if(registered===node&&connection)set(ref(db,base+"/"+user.uid+"/"+sessionId+"/lastSeen"),serverTimestamp()).then(()=>{if(registered===node){confirmedAt=Date.now();liveError="";renderLive()}}).catch(()=>{if(registered===node){liveError="접속 갱신 실패";renderLive()}});},60000);
- }catch(error){if(token!==generation)return;liveError="내 접속 등록 실패";renderLive();say("접속자 등록 실패 · Firebase Rules 확인 ("+(error.code||"연결 오류")+")")}
+ }catch(error){if(token!==generation)return;confirmedAt=0;liveError="내 접속 등록 실패";renderLive();say("접속자 등록 실패 · Firebase Rules 확인 ("+(error.code||"연결 오류")+")")}
 }
 for(const [key,element] of [["live",label],["total",visitorCount]]){
  if(!element)continue;
