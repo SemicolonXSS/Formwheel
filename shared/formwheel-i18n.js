@@ -93,7 +93,7 @@ function mount(){
   if(pending)return;
   pending=true;
   queueMicrotask(()=>{pending=false;apply(language());});
- }).observe(document.body,{subtree:true,childList:true,characterData:true});
+ }).observe(document.body,{subtree:true,childList:true});
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",mount);else mount();
 window.addEventListener("storage",e=>{if(e.key===KEY)apply(language())});
