@@ -24,6 +24,24 @@ const lex={
 };
 const placeholders={"🔎 프로젝트 검색...":"🔎 Search projects...","친구 코드 6자리":"6-digit friend code"};
 const originals=new WeakMap();
+const dynamicOriginals=new WeakMap();
+let pending=false;
+function translateDynamic(lang){
+ const root=document.body;if(!root)return;
+ const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
+ let node;
+ while((node=walker.nextNode())){
+  if(node.parentElement?.closest("script,style,textarea,code,pre,[contenteditable]"))continue;
+  const current=node.textContent;
+  const previous=dynamicOriginals.get(node);
+  const source=previous&&previous.output===current?previous.source:current;
+  const trimmed=source.trim();
+  if(!trimmed)continue;
+  const output=lang==="en"&&lex[trimmed]?source.replace(trimmed,lex[trimmed]):source;
+  dynamicOriginals.set(node,{source,output});
+  if(current!==output)node.textContent=output;
+ }
+}
 const targetSelectors=[
  "#fw-nav-quick","#fw-nav-friend",'header nav a[href="#projects"]',"header nav a[href*='glossary']",
  "#fw-home h2","#fw-home h3","#fw-edit-toggle","#fw-edit-save","#fw-edit-cancel","#fw-home-editor p",
@@ -54,6 +72,7 @@ function apply(lang){
   const original=el.dataset.fwOriginalPlaceholder||(el.dataset.fwOriginalPlaceholder=el.placeholder);
   el.placeholder=lang==="en"?(placeholders[original]||original):original;
  });
+ translateDynamic(lang);
  const picker=document.getElementById("fw-language");if(picker)picker.value=lang;
  window.dispatchEvent(new CustomEvent("formwheel:languagechange",{detail:{language:lang}}));
 }
@@ -70,6 +89,11 @@ function mount(){
   }
  }
  apply(language());
+ new MutationObserver(()=>{
+  if(pending)return;
+  pending=true;
+  queueMicrotask(()=>{pending=false;apply(language());});
+ }).observe(document.body,{subtree:true,childList:true,characterData:true});
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",mount);else mount();
 window.addEventListener("storage",e=>{if(e.key===KEY)apply(language())});
