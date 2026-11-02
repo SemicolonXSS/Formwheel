@@ -2,6 +2,17 @@
   "rules": {
     ".read": false,
     ".write": false,
+    "clickerLeaderboardSeason3": {
+      ".read": true,
+      ".indexOn": ["scoreKey"],
+      "$uid": {
+        ".write": "auth != null && auth.uid === $uid",
+        ".validate": "newData.hasChildren(['uid', 'name', 'score', 'scoreKey', 'updatedAt', 'lastSubmissionDay']) && newData.child('uid').val() === $uid && newData.child('name').isString() && newData.child('name').val().length > 0 && newData.child('name').val().length <= 12 && newData.child('score').isString() && newData.child('score').val().matches(/^\\d+$/) && newData.child('scoreKey').isString() && newData.child('updatedAt').isNumber() && newData.child('lastSubmissionDay').isString() && newData.child('lastSubmissionDay').val().matches(/^\\d{4}-\\d{2}-\\d{2}$/)",
+        "$other": {
+          ".validate": false
+        }
+      }
+    },
     "formwheelV2": {
       "social": {
         "handles": {
