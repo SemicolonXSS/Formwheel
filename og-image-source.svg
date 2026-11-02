@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#110e30"/><stop offset=".53" stop-color="#32205f"/><stop offset="1" stop-color="#17113a"/></linearGradient>
+ <radialGradient id="glow"><stop stop-color="#a785ff" stop-opacity=".45"/><stop offset="1" stop-color="#a785ff" stop-opacity="0"/></radialGradient>
+ <linearGradient id="pill" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#eee6ff"/><stop offset="1" stop-color="#fff"/></linearGradient>
+ <filter id="shadow"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#0e092d" flood-opacity=".4"/></filter>
+</defs>
+<rect width="1200" height="630" fill="url(#bg)"/>
+<circle cx="110" cy="30" r="315" fill="url(#glow)"/><circle cx="1050" cy="560" r="360" fill="url(#glow)"/>
+<g stroke="#b8a2ff" stroke-opacity=".13" fill="none"><path d="M0 114H1200M0 516H1200"/><circle cx="600" cy="300" r="420"/><circle cx="600" cy="300" r="505"/></g>
+<!-- one roulette wheel, outside clear copy area -->
+<g transform="translate(127 148) rotate(-16)" filter="url(#shadow)">
+ <circle r="112" fill="#f4ebff" opacity=".18"/><circle r="99" fill="#cbb7ff" stroke="#fff" stroke-width="8"/>
+ <path d="M0 0V-91A91 91 0 0 1 78.8 -45.5Z" fill="#8f65e8"/><path d="M0 0L78.8 -45.5A91 91 0 0 1 78.8 45.5Z" fill="#ffbc74"/><path d="M0 0L78.8 45.5A91 91 0 0 1 0 91Z" fill="#a98cf5"/><path d="M0 0V91A91 91 0 0 1 -78.8 45.5Z" fill="#f778ba"/><path d="M0 0L-78.8 45.5A91 91 0 0 1 -78.8 -45.5Z" fill="#8174dd"/><path d="M0 0L-78.8 -45.5A91 91 0 0 1 0 -91Z" fill="#f6d16f"/>
+ <circle r="16" fill="white"/><circle r="7" fill="#5b3ba6"/>
+ <path d="M0 -126L-14 -101H14Z" fill="#fff"/>
+</g>
+<!-- small marbles at far right, away from the message -->
+<g filter="url(#shadow)"><circle cx="1081" cy="434" r="49" fill="#f7b66a" stroke="#fff1cb" stroke-width="5"/><circle cx="1042" cy="502" r="40" fill="#8ee4d7" stroke="#d6fff6" stroke-width="5"/><circle cx="1124" cy="515" r="34" fill="#cf9bff" stroke="#f3dfff" stroke-width="5"/><circle cx="1067" cy="417" r="13" fill="#fff" opacity=".65"/><circle cx="1031" cy="491" r="10" fill="#fff" opacity=".6"/></g>
+<!-- center headline -->
+<text x="600" y="169" font-family="Noto Sans CJK KR,Noto Sans KR,DejaVu Sans,sans-serif" font-size="26" fill="#ccb9ff" font-weight="700" letter-spacing="7" text-anchor="middle">PLAY · CREATE · DISCOVER</text>
+<text x="600" y="283" font-family="DejaVu Sans,Arial,sans-serif" font-size="100" fill="#ffffff" font-weight="900" text-anchor="middle" letter-spacing="-5">Formwheel</text>
+<rect x="222" y="327" width="756" height="111" rx="35" fill="url(#pill)" filter="url(#shadow)"/>
+<text x="600" y="399" font-family="Noto Sans CJK KR,Noto Sans KR,sans-serif" font-size="45" font-weight="900" fill="#2c185c" text-anchor="middle">설치 없이 즐기는 무료 웹게임</text>
+<text x="600" y="493" font-family="Noto Sans CJK KR,Noto Sans KR,sans-serif" font-size="26" font-weight="600" fill="#e0d5ff" text-anchor="middle">게임 · 도구 · 다양한 즐길거리</text>
+<text x="600" y="560" font-family="DejaVu Sans,Arial,sans-serif" font-size="22" fill="#bca8f7" text-anchor="middle">semicolonxss.github.io/Formwheel</text>
+</svg>
