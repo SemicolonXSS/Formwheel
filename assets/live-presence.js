@@ -114,7 +114,7 @@ function coarseAnalytics(){
  const daily={},channels={},activeDays={};let repeat=0,engaged=0;
  const kst=new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Seoul",year:"numeric",month:"2-digit",day:"2-digit"});
  for(const [,v] of entries){
-  for(const day of Object.keys(v.visitDays||{})){if(/^\\d{4}-\\d{2}-\\d{2}$/.test(day))activeDays[day]=(activeDays[day]||0)+1}
+  for(const day of Object.keys(v.visitDays||{})){if(/^\d{4}-\d{2}-\d{2}$/.test(day))activeDays[day]=(activeDays[day]||0)+1}
   if(Number(v.visitCount)>1)repeat++;
   if(Number(v.totalMs)>=60000)engaged++;
   const t=Number(v.firstSeen);
@@ -165,16 +165,27 @@ async function recordVisitor(user){
  const uid=user.uid,now=Date.now();
  try{
   const node=ref(db,visitorBase+"/"+uid);
-  await runTransaction(node,current=>current===null?{
+  const visitDay=todayInKorea();
+  const updateVisitor=(current,includeDaily)=>current===null?{
    firstSeen:now,accountType:user.isAnonymous?"guest":"account",
-   totalMs:0,projectMs:{},visitCount:1,lastCountedAt:now,lastVisitAt:now,visitDays:{[todayInKorea()]:true},firstAttribution:entryChannel
+   totalMs:0,projectMs:{},visitCount:1,lastCountedAt:now,lastVisitAt:now,
+   firstAttribution:entryChannel,
+   ...(includeDaily?{visitDays:{[visitDay]:true}}:{})
   }:current&&typeof current==="object"?{
    ...current,totalMs:Number(current.totalMs)||0,
    visitCount:(Number(current.visitCount)||1)+(now-(Number(current.lastVisitAt)||0)>30*60*1000?1:0),
-   lastCountedAt:now,lastVisitAt:now,
-   lastAttribution:entryChannel,
-   visitDays:{...(current.visitDays&&typeof current.visitDays==="object"?current.visitDays:{}),[todayInKorea()]:true}
-  }:undefined,{applyLocally:false});
+   lastCountedAt:now,lastVisitAt:now,lastAttribution:entryChannel,
+   ...(includeDaily?{visitDays:{...(current.visitDays&&typeof current.visitDays==="object"?current.visitDays:{}),[visitDay]:true}}:{})
+  }:undefined;
+  try{
+   await runTransaction(node,current=>updateVisitor(current,true),{applyLocally:false});
+  }catch(dailyError){
+   // Legacy database rules may reject the newly introduced visitDays field.
+   // Preserve the previous visitor-counting behavior rather than losing a visit.
+   if(!/permission.denied|PERMISSION_DENIED|validation/i.test(String(dailyError?.code||dailyError?.message||"")))throw dailyError;
+   await runTransaction(node,current=>updateVisitor(current,false),{applyLocally:false});
+   console.warn("Daily visit history not saved; Firebase Rules may need updating");
+  }
   recordedVisitorUid=uid;lastActiveTick=Date.now();
   if(durationTimer)clearInterval(durationTimer);
   durationTimer=setInterval(()=>accumulateDuration(uid),DURATION_INTERVAL);
@@ -509,7 +520,7 @@ function renderVisitorAdmin(){
  exportButton("⬇ 방문 기록 CSV",()=>downloadCsv("formwheel-visitors-"+today+".csv",[["번호","계정 유형","최초 방문 (KST)","최근 방문 (KST)","추정 방문 횟수","재방문 횟수","누적 체류 (초)","프로젝트별 체류 (초)"],...filtered.map((x,i)=>[i+1,x.v.accountType==="guest"?"게스트":"로그인/기타",displayWhen(x.first),displayWhen(x.last),x.visits,Math.max(0,x.visits-1),Math.round(x.ms/1000),Object.entries(x.projects).map(([p,ms])=>p+":"+Math.round(safeNumber(ms)/1000)).join(" | ")])]));
  exportButton("⬇ 유입 경로 CSV",()=>downloadCsv("formwheel-sources-"+today+".csv",[["유입 경로","고유 방문자 수"],...[...channelCounts].sort((a,b)=>b[1]-a[1]).map(([channel,count])=>[channelNames[channel]||channel,count])]));
  const activityDays=new Map();
- for(const x of all)for(const day of Object.keys(x.v.visitDays||{})){if(!/^\\d{4}-\\d{2}-\\d{2}$/.test(day))continue;activityDays.set(day,(activityDays.get(day)||0)+1)}
+ for(const x of all)for(const day of Object.keys(x.v.visitDays||{})){if(!/^\d{4}-\d{2}-\d{2}$/.test(day))continue;activityDays.set(day,(activityDays.get(day)||0)+1)}
  exportButton("⬇ 일별 전체 방문자 CSV",()=>downloadCsv("formwheel-daily-active-"+today+".csv",[["날짜 (KST)","하루 고유 방문자 (신규+재방문)"],...[...activityDays].sort((a,b)=>a[0].localeCompare(b[0])).map(([day,count])=>[day,count])]));
  exportButton("⬇ 일별 신규 방문 CSV",()=>downloadCsv("formwheel-daily-"+today+".csv",[["날짜 (KST)","신규 UID","게스트","로그인/기타"],...[...dayGroups].sort((a,b)=>a[0].localeCompare(b[0])).map(([d,v])=>[d,v.newCount,v.guest,v.account])]));
  root.appendChild(exportBar);
