@@ -508,6 +508,9 @@ function renderVisitorAdmin(){
  for(const x of all){const day=kstDay(x.first)||"날짜 미상";const v=dayGroups.get(day)||{newCount:0,guest:0,account:0};v.newCount++;if(x.v.accountType==="guest")v.guest++;else v.account++;dayGroups.set(day,v)}
  exportButton("⬇ 방문 기록 CSV",()=>downloadCsv("formwheel-visitors-"+today+".csv",[["번호","계정 유형","최초 방문 (KST)","최근 방문 (KST)","추정 방문 횟수","재방문 횟수","누적 체류 (초)","프로젝트별 체류 (초)"],...filtered.map((x,i)=>[i+1,x.v.accountType==="guest"?"게스트":"로그인/기타",displayWhen(x.first),displayWhen(x.last),x.visits,Math.max(0,x.visits-1),Math.round(x.ms/1000),Object.entries(x.projects).map(([p,ms])=>p+":"+Math.round(safeNumber(ms)/1000)).join(" | ")])]));
  exportButton("⬇ 유입 경로 CSV",()=>downloadCsv("formwheel-sources-"+today+".csv",[["유입 경로","고유 방문자 수"],...[...channelCounts].sort((a,b)=>b[1]-a[1]).map(([channel,count])=>[channelNames[channel]||channel,count])]));
+ const activityDays=new Map();
+ for(const x of all)for(const day of Object.keys(x.v.visitDays||{})){if(!/^\\d{4}-\\d{2}-\\d{2}$/.test(day))continue;activityDays.set(day,(activityDays.get(day)||0)+1)}
+ exportButton("⬇ 일별 전체 방문자 CSV",()=>downloadCsv("formwheel-daily-active-"+today+".csv",[["날짜 (KST)","하루 고유 방문자 (신규+재방문)"],...[...activityDays].sort((a,b)=>a[0].localeCompare(b[0])).map(([day,count])=>[day,count])]));
  exportButton("⬇ 일별 신규 방문 CSV",()=>downloadCsv("formwheel-daily-"+today+".csv",[["날짜 (KST)","신규 UID","게스트","로그인/기타"],...[...dayGroups].sort((a,b)=>a[0].localeCompare(b[0])).map(([d,v])=>[d,v.newCount,v.guest,v.account])]));
  root.appendChild(exportBar);
  const daily=document.createElement("details");daily.id="fw-daily-trend";daily.open=visitorView.dailyOpen;daily.style.cssText="margin:12px 0;padding:10px;border:1px solid #e7eaf1;border-radius:10px";
