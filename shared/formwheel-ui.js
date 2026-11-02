@@ -641,8 +641,17 @@ window.FormwheelTheme={get:()=>refresh(),apply,set:id=>{
  function countdown(seconds=3){let timer,node=document.createElement('div'),remaining=seconds;node.className='fw-loading';node.style.fontSize='72px';node.textContent=remaining;node.setAttribute('role','status');document.body.append(node);return new Promise(resolve=>{timer=setInterval(()=>{remaining--;if(remaining>0)node.textContent=remaining;else{clearInterval(timer);node.remove();resolve()}},1000)})}
  function result(title,summary,restart){const dialog=document.createElement('dialog');dialog.className='fw-dialog';const h=document.createElement('h2'),p=document.createElement('p'),again=document.createElement('button'),close=document.createElement('button');h.textContent=title;p.textContent=summary;again.textContent='다시 시작';close.textContent='닫기';again.onclick=()=>{dialog.close();restart?.()};close.onclick=()=>dialog.close();dialog.addEventListener('close',()=>dialog.remove(),{once:true});dialog.append(h,p,again,close);document.body.append(dialog);dialog.showModal();close.focus();return dialog}
  window.FormwheelUI={toast,error,errorMessage,modal,loading,countdown,result};
- addEventListener('unhandledrejection',event=>error(errorMessage(event.reason)));
- addEventListener('error',event=>{if(event.error)error(errorMessage(event.error));else if(event.target?.tagName==='SCRIPT')error('필요한 프로그램을 불러오지 못했습니다. 연결을 확인해주세요.');},true);
+ // Background runtime errors do not establish that a user action failed.
+ // Keep browser diagnostics; explicit action failures still use FormwheelUI.error.
+ let lastBackgroundNotice=0;
+ function backgroundError(value){
+  const message=errorMessage(value);
+  if(message==='작업을 완료하지 못했습니다. 현재 화면을 확인하고 다시 시도해주세요.')return;
+  if(Date.now()-lastBackgroundNotice<10000)return;
+  lastBackgroundNotice=Date.now();toast(message);
+ }
+ addEventListener('unhandledrejection',event=>backgroundError(event.reason));
+ addEventListener('error',event=>{if(event.error)backgroundError(event.error);else if(event.target?.tagName==='SCRIPT')backgroundError('network: script load failed');},true);
  addEventListener('offline',()=>toast('네트워크 연결이 끊겼습니다. 온라인 저장은 다시 연결한 뒤 확인해주세요.'));
  addEventListener('online',()=>toast('네트워크가 다시 연결되었습니다.'));
  function ready(){
