@@ -17,15 +17,6 @@
 </g>
 <!-- small marbles at far right, away from the message -->
 <g filter="url(#shadow)"><circle cx="1081" cy="434" r="49" fill="#f7b66a" stroke="#fff1cb" stroke-width="5"/><circle cx="1042" cy="502" r="40" fill="#8ee4d7" stroke="#d6fff6" stroke-width="5"/><circle cx="1124" cy="515" r="34" fill="#cf9bff" stroke="#f3dfff" stroke-width="5"/><circle cx="1067" cy="417" r="13" fill="#fff" opacity=".65"/><circle cx="1031" cy="491" r="10" fill="#fff" opacity=".6"/></g>
-<!-- Official Formwheel favicon, exact artwork from assets/formwheel-favicon.svg -->
-<g transform="translate(252 217)" filter="url(#shadow)">
-<circle cx="32" cy="32" r="44" fill="#ffffff"/>
-
-  <circle cx="32" cy="32" r="26" fill="none" stroke="#2867e8" stroke-width="8"/>
-  <circle cx="32" cy="32" r="6" fill="#2867e8"/>
-  <path d="M21 21 L43 43" fill="none" stroke="#2867e8" stroke-width="7" stroke-linecap="round"/>
-
-</g>
 <!-- center headline -->
 <text x="600" y="169" font-family="Noto Sans CJK KR,Noto Sans KR,DejaVu Sans,sans-serif" font-size="26" fill="#ccb9ff" font-weight="700" letter-spacing="7" text-anchor="middle">PLAY · CREATE · DISCOVER</text>
 <text x="600" y="283" font-family="DejaVu Sans,Arial,sans-serif" font-size="100" fill="#ffffff" font-weight="900" text-anchor="middle" letter-spacing="-5">Formwheel</text>
