@@ -704,3 +704,17 @@ if(name!=='Formwheel'){try{if(!localStorage.getItem(key))start(false);}catch{sta
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();
 
+
+/* Hub quick search: press / outside editable fields to focus the project search. */
+(()=>{
+  document.addEventListener('keydown', (event)=>{
+    if(event.key!=='/' || event.ctrlKey || event.metaKey || event.altKey || event.repeat) return;
+    const active=document.activeElement;
+    if(active && (active.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(active.tagName))) return;
+    const search=document.querySelector('#projects input[type="search"], #projects .searchBox input, #projects input[placeholder*="검색"], #projects input[placeholder*="Search"]');
+    if(!search || search.disabled || search.getClientRects().length===0) return;
+    event.preventDefault();
+    search.focus({preventScroll:true});
+    search.scrollIntoView({block:'center',behavior:'auto'});
+  });
+})();
