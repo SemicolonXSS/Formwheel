@@ -111,10 +111,9 @@ const analyticsPath="formwheelV2/publicVisitorCounts/analytics";
 let publicAnalytics=null,publicAnalyticsError="";
 function coarseAnalytics(){
  const entries=visitorEntries();
- const daily={},channels={},activeDays={};let repeat=0,engaged=0;
+ const daily={},channels={};let repeat=0,engaged=0;
  const kst=new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Seoul",year:"numeric",month:"2-digit",day:"2-digit"});
  for(const [,v] of entries){
-  for(const day of Object.keys(v.visitDays||{})){if(/^\d{4}-\d{2}-\d{2}$/.test(day))activeDays[day]=(activeDays[day]||0)+1}
   if(Number(v.visitCount)>1)repeat++;
   if(Number(v.totalMs)>=60000)engaged++;
   const t=Number(v.firstSeen);
@@ -124,7 +123,7 @@ function coarseAnalytics(){
  }
  // Hide small segments to avoid exposing individual visit times or origins.
  const grouped=values=>Object.fromEntries(Object.entries(values).filter(([,count])=>count>=5));
- return {total:entries.length,returning:repeat>=5?repeat:null,engaged:engaged>=5?engaged:null,daily:grouped(daily),activeDays:grouped(activeDays),channels:grouped(channels),updatedAt:Date.now(),schema:1};
+ return {total:entries.length,returning:repeat>=5?repeat:null,engaged:engaged>=5?engaged:null,daily:grouped(daily),channels:grouped(channels),updatedAt:Date.now(),schema:1};
 }
 const watchVisitors=()=>onValue(ref(db,visitorBase),snapshot=>{
  latestVisitors=snapshot.val()||{};visitorDetailsReady=true;visitorDetailsError="";
@@ -159,33 +158,20 @@ function getEntryChannel(){
  return {channel:"other_external",method:"referrer"};
 }
 const entryChannel=getEntryChannel();
-const todayInKorea=()=>new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Seoul",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
 async function recordVisitor(user){
  if(!user||recordedVisitorUid===user.uid)return;
  const uid=user.uid,now=Date.now();
  try{
   const node=ref(db,visitorBase+"/"+uid);
-  const visitDay=todayInKorea();
-  const updateVisitor=(current,includeDaily)=>current===null?{
+  await runTransaction(node,current=>current===null?{
    firstSeen:now,accountType:user.isAnonymous?"guest":"account",
-   totalMs:0,projectMs:{},visitCount:1,lastCountedAt:now,lastVisitAt:now,
-   firstAttribution:entryChannel,
-   ...(includeDaily?{visitDays:{[visitDay]:true}}:{})
+   totalMs:0,projectMs:{},visitCount:1,lastCountedAt:now,lastVisitAt:now,firstAttribution:entryChannel
   }:current&&typeof current==="object"?{
    ...current,totalMs:Number(current.totalMs)||0,
    visitCount:(Number(current.visitCount)||1)+(now-(Number(current.lastVisitAt)||0)>30*60*1000?1:0),
-   lastCountedAt:now,lastVisitAt:now,lastAttribution:entryChannel,
-   ...(includeDaily?{visitDays:{...(current.visitDays&&typeof current.visitDays==="object"?current.visitDays:{}),[visitDay]:true}}:{})
-  }:undefined;
-  try{
-   await runTransaction(node,current=>updateVisitor(current,true),{applyLocally:false});
-  }catch(dailyError){
-   // Legacy database rules may reject the newly introduced visitDays field.
-   // Preserve the previous visitor-counting behavior rather than losing a visit.
-   if(!/permission.denied|PERMISSION_DENIED|validation/i.test(String(dailyError?.code||dailyError?.message||"")))throw dailyError;
-   await runTransaction(node,current=>updateVisitor(current,false),{applyLocally:false});
-   console.warn("Daily visit history not saved; Firebase Rules may need updating");
-  }
+   lastCountedAt:now,lastVisitAt:now,
+   lastAttribution:entryChannel
+  }:undefined,{applyLocally:false});
   recordedVisitorUid=uid;lastActiveTick=Date.now();
   if(durationTimer)clearInterval(durationTimer);
   durationTimer=setInterval(()=>accumulateDuration(uid),DURATION_INTERVAL);
@@ -400,7 +386,7 @@ function renderVisitorAdmin(){
     }
     const caption=document.createElement("small");caption.textContent="5명 미만 구간은 개인정보 보호를 위해 생략";block.appendChild(caption);status.appendChild(block);
    };
-   display("☀️ 날짜별 전체 방문자 (재방문 포함)",publicAnalytics.activeDays);\n   display("📅 날짜별 신규 방문자",publicAnalytics.daily);
+   display("📅 날짜별 신규 방문자",publicAnalytics.daily);
    display("🔎 유입 경로별 신규 방문자",publicAnalytics.channels);
    const download=document.createElement("button");download.type="button";download.textContent="⬇ 익명 통계 CSV";
    download.style.cssText="padding:9px 12px;margin-top:10px;border:0;border-radius:9px;background:#3439bd;color:#fff";
@@ -425,9 +411,6 @@ function renderVisitorAdmin(){
  const recentlySeen=all.filter(x=>x.last>=start);
  const returned=recentlySeen.filter(x=>x.first<start);
  const totalMs=all.reduce((s,x)=>s+x.ms,0);
- const activeToday=all.filter(x=>x.v.visitDays?.[today]===true).length;
- const todayNew=all.filter(x=>kstDay(x.first)===today).length;
- const todayReturning=Math.max(0,activeToday-todayNew);
  const engaged=all.filter(x=>x.ms>=60000).length;
  const returning=all.filter(x=>x.visits>1).length;
  const title=document.createElement("h3");title.textContent="📊 방문자 분석 · "+all.length.toLocaleString("ko-KR")+"명";root.appendChild(title);
@@ -463,12 +446,6 @@ function renderVisitorAdmin(){
   tile.append(label,num,explanation);insights.appendChild(tile);
  }
  root.appendChild(insights);
- const dailyActivity=document.createElement("section");dailyActivity.style.cssText="background:#f1edff;border:1px solid #d6c6ff;border-radius:12px;padding:12px;margin:10px 0";
- const dailyTitle=document.createElement("strong");dailyTitle.textContent="☀️ 오늘의 방문자 · "+today+" (KST)";
- const dailyValue=document.createElement("p");dailyValue.style.cssText="font-size:20px;font-weight:800;margin:7px 0";dailyValue.textContent=activeToday.toLocaleString("ko-KR")+"명";
- const dailyInfo=document.createElement("p");dailyInfo.style.cssText="font-size:11px;color:#5b5570;margin:4px 0";dailyInfo.textContent="오늘 신규 "+todayNew+"명 · 오늘 재방문 "+todayReturning+"명 · 같은 UID는 하루 1회만 집계";
- const dailyNote=document.createElement("p");dailyNote.style.cssText="font-size:11px;color:#6b6380;margin:4px 0";dailyNote.textContent="오늘의 방문자 추적 기능 적용 이후 기록만 포함합니다. 과거 날짜 재방문은 복원하지 않습니다.";
- dailyActivity.append(dailyTitle,dailyValue,dailyInfo,dailyNote);root.appendChild(dailyActivity);
  const engagement=document.createElement("p");engagement.style.cssText="font-size:12px;color:#4c5670";engagement.textContent="1분 이상 체류 "+engaged+"명 · 재방문 "+returning+"명 · 목표 300명까지 "+Math.max(0,300-all.length)+"명";root.appendChild(engagement);
  const toolbar=document.createElement("div");toolbar.style.cssText="display:flex;flex-wrap:wrap;gap:8px;margin:12px 0";
  function selector(aria,options,current,key){const s=document.createElement("select");s.setAttribute("aria-label",aria);s.style.cssText="font:inherit;font-size:12px;padding:9px;border:1px solid #ccd2e2;border-radius:9px;max-width:100%";options.forEach(([value,label])=>{const o=document.createElement("option");o.value=value;o.textContent=label;s.appendChild(o)});s.value=current;s.onchange=()=>{visitorView[key]=s.value;visitorView.page=0;renderVisitorAdmin()};toolbar.appendChild(s);}
@@ -519,9 +496,6 @@ function renderVisitorAdmin(){
  for(const x of all){const day=kstDay(x.first)||"날짜 미상";const v=dayGroups.get(day)||{newCount:0,guest:0,account:0};v.newCount++;if(x.v.accountType==="guest")v.guest++;else v.account++;dayGroups.set(day,v)}
  exportButton("⬇ 방문 기록 CSV",()=>downloadCsv("formwheel-visitors-"+today+".csv",[["번호","계정 유형","최초 방문 (KST)","최근 방문 (KST)","추정 방문 횟수","재방문 횟수","누적 체류 (초)","프로젝트별 체류 (초)"],...filtered.map((x,i)=>[i+1,x.v.accountType==="guest"?"게스트":"로그인/기타",displayWhen(x.first),displayWhen(x.last),x.visits,Math.max(0,x.visits-1),Math.round(x.ms/1000),Object.entries(x.projects).map(([p,ms])=>p+":"+Math.round(safeNumber(ms)/1000)).join(" | ")])]));
  exportButton("⬇ 유입 경로 CSV",()=>downloadCsv("formwheel-sources-"+today+".csv",[["유입 경로","고유 방문자 수"],...[...channelCounts].sort((a,b)=>b[1]-a[1]).map(([channel,count])=>[channelNames[channel]||channel,count])]));
- const activityDays=new Map();
- for(const x of all)for(const day of Object.keys(x.v.visitDays||{})){if(!/^\d{4}-\d{2}-\d{2}$/.test(day))continue;activityDays.set(day,(activityDays.get(day)||0)+1)}
- exportButton("⬇ 일별 전체 방문자 CSV",()=>downloadCsv("formwheel-daily-active-"+today+".csv",[["날짜 (KST)","하루 고유 방문자 (신규+재방문)"],...[...activityDays].sort((a,b)=>a[0].localeCompare(b[0])).map(([day,count])=>[day,count])]));
  exportButton("⬇ 일별 신규 방문 CSV",()=>downloadCsv("formwheel-daily-"+today+".csv",[["날짜 (KST)","신규 UID","게스트","로그인/기타"],...[...dayGroups].sort((a,b)=>a[0].localeCompare(b[0])).map(([d,v])=>[d,v.newCount,v.guest,v.account])]));
  root.appendChild(exportBar);
  const daily=document.createElement("details");daily.id="fw-daily-trend";daily.open=visitorView.dailyOpen;daily.style.cssText="margin:12px 0;padding:10px;border:1px solid #e7eaf1;border-radius:10px";
