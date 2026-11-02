@@ -12,3 +12,9 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 .fw-dialog{border:1px solid var(--fw-border);border-radius:20px;padding:24px;max-width:min(90vw,500px);font:15px/1.7 system-ui,sans-serif;color:#222;background:white;box-shadow:0 20px 80px #0003}.fw-dialog::backdrop{background:#0006}.fw-dialog h2{font-size:21px;margin:0 0 12px}.fw-dialog button{padding:10px 18px;border:0;background:#20232a;color:white;cursor:pointer}.fw-dialog p{white-space:pre-line}
 @media(max-width:600px){button:not(.key):not(.piano-key):not(.black-key):not(.white-key){min-height:44px}.fw-error{font-size:13px;max-width:94vw}.fw-footer{padding-bottom:32px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Explicit errors must close reliably and remain readable on narrow screens. */
+.fw-error[hidden],.fw-toast[hidden]{display:none!important}
+.fw-error{box-sizing:border-box;width:min(94vw,650px);flex-wrap:wrap}
+.fw-error>span{flex:1 1 240px;min-width:0;overflow-wrap:anywhere}
+.fw-error>button{flex:0 0 auto;white-space:nowrap}
