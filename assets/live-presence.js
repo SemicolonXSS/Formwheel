@@ -163,7 +163,7 @@ async function recordVisitor(user){
  const uid=user.uid,now=Date.now();
  try{
   const node=ref(db,visitorBase+"/"+uid);
-  await runTransaction(node,current=>current===null?{
+  const visitorResult=await runTransaction(node,current=>current===null?{
    firstSeen:now,accountType:user.isAnonymous?"guest":"account",
    totalMs:0,projectMs:{},visitCount:1,lastCountedAt:now,lastVisitAt:now,firstAttribution:entryChannel
   }:current&&typeof current==="object"?{
@@ -172,10 +172,18 @@ async function recordVisitor(user){
    lastCountedAt:now,lastVisitAt:now,
    lastAttribution:entryChannel
   }:undefined,{applyLocally:false});
+  if(!visitorResult.committed||!visitorResult.snapshot.exists())throw new Error("visitor_transaction_not_committed");
   recordedVisitorUid=uid;lastActiveTick=Date.now();
+  if(user.isAnonymous&&visitorNote){
+   visitorNote.textContent="익명 방문 기록 저장됨 · 공개 누적 숫자는 관리자 집계 동기화 후 반영";
+  }
   if(durationTimer)clearInterval(durationTimer);
   durationTimer=setInterval(()=>accumulateDuration(uid),DURATION_INTERVAL);
- }catch(error){if(visitorNote)visitorNote.textContent="방문 기록 저장 실패 · Rules 확인 ("+(error.code||"오류")+")";}
+ }catch(error){
+  const reason=error.code||error.message||"오류";
+  console.warn("Formwheel 방문 등록 실패",reason);
+  if(visitorNote)visitorNote.textContent="방문 기록 저장 실패 · 익명 로그인 및 Firebase Rules 확인 ("+reason+")";
+ }
 }
 
 const rawProject=(location.pathname.split("/").filter(Boolean)[0]||"Formwheel");
