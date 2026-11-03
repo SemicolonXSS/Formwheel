@@ -4,7 +4,9 @@
     ".write": false,
     "clickerLeaderboardSeason3": {
       ".read": true,
-      ".indexOn": ["scoreKey"],
+      ".indexOn": [
+        "scoreKey"
+      ],
       "$uid": {
         ".write": "auth != null && auth.uid === $uid",
         ".validate": "newData.hasChildren(['uid', 'name', 'score', 'scoreKey', 'updatedAt', 'lastSubmissionDay']) && newData.child('uid').val() === $uid && newData.child('name').isString() && newData.child('name').val().length > 0 && newData.child('name').val().length <= 12 && newData.child('score').isString() && newData.child('score').val().matches(/^\\d+$/) && newData.child('scoreKey').isString() && newData.child('updatedAt').isNumber() && newData.child('lastSubmissionDay').isString() && newData.child('lastSubmissionDay').val().matches(/^\\d{4}-\\d{2}-\\d{2}$/)",
@@ -129,6 +131,145 @@
             "$to": {
               ".write": "auth != null && auth.uid === $from && auth.token.firebase.sign_in_provider !== 'anonymous' && !data.exists() && newData.val() === true && root.child('formwheelV2/socialFree/requests/'+$to+'/'+$from+'/status').val() === 'pending'",
               ".validate": "newData.isBoolean()"
+            }
+          }
+        }
+      },
+      "publicVisitorCounts": {
+        "live": {
+          ".read": true,
+          ".write": "auth != null && (auth.token.producer === true || auth.token.admin === true || (auth.token.email === 'not404spam@gmail.com' && auth.token.email_verified === true))"
+        },
+        "total": {
+          ".read": true,
+          ".write": "auth != null && (auth.token.producer === true || auth.token.admin === true || (auth.token.email === 'not404spam@gmail.com' && auth.token.email_verified === true))"
+        },
+        "analytics": {
+          ".read": true,
+          ".write": "auth != null && (auth.token.producer === true || auth.token.admin === true || (auth.token.email === 'not404spam@gmail.com' && auth.token.email_verified === true))",
+          ".validate": "newData.hasChildren(['total','updatedAt','schema']) && newData.child('total').isNumber() && newData.child('total').val() >= 0 && newData.child('total').val() % 1 === 0 && newData.child('updatedAt').isNumber() && newData.child('schema').val() === 1",
+          "total": {
+            ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() % 1 === 0"
+          },
+          "returning": {
+            ".validate": "newData.isNumber() && newData.val() >= 5"
+          },
+          "engaged": {
+            ".validate": "newData.isNumber() && newData.val() >= 5"
+          },
+          "updatedAt": {
+            ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= now + 60000"
+          },
+          "schema": {
+            ".validate": "newData.val() === 1"
+          },
+          "daily": {
+            "$day": {
+              ".validate": "$day.matches(/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/) && newData.isNumber() && newData.val() >= 5"
+            }
+          },
+          "channels": {
+            "$channel": {
+              ".validate": "$channel.matches(/^[a-zA-Z0-9_-]{1,32}$/) && newData.isNumber() && newData.val() >= 5"
+            }
+          },
+          "$other": {
+            ".validate": false
+          }
+        }
+      },
+      "visitorStats": {
+        "livePeak": {
+          ".read": true,
+          ".write": false
+        },
+        "uniqueVisitors": {
+          ".read": "auth != null && (auth.token.producer === true || auth.token.admin === true || (auth.token.email === 'not404spam@gmail.com' && auth.token.email_verified === true))",
+          ".write": false,
+          "$uid": {
+            ".read": "auth != null && auth.uid === $uid",
+            ".write": "auth != null && auth.uid === $uid && ((!data.exists() && newData.exists() && newData.child('firstSeen').isNumber() && newData.child('firstSeen').val() >= now-86400000 && newData.child('firstSeen').val() <= now+60000) || (data.exists() && newData.exists() && newData.child('firstSeen').val() === data.child('firstSeen').val()))",
+            ".validate": "newData.hasChildren(['firstSeen','accountType','totalMs','visitCount','lastCountedAt','lastVisitAt']) && newData.child('firstSeen').isNumber() && (data.exists() ? newData.child('accountType').val() === data.child('accountType').val() : (newData.child('accountType').val() === 'guest' || newData.child('accountType').val() === 'account')) && newData.child('totalMs').isNumber() && newData.child('totalMs').val() >= 0 && newData.child('visitCount').isNumber() && newData.child('visitCount').val() >= 1 && newData.child('lastCountedAt').isNumber() && newData.child('lastVisitAt').isNumber()",
+            "firstSeen": {
+              ".validate": "newData.isNumber() && (!data.exists() || newData.val() === data.val())"
+            },
+            "accountType": {
+              ".validate": "newData.val() === 'guest' || newData.val() === 'account'"
+            },
+            "totalMs": {
+              ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 315360000000"
+            },
+            "projectMs": {
+              "$project": {
+                ".validate": "$project.matches(/^[A-Za-z0-9_-]{1,60}$/) && newData.isNumber() && newData.val() >= 0"
+              }
+            },
+            "visitCount": {
+              ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() % 1 === 0"
+            },
+            "lastCountedAt": {
+              ".validate": "newData.isNumber() && newData.val() % 1 === 0 && newData.val() >= 0 && newData.val() <= now + 60000"
+            },
+            "lastVisitAt": {
+              ".validate": "newData.isNumber() && newData.val() % 1 === 0 && newData.val() >= 0 && newData.val() <= now + 60000"
+            },
+            "$other": {
+              ".validate": false
+            },
+            "firstAttribution": {
+              ".validate": "newData.hasChildren([\"channel\", \"method\"])",
+              "channel": {
+                ".validate": "newData.isString() && newData.val().length <= 32"
+              },
+              "method": {
+                ".validate": "newData.isString() && newData.val().length <= 32"
+              },
+              "$other": {
+                ".validate": "false"
+              }
+            },
+            "lastAttribution": {
+              ".validate": "newData.hasChildren([\"channel\", \"method\"])",
+              "channel": {
+                ".validate": "newData.isString() && newData.val().length <= 32"
+              },
+              "method": {
+                ".validate": "newData.isString() && newData.val().length <= 32"
+              },
+              "$other": {
+                ".validate": "false"
+              }
+            },
+            "projectVisits": {
+              "$project": {
+                ".validate": "$project.matches(/^[A-Za-z0-9_-]{1,60}$/) && newData.isNumber() && newData.val() >= 0 && newData.val() <= 1000000 && newData.val() % 1 === 0"
+              }
+            }
+          }
+        }
+      },
+      "liveHubSessions": {
+        ".read": "auth != null && (auth.token.producer === true || auth.token.admin === true || (auth.token.email === 'not404spam@gmail.com' && auth.token.email_verified === true))",
+        ".write": false,
+        "$uid": {
+          ".read": "auth != null && auth.uid === $uid",
+          "$session": {
+            ".write": "auth != null && auth.uid === $uid && $session.matches(/^[a-f0-9]{32}$/) && ((!data.exists() && newData.exists()) || data.exists())",
+            ".validate": "newData.hasChildren(['joinedAt','lastSeen','project','accountType']) && newData.child('joinedAt').isNumber() && newData.child('lastSeen').isNumber() && newData.child('project').isString() && newData.child('project').val().length <= 60 && (newData.child('accountType').val() === 'guest' || newData.child('accountType').val() === 'account')",
+            "joinedAt": {
+              ".validate": "newData.isNumber()"
+            },
+            "lastSeen": {
+              ".validate": "newData.isNumber() && newData.val() <= now + 60000"
+            },
+            "project": {
+              ".validate": "newData.isString() && newData.val().length <= 60"
+            },
+            "accountType": {
+              ".validate": "newData.val() === 'guest' || newData.val() === 'account'"
+            },
+            "$other": {
+              ".validate": false
             }
           }
         }
