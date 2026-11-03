@@ -1025,6 +1025,15 @@ function render(){
             : "⭐⭐⭐";
 
 
+      // Maintenance notices are advisory: never block otherwise working offline gameplay.
+      const constructionWarnings = {
+        "Casino": "지갑·카드 거래의 Firebase 저장 기능 점검 중",
+        "Clicker": "리더보드 점수 등록·Rapid 서버 지갑 점검 중",
+        "PVP": "온라인 방·매칭 권한 점검 중",
+        "Battle": "일부 온라인 대전 연결 권한 점검 중"
+      };
+      const constructionNotice = constructionWarnings[project.name] || "";
+
       const newBadge =
         isRecent(project)
           ? `<span class="newBadge">NEW</span>`
@@ -1038,6 +1047,7 @@ function render(){
         >
 
           ${newBadge}
+          ${constructionNotice ? `<div role="note" style="margin:8px 10px 0;padding:9px 11px;border-radius:10px;border:1px solid #dbbb72;background:#fff8e9;color:#684817;font-size:12px;line-height:1.55"><strong>🚧 일부 기능 공사중</strong><div>${escapeHTML(constructionNotice)} · 다른 기능은 이용할 수 있어요.</div></div>` : ""}
           ${pinnedGames.includes(project.name) ? '<span class="fw-pin-mark">📌 고정됨</span>' : ""}
 
           <div class="fw-card-thumbnail">
