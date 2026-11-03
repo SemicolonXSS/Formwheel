@@ -10,25 +10,32 @@ const auth=getAuth(app),db=getDatabase(app);
 const MAIN="fw-global-theme-v1",BULK="fw-project-themes-v1",ALLOWED=new Set(["sunset","forest","neon","galaxy","ocean","sakura","midnight","aurora","ember","cyber","royal","void","prismatic","echo","nova","void-premium","rift","comet","eclipse","quantum","celestial","singularity","overdrive","cosmic-infinity","cosmic-paradox","cosmic-omega","cosmic-eternity","cosmic-genesis","daynight","playtester-purple","playtester-red","playtester-blue","mint-breeze","rose-gold","retro-pixel","deep-sea","golden-hour","frost","volcanic","starlit-library","dreamscape","crystal-cave","solar-flare","event-horizon","level2-nebula-core","level2-nebula","level2-pulsar","level2-chrono","level2-abyss","level2-stellar","level2-prism","level2-supernova","level2-hyperion","level2-zenith","level2-omniverse","level2-paragon","level2-absolute","level2-eclipse-king","level2-aurora-prime","level2-void-emperor","level2-time-collapse","level2-celestial-core","level2-infinity-gate","level2-dimension-zero","level2-paradox-god","level2-quantum-throne","level2-transcendence","level2-origin-breaker","level2-final-singularity"]);
 const clean=x=>{const projects={};if(x?.projects&&typeof x.projects==="object"){for(const [k,v] of Object.entries(x.projects).slice(0,250)){if(k.length<=120&&ALLOWED.has(v))projects[k]=v;}}return {selected:ALLOWED.has(x?.selected)?x.selected:null,projects};};
 const local=()=>{let projects={};try{projects=JSON.parse(localStorage.getItem(BULK)||"{}")}catch{}return clean({selected:localStorage.getItem(MAIN),projects});};
-let user=null,unsubscribe=null,loading=true,remoteValue=null,writeTimer=null,applying=false;
+let user=null,unsubscribe=null,loading=true,remoteValue=null,writeTimer=null,applying=false,session=0;
 const status=(state)=>window.dispatchEvent(new CustomEvent("formwheel-account-theme-sync",{detail:{state}}));
 function apply(data){const s=clean(data);applying=true;try{if(s.selected)localStorage.setItem(MAIN,s.selected);else localStorage.removeItem(MAIN);localStorage.setItem(BULK,JSON.stringify(s.projects));window.FormwheelTheme?.get?.();window.dispatchEvent(new Event("formwheel-theme-changed"));}finally{applying=false;}}
-async function write(){if(!user||loading)return;const target=ref(db,"formwheelV2/themePreferences/"+user.uid);try{await set(target,local());status("saved");}catch(e){console.warn("Formwheel theme sync failed",e);status("error");}}
+async function write(){if(!user||loading)return;const ticket=session;const target=ref(db,"formwheelV2/themePreferences/"+user.uid);try{await set(target,local());if(ticket===session)status("saved");}catch(e){if(ticket!==session)return;console.warn("Formwheel theme sync failed",e);status("error");}}
 function schedule(){if(applying||!user||loading)return;clearTimeout(writeTimer);writeTimer=setTimeout(write,500);}
 const originalSet=Storage.prototype.setItem,originalRemove=Storage.prototype.removeItem;
 Storage.prototype.setItem=function(k,v){originalSet.call(this,k,v);if(this===localStorage&&(k===MAIN||k===BULK))schedule();};
 Storage.prototype.removeItem=function(k){originalRemove.call(this,k);if(this===localStorage&&(k===MAIN||k===BULK))schedule();};
 window.FormwheelAccountThemes={save:schedule,status:()=>({signedIn:!!user,loading})};
 onAuthStateChanged(auth,async next=>{
+ const ticket=++session;
  clearTimeout(writeTimer);unsubscribe?.();unsubscribe=null;user=next;loading=true;remoteValue=null;
  if(!next||next.isAnonymous){loading=false;status("guest");return;}
  const target=ref(db,"formwheelV2/themePreferences/"+next.uid);
  try{
   const first=await get(target);
-  if(auth.currentUser?.uid!==next.uid)return;
-  if(first.exists()){remoteValue=clean(first.val());const shop=JSON.parse(localStorage.getItem("formwheel_rapid_shop_beta_v1")||"null");if(shop?.equipped){remoteValue.selected=shop.equipped;await set(target,remoteValue);}apply(remoteValue);}
-  else {const initial=local();await set(target,initial);remoteValue=initial;}
+  if(ticket!==session||auth.currentUser?.uid!==next.uid)return;
+  // Existing account preferences win over stale device shop state.
+  if(first.exists()){remoteValue=clean(first.val());apply(remoteValue);}
+  else {const initial=local();await set(target,initial);if(ticket!==session)return;remoteValue=initial;}
   loading=false;status("ready");
-  unsubscribe=onValue(target,snap=>{if(auth.currentUser?.uid!==next.uid||!snap.exists())return;const incoming=clean(snap.val());const shop=JSON.parse(localStorage.getItem("formwheel_rapid_shop_beta_v1")||"null");if(shop?.equipped&&ALLOWED.has(shop.equipped))incoming.selected=shop.equipped;if(JSON.stringify(incoming)!==JSON.stringify(local()))apply(incoming);},e=>{console.warn("Theme realtime sync unavailable",e);status("error");});
- }catch(e){loading=false;console.warn("Account themes unavailable",e);status("error");}
+  unsubscribe=onValue(target,snap=>{
+   if(ticket!==session||auth.currentUser?.uid!==next.uid||!snap.exists())return;
+   const incoming=clean(snap.val());
+   if(JSON.stringify(incoming)!==JSON.stringify(local()))apply(incoming);
+  },e=>{if(ticket!==session)return;console.warn("Theme realtime sync unavailable",e);status("error");});
+ }catch(e){if(ticket!==session)return;loading=false;console.warn("Account themes unavailable",e);status("error");}
 });
+
