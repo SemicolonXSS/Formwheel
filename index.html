@@ -993,7 +993,7 @@ var list=extract();if(!list.length)list=fallback;
 var q=(document.getElementById('fw-b-search').value||'').trim().toLowerCase();
 var visible=list.filter(function(p){return(category==='all'||p.type===category)&&(p.name+' '+p.description+' '+(p.keywords||'')).toLowerCase().includes(q)});
 var grid=document.getElementById('fw-b-grid');grid.replaceChildren();
-visible.forEach(function(p){var a=document.createElement('a');a.className='fw-b-item';a.href=p.url;a.target='_blank';a.rel='noopener noreferrer';a.dataset.fwProject=p.name;var title=document.createElement('strong');title.textContent=p.name;var meta=document.createElement('small');meta.textContent=p.description?p.description.replace(/[.!?。]+$/,'').split(/[·,，\\s]+/).filter(Boolean).slice(0,3).join(' · '):'프로젝트 열기';a.append(title,meta);grid.append(a)});
+visible.forEach(function(p){var a=document.createElement('a');a.className='fw-b-item';a.href=p.url;a.target='_blank';a.rel='noopener noreferrer';a.dataset.fwProject=p.name;var title=document.createElement('strong');title.textContent=p.name;var meta=document.createElement('small');meta.textContent=p.description?p.description.replace(/[.!?。]+$/,'').split(/[·,，\s]+/).filter(Boolean).slice(0,3).join(' · '):'프로젝트 열기';a.append(title,meta);grid.append(a)});
 document.getElementById('fw-b-count').textContent=visible.length+'개 프로젝트'+(extract().length?' · 기존 Hub 카드 목록 연동':' · 목록 준비 중');
 document.querySelectorAll('#fw-beta-simple-view button[data-category]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.category===category))});
 document.getElementById('fw-b-home').hidden=tab!=='home';document.getElementById('fw-b-explore').hidden=tab!=='explore'
