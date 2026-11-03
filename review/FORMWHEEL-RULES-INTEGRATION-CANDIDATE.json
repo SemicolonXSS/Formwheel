@@ -969,6 +969,8 @@
       ".write": false
     },
     "boardRooms": {
+      ".read": false,
+      ".write": false,
       "$code": {
         ".read": "auth != null && $code.matches(/^[A-HJ-NP-Z2-9]{8}$/)",
         ".write": "auth != null && $code.matches(/^[A-HJ-NP-Z2-9]{8}$/) && newData.exists() && ((!data.exists() && newData.child('hostUid').val() === auth.uid && newData.child('guestUid').val() === '' && newData.child('status').val() === 'waiting' && newData.child('actions').numChildren() === 0 && newData.child('createdAt').val() >= now - 300000 && newData.child('createdAt').val() <= now + 300000) || (data.exists() && newData.child('version').val() === data.child('version').val() && newData.child('game').val() === data.child('game').val() && newData.child('size').val() === data.child('size').val() && newData.child('hostUid').val() === data.child('hostUid').val() && newData.child('createdAt').val() === data.child('createdAt').val() && newData.child('updatedAt').val() >= data.child('updatedAt').val() && ((data.child('status').val() === 'waiting' && data.child('guestUid').val() === '' && auth.uid !== data.child('hostUid').val() && newData.child('guestUid').val() === auth.uid && newData.child('status').val() === 'playing' && data.child('actions').numChildren() === 0 && newData.child('actions').numChildren() === 0) || (data.child('status').val() === 'playing' && newData.child('status').val() === 'playing' && data.child('guestUid').val() !== '' && newData.child('guestUid').val() === data.child('guestUid').val() && (auth.uid === data.child('hostUid').val() || auth.uid === data.child('guestUid').val()) && data.child('actions').numChildren() < 1200 && newData.child('actions').numChildren() === data.child('actions').numChildren() + 1 && newData.child('actions').child('' + data.child('actions').numChildren()).child('uid').val() === auth.uid))))",
@@ -1150,6 +1152,8 @@
       ".write": false
     },
     "syncRooms": {
+      ".read": false,
+      ".write": false,
       "$code": {
         ".read": "auth != null",
         ".write": "auth != null && ((!data.exists() && $code.matches(/^[A-HJ-NP-Z2-9]{6}$/) && newData.hasChildren(['hostUid','seed','createdAt','players','state']) && newData.child('hostUid').val() === auth.uid && newData.child('players').child(auth.uid).exists() && newData.child('state').child('phase').val() === 'lobby') || (data.exists() && !newData.exists() && data.child('hostUid').val() === auth.uid))",
