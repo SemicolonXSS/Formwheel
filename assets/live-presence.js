@@ -100,7 +100,16 @@ function reportCount(key,message){
  if(output)output.textContent="접속자 · "+countsReport.live+" / 누적 · "+countsReport.total;
 }
 function publishCount(key,count){
- return set(ref(db,"formwheelV2/publicVisitorCounts/"+key),{count,updatedAt:serverTimestamp()}).then(()=>reportCount(key,"저장 완료")).catch(error=>{
+ const target=ref(db,"formwheelV2/publicVisitorCounts/"+key);
+ // Admin fallback must never replace a newer count with a stale browser snapshot.
+ const write=key==="total"
+  ?runTransaction(target,current=>{
+    const existing=Number(current?.count??current??0);
+    if(!Number.isSafeInteger(existing)||existing>=count)return;
+    return {count,updatedAt:Date.now()};
+   },{applyLocally:false})
+  :set(target,{count,updatedAt:serverTimestamp()});
+ return write.then(()=>reportCount(key,"저장 완료")).catch(error=>{
   if(key==="total")lastPublishedTotal=null;else lastPublishedLive=null;
   reportCount(key,"공개 숫자 저장 실패 ("+(error.code||error.message)+")");
  });
@@ -175,7 +184,7 @@ async function recordVisitor(user){
   if(!visitorResult.committed||!visitorResult.snapshot.exists())throw new Error("visitor_transaction_not_committed");
   recordedVisitorUid=uid;lastActiveTick=Date.now();
   if(user.isAnonymous&&visitorNote){
-   visitorNote.textContent="익명 방문 기록 저장됨 · 공개 누적 숫자는 관리자 집계 동기화 후 반영";
+   visitorNote.textContent="익명 방문 기록 저장됨 · 공개 누적 숫자는 정기 집계 후 반영";
   }
   if(durationTimer)clearInterval(durationTimer);
   durationTimer=setInterval(()=>accumulateDuration(uid),DURATION_INTERVAL);
