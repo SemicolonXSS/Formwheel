@@ -276,6 +276,7 @@ header .fw-profile-trigger{margin-left:0}
 </style>
 <section id="fw-matchmaking" hidden style="position:fixed;z-index:9999;top:75px;left:50%;transform:translateX(-50%);width:min(92vw,580px);max-height:calc(100vh - 95px);overflow:auto;padding:24px;border:1px solid #dfe5f1;border-radius:22px;background:white;box-shadow:0 15px 55px #1d265340">
 <button type="button" id="fw-match-close" aria-label="매칭 창 닫기" style="float:right;border:0;background:transparent;font-size:24px;cursor:pointer">×</button><h2 style="margin:0 0 8px">🎮 Formwheel 랜덤 대전</h2><p style="color:#667085">빠른 대전은 모르는 상대와, 랜덤 플레이는 친구와 코드를 공유해 랜덤 게임을 선택해요.</p>
+<div role="note" style="margin:12px 0;padding:12px 14px;border:1px solid #e2bb6c;background:#fff7e7;color:#624414;border-radius:12px;font-size:13px;line-height:1.5"><strong>🚧 랜덤 대전 임시 공사중</strong><div>Firebase 매칭 방 접근 권한을 점검하고 있어요. 방 생성·참가가 실패할 수 있습니다. 다른 게임과 방문자 집계는 정상적으로 이용해 주세요.</div></div>
 <div id="fw-match-actions" style="display:flex;gap:10px;flex-wrap:wrap">
 <button id="fw-match-quick" type="button" style="background:#373cc3;color:white;border:0;border-radius:12px;padding:14px 20px;font:inherit;font-weight:800;cursor:pointer">⚔️ 빠른 대전 · 자동 상대</button>
 <button id="fw-match-friend" type="button" style="background:#eff1ff;color:#303a86;border:0;border-radius:12px;padding:14px 20px;font:inherit;font-weight:800;cursor:pointer">🎲 랜덤 플레이 · 코드 생성</button>
@@ -358,7 +359,7 @@ header .fw-profile-trigger{margin-left:0}
   <a href="./party.html">👥 파티</a>
   <a href="./festival.html">🎮 페스티벌</a>
 </nav>
-<div id="fw-rapid-quicklinks" style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:10px auto 14px;padding:0 12px"><a href="./rapid-2.html" style="display:inline-block;padding:8px 13px;border:1px solid #d9d5f7;border-radius:12px;background:#f4f2ff;color:#43358c;text-decoration:none;font-weight:750">🪙 Rapid 2.0 · 목표 플래너 →</a><a href="https://semicolonxss.github.io/Formwheel_Clicker/rapid-shop.html" style="display:inline-block;background:#f4f2ff;color:#43358c;font-weight:800;text-decoration:none;padding:8px 13px;border-radius:12px;border:1px solid #d9d5f7">🎨 Rapid 상점 →</a></div>
+<div id="fw-rapid-quicklinks" style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:10px auto 14px;padding:0 12px"><a href="./rapid-2.html" style="display:inline-block;padding:8px 13px;border:1px solid #d9d5f7;border-radius:12px;background:#f4f2ff;color:#43358c;text-decoration:none;font-weight:750">🪙 Rapid 2.0 · 목표 플래너 →</a><a title="🚧 Rapid 서버 지갑·구매 검증 공사중: 거래가 실패할 수 있어요" href="https://semicolonxss.github.io/Formwheel_Clicker/rapid-shop.html" style="display:inline-block;background:#f4f2ff;color:#43358c;font-weight:800;text-decoration:none;padding:8px 13px;border-radius:12px;border:1px solid #d9d5f7">🚧 Rapid 상점 · 거래 점검중 →</a></div>
 <div id="fw-tester-benefits" hidden style="max-width:920px;margin:8px auto;padding:12px 15px;border:1px solid #a9a0ee;border-radius:14px;background:#f2efff;color:#3b327b"><strong>🧪 공식 플레이테스터</strong> <span id="fw-tester-badge">🏅 플레이테스터 배지</span><p style="margin:6px 0;font-size:13px">전용 Hub 테마가 적용되었습니다. Rapid 무제한은 안전한 서버 거래 연동 후 제공됩니다.</p><a href="./feedback.html" style="display:inline-block;background:#4335a5;color:#fff;text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:700">💡 개선점 보고하기</a></div>
 <section id="projects">
 
@@ -600,7 +601,7 @@ document.querySelectorAll(".categoryButtons .filterButton").forEach(button=>{
   });
 });
 </script>
-<script src="./assets/app.js?v=20261031-hub-navigation1"></script>
+<script src="./assets/app.js?v=20261103-construction1"></script>
 <script src="./assets/theme-bulk.js?v=20261022-premium13"></script>
 <script>
 (function(){
