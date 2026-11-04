@@ -30,7 +30,8 @@ body.secol-stardust main{filter:drop-shadow(0 0 9px #e5c8ff)}
 <button id="run">실험 시작</button><p id="result" role="status" aria-live="polite">실험 준비 완료.</p>
 <p class="small" id="count"></p></section>
 <section class="panel" id="extra-lab"><h2>🌌 차원 탐험</h2><p>세 가지 차원문을 발견해 봐! 새로운 문을 열면 연구 XP가 쌓여.</p><div class="grid"><button data-secol-door="0">🌙 달의 복도</button><button data-secol-door="1">🪞 거울 방</button><button data-secol-door="2">🌠 별의 정원</button></div><p id="secol-explore-result" role="status"></p><p id="secol-xp"></p><h2>📖 탐험 도감</h2><div id="secol-door-list" class="grid"></div><button id="secol-export">탐험 기록 내보내기</button></section><section class="panel"><h2>🏆 비밀 업적</h2><div class="grid" id="achievements"></div></section>
-<section class="panel"><h2>🔐 숨겨진 문</h2><p>힌트: 연구소 이름을 영어로 입력해 봐.</p><input id="code" aria-label="비밀 암호" autocomplete="off" style="padding:12px;border-radius:10px;width:65%;background:#120e20;color:white;border:1px solid #8972aa"><button id="unlock">확인</button><p id="secret" role="status">👾 비밀 문이 열렸다! 연구소의 숨겨진 방을 발견했어.</p></section>
+<section class="panel"><h2>🧩 세콜의 암호 퍼즐</h2><p>숫자가 두 배씩 커져. 다음 숫자는?</p><p><strong>2 → 4 → 8 → 16 → ?</strong></p><input id="secol-puzzle-input" type="number" inputmode="numeric" aria-label="퍼즐 정답" style="padding:12px;border-radius:10px;max-width:140px;background:#120e20;color:white;border:1px solid #8972aa"><button id="secol-puzzle-check">정답 확인</button><p id="secol-puzzle-result" role="status" aria-live="polite"></p></section>
+<section class="panel"><h2>⏳ 시간 정지 실험</h2><p>연구소 시계를 5초 동안 멈춰 봐. 실제 시간은 계속 흐르지만 화면의 시계는 정지해.</p><p id="secol-clock" style="font-size:30px;font-weight:800;font-variant-numeric:tabular-nums">--:--:--</p><button id="secol-freeze">시간 정지 시작</button><p id="secol-freeze-result" role="status"></p></section><section class="panel"><h2>🔐 숨겨진 문</h2><p>힌트: 연구소 이름을 영어로 입력해 봐.</p><input id="code" aria-label="비밀 암호" autocomplete="off" style="padding:12px;border-radius:10px;width:65%;background:#120e20;color:white;border:1px solid #8972aa"><button id="unlock">확인</button><p id="secret" role="status">👾 비밀 문이 열렸다! 연구소의 숨겨진 방을 발견했어.</p></section>
 <p class="small">저장 위치: 이 브라우저의 로컬 저장소 · 서버 전송 없음</p>
 </main><button id="secol-effect-reset" type="button" hidden>↩ 화면 원상복구</button><script>
 (()=>{'use strict';
@@ -79,5 +80,20 @@ if(effect){document.body.classList.add(effect);reset.hidden=false;timer=window.s
 run.addEventListener('click',update);
 reset.addEventListener('click',clear);
 window.addEventListener('pagehide',clear);
+})();
+</script><script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id);
+const puzzleKey='fw-secol-puzzle-solved-v1';
+let solved=false;try{solved=localStorage.getItem(puzzleKey)==='yes'}catch{}
+function check(){if(Number($('secol-puzzle-input').value)===32&&$('secol-puzzle-input').value.trim()!==''){$('secol-puzzle-result').textContent=solved?'🧩 이미 풀었던 퍼즐이야!':'🎉 정답! 비밀 퍼즐 발견 완료!';solved=true;try{localStorage.setItem(puzzleKey,'yes')}catch{}}else $('secol-puzzle-result').textContent='아직 정답이 아니야. 숫자 사이의 규칙을 찾아봐.'}
+$('secol-puzzle-check').addEventListener('click',check);
+$('secol-puzzle-input').addEventListener('keydown',e=>{if(e.key==='Enter')check()});
+let frozen=false,timeout=null,clockTimer=null;
+function tick(){if(!frozen)$('secol-clock').textContent=new Date().toLocaleTimeString('ko-KR',{hour12:false})}
+function unfreeze(){frozen=false;if(timeout!==null)clearTimeout(timeout);timeout=null;$('secol-freeze').disabled=false;$('secol-freeze-result').textContent='▶ 시간이 다시 흐르기 시작했어.';tick()}
+$('secol-freeze').addEventListener('click',()=>{if(frozen)return;tick();frozen=true;$('secol-freeze').disabled=true;$('secol-freeze-result').textContent='⏸ 화면 속 시계가 멈췄어!';timeout=setTimeout(unfreeze,5000)});
+clockTimer=setInterval(tick,250);window.addEventListener('pagehide',()=>{if(timeout!==null)clearTimeout(timeout);if(clockTimer!==null)clearInterval(clockTimer)});
+tick();
 })();
 </script></body></html>
