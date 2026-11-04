@@ -56,7 +56,10 @@ const visitorNote=document.getElementById("fw-total-visitor-note");
 let recordedVisitorUid=null;
 let durationTimer=null;
 let durationBusy=false;
-const DURATION_INTERVAL=15000;
+let pendingDurationMs=0;
+let durationOwnerUid=null;
+let durationRetryAfter=0;
+const DURATION_INTERVAL=5000;
 let lastActiveTick=Date.now();
 const projectStatsKey='Hub';
 const DURATION_MAX_GAP=45000;
@@ -67,23 +70,36 @@ const formatDuration=ms=>{
  return (days?days+"일 ":"")+(hours%24?hours%24+"시간 ":"")+(minutes%60?minutes%60+"분":!days&&!hours?"0분":"")+(minutes<1?" "+seconds+"초":"");
 };
 async function accumulateDuration(uid,{allowHidden=false}={}){
-  if(!uid||auth.currentUser?.uid!==uid||!connection||durationBusy)return;
+  if(!uid||auth.currentUser?.uid!==uid||recordedVisitorUid!==uid)return;
   const now=Date.now();
   const elapsed=Math.min(DURATION_MAX_GAP,Math.max(0,now-lastActiveTick));
   lastActiveTick=now;
-  if(!allowHidden&&document.visibilityState!=="visible")return;
-  if(elapsed<=0)return;
+  if(durationOwnerUid!==uid){durationOwnerUid=uid;pendingDurationMs=0;durationRetryAfter=0}
+  // Only foreground time counts. Visibility changes explicitly flush the last foreground slice.
+  if(allowHidden||document.visibilityState==="visible"){
+    pendingDurationMs=Math.min(5*60*1000,pendingDurationMs+elapsed);
+  }
+  if(!connection||durationBusy||now<durationRetryAfter||pendingDurationMs<1000)return;
+  const batch=Math.floor(pendingDurationMs/1000)*1000;
+  pendingDurationMs-=batch;
   durationBusy=true;
   try{
-    await runTransaction(ref(db,visitorBase+"/"+uid),current=>{
+    const result=await runTransaction(ref(db,visitorBase+"/"+uid),current=>{
       if(!current||typeof current!=="object")return;
       const projectMs={...(current.projectMs||{})};
-      projectMs[projectStatsKey]=(Number(projectMs[projectStatsKey])||0)+elapsed;
-      return {...current,totalMs:(Number(current.totalMs)||0)+elapsed,projectMs,
+      projectMs[projectStatsKey]=(Number(projectMs[projectStatsKey])||0)+batch;
+      return {...current,totalMs:(Number(current.totalMs)||0)+batch,projectMs,
         lastCountedAt:now,lastVisitAt:now};
     },{applyLocally:false});
-  }catch(error){console.warn("방문 시간 누적 실패",error.code||error)}
-  finally{durationBusy=false}
+    if(!result.committed)throw new Error("duration_transaction_not_committed");
+    durationRetryAfter=0;
+  }catch(error){
+    if(durationOwnerUid===uid){
+      pendingDurationMs=Math.min(5*60*1000,pendingDurationMs+batch);
+      durationRetryAfter=Date.now()+15000;
+    }
+    console.warn("방문 시간 누적 실패",error.code||error.message||error);
+  }finally{durationBusy=false}
 }
 function visitorEntries(){return Object.entries(latestVisitors).filter(([,v])=>v&&typeof v==="object");}
 let detailTotal=null,publicTotal=null,liveStatus="집계 확인 중…",totalStatus=liveStatus;
@@ -182,7 +198,7 @@ async function recordVisitor(user){
    lastAttribution:entryChannel
   }:undefined,{applyLocally:false});
   if(!visitorResult.committed||!visitorResult.snapshot.exists())throw new Error("visitor_transaction_not_committed");
-  recordedVisitorUid=uid;lastActiveTick=Date.now();
+  recordedVisitorUid=uid;durationOwnerUid=uid;pendingDurationMs=0;durationRetryAfter=0;lastActiveTick=Date.now();
   if(user.isAnonymous&&visitorNote){
    visitorNote.textContent="익명 방문 기록 저장됨 · 공개 누적 숫자는 정기 집계 후 반영";
   }
@@ -284,7 +300,7 @@ onAuthStateChanged(auth,async user=>{
  if(user&&!user.isAnonymous)stopDetails=[watchSessions(),watchVisitors()];
  if(user){start(user);recordVisitor(user);if(peakLoaded&&peakCandidate>recordedPeak)void savePeak();return}
  if(durationTimer)clearInterval(durationTimer);
- durationTimer=null;recordedVisitorUid=null;
+ durationTimer=null;recordedVisitorUid=null;durationOwnerUid=null;pendingDurationMs=0;durationRetryAfter=0;
  void start(null);
  // Guests count only when anonymous Firebase sign-in is enabled.
  try{await signInAnonymously(auth)}catch(error){liveError="게스트 인증 실패";renderLive();say("게스트 집계 비활성 · 익명 인증 설정 확인 ("+(error.code||"인증 실패")+")")}
