@@ -58,10 +58,29 @@ function performanceLines(){
  lines.push('URL 쿼리 및 요청 본문은 수집하지 않습니다.');
  return lines;
 }
+let fallbackDownloadDay='',fallbackDownloadCount=0;
+function nextReportFilename(){
+ // Korean calendar day and hour, independent of the device's time-zone setting.
+ const parts=Object.fromEntries(new Intl.DateTimeFormat('en-US',{
+  timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',
+  hourCycle:'h23'
+ }).formatToParts(new Date()).filter(p=>p.type!=='literal').map(p=>[p.type,p.value]));
+ const date=parts.year+'-'+parts.month+'-'+parts.day;
+ const key='fw12.report.downloadCount.'+date;
+ let count=0;
+ try{
+  count=Math.max(0,Number(localStorage.getItem(key))||0)+1;
+  localStorage.setItem(key,String(count));
+ }catch{
+  count=(fallbackDownloadDay===date?fallbackDownloadCount:0)+1;
+  fallbackDownloadDay=date;fallbackDownloadCount=count;
+ }
+ return 'FW12-report-'+date+'-'+parts.hour+'-'+String(count).padStart(3,'0')+'.json';
+}
 function exportReport(){
  const data={version:'3.1',createdAt:new Date().toISOString(),path:location.pathname,overview:overviewLines(),issues:issueLines(),performance:performanceLines(),logs:logs.map(({level,time,message,kind,repeat})=>({level,time,message,kind,repeat}))};
  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
- const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='FW12-report-'+new Date().toISOString().slice(0,10)+'.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+ const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=nextReportFilename();document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
 const style=document.createElement('style');
 style.textContent='#fw-dev-toggle{position:fixed;right:12px;bottom:calc(72px + env(safe-area-inset-bottom));z-index:2147483000;border:0;border-radius:99px;background:#292044;color:white;padding:11px 13px;font:700 13px system-ui;box-shadow:0 3px 14px #0005}'+
