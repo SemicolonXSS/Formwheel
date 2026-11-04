@@ -3,6 +3,8 @@ if(window.__fwDevTools)return;
 window.__fwDevTools=true;
 const logs=[],max=300;
 let panel,output,tab='console',opened=false,filter='all',search='',paused=false;
+const startedAt=Date.now();
+let lastConnectivity=navigator.onLine?'online':'offline';
 const denyPattern=/permission[_ -]?denied/i;
 const sessionPattern=/\/formwheelV2\/liveHubSessions\//i;
 const safeString=v=>{
@@ -40,11 +42,24 @@ window.addEventListener('unhandledrejection',e=>record('error',[e.reason||'Unhan
 function overviewLines(){
  const n=l=>logs.filter(x=>x.level===l).reduce((s,x)=>s+x.repeat,0);
  const denied=logs.filter(x=>x.kind&&x.kind.includes('권한 오류')).reduce((s,x)=>s+x.repeat,0);
- return ['FW12 3.1 · 실시간 요약','로그 '+logs.length+'/'+max+' · 오류 '+n('error')+' · 경고 '+n('warn'),
+ return ['FW12 3.2 · 실시간 요약','로그 '+logs.length+'/'+max+' · 오류 '+n('error')+' · 경고 '+n('warn'),
  'Firebase 권한 오류 '+denied+'회','네트워크 '+(navigator.onLine?'온라인':'오프라인'),
  denied?'권한 오류 감지됨 · 오류 분석 탭을 확인하세요.':'수집된 로그에서 권한 오류가 감지되지 않았습니다. 정상 작동을 보장하지는 않습니다.',
  '기록은 이 페이지에서 FW12를 로드한 이후만 포함됩니다.'];
 }
+function futureLines(){
+ const recent=logs.filter(x=>x.stamp>Date.now()-60000);
+ const errors=recent.filter(x=>x.level==='error').reduce((n,x)=>n+x.repeat,0);
+ const warnings=recent.filter(x=>x.level==='warn').reduce((n,x)=>n+x.repeat,0);
+ const denied=recent.filter(x=>x.kind&&x.kind.includes('권한 오류')).reduce((n,x)=>n+x.repeat,0);
+ const score=Math.max(0,100-Math.min(60,errors*10)-Math.min(20,warnings*2)-Math.min(20,denied*5));
+ return ['FW12 FUTURE · 최근 60초 상태','상태 점수 '+score+'/100 (로그 기반 참고 지표)','오류 '+errors+'회 · 경고 '+warnings+'회 · 권한 거부 '+denied+'회','관측 시간 '+Math.round((Date.now()-startedAt)/1000)+'초','연결 '+(navigator.onLine?'온라인':'오프라인'),
+ '주의: 이 점수는 서버 건강 상태를 직접 측정하지 않습니다.',
+ '권한 거부가 있다면 오류 분석에서 경로와 인증 상태를 확인하세요.',
+ '자동 Rules 변경·데이터 쓰기·삭제는 하지 않습니다.'];
+}
+window.addEventListener('online',()=>{if(lastConnectivity!=='online'){lastConnectivity='online';record('info',['FW12: network online'])}});
+window.addEventListener('offline',()=>{if(lastConnectivity!=='offline'){lastConnectivity='offline';record('warn',['FW12: network offline'])}});
 function performanceLines(){
  const nav=performance.getEntriesByType('navigation')[0];
  const resources=performance.getEntriesByType('resource');
@@ -78,7 +93,7 @@ function nextReportFilename(){
  return 'FW12-report-'+date+'-'+parts.hour+'-'+String(count).padStart(3,'0')+'.json';
 }
 function exportReport(){
- const data={version:'3.1',createdAt:new Date().toISOString(),path:location.pathname,overview:overviewLines(),issues:issueLines(),performance:performanceLines(),logs:logs.map(({level,time,message,kind,repeat})=>({level,time,message,kind,repeat}))};
+ const data={version:'3.2',createdAt:new Date().toISOString(),path:location.pathname,overview:overviewLines(),future:futureLines(),issues:issueLines(),performance:performanceLines(),logs:logs.map(({level,time,message,kind,repeat})=>({level,time,message,kind,repeat}))};
  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
  const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=nextReportFilename();document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
@@ -95,7 +110,7 @@ style.textContent='#fw-dev-toggle{position:fixed;right:12px;bottom:calc(72px + e
 document.head.append(style);
 const toggle=document.createElement('button');toggle.id='fw-dev-toggle';toggle.type='button';toggle.textContent='</>';toggle.setAttribute('aria-label','FW12 열기');document.body.append(toggle);
 panel=document.createElement('section');panel.id='fw-dev-panel';panel.setAttribute('role','dialog');panel.setAttribute('aria-label','FW12 개발자 도구');
-panel.innerHTML='<div class="fw-head"><strong>🛠 FW12 · Developer Tools 3.1</strong><div><button type="button" data-act="copy">복사</button> <button type="button" data-act="export">보고서 ↓</button> <button type="button" data-act="pause">일시정지</button> <button type="button" data-act="clear">지우기</button> <button type="button" data-act="close">닫기</button></div></div><div class="fw-tabs"></div><div class="fw-controls"><select aria-label="로그 수준 필터"><option value="all">전체</option><option value="error">오류</option><option value="warn">경고</option><option value="info">정보</option><option value="log">로그</option></select><input aria-label="로그 검색" placeholder="로그 검색" autocomplete="off"></div><div class="fw-body" role="log" aria-live="off"></div>';
+panel.innerHTML='<div class="fw-head"><strong>🛠 FW12 · Developer Tools 3.2</strong><div><button type="button" data-act="copy">복사</button> <button type="button" data-act="export">보고서 ↓</button> <button type="button" data-act="pause">일시정지</button> <button type="button" data-act="clear">지우기</button> <button type="button" data-act="close">닫기</button></div></div><div class="fw-tabs"></div><div class="fw-controls"><select aria-label="로그 수준 필터"><option value="all">전체</option><option value="error">오류</option><option value="warn">경고</option><option value="info">정보</option><option value="log">로그</option></select><input aria-label="로그 검색" placeholder="로그 검색" autocomplete="off"></div><div class="fw-body" role="log" aria-live="off"></div>';
 document.body.append(panel);output=panel.querySelector('.fw-body');
 const selector=panel.querySelector('select'),query=panel.querySelector('input'),controls=panel.querySelector('.fw-controls');
 selector.addEventListener('change',()=>{filter=selector.value;render()});
@@ -121,19 +136,20 @@ function issueLines(){
 }
 function render(){
  const tabs=panel.querySelector('.fw-tabs');tabs.replaceChildren();
- ['overview','console','issues','performance','network','storage','diagnostics'].forEach(name=>{
-  const b=document.createElement('button');b.type='button';b.textContent=({overview:'요약',console:'콘솔',issues:'오류 분석',performance:'성능',network:'네트워크',storage:'저장소',diagnostics:'진단'})[name];
+ ['overview','future','console','issues','performance','network','storage','diagnostics'].forEach(name=>{
+  const b=document.createElement('button');b.type='button';b.textContent=({overview:'요약',future:'미래 진단',console:'콘솔',issues:'오류 분석',performance:'성능',network:'네트워크',storage:'저장소',diagnostics:'진단'})[name];
   b.setAttribute('aria-pressed',String(tab===name));b.onclick=()=>{tab=name;render()};tabs.append(b);
  });
  controls.hidden=!(tab==='console');
  output.replaceChildren();let lines=[];
  if(tab==='overview')lines=overviewLines();
+ if(tab==='future')lines=futureLines();
  if(tab==='performance')lines=performanceLines();
  if(tab==='console')lines=logs.filter(x=>(filter==='all'||x.level===filter)&&(!search||x.message.toLowerCase().includes(search))).map(x=>({text:'['+x.time+'] ['+x.level+']'+(x.repeat>1?' x'+x.repeat:'')+' '+x.message,level:x.level}));
  if(tab==='issues')lines=issueLines();
  if(tab==='network')lines=['네트워크 상태: '+(navigator.onLine?'온라인':'오프라인'),'이 화면은 요청 본문·인증 토큰을 수집하지 않습니다.','온라인 상태만으로 Firebase 접속 성공을 보장하지 않습니다.'];
  if(tab==='storage')lines=['localStorage 항목 수: '+safeCount('localStorage'),'sessionStorage 항목 수: '+safeCount('sessionStorage'),'보안상 저장된 키·값을 표시하지 않습니다.'];
- if(tab==='diagnostics')lines=['FW12 버전: 3.1','현재 경로: '+location.pathname,'연결: '+(navigator.onLine?'온라인':'오프라인'),'언어: '+navigator.language,'확인 시각: '+new Date().toLocaleString(),'수집 로그: '+logs.length+' / '+max,'쓰기/삭제/Rules 변경 없이 실행하는 읽기 전용 진단입니다.'];
+ if(tab==='diagnostics')lines=['FW12 버전: 3.2','현재 경로: '+location.pathname,'연결: '+(navigator.onLine?'온라인':'오프라인'),'언어: '+navigator.language,'확인 시각: '+new Date().toLocaleString(),'수집 로그: '+logs.length+' / '+max,'쓰기/삭제/Rules 변경 없이 실행하는 읽기 전용 진단입니다.'];
  if(!lines.length)lines=['기록 없음'];
  lines.forEach(item=>{const div=document.createElement('div');div.className='fw-line';const level=typeof item==='string'?'':item.level;div.classList.toggle('fw-warn',level==='warn');div.classList.toggle('fw-error',level==='error');div.textContent=typeof item==='string'?item:item.text;output.append(div)});
 }
