@@ -85,10 +85,24 @@ async function accumulateDuration(uid,{allowHidden=false}={}){
   durationBusy=true;
   try{
     const result=await runTransaction(ref(db,visitorBase+"/"+uid),current=>{
-      if(!current||typeof current!=="object")return;
-      const projectMs={...(current.projectMs||{})};
+      // Firebase may initially invoke a transaction with null before the server
+      // snapshot is available. Returning undefined here aborts it prematurely.
+      // Create a valid baseline only if the record is genuinely missing;
+      // Firebase retries the updater against the current server value.
+      const existing=current&&typeof current==="object"?current:null;
+      const baseline=existing||{
+        firstSeen:now,
+        accountType:auth.currentUser?.isAnonymous?"guest":"account",
+        totalMs:0,
+        projectMs:{},
+        visitCount:1,
+        lastCountedAt:now,
+        lastVisitAt:now,
+        firstAttribution:entryChannel
+      };
+      const projectMs={...(baseline.projectMs||{})};
       projectMs[projectStatsKey]=(Number(projectMs[projectStatsKey])||0)+batch;
-      return {...current,totalMs:(Number(current.totalMs)||0)+batch,projectMs,
+      return {...baseline,totalMs:(Number(baseline.totalMs)||0)+batch,projectMs,
         lastCountedAt:now,lastVisitAt:now};
     },{applyLocally:false});
     if(!result.committed)throw new Error("duration_transaction_not_committed");
