@@ -15,6 +15,14 @@ button:hover{background:#c3afff}button:focus-visible,a:focus-visible{outline:3px
 .badge{padding:15px;border-radius:14px;background:#302540;border:1px solid #57466e}
 .badge.locked{opacity:.5}.small{font-size:13px;color:#c8badc}
 #secret{display:none}#secret.show{display:block}
+
+#secol-effect-reset{position:fixed;bottom:14px;right:14px;z-index:9999;background:#f4e8ff;color:#1a102a;border:2px solid #5d3c8e}
+body.secol-gravity main{transform:rotate(180deg)}
+body.secol-gravity{overflow-x:hidden}
+body.secol-purple{background:radial-gradient(ellipse at center,#9857df,#27123f 75%)}
+body.secol-glitch main{filter:hue-rotate(110deg)}
+body.secol-stardust main{filter:drop-shadow(0 0 9px #e5c8ff)}
+@media(prefers-reduced-motion:no-preference){main{transition:transform .5s ease,filter .5s ease}}
 </style></head><body><main>
 <header><strong>🧪 SECOL LAB</strong><a href="./">← Formwheel</a></header>
 <h1>세콜의 비밀 연구소</h1><p>아무도 모르게 시작된 다섯 가지 실험. 오늘은 어떤 이상한 일이 일어날까?</p>
@@ -24,7 +32,7 @@ button:hover{background:#c3afff}button:focus-visible,a:focus-visible{outline:3px
 <section class="panel" id="extra-lab"><h2>🌌 차원 탐험</h2><p>세 가지 차원문을 발견해 봐! 새로운 문을 열면 연구 XP가 쌓여.</p><div class="grid"><button data-secol-door="0">🌙 달의 복도</button><button data-secol-door="1">🪞 거울 방</button><button data-secol-door="2">🌠 별의 정원</button></div><p id="secol-explore-result" role="status"></p><p id="secol-xp"></p><h2>📖 탐험 도감</h2><div id="secol-door-list" class="grid"></div><button id="secol-export">탐험 기록 내보내기</button></section><section class="panel"><h2>🏆 비밀 업적</h2><div class="grid" id="achievements"></div></section>
 <section class="panel"><h2>🔐 숨겨진 문</h2><p>힌트: 연구소 이름을 영어로 입력해 봐.</p><input id="code" aria-label="비밀 암호" autocomplete="off" style="padding:12px;border-radius:10px;width:65%;background:#120e20;color:white;border:1px solid #8972aa"><button id="unlock">확인</button><p id="secret" role="status">👾 비밀 문이 열렸다! 연구소의 숨겨진 방을 발견했어.</p></section>
 <p class="small">저장 위치: 이 브라우저의 로컬 저장소 · 서버 전송 없음</p>
-</main><script>
+</main><button id="secol-effect-reset" type="button" hidden>↩ 화면 원상복구</button><script>
 (()=>{'use strict';
 const key='fw-secol-lab-v1';
 let data={runs:0,seen:[],unlocked:[]};
@@ -51,5 +59,25 @@ function render(){$('secol-xp').textContent='연구 XP '+(state.visits*5+state.d
 document.querySelectorAll('[data-secol-door]').forEach(b=>b.addEventListener('click',()=>{const i=Number(b.dataset.secolDoor),fresh=!state.doors.includes(i);if(fresh)state.doors.push(i);state.visits++;$('secol-explore-result').textContent=['달빛 발자국을 발견했어!','거울 속 세계가 인사를 건넸어!','별들이 비밀 메시지를 남겼어!'][i]+(fresh?' 최초 발견!':' 다시 방문!');try{localStorage.setItem(key,JSON.stringify(state))}catch{}render()}));
 $('secol-export').addEventListener('click',()=>{const blob=new Blob([JSON.stringify({app:'SECOL LAB',date:new Date().toISOString(),state},null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='secol-lab-exploration.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)});
 render();
+})();
+</script>
+<script>
+(()=>{'use strict';
+const reset=document.getElementById('secol-effect-reset');
+const run=document.getElementById('run');
+const result=document.getElementById('result');
+const effects=['secol-gravity','secol-purple','secol-glitch','secol-stardust'];
+let timer=null;
+function clear(){document.body.classList.remove(...effects);reset.hidden=true;if(timer!==null)window.clearTimeout(timer);timer=null}
+function update(){clear();const value=result.textContent||'';
+let effect=null;
+if(value.includes('중력 반전'))effect='secol-gravity';
+else if(value.includes('보라색 차원문'))effect='secol-purple';
+else if(value.includes('오류 생명체'))effect='secol-glitch';
+else if(value.includes('별가루'))effect='secol-stardust';
+if(effect){document.body.classList.add(effect);reset.hidden=false;timer=window.setTimeout(clear,6000)}}
+run.addEventListener('click',update);
+reset.addEventListener('click',clear);
+window.addEventListener('pagehide',clear);
 })();
 </script></body></html>
