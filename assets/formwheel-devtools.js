@@ -1,30 +1,111 @@
-(()=>{'use strict';if(window.__fwDevTools)return;window.__fwDevTools=true;
-const logs=[];let panel,output,tab='console',open=false;const max=150;
-const clean=v=>{try{return String(v instanceof Error?v.message:typeof v==='string'?v:JSON.stringify(v)).replace(/AIza[\w-]+/g,'[REDACTED]').replace(/(token|password|secret|authorization)(["':=\s]+)[^,\s}"']+/gi,'$1$2[REDACTED]').slice(0,500)}catch{return '[unavailable]'}};
-function record(level,args){logs.push({level,time:new Date().toLocaleTimeString(),message:args.map(clean).join(' ')});if(logs.length>max)logs.shift();if(open&&tab==='console')render()}
-['log','info','warn','error'].forEach(level=>{const old=console[level];console[level]=function(...args){record(level,args);return old.apply(this,args)}});
+(()=>{'use strict';
+if(window.__fwDevTools)return;
+window.__fwDevTools=true;
+const logs=[],max=300;
+let panel,output,tab='console',opened=false,filter='all',search='';
+const denyPattern=/permission[_ -]?denied/i;
+const sessionPattern=/\/formwheelV2\/liveHubSessions\//i;
+const safeString=v=>{
+ try{
+  let s=String(v instanceof Error?(v.stack||v.message):typeof v==='string'?v:JSON.stringify(v));
+  return s.replace(/AIza[\w-]+/g,'[API_KEY]')
+   .replace(/(Bearer\s+)[A-Za-z0-9._~+/-]+/gi,'$1[REDACTED]')
+   .replace(/((?:token|password|secret|authorization|idToken|refreshToken)\s*["':=]+\s*)[^,\s}"']+/gi,'$1[REDACTED]')
+   .replace(/(\/liveHubSessions\/)[^/\s]+\/[^/\s]+/g,'$1[UID]/[SESSION]')
+   .slice(0,1200);
+ }catch{return '[unavailable]'}
+};
+function classify(message){
+ if(denyPattern.test(message))return sessionPattern.test(message)?'세션 저장 권한 오류':'Firebase 권한 오류';
+ if(/network|offline|failed to fetch|disconnected/i.test(message))return '네트워크 오류';
+ if(/syntaxerror|referenceerror|typeerror/i.test(message))return 'JavaScript 오류';
+ return null;
+}
+function record(level,args){
+ const message=args.map(safeString).join(' ');
+ const last=logs[logs.length-1],kind=classify(message);
+ if(last&&last.level===level&&last.message===message&&Date.now()-last.stamp<4000){last.repeat++;last.stamp=Date.now()}
+ else logs.push({level,time:new Date().toLocaleTimeString(),stamp:Date.now(),message,kind,repeat:1});
+ if(logs.length>max)logs.shift();
+ if(opened&&(tab==='console'||tab==='issues'))render();
+}
+['log','info','warn','error'].forEach(level=>{
+ const original=console[level];if(typeof original!=='function')return;
+ console[level]=function(...args){record(level,args);return original.apply(this,args)};
+});
 window.addEventListener('error',e=>record('error',[e.message||'Script error']));
 window.addEventListener('unhandledrejection',e=>record('error',[e.reason||'Unhandled rejection']));
-const css=document.createElement('style');css.textContent=`
-#fw-dev-toggle{position:fixed;right:12px;bottom:calc(72px + env(safe-area-inset-bottom));z-index:2147483000;border:0;border-radius:99px;background:#292044;color:white;padding:11px 13px;font:700 13px system-ui;box-shadow:0 3px 14px #0005}
-#fw-dev-panel{position:fixed;inset:auto 8px calc(8px + env(safe-area-inset-bottom));height:min(55dvh,430px);z-index:2147483001;background:#171525;color:#f5f1ff;border:1px solid #7a6da1;border-radius:15px;display:none;flex-direction:column;font:13px system-ui;box-shadow:0 8px 35px #0009;overflow:hidden}
-#fw-dev-panel button{background:#332c4b;color:white;border:1px solid #64597d;border-radius:7px;padding:9px;cursor:pointer}
-#fw-dev-panel .fw-head,#fw-dev-panel .fw-tabs{display:flex;align-items:center;gap:5px;padding:7px;overflow-x:auto;flex-shrink:0}
-#fw-dev-panel .fw-head{justify-content:space-between;background:#262039}
-#fw-dev-panel .fw-body{overflow:auto;flex:1;padding:10px;white-space:pre-wrap;overflow-wrap:anywhere;font:12px ui-monospace,monospace}
-#fw-dev-panel .fw-line{border-bottom:1px solid #383148;padding:5px 0}
-@media(min-width:850px){#fw-dev-panel{left:auto;right:15px;width:550px;height:420px}}
-`;document.head.append(css);
-const toggle=document.createElement('button');toggle.id='fw-dev-toggle';toggle.type='button';toggle.textContent='</>';toggle.setAttribute('aria-label','개발자 도구 열기');document.body.append(toggle);
-panel=document.createElement('section');panel.id='fw-dev-panel';panel.setAttribute('aria-label','Formwheel 개발자 도구');panel.innerHTML='<div class="fw-head"><strong>⌘ Formwheel DevTools</strong><div><button data-act="copy">복사</button> <button data-act="close">닫기</button></div></div><div class="fw-tabs"></div><div class="fw-body" role="log"></div>';document.body.append(panel);output=panel.querySelector('.fw-body');
-function render(){const tabs=panel.querySelector('.fw-tabs');tabs.replaceChildren();['console','network','storage','diagnostics'].forEach(name=>{const b=document.createElement('button');b.textContent=name;b.setAttribute('aria-pressed',String(tab===name));b.onclick=()=>{tab=name;render()};tabs.append(b)});output.replaceChildren();let lines=[];
-if(tab==='console')lines=logs.map(x=>`[${x.time}] [${x.level}] ${x.message}`);
-if(tab==='network')lines=['네트워크 진단: navigator.onLine = '+navigator.onLine,'요청 내용과 인증 정보는 수집하지 않습니다.','Firebase permission_denied는 Console 탭에서 확인하세요.'];
-if(tab==='storage')lines=['localStorage 항목 수: '+safeCount('localStorage'),'sessionStorage 항목 수: '+safeCount('sessionStorage'),'보안상 저장된 값과 키는 표시하지 않습니다.'];
-if(tab==='diagnostics')lines=['현재 주소: '+location.pathname,'연결: '+(navigator.onLine?'온라인':'오프라인'),'언어: '+navigator.language,'시간: '+new Date().toLocaleString(),'진단은 읽기 전용입니다.'];if(!lines.length)lines=['기록 없음'];lines.forEach(s=>{const div=document.createElement('div');div.className='fw-line';div.textContent=s;output.append(div)})}
-function safeCount(key){try{return window[key].length}catch{return '접근 불가'}}
-function show(value){open=value;panel.style.display=value?'flex':'none';toggle.style.display=value?'none':'block';if(value)render()}
-toggle.onclick=()=>show(true);panel.addEventListener('click',e=>{const act=e.target.dataset?.act;if(act==='close')show(false);if(act==='copy'){const value=output.innerText;navigator.clipboard?.writeText(value).catch(()=>{});}});
-window.addEventListener('keydown',e=>{if((e.key==='F12'||(e.ctrlKey&&e.shiftKey&&e.key.toLowerCase()==='d'))&&!e.repeat){if(e.key==='F12'&&!(e.ctrlKey||e.metaKey))return; e.preventDefault();show(!open)}});
-window.FormwheelDevTools={open:()=>show(true),close:()=>show(false),toggle:()=>show(!open)};
+const style=document.createElement('style');
+style.textContent='#fw-dev-toggle{position:fixed;right:12px;bottom:calc(72px + env(safe-area-inset-bottom));z-index:2147483000;border:0;border-radius:99px;background:#292044;color:white;padding:11px 13px;font:700 13px system-ui;box-shadow:0 3px 14px #0005}'+
+'#fw-dev-panel{position:fixed;inset:auto 8px calc(8px + env(safe-area-inset-bottom));height:min(62dvh,520px);z-index:2147483001;background:#171525;color:#f5f1ff;border:1px solid #7a6da1;border-radius:15px;display:none;flex-direction:column;font:13px system-ui;box-shadow:0 8px 35px #0009;overflow:hidden}'+
+'#fw-dev-panel button,#fw-dev-panel select,#fw-dev-panel input{background:#332c4b;color:white;border:1px solid #64597d;border-radius:7px;padding:8px;min-height:35px;font:inherit}'+
+'#fw-dev-panel button{cursor:pointer}#fw-dev-panel button[aria-pressed=true]{background:#7256ae}'+
+'#fw-dev-panel .fw-head,#fw-dev-panel .fw-tabs,#fw-dev-panel .fw-controls{display:flex;align-items:center;gap:5px;padding:7px;overflow-x:auto;flex-shrink:0}'+
+'#fw-dev-panel .fw-head{justify-content:space-between;background:#262039}#fw-dev-panel .fw-controls input{flex:1;min-width:100px}'+
+'#fw-dev-panel .fw-body{overflow:auto;flex:1;padding:10px;white-space:pre-wrap;overflow-wrap:anywhere;font:12px ui-monospace,monospace}'+
+'#fw-dev-panel .fw-line{border-bottom:1px solid #383148;padding:7px 0}#fw-dev-panel .fw-warn{color:#ffd58a}#fw-dev-panel .fw-error{color:#ff9fbd}'+
+'@media(min-width:850px){#fw-dev-panel{left:auto;right:15px;width:min(650px,90vw);height:480px}}';
+document.head.append(style);
+const toggle=document.createElement('button');toggle.id='fw-dev-toggle';toggle.type='button';toggle.textContent='</>';toggle.setAttribute('aria-label','FW12 열기');document.body.append(toggle);
+panel=document.createElement('section');panel.id='fw-dev-panel';panel.setAttribute('role','dialog');panel.setAttribute('aria-label','FW12 개발자 도구');
+panel.innerHTML='<div class="fw-head"><strong>🛠 FW12 · Developer Tools 2.0</strong><div><button type="button" data-act="copy">복사</button> <button type="button" data-act="clear">지우기</button> <button type="button" data-act="close">닫기</button></div></div><div class="fw-tabs"></div><div class="fw-controls"><select aria-label="로그 수준 필터"><option value="all">전체</option><option value="error">오류</option><option value="warn">경고</option><option value="info">정보</option><option value="log">로그</option></select><input aria-label="로그 검색" placeholder="로그 검색" autocomplete="off"></div><div class="fw-body" role="log" aria-live="off"></div>';
+document.body.append(panel);output=panel.querySelector('.fw-body');
+const selector=panel.querySelector('select'),query=panel.querySelector('input'),controls=panel.querySelector('.fw-controls');
+selector.addEventListener('change',()=>{filter=selector.value;render()});
+query.addEventListener('input',()=>{search=query.value.toLowerCase();render()});
+function safeCount(name){try{return window[name].length}catch{return '접근 불가'}}
+function issueLines(){
+ const relevant=logs.filter(x=>x.kind);
+ if(!relevant.length)return ['감지된 오류 유형이 없습니다. 새 로그가 발생하면 이곳에 분류됩니다.'];
+ const counts=new Map();
+ relevant.forEach(x=>counts.set(x.kind,(counts.get(x.kind)||0)+x.repeat));
+ const lines=[...counts].map(([kind,n])=>kind+' · '+n+'회');
+ if(counts.has('세션 저장 권한 오류'))lines.push(
+  '진단: /formwheelV2/liveHubSessions/{uid}/{sessionId} 쓰기가 거부되었습니다.',
+  '확인 1: 저장 경로의 uid와 로그인된 auth.uid가 같은지 확인하세요.',
+  '확인 2: Firebase Rules의 .write 및 .validate를 확인하세요.',
+  '확인 3: 로그인 완료 전에 쓰기를 시도하거나 다른 계정의 세션을 지우고 있지 않은지 확인하세요.',
+  '주의: FW12는 Rules를 자동으로 변경하지 않습니다. 전체 공개 쓰기 권한을 부여하지 마세요.'
+ );
+ if(counts.has('Firebase 권한 오류'))lines.push('Firebase Rules와 auth.uid, 데이터 검증 조건을 확인하세요.');
+ return lines;
+}
+function render(){
+ const tabs=panel.querySelector('.fw-tabs');tabs.replaceChildren();
+ ['console','issues','network','storage','diagnostics'].forEach(name=>{
+  const b=document.createElement('button');b.type='button';b.textContent=({console:'콘솔',issues:'오류 분석',network:'네트워크',storage:'저장소',diagnostics:'진단'})[name];
+  b.setAttribute('aria-pressed',String(tab===name));b.onclick=()=>{tab=name;render()};tabs.append(b);
+ });
+ controls.hidden=!(tab==='console');
+ output.replaceChildren();let lines=[];
+ if(tab==='console')lines=logs.filter(x=>(filter==='all'||x.level===filter)&&(!search||x.message.toLowerCase().includes(search))).map(x=>({text:'['+x.time+'] ['+x.level+']'+(x.repeat>1?' x'+x.repeat:'')+' '+x.message,level:x.level}));
+ if(tab==='issues')lines=issueLines();
+ if(tab==='network')lines=['네트워크 상태: '+(navigator.onLine?'온라인':'오프라인'),'이 화면은 요청 본문·인증 토큰을 수집하지 않습니다.','온라인 상태만으로 Firebase 접속 성공을 보장하지 않습니다.'];
+ if(tab==='storage')lines=['localStorage 항목 수: '+safeCount('localStorage'),'sessionStorage 항목 수: '+safeCount('sessionStorage'),'보안상 저장된 키·값을 표시하지 않습니다.'];
+ if(tab==='diagnostics')lines=['FW12 버전: 2.0','현재 경로: '+location.pathname,'연결: '+(navigator.onLine?'온라인':'오프라인'),'언어: '+navigator.language,'확인 시각: '+new Date().toLocaleString(),'수집 로그: '+logs.length+' / '+max,'쓰기/삭제/Rules 변경 없이 실행하는 읽기 전용 진단입니다.'];
+ if(!lines.length)lines=['기록 없음'];
+ lines.forEach(item=>{const div=document.createElement('div');div.className='fw-line';const level=typeof item==='string'?'':item.level;div.classList.toggle('fw-warn',level==='warn');div.classList.toggle('fw-error',level==='error');div.textContent=typeof item==='string'?item:item.text;output.append(div)});
+}
+function show(on){opened=on;panel.style.display=on?'flex':'none';toggle.style.display=on?'none':'block';if(on)render()}
+toggle.addEventListener('click',()=>show(true));
+panel.addEventListener('click',e=>{
+ const act=e.target.closest('button[data-act]')?.dataset.act;
+ if(act==='close')show(false);
+ if(act==='clear'){logs.length=0;render()}
+ if(act==='copy'){
+  const text=output.innerText||output.textContent||'';
+  if(navigator.clipboard?.writeText)navigator.clipboard.writeText(text).catch(()=>fallbackCopy(text));else fallbackCopy(text);
+ }
+});
+function fallbackCopy(value){
+ const area=document.createElement('textarea');area.value=value;area.style.position='fixed';area.style.opacity='0';document.body.append(area);area.select();
+ try{document.execCommand('copy')}catch{}area.remove();
+}
+window.addEventListener('keydown',e=>{
+ if(e.key==='Escape'&&opened){show(false);return}
+ if((e.key==='F12'&&(e.ctrlKey||e.metaKey))||(e.ctrlKey&&e.shiftKey&&e.key.toLowerCase()==='d')){
+  if(e.repeat)return;e.preventDefault();show(!opened);
+ }
+});
+window.FormwheelDevTools={open:()=>show(true),close:()=>show(false),toggle:()=>show(!opened),version:'2.0'};
 })();
