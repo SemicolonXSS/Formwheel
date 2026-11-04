@@ -21,7 +21,7 @@ button:hover{background:#c3afff}button:focus-visible,a:focus-visible{outline:3px
 <section class="panel"><h2>🎲 랜덤 실험</h2><p>실험은 기기 안에서만 진행되며 Rapid나 계정 데이터에 영향을 주지 않아.</p>
 <button id="run">실험 시작</button><p id="result" role="status" aria-live="polite">실험 준비 완료.</p>
 <p class="small" id="count"></p></section>
-<section class="panel"><h2>🏆 비밀 업적</h2><div class="grid" id="achievements"></div></section>
+<section class="panel" id="extra-lab"><h2>🌌 차원 탐험</h2><p>세 가지 차원문을 발견해 봐! 새로운 문을 열면 연구 XP가 쌓여.</p><div class="grid"><button data-secol-door="0">🌙 달의 복도</button><button data-secol-door="1">🪞 거울 방</button><button data-secol-door="2">🌠 별의 정원</button></div><p id="secol-explore-result" role="status"></p><p id="secol-xp"></p><h2>📖 탐험 도감</h2><div id="secol-door-list" class="grid"></div><button id="secol-export">탐험 기록 내보내기</button></section><section class="panel"><h2>🏆 비밀 업적</h2><div class="grid" id="achievements"></div></section>
 <section class="panel"><h2>🔐 숨겨진 문</h2><p>힌트: 연구소 이름을 영어로 입력해 봐.</p><input id="code" aria-label="비밀 암호" autocomplete="off" style="padding:12px;border-radius:10px;width:65%;background:#120e20;color:white;border:1px solid #8972aa"><button id="unlock">확인</button><p id="secret" role="status">👾 비밀 문이 열렸다! 연구소의 숨겨진 방을 발견했어.</p></section>
 <p class="small">저장 위치: 이 브라우저의 로컬 저장소 · 서버 전송 없음</p>
 </main><script>
@@ -39,6 +39,17 @@ $('achievements').replaceChildren(...awards.map(([id,name])=>{const el=document.
 $('run').addEventListener('click',()=>{let i=Math.floor(Math.random()*experiments.length);if(data.seen.length<experiments.length){const remaining=experiments.map((_,j)=>j).filter(j=>!data.seen.includes(j));i=remaining[Math.floor(Math.random()*remaining.length)]}
 data.runs++;if(!data.seen.includes(i))data.seen.push(i);award('first');if(data.runs>=5)award('five');if(data.runs>=10)award('ten');if(data.seen.length===experiments.length)award('all');$('result').textContent=experiments[i];save();render()});
 $('unlock').addEventListener('click',()=>{if($('code').value.trim().toLowerCase().replace(/\s+/g,'')==='secol'){$('secret').classList.add('show');award('door');save();render()}else{$('secret').classList.remove('show');$('secret').textContent='암호가 틀렸어. 다시 시도해 봐!';$('secret').classList.add('show')}});
+render();
+})();
+</script><script>
+(()=>{'use strict';
+const key='fw-secol-exploration-v1',names=['달의 복도','거울 방','별의 정원'];
+let state={doors:[],visits:0};
+try{const old=JSON.parse(localStorage.getItem(key)||'null');if(old&&typeof old==='object'){state.doors=Array.isArray(old.doors)?[...new Set(old.doors.filter(n=>Number.isInteger(n)&&n>=0&&n<3))]:[];state.visits=Number.isSafeInteger(old.visits)&&old.visits>=0?old.visits:0}}catch{}
+const $=id=>document.getElementById(id);
+function render(){$('secol-xp').textContent='연구 XP '+(state.visits*5+state.doors.length*15)+' · 방문 '+state.visits+'회';$('secol-door-list').replaceChildren(...names.map((name,i)=>{const el=document.createElement('div');el.className='badge'+(state.doors.includes(i)?'':' locked');el.textContent=state.doors.includes(i)?'✨ '+name:'🔒 미발견 차원';return el}))}
+document.querySelectorAll('[data-secol-door]').forEach(b=>b.addEventListener('click',()=>{const i=Number(b.dataset.secolDoor),fresh=!state.doors.includes(i);if(fresh)state.doors.push(i);state.visits++;$('secol-explore-result').textContent=['달빛 발자국을 발견했어!','거울 속 세계가 인사를 건넸어!','별들이 비밀 메시지를 남겼어!'][i]+(fresh?' 최초 발견!':' 다시 방문!');try{localStorage.setItem(key,JSON.stringify(state))}catch{}render()}));
+$('secol-export').addEventListener('click',()=>{const blob=new Blob([JSON.stringify({app:'SECOL LAB',date:new Date().toISOString(),state},null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='secol-lab-exploration.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)});
 render();
 })();
 </script></body></html>
