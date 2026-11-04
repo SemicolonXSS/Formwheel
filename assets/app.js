@@ -33,6 +33,7 @@ IMPORTANT:
 
 
 const projects = [
+  {name:"Factor Lab",keywords:"인수분해 수학 다항식 이차식 공통인수 factor algebra",icon:"🧮",className:"purple",category:"tool",mode:"solo",connection:"offline",difficulty:"보통",description:"이차식 인수분해, 공통인수 묶기, 풀이 과정과 검산을 한 번에!",url:"https://semicolonxss.github.io/Formwheel/factor-lab.html",addedAt:"2026-11-05T00:00:00Z",recent:true},
   {name:"Sudoku",keywords:"스도쿠 숫자 퍼즐 두뇌 논리 sudoku",icon:"🧩",className:"purple",category:"game",mode:"solo",connection:"offline",difficulty:"보통",description:"9×9 숫자 퍼즐! 난이도 3단계, 메모·힌트·타이머·자동 저장으로 언제든 이어하기.",url:"https://semicolonxss.github.io/Formwheel/sudoku.html",addedAt:"2026-11-04T03:50:00Z",recent:true},
   {name:"Calendar",keywords:"캘린더 달력 일정 관리 공유 코드 이벤트",icon:"📅",className:"orange",category:"app",mode:"solo",connection:"offline",difficulty:"쉬움",description:"일정을 기록하고 코드로 공유하는 나만의 캘린더. Formwheel 이벤트도 함께 확인!",url:"https://semicolonxss.github.io/Formwheel/calendar.html",addedAt:"2026-10-31T00:00:00Z",recent:true},
   {name:"EDU",keywords:"공부 학습 고등수학 합성함수 역함수 교육",icon:"🎓",className:"orange",category:"app",mode:"solo",connection:"offline",difficulty:"보통",description:"합성함수·역함수를 개념부터 응용까지 배우는 고등수학 학습 로드맵. 단계를 자유롭게 건너뛸 수 있는 베타.",url:"https://semicolonxss.github.io/Formwheel/edu.html",addedAt:"2026-10-30T00:00:00Z",recent:true},
