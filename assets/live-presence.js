@@ -315,7 +315,7 @@ window.addEventListener("pageshow",event=>{
 });
 window.addEventListener("pagehide",()=>{
  if(registered)remove(registered).catch(()=>{});
- accumulateDuration(auth.currentUser?.uid,{allowHidden:true});
+ accumulateDuration(auth.currentUser?.uid,{allowHidden:document.visibilityState==="visible"});
 });
 
 /* Administrator presence inspector: UI gate only, not a Firebase security boundary. */
