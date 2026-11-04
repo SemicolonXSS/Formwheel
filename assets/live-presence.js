@@ -200,6 +200,10 @@ const project=(rawProject==="Formwheel"?"Hub":rawProject.replace(/^Formwheel_/i,
 let publicLive=null, detailLive=null, confirmedAt=0, liveError="";
 let registered=null,disconnect=null,connection=false,generation=0,heartbeatTimer=null;
 const STALE_MS=5*60*1000;
+// Hide abandoned sessions from the admin visitor inspector after ten minutes.
+// Historical unique visitor statistics remain untouched.
+const INSPECTOR_TTL_MS=10*60*1000;
+const inspectorEntries=s=>sessionEntries(s).filter(v=>typeof v.lastSeen==="number"&&v.lastSeen>Date.now()-INSPECTOR_TTL_MS);
 const isFresh=v=>v&&typeof v.lastSeen==="number"&&Date.now()-v.lastSeen<STALE_MS;
 const stateOf=v=>!v||typeof v!=="object"?"unknown":typeof v.lastSeen!=="number"?"legacy":Date.now()-v.lastSeen>=STALE_MS?"stale":"fresh";
 const sessionEntries=s=>Object.values(s||{}).filter(v=>v&&typeof v==="object");
@@ -309,7 +313,7 @@ if(presenceRoot){
  presenceRoot.appendChild(trigger);
  const panel=document.createElement("section");panel.hidden=true;
  panel.style.cssText="position:fixed;z-index:10002;top:10vh;left:50%;transform:translateX(-50%);width:min(92vw,540px);max-height:80vh;overflow:auto;padding:22px;background:white;color:#242842;border:1px solid #dce1ee;border-radius:20px;box-shadow:0 20px 75px #15204055;text-align:left";
- panel.innerHTML='<button type="button" id="presence-close" style="float:right;border:0;background:transparent;font-size:23px;cursor:pointer" aria-label="닫기">×</button><h2 style="margin:0 0 10px">📊 접속 통계</h2><form id="presence-code-form"><label for="presence-code">확인 코드</label><input id="presence-code" type="password" autocomplete="off" required style="display:block;margin:8px 0;padding:12px;width:100%;box-sizing:border-box;border:1px solid #ccd2e2;border-radius:10px"><button type="submit" style="background:#3439bd;color:white;border:0;border-radius:10px;padding:10px 18px;cursor:pointer">확인</button></form><p id="presence-message" role="status" style="font-size:13px;color:#64708a"></p><div id="presence-list" hidden></div><div id="visitor-list" hidden></div><p style="font-size:11px;color:#687388">공통 접속 기록이 활성화된 게임 기준 · 계정에 여러 세션이 있으면 각 위치가 표시됩니다.</p>';
+ panel.innerHTML='<button type="button" id="presence-close" style="float:right;border:0;background:transparent;font-size:23px;cursor:pointer" aria-label="닫기">×</button><h2 style="margin:0 0 10px">📊 접속 통계</h2><form id="presence-code-form"><label for="presence-code">확인 코드</label><input id="presence-code" type="password" autocomplete="off" required style="display:block;margin:8px 0;padding:12px;width:100%;box-sizing:border-box;border:1px solid #ccd2e2;border-radius:10px"><button type="submit" style="background:#3439bd;color:white;border:0;border-radius:10px;padding:10px 18px;cursor:pointer">확인</button></form><p id="presence-message" role="status" style="font-size:13px;color:#64708a"></p><div id="presence-list" hidden></div><div id="visitor-list" hidden></div><p style="font-size:11px;color:#687388">공통 접속 기록이 활성화된 게임 기준 · 마지막 갱신 10분 초과 시 확인 목록에서 자동 제외 · 누적 방문 기록은 유지됩니다.</p>';
  const report=document.createElement("p");report.id="fw-count-report";panel.appendChild(report);
  document.body.appendChild(panel);
  reportCount("live",countsReport.live);
@@ -326,11 +330,11 @@ if(presenceRoot){
 function renderAdmin(){
  if(!adminUnlocked||!presenceRoot)return;
  const list=document.getElementById("presence-list");if(!list)return;
- const entries=Object.entries(latestSessions).filter(([,sessions])=>sessionEntries(sessions).length);
+ const entries=Object.entries(latestSessions).map(([uid,sessions])=>[uid,inspectorEntries(sessions)]).filter(([,sessions])=>sessions.length);
  list.replaceChildren();
- const header=document.createElement("p");header.style.fontWeight="700";const gameCounts={};for(const [,sessions] of entries){for(const game of new Set(activeEntries(sessions).map(v=>typeof v?.project==="string"?(v.project==="Formwheel"?"Hub":v.project.replace(/^Formwheel_/i,"")):"알 수 없음"))){gameCounts[game]=(gameCounts[game]||0)+1}}header.textContent="최근 5분 접속 확인 "+entries.filter(([,s])=>activeEntries(s).length).length+"명 · 위치별 "+Object.entries(gameCounts).map(([k,v])=>k+" "+v+"명").join(" / ");list.appendChild(header);
+ const header=document.createElement("p");header.style.fontWeight="700";const gameCounts={};for(const [,sessions] of entries){for(const game of new Set(activeEntries(sessions).map(v=>typeof v?.project==="string"?(v.project==="Formwheel"?"Hub":v.project.replace(/^Formwheel_/i,"")):"알 수 없음"))){gameCounts[game]=(gameCounts[game]||0)+1}}header.textContent="현재 접속 "+entries.filter(([,s])=>activeEntries(s).length).length+"명 · 확인 목록 "+entries.length+"명 (마지막 갱신 10분 이내) · 위치별 "+Object.entries(gameCounts).map(([k,v])=>k+" "+v+"명").join(" / ");list.appendChild(header);
  renderVisitorAdmin();
- if(!entries.length){const empty=document.createElement("p");empty.textContent="현재 기록된 접속자가 없습니다.";list.appendChild(empty);return}
+ if(!entries.length){const empty=document.createElement("p");empty.textContent="최근 10분 내 접속 갱신된 방문자가 없습니다.";list.appendChild(empty);return}
  entries.slice(0,200).forEach(([uid,sessions])=>{
   const values=sessionEntries(sessions);
   const line=document.createElement("div");line.style.cssText="padding:12px 0;border-top:1px solid #e7eaf1";
@@ -347,7 +351,7 @@ function renderAdmin(){
   const legacy=values.filter(v=>stateOf(v)==="legacy").length;
   const stale=values.filter(v=>stateOf(v)==="stale").length;
   const last=Math.max(0,...values.map(v=>typeof v.lastSeen==="number"?v.lastSeen:0));
-  const status=fresh?"🟢 최근 접속 확인":stale?"⚪ 5분 이상 갱신 없음": "❔ 이전 버전 기록 · 상태 불명";
+  const status=fresh?"🟢 최근 접속 확인":stale?"⚪ 5~10분간 갱신 없음": "❔ 이전 버전 기록 · 상태 불명";
   detail.textContent=status+" | 📍 "+locations.join(" · ")+" | "+values.length+"개 세션 (활성 "+fresh+", 오래됨 "+stale+", 미확인 "+legacy+") · 최초 접속 "+first+(last?" · 마지막 확인 "+new Date(last).toLocaleString("ko-KR"):"");line.appendChild(detail);list.appendChild(line);
   if(!profileCache.has(uid)&&values.some(v=>v.accountType==="account"||!v.accountType))loadName(uid);
  });
