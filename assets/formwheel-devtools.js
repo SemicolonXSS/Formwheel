@@ -128,6 +128,18 @@ style.textContent+=
 '#fw-dev-toggle{background:linear-gradient(120deg,#5438a6,#30275d);border:1px solid #a78bfa;box-shadow:0 8px 28px #0007}'+
 '@media(max-width:600px){#fw-dev-panel{inset:auto 0 0;height:min(78dvh,720px);border-radius:18px 18px 0 0;padding-bottom:env(safe-area-inset-bottom)}#fw-dev-panel .fw-head>div{width:100%}#fw-dev-panel .fw-head button{flex:1;font-size:11px;padding:6px 4px}#fw-dev-panel .fw-tabs{scrollbar-width:thin}}'+
 '@media(prefers-reduced-motion:no-preference){#fw-dev-panel{animation:fw12enter .18s ease-out}@keyframes fw12enter{from{transform:translateY(12px);opacity:.6}to{transform:translateY(0);opacity:1}}}';
+style.textContent+=
+'#fw-dev-panel{background:#081725;color:#e8f6ff;border-color:#28638a;box-shadow:0 24px 80px #001a32c9}'+
+'#fw-dev-panel .fw-head{background:linear-gradient(110deg,#063e65,#102b4a);border-bottom-color:#287aa8}'+
+'#fw-dev-panel .fw-tabs{background:#0c253b;border-bottom-color:#225575}'+
+'#fw-dev-panel .fw-tabs button{color:#a7d5ed}'+
+'#fw-dev-panel .fw-tabs button[aria-pressed=true]{background:#087bb5;color:white;border-color:#49c6f5;box-shadow:0 0 14px #0ba5e944}'+
+'#fw-dev-panel .fw-controls{background:#0b2336;border-bottom-color:#225575}'+
+'#fw-dev-panel button,#fw-dev-panel select,#fw-dev-panel input{background:#13354c;border-color:#397491;color:#f0faff}'+
+'#fw-dev-panel button:focus-visible,#fw-dev-panel input:focus-visible,#fw-dev-panel select:focus-visible,#fw-dev-toggle:focus-visible{outline-color:#55d4ff}'+
+'#fw-dev-panel .fw-body{background:#081725}'+
+'#fw-dev-panel .fw-line{background:#10283c;border-color:#244d67}'+
+'#fw-dev-toggle{background:linear-gradient(120deg,#067bb8,#103d70);border-color:#54cafa;box-shadow:0 8px 28px #002e52aa}';
 document.head.append(style);
 const toggle=document.createElement('button');toggle.id='fw-dev-toggle';toggle.type='button';toggle.textContent='</>';toggle.setAttribute('aria-label','FW12 열기');document.body.append(toggle);
 panel=document.createElement('section');panel.id='fw-dev-panel';panel.setAttribute('role','dialog');panel.setAttribute('aria-label','FW12 개발자 도구');
