@@ -1489,6 +1489,32 @@
           "scoreKey"
         ]
       }
+    },
+    "clickerLeaderboardSeason2": {
+      ".read": true,
+      ".indexOn": [
+        "score"
+      ],
+      "$uid": {
+        ".read": true,
+        ".write": "auth != null && auth.uid === $uid && newData.exists() && (!data.exists() || (now >= data.child('updatedAt').val() + 60000 && newData.child('score').val() >= data.child('score').val()))",
+        ".validate": "newData.hasChildren(['uid','name','score','updatedAt']) && newData.child('uid').val() === $uid && newData.child('name').isString() && newData.child('name').val().length > 0 && newData.child('name').val().length <= 12 && newData.child('score').isString() && newData.child('score').val().matches(/^(0[0-9]{100}|10{100})$/) && newData.child('updatedAt').isNumber() && newData.child('updatedAt').val() >= now - 300000 && newData.child('updatedAt').val() <= now + 60000",
+        "uid": {
+          ".validate": "newData.isString() && newData.val() === $uid"
+        },
+        "name": {
+          ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 12"
+        },
+        "score": {
+          ".validate": "newData.isString() && newData.val().matches(/^(0[0-9]{100}|10{100})$/)"
+        },
+        "updatedAt": {
+          ".validate": "newData.isNumber() && newData.val() >= now - 300000 && newData.val() <= now + 60000"
+        },
+        "$other": {
+          ".validate": false
+        }
+      }
     }
   }
 }
