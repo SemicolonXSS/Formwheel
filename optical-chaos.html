@@ -4,7 +4,7 @@
 const $=id=>document.getElementById(id),canvas=$('scene'),ctx=canvas.getContext('2d'),PI=Math.PI,rad=d=>d*PI/180;
 const palette={white:'#fff',red:'#ff6475',green:'#4ade80',blue:'#60a5fa',yellow:'#fde047'};
 const names={white:'흰색',red:'빨강',green:'초록',blue:'파랑',yellow:'노랑'};
-const layouts=[];const stagePaths=Array.from({length:12},(_,i)=>{const count=i<2?1:i<6?2:3;const source=[65,120+(i*53)%290],goal=[820,110+(i*71)%330];const ys=[75+(i*97)%400,85+(i*137+100)%380,70+(i*83+190)%390];const points=Array.from({length:count},(_,j)=>[240+j*(count===3?190:count===2?275:0),ys[j]]);return {source,goal,points}});function solutionAngle(prev,at,next){let a=Math.atan2(at[1]-prev[1],at[0]-prev[0]),b=Math.atan2(next[1]-at[1],next[0]-at[0]);let deg=(a+b)*90/Math.PI;while(deg>90)deg-=180;while(deg< -90)deg+=180;return deg}
+const layouts=[];const stagePaths=Array.from({length:12},(_,i)=>{const count=[1,1,2,2,3,3,1,2,3,3,2,3][i];const source=[65,120+(i*53)%290],goal=[820,110+(i*71)%330];const ys=[75+(i*97)%400,85+(i*137+100)%380,70+(i*83+190)%390];const points=Array.from({length:count},(_,j)=>[240+j*(count===3?190:count===2?275:0),ys[j]]);return {source,goal,points}});function solutionAngle(prev,at,next){let a=Math.atan2(at[1]-prev[1],at[0]-prev[0]),b=Math.atan2(next[1]-at[1],next[0]-at[0]);let deg=(a+b)*90/Math.PI;while(deg>90)deg-=180;while(deg< -90)deg+=180;return deg}
 const specs=[
 [1,'white','white',null],[1,'red','red',null],[2,'blue','blue',null],[2,'green','yellow','yellow'],
 [3,'red','blue','blue'],[3,'white','green','green'],[1,'yellow','red','red'],
@@ -22,7 +22,7 @@ function collision(p,d){let best=null;const ms=mirrors();for(let i=0;i<ms.length
 for(let o of blockers()){let pts=[[o.x,o.y],[o.x+o.w,o.y],[o.x+o.w,o.y+o.h],[o.x,o.y+o.h]];for(let i=0;i<4;i++){let h=raySegment(p,d,pts[i],pts[(i+1)%4]);if(h&&(!best||h.t<best.t))best={...h,type:'wall'}}}
 return best}
 function distPointSegment(p,a,b){let v=minus(b,a),w=minus(p,a),t=Math.max(0,Math.min(1,dot(w,v)/dot(v,v)));return Math.hypot(p[0]-a[0]-t*v[0],p[1]-a[1]-t*v[1])}
-function trace(){let p=stagePaths[level].source,d=minus(stagePaths[level].points[0],p);{let n=Math.hypot(...d);d=d.map(v=>v/n)},color=specs[level][1],segments=[],hit=false,fil=filter(),converted=false,visited=[];
+function trace(){let p=stagePaths[level].source,d=minus(stagePaths[level].points[0],p);{let n=Math.hypot(...d);d=d.map(v=>v/n)}let color=specs[level][1],segments=[],hit=false,fil=filter(),converted=false,visited=[];
 for(let i=0;i<12;i++){let h=collision(p,d),end=h?h.p:[p[0]+d[0]*1500,p[1]+d[1]*1500],cut=null;
 if(fil&&!converted){let t=dot(minus([fil.x,fil.y],p),d);if(Number.isFinite(t)&&t>0&&t<(h?h.t:1500)){let at=[p[0]+d[0]*t,p[1]+d[1]*t];if(Math.hypot(at[0]-fil.x,at[1]-fil.y)<45)cut=at}}
 if(cut){segments.push({a:p,b:cut,color});color=fil.color;converted=true;segments.push({a:cut,b:end,color})}else segments.push({a:p,b:end,color});
