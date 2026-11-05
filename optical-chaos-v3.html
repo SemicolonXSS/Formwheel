@@ -1,0 +1,55 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Optical Chaos 3 | Formwheel</title><style>
+*{box-sizing:border-box}body{margin:0;background:#0a1021;color:#f1f5f9;font:15px system-ui}main{max-width:930px;margin:auto;padding:16px}h1{color:#c4b5fd;margin-bottom:4px}p{line-height:1.55}.board{position:relative}canvas{width:100%;height:auto;display:block;background:#111c32;border:2px solid #64748b;border-radius:16px;touch-action:none}.panel{background:#1e293b;border-radius:15px;padding:16px;margin-top:12px}button{border:0;border-radius:10px;padding:11px 16px;background:#7c3aed;color:white;font:inherit;font-weight:700;margin:4px;cursor:pointer}button:disabled{opacity:.4}input{width:100%;accent-color:#a78bfa}label{display:block;margin:13px 0}output{float:right;color:#fde68a}#status{color:#fde68a;min-height:25px}#levels{color:#a5b4fc;font-weight:800}a{color:#c4b5fd}small{color:#cbd5e1}</style></head><body><main><a href="./">← Formwheel Hub</a><h1>🔦 OPTICAL CHAOS 3</h1><p>거울로 빛을 꺾고 색을 맞혀라! 직진하면 막힌다 😈</p><canvas id="scene" width="900" height="560" aria-label="광학 반사 퍼즐"></canvas><div class="panel"><div id="levels"></div><p id="status" role="status"></p><div id="controls"></div><button id="fire">🔦 손전등 켜기</button><button id="next" disabled>다음 스테이지 →</button><button id="reset">다시 시작</button><p><small>거울 슬라이더를 조절하거나 화면에서 거울을 드래그하세요. 빛은 거울에서 입사각과 반사각이 같게 반사됩니다. 색 변환기를 통과해야 목표 색깔이 맞는 단계도 있어요.</small></p></div></main><script>
+'use strict';
+const $=id=>document.getElementById(id),canvas=$('scene'),ctx=canvas.getContext('2d'),PI=Math.PI,rad=d=>d*PI/180;
+const palette={white:'#fff',red:'#ff6475',green:'#4ade80',blue:'#60a5fa',yellow:'#fde047'};
+const names={white:'흰색',red:'빨강',green:'초록',blue:'파랑',yellow:'노랑'};
+const layouts=[
+[{x:300,y:300,solution:-45}],
+[{x:300,y:300,solution:-45},{x:300,y:115,solution:45}],
+[{x:300,y:300,solution:-45},{x:300,y:115,solution:45},{x:675,y:115,solution:45}]
+];
+const specs=[
+[1,'white','white',null],[1,'red','red',null],[2,'blue','blue',null],[2,'green','yellow','yellow'],
+[3,'red','blue','blue'],[3,'white','green','green'],[1,'yellow','red','red'],
+[2,'green','blue','blue'],[3,'blue','yellow','yellow'],[3,'red','green','green'],
+[2,'white','red','red'],[3,'yellow','white','white']
+];
+let level=0,angles=[],active=false,won=false,drag=-1;
+const minus=(a,b)=>[a[0]-b[0],a[1]-b[1]],dot=(a,b)=>a[0]*b[0]+a[1]*b[1],cross=(a,b)=>a[0]*b[1]-a[1]*b[0];
+function raySegment(p,d,a,b){let v=minus(b,a),den=cross(d,v);if(Math.abs(den)<1e-7)return null;let q=minus(a,p),t=cross(q,v)/den,u=cross(q,d)/den;return t>.02&&u>=0&&u<=1?{t,p:[p[0]+d[0]*t,p[1]+d[1]*t]}:null}
+function mirrors(){return layouts[specs[level][0]-1].map((m,i)=>({...m,angle:angles[i]}))}
+function target(){let count=specs[level][0];return count===1?[300,65]:count===2?[815,115]:[675,470]}
+function blockers(){return [{x:460,y:260,w:35,h:85},{x:775,y:275,w:35,h:150}]}
+function filter(){let [count,, ,color]=specs[level];if(!color)return null;return count===1?{x:300,y:185,color,orientation:'h'}:count===2?{x:530,y:115,color,orientation:'v'}:{x:675,y:295,color,orientation:'h'}}
+function collision(p,d){let best=null;const ms=mirrors();for(let i=0;i<ms.length;i++){let m=ms[i],v=[Math.cos(rad(m.angle))*66,Math.sin(rad(m.angle))*66],h=raySegment(p,d,[m.x-v[0],m.y-v[1]],[m.x+v[0],m.y+v[1]]);if(h&&(!best||h.t<best.t))best={...h,type:'mirror',index:i}}
+for(let o of blockers()){let pts=[[o.x,o.y],[o.x+o.w,o.y],[o.x+o.w,o.y+o.h],[o.x,o.y+o.h]];for(let i=0;i<4;i++){let h=raySegment(p,d,pts[i],pts[(i+1)%4]);if(h&&(!best||h.t<best.t))best={...h,type:'wall'}}}
+return best}
+function distPointSegment(p,a,b){let v=minus(b,a),w=minus(p,a),t=Math.max(0,Math.min(1,dot(w,v)/dot(v,v)));return Math.hypot(p[0]-a[0]-t*v[0],p[1]-a[1]-t*v[1])}
+function trace(){let p=[70,300],d=[1,0],color=specs[level][1],segments=[],hit=false,fil=filter(),converted=false;
+for(let i=0;i<12;i++){let h=collision(p,d),end=h?h.p:[p[0]+d[0]*1500,p[1]+d[1]*1500],cut=null;
+if(fil&&!converted){let t=fil.orientation==='v'?(fil.x-p[0])/d[0]:(fil.y-p[1])/d[1];if(Number.isFinite(t)&&t>0&&t<(h?h.t:1500)){let at=[p[0]+d[0]*t,p[1]+d[1]*t];if((fil.orientation==='v'&&Math.abs(at[1]-fil.y)<40)||(fil.orientation==='h'&&Math.abs(at[0]-fil.x)<40))cut=at}}
+if(cut){segments.push({a:p,b:cut,color});color=fil.color;converted=true;segments.push({a:cut,b:end,color})}else segments.push({a:p,b:end,color});
+if(color===specs[level][2]&&distPointSegment(target(),p,end)<24)hit=true;
+if(!h)break;if(h.type==='wall')break;
+let m=mirrors()[h.index],v=[Math.cos(rad(m.angle)),Math.sin(rad(m.angle))],projection=dot(d,v);d=[2*projection*v[0]-d[0],2*projection*v[1]-d[1]];p=[end[0]+d[0]*.1,end[1]+d[1]*.1]}
+return {segments,hit}}
+function render(){let [count,start,goal]=specs[level],ms=mirrors(),tgt=target();ctx.clearRect(0,0,900,560);ctx.fillStyle='#111c32';ctx.fillRect(0,0,900,560);ctx.strokeStyle='#23344c';ctx.lineWidth=1;for(let x=0;x<=900;x+=50){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,560);ctx.stroke()}for(let y=0;y<=560;y+=50){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(900,y);ctx.stroke()}
+for(let b of blockers()){ctx.fillStyle='#9f1239';ctx.fillRect(b.x,b.y,b.w,b.h);ctx.strokeStyle='#fda4af';ctx.lineWidth=3;ctx.strokeRect(b.x,b.y,b.w,b.h)}
+let f=filter();if(f){ctx.strokeStyle=palette[f.color];ctx.lineWidth=12;ctx.beginPath();if(f.orientation==='v'){ctx.moveTo(f.x,f.y-40);ctx.lineTo(f.x,f.y+40)}else{ctx.moveTo(f.x-40,f.y);ctx.lineTo(f.x+40,f.y)}ctx.stroke()}
+for(let i=0;i<ms.length;i++){let m=ms[i],v=[Math.cos(rad(m.angle))*66,Math.sin(rad(m.angle))*66];ctx.strokeStyle='#e2e8f0';ctx.lineWidth=9;ctx.beginPath();ctx.moveTo(m.x-v[0],m.y-v[1]);ctx.lineTo(m.x+v[0],m.y+v[1]);ctx.stroke();ctx.fillStyle='#fff';ctx.font='bold 18px system-ui';ctx.fillText('M'+(i+1),m.x-16,m.y-77)}
+ctx.strokeStyle='#fff';ctx.lineWidth=7;ctx.beginPath();ctx.arc(...tgt,30,0,2*PI);ctx.stroke();ctx.fillStyle=palette[goal];ctx.beginPath();ctx.arc(...tgt,22,0,2*PI);ctx.fill();ctx.fillStyle='#fff';ctx.font='bold 17px system-ui';ctx.fillText('목표 '+names[goal],tgt[0]-45,tgt[1]-40);
+ctx.save();ctx.translate(70,300);ctx.fillStyle='#facc15';ctx.fillRect(-55,-21,55,42);ctx.strokeStyle='#fff';ctx.lineWidth=3;ctx.strokeRect(-55,-21,55,42);ctx.fillStyle='#e2e8f0';ctx.fillRect(-6,-28,14,56);ctx.restore();ctx.fillStyle=palette[start];ctx.beginPath();ctx.arc(70,300,7,0,2*PI);ctx.fill();ctx.fillStyle='#fff';ctx.fillText('손전등',18,362);
+const result=trace();for(let seg of result.segments){ctx.strokeStyle=palette[seg.color];ctx.lineWidth=active?6:3;ctx.globalAlpha=active?1:.6;ctx.beginPath();ctx.moveTo(...seg.a);ctx.lineTo(...seg.b);ctx.stroke()}ctx.globalAlpha=1;
+if(active&&result.hit&&!won){won=true;$('status').textContent='🎯 색깔까지 일치! 성공!';$('next').disabled=false}
+}
+function load(){let count=specs[level][0];angles=layouts[count-1].map(()=>0);active=false;won=false;$('next').disabled=true;$('levels').textContent='STAGE '+(level+1)+' / '+specs.length+' · 거울 '+count+'개';$('status').textContent='시작 '+names[specs[level][1]]+' → 목표 '+names[specs[level][2]]+' · 거울 각도를 맞춰봐!';$('controls').innerHTML=angles.map((a,i)=>'<label>🪞 거울 M'+(i+1)+' <output id="out'+i+'">0°</output><input id="m'+i+'" type="range" min="-90" max="90" step="1" value="0"></label>').join('');angles.forEach((_,i)=>{$('m'+i).oninput=e=>{angles[i]=+e.target.value;$('out'+i).textContent=angles[i]+'°';active=false;render()}});render()}
+$('fire').onclick=()=>{active=true;render();if(!won)$('status').textContent='빛이 목표에 닿지 않았거나 색이 달라! 다시 조절해봐.'};
+$('next').onclick=()=>{if(won){level=(level+1)%specs.length;load()}};
+$('reset').onclick=load;
+function point(e){let r=canvas.getBoundingClientRect();return [(e.clientX-r.left)*900/r.width,(e.clientY-r.top)*560/r.height]}
+canvas.onpointerdown=e=>{let p=point(e),ms=mirrors();drag=ms.findIndex(m=>Math.hypot(p[0]-m.x,p[1]-m.y)<95);if(drag>=0)canvas.setPointerCapture(e.pointerId)};
+canvas.onpointermove=e=>{if(drag<0)return;let p=point(e),m=mirrors()[drag],angle=Math.atan2(p[1]-m.y,p[0]-m.x)*180/PI;angle=Math.max(-90,Math.min(90,Math.round(angle)));angles[drag]=angle;$('m'+drag).value=angle;$('out'+drag).textContent=angle+'°';active=false;render()};
+canvas.onpointerup=()=>drag=-1;canvas.onpointercancel=()=>drag=-1;
+load();
+</script></body></html>
