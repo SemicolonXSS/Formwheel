@@ -16,24 +16,21 @@
 (()=>{'use strict';
 const colors=['#ffffff','#d4d7d9','#898d90','#000000','#ffa7d1','#ff56a9','#e50000','#be0039','#ff4500','#ffa800','#ffd635','#fff8b8','#00a368','#00cc78','#7eed56','#00756f','#009eaa','#00ccc0','#2450a4','#3690ea','#51e9f4','#493ac1','#6a5cff','#94b3ff','#811e9f','#b44ac0','#e4abff','#6d482f','#9c6926','#ffb470','#515252','#b8b8b8'];
 const config={apiKey:'AIzaSyBreTSe1m0-xlbF4aupnU5isRZCihR25IE',authDomain:'formwheel.firebaseapp.com',databaseURL:'https://formwheel-default-rtdb.firebaseio.com',projectId:'formwheel',appId:'1:431583088241:web:74e0e34ea1e3e1170c55d0'};
-const $=id=>document.getElementById(id),canvas=$('canvas'),ctx=canvas.getContext('2d'),palette=$('palette');let db,uid=null,selected=null,color=3,zoom=5,size=100,pixels={},last=0,busy=false,serverOffset=0,ready=false;
+const $=id=>document.getElementById(id),canvas=$('canvas'),ctx=canvas.getContext('2d'),palette=$('palette');let db,uid=null,selected=null,color=3,zoom=5,size=100,pixels={},last=0,busy=false,serverOffset=0,ready=false,players={};
 const root='formwheelV2/pixelWar/v1',status=t=>$('status').textContent=t;
 colors.forEach((c,i)=>{let b=document.createElement('button');b.style.background=c;b.title='색상 '+(i+1);b.setAttribute('aria-label',b.title);b.setAttribute('aria-pressed',String(i===color));b.onclick=()=>{color=i;[...palette.children].forEach((el,j)=>el.setAttribute('aria-pressed',String(j===i)));draw()};palette.append(b)});
+function rebuild(){pixels={};let total=0;const moves=[];for(const [id,player] of Object.entries(players)){for(const [k,m] of Object.entries(player.moves||{})){if(m&&Number.isInteger(m.x)&&Number.isInteger(m.y)&&Number.isInteger(m.color)&&m.x>=0&&m.y>=0&&m.x<400&&m.y<400&&m.color>=0&&m.color<colors.length){moves.push({...m,id,k});total++}}}moves.sort((a,b)=>(a.at||0)-(b.at||0)||a.id.localeCompare(b.id)||Number(a.k)-Number(b.k));size=total>=20000?400:total>=5000?200:100;for(const m of moves){if(m.x<size&&m.y<size)pixels[m.x+'_'+m.y]=m.color}draw();$('count').textContent=total}
 function draw(){canvas.width=size;canvas.height=size;ctx.fillStyle='#ffffff';ctx.fillRect(0,0,size,size);for(const [key,val] of Object.entries(pixels)){const [x,y]=key.split('_').map(Number);if(x>=0&&y>=0&&x<size&&y<size&&Number.isInteger(val)&&val>=0&&val<colors.length){ctx.fillStyle=colors[val];ctx.fillRect(x,y,1,1)}}if(selected){ctx.strokeStyle='#000';ctx.lineWidth=.15;ctx.strokeRect(selected.x+.08,selected.y+.08,.84,.84)}canvas.style.width=size*zoom+'px';canvas.style.height=size*zoom+'px';$('size').textContent=size+'×'+size;$('count').textContent=Object.keys(pixels).length}
 function tick(){const remaining=Math.max(0,30000-(Date.now()+serverOffset-last));$('cooldown').textContent=remaining?Math.ceil(remaining/1000)+'초':'준비 완료';$('place').disabled=!ready||busy||!selected||remaining>0}
 canvas.addEventListener('click',e=>{const r=canvas.getBoundingClientRect();const x=Math.floor((e.clientX-r.left)*size/r.width),y=Math.floor((e.clientY-r.top)*size/r.height);if(x<0||y<0||x>=size||y>=size)return;selected={x,y};$('coord').textContent='('+x+', '+y+')';draw();tick()});
 $('plus').onclick=()=>{zoom=Math.min(20,zoom+1);draw()};$('minus').onclick=()=>{zoom=Math.max(2,zoom-1);draw()};
-$('place').onclick=async()=>{if(!ready||busy||!selected)return;tick();if($('place').disabled)return;busy=true;tick();const key=selected.x+'_'+selected.y,now=Date.now()+serverOffset;try{
-const result=await db.ref(root+'/users/'+uid).transaction(v=>{if(v&&Number(v.lastAt)>now-30000)return;return {lastAt:firebase.database.ServerValue.TIMESTAMP,count:((v&&v.count)||0)+1}},undefined,false);
-if(!result.committed){status('30초 쿨타임이 아직 남았어요.');return}
-last=result.snapshot.val().lastAt||now;
-await db.ref(root+'/pixels/'+key).set(color);
-status('픽셀 배치 성공! 🎨');
-}catch(e){status('저장 실패: '+e.message+' (Firebase 규칙 확인 필요)')}finally{busy=false;tick()}};
+$('place').onclick=async()=>{if(!ready||busy||!selected)return;tick();if($('place').disabled)return;busy=true;tick();const chosen={...selected},chosenColor=color,now=Date.now()+serverOffset;try{
+const result=await db.ref(root+'/players/'+uid).transaction(v=>{const previous=v||{count:0,lastAt:0,moves:{}};if(previous.lastAt&&now-Number(previous.lastAt)<30000)return;const count=Number(previous.count||0)+1;if(count>10000)return;return {count,lastAt:firebase.database.ServerValue.TIMESTAMP,moves:{...(previous.moves||{}),[count]:{x:chosen.x,y:chosen.y,color:chosenColor,at:firebase.database.ServerValue.TIMESTAMP}}}},undefined,false);
+if(!result.committed){status('30초 쿨타임이 아직 남았거나 배치 제한에 도달했어요.');return}
+last=result.snapshot.val().lastAt||now;status('픽셀 배치 성공! 🎨');
+}catch(e){status('저장 실패: '+e.message+' (Firebase Rules 배포 필요)')}finally{busy=false;tick()}};
 async function start(){try{firebase.initializeApp(config);db=firebase.database();db.ref('.info/serverTimeOffset').on('value',s=>{serverOffset=s.val()||0});const auth=firebase.auth();await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);const user=auth.currentUser|| (await auth.signInAnonymously()).user;uid=user.uid;
-db.ref(root+'/meta/size').on('value',s=>{const n=s.val();size=[100,200,400].includes(n)?n:100;draw()});
-db.ref(root+'/pixels').on('value',s=>{pixels=s.val()||{};draw()});
-db.ref(root+'/users/'+uid).on('value',s=>{last=(s.val()||{}).lastAt||0;tick()});
+db.ref(root+'/players').on('value',s=>{players=s.val()||{};last=(players[uid]||{}).lastAt||0;rebuild();tick()},e=>status('읽기 권한 오류: '+e.message));
 ready=true;status('연결됨 · 모두가 같은 그림을 보고 있어요');tick();
 }catch(e){status('연결 실패: '+e.message+' · Firebase Auth 및 Rules를 확인해 주세요')}}draw();start();setInterval(tick,500);
 })();
