@@ -33,6 +33,7 @@ IMPORTANT:
 
 
 const projects = [
+  {name:"PIXEL WAR",keywords:"픽셀 전쟁 r/place 그림 협동 멀티 실시간",icon:"🎨",className:"purple",category:"game",mode:"multi",connection:"online",difficulty:"쉬움",description:"30초마다 픽셀 한 칸! 모두가 함께 그리는 확장형 실시간 캔버스.",url:"https://semicolonxss.github.io/Formwheel/pixel-war.html",addedAt:"2026-11-05T08:00:00Z",recent:true},
   {name:"Factor Lab",keywords:"인수분해 수학 다항식 이차식 공통인수 factor algebra",icon:"🧮",className:"purple",category:"tool",mode:"solo",connection:"offline",difficulty:"보통",description:"이차식 인수분해, 공통인수 묶기, 풀이 과정과 검산을 한 번에!",url:"https://semicolonxss.github.io/Formwheel/factor-lab.html",addedAt:"2026-11-05T00:00:00Z",recent:true},
   {name:"Sudoku",keywords:"스도쿠 숫자 퍼즐 두뇌 논리 sudoku",icon:"🧩",className:"purple",category:"game",mode:"solo",connection:"offline",difficulty:"보통",description:"9×9 숫자 퍼즐! 난이도 3단계, 메모·힌트·타이머·자동 저장으로 언제든 이어하기.",url:"https://semicolonxss.github.io/Formwheel/sudoku.html",addedAt:"2026-11-04T03:50:00Z",recent:true},
   {name:"Calendar",keywords:"캘린더 달력 일정 관리 공유 코드 이벤트",icon:"📅",className:"orange",category:"app",mode:"solo",connection:"offline",difficulty:"쉬움",description:"일정을 기록하고 코드로 공유하는 나만의 캘린더. Formwheel 이벤트도 함께 확인!",url:"https://semicolonxss.github.io/Formwheel/calendar.html",addedAt:"2026-10-31T00:00:00Z",recent:true},
