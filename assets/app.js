@@ -33,10 +33,10 @@ IMPORTANT:
 
 
 const projects = [
-  {name:"Factor Lab",keywords:"인수분해 수학 다항식 이차식 공통인수 factor algebra",icon:"🧮",className:"purple",category:"tool",mode:"solo",connection:"offline",difficulty:"보통",description:"이차식 인수분해, 공통인수 묶기, 풀이 과정과 검산을 한 번에!",url:"https://semicolonxss.github.io/Formwheel/factor-lab.html",addedAt:"2026-11-05T00:00:00Z",recent:true},
-  {name:"Sudoku",keywords:"스도쿠 숫자 퍼즐 두뇌 논리 sudoku",icon:"🧩",className:"purple",category:"game",mode:"solo",connection:"offline",difficulty:"보통",description:"9×9 숫자 퍼즐! 난이도 3단계, 메모·힌트·타이머·자동 저장으로 언제든 이어하기.",url:"https://semicolonxss.github.io/Formwheel/sudoku.html",addedAt:"2026-11-04T03:50:00Z",recent:true},
+  {name:"Factor Lab",keywords:"인수분해 수학 다항식 이차식 공통인수 factor algebra",icon:"🧮",className:"purple",category:"tool",mode:"solo",connection:"offline",difficulty:"보통",description:"공통인수와 이차식 인수분해를 연습하고, 단계별 풀이와 검산으로 결과를 확인하는 수학 도구.",url:"https://semicolonxss.github.io/Formwheel/factor-lab.html",addedAt:"2026-11-05T00:00:00Z",recent:true},
+  {name:"Sudoku",keywords:"스도쿠 숫자 퍼즐 두뇌 논리 sudoku",icon:"🧩",className:"purple",category:"game",mode:"solo",connection:"offline",difficulty:"보통",description:"9×9 숫자 퍼즐에 도전! 난이도를 고르고 메모·힌트·타이머를 활용해 풀어보세요. 진행 상황은 자동 저장됩니다.",url:"https://semicolonxss.github.io/Formwheel/sudoku.html",addedAt:"2026-11-04T03:50:00Z",recent:true},
   {name:"Calendar",keywords:"캘린더 달력 일정 관리 공유 코드 이벤트",icon:"📅",className:"orange",category:"app",mode:"solo",connection:"offline",difficulty:"쉬움",description:"일정을 기록하고 코드로 공유하는 나만의 캘린더. Formwheel 이벤트도 함께 확인!",url:"https://semicolonxss.github.io/Formwheel/calendar.html",addedAt:"2026-10-31T00:00:00Z",recent:true},
-  {name:"EDU",keywords:"공부 학습 고등수학 합성함수 역함수 교육",icon:"🎓",className:"orange",category:"app",mode:"solo",connection:"offline",difficulty:"보통",description:"합성함수·역함수를 개념부터 응용까지 배우는 고등수학 학습 로드맵. 단계를 자유롭게 건너뛸 수 있는 베타.",url:"https://semicolonxss.github.io/Formwheel/edu.html",addedAt:"2026-10-30T00:00:00Z",recent:true},
+  {name:"EDU",keywords:"공부 학습 고등수학 합성함수 역함수 교육",icon:"🎓",className:"orange",category:"app",mode:"solo",connection:"offline",difficulty:"보통",description:"합성함수와 역함수를 개념부터 응용까지 학습하는 베타 코스. 원하는 단계로 자유롭게 이동할 수 있어요.",url:"https://semicolonxss.github.io/Formwheel/edu.html",addedAt:"2026-10-30T00:00:00Z",recent:true},
   {name:"Sports",keywords:"운동 축구 농구 공 슛 스포츠",icon:"⚽",className:"green",category:"game",mode:"both",connection:"offline",difficulty:"쉬움",description:"축구·농구 2종목! CPU 대전과 한 기기 2인 대전, 슛·킥·점프가 가능한 스포츠 게임.",url:"https://semicolonxss.github.io/Formwheel/sports/",addedAt:"2026-10-24T06:45:00Z",recent:true},
   {name:"Board",keywords:"체스 바둑 오목 오델로 보드게임",icon:"♟️",className:"purple",category:"game",mode:"both",connection:"online",difficulty:"보통",description:"체스·바둑·오목·오델로 4종! 규칙을 읽고 로컬 2인 대전 또는 방 코드로 친구와 온라인 플레이.",url:"https://semicolonxss.github.io/Formwheel/board/",addedAt:"2026-10-24T05:30:00Z",recent:true},
   {name:"SYNC",keywords:"텔레파시 같은답 파티 싱크",icon:"🧠",className:"purple",category:"game",mode:"both",connection:"online",difficulty:"쉬움",description:"친구들과 텔레파시가 통할까? 같은 답을 고르는 6라운드 싱크 파티 게임! 한 기기 파티와 온라인 방 코드.",url:"https://semicolonxss.github.io/Formwheel_Sync/",addedAt:"2026-10-22T06:00:00Z",recent:true},
@@ -50,7 +50,7 @@ const projects = [
   {
     name:"Glitch",keywords:"생존 장애물 회피", icon:"⚡", className:"purple", category:"game", mode:"solo",
     connection:"offline", difficulty:"보통",
-    description:"5~10초마다 글리치가 누적되는 120초 생존 게임! 장애물을 피하고 에너지 조각을 모아봐.",
+    description:"120초 동안 장애물을 피하며 살아남으세요! 5~10초마다 새로운 글리치가 등장하고 에너지 조각을 모을 수 있어요.",
     url:"https://semicolonxss.github.io/Formwheel_Glitch/",
     addedAt:"2026-10-21T00:00:00Z", recent:true
   },
@@ -671,7 +671,7 @@ const projectMaturity = {
   Risk: 67,
   EDU: 35,
 };
-const maturityLabel = score => score == null ? '미분류' : score >= 85 ? '안정화' : score >= 70 ? '개발 중' : score >= 50 ? '베타' : '초기 개발';
+const maturityLabel = score => score == null ? '평가 대기' : score >= 85 ? '안정화' : score >= 70 ? '개발 중' : score >= 50 ? '베타' : '초기 개발';
 
 
 /* ======================================================
@@ -1101,9 +1101,9 @@ function render(){
           </div>
 
 
-          <div class="fw-maturity" title="2026-10-30 기준 제작자 추정치입니다. 자동 검사·완성 보증이 아니며, 실제 버그와 신규 기능에 따라 달라질 수 있습니다.">
-            <div class="fw-maturity-caption"><span>개발 상태 <small>(추정)</small></span><strong>${maturityLabel(projectMaturity[project.name])} · ${projectMaturity[project.name] == null ? '—' : projectMaturity[project.name] + '%'}</strong></div>
-            <div class="fw-maturity-track" role="progressbar" aria-label="${escapeHTML(project.name)} 개발 진행률 추정" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${projectMaturity[project.name] ?? 0}"><div class="fw-maturity-fill" style="width:${projectMaturity[project.name] ?? 0}%"></div></div>
+          <div class="fw-maturity" title="표시된 수치는 2026-10-30 기준 제작자 추정치이며 실제 테스트 통과율이 아닙니다. 미평가 프로젝트는 평가 대기로 표시됩니다.">
+            <div class="fw-maturity-caption"><span>개발 상태 <small>(추정)</small></span><strong>${maturityLabel(projectMaturity[project.name])} · ${projectMaturity[project.name] == null ? '점수 없음' : projectMaturity[project.name] + '%'}</strong></div>
+            <div class="fw-maturity-track" role="progressbar" aria-label="${escapeHTML(project.name)} 개발 진행률 추정" aria-valuemin="0" aria-valuemax="100" ${projectMaturity[project.name] == null ? 'aria-valuetext="평가 대기"' : `aria-valuenow="${projectMaturity[project.name]}"`}><div class="fw-maturity-fill" style="width:${projectMaturity[project.name] ?? 0}%"></div></div>
           </div>
           <div class="cardBottom">
 
