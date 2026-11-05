@@ -273,6 +273,22 @@
             }
           }
         }
+      },
+      "pixelWar": {
+        "v1": {
+          "players": {
+            ".read": true,
+            "$uid": {
+              ".write": "auth != null && auth.uid === $uid && newData.exists() && newData.hasChildren(['count','lastAt','moves']) && newData.child('count').isNumber() && newData.child('count').val() === (data.exists() ? data.child('count').val() + 1 : 1) && newData.child('count').val() <= 10000 && newData.child('lastAt').isNumber() && newData.child('lastAt').val() === now && (!data.exists() || now - data.child('lastAt').val() >= 30000) && newData.child('moves').childrenCount === newData.child('count').val() && newData.child('moves').child(newData.child('count').val() + '').exists()",
+              ".validate": "newData.hasChildren(['count','lastAt','moves']) && newData.childrenCount === 3",
+              "moves": {
+                "$index": {
+                  ".validate": "$index.matches(/^[1-9][0-9]*$/) && newData.hasChildren(['x','y','color','at']) && newData.childrenCount === 4 && ((!data.exists() && $index === ((root.child('formwheelV2/pixelWar/v1/players/'+$uid+'/count').val() || 0) + 1 + '')) || (data.exists() && newData.child('x').val() === data.child('x').val() && newData.child('y').val() === data.child('y').val() && newData.child('color').val() === data.child('color').val() && newData.child('at').val() === data.child('at').val())) && newData.child('x').isNumber() && newData.child('x').val() >= 0 && newData.child('x').val() < 400 && newData.child('y').isNumber() && newData.child('y').val() >= 0 && newData.child('y').val() < 400 && newData.child('color').isNumber() && newData.child('color').val() >= 0 && newData.child('color').val() < 32 && newData.child('at').isNumber()"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "hubCreatorSort": {
