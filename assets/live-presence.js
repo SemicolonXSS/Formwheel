@@ -54,6 +54,8 @@ onValue(ref(db,peakPath),snap=>{
 const visitorCount=document.getElementById("fw-total-visitor-count");
 const visitorNote=document.getElementById("fw-total-visitor-note");
 let recordedVisitorUid=null;
+let visitorRetryTimer=null;
+let visitorRetryAttempts=0;
 let durationTimer=null;
 let durationBusy=false;
 let pendingDurationMs=0;
@@ -213,8 +215,10 @@ async function recordVisitor(user){
   }:undefined,{applyLocally:false});
   if(!visitorResult.committed||!visitorResult.snapshot.exists())throw new Error("visitor_transaction_not_committed");
   recordedVisitorUid=uid;durationOwnerUid=uid;pendingDurationMs=0;durationRetryAfter=0;lastActiveTick=Date.now();
+  if(visitorRetryTimer){clearTimeout(visitorRetryTimer);visitorRetryTimer=null;}
+  visitorRetryAttempts=0;
   if(user.isAnonymous&&visitorNote){
-   visitorNote.textContent="익명 방문 기록 저장됨 · 공개 누적 숫자는 정기 집계 후 반영";
+   visitorNote.textContent="익명 방문 기록 저장됨 · 공개 누적 숫자는 서버 집계 후 자동 갱신";
   }
   if(durationTimer)clearInterval(durationTimer);
   durationTimer=setInterval(()=>accumulateDuration(uid),DURATION_INTERVAL);
@@ -222,6 +226,13 @@ async function recordVisitor(user){
   const reason=error.code||error.message||"오류";
   console.warn("Formwheel 방문 등록 실패",reason);
   if(visitorNote)visitorNote.textContent="방문 기록 저장 실패 · 익명 로그인 및 Firebase Rules 확인 ("+reason+")";
+  // Retry transient network errors, but do not loop on Rules/auth denials.
+  const retryable=/network|unavailable|disconnected|timeout/i.test(String(reason));
+  if(retryable&&auth.currentUser?.uid===uid&&visitorRetryAttempts<3){
+   visitorRetryAttempts++;
+   clearTimeout(visitorRetryTimer);
+   visitorRetryTimer=setTimeout(()=>{visitorRetryTimer=null;if(auth.currentUser?.uid===uid)void recordVisitor(auth.currentUser);},5000*visitorRetryAttempts);
+  }
  }
 }
 
@@ -306,6 +317,8 @@ onValue(ref(db,analyticsPath),snapshot=>{
 },error=>{publicAnalyticsError=error.code||"조회 실패";if(adminUnlocked&&!visitorDetailsReady)renderVisitorAdmin()});
 let stopDetails=[];
 onAuthStateChanged(auth,async user=>{
+ if(visitorRetryTimer){clearTimeout(visitorRetryTimer);visitorRetryTimer=null;}
+ visitorRetryAttempts=0;
  for(const key of ["live","total"])reportCount(key,user&&!user.isAnonymous?"원본 확인 중":"Google 로그인 필요");
  lastPublishedTotal=null;lastPublishedLive=null;
  stopDetails.forEach(stop=>stop());
