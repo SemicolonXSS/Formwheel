@@ -142,17 +142,42 @@ exports.awardPeakWitness=onValueWritten({
   }));
 });
 
+// Publish server-verified unique visitors without ever reducing a public total.
+// The five-minute GitHub Action remains as a secondary reconciliation path.
+async function publishVerifiedVisitorTotal(){
+  const snapshot=await db.ref("formwheelV2/visitorStats/uniqueVisitors").get();
+  if(!snapshot.exists())return;
+  let count=0;
+  snapshot.forEach(child=>{if(child.val()&&typeof child.val()==="object")count++;});
+  if(!Number.isSafeInteger(count)||count<1)return;
+  const target=db.ref("formwheelV2/publicVisitorCounts/total");
+  await target.transaction(current=>{
+    const previous=Number(current?.count??current??0);
+    if(!Number.isSafeInteger(previous)||previous<0||count<=previous)return;
+    return {count,updatedAt:admin.database.ServerValue.TIMESTAMP};
+  },undefined,false);
+}
+
+// New UID entries trigger an immediate server-side public count sync.
+// Existing UID activity updates never increment the unique visitor total.
+const {onValueCreated}=require("firebase-functions/v2/database");
+exports.syncNewUniqueVisitor=onValueCreated({
+  ref:"/formwheelV2/visitorStats/uniqueVisitors/{uid}",
+  instance:"formwheel-default-rtdb",
+  region:"us-central1",
+  maxInstances:3
+},async()=>{await publishVerifiedVisitorTotal();});
+
 const {onSchedule}=require("firebase-functions/v2/scheduler");
 exports.refreshVisitorCounts=onSchedule({schedule:"every 1 minutes",region:"us-central1",maxInstances:1},async()=>{
-  const root=db.ref("formwheelV2");
-  const [sessions,visitors]=await Promise.all([
-    root.child("liveHubSessions").get(),
-    root.child("visitorStats/uniqueVisitors").get()
-  ]);
+  const sessions=await db.ref("formwheelV2/liveHubSessions").get();
   const timestamp=Date.now();
   let live=0;
   sessions.forEach(user=>{
     if(Object.values(user.val()||{}).some(s=>typeof s?.lastSeen==="number" && timestamp-s.lastSeen<peakFreshMs && s.lastSeen<=timestamp))live++;
   });
-  await root.child("publicVisitorCounts").update({live,total:visitors.numChildren()});
+  await Promise.all([
+    publishVerifiedVisitorTotal(),
+    db.ref("formwheelV2/publicVisitorCounts/live").set({count:live,updatedAt:admin.database.ServerValue.TIMESTAMP})
+  ]);
 });
