@@ -1,0 +1,35 @@
+name: Deploy Formwheel visitor count functions
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/deploy-visitor-count.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: formwheel-visitor-functions-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Authenticate to Firebase
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+      - name: Validate JavaScript and install dependencies
+        run: |
+          node --check functions/index.js
+          npm --prefix functions install --no-audit --no-fund
+      - name: Deploy visitor counter functions only
+        run: |
+          npx --yes firebase-tools@latest deploy --project formwheel --only functions:syncNewUniqueVisitor,functions:refreshVisitorCounts --non-interactive
