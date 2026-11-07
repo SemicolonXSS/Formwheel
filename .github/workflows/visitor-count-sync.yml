@@ -10,6 +10,10 @@ on:
   # GitHub Actions에서 수동 실행도 가능
   workflow_dispatch:
 
+  # 외부 무료 스케줄러에서 GitHub API로 호출할 수 있는 대체 트리거
+  repository_dispatch:
+    types: [sync-public-visitors]
+
 permissions:
   contents: read
 
