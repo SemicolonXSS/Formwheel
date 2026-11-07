@@ -26,15 +26,24 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: '22'
 
       - name: Install Firebase Admin SDK
         run: npm install --no-save --no-package-lock --ignore-scripts firebase-admin@13
+
+      - name: Show sync trigger and timestamp
+        env:
+          RUN_EVENT: ${{ github.event_name }}
+          SCHEDULE: ${{ github.event.schedule }}
+        run: |
+          echo "Event: ${RUN_EVENT}"
+          echo "Schedule: ${SCHEDULE:-manual}"
+          echo "Runner UTC: $(date -u '+%Y-%m-%dT%H:%M:%SZ')"
 
       - name: Publish verified unique visitor total
         env:
