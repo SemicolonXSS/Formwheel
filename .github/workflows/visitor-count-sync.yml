@@ -1,28 +1,41 @@
+
 name: Sync public Formwheel visitor count
 
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    # UTC 기준 매시간 2, 7, 12, 17 ... 57분
+    # GitHub Actions 예약 실행은 지연되거나 누락될 수 있음
+    - cron: '2,7,12,17,22,27,32,37,42,47,52,57 * * * *'
+
+  # GitHub Actions에서 수동 실행도 가능
   workflow_dispatch:
 
 permissions:
   contents: read
 
+# 동일한 방문자 집계 작업의 중복 실행 방지
 concurrency:
   group: formwheel-visitor-counter
   cancel-in-progress: false
 
 jobs:
   sync:
+    name: Sync Firebase visitor count
     runs-on: ubuntu-latest
     timeout-minutes: 5
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: '22'
+
       - name: Install Firebase Admin SDK
         run: npm install --no-save --no-package-lock --ignore-scripts firebase-admin@13
+
       - name: Publish verified unique visitor total
         env:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
