@@ -737,12 +737,18 @@
           ".write": "auth != null && auth.uid === root.child('whiteboardRooms').child($room).child('meta').child('owner').val() && !newData.exists()",
           "$action": {
             ".write": "auth != null && root.child('whiteboardRooms').child($room).child('presence').child(auth.uid).exists() && root.child('whiteboardRooms').child($room).child('meta').exists() && ((!data.exists() && newData.child('uid').val() === auth.uid) || (data.exists() && !newData.exists() && data.child('uid').val() === auth.uid))",
-            ".validate": "newData.hasChildren(['uid','tool','color','width','fill','points','createdAt']) && newData.child('uid').val() === auth.uid && newData.child('width').isNumber() && newData.child('width').val() >= 1 && newData.child('width').val() <= 50",
+            ".validate": "newData.hasChildren(['uid','tool','color','width','fill','points','createdAt']) && newData.child('uid').val() === auth.uid && newData.child('width').isNumber() && newData.child('width').val() >= 1 && newData.child('width').val() <= 50 && (newData.child('tool').val() !== 'text' || newData.child('text').isString())",
             "uid": {
               ".validate": "newData.val() === auth.uid"
             },
             "tool": {
-              ".validate": "newData.val() === 'pen' || newData.val() === 'eraser' || newData.val() === 'line' || newData.val() === 'rect' || newData.val() === 'ellipse'"
+              ".validate": "newData.val() === 'pen' || newData.val() === 'eraser' || newData.val() === 'line' || newData.val() === 'rect' || newData.val() === 'ellipse' || newData.val() === 'arrow' || newData.val() === 'triangle' || newData.val() === 'text'"
+            },
+            "brush": {
+              ".validate": "newData.isString() && (newData.val() === 'round' || newData.val() === 'marker' || newData.val() === 'highlighter' || newData.val() === 'pencil' || newData.val() === 'spray' || newData.val() === 'airbrush' || newData.val() === 'chalk' || newData.val() === 'crayon' || newData.val() === 'watercolor' || newData.val() === 'calligraphy' || newData.val() === 'pixel' || newData.val() === 'dots' || newData.val() === 'stars' || newData.val() === 'hearts' || newData.val() === 'rainbow' || newData.val() === 'neon')"
+            },
+            "text": {
+              ".validate": "newData.parent().child('tool').val() === 'text' && newData.isString() && newData.val().length > 0 && newData.val().length <= 160"
             },
             "color": {
               ".validate": "newData.isString() && newData.val().matches(/^#[0-9a-fA-F]{6}$/)"
