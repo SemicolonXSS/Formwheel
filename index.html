@@ -32,7 +32,7 @@ window.addEventListener('error', function(event) {
 
 <link rel="stylesheet" href="./assets/styles.css?v=20261023-sortdirection1">
 <link rel="stylesheet" href="https://semicolonxss.github.io/Formwheel/shared/formwheel-ui.css?v=20261103-error-popup1">
-<script defer src="https://semicolonxss.github.io/Formwheel/shared/formwheel-ui.js?v=20261103-customsemicolon3"></script>
+<script defer src="https://semicolonxss.github.io/Formwheel/shared/formwheel-ui.js?v=20261108-settings3"></script>
 <meta property="og:site_name" content="Formwheel">
 <meta property="og:title" content="Formwheel">
 <meta property="og:description" content="설치 없이 즐기는 무료 웹게임 & 도구. 돌리고, 도전하고, 발견하세요!">
@@ -203,7 +203,7 @@ body.fw-beta-simple #cards .cardDescription,body.fw-beta-simple #cards .cardDesc
 @media(max-width:540px){#fw-beta-switch{gap:5px;flex-wrap:wrap}#fw-beta-switch strong{width:100%;text-align:center}#fw-beta-switch button{flex:1}body.fw-beta-simple #cards{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 </style>
 <style id="fw-beta-simple-20261025">
-body.fw-beta-simple > :not(#fw-beta-switch):not(#fw-beta-simple-view):not(#fw-halloween):not(#fw-hw-ghost-field):not(.fw-hw-ghost):not(script):not(style){display:none!important}
+body.fw-beta-simple > :not(#fw-beta-switch):not(#fw-beta-simple-view):not(#fw-halloween):not(#fw-hw-ghost-field):not(.fw-hw-ghost):not(.fw-command-backdrop):not(#fw-vk):not([role="dialog"]):not([role="status"]):not([role="alert"]):not(script):not(style){display:none!important}
 #fw-beta-simple-view{max-width:1060px;margin:0 auto;padding:20px 16px 95px;font-family:system-ui,-apple-system,sans-serif;color:#263451}
 #fw-beta-simple-view[hidden]{display:none!important}
 #fw-beta-simple-view .fw-b-panel{background:#fff;border:1px solid #e0e7f3;border-radius:19px;padding:19px;margin-bottom:15px;box-shadow:0 5px 22px #233c6610}
@@ -249,7 +249,7 @@ body.fw-beta-simple > :not(#fw-beta-switch):not(#fw-beta-simple-view):not(#fw-ha
 @media(max-width:320px){#fw-beta-simple-view .fw-b-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){#fw-beta-simple-view .fw-b-item:active{transform:none}}
 </style>
-</head>
+<script src="./shared/settings-state.js?v=20261108-settings3"></script></head>
 
 
 <body>
@@ -625,7 +625,7 @@ document.querySelectorAll(".categoryButtons .filterButton").forEach(button=>{
   });
 });
 </script>
-<script src="./assets/app.js?v=20261105-factorlab1"></script>
+<script src="./assets/app.js?v=20261108-settings3"></script>
 <script src="./assets/theme-bulk.js?v=20261022-premium13"></script>
 <script>
 (function(){
@@ -643,7 +643,7 @@ document.querySelectorAll(".categoryButtons .filterButton").forEach(button=>{
 <script defer src="./assets/spotlight.js?v=20261016-2"></script>
 <script src="./assets/hub-visit-bridge.js?v=20261108-healthcheck1"></script>
 <script type="module" src="./assets/id-core.js?v=20261108-racefix2"></script>
-<script type="module" src="./assets/badge-notifications.js?v=20261108-healthcheck1"></script>
+<script type="module" src="./assets/badge-notifications.js?v=20261108-settings3"></script>
 <script type="module" src="./assets/live-presence.js?v=20261108-healthcheck1"></script>
 <script type="module" src="./assets/operator-good-morning.js?v=20261104-admin1"></script>
 
@@ -1008,7 +1008,7 @@ document.querySelectorAll('#projects .card').forEach(card=>{
 'use strict';
 var key='formwheel-hub-display-version',mode='card',category='all',tab='home';
 function getSaved(){try{var stored=localStorage.getItem(key);return stored==='card'||stored==='simple'?stored:'card'}catch(e){return 'card'}}
-function apply(next){mode=next==='simple'?'simple':'card';document.body.classList.toggle('fw-beta-simple',mode==='simple');document.body.classList.toggle('fw-beta-card',mode==='card');document.getElementById('fw-beta-simple-view').hidden=mode!=='simple';document.querySelectorAll('#fw-beta-switch button[data-mode]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.mode===mode))});try{localStorage.setItem(key,mode)}catch(e){}if(mode==='simple')render()}
+function apply(next){mode=next==='simple'?'simple':'card';document.body.classList.toggle('fw-beta-simple',mode==='simple');document.body.classList.toggle('fw-beta-card',mode==='card');document.getElementById('fw-beta-simple-view').hidden=mode!=='simple';document.querySelectorAll('#fw-beta-switch button[data-mode]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.mode===mode))});try{localStorage.setItem(key,mode)}catch(e){}if(mode==='simple')render();window.dispatchEvent(new CustomEvent('fw-hub-display-changed',{detail:{mode}}))}
 function extract(){
 return (window.FormwheelHubProjects||[]).map(function(p){return {name:p.name,url:p.url,type:p.category,description:p.description||'',keywords:p.keywords||''};});
 }
@@ -1042,28 +1042,7 @@ var cards=document.getElementById('cards');if(cards){var observer=new MutationOb
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
 </script>
-<script>
-/* SECOL SMART RETURN: opt-in only; independent of existing save data. */
-(function(){
- const KEY='fw.smartReturn.enabled.v1', LAST='fw.smartReturn.last.v1';
- const isOn=localStorage.getItem(KEY)==='true';
- function canResumeProject(value){try{const u=new URL(value);return u.protocol==='https:'&&u.hostname==='semicolonxss.github.io'&&(/^\/Formwheel_[\w-]+\//i.test(u.pathname)||['/Formwheel/edu.html','/Formwheel/calendar.html','/Formwheel/workshop/'].includes(u.pathname));}catch{return false}}
- if(isOn&&!new URL(location.href).searchParams.has('stay')&&!sessionStorage.getItem('fw.smartReturn.redirected.v2')){
- let last=null;try{last=JSON.parse(localStorage.getItem(LAST)||'null')}catch{}
- if(last&&typeof last.url==='string'){try{
- const u=new URL(last.url);
- if(canResumeProject(u.href)){
- sessionStorage.setItem('fw.smartReturn.redirected.v2','1');location.replace(u.href);
- }
- }catch{}}
- }
-
- const panel=document.createElement('section');
- panel.style.cssText='margin:12px auto;padding:12px 16px;max-width:1080px;border:1px solid #cbd5e1;border-radius:14px;background:#f8fafc;color:#243047;font:inherit';
- panel.innerHTML='<label style="display:flex;align-items:center;gap:9px;font-weight:700"><input type="checkbox" id="fw-resume-enabled"> 🧭 스마트 복귀 사용</label><div id="fw-resume-detail" style="margin-top:8px"></div>';
- const mount=()=>{document.body.insertBefore(panel,document.body.firstChild);const toggle=panel.querySelector('#fw-resume-enabled'),detail=panel.querySelector('#fw-resume-detail');toggle.checked=localStorage.getItem(KEY)==='true';function render(){detail.replaceChildren();if(!toggle.checked){detail.textContent='기본 꺼짐 · 켜면 다음 방문에 마지막 프로젝트로 자동 복귀합니다.';return}let saved;try{saved=JSON.parse(localStorage.getItem(LAST)||'null')}catch{}if(saved&&typeof saved.url==='string'&&canResumeProject(saved.url)){const a=document.createElement('a');a.href=saved.url;a.textContent='▶ '+String(saved.name||'최근 프로젝트').slice(0,60)+' 이어서 열기';a.style.cssText='color:#334bb0;font-weight:700;margin-right:14px';detail.append(a);const b=document.createElement('button');b.textContent='기록 삭제';b.type='button';b.addEventListener('click',()=>{localStorage.removeItem(LAST);render()});detail.append(b)}else detail.textContent='아직 최근 프로젝트가 없습니다.'}toggle.addEventListener('change',()=>{localStorage.setItem(KEY,String(toggle.checked));sessionStorage.removeItem('fw.smartReturn.redirected.v2');render()});document.addEventListener('click',e=>{if(!toggle.checked)return;const a=e.target.closest('a[href]');if(!a)return;try{const u=new URL(a.href,location.href);if(canResumeProject(u.href)){localStorage.setItem(LAST,JSON.stringify({url:u.href,name:a.textContent.trim().slice(0,60),at:Date.now()}))}}catch{}} ,true);render()};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();
-})();
-</script>
+<script src="./assets/smart-return.js?v=20261108-settings3"></script>
 <style>
 /* Keep settings above hero badges and any transformed hero stacking contexts. */
 header:has(#fw-settings-panel:not([hidden])){z-index:2147483000!important;overflow:visible!important}
@@ -1077,7 +1056,7 @@ header:has(#fw-settings-panel:not([hidden])){z-index:2147483000!important;overfl
 .fw-settings-item{display:flex;justify-content:space-between;gap:12px;align-items:center;padding-bottom:12px;border-bottom:1px solid #e5e7eb}
 #fw-settings-language{min-width:0}
 #fw-settings-resume section{max-width:none!important;margin:10px 0 0!important;padding:0!important;border:0!important;background:transparent!important}
-@media(max-width:650px){#fw-settings-button{font-size:12px;padding:7px 8px}.fw-settings-panel{right:-45px}}
+@media(max-width:650px){#fw-settings-button{font-size:12px;padding:7px 8px}.fw-settings-panel{right:-45px}#fw-beta-switch #fw-settings-panel{position:fixed;left:12px;right:12px;top:72px;width:auto!important;max-height:calc(100dvh - 90px)}}
 </style>
 <script>
 /* Keep existing language and opt-in Smart Return controls: relocate, do not recreate state. */
@@ -1085,6 +1064,9 @@ header:has(#fw-settings-panel:not([hidden])){z-index:2147483000!important;overfl
  function init(){
   const root=document.getElementById('fw-hub-settings'),button=document.getElementById('fw-settings-button'),panel=document.getElementById('fw-settings-panel');
   if(!root||!button||!panel)return;
+  const originalParent=root.parentNode,originalNext=root.nextSibling;
+  function place(){const bar=document.getElementById('fw-beta-switch');if(document.body.classList.contains('fw-beta-simple')&&bar)bar.appendChild(root);else if(root.parentNode!==originalParent)originalParent.insertBefore(root,originalNext?.parentNode===originalParent?originalNext:null);}
+  place();window.addEventListener('fw-hub-display-changed',place);
   button.addEventListener('click',function(){const open=panel.hidden;panel.hidden=!open;button.setAttribute('aria-expanded',String(open));if(open)relocate()});
   document.addEventListener('click',function(e){if(!root.contains(e.target)){panel.hidden=true;button.setAttribute('aria-expanded','false')}});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!panel.hidden){panel.hidden=true;button.setAttribute('aria-expanded','false');button.focus()}});
@@ -1105,21 +1087,11 @@ header:has(#fw-settings-panel:not([hidden])){z-index:2147483000!important;overfl
 })();
 </script>
 <script>
-/* Settings 2.0: apply locally saved presentation preferences to Hub without touching gameplay data. */
+/* Apply shared settings when another Formwheel page notifies this Hub. */
 (function(){
-const key='fw.settings.v2';
-function apply(){
-let s={};try{s=JSON.parse(localStorage.getItem(key)||'{}')||{}}catch{}
-document.documentElement.style.fontSize=s.font==='large'?'18px':s.font==='small'?'14px':'';
-document.body.classList.toggle('fw-v2-compact',s.density==='compact');
-document.body.classList.toggle('fw-v2-spacious',s.density==='spacious');
-document.body.classList.toggle('fw-v2-contrast',!!s.highContrast);
-document.body.classList.toggle('fw-v2-reduced',!!s.reducedMotion||s.animation==='off');
-}
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply);else apply();
-window.addEventListener('storage',e=>{if(e.key===key)apply()});
-window.addEventListener('focus',apply);window.addEventListener('fw-settings-v2-changed',apply);
-window.addEventListener('message',e=>{if(e.origin===location.origin&&e.data==='fw-settings-v2-changed')apply()});
+ const apply=()=>window.FormwheelSettings.apply();
+ window.addEventListener('fw-settings-v2-changed',apply);
+ window.addEventListener('message',e=>{if(e.origin===location.origin&&e.data==='fw-settings-v2-changed')apply();});
 })();
 </script>
 <style>
@@ -1147,8 +1119,9 @@ document.querySelectorAll('.fw21-view').forEach(p=>p.hidden=p.id!=='fw21-view-'+
 
 const KEY='fw.settings.v2',SMART='fw.smartReturn.enabled.v1';
 const defaults={animation:'normal',sound:true,start:'hub',notifications:{achievement:true,reward:true,update:false,event:false},performance:'auto',reducedMotion:false,highContrast:false,density:'normal',font:'normal',recommend:true};
-let state;try{state={...defaults,...JSON.parse(localStorage.getItem(KEY)||'{}')};}catch{state={...defaults};}
-const smart=()=>localStorage.getItem(SMART)==='true';
+let state=window.FormwheelSettings.read();
+const controls=new Map();
+const smart=()=>{try{return localStorage.getItem(SMART)==='true';}catch{return false;}};
 const specs=[
 ['appearance','animation','애니메이션 강도',{off:'끄기',low:'낮음',normal:'보통',high:'높음'}],
 ['appearance','sound','효과음',null],
@@ -1162,19 +1135,22 @@ const specs=[
 ['advanced','highContrast','고대비 모드',null]
 ];
 const status=document.getElementById('fw21-status');
-function save(){try{localStorage.setItem(KEY,JSON.stringify(state));status.textContent='이 기기에 설정 저장 완료 · '+new Date().toLocaleString();document.getElementById('fw21-save').textContent=status.textContent;}catch(e){status.textContent='저장 실패: '+e.message;}}
-function apply(){document.documentElement.style.fontSize=state.font==='large'?'18px':state.font==='small'?'14px':'16px';document.body.classList.toggle('compact',state.density==='compact');document.body.classList.toggle('spacious',state.density==='spacious');document.body.classList.toggle('highcontrast',state.highContrast);document.documentElement.style.setProperty('scroll-behavior',state.reducedMotion?'auto':'smooth');}
-function add(group,key,title,options){const label=document.createElement('label');label.append(document.createTextNode(title));let control;if(options){control=document.createElement('select');for(const [v,t] of Object.entries(options)){const o=document.createElement('option');o.value=v;o.textContent=t;control.append(o);}control.value=state[key];}else{control=document.createElement('input');control.type='checkbox';control.checked=key==='smart'?smart():!!state[key];}control.addEventListener('change',()=>{if(key==='smart'){localStorage.setItem(SMART,String(control.checked));status.textContent='스마트 복귀 설정 저장 완료';return;}state[key]=options?control.value:control.checked;save();apply();window.dispatchEvent(new Event('fw-settings-v2-changed'));});label.append(control);const target=document.getElementById(group==='appearance'?'fw21-appearance':group==='convenience'?'fw21-convenience':group==='advanced'?'fw21-advanced':group);if(target)target.append(label);else console.warn('Formwheel settings container missing:',group);}
-specs.filter(s=>s[1]!=='smart').forEach(s=>add(...s));for(const [key,name] of Object.entries({achievement:'업적 알림',reward:'보상 알림',update:'업데이트 알림',event:'이벤트 알림'})){const label=document.createElement('label');label.textContent=name;const input=document.createElement('input');input.type='checkbox';input.checked=!!state.notifications?.[key];input.addEventListener('change',()=>{state.notifications={...state.notifications,[key]:input.checked};save();});label.append(input);document.getElementById('fw21-convenience').append(label);}
+function syncControls(){for(const [key,input] of controls){if(key.startsWith('notifications.'))input.checked=state.notifications[key.slice(14)];else if(key==='smart')input.checked=smart();else if(input.tagName==='SELECT')input.value=state[key];else input.checked=state[key];}}
+function save(patch){const result=window.FormwheelSettings.write(patch);state=result.state;syncControls();status.textContent=result.ok?'이 기기에 설정 저장 완료 · '+new Date().toLocaleString():'설정을 저장하지 못했어요. 브라우저의 사이트 저장 공간을 확인해 주세요.';document.getElementById('fw21-save').textContent=status.textContent;}
+function apply(){window.FormwheelSettings.apply();}
+window.addEventListener('fw-settings-v2-changed',()=>{state=window.FormwheelSettings.read();syncControls();apply();});
+
+function add(group,key,title,options){const label=document.createElement('label');label.append(document.createTextNode(title));let control;if(options){control=document.createElement('select');for(const [v,t] of Object.entries(options)){const o=document.createElement('option');o.value=v;o.textContent=t;control.append(o);}control.value=state[key];}else{control=document.createElement('input');control.type='checkbox';control.checked=key==='smart'?smart():!!state[key];}controls.set(key,control);control.addEventListener('change',()=>{if(key==='smart'){try{localStorage.setItem(SMART,String(control.checked));sessionStorage.removeItem('fw.smartReturn.redirected.v2');status.textContent='스마트 복귀 설정 저장 완료';}catch{control.checked=smart();status.textContent='스마트 복귀 설정을 저장하지 못했어요.';}return;}save({[key]:options?control.value:control.checked});});label.append(control);const target=document.getElementById(group==='appearance'?'fw21-appearance':group==='convenience'?'fw21-convenience':group==='advanced'?'fw21-advanced':group);if(target)target.append(label);else console.warn('Formwheel settings container missing:',group);}
+specs.filter(s=>s[1]!=='smart').forEach(s=>add(...s));for(const [key,name] of Object.entries({achievement:'업적 알림',reward:'보상 알림',update:'업데이트 알림',event:'이벤트 알림'})){const label=document.createElement('label');label.textContent=name;const input=document.createElement('input');input.type='checkbox';input.checked=!!state.notifications?.[key];controls.set('notifications.'+key,input);input.addEventListener('change',()=>save({notifications:{[key]:input.checked}}));label.append(input);document.getElementById('fw21-convenience').append(label);}
 apply();status.textContent='기기 설정 준비 완료 (Firebase 동기화와 별도)';
-document.getElementById('fw21-export').onclick=()=>{const data={exportedAt:new Date().toISOString(),settings:state,smartReturn:smart(),note:'Local settings export only; not a complete Firebase account backup'};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='formwheel-settings-'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
-document.getElementById('fw21-reset').onclick=()=>{if(!confirm('화면·편의 설정만 초기화할까요? Rapid·업적·플레이 기록은 유지됩니다.'))return;localStorage.removeItem(KEY);localStorage.setItem(SMART,'false');location.reload();};
+document.getElementById('fw21-export').onclick=()=>{const data={exportedAt:new Date().toISOString(),settings:window.FormwheelSettings.read(),smartReturn:smart(),activity:window.FormwheelSettings.activity(),note:'Local settings export only; not a complete Firebase account backup'};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='formwheel-settings-'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
+document.getElementById('fw21-reset').onclick=()=>{if(!confirm('화면·편의 설정만 초기화할까요? Rapid·업적·플레이 기록은 유지됩니다.'))return;try{localStorage.removeItem(KEY);localStorage.setItem(SMART,'false');location.reload();}catch{status.textContent='설정을 초기화하지 못했어요. 사이트 저장 공간을 확인해 주세요.';}};
 document.getElementById('fw21-diagnostics').onclick=()=>{document.getElementById('fw21-errors').textContent='설정 버전: 2\n로컬 저장소 사용: '+(typeof localStorage!=='undefined')+'\nFirebase 저장/오류 로그는 이 페이지에서 조회하지 않습니다.\n개인정보 및 인증 토큰은 수집하지 않습니다.';};
-document.getElementById('fw21-activity').textContent='개인 활동 통계는 기존 프로젝트 기록과의 안전한 연동이 필요합니다. 현재 이 화면에서 임의의 수치를 표시하지 않습니다.';
+function refreshActivity(){const data=window.FormwheelSettings.activity();document.getElementById('fw21-activity').textContent='이 기기의 프로젝트 열기 '+data.projectOpenCount+'회 · '+data.projectsOpened+'개 프로젝트 · 실제 플레이 시간·승패와 별도인 열기 기록입니다.';}refreshActivity();window.addEventListener('fw:hub:changed',refreshActivity);window.addEventListener('focus',refreshActivity);window.addEventListener('storage',e=>{if(e.key==='fw:hub:home:v1'||e.key===null)refreshActivity();});
 document.getElementById('fw21-logout').onclick=async()=>{if(!confirm('Formwheel에서 로그아웃할까요?'))return;try{if(typeof window.FormwheelCore?.logout!=='function')throw Error('auth-not-ready');await window.FormwheelCore.logout();alert('로그아웃 완료');location.href='./index.html';}catch(e){alert('로그아웃을 확인할 수 없습니다. 로그인 연결을 확인한 뒤 다시 시도해 주세요.');}};
 
 })();
-</script><script defer src="./assets/halloween-2026.js?v=20261031-scattered"></script><script defer src="./assets/edu-hub-beta.js?v=20261030"></script><script defer src="./assets/null-hub-entry.js?v=20261030"></script><script defer src="./assets/secol-hub-tools.js?v=20261030"></script><script defer src="./assets/formwheel-devtools.js?v=20261108-fw12-v36"></script><script defer src="./assets/formwheel-virtual-keyboard.js?v=20261104-shortcuts1"></script><div style="text-align:center;padding:14px"><a href="./hall-of-fame.html" style="display:inline-block;margin:8px;padding:9px 14px;border-radius:12px;background:#36205b;color:#fff;text-decoration:none;font-weight:700">🏆 명예의 전당</a></div><script defer src="./assets/hub-command-palette.js?v=20261108-racefix2"></script>
+</script><script defer src="./assets/halloween-2026.js?v=20261031-scattered"></script><script defer src="./assets/edu-hub-beta.js?v=20261030"></script><script defer src="./assets/null-hub-entry.js?v=20261030"></script><script defer src="./assets/secol-hub-tools.js?v=20261030"></script><script defer src="./assets/formwheel-devtools.js?v=20261108-fw12-v40-regexfix"></script><script defer src="./assets/formwheel-virtual-keyboard.js?v=20261108-settings3"></script><div style="text-align:center;padding:14px"><a href="./hall-of-fame.html" style="display:inline-block;margin:8px;padding:9px 14px;border-radius:12px;background:#36205b;color:#fff;text-decoration:none;font-weight:700">🏆 명예의 전당</a></div><script defer src="./assets/hub-command-palette.js?v=20261108-racefix2"></script>
 </body>
 </html>
 

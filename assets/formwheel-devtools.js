@@ -19,7 +19,7 @@ const safeString=v=>{
  }catch{return '[unavailable]'}
 };
 function classify(message){
- if(/unexpected keyword ['"]?return|expected ['"]?\\)|unexpected token|unterminated|missing \\)/i.test(message))return 'JavaScript 문법 오류';
+ if(/unexpected keyword ['"]?return|expected ['"]?\)|unexpected token|unterminated|missing \)/i.test(message))return 'JavaScript 문법 오류';
  if(/quotaexceedederror|storage quota/i.test(message))return '저장소 용량 오류';
  if(/chunkloaderror|loading chunk|failed to load module script/i.test(message))return '스크립트 로딩 오류';
  if(denyPattern.test(message))return sessionPattern.test(message)?'세션 저장 권한 오류':'Firebase 권한 오류';
@@ -251,3 +251,4 @@ window.addEventListener('keydown',e=>{
 });
 window.FormwheelDevTools={open:()=>show(true),close:()=>show(false),toggle:()=>show(!opened),exportReport,version:'4.0',diagnostics:healthSnapshot,triage:triageLines};
 })();
+

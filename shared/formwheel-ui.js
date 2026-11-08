@@ -720,27 +720,44 @@ function init(){
  const setting=document.createElement('label');setting.style.cssText='display:block;margin:12px 0;font-weight:650';setting.textContent='; 키 동작 직접 설정 ';const choice=document.createElement('select');choice.setAttribute('aria-label','세미콜론 단축키 동작');choice.style.cssText='width:100%;margin-top:6px;padding:10px;border:1px solid #c9bdf0;border-radius:10px;background:white;color:#23243d';for(const [value,label] of actions){const option=document.createElement('option');option.value=value;option.textContent=label;choice.append(option);}choice.value=selected;choice.onchange=()=>{selected=choice.value;try{localStorage.setItem(settingKey,selected);}catch{}semicolonDescription.textContent='; · '+actions.find(a=>a[0]===selected)[1];};setting.append(choice);
  const semicolonDescription=document.createElement('span');semicolonDescription.textContent='; · '+actions.find(a=>a[0]===selected)[1];
  const semicolonRow=document.createElement('li'),semicolonKey=document.createElement('kbd');semicolonKey.textContent=';';semicolonRow.append(semicolonKey,semicolonDescription);list.append(semicolonRow);
- function runAction(action){if(action==='search'){const el=document.getElementById('search');if(el){el.focus();el.scrollIntoView({block:'center'});}}else if(action==='projects')document.getElementById('projects')?.scrollIntoView({block:'start',behavior:'instant'});else if(action==='top')window.scrollTo({top:0,behavior:'instant'});else if(action==='bottom'){const cards=document.getElementById('cards');if(cards)window.scrollTo({top:cards.getBoundingClientRect().bottom+window.scrollY,behavior:'instant'});}else if(action==='favorites')document.getElementById('fw-favorites-toggle')?.click();else if(action==='tutorial')window.dispatchEvent(new Event('fw-open-tutorial'));else if(action==='help')show();}
+ function catalogElement(search=false){
+  if(document.body.classList.contains('fw-beta-simple')){
+   document.querySelector('#fw-beta-simple-view button[data-tab="explore"]')?.click();
+   return document.getElementById(search?'fw-b-search':'fw-b-grid');
+  }
+  return document.getElementById(search?'search':'cards');
+ }
+ function runAction(action){
+  if(action==='search'){const el=catalogElement(true);if(el){el.focus();el.scrollIntoView({block:'center'});}}
+  else if(action==='projects')catalogElement()?.scrollIntoView({block:'start',behavior:'instant'});
+  else if(action==='top')window.scrollTo({top:0,behavior:'instant'});
+  else if(action==='bottom'){const cards=catalogElement();if(cards)window.scrollTo({top:cards.getBoundingClientRect().bottom+window.scrollY,behavior:'instant'});}
+  else if(action==='favorites'){
+   if(document.body.classList.contains('fw-beta-simple'))document.querySelector('#fw-beta-switch button[data-mode="card"]')?.click();
+   document.getElementById('fw-favorites-toggle')?.click();
+  }else if(action==='tutorial')window.dispatchEvent(new Event('fw-open-tutorial'));else if(action==='help')show();
+ }
  const close=document.createElement('button');close.id='fw-shortcut-close';close.type='button';close.textContent='닫기';card.append(heading,list,setting,close);modal.append(card);document.body.append(modal);
  let previous=null;function hide(){modal.hidden=true;previous?.focus?.();}function show(){previous=document.activeElement;modal.hidden=false;close.focus();}
  close.onclick=hide;modal.addEventListener('click',e=>{if(e.target===modal)hide();});
- modal.addEventListener('keydown',e=>{if(e.key==='Tab'){const focusables=[close];e.preventDefault();focusables[0].focus();}});
+ modal.addEventListener('keydown',e=>{if(e.key==='Tab'){if(e.shiftKey&&document.activeElement===choice){e.preventDefault();close.focus();}else if(!e.shiftKey&&document.activeElement===close){e.preventDefault();choice.focus();}}});
  document.addEventListener('keydown',e=>{
   if(e.key==='Escape'&&!modal.hidden){e.preventDefault();hide();return;}
-  if(e.defaultPrevented||e.repeat||e.altKey||e.metaKey||!modal.hidden)return;
-  const key=e.key.toLowerCase();const ctrlHelp=e.ctrlKey&&(e.key==='/'||e.code==='Slash');
+  if(e.defaultPrevented||e.repeat||e.altKey||e.isComposing||e.keyCode===229||!modal.hidden)return;
+  const key=e.key.toLowerCase();const ctrlHelp=(e.ctrlKey||e.metaKey)&&(e.key==='/'||e.code==='Slash');
   const active=document.activeElement;const editing=active&&(active.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(active.tagName));
   if(ctrlHelp){e.preventDefault();show();return;}
-  if(editing||e.ctrlKey)return;
-  if(key==='?'&&e.shiftKey){e.preventDefault();show();return;}
-  if(key==='/'){const input=document.querySelector('#search');if(input&&!input.disabled){e.preventDefault();input.focus();input.scrollIntoView({block:'center'});}return;}
+  if(editing||e.ctrlKey||e.metaKey)return;
+  if(key==='?'){e.preventDefault();show();return;}
+  if(key==='/'){e.preventDefault();runAction('search');return;}
   if(e.key==='ArrowDown'){e.preventDefault();runAction('bottom');return;}
   if(e.key==='ArrowUp'){e.preventDefault();runAction('top');return;}
   if(e.key===';'||e.code==='Semicolon'&&!e.shiftKey){e.preventDefault();runAction(selected);return;}
-  if(key==='g'){const target=document.getElementById('projects');e.preventDefault();target.scrollIntoView({block:'start'});return;}
-  if(key==='f'){const button=document.getElementById('fw-favorites-toggle');if(button){e.preventDefault();button.click();button.focus();}return;}
+  if(key==='g'){e.preventDefault();runAction('projects');return;}
+  if(key==='f'){e.preventDefault();runAction('favorites');document.getElementById('fw-favorites-toggle')?.focus();return;}
   if(key==='t'&&document.querySelector('.fw-tutorial-launch')){e.preventDefault();window.dispatchEvent(new Event('fw-open-tutorial'));}
  });
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();
+
