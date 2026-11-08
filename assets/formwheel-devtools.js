@@ -39,7 +39,10 @@ function record(level,args){
  const original=console[level];if(typeof original!=='function')return;
  console[level]=function(...args){record(level,args);return original.apply(this,args)};
 });
-window.addEventListener('error',e=>record('error',[e.message||'Script error']));
+window.addEventListener('error',e=>{
+ const location=[e.filename||'unknown file',Number.isInteger(e.lineno)&&e.lineno>0?e.lineno:'?',Number.isInteger(e.colno)&&e.colno>0?e.colno:'?'].join(':');
+ record('error',[e.message||'Script error','Location: '+location,e.error?.stack||'']);
+});
 window.addEventListener('unhandledrejection',e=>record('error',[e.reason||'Unhandled rejection']));
 function overviewLines(){
  const n=l=>logs.filter(x=>x.level===l).reduce((s,x)=>s+x.repeat,0);
