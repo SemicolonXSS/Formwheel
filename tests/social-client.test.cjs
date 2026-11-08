@@ -47,3 +47,13 @@ test('an expired invite is labeled as expired and offers no acceptance action',a
  await delay();const line=h.nodes.get('invite-list').children[0];
  assert.match(line.textContent,/만료됨/);assert(!line.children.some(n=>n.textContent==='수락'));assert(!h.body.children.some(n=>n.id==='fw-invite-toast'));
 });
+test('a slow earlier friend search cannot replace the latest search result',async()=>{
+ const h=boot(),pending=[];h.login('alice');
+ h.ctx.get=p=>new Promise(resolve=>pending.push({p,resolve:v=>resolve({val:()=>v})}));
+ h.nodes.get('friend-query').value='carol';const old=h.nodes.get('friend-find').listeners.click();
+ h.nodes.get('friend-query').value='bob';const latest=h.nodes.get('friend-find').listeners.click();
+ pending[1].resolve('bob');await new Promise(r=>setImmediate(r));pending[2].resolve('bob');await latest;
+ pending[0].resolve('carol');await old;
+ assert.equal(h.events.filter(e=>e.type==='fw:friend-found').length,1);
+ assert.equal(h.events.find(e=>e.type==='fw:friend-found').detail.uid,'bob');
+});

@@ -32,9 +32,12 @@
     openButton.className = 'fw-command-open';
     openButton.textContent = '⌘ 빠른 실행';
     openButton.title = 'Ctrl+K로 프로젝트 및 허브 기능 찾기';
-    const toolbar = search.closest('.toolbar');
+    openButton.setAttribute('aria-haspopup','dialog');openButton.setAttribute('aria-expanded','false');
+    const toolbar = document.getElementById('fw-beta-switch') || search.closest('.toolbar');
     if (toolbar) toolbar.append(openButton);
     else search.insertAdjacentElement('afterend', openButton);
+    // The display switch may mount on DOMContentLoaded after deferred scripts run.
+    if(!document.getElementById('fw-beta-switch'))document.addEventListener('DOMContentLoaded',()=>{document.getElementById('fw-beta-switch')?.append(openButton);},{once:true});
 
     const backdrop = document.createElement('div');
     backdrop.className = 'fw-command-backdrop';
@@ -43,11 +46,21 @@
     document.body.append(backdrop);
     const field = backdrop.querySelector('.fw-command-search');
     const results = backdrop.querySelector('.fw-command-results');
-    let previousFocus = null, selected = 0, visible = [];
+    let previousFocus = null, selected = 0, visible = [], previousOverflow = '';
+    const closeButton=backdrop.querySelector('.fw-command-close');
+    results.id='fw-command-results';field.setAttribute('role','combobox');field.setAttribute('aria-controls',results.id);field.setAttribute('aria-expanded','true');
+    function focusCatalog(){
+      let input=search;
+      if(document.body.classList.contains('fw-beta-simple')){
+        document.querySelector('#fw-beta-simple-view button[data-tab="explore"]')?.click();
+        input=document.getElementById('fw-b-search')||search;
+      }
+      input.scrollIntoView({block:'center'});input.focus();
+    }
     const fixed = [
-      {name:'프로젝트 전체 보기',detail:'허브 프로젝트 목록으로 이동',action:()=>{projectsSection.scrollIntoView({behavior:'smooth'});search.focus()}},
-      {name:'프로젝트 검색',detail:'기존 검색창에서 필터 검색',action:()=>{projectsSection.scrollIntoView();search.focus()}},
-      {name:'설정',detail:'Formwheel 허브 설정 열기',action:()=>document.getElementById('fw-settings-button')?.click()},
+      {name:'프로젝트 전체 보기',detail:'허브 프로젝트 목록으로 이동',action:focusCatalog},
+      {name:'프로젝트 검색',detail:'기존 검색창에서 필터 검색',action:focusCatalog},
+      {name:'설정',detail:'Formwheel 허브 설정 열기',action:()=>{const button=document.getElementById('fw-settings-button');if(button?.getAttribute('aria-expanded')!=='true')button?.click();}},
       {name:'명예의 전당',detail:'업적과 기록',url:'./hall-of-fame.html'},
       {name:'더보기',detail:'Formwheel 서비스 메뉴',url:'./more.html'}
     ];
@@ -59,7 +72,8 @@
     function close() {
       if (backdrop.hidden) return;
       backdrop.hidden = true;
-      field.value = '';
+      document.body.style.overflow=previousOverflow;openButton.setAttribute('aria-expanded','false');
+      field.value = '';field.removeAttribute('aria-activedescendant');
       if (previousFocus && previousFocus.isConnected) previousFocus.focus();
     }
     function run(item) {
@@ -73,35 +87,47 @@
       selected = 0;
       results.replaceChildren();
       if (!visible.length) {
+        field.removeAttribute('aria-activedescendant');
         const p = document.createElement('p');p.textContent='검색 결과가 없어요. 다른 단어를 입력해 보세요.';p.style.cssText='padding:12px;color:#5d697f;font-size:13px';results.append(p);return;
       }
       visible.forEach((item,i)=>{
-        const b=document.createElement('button');b.type='button';b.className='fw-command-result';b.setAttribute('role','option');b.setAttribute('aria-selected',String(i===selected));
+        const b=document.createElement('button');b.type='button';b.className='fw-command-result';b.id='fw-command-option-'+i;b.setAttribute('role','option');b.setAttribute('aria-selected',String(i===selected));
         const info=document.createElement('span'),strong=document.createElement('strong'),small=document.createElement('small');
         strong.textContent=item.name;small.textContent=item.detail;info.append(strong,small);b.append(info);
         b.addEventListener('click',()=>run(item));b.addEventListener('mouseenter',()=>choose(i));results.append(b);
       });
+      field.setAttribute('aria-activedescendant','fw-command-option-0');
     }
     function choose(i) {
       if (!visible.length) return;
       selected=(i+visible.length)%visible.length;
+      field.setAttribute('aria-activedescendant','fw-command-option-'+selected);
       results.querySelectorAll('.fw-command-result').forEach((b,j)=>b.setAttribute('aria-selected',String(j===selected)));
       results.querySelectorAll('.fw-command-result')[selected]?.scrollIntoView({block:'nearest'});
     }
     function open() {
       if (!backdrop.hidden) {field.focus();return;}
-      previousFocus=document.activeElement;backdrop.hidden=false;field.value='';draw();field.focus();
+      previousFocus=document.activeElement;previousOverflow=document.body.style.overflow;document.body.style.overflow='hidden';openButton.setAttribute('aria-expanded','true');backdrop.hidden=false;field.value='';draw();field.focus();
     }
     openButton.addEventListener('click',open);
     backdrop.querySelector('.fw-command-close').addEventListener('click',close);
     backdrop.addEventListener('click',e=>{if(e.target===backdrop)close()});
     field.addEventListener('input',draw);
     field.addEventListener('keydown',e=>{
+      if(e.isComposing||e.keyCode===229)return;
       if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();choose(selected+(e.key==='ArrowDown'?1:-1))}
       else if(e.key==='Enter'&&visible.length){e.preventDefault();run(visible[selected])}
       else if(e.key==='Escape'){e.preventDefault();e.stopPropagation();close()}
     });
     document.addEventListener('keydown',e=>{
+      if(e.isComposing||e.keyCode===229)return;
+      if(e.key==='Tab'&&!backdrop.hidden){
+        const controls=[closeButton,field,...results.querySelectorAll('button')];
+        const first=controls[0],last=controls[controls.length-1];
+        if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+        else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+        return;
+      }
       if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();if(backdrop.hidden)open();else close()}
       else if(e.key==='Escape'&&!backdrop.hidden){e.preventDefault();close()}
     });

@@ -14,7 +14,7 @@ const decodeKey=k=>{try{return decodeURIComponent(k)}catch{return k}};
 const fromRemote=x=>clean({...x,projects:Object.fromEntries(Object.entries(x?.projects||{}).map(([k,v])=>[decodeKey(k),v]))});
 const toRemote=x=>({selected:x.selected,projects:Object.fromEntries(Object.entries(x.projects).map(([k,v])=>[encodeKey(k),v]))});
 const local=()=>{try{return clean({selected:localStorage.getItem(MAIN),projects:JSON.parse(localStorage.getItem(BULK)||"{}")})}catch{return clean({})}};
-let user=null,unsubscribe=null,loading=true,remoteValue=null,writeTimer=null,applying=false,session=0,pending={},writing=false;
+let user=null,unsubscribe=null,loading=true,remoteValue=null,writeTimer=null,applying=false,session=0,pending={},writing=false,inFlight=null;
 const status=state=>window.dispatchEvent(new CustomEvent("formwheel-account-theme-sync",{detail:{state}}));
 function apply(data){const s=clean(data);applying=true;try{if(s.selected)localStorage.setItem(MAIN,s.selected);else localStorage.removeItem(MAIN);localStorage.setItem(BULK,JSON.stringify(s.projects));window.FormwheelTheme?.get?.();window.dispatchEvent(new Event("formwheel-theme-changed"));}finally{applying=false;}}
 function changes(before,after){
@@ -33,7 +33,7 @@ function overlay(data,patch){
 async function write(){
  if(!user||loading||writing||!Object.keys(pending).length)return;
  const ticket=session,patch={...pending},target=ref(db,"formwheelV2/themePreferences/"+user.uid);
- writing=true;
+ writing=true;inFlight=patch;
  try{
   await update(target,patch);
   if(ticket!==session)return;
@@ -41,17 +41,17 @@ async function write(){
   for(const [k,v] of Object.entries(patch))if(pending[k]===v)delete pending[k];
   status("saved");
  }catch(e){if(ticket===session){console.warn("Formwheel theme sync failed",e);status("error");}return;}
- finally{if(ticket===session)writing=false;}
+ finally{if(ticket===session){writing=false;inFlight=null;}}
  if(ticket===session&&Object.keys(pending).length)writeTimer=setTimeout(write,500);
 }
-function schedule(){if(applying||!user||loading)return;pending=changes(remoteValue||clean({}),local());clearTimeout(writeTimer);writeTimer=setTimeout(write,500);}
+function schedule(){if(applying||!user||loading)return;pending=changes(overlay(remoteValue||clean({}),inFlight||{}),local());clearTimeout(writeTimer);writeTimer=setTimeout(write,500);}
 const originalSet=Storage.prototype.setItem,originalRemove=Storage.prototype.removeItem;
 Storage.prototype.setItem=function(k,v){originalSet.call(this,k,v);if(this===localStorage&&(k===MAIN||k===BULK))schedule();};
 Storage.prototype.removeItem=function(k){originalRemove.call(this,k);if(this===localStorage&&(k===MAIN||k===BULK))schedule();};
 window.FormwheelAccountThemes={save:schedule,status:()=>({signedIn:!!user,loading})};
 onAuthStateChanged(auth,async next=>{
  const ticket=++session;
- clearTimeout(writeTimer);unsubscribe?.();unsubscribe=null;user=next&&!next.isAnonymous?next:null;loading=true;remoteValue=null;pending={};writing=false;
+ clearTimeout(writeTimer);unsubscribe?.();unsubscribe=null;user=next&&!next.isAnonymous?next:null;loading=true;remoteValue=null;pending={};writing=false;inFlight=null;
  if(!user){loading=false;status("guest");return;}
  const target=ref(db,"formwheelV2/themePreferences/"+next.uid);
  try{
@@ -68,7 +68,7 @@ onAuthStateChanged(auth,async next=>{
   unsubscribe=onValue(target,snap=>{
    if(ticket!==session||auth.currentUser?.uid!==next.uid)return;
    remoteValue=fromRemote(snap.val());
-   const merged=overlay(remoteValue,pending);
+   const merged=overlay(overlay(remoteValue,inFlight||{}),pending);
    if(JSON.stringify(merged)!==JSON.stringify(local()))apply(merged);
   },e=>{if(ticket!==session)return;console.warn("Theme realtime sync unavailable",e);status("error");});
  }catch(e){if(ticket!==session)return;loading=false;remoteValue=local();console.warn("Account themes unavailable",e);status("error");}
