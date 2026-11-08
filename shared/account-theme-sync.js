@@ -68,7 +68,7 @@ onAuthStateChanged(auth,async next=>{
   unsubscribe=onValue(target,snap=>{
    if(ticket!==session||auth.currentUser?.uid!==next.uid)return;
    remoteValue=fromRemote(snap.val());
-   const merged=overlay(remoteValue,pending);
+   const merged=overlay(overlay(remoteValue,inFlight||{}),pending);
    if(JSON.stringify(merged)!==JSON.stringify(local()))apply(merged);
   },e=>{if(ticket!==session)return;console.warn("Theme realtime sync unavailable",e);status("error");});
  }catch(e){if(ticket!==session)return;loading=false;remoteValue=local();console.warn("Account themes unavailable",e);status("error");}

@@ -26,6 +26,9 @@ test('reverting a theme while its previous save is in flight persists the final 
  const h=theme();await h.login();
  h.store.setItem('fw-global-theme-v1','forest');const first=h.run();
  assert.equal(h.writes[0].value.selected,'forest');
+ h.store.setItem('fw-global-theme-v1','forest');
+ h.emit({selected:'ocean',projects:{Wheel:'sunset'}});
+ assert.equal(h.store.getItem('fw-global-theme-v1'),'forest');
  h.store.setItem('fw-global-theme-v1','ocean');
  h.emit({selected:'forest',projects:{}});
  assert.equal(h.store.getItem('fw-global-theme-v1'),'ocean');
