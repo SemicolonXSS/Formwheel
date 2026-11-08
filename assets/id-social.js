@@ -5,7 +5,7 @@ const config={apiKey:"AIzaSyBreTSe1m0-xlbF4aupnU5isRZCihR25IE",authDomain:"formw
 const app=getApps().find(a=>a.name==="[DEFAULT]")||initializeApp(config),auth=getAuth(app),db=getDatabase(app),root="formwheelV2/socialFree";
 const el=id=>document.getElementById(id),path=p=>ref(db,root+"/"+p),read=async p=>(await get(path(p))).val();
 const games={Spy:"Spy",Battle:"Battle",GCrown:"GCrown","Dice Duel":"DiceDuel",Risk:"Risk"};
-let me=null,initialized=false,generation=0,stops=[],renderTimer=null,toastTimer=null;
+let me=null,initialized=false,generation=0,searchGeneration=0,stops=[],renderTimer=null,toastTimer=null;
 let inbox={},sent={},invites={},blocks={},outgoing={},handle=null,ready=new Set();
 const outbound=new Map(),friendNames=new Map(),seenInvites=new Set();
 const node=(tag,text)=>{const n=document.createElement(tag);n.textContent=text;return n};
@@ -95,7 +95,7 @@ function watchOutbound(uid,ticket){
  for(const id of wanted)if(!outbound.has(id))outbound.set(id,onValue(path("requests/"+id+"/"+uid),snap=>{if(ticket!==generation)return;outgoing[id]=snap.val();scheduleRender();},e=>{if(ticket===generation)msg("보낸 요청 조회 실패: "+e.code);}));
 }
 function connect(user){
- const ticket=++generation;
+ const ticket=++generation;searchGeneration++;
  stops.forEach(off=>off());stops=[];outbound.forEach(off=>off());outbound.clear();
  clearTimeout(renderTimer);clearTimeout(toastTimer);el("fw-invite-toast")?.remove();friendNames.clear();seenInvites.clear();
  me=user&&!user.isAnonymous?user:null;inbox={};sent={};invites={};blocks={};outgoing={};handle=null;ready=new Set();
@@ -120,16 +120,16 @@ el("handle-button")?.addEventListener("click",async()=>{
  }catch(e){if(ticket===generation)msg("ID 등록 실패: "+(e.code||e.message));}
 });
 el("friend-find")?.addEventListener("click",async()=>{
- const ticket=generation,result=el("friend-search-result");result.replaceChildren();el("fw-public-badges")?.replaceChildren();
+ const ticket=generation,searchTicket=++searchGeneration,result=el("friend-search-result");result.replaceChildren();el("fw-public-badges")?.replaceChildren();
  try{const self=requireUser(),value=el("friend-query").value.trim().replace(/^[@#]/,"").toLowerCase();if(!/^[a-z0-9_]{3,20}$/.test(value))throw Error("올바른 ID를 입력해 주세요.");
- const uid=await read("handles/"+value);if(ticket!==generation)return;if(!uid||uid===self){result.textContent="검색 결과가 없어요.";return;}
+ const uid=await read("handles/"+value);if(ticket!==generation||searchTicket!==searchGeneration)return;if(!uid||uid===self){result.textContent="검색 결과가 없어요.";return;}
  if(blocks[uid]){result.textContent="차단한 사용자예요. 차단 목록에서 해제할 수 있어요.";return;}
- const name=await resolveFriend(uid);if(ticket!==generation)return;
+ const name=await resolveFriend(uid);if(ticket!==generation||searchTicket!==searchGeneration)return;
  window.dispatchEvent(new CustomEvent("fw:friend-found",{detail:{uid,nickname:name}}));
  result.append(node("span",name+" "),button("친구 신청",async()=>{
   const from=requireUser();await update(path(""),{["requests/"+uid+"/"+from]:{from,to:uid,status:"pending",at:serverTimestamp()},["sent/"+from+"/"+uid]:true});msg("친구 요청을 보냈어요.");
  }));
- }catch(e){if(ticket===generation)result.textContent="검색 실패: "+(e.code||e.message);}
+ }catch(e){if(ticket===generation&&searchTicket===searchGeneration)result.textContent="검색 실패: "+(e.code||e.message);}
 });
 el("social-refresh")?.addEventListener("click",()=>{if(me){friendNames.clear();scheduleRender();msg("실시간 목록을 새로 표시했어요.");}});
 // Refresh expiry labels only; database changes arrive through onValue subscriptions.

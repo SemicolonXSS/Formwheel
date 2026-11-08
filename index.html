@@ -642,7 +642,7 @@ document.querySelectorAll(".categoryButtons .filterButton").forEach(button=>{
 <script defer src="./assets/hub-tour.js?v=20261026-refresh1"></script>
 <script defer src="./assets/spotlight.js?v=20261016-2"></script>
 <script src="./assets/hub-visit-bridge.js?v=20261108-healthcheck1"></script>
-<script type="module" src="./assets/id-core.js?v=20261027-login-persistence1"></script>
+<script type="module" src="./assets/id-core.js?v=20261108-racefix2"></script>
 <script type="module" src="./assets/badge-notifications.js?v=20261108-healthcheck1"></script>
 <script type="module" src="./assets/live-presence.js?v=20261108-healthcheck1"></script>
 <script type="module" src="./assets/operator-good-morning.js?v=20261104-admin1"></script>
@@ -923,7 +923,7 @@ document.getElementById("fw-match-close").onclick=()=>{modal.hidden=true};
  window.addEventListener('storage',e=>{if(e.key===KEY){data=read();renderNext()}});
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',renderNext);else renderNext();
 })();
-</script><script type="module" src="https://semicolonxss.github.io/Formwheel/shared/account-theme-sync.js?v=20261108-healthcheck1"></script><script type="module" src="https://semicolonxss.github.io/Formwheel/shared/account-rapid-sync.js?v=20261103-protected-readonly1"></script><script type="module" src="./assets/peak-witness.js?v=20261024-compact2"></script><script defer src="./shared/secol-crown.js?v=20261024-profile-unified2"></script><aside id="fw-playtest-entry" style="max-width:650px;margin:18px auto;padding:16px;border:1px solid #d7d6f4;border-radius:16px;background:#f8f7ff;color:#252747;text-align:center"><strong>🧪 Formwheel 플레이테스터 모집</strong><p style="margin:6px 0 12px">직접 플레이하고 버그와 아이디어를 알려주세요!</p><a href="./playtest.html" style="display:inline-block;background:#4637b8;color:#fff;padding:10px 18px;border-radius:10px;text-decoration:none;font-weight:700">지원 안내 · 튜토리얼 보기 →</a></aside>
+</script><script type="module" src="https://semicolonxss.github.io/Formwheel/shared/account-theme-sync.js?v=20261108-racefix2"></script><script type="module" src="https://semicolonxss.github.io/Formwheel/shared/account-rapid-sync.js?v=20261103-protected-readonly1"></script><script type="module" src="./assets/peak-witness.js?v=20261024-compact2"></script><script defer src="./shared/secol-crown.js?v=20261024-profile-unified2"></script><aside id="fw-playtest-entry" style="max-width:650px;margin:18px auto;padding:16px;border:1px solid #d7d6f4;border-radius:16px;background:#f8f7ff;color:#252747;text-align:center"><strong>🧪 Formwheel 플레이테스터 모집</strong><p style="margin:6px 0 12px">직접 플레이하고 버그와 아이디어를 알려주세요!</p><a href="./playtest.html" style="display:inline-block;background:#4637b8;color:#fff;padding:10px 18px;border-radius:10px;text-decoration:none;font-weight:700">지원 안내 · 튜토리얼 보기 →</a></aside>
 <script id="fw-find10-controller">
 const KEY='fw-find10-challenge',RESULT='fw-find10-result',PENDING='fw-find10-pending';
 let data;try{data=JSON.parse(sessionStorage.getItem(KEY)||'null')}catch(err){console.warn('Find10 state unavailable',err)}
@@ -1171,12 +1171,13 @@ document.getElementById('fw21-export').onclick=()=>{const data={exportedAt:new D
 document.getElementById('fw21-reset').onclick=()=>{if(!confirm('화면·편의 설정만 초기화할까요? Rapid·업적·플레이 기록은 유지됩니다.'))return;localStorage.removeItem(KEY);localStorage.setItem(SMART,'false');location.reload();};
 document.getElementById('fw21-diagnostics').onclick=()=>{document.getElementById('fw21-errors').textContent='설정 버전: 2\n로컬 저장소 사용: '+(typeof localStorage!=='undefined')+'\nFirebase 저장/오류 로그는 이 페이지에서 조회하지 않습니다.\n개인정보 및 인증 토큰은 수집하지 않습니다.';};
 document.getElementById('fw21-activity').textContent='개인 활동 통계는 기존 프로젝트 기록과의 안전한 연동이 필요합니다. 현재 이 화면에서 임의의 수치를 표시하지 않습니다.';
-document.getElementById('fw21-logout').onclick=async()=>{if(!confirm('Formwheel에서 로그아웃할까요?'))return;try{const m=await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js');const a=await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js');const app=m.getApps()[0];if(!app){alert('이 페이지에서 로그인 연결을 찾지 못했습니다. Hub의 로그아웃을 이용해 주세요.');return;}await a.signOut(a.getAuth(app));alert('로그아웃 완료');location.href='./index.html';}catch(e){alert('로그아웃을 확인할 수 없습니다. Hub에서 로그아웃해 주세요.');}};
+document.getElementById('fw21-logout').onclick=async()=>{if(!confirm('Formwheel에서 로그아웃할까요?'))return;try{if(typeof window.FormwheelCore?.logout!=='function')throw Error('auth-not-ready');await window.FormwheelCore.logout();alert('로그아웃 완료');location.href='./index.html';}catch(e){alert('로그아웃을 확인할 수 없습니다. 로그인 연결을 확인한 뒤 다시 시도해 주세요.');}};
 
 })();
-</script><script defer src="./assets/halloween-2026.js?v=20261031-scattered"></script><script defer src="./assets/edu-hub-beta.js?v=20261030"></script><script defer src="./assets/null-hub-entry.js?v=20261030"></script><script defer src="./assets/secol-hub-tools.js?v=20261030"></script><script defer src="./assets/formwheel-devtools.js?v=20261108-fw12-v36"></script><script defer src="./assets/formwheel-virtual-keyboard.js?v=20261104-shortcuts1"></script><div style="text-align:center;padding:14px"><a href="./hall-of-fame.html" style="display:inline-block;margin:8px;padding:9px 14px;border-radius:12px;background:#36205b;color:#fff;text-decoration:none;font-weight:700">🏆 명예의 전당</a></div><script defer src="./assets/hub-command-palette.js?v=20261108-syntaxfix2"></script>
+</script><script defer src="./assets/halloween-2026.js?v=20261031-scattered"></script><script defer src="./assets/edu-hub-beta.js?v=20261030"></script><script defer src="./assets/null-hub-entry.js?v=20261030"></script><script defer src="./assets/secol-hub-tools.js?v=20261030"></script><script defer src="./assets/formwheel-devtools.js?v=20261108-fw12-v36"></script><script defer src="./assets/formwheel-virtual-keyboard.js?v=20261104-shortcuts1"></script><div style="text-align:center;padding:14px"><a href="./hall-of-fame.html" style="display:inline-block;margin:8px;padding:9px 14px;border-radius:12px;background:#36205b;color:#fff;text-decoration:none;font-weight:700">🏆 명예의 전당</a></div><script defer src="./assets/hub-command-palette.js?v=20261108-racefix2"></script>
 </body>
 </html>
+
 
 
 
