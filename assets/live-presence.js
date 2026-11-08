@@ -1,10 +1,12 @@
 /* Formwheel Hub live presence. One user is counted once across multiple tabs. */
 import {initializeApp,getApps} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
-import {getAuth,onAuthStateChanged,signInAnonymously} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import {getAuth,onAuthStateChanged,signInAnonymously,getIdTokenResult} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import {claimVisibleTime} from "../shared/visitor-time.js";
 import {getDatabase,ref,onValue,onDisconnect,set,remove,serverTimestamp,runTransaction} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
 const config={apiKey:"AIzaSyBreTSe1m0-xlbF4aupnU5isRZCihR25IE",authDomain:"formwheel.firebaseapp.com",databaseURL:"https://formwheel-default-rtdb.firebaseio.com",projectId:"formwheel",storageBucket:"formwheel.firebasestorage.app",messagingSenderId:"431583088241",appId:"1:431583088241:web:74e0e34ea1e3e1170c55d0"};
 const app=getApps().find(x=>x.name==="[DEFAULT]")||initializeApp(config);
 const auth=getAuth(app),db=getDatabase(app);
+let canPublish=false,authGeneration=0;
 const label=document.getElementById("fw-live-count"),note=document.getElementById("fw-live-note");
 const base="formwheelV2/liveHubSessions";
 let latestSessions={};
@@ -29,7 +31,7 @@ function showPeakToast(count){
 }
 function renderPeak(){if(peakLabel)peakLabel.textContent=peakLoaded?recordedPeak.toLocaleString("ko-KR")+"명":"확인 중…";}
 async function savePeak(){
-  if(peakWritePending||!peakLoaded||peakCandidate<=recordedPeak||!auth.currentUser)return;
+  if(!canPublish||peakWritePending||!peakLoaded||peakCandidate<=recordedPeak||!auth.currentUser)return;
   peakWritePending=true;
   try{
     const result=await runTransaction(ref(db,peakPath),current=>{
@@ -61,7 +63,7 @@ let durationBusy=false;
 let pendingDurationMs=0;
 let durationOwnerUid=null;
 let durationRetryAfter=0;
-const DURATION_INTERVAL=5000;
+const DURATION_INTERVAL=15000;
 let lastActiveTick=Date.now();
 const projectStatsKey='Hub';
 const DURATION_MAX_GAP=45000;
@@ -79,7 +81,9 @@ async function accumulateDuration(uid,{allowHidden=false}={}){
   if(durationOwnerUid!==uid){durationOwnerUid=uid;pendingDurationMs=0;durationRetryAfter=0}
   // Only foreground time counts. Visibility changes explicitly flush the last foreground slice.
   if(allowHidden||document.visibilityState==="visible"){
-    pendingDurationMs=Math.min(5*60*1000,pendingDurationMs+elapsed);
+    const claimed=await claimVisibleTime(uid,elapsed,now);
+    if(durationOwnerUid!==uid||auth.currentUser?.uid!==uid)return;
+    pendingDurationMs=Math.min(5*60*1000,pendingDurationMs+claimed);
   }
   if(!connection||durationBusy||now<durationRetryAfter||pendingDurationMs<1000)return;
   const batch=Math.floor(pendingDurationMs/1000)*1000;
@@ -121,7 +125,7 @@ function visitorEntries(){return Object.entries(latestVisitors).filter(([,v])=>v
 let detailTotal=null,publicTotal=null,liveStatus="집계 확인 중…",totalStatus=liveStatus;
 let visitorDetailsReady=false,visitorDetailsError="";
 function renderTotal(){
- const count=detailTotal??publicTotal;
+ const count=publicTotal??detailTotal;
  if(visitorCount)visitorCount.textContent=count===null?totalStatus:count.toLocaleString("ko-KR")+"명";
 }
 let lastPublishedTotal=null,publicLiveAt=0;
@@ -132,6 +136,7 @@ function reportCount(key,message){
  if(output)output.textContent="접속자 · "+countsReport.live+" / 누적 · "+countsReport.total;
 }
 function publishCount(key,count){
+ if(!canPublish)return Promise.resolve();
  const target=ref(db,"formwheelV2/publicVisitorCounts/"+key);
  // Admin fallback must never replace a newer count with a stale browser snapshot.
  const write=key==="total"
@@ -214,6 +219,7 @@ async function recordVisitor(user){
    lastAttribution:entryChannel
   }:undefined,{applyLocally:false});
   if(!visitorResult.committed||!visitorResult.snapshot.exists())throw new Error("visitor_transaction_not_committed");
+  if(auth.currentUser?.uid!==uid)return;
   recordedVisitorUid=uid;durationOwnerUid=uid;pendingDurationMs=0;durationRetryAfter=0;lastActiveTick=Date.now();
   if(visitorRetryTimer){clearTimeout(visitorRetryTimer);visitorRetryTimer=null;}
   visitorRetryAttempts=0;
@@ -239,20 +245,20 @@ async function recordVisitor(user){
 const rawProject=(location.pathname.split("/").filter(Boolean)[0]||"Formwheel");
 const project=(rawProject==="Formwheel"?"Hub":rawProject.replace(/^Formwheel_/i,"")).slice(0,60);
 let publicLive=null, detailLive=null, confirmedAt=0, liveError="";
-let registered=null,disconnect=null,connection=false,generation=0,heartbeatTimer=null;
+let registered=null,disconnect=null,connection=false,generation=0,heartbeatTimer=null,presenceRetryTimer=null,presenceRetries=0;
 const STALE_MS=5*60*1000;
 // Hide abandoned sessions from the admin visitor inspector after ten minutes.
 // Historical unique visitor statistics remain untouched.
 const INSPECTOR_TTL_MS=10*60*1000;
 const inspectorEntries=s=>sessionEntries(s).filter(v=>typeof v.lastSeen==="number"&&v.lastSeen>Date.now()-INSPECTOR_TTL_MS);
-const isFresh=v=>v&&typeof v.lastSeen==="number"&&Date.now()-v.lastSeen<STALE_MS;
+const isFresh=v=>v&&typeof v.lastSeen==="number"&&v.lastSeen<=Date.now()+60000&&Date.now()-v.lastSeen<STALE_MS;
 const stateOf=v=>!v||typeof v!=="object"?"unknown":typeof v.lastSeen!=="number"?"legacy":Date.now()-v.lastSeen>=STALE_MS?"stale":"fresh";
 const sessionEntries=s=>Object.values(s||{}).filter(v=>v&&typeof v==="object");
 const activeEntries=s=>sessionEntries(s).filter(isFresh);
 const say=(message)=>{if(note)note.textContent=message};
 function renderLive(){
  if(!label)return;
- const count=detailLive??publicLive;
+ const count=publicLive??detailLive;
  if(!connection)label.textContent="연결 대기 중";
  else if(detailLive===null&&publicLiveAt&&Date.now()-publicLiveAt>120000)label.textContent="마지막 집계 "+count.toLocaleString("ko-KR")+"명";
  else if(count!==null)label.textContent=count.toLocaleString("ko-KR")+"명";
@@ -279,22 +285,44 @@ const watchSessions=()=>onValue(ref(db,base),snapshot=>{
  say("최근 5분 내 접속 확인 · 공통 게임 포함");
 },error=>{reportCount("live","원본 읽기 실패 ("+error.code+")");detailLive=null;renderLive();console.debug("접속 상세 조회",error.code)});
 onValue(ref(db,".info/connected"),snapshot=>{connection=snapshot.val()===true;renderLive();if(connection)start(auth.currentUser);else say("연결 재시도 중…")});
-async function clear(){if(heartbeatTimer)clearInterval(heartbeatTimer);heartbeatTimer=null;const old=registered,d=disconnect;registered=null;disconnect=null;confirmedAt=0;renderLive();if(d)try{await d.cancel()}catch{}if(old)try{await remove(old)}catch{}}
+async function clear(){if(heartbeatTimer)clearInterval(heartbeatTimer);heartbeatTimer=null;const old=registered,d=disconnect;registered=null;disconnect=null;confirmedAt=0;renderLive();if(presenceRetryTimer)clearTimeout(presenceRetryTimer);presenceRetryTimer=null;if(old)try{await remove(old)}catch{}if(d)try{await d.cancel()}catch{}}
 async function start(user){
  const token=++generation;await clear();
  if(token!==generation||!user||!connection)return;
  const sessionId=crypto.randomUUID().replace(/-/g,"");
  const node=ref(db,base+"/"+user.uid+"/"+sessionId);
+ const guard=onDisconnect(node);
  try{
-  await set(node,{joinedAt:serverTimestamp(),lastSeen:serverTimestamp(),project,accountType:user.isAnonymous?"guest":"account"});
-  if(token!==generation){await remove(node);return}
+  // Register cleanup first so a disconnect during registration cannot leave a ghost.
+  const payload={joinedAt:serverTimestamp(),lastSeen:serverTimestamp(),project,accountType:user.isAnonymous?"guest":"account"};
+  let created=false;
+  try{await guard.remove()}catch(error){
+   // Older deployed Rules authorize deletion only after the session exists.
+   if(!/permission.?denied/i.test(String(error.code||error.message)))throw error;
+   if(token!==generation)return;
+   await set(node,payload);created=true;await guard.remove();
+  }
+  if(token!==generation){if(created)await remove(node);await guard.cancel();return}
+  if(!created)await set(node,payload);
+  if(token!==generation){await remove(node);await guard.cancel();return}
+  registered=node;disconnect=guard;presenceRetries=0;
   confirmedAt=Date.now();liveError="";renderLive();
-  const guard=onDisconnect(node);
-  try{await guard.remove()}catch(error){await remove(node);throw error}
-  if(token!==generation){await guard.cancel();await remove(node);return}
+  heartbeatTimer=setInterval(()=>{if(registered===node&&connection)set(ref(db,base+"/"+user.uid+"/"+sessionId+"/lastSeen"),serverTimestamp()).then(()=>{if(registered===node){confirmedAt=Date.now();liveError="";renderLive()}}).catch(error=>{if(registered===node){liveError="접속 갱신 실패";renderLive();retryPresence(user,token,error)}});},60000);
+ }catch(error){
+  // Keep the server cleanup armed if the write's outcome is uncertain.
+  if(token!==generation)return;
   registered=node;disconnect=guard;
-  heartbeatTimer=setInterval(()=>{if(registered===node&&connection)set(ref(db,base+"/"+user.uid+"/"+sessionId+"/lastSeen"),serverTimestamp()).then(()=>{if(registered===node){confirmedAt=Date.now();liveError="";renderLive()}}).catch(()=>{if(registered===node){liveError="접속 갱신 실패";renderLive()}});},60000);
- }catch(error){if(token!==generation)return;confirmedAt=0;liveError="내 접속 등록 실패";renderLive();say("접속자 등록 실패 · Firebase Rules 확인 ("+(error.code||"연결 오류")+")")}
+  confirmedAt=0;liveError="내 접속 등록 실패";renderLive();
+  say("접속자 등록 실패 · Firebase Rules 확인 ("+(error.code||"연결 오류")+")");
+  retryPresence(user,token,error);
+ }
+}
+function retryPresence(user,token,error){
+ const reason=String(error?.code||error?.message||error);
+ if(presenceRetryTimer||presenceRetries>=3||!/network|unavailable|disconnected|timeout/i.test(reason))return;
+ const delay=[5000,15000,30000][presenceRetries++];
+ presenceRetryTimer=setTimeout(()=>{presenceRetryTimer=null;if(token===generation&&connection&&auth.currentUser?.uid===user.uid)void start(user)},delay);
+
 }
 for(const [key,element] of [["live",label],["total",visitorCount]]){
  if(!element)continue;
@@ -317,20 +345,28 @@ onValue(ref(db,analyticsPath),snapshot=>{
 },error=>{publicAnalyticsError=error.code||"조회 실패";if(adminUnlocked&&!visitorDetailsReady)renderVisitorAdmin()});
 let stopDetails=[];
 onAuthStateChanged(auth,async user=>{
+ const ticket=++authGeneration;canPublish=false;presenceRetries=0;
  if(visitorRetryTimer){clearTimeout(visitorRetryTimer);visitorRetryTimer=null;}
  visitorRetryAttempts=0;
- for(const key of ["live","total"])reportCount(key,user&&!user.isAnonymous?"원본 확인 중":"Google 로그인 필요");
+ for(const key of ["live","total"])reportCount(key,"공개 집계 구독 중");
  lastPublishedTotal=null;lastPublishedLive=null;
- stopDetails.forEach(stop=>stop());
- stopDetails=[];
+ stopDetails.forEach(stop=>stop());stopDetails=[];
  latestSessions={};latestVisitors={};visitorDetailsReady=false;visitorDetailsError="";detailLive=null;detailTotal=null;liveError="";renderLive();renderTotal();
- if(user&&!user.isAnonymous)stopDetails=[watchSessions(),watchVisitors()];
- if(user){start(user);recordVisitor(user);if(peakLoaded&&peakCandidate>recordedPeak)void savePeak();return}
+ if(user){
+  void start(user);void recordVisitor(user);
+  if(user.isAnonymous)return;
+  try{
+   const {claims}=await getIdTokenResult(user);
+   if(ticket!==authGeneration||auth.currentUser?.uid!==user.uid)return;
+   canPublish=claims.producer===true||claims.admin===true||(claims.email==="not404spam@gmail.com"&&claims.email_verified===true);
+   if(canPublish){stopDetails=[watchSessions(),watchVisitors()];if(peakLoaded&&peakCandidate>recordedPeak)void savePeak()}
+  }catch(error){console.debug("관리자 권한 확인 불가",error.code||error.message)}
+  return;
+ }
  if(durationTimer)clearInterval(durationTimer);
  durationTimer=null;recordedVisitorUid=null;durationOwnerUid=null;pendingDurationMs=0;durationRetryAfter=0;
  void start(null);
- // Guests count only when anonymous Firebase sign-in is enabled.
- try{await signInAnonymously(auth)}catch(error){liveError="게스트 인증 실패";renderLive();say("게스트 집계 비활성 · 익명 인증 설정 확인 ("+(error.code||"인증 실패")+")")}
+ try{await signInAnonymously(auth)}catch(error){if(ticket!==authGeneration)return;liveError="게스트 인증 실패";renderLive();say("게스트 집계 비활성 · 익명 인증 설정 확인 ("+(error.code||"인증 실패")+")")}
 });
 document.addEventListener("visibilitychange",()=>{
  const uid=auth.currentUser?.uid;

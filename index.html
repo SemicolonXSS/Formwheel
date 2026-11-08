@@ -641,10 +641,10 @@ document.querySelectorAll(".categoryButtons .filterButton").forEach(button=>{
 <script type="module" src="./assets/creator-sort.js?v=20261022-1"></script>
 <script defer src="./assets/hub-tour.js?v=20261026-refresh1"></script>
 <script defer src="./assets/spotlight.js?v=20261016-2"></script>
-<script src="./assets/hub-visit-bridge.js?v=20261020-1"></script>
+<script src="./assets/hub-visit-bridge.js?v=20261108-healthcheck1"></script>
 <script type="module" src="./assets/id-core.js?v=20261027-login-persistence1"></script>
-<script type="module" src="./assets/badge-notifications.js?v=20261020-achievement2"></script>
-<script type="module" src="./assets/live-presence.js?v=20261104-dwell-txfix2"></script>
+<script type="module" src="./assets/badge-notifications.js?v=20261108-healthcheck1"></script>
+<script type="module" src="./assets/live-presence.js?v=20261108-healthcheck1"></script>
 <script type="module" src="./assets/operator-good-morning.js?v=20261104-admin1"></script>
 
 <script>
@@ -923,7 +923,7 @@ document.getElementById("fw-match-close").onclick=()=>{modal.hidden=true};
  window.addEventListener('storage',e=>{if(e.key===KEY){data=read();renderNext()}});
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',renderNext);else renderNext();
 })();
-</script><script type="module" src="https://semicolonxss.github.io/Formwheel/shared/account-theme-sync.js?v=20261027-level2-24"></script><script type="module" src="https://semicolonxss.github.io/Formwheel/shared/account-rapid-sync.js?v=20261103-protected-readonly1"></script><script type="module" src="./assets/peak-witness.js?v=20261024-compact2"></script><script defer src="./shared/secol-crown.js?v=20261024-profile-unified2"></script><aside id="fw-playtest-entry" style="max-width:650px;margin:18px auto;padding:16px;border:1px solid #d7d6f4;border-radius:16px;background:#f8f7ff;color:#252747;text-align:center"><strong>🧪 Formwheel 플레이테스터 모집</strong><p style="margin:6px 0 12px">직접 플레이하고 버그와 아이디어를 알려주세요!</p><a href="./playtest.html" style="display:inline-block;background:#4637b8;color:#fff;padding:10px 18px;border-radius:10px;text-decoration:none;font-weight:700">지원 안내 · 튜토리얼 보기 →</a></aside>
+</script><script type="module" src="https://semicolonxss.github.io/Formwheel/shared/account-theme-sync.js?v=20261108-healthcheck1"></script><script type="module" src="https://semicolonxss.github.io/Formwheel/shared/account-rapid-sync.js?v=20261103-protected-readonly1"></script><script type="module" src="./assets/peak-witness.js?v=20261024-compact2"></script><script defer src="./shared/secol-crown.js?v=20261024-profile-unified2"></script><aside id="fw-playtest-entry" style="max-width:650px;margin:18px auto;padding:16px;border:1px solid #d7d6f4;border-radius:16px;background:#f8f7ff;color:#252747;text-align:center"><strong>🧪 Formwheel 플레이테스터 모집</strong><p style="margin:6px 0 12px">직접 플레이하고 버그와 아이디어를 알려주세요!</p><a href="./playtest.html" style="display:inline-block;background:#4637b8;color:#fff;padding:10px 18px;border-radius:10px;text-decoration:none;font-weight:700">지원 안내 · 튜토리얼 보기 →</a></aside>
 <script id="fw-find10-controller">
 const KEY='fw-find10-challenge',RESULT='fw-find10-result',PENDING='fw-find10-pending';
 let data;try{data=JSON.parse(sessionStorage.getItem(KEY)||'null')}catch(err){console.warn('Find10 state unavailable',err)}
@@ -1007,7 +1007,7 @@ document.querySelectorAll('#projects .card').forEach(card=>{
 (function(){
 'use strict';
 var key='formwheel-hub-display-version',mode='card',category='all',tab='home';
-function getSaved(){try{var stored=localStorage.getItem(key);return stored==='card'||stored==='simple'?stored:'simple'}catch(e){return 'simple'}}
+function getSaved(){try{var stored=localStorage.getItem(key);return stored==='card'||stored==='simple'?stored:'card'}catch(e){return 'card'}}
 function apply(next){mode=next==='simple'?'simple':'card';document.body.classList.toggle('fw-beta-simple',mode==='simple');document.body.classList.toggle('fw-beta-card',mode==='card');document.getElementById('fw-beta-simple-view').hidden=mode!=='simple';document.querySelectorAll('#fw-beta-switch button[data-mode]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.mode===mode))});try{localStorage.setItem(key,mode)}catch(e){}if(mode==='simple')render()}
 function extract(){
 return (window.FormwheelHubProjects||[]).map(function(p){return {name:p.name,url:p.url,type:p.category,description:p.description||'',keywords:p.keywords||''};});
@@ -1177,6 +1177,7 @@ document.getElementById('fw21-logout').onclick=async()=>{if(!confirm('Formwheel�
 </script><script defer src="./assets/halloween-2026.js?v=20261031-scattered"></script><script defer src="./assets/edu-hub-beta.js?v=20261030"></script><script defer src="./assets/null-hub-entry.js?v=20261030"></script><script defer src="./assets/secol-hub-tools.js?v=20261030"></script><script defer src="./assets/formwheel-devtools.js?v=20261108-fw12-early-errors1"></script><script defer src="./assets/formwheel-virtual-keyboard.js?v=20261104-shortcuts1"></script><div style="text-align:center;padding:14px"><a href="./hall-of-fame.html" style="display:inline-block;margin:8px;padding:9px 14px;border-radius:12px;background:#36205b;color:#fff;text-decoration:none;font-weight:700">🏆 명예의 전당</a></div><script defer src="./assets/hub-command-palette.js?v=20261108-syntaxfix2"></script>
 </body>
 </html>
+
 
 
 

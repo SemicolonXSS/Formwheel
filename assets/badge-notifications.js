@@ -1,5 +1,5 @@
 /* Formwheel achievement toast: derives badges from existing trustworthy records. */
-import {BADGES,earnedBadge} from "./badge-catalog.js";
+import {BADGES,earnedBadge} from "./badge-catalog.js?v=20261108-healthcheck1";
 import {initializeApp,getApps} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 import {getAuth,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 import {getDatabase,ref,onValue} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
@@ -35,11 +35,11 @@ async function notify(b){
  running=false;
 }
 let unsubs=[],state={},ready={},userKey="guest",generation=0;
-const sources=["home","profile","stats","awards","peak"];
+const sources=["home","profile","stats","awards","peak","visitor"];
 function getLocal(key){try{return JSON.parse(localStorage.getItem(key))}catch{return null}}
 function check(){
  if(!sources.every(k=>ready[k]))return;
- const achievementStats={...state.stats,communityLivePeak:state.peak?.count};
+ const achievementStats={...state.stats,communityLivePeak:state.peak?.count,visitCount:state.visitor?.visitCount,firstSeen:state.visitor?.firstSeen};
  const current=BADGES.filter(b=>earnedBadge(b,state.awards,state.home,state.profile,achievementStats)).map(b=>b.id);
  const storageKey="fw:badge:seen:v2:"+userKey;
  const old=getLocal(storageKey);
@@ -61,6 +61,8 @@ onAuthStateChanged(auth,user=>{
  const gen=generation;
  userKey=user&&!user.isAnonymous?user.uid:"guest";
  state={};ready={};
+ if(user)unsubs.push(onValue(ref(db,"formwheelV2/visitorStats/uniqueVisitors/"+user.uid),snap=>{if(gen===generation)received("visitor",snap.val())},()=>{if(gen===generation)received("visitor",{})}));
+ else received("visitor",{});
  if(user&&!user.isAnonymous){
   unsubs.push(onValue(ref(db,"formwheelV2/visitorStats/livePeak"),snap=>{if(gen===generation)received("peak",snap.val())},()=>{if(gen===generation)received("peak",{})}));
   for(const [key,path] of [

@@ -1,4 +1,4 @@
-import {BADGES} from "./badge-catalog.js";
+import {BADGES} from "./badge-catalog.js?v=20261108-healthcheck1";
 /* Formwheel ID/Core bridge for Hub. Firebase SDK v10 modules. */
 import {initializeApp,getApps,getApp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 import {getAuth,onAuthStateChanged,GoogleAuthProvider,signInWithPopup,signOut,setPersistence,browserLocalPersistence} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";

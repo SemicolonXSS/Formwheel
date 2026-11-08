@@ -96,14 +96,19 @@ exports.claimQuestDailyXP=onCall(async req=>{
  */
 const {onValueWritten}=require("firebase-functions/v2/database");
 const peakRoot="formwheelV2/peakWitness";
-const peakSteps=[5,10,20,50,100];
+const {advancePeak}=require("./presence-core.cjs");
 const peakFreshMs=5*60*1000;
 exports.awardPeakWitness=onValueWritten({
   ref:"/formwheelV2/liveHubSessions/{uid}",
   instance:"formwheel-default-rtdb",
   region:"us-central1",
-  maxInstances:3
-},async()=>{
+  maxInstances:3,
+  retry:true
+},async event=>{
+  // Heartbeat updates change timestamps, not session membership.
+  const before=event.data.before.val()||{},after=event.data.after.val()||{};
+  const previousKeys=Object.keys(before),nextKeys=Object.keys(after);
+  if(previousKeys.length===nextKeys.length&&previousKeys.every(k=>Object.hasOwn(after,k)))return;
   const at=now();
   const snap=await db.ref("formwheelV2/liveHubSessions").get();
   const active=[];
@@ -114,33 +119,22 @@ exports.awardPeakWitness=onValueWritten({
     ))active.push(user.key);
   });
   const count=active.length;
-  if(count<=4)return;
-  const recordRef=db.ref(peakRoot+"/record");
-  let previous=4;
-  const changed=await recordRef.transaction(current=>{
-    previous=Math.max(4,Number(current?.count)||0);
-    if(count<=previous)return;
-    return {count,recordedAt:at};
-  },undefined,false);
-  if(!changed.committed)return;
-  // Each individual record is monotonic and idempotent across retries.
-  const milestones=peakSteps.filter(n=>n>previous&&n<=count);
-  await Promise.all(active.map(async uid=>{
-    const target=db.ref(peakRoot+"/users/"+uid);
-    await target.transaction(current=>{
-      const old=current&&typeof current==="object"?current:{};
-      const existing=old.milestones&&typeof old.milestones==="object"?old.milestones:{};
-      const next={...existing};
-      for(const n of milestones)if(!next[n])next[n]={awardedAt:at,peak:count};
-      return {
-        firstWitnessedAt:old.firstWitnessedAt||at,
-        bestWitnessed:Math.max(Number(old.bestWitnessed)||0,count),
-        lastWitnessedAt:count>Number(old.bestWitnessed||0)?at:old.lastWitnessedAt||at,
-        milestones:next
-      };
-    },undefined,false);
-  }));
+  await db.ref(peakRoot).transaction(current=>advancePeak(current,active,at),undefined,false);
+  await Promise.all([publishLivePeak(count,at),publishLiveCount(count,at)]);
 });
+
+async function publishLivePeak(count,at){
+ await db.ref("formwheelV2/visitorStats/livePeak").transaction(current=>{
+  if(count<=Math.max(0,Number(current?.count)||0))return;
+  return {count,recordedAt:at};
+ },undefined,false);
+}
+async function publishLiveCount(count,at){
+ await db.ref("formwheelV2/publicVisitorCounts/live").transaction(current=>{
+  if(Number(current?.updatedAt)>at)return;
+  return {count,updatedAt:at};
+ },undefined,false);
+}
 
 // Publish server-verified unique visitors without ever reducing a public total.
 // The five-minute GitHub Action remains as a secondary reconciliation path.
@@ -178,6 +172,7 @@ exports.refreshVisitorCounts=onSchedule({schedule:"every 1 minutes",region:"us-c
   });
   await Promise.all([
     publishVerifiedVisitorTotal(),
-    db.ref("formwheelV2/publicVisitorCounts/live").set({count:live,updatedAt:admin.database.ServerValue.TIMESTAMP})
+    publishLiveCount(live,timestamp),
+    publishLivePeak(live,timestamp)
   ]);
 });

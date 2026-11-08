@@ -10,11 +10,11 @@ export function earnedBadge(b,awards={},home=null,profile=null,stats=null){
  const explored=values.filter(x=>(Number(x?.count)||0)>0).length;
  const thresholds={explore1:1,explore5:5,explore10:10,explore20:20};
  if(/^peak(?:2|3|5|10|20|30|50|100)$/.test(b.id))return Math.max(0,Number(stats?.communityLivePeak)||0)>=Number(b.id.slice(4));
- if(b.id==="welcome")return count>=1;
+ if(b.id==="welcome")return Number(stats?.firstSeen)>0||count>=1;
  if(b.id==="profile")return !!(profile?.nickname&&profile.nickname!=="게스트");
  if(b.id in thresholds)return explored>=thresholds[b.id];
  const visitThresholds={visit10:10,visit50:50,visit100:100,visit500:500};
- if(b.id in visitThresholds)return count>=visitThresholds[b.id];
+ if(b.id in visitThresholds)return (Number.isFinite(stats?.visitCount)?stats.visitCount:count)>=visitThresholds[b.id];
  if(b.id.startsWith("project")){
    const names=["Wheel","Quiz","Battle","Bomb","Risk","Spy","Reflex","Casino","Music","Piano","Dice Duel","Time","GCrown","Marble","Vault","AI","Button","Clicker","Decode","Check","Form","Edit","Balance","Fate","Cook","Tool"];
    const id=names[Number(b.id.slice(7))]?.toLowerCase();
@@ -32,7 +32,7 @@ export function earnedBadge(b,awards={},home=null,profile=null,stats=null){
  challenge21:()=>v("multiplayerGames")>=1,challenge22:()=>v("gamesPlayed")>=100,challenge23:()=>v("gamesPlayed")>=1000,
  challenge24:()=>v("weekendSessions")>=10,challenge25:()=>v("nightSessions")>=10,challenge26:()=>v("consecutiveDays")>=30,
  challenge27:()=>v("seasonChampion")>=1,challenge28:()=>!!stats?.secretBadge,
- challenge29:()=>Object.keys(awards||{}).filter(id=>awards[id]).length>=30,
+ challenge29:()=>BADGES.filter(other=>other.id!=="challenge29"&&earnedBadge(other,awards,home,profile,stats)).length>=30,
  cook100:()=>v("cookBestScore")>=100,
  matchQuick:()=>v("quickMatch1")>=1,matchFriend:()=>v("friendRandom1")>=1
  };
