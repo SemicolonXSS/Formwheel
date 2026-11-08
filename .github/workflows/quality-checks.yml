@@ -59,3 +59,19 @@ jobs:
       - name: Exercise deployed-path ownership, blocking and request transitions
         working-directory: firebase-security
         run: npx firebase emulators:exec --project demo-formwheel --only database "node --test tests/social-rules.test.mjs"
+
+  browser-smoke:
+    name: Desktop and touch UI regression
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install isolated browser test runner
+        run: npm install --no-save --no-package-lock --ignore-scripts playwright@1
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Exercise settings, shortcut focus, touch scrolling and blocked storage
+        run: node tests/browser-smoke.cjs

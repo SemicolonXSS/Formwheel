@@ -21,9 +21,12 @@ toast.id="fw-achievement-toast";toast.setAttribute("role","status");toast.setAtt
 toast.innerHTML='<span class="fw-achievement-icon"></span><div><strong>🏆 업적 달성!</strong><span class="fw-achievement-title"></span></div>';
 document.body.append(toast);
 const queue=[];let running=false;
+function enabled(){try{return JSON.parse(localStorage.getItem("fw.settings.v2")||"{}")?.notifications?.achievement!==false;}catch{return true;}}
 async function notify(b){
+ if(!enabled())return;
  queue.push(b);if(running)return;running=true;
  while(queue.length){
+  if(!enabled()){queue.length=0;toast.classList.remove("show");break;}
   const badge=queue.shift();
   toast.querySelector(".fw-achievement-icon").textContent=badge.icon;
   toast.querySelector(".fw-achievement-title").textContent=badge.title;
@@ -34,6 +37,9 @@ async function notify(b){
  }
  running=false;
 }
+const dismissDisabled=()=>{if(!enabled()){queue.length=0;toast.classList.remove("show");}};
+window.addEventListener("fw-settings-v2-changed",dismissDisabled);
+window.addEventListener("storage",event=>{if(event.key==="fw.settings.v2"||event.key===null)dismissDisabled();});
 let unsubs=[],state={},ready={},userKey="guest",generation=0;
 const sources=["home","profile","stats","awards","peak","visitor"];
 function getLocal(key){try{return JSON.parse(localStorage.getItem(key))}catch{return null}}
@@ -57,6 +63,7 @@ window.addEventListener("fw:hub:changed",event=>{
  received("home",event.detail?.state);
 });
 onAuthStateChanged(auth,user=>{
+ queue.length=0;toast.classList.remove("show");
  unsubs.forEach(off=>off());unsubs=[];generation++;
  const gen=generation;
  userKey=user&&!user.isAnonymous?user.uid:"guest";

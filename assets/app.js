@@ -714,11 +714,12 @@ const filterButtons =
 
 let currentFilter = "all";
 const favoriteStorageKey = "formwheel-hub-pinned-games-v1";
-let pinnedGames = [];
-try {
-  const stored = JSON.parse(localStorage.getItem(favoriteStorageKey) || "[]");
-  if (Array.isArray(stored)) pinnedGames = stored.filter(name => typeof name === "string");
-} catch (_) { /* Storage may be unavailable */ }
+function sanitizePinnedGames(value){
+ const valid=new Set(projects.filter(p=>p.category==='game').map(p=>p.name));
+ return [...new Set((Array.isArray(value)?value:[]).filter(name=>typeof name==='string'&&valid.has(name)))];
+}
+function readPinnedGames(){try{return sanitizePinnedGames(JSON.parse(localStorage.getItem(favoriteStorageKey)||'[]'));}catch{return [];}}
+let pinnedGames=readPinnedGames();
 const favoriteToggle = document.getElementById("fw-favorites-toggle");
 const favoritePanel = document.getElementById("fw-favorites-panel");
 const favoriteOptions = document.getElementById("fw-favorites-options");
@@ -1260,3 +1261,5 @@ render();
   mobile.addEventListener?.("change", sync);
   sync();
 })();
+
+window.addEventListener('storage',event=>{if(event.key===favoriteStorageKey||event.key===null){pinnedGames=readPinnedGames();updateFavoriteControls();render();}});

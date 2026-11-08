@@ -14,6 +14,9 @@ const css=document.createElement('style');css.textContent=`
 `;document.head.append(css);
 const logo=document.querySelector('.fw-hub-logo');if(!logo)return;
 const toggle=document.createElement('button');toggle.type='button';toggle.id='fw-vk-toggle';toggle.textContent='⌨';toggle.setAttribute('aria-label','단축키 패널 열기');toggle.setAttribute('aria-expanded','false');logo.insertAdjacentElement('afterend',toggle);
+function placeToggle(){const bar=document.getElementById('fw-beta-switch');if(document.body.classList.contains('fw-beta-simple')&&bar)bar.append(toggle);else logo.insertAdjacentElement('afterend',toggle);}
+window.addEventListener('fw-hub-display-changed',placeToggle);
+if(document.readyState==='loading'||document.readyState==='interactive')document.addEventListener('DOMContentLoaded',placeToggle,{once:true});else placeToggle();
 const panel=document.createElement('section');panel.id='fw-vk';panel.setAttribute('aria-label','Formwheel 단축키 모음');
 const title=document.createElement('div');title.className='fw-vk-title';const heading=document.createElement('span');heading.textContent='⌨ Formwheel 단축키';const close=document.createElement('button');close.className='fw-vk-close';close.textContent='✕';close.setAttribute('aria-label','닫기');title.append(heading,close);panel.append(title);
 const grid=document.createElement('div');grid.className='fw-vk-grid';panel.append(grid);document.body.append(panel);
@@ -23,8 +26,8 @@ function send(key,options={}){const event=new KeyboardEvent('keydown',{key,code:
 const actions=[
 {key:'F12',name:'개발자 도구',run:()=>window.FormwheelDevTools?.toggle?.()},
 {key:'Ctrl + /',name:'단축키 목록',run:()=>send('/',{code:'Slash',ctrlKey:true})},
-{key:'↑',name:'맨 위로',run:()=>{send('ArrowUp');window.scrollTo({top:0,behavior:'smooth'})}},
-{key:'↓',name:'카드 아래로',run:()=>{send('ArrowDown');const el=document.querySelector('#projects');if(el)el.scrollIntoView({behavior:'smooth',block:'start'})}},
+{key:'↑',name:'맨 위로',run:()=>{if(!send('ArrowUp'))window.scrollTo({top:0,behavior:'smooth'})}},
+{key:'↓',name:'카드 아래로',run:()=>{if(!send('ArrowDown')){const el=document.querySelector('#projects');if(el)el.scrollIntoView({behavior:'smooth',block:'start'});}}},
 {key:';',name:'내 지정 기능',run:()=>send(';',{code:'Semicolon'})},
 {key:'Esc',name:'패널 닫기',run:()=>{send('Escape');show(false)}}
 ];
