@@ -44,6 +44,13 @@ window.addEventListener('error',e=>{
  record('error',[e.message||'Script error','Location: '+location,e.error?.stack||'']);
 });
 window.addEventListener('unhandledrejection',e=>record('error',[e.reason||'Unhandled rejection']));
+if(Array.isArray(window.__fwEarlyErrors)){
+ for(const error of window.__fwEarlyErrors){
+  const where=[error.filename||'unknown file',error.line||'?',error.column||'?'].join(':');
+  record('error',[error.message||'Script error','Location: '+where,error.stack||'']);
+ }
+ window.__fwEarlyErrors=null;
+}
 function overviewLines(){
  const n=l=>logs.filter(x=>x.level===l).reduce((s,x)=>s+x.repeat,0);
  const denied=logs.filter(x=>x.kind&&x.kind.includes('권한 오류')).reduce((s,x)=>s+x.repeat,0);
