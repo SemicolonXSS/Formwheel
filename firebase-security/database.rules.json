@@ -159,7 +159,7 @@
           "$to": {
             "$from": {
               ".read": "auth != null && (auth.uid === $to || auth.uid === $from)",
-              ".write": "auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && $to !== $from && ((auth.uid === $from && !data.exists() && newData.parent().parent().parent().child('sent').child($from).child($to).val() === true && newData.child('status').val() === 'pending' && newData.child('at').val() === now) || (auth.uid === $to && data.child('status').val() === 'pending' && (newData.child('status').val() === 'accepted' || newData.child('status').val() === 'declined') && newData.child('at').val() === data.child('at').val())) && newData.child('from').val() === $from && newData.child('to').val() === $to",
+              ".write": "auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && $to !== $from && ((!newData.exists() && (auth.uid === $to || auth.uid === $from)) || (!root.child('formwheelV2/socialFree/blocks').child($to).child($from).exists() && !root.child('formwheelV2/socialFree/blocks').child($from).child($to).exists() && ((auth.uid === $from && (!data.exists() || data.child('status').val() === 'declined') && newData.parent().parent().parent().child('sent').child($from).child($to).val() === true && newData.child('status').val() === 'pending' && newData.child('at').val() === now) || (auth.uid === $to && data.child('status').val() === 'pending' && (newData.child('status').val() === 'accepted' || newData.child('status').val() === 'declined') && newData.child('at').val() === data.child('at').val())) && newData.child('from').val() === $from && newData.child('to').val() === $to))",
               ".validate": "newData.hasChildren(['from','to','status','at']) && newData.child('at').isNumber() && newData.child('status').isString()",
               "from": {
                 ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 128"
@@ -184,7 +184,7 @@
           "$to": {
             "$id": {
               ".read": "auth != null && auth.uid === $to",
-              ".write": "auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && ((auth.uid === newData.child('from').val() && !data.exists() && newData.child('status').val() === 'pending' && newData.child('createdAt').val() === now && newData.child('expiresAt').val() > now && newData.child('expiresAt').val() <= now + 1800000 && (root.child('formwheelV2/socialFree/requests/'+$to+'/'+auth.uid+'/status').val() === 'accepted' || root.child('formwheelV2/socialFree/requests/'+auth.uid+'/'+$to+'/status').val() === 'accepted')) || (auth.uid === $to && data.child('status').val() === 'pending' && data.child('expiresAt').val() > now && (newData.child('status').val() === 'accepted' || newData.child('status').val() === 'declined') && newData.child('from').val() === data.child('from').val() && newData.child('game').val() === data.child('game').val() && newData.child('createdAt').val() === data.child('createdAt').val() && newData.child('expiresAt').val() === data.child('expiresAt').val() && newData.child('reserve').val() === data.child('reserve').val())) && newData.child('game').val().matches(/^(Spy|Battle|GCrown|Dice Duel|Risk)$/)",
+              ".write": "auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && ((!newData.exists() && auth.uid === $to) || (!root.child('formwheelV2/socialFree/blocks').child($to).child(newData.child('from').val()).exists() && !root.child('formwheelV2/socialFree/blocks').child(newData.child('from').val()).child($to).exists() && ((auth.uid === newData.child('from').val() && !data.exists() && newData.child('status').val() === 'pending' && newData.child('createdAt').val() === now && newData.child('expiresAt').val() > now && newData.child('expiresAt').val() <= now + 1800000 && (root.child('formwheelV2/socialFree/requests/'+$to+'/'+auth.uid+'/status').val() === 'accepted' || root.child('formwheelV2/socialFree/requests/'+auth.uid+'/'+$to+'/status').val() === 'accepted')) || (auth.uid === $to && data.child('status').val() === 'pending' && data.child('expiresAt').val() > now && (newData.child('status').val() === 'accepted' || newData.child('status').val() === 'declined') && newData.child('from').val() === data.child('from').val() && newData.child('game').val() === data.child('game').val() && newData.child('createdAt').val() === data.child('createdAt').val() && newData.child('expiresAt').val() === data.child('expiresAt').val() && newData.child('reserve').val() === data.child('reserve').val())) && newData.child('game').val().matches(/^(Spy|Battle|GCrown|Dice Duel|Risk)$/)))",
               ".validate": "newData.hasChildren(['from','game','status','createdAt','expiresAt','reserve']) && newData.child('reserve').isBoolean() && newData.child('createdAt').isNumber() && newData.child('expiresAt').isNumber()",
               "from": {
                 ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 128"
@@ -208,15 +208,28 @@
                 ".validate": "false"
               }
             },
-            ".read": "auth != null && auth.uid === $to"
+            ".read": "auth != null && auth.uid === $to",
+            ".indexOn": [
+              "createdAt"
+            ]
           }
         },
         "sent": {
           "$from": {
             ".read": "auth != null && auth.uid === $from",
             "$to": {
-              ".write": "auth != null && auth.uid === $from && auth.token.firebase.sign_in_provider !== 'anonymous' && !data.exists() && newData.val() === true && newData.parent().parent().parent().child('requests').child($to).child($from).child('status').val() === 'pending'",
+              ".write": "auth != null && auth.uid === $from && auth.token.firebase.sign_in_provider !== 'anonymous' && (!newData.exists() || (newData.val() === true && newData.parent().parent().parent().child('requests').child($to).child($from).child('status').val() === 'pending'))",
               ".validate": "newData.isBoolean()"
+            }
+          }
+        },
+        "blocks": {
+          "$uid": {
+            ".read": "auth != null && auth.uid === $uid",
+            "$other": {
+              ".read": "auth != null && (auth.uid === $uid || auth.uid === $other)",
+              ".write": "auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && auth.uid === $uid && $uid !== $other && $other.length > 0 && $other.length <= 128",
+              ".validate": "newData.val() === true"
             }
           }
         }
@@ -394,7 +407,7 @@
         "$uid": {
           ".read": "auth != null && auth.uid === $uid",
           "$session": {
-            ".write": "auth != null && auth.uid === $uid && $session.matches(/^[a-f0-9]{32}$/) && ((!data.exists() && newData.exists() && newData.child('joinedAt').val() <= now + 60000 && newData.child('joinedAt').val() >= now - 300000) || (data.exists() && !newData.exists()) || (data.exists() && newData.exists() && newData.child('joinedAt').val() === data.child('joinedAt').val() && newData.child('project').val() === data.child('project').val() && newData.child('accountType').val() === data.child('accountType').val() && newData.child('lastSeen').val() >= data.child('lastSeen').val()))",
+            ".write": "auth != null && auth.uid === $uid && $session.matches(/^[a-f0-9]{32}$/) && ((!data.exists() && newData.exists() && newData.child('joinedAt').val() <= now + 60000 && newData.child('joinedAt').val() >= now - 300000) || !newData.exists() || (data.exists() && newData.exists() && newData.child('joinedAt').val() === data.child('joinedAt').val() && newData.child('project').val() === data.child('project').val() && newData.child('accountType').val() === data.child('accountType').val() && newData.child('lastSeen').val() >= data.child('lastSeen').val()))",
             ".validate": "newData.hasChildren(['joinedAt','lastSeen','project','accountType']) && newData.child('joinedAt').isNumber() && newData.child('joinedAt').val() > 0 && newData.child('lastSeen').isNumber() && newData.child('lastSeen').val() >= newData.child('joinedAt').val() && newData.child('lastSeen').val() <= now + 60000 && newData.child('project').isString() && newData.child('project').val().length > 0 && newData.child('project').val().length <= 60 && ((newData.child('accountType').val() === 'guest' && auth.token.firebase.sign_in_provider === 'anonymous') || (newData.child('accountType').val() === 'account' && auth.token.firebase.sign_in_provider !== 'anonymous'))",
             "joinedAt": {
               ".validate": "newData.isNumber() && newData.val() > 0 && newData.val() <= now + 60000"
@@ -501,6 +514,15 @@
       "pvpRooms": {
         ".read": false,
         ".write": false
+      },
+      "publicEventBadges": {
+        "$uid": {
+          ".read": "auth != null && auth.token.firebase.sign_in_provider !== 'anonymous'",
+          ".write": "auth != null && auth.uid === $uid && auth.token.firebase.sign_in_provider !== 'anonymous'",
+          "$badgeId": {
+            ".validate": "newData.val() === true && $badgeId.matches(/^(base|day40|master|share|day50)$/) && root.child('formwheelV2/anniversary4050').child($uid).child('badges').child($badgeId).exists()"
+          }
+        }
       }
     },
     "formwheelAIUsers": {

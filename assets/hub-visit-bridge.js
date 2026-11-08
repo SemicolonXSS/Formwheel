@@ -7,15 +7,18 @@ function clean(raw){
  const visits={};
  for(const [id,val] of Object.entries(raw?.visits||{})){
   const key=id.toLowerCase();
-  if(valid.has(key)&&val&&typeof val==="object")visits[key]={count:Math.max(0,Number(val.count)||0),last:Math.max(0,Number(val.last)||0)};
+  if(valid.has(key)&&val&&typeof val==="object")visits[key]={count:Math.min(100000,Math.max(0,Math.floor(Number(val.count)||0))),last:Math.min(Date.now()+60000,Math.max(0,Number(val.last)||0))};
  }
- return {version:1,pinned:[],excluded:[],visits};
+ const ids=(value,max)=>[...new Set((Array.isArray(value)?value:[]).filter(id=>valid.has(id)))].slice(0,max);
+ return {version:1,pinned:ids(raw?.pinned,3),excluded:ids(raw?.excluded,100),visits};
 }
 function load(){try{return clean(JSON.parse(localStorage.getItem(storageKey)))}catch{return clean({})}}
 let state=load();
 function emit(){try{localStorage.setItem(storageKey,JSON.stringify(state))}catch{}window.dispatchEvent(new CustomEvent("fw:hub:changed",{detail:{state:read()}}))}
 function read(){return clean(state)}
 window.FormwheelHubHome={read,apply(remote){state=clean(remote);try{localStorage.setItem(storageKey,JSON.stringify(state))}catch{}}};
+window.addEventListener("storage",event=>{if(event.key===storageKey){state=load();window.dispatchEvent(new CustomEvent("fw:hub:changed",{detail:{state:read()}}))}});
+window.addEventListener("fw:project-open",event=>record(String(event.detail?.projectId||"").toLowerCase()));
 function record(id){
  if(!valid.has(id))return;
  const old=state.visits[id]||{count:0,last:0};
