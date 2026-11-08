@@ -54,7 +54,7 @@ if(Array.isArray(window.__fwEarlyErrors)){
 function overviewLines(){
  const n=l=>logs.filter(x=>x.level===l).reduce((s,x)=>s+x.repeat,0);
  const denied=logs.filter(x=>x.kind&&x.kind.includes('권한 오류')).reduce((s,x)=>s+x.repeat,0);
- return ['FW12 3.6 · 실시간 요약','로그 '+logs.length+'/'+max+' · 오류 '+n('error')+' · 경고 '+n('warn'),
+ return ['FW12 3.7 · 실시간 요약','로그 '+logs.length+'/'+max+' · 오류 '+n('error')+' · 경고 '+n('warn'),
  'Firebase 권한 오류 '+denied+'회','네트워크 '+(navigator.onLine?'온라인':'오프라인'),
  denied?'권한 오류 감지됨 · 오류 분석 탭을 확인하세요.':'수집된 로그에서 권한 오류가 감지되지 않았습니다. 정상 작동을 보장하지는 않습니다.',
  '전체 수집 이벤트 '+totalCaptured+'회 · 최근 최대 '+max+'개 유지',
@@ -229,5 +229,5 @@ window.addEventListener('keydown',e=>{
   if(e.repeat)return;e.preventDefault();show(!opened);
  }
 });
-window.FormwheelDevTools={open:()=>show(true),close:()=>show(false),toggle:()=>show(!opened),exportReport,version:'3.5'};
+window.FormwheelDevTools={open:()=>show(true),close:()=>show(false),toggle:()=>show(!opened),exportReport,version:'3.7',diagnostics:()=>({version:'3.7',uptimeMs:Date.now()-startedAt,online:navigator.onLine,captured:totalCaptured,stored:logs.length,errors:logs.filter(x=>x.level==='error').reduce((n,x)=>n+x.repeat,0),warnings:logs.filter(x=>x.level==='warn').reduce((n,x)=>n+x.repeat,0),issues:logs.filter(x=>x.kind).map(x=>({kind:x.kind,count:x.repeat})).slice(-30)})};
 })();
