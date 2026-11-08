@@ -54,7 +54,7 @@ if(Array.isArray(window.__fwEarlyErrors)){
 function overviewLines(){
  const n=l=>logs.filter(x=>x.level===l).reduce((s,x)=>s+x.repeat,0);
  const denied=logs.filter(x=>x.kind&&x.kind.includes('권한 오류')).reduce((s,x)=>s+x.repeat,0);
- return ['FW12 3.5 · 실시간 요약','로그 '+logs.length+'/'+max+' · 오류 '+n('error')+' · 경고 '+n('warn'),
+ return ['FW12 3.6 · 실시간 요약','로그 '+logs.length+'/'+max+' · 오류 '+n('error')+' · 경고 '+n('warn'),
  'Firebase 권한 오류 '+denied+'회','네트워크 '+(navigator.onLine?'온라인':'오프라인'),
  denied?'권한 오류 감지됨 · 오류 분석 탭을 확인하세요.':'수집된 로그에서 권한 오류가 감지되지 않았습니다. 정상 작동을 보장하지는 않습니다.',
  '전체 수집 이벤트 '+totalCaptured+'회 · 최근 최대 '+max+'개 유지',
@@ -106,7 +106,7 @@ function nextReportFilename(){
  return 'FW12-report-'+date+'-'+parts.hour+'-'+String(count).padStart(3,'0')+'.json';
 }
 function exportReport(){
- const data={version:'3.5',createdAt:new Date().toISOString(),path:location.pathname,overview:overviewLines(),future:futureLines(),issues:issueLines(),performance:performanceLines(),logs:logs.map(({level,time,message,kind,repeat})=>({level,time,message,kind,repeat}))};
+ const data={version:'3.6',createdAt:new Date().toISOString(),path:location.pathname,overview:overviewLines(),future:futureLines(),issues:issueLines(),performance:performanceLines(),logs:logs.map(({level,time,message,kind,repeat})=>({level,time,message,kind,repeat}))};
  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
  const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=nextReportFilename();document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
@@ -153,7 +153,7 @@ style.textContent+=
 document.head.append(style);
 const toggle=document.createElement('button');toggle.id='fw-dev-toggle';toggle.type='button';toggle.textContent='</>';toggle.setAttribute('aria-label','FW12 열기');document.body.append(toggle);
 panel=document.createElement('section');panel.id='fw-dev-panel';panel.setAttribute('role','dialog');panel.setAttribute('aria-label','FW12 개발자 도구');
-panel.innerHTML='<div class="fw-head"><strong>🛠 FW12 · Developer Tools 3.5</strong><div><button type="button" data-act="copy">복사</button> <button type="button" data-act="export">보고서 ↓</button> <button type="button" data-act="pause">일시정지</button> <button type="button" data-act="clear">지우기</button> <button type="button" data-act="close">닫기</button></div></div><div class="fw-tabs"></div><div class="fw-controls"><select aria-label="로그 수준 필터"><option value="all">전체</option><option value="error">오류</option><option value="warn">경고</option><option value="info">정보</option><option value="log">로그</option></select><input aria-label="로그 검색" placeholder="로그 검색" autocomplete="off"></div><div class="fw-body" role="log" aria-live="off"></div>';
+panel.innerHTML='<div class="fw-head"><strong>🛠 FW12 · Developer Tools 3.6</strong><div><button type="button" data-act="copy">복사</button> <button type="button" data-act="export">보고서 ↓</button> <button type="button" data-act="pause">일시정지</button> <button type="button" data-act="clear">지우기</button> <button type="button" data-act="close">닫기</button></div></div><div class="fw-tabs"></div><div class="fw-controls"><select aria-label="로그 수준 필터"><option value="all">전체</option><option value="error">오류</option><option value="warn">경고</option><option value="info">정보</option><option value="log">로그</option></select><input aria-label="로그 검색" placeholder="로그 검색" autocomplete="off"></div><div class="fw-body" role="log" aria-live="off"></div>';
 document.body.append(panel);output=panel.querySelector('.fw-body');
 const selector=panel.querySelector('select'),query=panel.querySelector('input'),controls=panel.querySelector('.fw-controls');
 selector.addEventListener('change',()=>{filter=selector.value;render()});
@@ -172,6 +172,15 @@ function issueLines(){
   '확인 3: 로그인 완료 전에 쓰기를 시도하거나 다른 계정의 세션을 지우고 있지 않은지 확인하세요.',
   '주의: FW12는 Rules를 자동으로 변경하지 않습니다. 전체 공개 쓰기 권한을 부여하지 마세요.'
  );
+ if(counts.has('JavaScript 오류')){
+  lines.push('JavaScript 오류: 콘솔 탭에서 Location: 파일:줄:열 정보를 확인하세요.');
+  const located=logs.filter(x=>x.kind==='JavaScript 오류'&&x.message.includes('Location: ')).slice(-3);
+  for(const entry of located){
+   const match=entry.message.match(/Location:\s+(https?:\/\/[^\s]+|[^\s]+\.js[^\s]*)/);
+   if(match)lines.push('오류 위치: '+match[1]);
+  }
+  lines.push('SyntaxError가 발생한 스크립트는 실행되지 않을 수 있습니다. 해당 파일의 문법부터 수정하세요.');
+ }
  if(counts.has('Firebase 권한 오류'))lines.push('Firebase Rules와 auth.uid, 데이터 검증 조건을 확인하세요.');
  if(counts.has('방문 시간 누적 오류'))lines.push('방문 시간 트랜잭션이 커밋되지 않았습니다. 초기 null 상태·방문자 기록 존재 여부 및 Firebase 연결을 확인하세요.','기록이 반복되면 assets/live-presence.js의 최신 버전과 방문자 저장 권한을 확인하세요.');
  if(counts.has('방문자 기록 오류'))lines.push('방문자 최초 등록 트랜잭션이 중단되었습니다. 인증과 visitorStats/uniqueVisitors 규칙을 확인하세요.');
@@ -192,7 +201,7 @@ function render(){
  if(tab==='issues')lines=issueLines();
  if(tab==='network')lines=['네트워크 상태: '+(navigator.onLine?'온라인':'오프라인'),'이 화면은 요청 본문·인증 토큰을 수집하지 않습니다.','온라인 상태만으로 Firebase 접속 성공을 보장하지 않습니다.'];
  if(tab==='storage')lines=['localStorage 항목 수: '+safeCount('localStorage'),'sessionStorage 항목 수: '+safeCount('sessionStorage'),'보안상 저장된 키·값을 표시하지 않습니다.'];
- if(tab==='diagnostics')lines=['FW12 버전: 3.5','현재 경로: '+location.pathname,'연결: '+(navigator.onLine?'온라인':'오프라인'),'언어: '+navigator.language,'확인 시각: '+new Date().toLocaleString(),'수집 로그: '+logs.length+' / '+max,'전체 이벤트: '+totalCaptured,'로그 일시정지: '+(paused?'예 (화면 갱신만 중단)':'아니오'),'쓰기/삭제/Rules 변경 없이 실행하는 읽기 전용 진단입니다.'];
+ if(tab==='diagnostics')lines=['FW12 버전: 3.6','현재 경로: '+location.pathname,'연결: '+(navigator.onLine?'온라인':'오프라인'),'언어: '+navigator.language,'확인 시각: '+new Date().toLocaleString(),'수집 로그: '+logs.length+' / '+max,'전체 이벤트: '+totalCaptured,'로그 일시정지: '+(paused?'예 (화면 갱신만 중단)':'아니오'),'쓰기/삭제/Rules 변경 없이 실행하는 읽기 전용 진단입니다.'];
  if(!lines.length)lines=['기록 없음'];
  lines.forEach(item=>{const div=document.createElement('div');div.className='fw-line';const level=typeof item==='string'?'':item.level;div.classList.toggle('fw-warn',level==='warn');div.classList.toggle('fw-error',level==='error');div.textContent=typeof item==='string'?item:item.text;output.append(div)});
 }
