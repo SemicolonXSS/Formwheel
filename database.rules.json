@@ -16,6 +16,12 @@
       }
     },
     "formwheelV2": {
+      "rapidWallets": {
+        "$uid": {
+          ".read": "auth != null && auth.uid === $uid && auth.token.firebase.sign_in_provider !== 'anonymous'",
+          ".write": false
+        }
+      },
       "social": {
         "handles": {
           ".read": false,
