@@ -286,12 +286,16 @@ async function start(user){
  const sessionId=crypto.randomUUID().replace(/-/g,"");
  const node=ref(db,base+"/"+user.uid+"/"+sessionId);
  try{
-  await set(node,{joinedAt:serverTimestamp(),lastSeen:serverTimestamp(),project,accountType:user.isAnonymous?"guest":"account"});
-  if(token!==generation){await remove(node);return}
-  confirmedAt=Date.now();liveError="";renderLive();
+  // Register server-side disconnect cleanup before publishing the session.
+  // A disconnect between set() and onDisconnect() previously left ghost sessions.
   const guard=onDisconnect(node);
-  try{await guard.remove()}catch(error){await remove(node);throw error}
-  if(token!==generation){await guard.cancel();await remove(node);return}
+  await guard.remove();
+  if(token!==generation||!connection){await guard.cancel();return}
+  try{
+    await set(node,{joinedAt:serverTimestamp(),lastSeen:serverTimestamp(),project,accountType:user.isAnonymous?"guest":"account"});
+  }catch(error){await guard.cancel();throw error}
+  if(token!==generation||!connection){await guard.cancel();await remove(node);return}
+  confirmedAt=Date.now();liveError="";renderLive();
   registered=node;disconnect=guard;
   heartbeatTimer=setInterval(()=>{if(registered===node&&connection)set(ref(db,base+"/"+user.uid+"/"+sessionId+"/lastSeen"),serverTimestamp()).then(()=>{if(registered===node){confirmedAt=Date.now();liveError="";renderLive()}}).catch(()=>{if(registered===node){liveError="접속 갱신 실패";renderLive()}});},60000);
  }catch(error){if(token!==generation)return;confirmedAt=0;liveError="내 접속 등록 실패";renderLive();say("접속자 등록 실패 · Firebase Rules 확인 ("+(error.code||"연결 오류")+")")}
