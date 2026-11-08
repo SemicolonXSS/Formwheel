@@ -53,7 +53,7 @@
     ];
     function catalog() {
       const list = Array.isArray(typeof projects === 'undefined' ? null : projects) ? projects : [];
-      const valid = list.filter(p=>p && typeof p.name==='string' && typeof p.url==='string' && /^https?:///.test(p.url));
+      const valid = list.filter(p=>p && typeof p.name==='string' && typeof p.url==='string' && /^https?:\/\//.test(p.url));
       return fixed.concat(valid.map(p=>({name:(p.icon||'🎮')+' '+p.name,detail:p.description||p.category||'',keywords:p.keywords||'',url:p.url})));
     }
     function close() {
