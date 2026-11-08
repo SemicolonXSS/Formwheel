@@ -1,7 +1,7 @@
 (()=>{'use strict';
 if(window.__fwDevTools)return;
 window.__fwDevTools=true;
-const logs=[],max=300;
+const logs=[],max=600;
 let panel,output,tab='console',opened=false,filter='all',search='',paused=false;
 let totalCaptured=0;
 const startedAt=Date.now();
@@ -19,6 +19,9 @@ const safeString=v=>{
  }catch{return '[unavailable]'}
 };
 function classify(message){
+ if(/unexpected keyword ['"]?return|expected ['"]?\)|unexpected token|unterminated|missing \)/i.test(message))return 'JavaScript 문법 오류';
+ if(/quotaexceedederror|storage quota/i.test(message))return '저장소 용량 오류';
+ if(/chunkloaderror|loading chunk|failed to load module script/i.test(message))return '스크립트 로딩 오류';
  if(denyPattern.test(message))return sessionPattern.test(message)?'세션 저장 권한 오류':'Firebase 권한 오류';
  if(/duration_transaction_not_committed|방문 시간 누적 실패/i.test(message))return '방문 시간 누적 오류';
  if(/visitor_transaction_not_committed|방문 등록 실패/i.test(message))return '방문자 기록 오류';
@@ -54,7 +57,7 @@ if(Array.isArray(window.__fwEarlyErrors)){
 function overviewLines(){
  const n=l=>logs.filter(x=>x.level===l).reduce((s,x)=>s+x.repeat,0);
  const denied=logs.filter(x=>x.kind&&x.kind.includes('권한 오류')).reduce((s,x)=>s+x.repeat,0);
- return ['FW12 3.7 · 실시간 요약','로그 '+logs.length+'/'+max+' · 오류 '+n('error')+' · 경고 '+n('warn'),
+ return ['FW12 4.0 · 실시간 요약','로그 '+logs.length+'/'+max+' · 오류 '+n('error')+' · 경고 '+n('warn'),
  'Firebase 권한 오류 '+denied+'회','네트워크 '+(navigator.onLine?'온라인':'오프라인'),
  denied?'권한 오류 감지됨 · 오류 분석 탭을 확인하세요.':'수집된 로그에서 권한 오류가 감지되지 않았습니다. 정상 작동을 보장하지는 않습니다.',
  '전체 수집 이벤트 '+totalCaptured+'회 · 최근 최대 '+max+'개 유지',
@@ -106,7 +109,7 @@ function nextReportFilename(){
  return 'FW12-report-'+date+'-'+parts.hour+'-'+String(count).padStart(3,'0')+'.json';
 }
 function exportReport(){
- const data={version:'3.6',createdAt:new Date().toISOString(),path:location.pathname,overview:overviewLines(),future:futureLines(),issues:issueLines(),performance:performanceLines(),logs:logs.map(({level,time,message,kind,repeat})=>({level,time,message,kind,repeat}))};
+ const data={version:'4.0',createdAt:new Date().toISOString(),path:location.pathname,overview:overviewLines(),future:futureLines(),issues:issueLines(),triage:triageLines(),health:healthSnapshot(),performance:performanceLines(),logs:logs.map(({level,time,message,kind,repeat})=>({level,time,message,kind,repeat}))};
  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
  const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=nextReportFilename();document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
@@ -186,16 +189,33 @@ function issueLines(){
  if(counts.has('방문자 기록 오류'))lines.push('방문자 최초 등록 트랜잭션이 중단되었습니다. 인증과 visitorStats/uniqueVisitors 규칙을 확인하세요.');
  return lines;
 }
+function healthSnapshot(){
+ const counts={};for(const entry of logs){if(entry.kind)counts[entry.kind]=(counts[entry.kind]||0)+entry.repeat}
+ return {version:'4.0',uptimeMs:Date.now()-startedAt,online:navigator.onLine,captured:totalCaptured,stored:logs.length,errors:logs.filter(x=>x.level==='error').reduce((n,x)=>n+x.repeat,0),warnings:logs.filter(x=>x.level==='warn').reduce((n,x)=>n+x.repeat,0),issueCounts:counts};
+}
+function triageLines(){
+ const snap=healthSnapshot();const lines=['FW12 4.0 · 자동 오류 분류','오류 '+snap.errors+'회 · 경고 '+snap.warnings+'회','로그 '+snap.stored+'/'+max];
+ for(const [kind,count] of Object.entries(snap.issueCounts).sort((a,b)=>b[1]-a[1])){
+  lines.push(kind+' · '+count+'회');
+  if(kind==='JavaScript 문법 오류')lines.push('스크립트의 파일명·줄 번호를 확인하고, 배포 전에 node --check로 검사하세요.');
+  if(kind==='세션 저장 권한 오류')lines.push('Firebase liveHubSessions 경로의 auth 및 Rules를 확인하세요. FW12는 규칙을 변경하지 않습니다.');
+  if(kind==='스크립트 로딩 오류')lines.push('요청 URL과 캐시 버전, GitHub Pages 배포 상태를 확인하세요.');
+  if(kind==='저장소 용량 오류')lines.push('저장 공간 부족 가능성. 사용자 데이터는 자동 삭제하지 않습니다.');
+ }
+ if(!Object.keys(snap.issueCounts).length)lines.push('현재 수집된 분류 오류 없음 · 정상 작동 보장은 아님');
+ return lines;
+}
 function render(){
  const tabs=panel.querySelector('.fw-tabs');tabs.replaceChildren();
- ['overview','future','console','issues','performance','network','storage','diagnostics'].forEach(name=>{
-  const b=document.createElement('button');b.type='button';b.textContent=({overview:'요약',future:'미래 진단',console:'콘솔',issues:'오류 분석',performance:'성능',network:'네트워크',storage:'저장소',diagnostics:'진단'})[name];
+ ['overview','future','triage','console','issues','performance','network','storage','diagnostics'].forEach(name=>{
+  const b=document.createElement('button');b.type='button';b.textContent=({overview:'요약',future:'미래 진단',triage:'자동 분류',console:'콘솔',issues:'오류 분석',performance:'성능',network:'네트워크',storage:'저장소',diagnostics:'진단'})[name];
   b.setAttribute('aria-pressed',String(tab===name));b.onclick=()=>{tab=name;render()};tabs.append(b);
  });
  controls.hidden=!(tab==='console');
  output.replaceChildren();let lines=[];
  if(tab==='overview')lines=overviewLines();
  if(tab==='future')lines=futureLines();
+ if(tab==='triage')lines=triageLines();
  if(tab==='performance')lines=performanceLines();
  if(tab==='console')lines=logs.filter(x=>(filter==='all'||x.level===filter)&&(!search||x.message.toLowerCase().includes(search))).map(x=>({text:'['+x.time+'] ['+x.level+']'+(x.repeat>1?' x'+x.repeat:'')+' '+x.message,level:x.level}));
  if(tab==='issues')lines=issueLines();
@@ -229,5 +249,6 @@ window.addEventListener('keydown',e=>{
   if(e.repeat)return;e.preventDefault();show(!opened);
  }
 });
-window.FormwheelDevTools={open:()=>show(true),close:()=>show(false),toggle:()=>show(!opened),exportReport,version:'3.7',diagnostics:()=>({version:'3.7',uptimeMs:Date.now()-startedAt,online:navigator.onLine,captured:totalCaptured,stored:logs.length,errors:logs.filter(x=>x.level==='error').reduce((n,x)=>n+x.repeat,0),warnings:logs.filter(x=>x.level==='warn').reduce((n,x)=>n+x.repeat,0),issues:logs.filter(x=>x.kind).map(x=>({kind:x.kind,count:x.repeat})).slice(-30)})};
+window.FormwheelDevTools={open:()=>show(true),close:()=>show(false),toggle:()=>show(!opened),exportReport,version:'4.0',diagnostics:healthSnapshot,triage:triageLines};
 })();
+

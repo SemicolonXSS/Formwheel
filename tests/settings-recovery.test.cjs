@@ -72,3 +72,11 @@ test('achievement notifications honor the saved off switch',async()=>{
  await h.ctx.window.testNotify({icon:'x',title:'test'});
  const toast=h.doc.body.children[0];assert(!toast.classes.has('show'));
 });
+test('FW12 syntax diagnostics parse and classify unmatched-parenthesis reports',()=>{
+ const code=read('assets/formwheel-devtools.js');assert.doesNotThrow(()=>new vm.Script(code));
+ const start=code.indexOf('function classify(message){'),end=code.indexOf('\nfunction record(',start);
+ const classify=vm.runInNewContext('const denyPattern=/permission[_ -]?denied/i,sessionPattern=/liveHubSessions/;'+code.slice(start,end)+';classify');
+ assert.equal(classify("SyntaxError: Unexpected keyword 'return'. Expected ')'"),'JavaScript 문법 오류');
+ assert.equal(classify('missing )'),'JavaScript 문법 오류');
+ assert.equal(classify('permission_denied /formwheelV2/liveHubSessions/x/y'),'세션 저장 권한 오류');
+});

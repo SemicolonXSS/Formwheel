@@ -45,7 +45,7 @@ const server=http.createServer((req,res)=>{
   console.log('PASS browser: desktop preferences, keyboard focus and compact search');
   const mobile=await page({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
   await mobile.page.evaluate(()=>{window.__scrollCalls=0;const original=window.scrollTo;window.scrollTo=function(...args){window.__scrollCalls++;return original.apply(this,args);};});
-  await mobile.page.click('#fw-vk-toggle');await mobile.page.getByText('카드 아래로',{exact:true}).click();
+  await mobile.page.click('#fw-vk-toggle');await mobile.page.getByRole('button',{name:'↓ 카드 아래로',exact:true}).click();
   assert.equal(await mobile.page.evaluate(()=>window.__scrollCalls),1);
   assert.deepEqual(mobile.errors,[]);await mobile.context.close();
   console.log('PASS browser: touch shortcut dispatch scrolls once');
