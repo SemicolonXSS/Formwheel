@@ -4,7 +4,10 @@
 const $=id=>document.getElementById(id),canvas=$('scene'),ctx=canvas.getContext('2d'),PI=Math.PI,rad=d=>d*PI/180;
 const palette={white:'#fff',red:'#ff6475',green:'#4ade80',blue:'#60a5fa',yellow:'#fde047'};
 const names={white:'흰색',red:'빨강',green:'초록',blue:'파랑',yellow:'노랑'};
-const layouts=[];const stagePaths=Array.from({length:12},(_,i)=>{const count=[1,1,2,2,3,3,1,2,3,3,2,3][i];const source=[65,120+(i*53)%290],goal=[820,110+(i*71)%330];const ys=[75+(i*97)%400,85+(i*137+100)%380,70+(i*83+190)%390];const points=Array.from({length:count},(_,j)=>[240+j*(count===3?190:count===2?275:0),ys[j]]);return {source,goal,points}});function solutionAngle(prev,at,next){let a=Math.atan2(at[1]-prev[1],at[0]-prev[0]),b=Math.atan2(next[1]-at[1],next[0]-at[0]);let deg=(a+b)*90/Math.PI;while(deg>90)deg-=180;while(deg< -90)deg+=180;return deg}
+// Every board is constructed from integer-degree mirror solutions and ray-traced against walls.
+const stagePaths=[{"source":[65,312],"points":[[285,423]],"goal":[820,104.41734137356752]},{"source":[65,230],"points":[[285,120]],"goal":[820,87.88764452302304]},{"source":[65,202],"points":[[235,155],[535,99.15213370399584]],"goal":[820,91.91534235269522]},{"source":[65,194],"points":[[235,245],[535,361.96967111759636]],"goal":[820,294.5945565570219]},{"source":[65,296],"points":[[235,335],[425,238.52096112398215],[615,241.5745477306479]],"goal":[820,245.436478813521]},{"source":[65,248],"points":[[235,298],[425,405.9809061882836],[615,454.7276442194804]],"goal":[820,438.9913988360407]},{"source":[65,249],"points":[[285,273]],"goal":[820,424.1292824298133]},{"source":[65,347],"points":[[235,133],[535,99.01360670982719]],"goal":[820,141.42086714584786]},{"source":[65,345],"points":[[235,165],[425,214.62083840542255],[615,281.39409501318266]],"goal":[820,470.142929364945]},{"source":[65,264],"points":[[235,260],[425,298.13091478344165],[615,231.4155338804349]],"goal":[820,399.4924060046378]},{"source":[65,305],"points":[[235,415],[535,410.25976470818756]],"goal":[820,333.38884023182646]},{"source":[65,327],"points":[[235,170],[425,292.08736970439],[615,269.68887785843685]],"goal":[820,434.0622650083428]}];
+const integerSolutions=[[-2],[-15],[-13,-6],[19,4],[-7,-13,1],[23,22,5],[11],[-29,1],[-16,17,31],[5,-4,10],[16,-8],[-5,13,16]];
+
 const specs=[
 [1,'white','white',null],[1,'red','red',null],[2,'blue','blue',null],[2,'green','yellow','yellow'],
 [3,'red','blue','blue'],[3,'white','green','green'],[1,'yellow','red','red'],
@@ -30,6 +33,8 @@ if(color===specs[level][2]&&(!fil||converted)&&visited.length===specs[level][0]&
 if(!h)break;if(h.type==='wall')break;visited.push(h.index);
 let m=mirrors()[h.index],v=[Math.cos(rad(m.angle)),Math.sin(rad(m.angle))],projection=dot(d,v);d=[2*projection*v[0]-d[0],2*projection*v[1]-d[1]];p=[end[0]+d[0]*.1,end[1]+d[1]*.1]}
 return {segments,hit,visited,converted}}
+// Fail loudly during development if a later layout edit makes a stage unsolvable.
+function validateStages(){const savedLevel=level,savedAngles=angles;try{for(let i=0;i<stagePaths.length;i++){level=i;angles=integerSolutions[i].slice();if(!trace().hit)console.error('OPTICAL CHAOS: integer solution invalid for stage '+(i+1));}}finally{level=savedLevel;angles=savedAngles}}
 function render(){let [count,start,goal]=specs[level],ms=mirrors(),tgt=target();ctx.clearRect(0,0,900,560);ctx.fillStyle='#111c32';ctx.fillRect(0,0,900,560);ctx.strokeStyle='#23344c';ctx.lineWidth=1;for(let x=0;x<=900;x+=50){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,560);ctx.stroke()}for(let y=0;y<=560;y+=50){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(900,y);ctx.stroke()}
 for(let b of blockers()){ctx.fillStyle='#9f1239';ctx.fillRect(b.x,b.y,b.w,b.h);ctx.strokeStyle='#fda4af';ctx.lineWidth=3;ctx.strokeRect(b.x,b.y,b.w,b.h)}
 let f=filter();if(f){ctx.fillStyle='#a78bfa';ctx.strokeStyle=palette[f.color];ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(f.x-30,f.y+30);ctx.lineTo(f.x,f.y-35);ctx.lineTo(f.x+30,f.y+30);ctx.closePath();ctx.fill();ctx.stroke();ctx.fillStyle='#fff';ctx.font='14px system-ui';ctx.fillText('프리즘',f.x-27,f.y+53)}
@@ -47,5 +52,5 @@ function point(e){let r=canvas.getBoundingClientRect();return [(e.clientX-r.left
 canvas.onpointerdown=e=>{let p=point(e),ms=mirrors();drag=ms.findIndex(m=>Math.hypot(p[0]-m.x,p[1]-m.y)<95);if(drag>=0)canvas.setPointerCapture(e.pointerId)};
 canvas.onpointermove=e=>{if(drag<0)return;let p=point(e),m=mirrors()[drag],angle=Math.atan2(p[1]-m.y,p[0]-m.x)*180/PI;angle=Math.max(-90,Math.min(90,Math.round(angle)));angles[drag]=angle;$('m'+drag).value=angle;$('out'+drag).textContent=angle+'°';active=false;render()};
 canvas.onpointerup=()=>drag=-1;canvas.onpointercancel=()=>drag=-1;
-load();
+validateStages();load();
 </script></body></html>
