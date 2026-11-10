@@ -15,7 +15,13 @@ const key=()=>PREFIX+account;
 const preview=document.getElementById('lab-preview');
 function updatePreview(){
   const enabled=ready?Object.entries(read()).filter(([,on])=>on).map(([id])=>id):[];
-  // The sandbox has an opaque origin. Send only public feature identifiers.
+  // Only public feature identifiers are passed; no account identifiers or credentials.
+  const hash='#enabled='+encodeURIComponent(enabled.join(','));
+  const target='https://semicolonxss.github.io/FormLab/lab-preview.html'+hash;
+  const link=document.getElementById('lab-preview-link');
+  if(link)link.href=target;
+  // Hash transport works even if a sandboxed iframe misses the first message.
+  if(preview && preview.getAttribute('src')!==target)preview.setAttribute('src',target);
   preview?.contentWindow?.postMessage({type:'formwheel-beta-preview',enabled},'*');
 }
 preview?.addEventListener('load',updatePreview);
