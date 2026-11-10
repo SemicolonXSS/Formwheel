@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#10172d"><title>Formwheel | 랜덤 탐험 미션</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,-apple-system,sans-serif}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 80% 0%,#293d77,#10172d 55%);color:#f5f7ff;display:grid;place-items:center;padding:20px}
+main{width:min(100%,620px);background:#ffffff0c;border:1px solid #ffffff29;border-radius:24px;padding:clamp(20px,5vw,40px);box-shadow:0 20px 60px #0005}
+small{color:#a8baff;letter-spacing:.12em;font-weight:800}h1{font-size:clamp(26px,6vw,40px);margin:10px 0}p{line-height:1.65;color:#cdd6f6}
+#mission{margin:25px 0;padding:24px;background:#ffffff10;border:1px solid #ffffff28;border-radius:18px;min-height:125px}
+#mission strong{font-size:23px;display:block;margin-bottom:10px}#mission span{color:#d0dcff}
+.controls{display:flex;gap:10px;flex-wrap:wrap}button,a.action{border:0;border-radius:12px;padding:13px 18px;font:inherit;font-weight:750;cursor:pointer;text-decoration:none}
+button{background:#9bb5ff;color:#0a1633}button.secondary{background:#ffffff20;color:white}a.action{background:#ffffff12;color:#fff}
+button:focus-visible,a:focus-visible{outline:3px solid #ffcf6b;outline-offset:3px}
+footer{margin-top:22px;color:#aab5d5;font-size:13px}
+</style></head>
+<body><main>
+<small>FORMWHEEL · MINI EXPERIMENT</small><h1>🎲 랜덤 탐험 미션</h1>
+<p>오늘 뭘 할지 모르겠다면 버튼 한 번! 저장 데이터나 로그인 정보는 건드리지 않는 가벼운 미션 뽑기야.</p>
+<section id="mission" aria-live="polite"><strong>준비 완료!</strong><span>아래 버튼을 눌러 오늘의 미션을 받아봐.</span></section>
+<div class="controls"><button id="draw">🎲 미션 뽑기</button><button id="copy" class="secondary">📋 복사</button><a class="action" href="./index.html">🏠 허브로</a></div>
+<footer>이 페이지는 로컬 브라우저에서만 작동하며 Firebase에 쓰지 않습니다.</footer>
+</main><script>
+'use strict';
+const missions=[
+['탐험가','허브에서 평소 안 해본 프로젝트 하나를 찾아 3분 동안 체험하기'],
+['기록 사냥꾼','좋아하는 게임에서 자신의 기록을 한 번 갱신해 보기'],
+['디자인 관찰자','Formwheel에서 마음에 드는 UI 요소 3개 찾아보기'],
+['버그 탐정','게임 하나를 테스트하고 재현 가능한 개선점 한 가지 적기'],
+['랜덤 여행자','허브에서 서로 다른 카테고리의 프로젝트 두 개 체험하기'],
+['비밀 연구원','SECRET 관련 요소를 찾아 힌트 하나 기록하기'],
+['친구에게 소개','마음에 드는 프로젝트를 한 문장으로 설명해 보기'],
+['초보자 시점','처음 방문한 사람이라 생각하고 허브에서 길 찾기 테스트하기'],
+['속도 도전자','반응속도 또는 짧은 게임을 세 번 플레이하고 변화 비교하기'],
+['아이디어 제작자','다음 Formwheel 업데이트에 넣을 작은 기능 하나 생각하기']
+];
+let current='';
+document.getElementById('draw').addEventListener('click',()=>{
+const index=Math.floor(Math.random()*missions.length),m=missions[index];
+current=m[0]+' — '+m[1];
+const box=document.getElementById('mission');box.replaceChildren();
+const title=document.createElement('strong');title.textContent='✨ '+m[0];
+const detail=document.createElement('span');detail.textContent=m[1];
+box.append(title,detail);
+});
+document.getElementById('copy').addEventListener('click',async()=>{
+if(!current){document.getElementById('draw').focus();return;}
+try{await navigator.clipboard.writeText(current);document.getElementById('copy').textContent='✅ 복사됨';}
+catch{document.getElementById('copy').textContent='복사 불가';}
+});
+</script></body></html>
