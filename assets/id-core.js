@@ -9,6 +9,8 @@ const auth=getAuth(app), db=getDatabase(app);
 // Explicitly retain Firebase authentication across reloads and browser restarts.
 // A rejected persistence setup must be reported, not silently treated as logout.
 const authPersistenceReady=setPersistence(auth,browserLocalPersistence);
+// Wait for Firebase to restore persisted credentials before exposing login controls.
+const authInitializationReady=auth.authStateReady();
 const home=window.FormwheelHubHome, status=document.getElementById("fw-id-status"), login=document.getElementById("fw-id-login"), logout=document.getElementById("fw-id-logout");
 const show=t=>{if(status)status.textContent=t};
 let uid=null,unsubscribe=null,applying=false,ready=false,accountGeneration=0,writeQueue=Promise.resolve();
@@ -16,6 +18,9 @@ const guestKey="fw:hub:guest:v1";
 const readGuest=()=>{try{return JSON.parse(localStorage.getItem(guestKey))}catch{return null}};
 const keepGuest=()=>{try{localStorage.setItem(guestKey,JSON.stringify(home.read()))}catch{}};
 let activeAccount=false;
+// Do not flash a signed-out state while Firebase restores the previous session.
+if(login){login.hidden=true;login.disabled=true}
+if(logout)logout.hidden=true;
 const clean=raw=>{
  const valid=new Set(homeIds());
  const ids=(list,max)=>[...new Set((Array.isArray(list)?list:[]).filter(x=>typeof x==="string"&&valid.has(x)))].slice(0,max);
@@ -120,6 +125,7 @@ function syncProfile(user){
  profileUnsubscribe=onValue(ref(db,"formwheelV2/hubProfiles/"+user.uid),snap=>{if(ticket===profileGeneration)display(snap.val())},()=>{if(ticket===profileGeneration)display({})});
 }
 authPersistenceReady.catch(error=>{console.warn("Formwheel auth persistence unavailable",error);show("로그인 저장소를 사용할 수 없어요. 브라우저의 사이트 데이터 저장 설정을 확인해 주세요.");});
+authInitializationReady.then(()=>{if(login)login.disabled=false}).catch(error=>{console.warn("Formwheel auth initialization failed",error);if(login)login.disabled=false;});
 onAuthStateChanged(auth,user=>{
  const ticket=++accountGeneration;
  const switched=activeAccount&&uid&&user?.uid!==uid;
@@ -141,6 +147,7 @@ login?.addEventListener("click",async()=>{
  show("Google 로그인 창을 여는 중…");
  try{
   await authPersistenceReady;
+  await authInitializationReady;
   await signInWithPopup(auth,new GoogleAuthProvider());
   show("로그인 확인 중…");
  }catch(e){
