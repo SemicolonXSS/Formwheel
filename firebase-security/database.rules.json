@@ -542,7 +542,8 @@
             "$other": {
               ".validate": false
             }
-          }
+          },
+          ".read": "auth != null && (auth.token.admin === true || auth.token.producer === true || (auth.token.email === 'not404spam@gmail.com' && auth.token.email_verified === true))"
         },
         "approved": {
           "$uid": {
