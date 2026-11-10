@@ -523,6 +523,46 @@
             ".validate": "newData.val() === true && $badgeId.matches(/^(base|day40|master|share|day50)$/) && root.child('formwheelV2/anniversary4050').child($uid).child('badges').child($badgeId).exists()"
           }
         }
+      },
+      "threadsExchange": {
+        "submissions": {
+          "$uid": {
+            ".read": "auth != null && (auth.uid === $uid || (auth != null && (auth.token.admin === true || auth.token.producer === true || (auth.token.email === 'not404spam@gmail.com' && auth.token.email_verified === true))))",
+            ".write": "auth != null && auth.uid === $uid && !data.exists() && newData.exists()",
+            ".validate": "newData.hasChildren(['url','handle','createdAt']) && newData.child('url').isString() && newData.child('url').val().matches(/^https:\\/\\/(www\\.)?threads\\.(net|com)\\/@[A-Za-z0-9._]{1,30}\\/?$/) && newData.child('handle').isString() && newData.child('handle').val().matches(/^[A-Za-z0-9._]{1,30}$/) && newData.child('createdAt').isNumber() && newData.child('createdAt').val() <= now + 60000 && newData.child('createdAt').val() >= now - 300000",
+            "url": {
+              ".validate": "newData.isString()"
+            },
+            "handle": {
+              ".validate": "newData.isString()"
+            },
+            "createdAt": {
+              ".validate": "newData.isNumber()"
+            },
+            "$other": {
+              ".validate": false
+            }
+          }
+        },
+        "approved": {
+          "$uid": {
+            ".read": true,
+            ".write": "auth != null && (auth.token.admin === true || auth.token.producer === true || (auth.token.email === 'not404spam@gmail.com' && auth.token.email_verified === true))",
+            ".validate": "newData.hasChildren(['url','handle','createdAt']) && newData.child('url').isString() && newData.child('url').val().matches(/^https:\\/\\/(www\\.)?threads\\.(net|com)\\/@[A-Za-z0-9._]{1,30}\\/?$/) && newData.child('handle').isString() && newData.child('handle').val().matches(/^[A-Za-z0-9._]{1,30}$/) && newData.child('createdAt').isNumber()",
+            "url": {
+              ".validate": "newData.isString()"
+            },
+            "handle": {
+              ".validate": "newData.isString()"
+            },
+            "createdAt": {
+              ".validate": "newData.isNumber()"
+            },
+            "$other": {
+              ".validate": false
+            }
+          }
+        }
       }
     },
     "formwheelAIUsers": {
