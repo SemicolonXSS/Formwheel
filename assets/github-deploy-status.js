@@ -63,6 +63,68 @@
         const summary=document.createElement('summary');summary.style.cursor='pointer';
         summary.textContent=repo.name+' · 코드 업데이트 '+ago(repo.pushed_at);
         group.append(summary);list.append(group);
+        // On-demand file history: no repository contents or credentials are modified.
+        const fileTools=document.createElement('div');
+        fileTools.style.cssText='margin:10px 0;padding:9px;border:1px solid #e5e7eb;border-radius:9px';
+        const fileLabel=document.createElement('label');
+        fileLabel.textContent='파일별 수정·배포 추적';
+        fileLabel.style.cssText='display:block;font-weight:600;margin-bottom:6px';
+        const fileInput=document.createElement('input');
+        fileInput.type='text';fileInput.placeholder='예: index.html 또는 assets/id-core.js';
+        fileInput.setAttribute('aria-label',repo.name+' 파일 경로');
+        fileInput.style.cssText='box-sizing:border-box;width:100%;padding:9px;border:1px solid #cbd5e1;border-radius:8px';
+        const fileButton=document.createElement('button');
+        fileButton.type='button';fileButton.textContent='파일 기록 확인';
+        fileButton.style.cssText='margin-top:7px;padding:8px 11px;border-radius:8px;cursor:pointer';
+        const fileResult=document.createElement('div');
+        fileResult.setAttribute('role','status');
+        fileResult.style.cssText='margin-top:8px;overflow-wrap:anywhere';
+        fileTools.append(fileLabel,fileInput,fileButton,fileResult);
+        group.append(fileTools);
+        fileButton.addEventListener('click',async()=>{
+          const path=fileInput.value.trim();
+          if(!path||path.length>300||path.startsWith('/')||path.includes('..')||/[?#\\\\]/.test(path)){
+            fileResult.textContent='저장소 기준 상대 경로를 입력해 주세요 (예: assets/app.js).';return;
+          }
+          fileButton.disabled=true;fileResult.replaceChildren();
+          fileResult.textContent='파일 수정 기록 조회 중…';
+          try{
+            const commits=await fetchJson(api+'/repos/'+owner+'/'+encodeURIComponent(repo.name)+'/commits?path='+encodeURIComponent(path)+'&per_page=1');
+            if(ticket!==generation||!allowed)return;
+            if(!commits.length){fileResult.textContent='해당 경로의 공개 커밋 기록을 찾지 못했어요.';return;}
+            const commit=commits[0];
+            const sha=commit.sha;
+            const when=commit.commit?.committer?.date||commit.commit?.author?.date;
+            fileResult.replaceChildren();
+            const headline=document.createElement('p');
+            headline.textContent='마지막 파일 수정: '+ago(when)+' · '+sha.slice(0,7);
+            fileResult.append(headline);
+            const commitLink=document.createElement('a');
+            commitLink.href='https://github.com/'+owner+'/'+encodeURIComponent(repo.name)+'/commit/'+sha;
+            commitLink.target='_blank';commitLink.rel='noopener noreferrer';
+            commitLink.textContent='수정 커밋 확인';
+            fileResult.append(commitLink);
+            const check=document.createElement('p');
+            check.textContent='이 커밋의 Actions 기록 확인 중…';fileResult.append(check);
+            try{
+              const runs=await fetchJson(api+'/repos/'+owner+'/'+encodeURIComponent(repo.name)+'/actions/runs?head_sha='+encodeURIComponent(sha)+'&per_page=30');
+              if(ticket!==generation||!allowed)return;
+              const matching=(runs.workflow_runs||[]).filter(r=>r.head_sha===sha);
+              if(!matching.length){
+                check.textContent='이 커밋에 연결된 Actions 실행 기록 없음 · 파일 배포 여부 미확인';
+              }else{
+                const succeeded=matching.filter(r=>r.conclusion==='success');
+                check.textContent='관련 Actions '+matching.length+'건 · 성공 '+succeeded.length+'건 · 파일의 실제 사이트 반영은 별도 확인 필요';
+                for(const run of matching.slice(0,5)){
+                  const line=document.createElement('div');
+                  line.textContent=(run.name||'Workflow')+' · '+outcome(run)+' · '+ago(run.updated_at||run.created_at);
+                  fileResult.append(line);
+                }
+              }
+            }catch(error){check.textContent='커밋은 확인됨 · Actions 상태 조회 실패 ('+error.message+')';}
+          }catch(error){fileResult.textContent='파일 기록 조회 실패 ('+error.message+')';}
+          finally{fileButton.disabled=false;}
+        });
         let loaded=false;
         group.addEventListener('toggle',async()=>{
           if(!group.open||loaded||ticket!==generation||!allowed)return;
