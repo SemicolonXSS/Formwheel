@@ -15,7 +15,7 @@
   const auth = getAuth(app);
   const box = document.createElement('div');
   const info = document.createElement('small');
-  info.textContent='GitHub 공개 Actions 기록 · 표시 시간은 실행 완료 시각 기준이며 실제 사이트 반영과 다를 수 있습니다.';
+  info.textContent='GitHub Pages 배포 상태와 Actions 실행 기록을 구분해 표시합니다.';
   const refresh = document.createElement('button');
   refresh.type='button'; refresh.textContent='↻ 새로고침';
   refresh.style.cssText='padding:9px 12px;border-radius:9px;cursor:pointer;margin:8px 0';
@@ -30,8 +30,6 @@
     if(!response.ok)throw Error('HTTP '+response.status);
     return response.json();
   }
-  let repos=[];
-  const workflows=[{name:'Pages',id:'pages-build-deployment'},{name:'건강검진',id:'automation-healthcheck.yml'},{name:'방문자',id:'visitor-count-sync.yml'}];
   let allowed=false, busy=false, generation=0;
   const ago = iso => {
     const n=Date.parse(iso);
@@ -54,7 +52,7 @@
         if(batch.length<100)break;
       }
       if(ticket!==generation)return;
-      repos=all.filter(r=>r.name==='FormLab'||r.name==='Formwheel'||r.name.startsWith('Formwheel_'));
+      const repos=all.filter(r=>r.name==='FormLab'||r.name==='Formwheel'||r.name.startsWith('Formwheel_'));
       message.textContent=repos.length+'개 프로젝트 연결 · 저장소 업데이트와 실제 배포 시각은 다릅니다.';
       const list=document.createElement('div');list.style.cssText='display:grid;gap:8px';box.append(list);
       for(const repo of repos){
@@ -125,16 +123,34 @@
           }catch(error){fileResult.textContent='파일 기록 조회 실패 ('+error.message+')';}
           finally{fileButton.disabled=false;}
         });
+        const repoApi=api+'/repos/'+owner+'/'+encodeURIComponent(repo.name);
+        const deployment=document.createElement('p');
+        group.append(deployment);
+        async function showPagesDeployment(){
+          deployment.textContent='GitHub Pages 배포 확인 중…';
+          try{
+            const records=await fetchJson(repoApi+'/deployments?environment=github-pages&per_page=1');
+            if(!records.length){deployment.textContent='공개 GitHub Pages 배포 기록 없음';return;}
+            const statuses=await fetchJson(repoApi+'/deployments/'+encodeURIComponent(records[0].id)+'/statuses?per_page=1');
+            if(ticket!==generation||!allowed)return;
+            const latest=statuses[0];
+            const state={success:'성공',failure:'실패',error:'오류',inactive:'비활성',in_progress:'진행 중',queued:'대기 중',pending:'대기 중'};
+            deployment.textContent=latest
+              ?'최근 Pages 배포 · '+(state[latest.state]||latest.state)+' · '+ago(latest.created_at)
+              :'Pages 배포 상태 기록 없음';
+          }catch(error){deployment.textContent='Pages 배포 조회 불가 ('+error.message+')';}
+        }
         let loaded=false;
         group.addEventListener('toggle',async()=>{
           if(!group.open||loaded||ticket!==generation||!allowed)return;
           loaded=true;
-          const state=document.createElement('p');state.textContent='배포 실행 기록 조회 중…';group.append(state);
+          void showPagesDeployment();
+          const state=document.createElement('p');state.textContent='Actions 실행 기록 조회 중…';group.append(state);
           try{
             const data=await fetchJson(api+'/repos/'+owner+'/'+encodeURIComponent(repo.name)+'/actions/runs?per_page=5');
             if(ticket!==generation||!allowed)return;
             const runs=data.workflow_runs||[];
-            state.textContent=runs.length?'최근 실행 기록':'공개 Actions 실행 기록 없음';
+            state.textContent=runs.length?'최근 Actions 실행 기록':'공개 Actions 실행 기록 없음';
             for(const run of runs){
               const row=document.createElement('div');row.style.cssText='padding:5px 0;overflow-wrap:anywhere';
               const label=document.createElement('span');
@@ -149,18 +165,20 @@
         });
       }
     }catch(error){if(ticket===generation)message.textContent='저장소 목록 조회 실패 ('+error.message+')';}
-    finally{busy=false;refresh.disabled=false;}
+    finally{if(ticket===generation){busy=false;refresh.disabled=false;}}
   }
   refresh.addEventListener('click',load);
   onAuthStateChanged(auth,async user=>{
     const ticket=++generation;
-    allowed=false;box.replaceChildren();host.hidden=true;
+    allowed=false;busy=false;refresh.disabled=false;box.replaceChildren();host.hidden=true;
     if(!user||user.isAnonymous)return;
     try{
       const token=await getIdTokenResult(user);
       if(ticket!==generation)return;
-      // Server-issued custom claims, never a user-editable email or localStorage flag.
-      allowed=token.claims.admin===true||token.claims.producer===true;
+      // Match the verified operator and role policy used by the hub.
+      const claims=token.claims;
+      allowed=claims.admin===true||claims.producer===true||
+        (claims.email==='not404spam@gmail.com'&&claims.email_verified===true);
       host.hidden=!allowed;
       if(allowed){message.textContent='고급 탭에서 상태를 확인하세요.';if(document.querySelector('[data-fw21="advanced"][aria-selected="true"]'))load();}
     }catch(e){if(ticket===generation)console.warn('Deployment status authorization unavailable',e.code||e.message);}
