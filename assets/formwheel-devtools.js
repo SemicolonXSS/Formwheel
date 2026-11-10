@@ -57,7 +57,7 @@ if(Array.isArray(window.__fwEarlyErrors)){
 function overviewLines(){
  const n=l=>logs.filter(x=>x.level===l).reduce((s,x)=>s+x.repeat,0);
  const denied=logs.filter(x=>x.kind&&x.kind.includes('권한 오류')).reduce((s,x)=>s+x.repeat,0);
- return ['FW12 4.0 · 실시간 요약','로그 '+logs.length+'/'+max+' · 오류 '+n('error')+' · 경고 '+n('warn'),
+ return ['FW12 4.1 · 실시간 요약','로그 '+logs.length+'/'+max+' · 오류 '+n('error')+' · 경고 '+n('warn'),
  'Firebase 권한 오류 '+denied+'회','네트워크 '+(navigator.onLine?'온라인':'오프라인'),
  denied?'권한 오류 감지됨 · 오류 분석 탭을 확인하세요.':'수집된 로그에서 권한 오류가 감지되지 않았습니다. 정상 작동을 보장하지는 않습니다.',
  '전체 수집 이벤트 '+totalCaptured+'회 · 최근 최대 '+max+'개 유지',
@@ -109,7 +109,7 @@ function nextReportFilename(){
  return 'FW12-report-'+date+'-'+parts.hour+'-'+String(count).padStart(3,'0')+'.json';
 }
 function exportReport(){
- const data={version:'4.0',createdAt:new Date().toISOString(),path:location.pathname,overview:overviewLines(),future:futureLines(),issues:issueLines(),triage:triageLines(),health:healthSnapshot(),performance:performanceLines(),logs:logs.map(({level,time,message,kind,repeat})=>({level,time,message,kind,repeat}))};
+ const data={version:'4.1',createdAt:new Date().toISOString(),path:location.pathname,overview:overviewLines(),future:futureLines(),issues:issueLines(),triage:triageLines(),health:healthSnapshot(),performance:performanceLines(),logs:logs.map(({level,time,message,kind,repeat})=>({level,time,message,kind,repeat}))};
  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
  const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=nextReportFilename();document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
@@ -154,9 +154,9 @@ style.textContent+=
 '#fw-dev-panel .fw-line{background:#10283c;border-color:#244d67}'+
 '#fw-dev-toggle{background:linear-gradient(120deg,#067bb8,#103d70);border-color:#54cafa;box-shadow:0 8px 28px #002e52aa}';
 document.head.append(style);
-const toggle=document.createElement('button');toggle.id='fw-dev-toggle';toggle.type='button';toggle.textContent='</>';toggle.setAttribute('aria-label','FW12 열기');document.body.append(toggle);
-panel=document.createElement('section');panel.id='fw-dev-panel';panel.setAttribute('role','dialog');panel.setAttribute('aria-label','FW12 개발자 도구');
-panel.innerHTML='<div class="fw-head"><strong>🛠 FW12 · Developer Tools 3.6</strong><div><button type="button" data-act="copy">복사</button> <button type="button" data-act="export">보고서 ↓</button> <button type="button" data-act="pause">일시정지</button> <button type="button" data-act="clear">지우기</button> <button type="button" data-act="close">닫기</button></div></div><div class="fw-tabs"></div><div class="fw-controls"><select aria-label="로그 수준 필터"><option value="all">전체</option><option value="error">오류</option><option value="warn">경고</option><option value="info">정보</option><option value="log">로그</option></select><input aria-label="로그 검색" placeholder="로그 검색" autocomplete="off"></div><div class="fw-body" role="log" aria-live="off"></div>';
+const toggle=document.createElement('button');toggle.id='fw-dev-toggle';toggle.type='button';toggle.textContent='</>';toggle.setAttribute('aria-label','FW12 열기 (Ctrl + ;)');document.body.append(toggle);
+panel=document.createElement('section');panel.id='fw-dev-panel';panel.setAttribute('role','dialog');panel.setAttribute('aria-label','FW12 개발자 도구');panel.setAttribute('aria-modal','false');
+panel.innerHTML='<div class="fw-head"><strong>🛠 FW12 · Developer Tools 4.1</strong><div><button type="button" data-act="copy">복사</button> <button type="button" data-act="export">보고서 ↓</button> <button type="button" data-act="pause">일시정지</button> <button type="button" data-act="clear">지우기</button> <button type="button" data-act="close">닫기</button></div></div><div class="fw-tabs"></div><div class="fw-controls"><select aria-label="로그 수준 필터"><option value="all">전체</option><option value="error">오류</option><option value="warn">경고</option><option value="info">정보</option><option value="log">로그</option></select><input aria-label="로그 검색" placeholder="로그 검색" autocomplete="off"></div><div class="fw-body" role="log" aria-live="off"></div>';
 document.body.append(panel);output=panel.querySelector('.fw-body');
 const selector=panel.querySelector('select'),query=panel.querySelector('input'),controls=panel.querySelector('.fw-controls');
 selector.addEventListener('change',()=>{filter=selector.value;render()});
@@ -191,10 +191,10 @@ function issueLines(){
 }
 function healthSnapshot(){
  const counts={};for(const entry of logs){if(entry.kind)counts[entry.kind]=(counts[entry.kind]||0)+entry.repeat}
- return {version:'4.0',uptimeMs:Date.now()-startedAt,online:navigator.onLine,captured:totalCaptured,stored:logs.length,errors:logs.filter(x=>x.level==='error').reduce((n,x)=>n+x.repeat,0),warnings:logs.filter(x=>x.level==='warn').reduce((n,x)=>n+x.repeat,0),issueCounts:counts};
+ return {version:'4.1',uptimeMs:Date.now()-startedAt,online:navigator.onLine,captured:totalCaptured,stored:logs.length,errors:logs.filter(x=>x.level==='error').reduce((n,x)=>n+x.repeat,0),warnings:logs.filter(x=>x.level==='warn').reduce((n,x)=>n+x.repeat,0),issueCounts:counts};
 }
 function triageLines(){
- const snap=healthSnapshot();const lines=['FW12 4.0 · 자동 오류 분류','오류 '+snap.errors+'회 · 경고 '+snap.warnings+'회','로그 '+snap.stored+'/'+max];
+ const snap=healthSnapshot();const lines=['FW12 4.1 · 자동 오류 분류','오류 '+snap.errors+'회 · 경고 '+snap.warnings+'회','로그 '+snap.stored+'/'+max];
  for(const [kind,count] of Object.entries(snap.issueCounts).sort((a,b)=>b[1]-a[1])){
   lines.push(kind+' · '+count+'회');
   if(kind==='JavaScript 문법 오류')lines.push('스크립트의 파일명·줄 번호를 확인하고, 배포 전에 node --check로 검사하세요.');
@@ -221,18 +221,18 @@ function render(){
  if(tab==='issues')lines=issueLines();
  if(tab==='network')lines=['네트워크 상태: '+(navigator.onLine?'온라인':'오프라인'),'이 화면은 요청 본문·인증 토큰을 수집하지 않습니다.','온라인 상태만으로 Firebase 접속 성공을 보장하지 않습니다.'];
  if(tab==='storage')lines=['localStorage 항목 수: '+safeCount('localStorage'),'sessionStorage 항목 수: '+safeCount('sessionStorage'),'보안상 저장된 키·값을 표시하지 않습니다.'];
- if(tab==='diagnostics')lines=['FW12 버전: 3.6','현재 경로: '+location.pathname,'연결: '+(navigator.onLine?'온라인':'오프라인'),'언어: '+navigator.language,'확인 시각: '+new Date().toLocaleString(),'수집 로그: '+logs.length+' / '+max,'전체 이벤트: '+totalCaptured,'로그 일시정지: '+(paused?'예 (화면 갱신만 중단)':'아니오'),'쓰기/삭제/Rules 변경 없이 실행하는 읽기 전용 진단입니다.'];
+ if(tab==='diagnostics')lines=['FW12 버전: 4.1','현재 경로: '+location.pathname,'연결: '+(navigator.onLine?'온라인':'오프라인'),'언어: '+navigator.language,'확인 시각: '+new Date().toLocaleString(),'수집 로그: '+logs.length+' / '+max,'전체 이벤트: '+totalCaptured,'로그 일시정지: '+(paused?'예 (화면 갱신만 중단)':'아니오'),'쓰기/삭제/Rules 변경 없이 실행하는 읽기 전용 진단입니다.'];
  if(!lines.length)lines=['기록 없음'];
  lines.forEach(item=>{const div=document.createElement('div');div.className='fw-line';const level=typeof item==='string'?'':item.level;div.classList.toggle('fw-warn',level==='warn');div.classList.toggle('fw-error',level==='error');div.textContent=typeof item==='string'?item:item.text;output.append(div)});
 }
-function show(on){opened=on;panel.style.display=on?'flex':'none';toggle.style.display=on?'none':'block';if(on)render()}
+function show(on){opened=on;panel.style.display=on?'flex':'none';toggle.style.display=on?'none':'block';if(on){render();panel.querySelector('.fw-head button[data-act="close"]')?.focus()}}
 toggle.addEventListener('click',()=>show(true));
 panel.addEventListener('click',e=>{
  const act=e.target.closest('button[data-act]')?.dataset.act;
  if(act==='close')show(false);
  if(act==='clear'){logs.length=0;totalCaptured=0;render()}
  if(act==='export')exportReport();
- if(act==='pause'){paused=!paused;e.target.textContent=paused?'재개':'일시정지';if(!paused)render()}
+ if(act==='pause'){paused=!paused;e.target.textContent=paused?'재개':'일시정지';e.target.setAttribute('aria-pressed',String(paused));if(!paused)render()}
  if(act==='copy'){
   const text=output.innerText||output.textContent||'';
   if(navigator.clipboard?.writeText)navigator.clipboard.writeText(text).catch(()=>fallbackCopy(text));else fallbackCopy(text);
@@ -244,11 +244,11 @@ function fallbackCopy(value){
 }
 window.addEventListener('keydown',e=>{
  if(opened&&(e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='f'){e.preventDefault();tab='console';render();query.focus();return}
- if(e.key==='Escape'&&opened){show(false);return}
+ if(e.key==='Escape'&&opened){e.preventDefault();show(false);return}
  if((e.ctrlKey||e.metaKey)&&!e.shiftKey&&!e.altKey&&(e.key===';'||e.code==='Semicolon')){
   if(e.repeat)return;e.preventDefault();show(!opened);
  }
 });
-window.FormwheelDevTools={open:()=>show(true),close:()=>show(false),toggle:()=>show(!opened),exportReport,version:'4.0',diagnostics:healthSnapshot,triage:triageLines};
+window.FormwheelDevTools={open:()=>show(true),close:()=>show(false),toggle:()=>show(!opened),exportReport,version:'4.1',diagnostics:healthSnapshot,triage:triageLines};
 })();
 
