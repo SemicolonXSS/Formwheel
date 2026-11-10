@@ -24,7 +24,7 @@ function show(on){panel.classList.toggle('fw-open',on);toggle.setAttribute('aria
 toggle.onclick=()=>show(!panel.classList.contains('fw-open'));close.onclick=()=>show(false);
 function send(key,options={}){const event=new KeyboardEvent('keydown',{key,code:options.code||key,bubbles:true,cancelable:true,ctrlKey:!!options.ctrlKey,shiftKey:!!options.shiftKey});document.dispatchEvent(event);document.dispatchEvent(new KeyboardEvent('keyup',{key,bubbles:true,ctrlKey:!!options.ctrlKey,shiftKey:!!options.shiftKey}));return event.defaultPrevented}
 const actions=[
-{key:'F12',name:'개발자 도구',run:()=>window.FormwheelDevTools?.toggle?.()},
+{key:'Ctrl + ;',name:'FW12 열기',run:()=>window.FormwheelDevTools?.toggle?.()},
 {key:'Ctrl + /',name:'단축키 목록',run:()=>send('/',{code:'Slash',ctrlKey:true})},
 {key:'↑',name:'맨 위로',run:()=>{if(!send('ArrowUp'))window.scrollTo({top:0,behavior:'smooth'})}},
 {key:'↓',name:'카드 아래로',run:()=>{if(!send('ArrowDown')){const el=document.querySelector('#projects');if(el)el.scrollIntoView({behavior:'smooth',block:'start'});}}},
