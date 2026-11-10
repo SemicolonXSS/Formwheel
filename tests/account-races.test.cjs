@@ -41,7 +41,7 @@ function core(){
  const guest={version:1,pinned:[],excluded:[],visits:{wheel:{count:1,last:1}}};let state=guest;
  const home={read:()=>JSON.parse(JSON.stringify(state)),apply:next=>state=JSON.parse(JSON.stringify(next))};
  const element=id=>{if(!nodes.has(id))nodes.set(id,{hidden:false,addEventListener(){}});return nodes.get(id);};
- const auth={currentUser:null};let signedOut=0;
+ const auth={currentUser:null,authStateReady:async()=>{}};let signedOut=0;
  const ctx={console,auth,db:{},BADGES:[],projects:[{name:'Wheel'}],localStorage:storage,Date,
   window:{FormwheelHubHome:home,addEventListener:(name,fn)=>callbacks.set(name,fn),dispatchEvent(){}},
   document:{getElementById:id=>['fw-id-status','fw-id-login','fw-id-logout'].includes(id)?element(id):null,addEventListener(){}},
