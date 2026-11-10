@@ -17,7 +17,15 @@
   const message = document.createElement('p');
   message.setAttribute('role','status');
   host.append(info,refresh,message,box);
-  const repos=['Formwheel','Formwheel_Clicker','Formwheel_Paint','Formwheel_Whiteboard','Formwheel_Maze','Formwheel_Reflex'];
+  // Discover repositories dynamically. No hard-coded project limit.
+  const owner='SemicolonXSS';
+  const api='https://api.github.com';
+  async function fetchJson(url){
+    const response=await fetch(url,{headers:{Accept:'application/vnd.github+json'},cache:'no-store'});
+    if(!response.ok)throw Error('HTTP '+response.status);
+    return response.json();
+  }
+  let repos=[];
   const workflows=[{name:'Pages',id:'pages-build-deployment'},{name:'건강검진',id:'automation-healthcheck.yml'},{name:'방문자',id:'visitor-count-sync.yml'}];
   let allowed=false, busy=false, generation=0;
   const ago = iso => {
@@ -31,42 +39,50 @@
     if(!allowed||busy)return;
     busy=true;refresh.disabled=true;
     const ticket=generation;
-    box.replaceChildren();message.textContent='배포 기록 확인 중…';
-    for(const repo of repos){
-      if(ticket!==generation)break;
-      const group=document.createElement('section');
-      group.style.cssText='border:1px solid #dce2ee;border-radius:12px;padding:12px;margin:8px 0';
-      const heading=document.createElement('strong');heading.textContent=repo;
-      group.append(heading);box.append(group);
-      // Workflow discovery uses the public API; missing workflows are simply omitted.
-      for(const wf of workflows){
-        if(ticket!==generation)break;
-        try{
-          const url='https://api.github.com/repos/SemicolonXSS/'+encodeURIComponent(repo)+'/actions/workflows/'+encodeURIComponent(wf.id)+'/runs?per_page=1';
-          const response=await fetch(url,{headers:{Accept:'application/vnd.github+json'},cache:'no-store'});
-          if(response.status===404)continue;
-          if(!response.ok)throw Error('HTTP '+response.status);
-          const run=(await response.json()).workflow_runs?.[0];
-          if(!run)continue;
-          const line=document.createElement('div');
-          line.style.cssText='padding:7px 0;overflow-wrap:anywhere';
-          const label=document.createElement('span');
-          label.textContent=wf.name+' · '+outcome(run)+' · '+ago(run.updated_at||run.created_at);
-          line.append(label);
-          if(/^https:\/\/github\.com\/SemicolonXSS\/[^/]+\/actions\/runs\/\d+$/.test(run.html_url||'')){
-            const link=document.createElement('a');link.href=run.html_url;link.target='_blank';link.rel='noopener noreferrer';link.textContent=' · 상세';line.append(link);
-          }
-          group.append(line);
-        }catch(e){
-          const error=document.createElement('small');error.textContent=wf.name+' 조회 불가 ('+e.message+')';group.append(error);
-        }
+    box.replaceChildren();message.textContent='저장소 목록 확인 중…';
+    try{
+      // Public repository metadata is sufficient; no GitHub access token is stored.
+      const all=[];
+      for(let page=1;page<=3;page++){
+        const batch=await fetchJson(api+'/users/'+owner+'/repos?per_page=100&page='+page+'&sort=full_name');
+        all.push(...batch);
+        if(batch.length<100)break;
       }
-      if(group.childElementCount===1){
-        const empty=document.createElement('small');empty.textContent='공개 실행 기록 없음';group.append(empty);
+      if(ticket!==generation)return;
+      repos=all.filter(r=>r.name==='FormLab'||r.name==='Formwheel'||r.name.startsWith('Formwheel_'));
+      message.textContent=repos.length+'개 프로젝트 연결 · 저장소 업데이트와 실제 배포 시각은 다릅니다.';
+      const list=document.createElement('div');list.style.cssText='display:grid;gap:8px';box.append(list);
+      for(const repo of repos){
+        const group=document.createElement('details');
+        group.style.cssText='border:1px solid #dce2ee;border-radius:12px;padding:12px';
+        const summary=document.createElement('summary');summary.style.cursor='pointer';
+        summary.textContent=repo.name+' · 코드 업데이트 '+ago(repo.pushed_at);
+        group.append(summary);list.append(group);
+        let loaded=false;
+        group.addEventListener('toggle',async()=>{
+          if(!group.open||loaded||ticket!==generation||!allowed)return;
+          loaded=true;
+          const state=document.createElement('p');state.textContent='배포 실행 기록 조회 중…';group.append(state);
+          try{
+            const data=await fetchJson(api+'/repos/'+owner+'/'+encodeURIComponent(repo.name)+'/actions/runs?per_page=5');
+            if(ticket!==generation||!allowed)return;
+            const runs=data.workflow_runs||[];
+            state.textContent=runs.length?'최근 실행 기록':'공개 Actions 실행 기록 없음';
+            for(const run of runs){
+              const row=document.createElement('div');row.style.cssText='padding:5px 0;overflow-wrap:anywhere';
+              const label=document.createElement('span');
+              label.textContent=(run.name||'Workflow')+' · '+outcome(run)+' · '+ago(run.updated_at||run.created_at);
+              row.append(label);
+              if(/^https:\/\/github\.com\/SemicolonXSS\/[^/]+\/actions\/runs\/\d+$/.test(run.html_url||'')){
+                const link=document.createElement('a');link.href=run.html_url;link.target='_blank';link.rel='noopener noreferrer';link.textContent=' · 상세';row.append(link);
+              }
+              group.append(row);
+            }
+          }catch(error){state.textContent='Actions 조회 불가 ('+error.message+')';}
+        });
       }
-    }
-    if(ticket===generation)message.textContent='조회 완료 · '+new Date().toLocaleTimeString();
-    busy=false;refresh.disabled=false;
+    }catch(error){if(ticket===generation)message.textContent='저장소 목록 조회 실패 ('+error.message+')';}
+    finally{busy=false;refresh.disabled=false;}
   }
   refresh.addEventListener('click',load);
   onAuthStateChanged(auth,async user=>{
