@@ -1,55 +1,86 @@
-/* Public GitHub Actions status. Read-only; never use access tokens in the browser. */
-(() => {
+/* Formwheel deployment dashboard. Public GitHub metadata; account-gated UI, not an authorization boundary. */
+(async () => {
   'use strict';
   const host = document.getElementById('fw-deploy-status');
   if (!host) return;
-  const workflows = [
-    {name:'Pages 배포', file:'pages-build-deployment'},
-    {name:'자동화 건강검진', file:'automation-healthcheck.yml'},
-    {name:'방문자 집계', file:'visitor-count-sync.yml'}
-  ];
-  const endpoint = 'https://api.github.com/repos/SemicolonXSS/Formwheel/actions/workflows/';
+  const {getApps} = await import('https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js');
+  const {getAuth,onAuthStateChanged,getIdTokenResult} = await import('https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js');
+  const app = getApps().find(x=>x.name==='[DEFAULT]');
+  if (!app) return;
+  const auth = getAuth(app);
   const box = document.createElement('div');
-  box.style.cssText='display:grid;gap:9px;margin:10px 0';
   const info = document.createElement('small');
-  info.textContent='공개 GitHub Actions 실행 결과 · 인증 토큰 없이 조회 · 배포 완료와 실제 사이트 반영은 다를 수 있습니다.';
+  info.textContent='GitHub 공개 Actions 기록 · 표시 시간은 실행 완료 시각 기준이며 실제 사이트 반영과 다를 수 있습니다.';
   const refresh = document.createElement('button');
-  refresh.type='button';refresh.textContent='↻ 상태 새로고침';
-  refresh.style.cssText='padding:9px 12px;border-radius:9px;cursor:pointer';
-  host.append(info,refresh,box);
-  let busy=false;
-  const statusText = run => {
-    if (!run) return '실행 내역 없음';
-    if (run.status !== 'completed') return '진행 중 (' + run.status + ')';
-    return ({success:'성공',failure:'실패',cancelled:'취소',timed_out:'시간 초과',skipped:'건너뜀'})[run.conclusion] || '완료 ('+(run.conclusion||'결과 없음')+')';
+  refresh.type='button'; refresh.textContent='↻ 새로고침';
+  refresh.style.cssText='padding:9px 12px;border-radius:9px;cursor:pointer;margin:8px 0';
+  const message = document.createElement('p');
+  message.setAttribute('role','status');
+  host.append(info,refresh,message,box);
+  const repos=['Formwheel','Formwheel_Clicker','Formwheel_Paint','Formwheel_Whiteboard','Formwheel_Maze','Formwheel_Reflex'];
+  const workflows=[{name:'Pages',id:'pages-build-deployment'},{name:'건강검진',id:'automation-healthcheck.yml'},{name:'방문자',id:'visitor-count-sync.yml'}];
+  let allowed=false, busy=false, generation=0;
+  const ago = iso => {
+    const n=Date.parse(iso);
+    if(!Number.isFinite(n))return '시각 미확인';
+    const minutes=Math.max(0,Math.floor((Date.now()-n)/60000));
+    return minutes<1?'방금':minutes<60?minutes+'분 전':minutes<1440?Math.floor(minutes/60)+'시간 전':Math.floor(minutes/1440)+'일 전';
   };
-  async function update(){
-    if(busy)return;
+  const outcome = run => !run?'기록 없음':run.status!=='completed'?'진행 중':({success:'성공',failure:'실패',cancelled:'취소',timed_out:'시간 초과'})[run.conclusion]||'완료';
+  async function load(){
+    if(!allowed||busy)return;
     busy=true;refresh.disabled=true;
-    box.replaceChildren();
-    await Promise.all(workflows.map(async item=>{
-      const line=document.createElement('div');
-      line.style.cssText='padding:10px;border:1px solid #dce2ee;border-radius:10px;overflow-wrap:anywhere';
-      const name=document.createElement('strong');name.textContent=item.name+' · ';
-      const value=document.createElement('span');value.textContent='확인 중…';
-      line.append(name,value);box.append(line);
-      try{
-        const response=await fetch(endpoint+encodeURIComponent(item.file)+'/runs?per_page=1',{headers:{Accept:'application/vnd.github+json'},cache:'no-store'});
-        if(!response.ok)throw Error('HTTP '+response.status);
-        const data=await response.json();
-        const run=data.workflow_runs?.[0];
-        value.textContent=statusText(run);
-        if(run?.html_url && /^https:\/\/github\.com\/SemicolonXSS\/Formwheel\/actions\/runs\/\d+$/.test(run.html_url)){
-          const link=document.createElement('a');link.href=run.html_url;link.target='_blank';link.rel='noopener noreferrer';link.textContent=' · 실행 기록';line.append(link);
+    const ticket=generation;
+    box.replaceChildren();message.textContent='배포 기록 확인 중…';
+    for(const repo of repos){
+      if(ticket!==generation)break;
+      const group=document.createElement('section');
+      group.style.cssText='border:1px solid #dce2ee;border-radius:12px;padding:12px;margin:8px 0';
+      const heading=document.createElement('strong');heading.textContent=repo;
+      group.append(heading);box.append(group);
+      // Workflow discovery uses the public API; missing workflows are simply omitted.
+      for(const wf of workflows){
+        if(ticket!==generation)break;
+        try{
+          const url='https://api.github.com/repos/SemicolonXSS/'+encodeURIComponent(repo)+'/actions/workflows/'+encodeURIComponent(wf.id)+'/runs?per_page=1';
+          const response=await fetch(url,{headers:{Accept:'application/vnd.github+json'},cache:'no-store'});
+          if(response.status===404)continue;
+          if(!response.ok)throw Error('HTTP '+response.status);
+          const run=(await response.json()).workflow_runs?.[0];
+          if(!run)continue;
+          const line=document.createElement('div');
+          line.style.cssText='padding:7px 0;overflow-wrap:anywhere';
+          const label=document.createElement('span');
+          label.textContent=wf.name+' · '+outcome(run)+' · '+ago(run.updated_at||run.created_at);
+          line.append(label);
+          if(/^https:\/\/github\.com\/SemicolonXSS\/[^/]+\/actions\/runs\/\d+$/.test(run.html_url||'')){
+            const link=document.createElement('a');link.href=run.html_url;link.target='_blank';link.rel='noopener noreferrer';link.textContent=' · 상세';line.append(link);
+          }
+          group.append(line);
+        }catch(e){
+          const error=document.createElement('small');error.textContent=wf.name+' 조회 불가 ('+e.message+')';group.append(error);
         }
-        if(run?.updated_at){
-          const date=document.createElement('small');date.style.display='block';date.textContent='마지막 업데이트: '+new Date(run.updated_at).toLocaleString();line.append(date);
-        }
-      }catch(e){value.textContent='조회 불가 ('+(e.message||'네트워크 오류')+')';}
-    }));
-    refresh.disabled=false;busy=false;
+      }
+      if(group.childElementCount===1){
+        const empty=document.createElement('small');empty.textContent='공개 실행 기록 없음';group.append(empty);
+      }
+    }
+    if(ticket===generation)message.textContent='조회 완료 · '+new Date().toLocaleTimeString();
+    busy=false;refresh.disabled=false;
   }
-  refresh.addEventListener('click',update);
-  let loaded=false;
-  document.querySelector('[data-fw21="advanced"]')?.addEventListener('click',()=>{if(!loaded){loaded=true;update()}});
+  refresh.addEventListener('click',load);
+  onAuthStateChanged(auth,async user=>{
+    const ticket=++generation;
+    allowed=false;box.replaceChildren();host.hidden=true;
+    if(!user||user.isAnonymous)return;
+    try{
+      const token=await getIdTokenResult(user);
+      if(ticket!==generation)return;
+      // Server-issued custom claims, never a user-editable email or localStorage flag.
+      allowed=token.claims.admin===true||token.claims.producer===true;
+      host.hidden=!allowed;
+      if(allowed){message.textContent='고급 탭에서 상태를 확인하세요.';if(document.querySelector('[data-fw21="advanced"][aria-selected="true"]'))load();}
+    }catch(e){if(ticket===generation)console.warn('Deployment status authorization unavailable',e.code||e.message);}
+  });
+  document.querySelector('[data-fw21="advanced"]')?.addEventListener('click',()=>{if(allowed)load()});
 })();
