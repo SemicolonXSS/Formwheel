@@ -1,3 +1,4 @@
+import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {test,before,beforeEach,after} from 'node:test';
 import {initializeTestEnvironment,assertFails,assertSucceeds} from '@firebase/rules-unit-testing';
@@ -88,4 +89,24 @@ test('public badge sharing is explicit, contains only earned badge IDs and never
  await assertFails(set(ref(db('b'),'formwheelV2/publicEventBadges/a/base'),true));
  await assertFails(set(ref(db('a'),'formwheelV2/publicEventBadges/a/claimedAt'),1));
  await assertSucceeds(remove(ref(db('a'),'formwheelV2/publicEventBadges/a')));
+});
+
+test('Threads guests can correct their own submission while only approved profiles are public',async()=>{
+ const root='formwheelV2/threadsExchange/';
+ const guest=db('guest',true),publicDb=db(null);
+ const admin=env.authenticatedContext('moderator',{admin:true}).database();
+ const own=ref(guest,root+'submissions/guest'),published=ref(admin,root+'approved/guest');
+ const profile=handle=>({url:'https://www.threads.net/@'+handle,handle,createdAt:serverTimestamp()});
+ await assertSucceeds(set(own,profile('first')));
+ const first=(await get(own)).val();
+ await assertFails(get(ref(publicDb,root+'submissions')));
+ await assertFails(get(ref(db('other'),root+'submissions/guest')));
+ await assertFails(set(ref(guest,root+'approved/guest'),first));
+ await assertSucceeds(set(published,first));
+ await assertSucceeds(set(own,profile('corrected')));
+ const approvedList=ref(publicDb,root+'approved');
+ assert.equal((await assertSucceeds(get(approvedList))).val().guest.handle,'first');
+ await assertFails(set(published,first));
+ await assertSucceeds(set(published,(await get(own)).val()));
+ assert.equal((await assertSucceeds(get(approvedList))).val().guest.handle,'corrected');
 });

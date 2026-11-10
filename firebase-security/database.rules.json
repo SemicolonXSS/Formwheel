@@ -528,7 +528,7 @@
         "submissions": {
           "$uid": {
             ".read": "auth != null && (auth.uid === $uid || (auth != null && (auth.token.admin === true || auth.token.producer === true || (auth.token.email === 'not404spam@gmail.com' && auth.token.email_verified === true))))",
-            ".write": "auth != null && auth.uid === $uid && !data.exists() && newData.exists()",
+            ".write": "auth != null && auth.uid === $uid && newData.exists()",
             ".validate": "newData.hasChildren(['url','handle','createdAt']) && newData.child('url').isString() && newData.child('url').val().matches(/^https:\\/\\/(www\\.)?threads\\.(net|com)\\/@[A-Za-z0-9._]{1,30}\\/?$/) && newData.child('handle').isString() && newData.child('handle').val().matches(/^[A-Za-z0-9._]{1,30}$/) && newData.child('createdAt').isNumber() && newData.child('createdAt').val() <= now + 60000 && newData.child('createdAt').val() >= now - 300000",
             "url": {
               ".validate": "newData.isString()"
@@ -546,10 +546,10 @@
           ".read": "auth != null && (auth.token.admin === true || auth.token.producer === true || (auth.token.email === 'not404spam@gmail.com' && auth.token.email_verified === true))"
         },
         "approved": {
+          ".read": true,
           "$uid": {
-            ".read": true,
             ".write": "auth != null && (auth.token.admin === true || auth.token.producer === true || (auth.token.email === 'not404spam@gmail.com' && auth.token.email_verified === true))",
-            ".validate": "newData.hasChildren(['url','handle','createdAt']) && newData.child('url').isString() && newData.child('url').val().matches(/^https:\\/\\/(www\\.)?threads\\.(net|com)\\/@[A-Za-z0-9._]{1,30}\\/?$/) && newData.child('handle').isString() && newData.child('handle').val().matches(/^[A-Za-z0-9._]{1,30}$/) && newData.child('createdAt').isNumber()",
+            ".validate": "newData.hasChildren(['url','handle','createdAt']) && newData.child('url').isString() && newData.child('url').val().matches(/^https:\\/\\/(www\\.)?threads\\.(net|com)\\/@[A-Za-z0-9._]{1,30}\\/?$/) && newData.child('handle').isString() && newData.child('handle').val().matches(/^[A-Za-z0-9._]{1,30}$/) && newData.child('createdAt').isNumber() && newData.child('url').val() === root.child('formwheelV2/threadsExchange/submissions').child($uid).child('url').val() && newData.child('handle').val() === root.child('formwheelV2/threadsExchange/submissions').child($uid).child('handle').val() && newData.child('createdAt').val() === root.child('formwheelV2/threadsExchange/submissions').child($uid).child('createdAt').val()",
             "url": {
               ".validate": "newData.isString()"
             },
