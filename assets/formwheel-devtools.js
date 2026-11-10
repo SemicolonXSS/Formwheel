@@ -245,7 +245,7 @@ function fallbackCopy(value){
 window.addEventListener('keydown',e=>{
  if(opened&&(e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='f'){e.preventDefault();tab='console';render();query.focus();return}
  if(e.key==='Escape'&&opened){show(false);return}
- if((e.key==='F12'&&(e.ctrlKey||e.metaKey))||(e.ctrlKey&&e.shiftKey&&e.key.toLowerCase()==='d')){
+ if((e.ctrlKey||e.metaKey)&&!e.shiftKey&&!e.altKey&&(e.key===';'||e.code==='Semicolon')){
   if(e.repeat)return;e.preventDefault();show(!opened);
  }
 });
