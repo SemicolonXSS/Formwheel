@@ -1,0 +1,42 @@
+name: Formwheel automation healthcheck
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/generate-release-notes.mjs'
+      - 'assets/hub-command-palette.js'
+      - '.github/workflows/automation-healthcheck.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: formwheel-automation-healthcheck-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 30
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify JavaScript syntax
+        run: |
+          node --check scripts/generate-release-notes.mjs
+          node --check assets/hub-command-palette.js
+      - name: Generate release notes draft
+        run: |
+          node scripts/generate-release-notes.mjs HEAD~1 HEAD > release-notes-draft.md
+          test -s release-notes-draft.md
+      - name: Publish draft as workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: formwheel-release-notes-draft
+          path: release-notes-draft.md
+          retention-days: 7
