@@ -5,8 +5,13 @@
   if (!host) return;
   const {getApps} = await import('https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js');
   const {getAuth,onAuthStateChanged,getIdTokenResult} = await import('https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js');
-  const app = getApps().find(x=>x.name==='[DEFAULT]');
-  if (!app) return;
+  // Deferred classic scripts can run before the hub's Firebase module initializes.
+  let app = getApps().find(x=>x.name==='[DEFAULT]');
+  for(let attempt=0;!app&&attempt<40;attempt++){
+    await new Promise(resolve=>setTimeout(resolve,150));
+    app=getApps().find(x=>x.name==='[DEFAULT]');
+  }
+  if (!app) { host.hidden=true; return; }
   const auth = getAuth(app);
   const box = document.createElement('div');
   const info = document.createElement('small');
