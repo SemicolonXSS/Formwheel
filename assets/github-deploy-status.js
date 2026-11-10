@@ -30,7 +30,7 @@
     if(!response.ok)throw Error('HTTP '+response.status);
     return response.json();
   }
-  let allowed=false, busy=false, generation=0;
+  let allowed=false, busy=false, loadedRepos=false, generation=0;
   const ago = iso => {
     const n=Date.parse(iso);
     if(!Number.isFinite(n))return '시각 미확인';
@@ -40,6 +40,7 @@
   const outcome = run => !run?'기록 없음':run.status!=='completed'?'진행 중':({success:'성공',failure:'실패',cancelled:'취소',timed_out:'시간 초과'})[run.conclusion]||'완료';
   async function load(){
     if(!allowed||busy)return;
+    loadedRepos=false;
     busy=true;refresh.disabled=true;
     const ticket=generation;
     box.replaceChildren();message.textContent='저장소 목록 확인 중…';
@@ -52,6 +53,7 @@
         if(batch.length<100)break;
       }
       if(ticket!==generation)return;
+      loadedRepos=true;
       const repos=all.filter(r=>r.name==='FormLab'||r.name==='Formwheel'||r.name.startsWith('Formwheel_'));
       message.textContent=repos.length+'개 프로젝트 연결 · 저장소 업데이트와 실제 배포 시각은 다릅니다.';
       const list=document.createElement('div');list.style.cssText='display:grid;gap:8px';box.append(list);
@@ -125,19 +127,34 @@
         });
         const repoApi=api+'/repos/'+owner+'/'+encodeURIComponent(repo.name);
         const deployment=document.createElement('p');
-        group.append(deployment);
+        const lastSuccess=document.createElement('p');
+        group.append(deployment,lastSuccess);
         async function showPagesDeployment(){
           deployment.textContent='GitHub Pages 배포 확인 중…';
           try{
-            const records=await fetchJson(repoApi+'/deployments?environment=github-pages&per_page=1');
+            const records=await fetchJson(repoApi+'/deployments?environment=github-pages&per_page=5');
             if(!records.length){deployment.textContent='공개 GitHub Pages 배포 기록 없음';return;}
-            const statuses=await fetchJson(repoApi+'/deployments/'+encodeURIComponent(records[0].id)+'/statuses?per_page=1');
+            const statusesFor=record=>fetchJson(repoApi+'/deployments/'+encodeURIComponent(record.id)+'/statuses?per_page=20');
+            const statuses=await statusesFor(records[0]);
             if(ticket!==generation||!allowed)return;
             const latest=statuses[0];
             const state={success:'성공',failure:'실패',error:'오류',inactive:'비활성',in_progress:'진행 중',queued:'대기 중',pending:'대기 중'};
             deployment.textContent=latest
               ?'최근 Pages 배포 · '+(state[latest.state]||latest.state)+' · '+ago(latest.created_at)
               :'Pages 배포 상태 기록 없음';
+            if(latest?.state==='success')return;
+            lastSuccess.textContent='마지막 성공 배포 확인 중…';
+            try{
+              let success=statuses.find(status=>status.state==='success');
+              for(const record of records.slice(1)){
+                if(success||ticket!==generation||!allowed)break;
+                success=(await statusesFor(record)).find(status=>status.state==='success');
+              }
+              if(ticket!==generation||!allowed)return;
+              lastSuccess.textContent=success
+                ?'마지막 성공 배포 · '+ago(success.created_at)
+                :'최근 5건에서 성공 배포를 찾지 못했어요.';
+            }catch(error){lastSuccess.textContent='마지막 성공 배포 조회 불가 ('+error.message+')';}
           }catch(error){deployment.textContent='Pages 배포 조회 불가 ('+error.message+')';}
         }
         let loaded=false;
@@ -170,7 +187,7 @@
   refresh.addEventListener('click',load);
   onAuthStateChanged(auth,async user=>{
     const ticket=++generation;
-    allowed=false;busy=false;refresh.disabled=false;box.replaceChildren();host.hidden=true;
+    allowed=false;busy=false;loadedRepos=false;refresh.disabled=false;box.replaceChildren();host.hidden=true;
     if(!user||user.isAnonymous)return;
     try{
       const token=await getIdTokenResult(user);
@@ -183,5 +200,5 @@
       if(allowed){message.textContent='고급 탭에서 상태를 확인하세요.';if(document.querySelector('[data-fw21="advanced"][aria-selected="true"]'))load();}
     }catch(e){if(ticket===generation)console.warn('Deployment status authorization unavailable',e.code||e.message);}
   });
-  document.querySelector('[data-fw21="advanced"]')?.addEventListener('click',()=>{if(allowed)load()});
+  document.querySelector('[data-fw21="advanced"]')?.addEventListener('click',()=>{if(!loadedRepos)load()});
 })();
