@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#14142b">
+<meta name="description" content="Formwheel SNS — Formwheel Hub에서 만나는 새로운 커뮤니티 실험실.">
+<link rel="icon" type="image/svg+xml" href="./assets/formwheel-favicon.svg">
+<title>Formwheel SNS | Hub</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#0c0e1c;color:#f3f4ff}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 75% -10%,#5a2bba55,transparent 40%),#0c0e1c}
+a{color:inherit;text-decoration:none}button,input,textarea{font:inherit}button{cursor:pointer}
+header{position:sticky;top:0;z-index:3;backdrop-filter:blur(16px);background:#101326e6;border-bottom:1px solid #ffffff17}
+.top{max-width:1080px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:14px 18px;gap:12px}
+.logo{font-weight:900;letter-spacing:-.05em;font-size:21px}.logo em{font-style:normal;color:#ba9bff}.hub{border:1px solid #ffffff35;border-radius:999px;padding:9px 14px;font-size:13px}
+main{max-width:1080px;margin:25px auto;display:grid;grid-template-columns:230px minmax(0,1fr) 240px;gap:20px;padding:0 16px}
+.panel,.composer,.post,.welcome{background:#171a30;border:1px solid #ffffff16;border-radius:20px;box-shadow:0 10px 38px #0002}
+.panel{padding:18px;align-self:start}.panel h2{font-size:13px;letter-spacing:.09em;color:#b8bdd4;margin:0 0 15px}
+nav a{display:block;padding:12px;border-radius:12px;font-weight:650;font-size:14px}nav a.active{background:#362855;color:#e9d8ff}
+.note{font-size:12px;color:#adb4cb;line-height:1.75}.welcome{padding:23px;margin-bottom:16px;background:linear-gradient(115deg,#342057,#1d2b4d)}
+.eyebrow{font-size:11px;font-weight:800;letter-spacing:.18em;color:#d2baff}.welcome h1{margin:9px 0;font-size:clamp(25px,4vw,39px);letter-spacing:-.05em}.welcome p{margin:0;color:#d0d5e9;font-size:13px;line-height:1.7}
+.composer{padding:18px;margin-bottom:15px}.heading{font-weight:800;margin:0 0 13px}
+textarea,input{width:100%;background:#101325;border:1px solid #41435d;border-radius:12px;color:#fff;padding:12px;outline:none}
+textarea{min-height:100px;resize:vertical}.composer input{margin-bottom:10px}
+textarea:focus,input:focus{border-color:#a68bff;box-shadow:0 0 0 3px #a68bff20}
+.actions{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px}
+.muted{color:#9ca4ba;font-size:12px}.primary{background:#9b78ff;border:0;color:#160d2e;border-radius:12px;padding:10px 18px;font-weight:900}
+.primary:hover{background:#b69bff}.feedtitle{display:flex;align-items:center;justify-content:space-between;margin:19px 4px 12px}
+.feedtitle h2{font-size:17px;margin:0}.post{padding:18px;margin-bottom:12px;overflow-wrap:anywhere}
+.meta{display:flex;gap:10px;align-items:center}.avatar{width:38px;height:38px;border-radius:12px;background:#3d3168;display:grid;place-items:center;font-weight:850}
+.name{font-weight:800;font-size:14px}.time{font-size:11px;color:#989fb7}.body{white-space:pre-wrap;line-height:1.7;font-size:14px;margin:14px 0}
+.postactions{display:flex;gap:10px}.action{background:#242840;border:1px solid #ffffff14;color:#d5d9ec;border-radius:999px;padding:8px 12px;font-size:12px}
+.action.liked{background:#57314e;color:#ffc3dc}.empty{text-align:center;padding:38px 12px;color:#b2b9cf;border:1px dashed #ffffff2c;border-radius:18px}
+.status{padding:12px;border-radius:12px;background:#29233f;font-size:12px;color:#e7d8ff;line-height:1.6}
+aside .stat{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid #ffffff15;font-size:13px}
+.footer{font-size:11px;color:#929ab5;margin-top:17px;line-height:1.6}
+.hidden{display:none!important}.delete{margin-left:auto}
+@media(max-width:900px){main{grid-template-columns:minmax(0,1fr) 230px}.left{display:none}}
+@media(max-width:650px){main{display:block;margin:16px auto}aside{margin-top:16px}.top{padding:12px}.welcome{padding:18px}.post,.composer{padding:15px}}
+</style>
+</head>
+<body>
+<header><div class="top"><a href="./index.html" class="logo">FORMWHEEL <em>SNS</em></a><a class="hub" href="./index.html">↖ Hub로 돌아가기</a></div></header>
+<main>
+<section class="panel left"><h2>EXPLORE</h2><nav aria-label="SNS 메뉴"><a class="active" href="#feed">⌂ 홈 피드</a><a href="#write">✎ 글 작성</a><a href="#about">◇ SNS 소개</a></nav><p class="note">Formwheel 안에서 소통하는 새로운 공간. 지금은 내 브라우저에서만 동작하는 로컬 미리보기야.</p></section>
+<section id="feed">
+<div class="welcome"><div class="eyebrow">FORMWHEEL / SOCIAL SPACE</div><h1>우리의 이야기가<br>시작되는 곳.</h1><p>게임 이야기부터 새로운 아이디어까지. Formwheel SNS에 오신 것을 환영해요!</p></div>
+<section class="composer" id="write" aria-label="게시글 작성"><p class="heading">✦ 새 게시글</p><label class="muted" for="nickname">표시 이름</label><input id="nickname" maxlength="24" placeholder="닉네임 (최대 24자)" autocomplete="nickname"><label class="muted" for="message">내용</label><textarea id="message" maxlength="500" placeholder="오늘은 어떤 이야기를 나눌까요? (최대 500자)"></textarea><div class="actions"><span class="muted" id="counter">0 / 500</span><button class="primary" id="publish" type="button">게시하기 ↗</button></div><p class="muted" id="feedback" role="status" aria-live="polite"></p></section>
+<div class="feedtitle"><h2>✧ 내 피드</h2><input id="search" aria-label="게시글 검색" placeholder="검색..." style="max-width:175px;padding:9px 11px;font-size:13px"></div>
+<div id="posts" aria-live="polite"></div>
+</section>
+<aside class="panel" id="about"><h2>SOCIAL LAB · PREVIEW</h2><div class="status">🧪 로컬 미리보기 모드<br>게시글은 서버에 전송되지 않고 이 브라우저에만 저장돼요.</div><div class="stat"><span>내 게시글</span><strong id="postCount">0</strong></div><div class="stat"><span>내가 누른 좋아요</span><strong id="likeCount">0</strong></div><p class="note">이 버전은 로그인, 팔로우, 공개 게시글, 다른 사람과의 실시간 공유를 제공하지 않아요.</p><button class="action" id="clearPosts" type="button">로컬 게시글 전체 삭제</button><div class="footer">기존 Formwheel Firebase 데이터 및 보안 규칙과 분리된 안전한 데모입니다.</div></aside>
+</main>
+<script>
+(function(){
+  'use strict';
+  const key='formwheel-sns-local-v1', nameKey='formwheel-sns-name-v1';
+  const $=id=>document.getElementById(id);
+  let posts=[];
+  try {
+    const value=JSON.parse(localStorage.getItem(key)||'[]');
+    if(Array.isArray(value)) posts=value.filter(p=>p&&typeof p.id==='string'&&typeof p.name==='string'&&typeof p.message==='string').slice(0,100);
+    $('nickname').value=localStorage.getItem(nameKey)||'';
+  } catch(e){$('feedback').textContent='저장된 데이터를 읽을 수 없어 빈 피드로 시작해요.'}
+  const persist=()=>{try{localStorage.setItem(key,JSON.stringify(posts));return true}catch(e){$('feedback').textContent='브라우저 저장 공간에 접근할 수 없어 변경 사항이 유지되지 않을 수 있어요.';return false}};
+  function render(){
+    const q=$('search').value.trim().toLocaleLowerCase();
+    const container=$('posts');container.replaceChildren();
+    const matches=posts.filter(p=>(p.message+' '+p.name).toLocaleLowerCase().includes(q));
+    $('postCount').textContent=String(posts.length);
+    $('likeCount').textContent=String(posts.filter(p=>p.liked).length);
+    if(!matches.length){const empty=document.createElement('div');empty.className='empty';empty.textContent=q?'검색 결과가 없어요.':'아직 게시글이 없어요. 첫 글을 써보세요!';container.append(empty);return}
+    for(const p of matches){
+      const article=document.createElement('article');article.className='post';
+      const meta=document.createElement('div');meta.className='meta';
+      const avatar=document.createElement('span');avatar.className='avatar';avatar.textContent=p.name.trim().slice(0,1).toUpperCase()||'F';
+      const info=document.createElement('div'),nm=document.createElement('div'),time=document.createElement('div');
+      nm.className='name';nm.textContent=p.name;time.className='time';
+      try{time.textContent=new Date(p.created).toLocaleString('ko-KR')}catch(e){time.textContent='날짜 정보 없음'}
+      info.append(nm,time);meta.append(avatar,info);
+      const body=document.createElement('p');body.className='body';body.textContent=p.message;
+      const actions=document.createElement('div');actions.className='postactions';
+      const like=document.createElement('button');like.type='button';like.className='action'+(p.liked?' liked':'');like.textContent=p.liked?'♥ 좋아요 1':'♡ 좋아요';
+      like.setAttribute('aria-pressed',String(!!p.liked));like.addEventListener('click',()=>{p.liked=!p.liked;persist();render()});
+      const del=document.createElement('button');del.type='button';del.className='action delete';del.textContent='삭제';del.setAttribute('aria-label',p.name+'님의 게시글 삭제');
+      del.addEventListener('click',()=>{if(!confirm('이 게시글을 삭제할까요?'))return;posts=posts.filter(x=>x.id!==p.id);persist();render()});
+      actions.append(like,del);article.append(meta,body,actions);container.append(article);
+    }
+  }
+  $('message').addEventListener('input',()=>$('counter').textContent=$('message').value.length+' / 500');
+  $('search').addEventListener('input',render);
+  $('publish').addEventListener('click',()=>{
+    const name=$('nickname').value.trim(),message=$('message').value.trim();
+    if(!name||!message){$('feedback').textContent='닉네임과 내용을 모두 입력해줘!';return}
+    if(name.length>24||message.length>500){$('feedback').textContent='입력할 수 있는 글자 수를 초과했어요.';return}
+    const id=(window.crypto&&crypto.randomUUID)?crypto.randomUUID():String(Date.now())+'-'+Math.random().toString(36).slice(2);
+    posts.unshift({id,name,message,created:Date.now(),liked:false});posts=posts.slice(0,100);
+    try{localStorage.setItem(nameKey,name)}catch(e){}
+    persist();$('message').value='';$('counter').textContent='0 / 500';$('feedback').textContent='내 브라우저에 게시글을 저장했어요.';render();
+  });
+  $('clearPosts').addEventListener('click',()=>{if(!confirm('이 브라우저의 SNS 게시글을 모두 삭제할까요?'))return;posts=[];persist();render()});
+  render();
+})();
+</script>
+</body>
+</html>
