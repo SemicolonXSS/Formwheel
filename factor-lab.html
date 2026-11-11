@@ -1,6 +1,69 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Factor Lab | Formwheel</title><style>:root{font-family:system-ui,sans-serif;color-scheme:light}body{margin:0;background:#f4f1ff;color:#27213f}main{max-width:690px;margin:36px auto;padding:22px}section{background:white;border:1px solid #ddd4ff;border-radius:20px;padding:22px;box-shadow:0 12px 36px #34216b12}h1{margin:0 0 8px}p{line-height:1.6;color:#625a78}input{box-sizing:border-box;width:100%;font:inherit;font-size:20px;padding:14px;border:2px solid #b5a5eb;border-radius:12px}button{cursor:pointer;background:#6243c5;color:white;border:0;border-radius:10px;padding:12px 17px;font-weight:700;margin:8px 6px 0 0}button.secondary{background:#eee8ff;color:#49338e}#answer{margin-top:20px;padding:16px;background:#f6f2ff;border-radius:14px;white-space:pre-wrap;line-height:1.9}small{color:#756b8d}a{color:#5838b7}</style></head><body><main><a href="./">← Formwheel Hub</a><section><h1>🧮 Factor Lab</h1><p>정수 계수 이차식을 인수분해해요. 공통인수와 풀이 과정, 검산까지!</p><label for="expr">다항식 입력</label><input id="expr" value="x²+5x+6" placeholder="예: 2x²+7x+3" autocomplete="off"><div><button type="button" class="secondary" id="square" aria-label="제곱 기호 입력">x² 입력</button><button id="solve">인수분해</button><button class="secondary" data-example="x²-9">합차 공식</button><button class="secondary" data-example="2x²+7x+3">중급 예제</button><button class="secondary" data-example="6x²+12x">공통인수</button></div><div id="answer" role="status" aria-live="polite">식을 입력하고 인수분해를 눌러주세요.</div><p><small>현재 지원: x에 대한 정수 계수 2차 이하 다항식. 실수 범위에서 인수분해되지 않거나 유리수 계수의 인수로 표현할 수 없는 식은 안내해요.</small></p></section></main><script>
-const $=id=>document.getElementById(id),gcd=(a,b)=>{a=Math.abs(a);b=Math.abs(b);while(b)[a,b]=[b,a%b];return a},fmt=(a,b,c)=>[[a,2],[b,1],[c,0]].filter(([n])=>n).map(([n,p],i)=>{let v=(n<0?'-':i?'+':'')+(p&&Math.abs(n)===1?'':Math.abs(n))+(p?'x'+(p===2?'²':''):'');return v}).join('')||'0',linear=(a,b)=>{if(!a)return String(b);return '('+(a===1?'':a===-1?'-':a)+'x'+(b>0?'+'+b:b<0?b:'')+')'};
-function parse(raw){let s=raw.replace(/\s+/g,'').replace(/X/g,'x').replace(/[²]/g,'^2').replace(/−/g,'-').replace(/\*/g,'');if(!s||/[^0-9x+\-^]/.test(s))throw Error('x, 숫자, +, -, ²만 입력해 주세요.');if(!/^[+-]/.test(s))s='+'+s;const terms=s.match(/[+-][^+-]+/g);if(!terms||terms.join('')!==s)throw Error('식의 형식을 확인해 주세요.');let out=[0,0,0];for(const t of terms){let m=t.match(/^([+-])(\d*)(x(?:\^([012]))?)?$/);if(!m||(!m[2]&&!m[3]))throw Error('정수 계수의 2차 이하 다항식만 지원해요.');let power=m[3]?(m[4]===undefined?1:Number(m[4])):0;out[power]+=(m[1]==='-'?-1:1)*Number(m[2]||1);if(!Number.isSafeInteger(out[power]))throw Error('계수가 너무 커요.')}return [out[2],out[1],out[0]]}
-function factor(a,b,c){const original=fmt(a,b,c);if(!a&&!b)return '결과: '+c+'\n상수식은 더 이상 인수분해하지 않아요.';let g=gcd(gcd(a,b),c);if(!g)g=1;if((a||b)<0)g=-g;let A=a/g,B=b/g,C=c/g;let prefix=g===1?'':g===-1?'-':String(g);let steps=['원래 식: '+original];if(g!==1)steps.push('① 공통인수 '+g+' 묶기: '+prefix+'('+fmt(A,B,C)+')');if(!A){steps.push('② 일차식: '+(prefix||'')+linear(B,C));return steps.join('\n')+'\n검산: '+original}if(C===0){steps.push('② x 묶기: '+prefix+'x'+linear(A,B));return steps.join('\n')+'\n검산: '+original}let found=null;const target=A*C;for(let u=-Math.abs(target);u<=Math.abs(target);u++){if(!u||target%u)continue;let v=target/u;if(u+v!==B)continue;let d=gcd(A,u),e=gcd(v,C);if(A<0)d=-d;if(d===0||e===0)continue;let p=A/d,q=u/d,r=v/e,s=C/e;if(p===r&&q===s){found=[d,e,p,q,u,v];break}if(p===-r&&q===-s){found=[d,-e,p,q,u,v];break}}if(!found){steps.push('유리수 계수의 일차식 두 개로 인수분해되지 않아요.');return steps.join('\n')}let [d,e,p,q,u,v]=found;steps.push('② 가운데 항 분리: '+fmt(A,u,0)+' '+(v<0?'- ':'+ ')+fmt(0,Math.abs(v),C));steps.push('③ 묶기: '+(prefix||'')+linear(d,e)+linear(p,q));steps.push('④ 검산: 전개하면 '+original);return steps.join('\n')}
-function run(){try{const [a,b,c]=parse($('expr').value);$('answer').textContent=factor(a,b,c)}catch(e){$('answer').textContent='⚠️ '+e.message}}$('square').onclick=()=>{const el=$('expr'),start=el.selectionStart??el.value.length,end=el.selectionEnd??start;el.setRangeText('²',start,end,'end');el.focus()};$('solve').onclick=run;$('expr').addEventListener('keydown',e=>{if(e.key==='Enter')run()});document.querySelectorAll('[data-example]').forEach(b=>b.onclick=()=>{$('expr').value=b.dataset.example;run()});run();
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Factor Lab | Formwheel</title><style>:root{font-family:system-ui,sans-serif;color-scheme:light}body{margin:0;background:#f4f1ff;color:#27213f}main{max-width:690px;margin:36px auto;padding:22px}section{background:white;border:1px solid #ddd4ff;border-radius:20px;padding:22px;box-shadow:0 12px 36px #34216b12}h1{margin:0 0 8px}p{line-height:1.6;color:#625a78}input{box-sizing:border-box;width:100%;font:inherit;font-size:20px;padding:14px;border:2px solid #b5a5eb;border-radius:12px}button{cursor:pointer;background:#6243c5;color:white;border:0;border-radius:10px;padding:12px 17px;font-weight:700;margin:8px 6px 0 0}button.secondary{background:#eee8ff;color:#49338e}#answer{margin-top:20px;padding:16px;background:#f6f2ff;border-radius:14px;white-space:pre-wrap;line-height:1.9}small{color:#756b8d}a{color:#5838b7}</style></head><body><main><a href="./">← Formwheel Hub</a><section><h1>🧮 Factor Lab</h1><p>괄호가 있는 식부터 12차 고차식까지! 전개, 공통인수, 유리근, 제곱의 차, 검산을 한 번에.</p><label for="expr">다항식 입력</label><input id="expr" value="x²+5x+6" placeholder="예: (x+2)(x+3) 또는 x^4-16" autocomplete="off"><div><button type="button" class="secondary" id="square" aria-label="제곱 기호 입력">x² 입력</button><button type="button" class="secondary" id="open-paren"> ( </button><button type="button" class="secondary" id="close-paren"> ) </button><button type="button" class="secondary" id="power"> x^n </button><button id="solve">인수분해</button><button class="secondary" data-example="x²-9">합차 공식</button><button class="secondary" data-example="2x²+7x+3">중급 예제</button><button class="secondary" data-example="6x²+12x">공통인수</button><button class="secondary" data-example="(x+2)(x-3)">괄호 전개</button><button class="secondary" data-example="x^4-16">4차식</button><button class="secondary" data-example="x^3-6x²+11x-6">3차식</button></div><div id="answer" role="status" aria-live="polite">식을 입력하고 인수분해를 눌러주세요.</div><p><small>지원: 정수 계수, 괄호·중첩 괄호·곱셈·지수 0~12. 유리근과 제곱의 차 중심으로 인수분해하며, 모든 고차식의 완전한 인수분해를 보장하지는 않아요. 데이터는 서버에 저장하지 않아요.</small></p></section></main><script>
+
+const $ = id => document.getElementById(id);
+const LIMIT=12, MAXCOEF=1000000000000n;
+const trim=a=>{while(a.length>1&&a[a.length-1]===0n)a.pop();return a};
+const add=(a,b)=>trim(Array.from({length:Math.max(a.length,b.length)},(_,i)=>(a[i]||0n)+(b[i]||0n)));
+const neg=a=>a.map(v=>-v);
+const mul=(a,b)=>{if(a.length+b.length-2>LIMIT)throw Error('최대 12차식까지 지원해요.');let c=Array(a.length+b.length-1).fill(0n);for(let i=0;i<a.length;i++)for(let j=0;j<b.length;j++){c[i+j]+=a[i]*b[j];if(c[i+j]>MAXCOEF||c[i+j]<-MAXCOEF)throw Error('계수가 너무 커요.')}return trim(c)};
+const pow=(a,k)=>{if(k>LIMIT)throw Error('지수는 12 이하로 입력해 주세요.');let r=[1n];for(let i=0;i<k;i++)r=mul(r,a);return r};
+const symbols=s=>{s=s.replace(/\s+/g,'').replace(/X/g,'x').replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/g,c=>'⁰¹²³⁴⁵⁶⁷⁸⁹'.indexOf(c)).replace(/−/g,'-').replace(/×/g,'*');let t=s.match(/\d+|x|[()+*^\\-]/g)||[];if(!s||t.join('')!==s)throw Error('숫자, x, 괄호, +, -, *, ^만 사용할 수 있어요.');return t};
+function parse(raw){
+ const t=symbols(raw);let i=0;
+ const primary=()=>{let v=t[i++];if(v==='('){let a=expr();if(t[i++]!==')')throw Error('괄호를 확인해 주세요.');return a}if(v==='x')return [0n,1n];if(v&&/^\d+$/.test(v))return [BigInt(v)];throw Error('숫자, x 또는 괄호가 필요해요.')};
+ const power=()=>{let a=primary();if(t[i]==='^'){i++;if(!/^\d+$/.test(t[i]||''))throw Error('지수는 0~12의 정수여야 해요.');a=pow(a,Number(t[i++]));}return a};
+ const unary=()=>{if(t[i]==='+'){i++;return unary()}if(t[i]==='-'){i++;return neg(unary())}return power()};
+ const product=()=>{let a=unary();while(i<t.length){if(t[i]==='*'){i++;a=mul(a,unary())}else if(t[i]==='('||t[i]==='x'||/^\d+$/.test(t[i]||'')){a=mul(a,unary())}else break}return a};
+ const expr=()=>{let a=product();while(t[i]==='+'||t[i]==='-'){let op=t[i++],b=product();a=add(a,op==='-'?neg(b):b)}return a};
+ let result=expr();if(i!==t.length)throw Error('연산자나 괄호 위치를 확인해 주세요.');return trim(result);
+}
+const abs=n=>n<0n?-n:n;
+const gcd=(a,b)=>{a=abs(a);b=abs(b);while(b){let r=a%b;a=b;b=r}return a};
+const content=a=>a.reduce((v,n)=>gcd(v,n),0n);
+function fmt(a){let out='';for(let i=a.length-1;i>=0;i--){let n=a[i];if(!n)continue;let body=(abs(n)===1n&&i>0?'':String(abs(n)))+(i?'x'+(i===1?'':i===2?'²':'^'+i):'');out+=(n<0n?'-':out?'+':'')+body}return out||'0'}
+const square=n=>{if(n<0n)return null;let lo=0n,hi=n+1n;while(lo+1n<hi){let mid=(lo+hi)/2n;if(mid*mid<=n)lo=mid;else hi=mid}return lo*lo===n?lo:null};
+function divisors(n){n=abs(n);if(!n||n>100000000n)return [];let a=[];for(let i=1n;i*i<=n;i++){if(n%i===0n){a.push(i);if(i*i!==n)a.push(n/i)}}return a}
+function quotient(a,p,q){let n=a.length-1,b=Array(n).fill(0n),rem=a.slice();for(let j=n;j>=1;j--){if(rem[j]%q!==0n)return null;b[j-1]=rem[j]/q;rem[j]=0n;rem[j-1]+=p*b[j-1]}return rem[0]===0n?trim(b):null}
+function rationalRoot(a){if(a[0]===0n)return {p:0n,q:1n,b:trim(a.slice(1))};for(let p0 of divisors(a[0]))for(let q of divisors(a[a.length-1]))for(let sign of [1n,-1n]){let p=sign*p0;if(gcd(p,q)!==1n)continue;let b=quotient(a,p,q);if(b)return {p,q,b}}return null}
+function splitSquare(a){let ids=a.map((v,i)=>v?i:-1).filter(i=>i>=0);if(ids.length!==2)return null;let [i,j]=ids;if(i%2||j%2||a[i]*a[j]>=0n)return null;let pos=a[i]>0n?i:j,minus=a[i]<0n?i:j;let u=square(a[pos]),v=square(-a[minus]);if(u===null||v===null)return null;let left=Array(Math.max(pos,minus)/2+1).fill(0n),right=left.slice();left[pos/2]=u;left[minus/2]+=v;right[pos/2]=u;right[minus/2]-=v;return [trim(left),trim(right)]}
+function factorPoly(poly){
+ let factors=[],notes=[],constant=1n;
+ function work(input,depth=0){
+  let a=trim(input.slice());if(depth>20)throw Error('인수분해 깊이 제한에 도달했어요.');
+  if(a.length===1){constant*=a[0];return}
+  let g=content(a);if(a[a.length-1]<0n)g=-g;
+  if(g!==1n){constant*=g;a=a.map(v=>v/g);notes.push('공통인수 '+g+' 추출')}
+  if(a.length===2){factors.push(a);return}
+  let root=rationalRoot(a);
+  if(root){let f=[-root.p,root.q];notes.push('유리근 '+(root.p===0n?'0':root.q===1n?String(root.p):root.p+'/'+root.q)+' 발견');work(f,depth+1);work(root.b,depth+1);return}
+  let ds=splitSquare(a);if(ds){notes.push('제곱의 차 공식 사용');work(ds[0],depth+1);work(ds[1],depth+1);return}
+  factors.push(a);
+ }
+ if(poly.length===1)return {text:fmt(poly),notes:['상수식입니다.']};
+ work(poly);
+ let sign=constant===-1n?'-':constant===1n?'':String(constant);
+ let parts=factors.map(a=>a.length===2?'('+fmt(a)+')':'('+fmt(a)+')');
+ let text=sign+parts.join('');
+ if(!parts.length)text=String(constant);
+ let check=[constant];for(let a of factors)check=mul(check,a);
+ if(fmt(check)!==fmt(poly))throw Error('검산 결과가 일치하지 않아 결과를 표시하지 않았어요.');
+ return {text,notes};
+}
+function run(){
+ try{
+  let source=$('expr').value,a=parse(source),res=factorPoly(a);
+  let lines=['입력: '+source,'① 괄호 전개 및 동류항 정리: '+fmt(a)];
+  if(res.notes.length)lines.push('② 풀이: '+res.notes.join(' → '));
+  lines.push('③ 인수분해: '+res.text,'④ 검산: '+res.text+' = '+fmt(a));
+  if(res.text==='('+fmt(a)+')')lines.push('현재 지원하는 정수 계수 인수분해 공식으로 더 나누기 어려운 식이에요.');
+  $('answer').textContent=lines.join('\n');
+ }catch(e){$('answer').textContent='⚠️ '+e.message}
+}
+function insertAtCursor(s){let el=$('expr'),st=el.selectionStart??el.value.length,en=el.selectionEnd??st;el.setRangeText(s,st,en,'end');el.focus()}
+$('square').onclick=()=>insertAtCursor('²');
+$('solve').onclick=run;
+$('expr').addEventListener('keydown',e=>{if(e.key==='Enter')run()});
+document.querySelectorAll('[data-example]').forEach(b=>b.onclick=()=>{$('expr').value=b.dataset.example;run()});
+run();
+
 </script></body></html>
