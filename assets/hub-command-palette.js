@@ -62,6 +62,7 @@
       {name:'프로젝트 검색',detail:'기존 검색창에서 필터 검색',action:focusCatalog},
       {name:'설정',detail:'Formwheel 허브 설정 열기',action:()=>{const button=document.getElementById('fw-settings-button');if(button?.getAttribute('aria-expanded')!=='true')button?.click();}},
       {name:'명예의 전당',detail:'업적과 기록',url:'./hall-of-fame.html'},
+      {name:'GLITCH DETECTOR',detail:'FW12 오류 진단 및 해결 가이드',url:'./glitch-detector.html'},
       {name:'더보기',detail:'Formwheel 서비스 메뉴',url:'./more.html'}
     ];
     function catalog() {
