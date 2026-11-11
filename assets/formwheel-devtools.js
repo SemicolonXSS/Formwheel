@@ -156,7 +156,7 @@ style.textContent+=
 document.head.append(style);
 const toggle=document.createElement('button');toggle.id='fw-dev-toggle';toggle.type='button';toggle.textContent='</>';toggle.setAttribute('aria-label','FW12 열기 (Ctrl + ;)');document.body.append(toggle);
 panel=document.createElement('section');panel.id='fw-dev-panel';panel.setAttribute('role','dialog');panel.setAttribute('aria-label','FW12 개발자 도구');panel.setAttribute('aria-modal','false');
-panel.innerHTML='<div class="fw-head"><strong>🛠 FW12 · Developer Tools 4.1</strong><div><button type="button" data-act="copy">복사</button> <button type="button" data-act="export">보고서 ↓</button> <button type="button" data-act="pause">일시정지</button> <button type="button" data-act="clear">지우기</button> <button type="button" data-act="close">닫기</button></div></div><div class="fw-tabs"></div><div class="fw-controls"><select aria-label="로그 수준 필터"><option value="all">전체</option><option value="error">오류</option><option value="warn">경고</option><option value="info">정보</option><option value="log">로그</option></select><input aria-label="로그 검색" placeholder="로그 검색" autocomplete="off"></div><div class="fw-body" role="log" aria-live="off"></div>';
+panel.innerHTML='<div class="fw-head"><strong>🛠 FW12 · Developer Tools 4.1</strong><div><button type="button" data-act="glitch">🧪 GLITCH DETECTOR</button> <button type="button" data-act="copy">복사</button> <button type="button" data-act="export">보고서 ↓</button> <button type="button" data-act="pause">일시정지</button> <button type="button" data-act="clear">지우기</button> <button type="button" data-act="close">닫기</button></div></div><div class="fw-tabs"></div><div class="fw-controls"><select aria-label="로그 수준 필터"><option value="all">전체</option><option value="error">오류</option><option value="warn">경고</option><option value="info">정보</option><option value="log">로그</option></select><input aria-label="로그 검색" placeholder="로그 검색" autocomplete="off"></div><div class="fw-body" role="log" aria-live="off"></div>';
 document.body.append(panel);output=panel.querySelector('.fw-body');
 const selector=panel.querySelector('select'),query=panel.querySelector('input'),controls=panel.querySelector('.fw-controls');
 selector.addEventListener('change',()=>{filter=selector.value;render()});
@@ -231,6 +231,7 @@ panel.addEventListener('click',e=>{
  const act=e.target.closest('button[data-act]')?.dataset.act;
  if(act==='close')show(false);
  if(act==='clear'){logs.length=0;totalCaptured=0;render()}
+ if(act==='glitch')window.open('./glitch-detector.html','_blank','noopener');
  if(act==='export')exportReport();
  if(act==='pause'){paused=!paused;e.target.textContent=paused?'재개':'일시정지';e.target.setAttribute('aria-pressed',String(paused));if(!paused)render()}
  if(act==='copy'){
