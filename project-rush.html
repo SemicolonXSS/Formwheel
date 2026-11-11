@@ -9,7 +9,15 @@
 <section id="missions"><h2>🎯 MEGA 미션 15</h2><div id="mission-grid" class="grid"></div></section>
 <section><h2>🏆 TRIP 2 1000 달성 목표</h2><div class="milestones"><div><strong>500명</strong>출발선 돌파</div><div><strong>600명</strong>기념 장식 목표</div><div><strong>750명</strong>시크릿 공개 목표</div><div><strong>1,000명</strong>그랜드 피날레 목표</div></div><p class="small">달성 여부는 허브의 공식 방문자 집계를 확인하세요. 위 보상은 이벤트 기획 목표이며 이 페이지에서 자동 지급되지 않습니다.</p><a class="btn secondary" href="./index.html">실제 방문자 현황은 허브에서 →</a></section>
 <section id="secret" class="quiz"><span class="eyebrow">BONUS · SECRET LAB</span><h2>🧠 CHAOS 코드 해독</h2><p>규칙을 찾아 다음 수를 맞혀 보세요: <strong>2, 6, 12, 20, 30, ?</strong></p><div class="choices"><button data-answer="40">40</button><button data-answer="42">42</button><button data-answer="44">44</button><button data-answer="48">48</button></div><p id="quiz-result" aria-live="polite">정답을 골라 보세요! (공식 보상과 무관한 특별 게임)</p><div id="secret-note" hidden>🔐 SECRET FOUND: <strong>ORBIT-1000</strong> — 탐험 코드 발견! (기념 문구이며 교환 가능한 쿠폰은 아닙니다.)</div></section>
-</main><footer>© Formwheel · PROJECT RUSH MEGA CHAOS. 비공식 기록을 공식 업적처럼 표시하지 않습니다. 개인정보와 인증 정보를 수집하지 않습니다.</footer>
+<section id="trip-live" aria-labelledby="trip-live-title" style="padding:24px;border:1px solid #675aa3;border-radius:20px;background:#1b2140">
+<h2 id="trip-live-title">📈 1,000명까지 실시간 여정</h2>
+<p class="small">공식 Firebase 누적 방문자 수를 읽기 전용으로 표시합니다. 이 이벤트 페이지에서는 방문자 수를 변경하지 않습니다.</p>
+<p style="font-size:clamp(28px,6vw,48px);font-weight:850;margin:10px 0"><span id="trip-count">연결 중…</span> <span style="font-size:18px;color:#bfc5dc">/ 1,000명</span></p>
+<div class="meter" role="progressbar" aria-label="누적 방문자 목표 진행률" aria-valuemin="0" aria-valuemax="1000" aria-valuenow="0" id="trip-meter"><div id="trip-bar"></div></div>
+<p id="trip-remaining" aria-live="polite" class="small">공식 집계를 확인하고 있어요.</p>
+<p class="small" id="trip-updated"></p>
+<button class="secondary" id="trip-refresh" type="button">↻ 지금 새로고침</button>
+</section></main><footer>© Formwheel · PROJECT RUSH MEGA CHAOS. 비공식 기록을 공식 업적처럼 표시하지 않습니다. 개인정보와 인증 정보를 수집하지 않습니다.</footer>
 <script>
 (function(){
 'use strict';
@@ -39,5 +47,31 @@ document.getElementById('reset').addEventListener('click',()=>{if(confirm('이 �
 document.getElementById('share').addEventListener('click',async()=>{const url=location.href.split('#')[0],status=document.getElementById('share-status');try{if(navigator.share)await navigator.share({title:document.title,url});else if(navigator.clipboard){await navigator.clipboard.writeText(url);status.textContent='이벤트 링크를 복사했어요!'}else status.textContent=url}catch(err){if(err.name!=='AbortError')status.textContent='공유할 링크: '+url}});
 document.querySelectorAll('[data-answer]').forEach(btn=>btn.addEventListener('click',()=>{let ok=btn.dataset.answer==='42';document.getElementById('quiz-result').textContent=ok?'정답! n(n+1) 규칙으로 6×7=42 🎉':'아쉽다! 각 항의 차이 4, 6, 8, 10을 살펴보세요.';document.getElementById('secret-note').hidden=!ok}));
 render();
+})();
+</script><script>
+(function(){
+'use strict';
+const base='https://formwheel-default-rtdb.firebaseio.com/formwheelV2/publicVisitorCounts/total.json';
+const countEl=document.getElementById('trip-count'),remaining=document.getElementById('trip-remaining'),updated=document.getElementById('trip-updated'),bar=document.getElementById('trip-bar'),meter=document.getElementById('trip-meter'),refresh=document.getElementById('trip-refresh');
+let busy=false;
+async function load(){
+if(busy)return;busy=true;refresh.disabled=true;
+try{
+const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),8000);
+let response;try{response=await fetch(base,{cache:'no-store',signal:controller.signal})}finally{clearTimeout(timeout)}
+if(!response.ok)throw Error('HTTP '+response.status);
+const data=await response.json();
+if(!data||!Number.isSafeInteger(data.count)||data.count<0)throw Error('invalid-count');
+const n=data.count;countEl.textContent=n.toLocaleString('ko-KR');
+bar.style.width=Math.min(100,n/1000*100)+'%';
+meter.setAttribute('aria-valuenow',String(Math.min(1000,n)));
+remaining.textContent=n>=1000?'🎉 목표 1,000명 달성!':('목표까지 '+(1000-n).toLocaleString('ko-KR')+'명 남았어요!');
+updated.textContent='마지막 확인: '+new Date().toLocaleTimeString('ko-KR');
+}catch(e){remaining.textContent='공식 방문자 집계를 불러올 수 없어요. 잠시 뒤 다시 시도해 주세요.';updated.textContent='연결 실패 · 이전에 확인한 수치는 변경하지 않았습니다.'}
+finally{busy=false;refresh.disabled=false}
+}
+refresh.addEventListener('click',load);
+load();setInterval(()=>{if(!document.hidden)load()},60000);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)load()});
 })();
 </script></body></html>
