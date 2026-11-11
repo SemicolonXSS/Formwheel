@@ -7,7 +7,7 @@ const add=(a,b)=>trim(Array.from({length:Math.max(a.length,b.length)},(_,i)=>(a[
 const neg=a=>a.map(v=>-v);
 const mul=(a,b)=>{if(a.length+b.length-2>LIMIT)throw Error('최대 12차식까지 지원해요.');let c=Array(a.length+b.length-1).fill(0n);for(let i=0;i<a.length;i++)for(let j=0;j<b.length;j++){c[i+j]+=a[i]*b[j];if(c[i+j]>MAXCOEF||c[i+j]<-MAXCOEF)throw Error('계수가 너무 커요.')}return trim(c)};
 const pow=(a,k)=>{if(k>LIMIT)throw Error('지수는 12 이하로 입력해 주세요.');let r=[1n];for(let i=0;i<k;i++)r=mul(r,a);return r};
-const symbols=s=>{s=s.replace(/\s+/g,'').replace(/X/g,'x').replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/g,c=>'⁰¹²³⁴⁵⁶⁷⁸⁹'.indexOf(c)).replace(/−/g,'-').replace(/×/g,'*');let t=s.match(/\d+|x|[()+*^\\-]/g)||[];if(!s||t.join('')!==s)throw Error('숫자, x, 괄호, +, -, *, ^만 사용할 수 있어요.');return t};
+const symbols=s=>{s=s.replace(/\s+/g,'').replace(/X/g,'x').replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]+/g,s=>'^'+[...s].map(c=>'⁰¹²³⁴⁵⁶⁷⁸⁹'.indexOf(c)).join('')).replace(/−/g,'-').replace(/×/g,'*');let t=s.match(/\d+|x|[()+*^\\-]/g)||[];if(!s||t.join('')!==s)throw Error('숫자, x, 괄호, +, -, *, ^만 사용할 수 있어요.');return t};
 function parse(raw){
  const t=symbols(raw);let i=0;
  const primary=()=>{let v=t[i++];if(v==='('){let a=expr();if(t[i++]!==')')throw Error('괄호를 확인해 주세요.');return a}if(v==='x')return [0n,1n];if(v&&/^\d+$/.test(v))return [BigInt(v)];throw Error('숫자, x 또는 괄호가 필요해요.')};
