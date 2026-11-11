@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GLITCH DETECTOR | Formwheel FW12</title><link rel="icon" href="./assets/formwheel-favicon.svg"><style>
-:root{color-scheme:dark;font-family:system-ui,sans-serif}body{margin:0;background:#0b1020;color:#e9edff}main{max-width:850px;margin:auto;padding:30px 18px}h1{font-size:clamp(28px,5vw,44px);margin-bottom:6px}.muted{color:#aeb9d9}.panel{background:#151e35;border:1px solid #344263;border-radius:18px;padding:20px;margin:18px 0}textarea{box-sizing:border-box;width:100%;min-height:140px;resize:vertical;border-radius:12px;border:1px solid #526184;background:#0c1428;color:white;padding:14px;font:14px ui-monospace,monospace}button,a.button{display:inline-block;background:#7466ed;color:white;border:0;border-radius:10px;padding:11px 15px;margin:8px 6px 0 0;cursor:pointer;text-decoration:none;font:inherit}button.secondary{background:#334361}.result{border-top:1px solid #344263;padding:14px 0}.result strong{color:#aeb0ff}code{overflow-wrap:anywhere}a{color:#b8b5ff}</style></head><body><main><a href="./index.html">← Formwheel Hub</a><h1>🧪 GLITCH DETECTOR</h1><p class="muted">SEREN #043 · FW12 진단실 · 로컬 분석 전용</p><section class="panel"><h2>오류 로그 분석</h2><p class="muted">오류를 붙여넣으면 브라우저 안에서만 분석합니다. 서버나 Firebase에 전송하지 않습니다.</p><label for="log">오류 메시지</label><textarea id="log" maxlength="30000" placeholder="예: FirebaseError: permission_denied"></textarea><div><button id="analyze">오류 분석</button><button class="secondary" id="early">허브 초기 오류 가져오기</button><button class="secondary" id="clear">초기화</button></div></section><section class="panel" aria-live="polite"><h2>진단 결과</h2><div id="results">로그를 입력하고 분석을 눌러주세요.</div></section><p class="muted">자동 수정은 수행하지 않습니다. 해결 가이드는 참고용이며 실제 원인 확인이 필요합니다.</p></main><script>
+:root{color-scheme:dark;font-family:system-ui,sans-serif}body{margin:0;background:#0b1020;color:#e9edff}main{max-width:850px;margin:auto;padding:30px 18px}h1{font-size:clamp(28px,5vw,44px);margin-bottom:6px}.muted{color:#aeb9d9}.panel{background:#151e35;border:1px solid #344263;border-radius:18px;padding:20px;margin:18px 0}textarea{box-sizing:border-box;width:100%;min-height:140px;resize:vertical;border-radius:12px;border:1px solid #526184;background:#0c1428;color:white;padding:14px;font:14px ui-monospace,monospace}button,a.button{display:inline-block;background:#7466ed;color:white;border:0;border-radius:10px;padding:11px 15px;margin:8px 6px 0 0;cursor:pointer;text-decoration:none;font:inherit}button.secondary{background:#334361}.result{border-top:1px solid #344263;padding:14px 0}.result strong{color:#aeb0ff}code{overflow-wrap:anywhere}a{color:#b8b5ff}</style></head><body><main><a href="./index.html">← Formwheel Hub</a><h1>🧪 GLITCH DETECTOR</h1><p class="muted">SEREN #043 · FW12 진단실 · 로컬 분석 전용</p><section class="panel"><h2>오류 로그 분석</h2><p class="muted">오류를 붙여넣으면 브라우저 안에서만 분석합니다. 서버나 Firebase에 전송하지 않습니다.</p><label for="log">오류 메시지</label><textarea id="log" maxlength="30000" placeholder="예: FirebaseError: permission_denied"></textarea><div><button id="analyze">오류 분석</button><button class="secondary" id="early">허브 초기 오류 가져오기</button><button class="secondary" id="clear">초기화</button></div></section><section class="panel"><h2>정밀 분석 옵션</h2><label><input type="checkbox" id="group" checked> 중복 오류 묶기</label> <label><input type="checkbox" id="details" checked> 우선순위와 재현 점검 표시</label><p class="muted">오류별 발생 횟수, 심각도, 근거, 조치 순서를 확인합니다.</p><button class="secondary" id="sample">샘플 로그 테스트</button><button class="secondary" id="report">진단 결과 복사</button></section><section class="panel" aria-live="polite"><h2>진단 결과</h2><div id="results">로그를 입력하고 분석을 눌러주세요.</div></section><p class="muted">자동 수정은 수행하지 않습니다. 해결 가이드는 참고용이며 실제 원인 확인이 필요합니다.</p></main><script>
 (()=>{'use strict';
 const $=id=>document.getElementById(id);
 const rules=[
@@ -12,7 +12,43 @@ const rules=[
 ];
 function redact(s){return String(s).replace(/AIza[0-9A-Za-z_-]{20,}/g,'[REDACTED_API_KEY]').replace(/(Bearer\s+)[^\s"'<>]+/gi,'$1[REDACTED]').replace(/(password|token|secret|authorization|api[_-]?key)\s*[:=]\s*[^\s,;]+/gi,'$1=[REDACTED]').replace(/[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}/g,'[REDACTED_EMAIL]').replace(/https?:\/\/[^\s"'<>]+/gi,'[REDACTED_URL]');}
 function add(parent,tag,value){const e=document.createElement(tag);e.textContent=value;parent.append(e);return e;}
-function analyze(){const out=$('results');out.replaceChildren();const raw=$('log').value.slice(0,30000);if(!raw.trim()){add(out,'p','분석할 로그가 없습니다.');return;}const found=rules.filter(r=>r.re.test(raw));if(!found.length)found.push({name:'미분류 오류',cause:'등록된 패턴과 일치하지 않습니다.',fix:'오류 발생 시점, 파일과 줄 번호, 재현 방법을 확인하세요.'});for(const r of found){const section=document.createElement('div');section.className='result';add(section,'strong',r.name);add(section,'p','가능한 원인: '+r.cause);add(section,'p','점검 방법: '+r.fix);out.append(section);}add(out,'p','개인정보 제거 미리보기:');add(out,'code',redact(raw).slice(0,1200));}
-$('analyze').addEventListener('click',analyze);$('clear').addEventListener('click',()=>{$('log').value='';$('results').textContent='초기화했습니다.';});$('early').addEventListener('click',()=>{try{const items=window.opener&&window.opener.location.origin===location.origin?window.opener.__fwEarlyErrors:null;if(!Array.isArray(items)||!items.length){$('results').textContent='연결된 허브의 초기 오류가 없습니다. 허브에서 이 페이지를 새 창으로 열었을 때만 읽을 수 있습니다.';return;}$('log').value=items.slice(-30).map(x=>[x.message,x.filename,x.line].join(' ')).join('\n');analyze();}catch{$('results').textContent='허브 오류 기록에 접근할 수 없습니다.';}});
+const signatures=[
+{re:/liveHubSessions/i,name:'실시간 세션 쓰기 실패',severity:'높음',why:'Firebase 세션 경로의 write 권한이나 인증 상태가 맞지 않을 수 있습니다.',steps:['세션 쓰기 경로와 로그인 상태 확인','Firebase Emulator에서 해당 사용자 권한으로 set 테스트','기존 규칙 백업 후 최소 범위 수정 검토']},
+{re:/permission[_ -]?denied|permission denied/i,name:'Firebase 권한 거부',severity:'높음',why:'읽기/쓰기 규칙, 인증 또는 경로 불일치 가능성이 있습니다.',steps:['실패한 read/write 작업과 경로 확인','auth.uid 및 custom claims 확인','Emulator에서 동일 요청 재현']},
+{re:/unexpected keyword|unexpected token|syntaxerror|expected '\\)'/i,name:'JavaScript 구문 오류',severity:'높음',why:'괄호나 문법 오류, 오래된 캐시 파일일 수 있습니다.',steps:['오류 파일과 줄 번호 확인','node --check로 스크립트 문법 검사','배포 버전과 브라우저 캐시 비교']},
+{re:/typeerror|cannot read properties|undefined is not|referenceerror/i,name:'JavaScript 실행 오류',severity:'중간',why:'DOM 요소, 변수 또는 객체가 초기화되지 않았을 수 있습니다.',steps:['스택 첫 번째 앱 코드 위치 확인','null 검사 및 로딩 순서 점검','동일 동작을 새로고침 후 재현']},
+{re:/failed to fetch|networkerror|net::|cors|timeout|offline/i,name:'네트워크 요청 오류',severity:'중간',why:'연결, 요청 주소, 서버 또는 CORS 설정 문제일 수 있습니다.',steps:['Network 탭에서 요청 상태 확인','동일 URL과 응답 코드 확인','오프라인/재시도 처리 점검']},
+{re:/quota|resource.exhausted|too.many.requests/i,name:'요청/저장 한도',severity:'중간',why:'서비스 사용량 또는 요청 제한에 도달했을 수 있습니다.',steps:['서비스 할당량과 요청 빈도 확인','중복 요청 제거','지수 백오프 적용 검토']},
+{re:/404|not found|failed to load resource/i,name:'리소스 없음',severity:'중간',why:'배포 파일 누락이나 잘못된 상대 경로일 수 있습니다.',steps:['요청 파일이 GitHub main에 존재하는지 확인','GitHub Pages 대소문자 및 경로 확인','캐시 무효화 후 다시 시도']},
+{re:/warning|deprecated/i,name:'호환성 경고',severity:'낮음',why:'권장되지 않는 API 사용 또는 환경 경고일 수 있습니다.',steps:['경고의 API와 버전 확인','호환 대안 조사','회귀 테스트 후 교체']}
+];
+let lastReport='';
+function analyze(){
+ const out=$('results');out.replaceChildren();const raw=$('log').value.slice(0,30000);
+ if(!raw.trim()){add(out,'p','분석할 로그가 없습니다.');return;}
+ const lines=raw.split(/\\r?\\n/).filter(x=>x.trim()).slice(0,300);
+ const groups=new Map();
+ for(const line of lines){
+  const hit=signatures.find(x=>x.re.test(line))||{name:'미분류',severity:'확인 필요',why:'등록된 패턴만으로 원인을 특정할 수 없습니다.',steps:['오류 메시지와 재현 순서 확인','파일과 줄 번호 확인']};
+  const key=$('group').checked?hit.name:hit.name+' #'+groups.size;
+  if(!groups.has(key))groups.set(key,{hit,count:0,samples:[]});
+  const g=groups.get(key);g.count++;if(g.samples.length<2)g.samples.push(redact(line).slice(0,350));
+ }
+ const rank={'높음':0,'중간':1,'낮음':2,'확인 필요':3};
+ const sorted=[...groups.values()].sort((a,b)=>(rank[a.hit.severity]??4)-(rank[b.hit.severity]??4)||b.count-a.count);
+ const summary='분석 '+lines.length+'줄 · 유형 '+sorted.length+'개 · 최고 우선순위 '+sorted[0].hit.severity;
+ add(out,'p',summary);let report=[summary];
+ for(const g of sorted){
+  const section=document.createElement('div');section.className='result';
+  add(section,'strong',g.hit.name+' · '+g.hit.severity+' · '+g.count+'회');
+  add(section,'p','가능한 원인: '+g.hit.why);
+  report.push(g.hit.name+' ('+g.count+'회, '+g.hit.severity+')',g.hit.why);
+  if($('details').checked){const list=document.createElement('ol');for(const step of g.hit.steps){add(list,'li',step);report.push('- '+step);}section.append(list);}
+  add(section,'code',g.samples[0]);out.append(section);
+ }
+ add(out,'p','분석은 패턴 기반 추정이며 실제 해결 여부를 보장하지 않습니다.');
+ lastReport=report.join('\\n');
+}
+$('analyze').addEventListener('click',analyze);$('sample').addEventListener('click',()=>{$('log').value='FirebaseError: permission_denied at /formwheelV2/liveHubSessions/UID/SESSION\\nSyntaxError: Unexpected keyword return at assets/hub-command-palette.js:57\\nTypeError: Cannot read properties of null';analyze();});$('report').addEventListener('click',async()=>{if(!lastReport)analyze();try{await navigator.clipboard.writeText(lastReport);$('results').append(document.createTextNode(' · 진단 요약 복사 완료'));}catch{alert('복사 권한이 없어 복사하지 못했습니다.');}});$('clear').addEventListener('click',()=>{$('log').value='';$('results').textContent='초기화했습니다.';});$('early').addEventListener('click',()=>{try{const items=window.opener&&window.opener.location.origin===location.origin?window.opener.__fwEarlyErrors:null;if(!Array.isArray(items)||!items.length){$('results').textContent='연결된 허브의 초기 오류가 없습니다. 허브에서 이 페이지를 새 창으로 열었을 때만 읽을 수 있습니다.';return;}$('log').value=items.slice(-30).map(x=>[x.message,x.filename,x.line].join(' ')).join('\n');analyze();}catch{$('results').textContent='허브 오류 기록에 접근할 수 없습니다.';}});
 })();
 </script></body></html>
