@@ -55,7 +55,7 @@ $('next').onclick=()=>{level=(level+1)%specs.length;load()};$('prev').onclick=()
 $('reset').onclick=load;
 function point(e){let r=canvas.getBoundingClientRect();return [(e.clientX-r.left)*900/r.width,(e.clientY-r.top)*560/r.height]}
 canvas.onpointerdown=e=>{let p=point(e),ms=mirrors();drag=ms.findIndex(m=>Math.hypot(p[0]-m.x,p[1]-m.y)<95);if(drag>=0)canvas.setPointerCapture(e.pointerId)};
-canvas.onpointermove=e=>{if(drag<0)return;let p=point(e),m=mirrors()[drag],angle=Math.atan2(p[1]-m.y,p[0]-m.x)*180/PI;angle=Math.max(-90,Math.min(90,Math.round(angle)));angles[drag]=angle;$('m'+drag).value=angle;$('out'+drag).textContent=angle+'°';active=false;render()};
+canvas.onpointermove=e=>{if(drag<0)return;let p=point(e),m=mirrors()[drag],angle=Math.atan2(p[1]-m.y,p[0]-m.x)*180/PI;if(angle>90)angle-=180;else if(angle<-90)angle+=180;angle=Math.round(angle);angles[drag]=angle;$('m'+drag).value=angle;$('out'+drag).textContent=angle+'°';active=false;render()};
 canvas.onpointerup=()=>drag=-1;canvas.onpointercancel=()=>drag=-1;
 validateStages();load();
 </script></body></html>
