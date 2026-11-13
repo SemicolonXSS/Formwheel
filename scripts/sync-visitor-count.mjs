@@ -22,11 +22,18 @@ async function publishLiveCount() {
   const sessions = await db.ref(root + "/liveHubSessions").get();
   let live = 0;
   sessions.forEach(user => {
-    if (Object.values(user.val() || {}).some(session =>
-      Number.isFinite(session?.lastSeen) &&
-      session.lastSeen <= checkedAt + 60_000 &&
-      checkedAt - session.lastSeen < 5 * 60_000
-    )) live++;
+    const value = user.val();
+    // Ignore malformed user records rather than treating strings or arrays as sessions.
+    if (!value || typeof value !== "object" || Array.isArray(value)) return;
+    const active = Object.values(value).some(session => {
+      if (!session || typeof session !== "object" || Array.isArray(session)) return false;
+      const lastSeen = session.lastSeen;
+      return typeof lastSeen === "number" &&
+        Number.isFinite(lastSeen) &&
+        lastSeen <= checkedAt + 60_000 &&
+        checkedAt - lastSeen < 5 * 60_000;
+    });
+    if (active) live++;
   });
   const result = await db.ref(root + "/publicVisitorCounts/live").transaction(current => {
     if (Number(current?.updatedAt) >= checkedAt) return;
