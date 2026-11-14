@@ -53,3 +53,19 @@ jobs:
         env:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
         run: node scripts/sync-visitor-count.mjs
+
+      - name: Write run summary
+        if: always()
+        env:
+          JOB_STATUS: ${{ job.status }}
+          RUN_EVENT: ${{ github.event_name }}
+          RUN_ID: ${{ github.run_id }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          {
+            echo "## Formwheel visitor sync"
+            echo "- Result: ${JOB_STATUS}"
+            echo "- Trigger: ${RUN_EVENT}"
+            echo "- Run: https://github.com/${REPOSITORY}/actions/runs/${RUN_ID}"
+            echo "- Finished (UTC): $(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+          } >> "${GITHUB_STEP_SUMMARY}"
