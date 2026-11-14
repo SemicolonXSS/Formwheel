@@ -33,6 +33,8 @@ IMPORTANT:
 
 
 const projects = [
+  {"name":"Formwheel Atom","keywords":"원소 주기율표 원자번호 주기 자연원소 인공원소 발견자 원소비교 화학 atom periodic table","icon":"⚛️","className":"purple","category":"tool","mode":"solo","connection":"online","difficulty":"쉬움","description":"118개 원소의 주기율표·발견 역사·주기·자연/인공 분류와 원소 비교.","url":"https://semicolonxss.github.io/Formwheel/atom.html","addedAt":"2026-11-14T00:00:00Z","recent":true},
+
   {"name":"Optical Chaos","keywords":"광학 빛 거울 반사 굴절 프리즘 레이저 퍼즐 optical chaos","icon":"🌈","className":"purple","category":"game","mode":"solo","connection":"offline","difficulty":"보통","description":"거울·굴절·프리즘을 활용해 빛을 목표에 보내는 광학 퍼즐.","url":"https://semicolonxss.github.io/Formwheel/optical-chaos.html","addedAt":"2026-11-09T00:00:00Z","recent":true},
   {"name":"Formwheel SNS","keywords":"SNS 소셜 글쓰기 게시글 피드 좋아요 커뮤니티","icon":"💬","className":"purple","category":"app","mode":"solo","connection":"offline","difficulty":"쉬움","description":"글을 쓰고 검색하고 좋아요를 누르는 로컬 SNS 미리보기. 게시글은 이 브라우저에만 저장돼요.","url":"https://semicolonxss.github.io/Formwheel/sns.html","addedAt":"2026-11-11T00:00:00Z","recent":true},
   {"name":"BETA LAB","keywords":"베타 실험실 기능 테스트 개발 실험 beta lab","icon":"🧪","className":"purple","category":"tool","mode":"solo","connection":"online","difficulty":"보통","description":"Formwheel의 실험 기능을 선택적으로 시험하는 BETA LAB.","url":"https://semicolonxss.github.io/Formwheel/beta-lab.html","addedAt":"2026-11-10T00:00:00Z","recent":true},
