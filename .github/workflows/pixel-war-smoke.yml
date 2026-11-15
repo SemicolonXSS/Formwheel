@@ -1,0 +1,26 @@
+name: PIXEL WAR prototype checks
+
+on:
+  pull_request:
+    paths:
+      - pixel-war.html
+      - database.rules.json
+      - tests/pixel-war-smoke.test.cjs
+      - .github/workflows/pixel-war-smoke.yml
+  push:
+    branches:
+      - feature/pixel-war-20261105
+
+permissions:
+  contents: read
+
+jobs:
+  static-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax and security invariants
+        run: node --test tests/pixel-war-smoke.test.cjs
