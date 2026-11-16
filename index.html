@@ -498,6 +498,7 @@ header .fw-profile-trigger{margin-left:0}
 
 검색 결과가 없어요.<br>
 다른 이름이나 필터로 찾아보거나 필터를 초기화해보세요.
+<button type="button" id="fw-empty-reset">↺ 검색·필터 초기화</button>
 
 </div>
 
@@ -1172,6 +1173,37 @@ document.getElementById('fw21-logout').onclick=async()=>{if(!confirm('Formwheel�
       target.blur();
     }
   });
+})();
+</script>
+<!-- Hub usability extras: purely visual; existing catalogue state remains authoritative. -->
+<style id="fw-hub-quick-ux-styles">
+#fw-empty-reset{display:block;margin:16px auto 0;min-height:44px;padding:10px 16px;border:1px solid #b9b8e6;border-radius:10px;background:#f1efff;color:#302d86;font:700 13px system-ui,sans-serif;cursor:pointer}
+#fw-empty-reset:hover{background:#e7e3ff}
+#fw-empty-reset:focus-visible,#fw-scroll-top:focus-visible{outline:3px solid #f59e0b;outline-offset:3px}
+#fw-scroll-top{position:fixed;right:18px;bottom:calc(24px + env(safe-area-inset-bottom, 0px));z-index:100;min-height:44px;padding:10px 15px;border:1px solid #e1dcff;border-radius:999px;background:#3439bd;color:#fff;box-shadow:0 5px 18px #181d5c40;font:700 13px system-ui,sans-serif;cursor:pointer}
+#fw-scroll-top[hidden]{display:none!important}
+#fw-scroll-top:hover{background:#252a9e}
+@media(max-width:700px){#fw-scroll-top{right:12px;bottom:calc(80px + env(safe-area-inset-bottom, 0px))}}
+</style>
+<button type="button" id="fw-scroll-top" aria-label="페이지 맨 위로 이동" hidden>↑ 맨 위로</button>
+<script>
+(function () {
+  var reset = document.getElementById('fw-empty-reset');
+  if (reset) reset.addEventListener('click', function () {
+    var resetFilters = document.getElementById('resetFilters');
+    if (resetFilters) resetFilters.click();
+    var search = document.getElementById('search');
+    if (search) search.focus();
+  });
+  var topButton = document.getElementById('fw-scroll-top');
+  if (!topButton) return;
+  function updateVisibility() { topButton.hidden = (window.scrollY || 0) < 480; }
+  window.addEventListener('scroll', updateVisibility, { passive: true });
+  topButton.addEventListener('click', function () {
+    var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' });
+  });
+  updateVisibility();
 })();
 </script>
 </body>
