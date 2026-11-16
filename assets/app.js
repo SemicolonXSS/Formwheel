@@ -33,6 +33,7 @@ IMPORTANT:
 
 
 const projects = [
+  {"name":"Duck","keywords":"Formwheel Duck 오리들의 끝없는 전쟁 샌드박스 국가 대전 포인트전 일반전 패자부활전 빵 경제","icon":"🦆","className":"purple","category":"game","mode":"solo","connection":"offline","difficulty":"보통","description":"나만의 오리 국가 대회를 만들고 일반전·포인트전, 탈락·패자부활, 경제와 규칙을 직접 운영하는 샌드박스.","url":"https://semicolonxss.github.io/Formwheel/duck.html","addedAt":"2026-11-16T00:00:00Z","recent":true},
   {"name":"Grid","keywords":"Formwheel Grid 격자 탐험 아이템 포션 열쇠 체력 HUD TOAST Tooltip","icon":"🧩","className":"purple","category":"game","mode":"solo","connection":"offline","difficulty":"쉬움","description":"포션과 열쇠를 활용해 문을 열고 출구를 찾는 격자 탐험 게임. HUD·알림·아이템 설명 지원.","url":"https://semicolonxss.github.io/Formwheel/grid.html","addedAt":"2026-11-16T00:00:00Z","recent":true},
   {"name":"PIXEL WAR","keywords":"픽셀 전쟁 r/place 그림 협동 멀티 실시간","icon":"🎨","className":"purple","category":"game","mode":"multi","connection":"online","difficulty":"쉬움","description":"30초마다 픽셀 한 칸! 모두가 함께 그리는 확장형 실시간 캔버스.","url":"https://semicolonxss.github.io/Formwheel/pixel-war.html","addedAt":"2026-11-15T00:00:00Z","recent":true},
   {"name":"Atom","keywords":"원소 주기율표 원자번호 주기 자연원소 인공원소 발견자 원소비교 혼합물 화합물 합금 화학 atom periodic table","icon":"⚛️","className":"purple","category":"tool","mode":"solo","connection":"online","difficulty":"쉬움","description":"118개 원소의 주기율표·발견 역사·주기·자연/인공 분류, 원소 비교와 혼합물·화합물 예시.","url":"https://semicolonxss.github.io/Formwheel/atom.html","addedAt":"2026-11-14T00:00:00Z","recent":true},
