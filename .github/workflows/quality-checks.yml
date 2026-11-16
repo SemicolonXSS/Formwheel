@@ -29,6 +29,8 @@ jobs:
         run: node scripts/check-syntax.cjs
       - name: Validate Hub catalog and sitemap
         run: node scripts/check-hub-catalog.cjs
+      - name: Validate keyboard skip navigation across 50 pages
+        run: node scripts/check-hub-accessibility.cjs
       - name: Offline cache regression tests
         run: node --test tests/*.test.cjs
       - name: Security core regression tests
