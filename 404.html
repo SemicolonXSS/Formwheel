@@ -75,6 +75,10 @@ return;
 }
 let moves=0;const start=Date.now();
 function move(){
+// Do not move a keyboard-focused target away from the visitor.
+if(document.body.dataset.type==="game" && document.activeElement===$("target")){
+gameTimer=setTimeout(move,1200);return;
+}
 if(document.body.dataset.type!=="game"||moves>=7||Date.now()-start>=10000){$("target").disabled=true;$("gameResult").textContent="도전 종료! 다시 뽑거나 Hub로 돌아갈 수 있어요.";return}
 $("target").style.left=(5+Math.random()*68)+"%";
 $("target").style.top=(5+Math.random()*45)+"px";
