@@ -68,6 +68,11 @@ $("target").style.top="20px";
 if(!found.includes(v.id)){found.push(v.id);try{localStorage.setItem(key,JSON.stringify(found))}catch{}}
 drawCollection();
 if(v.id==="game"){
+// Keep the target stationary for visitors who prefer reduced motion.
+if(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+$("gameResult").textContent="움직임 줄이기 설정에 따라 404가 움직이지 않습니다. 숫자를 눌러 잡아 보세요!";
+return;
+}
 let moves=0;const start=Date.now();
 function move(){
 if(document.body.dataset.type!=="game"||moves>=7||Date.now()-start>=10000){$("target").disabled=true;$("gameResult").textContent="도전 종료! 다시 뽑거나 Hub로 돌아갈 수 있어요.";return}
