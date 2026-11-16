@@ -16,5 +16,20 @@
       "type": "image/svg+xml",
       "purpose": "any"
     }
+  ],
+  "shortcuts": [
+    {
+      "name": "프로젝트 둘러보기",
+      "short_name": "프로젝트",
+      "description": "Formwheel 게임과 도구 목록으로 바로 이동",
+      "url": "/Formwheel/#projects",
+      "icons": [
+        {
+          "src": "/Formwheel/assets/formwheel-favicon.svg",
+          "sizes": "any",
+          "type": "image/svg+xml"
+        }
+      ]
+    }
   ]
 }
