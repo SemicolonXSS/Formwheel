@@ -12,3 +12,17 @@ test('scores, wallet balances and producer claims cannot be client-forged',async
 test('wallet reads are per UID',async()=>{await assertSucceeds(get(ref(database('alice'),'formwheelV2/wallets/alice')));await assertFails(get(ref(database('eve'),'formwheelV2/wallets/alice')))});
 test('survey responses read only by owner; submissions immutable',async()=>{await assertSucceeds(get(ref(database(),'formwheelV2/forms/f/public')));await assertSucceeds(get(ref(database('alice'),'formwheelV2/forms/f/responses')));await assertFails(get(ref(database('bob'),'formwheelV2/forms/f/responses')));await assertSucceeds(set(ref(database('bob'),'formwheelV2/forms/f/responses/two'),{respondent:'bob',answers:['B'],submittedAt:2}));await assertFails(set(ref(database('bob'),'formwheelV2/forms/f/responses/two'),{respondent:'bob',answers:['C'],submittedAt:3}))});
 test('chat cannot impersonate user or delete other messages',async()=>{await assertFails(set(ref(database('bob'),'formwheelV2/chat/public/messages/fake'),{uid:'alice',text:'fake',createdAt:1}));await assertFails(remove(ref(database('bob'),'formwheelV2/chat/public/messages/m')));await assertSucceeds(remove(ref(database('producer',{producer:true}),'formwheelV2/chat/public/messages/m')))});
+
+test('season 2 clicker score is owned, bounded and cannot be deleted or reduced',async()=>{
+ const root='clickerLeaderboardSeason2/alice', now=Date.now();
+ const score=n=>n.toString().padStart(101,'0');
+ const entry=(value,at=now)=>({uid:'alice',name:'Alice',score:score(value),updatedAt:at});
+ await assertFails(set(ref(database('bob'),root),entry(1)));
+ await assertFails(set(ref(database('alice'),root),{...entry(1),uid:'bob'}));
+ await assertFails(set(ref(database('alice'),root),{...entry(1),score:'9'.repeat(101)}));
+ await assertSucceeds(set(ref(database('alice'),root),entry(1)));
+ await assertSucceeds(get(ref(database(), 'clickerLeaderboardSeason2')));
+ await assertFails(remove(ref(database('alice'),root)));
+ await assertFails(set(ref(database('alice'),root),entry(0,now+61000)));
+ await assertFails(set(ref(database('alice'),root),entry(2,now)));
+});
