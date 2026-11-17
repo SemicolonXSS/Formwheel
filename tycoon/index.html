@@ -18,6 +18,13 @@ main{max-width:1130px;padding:20px 15px 60px;margin:auto}.stats{display:grid;gri
 #log{min-height:65px;max-height:180px;overflow:auto;font-size:13px;color:#f6dca1;line-height:1.7}#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#f2e6be;color:#242132;padding:10px 18px;border-radius:12px;box-shadow:0 10px 40px #0008;display:none;max-width:90vw;z-index:10}
 footer{text-align:center;padding:15px;color:#a4afd6}a{color:#bfc2ff}
 @media(max-width:780px){.layout{grid-template-columns:1fr}.side{grid-row:auto}header{padding:20px 15px}}
+
+/* City map: rendered immediately, even before purchasing businesses. */
+.city-map{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:16px;border-radius:15px;background:linear-gradient(145deg,#234b58,#243853 65%,#293659);border:1px solid #527181;margin-bottom:18px}
+.city-lot{position:relative;min-height:120px;background:linear-gradient(160deg,#426e67,#304e56);border:2px solid #6c9b91;border-radius:14px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;text-align:center;padding:10px 5px;overflow:hidden}
+.city-lot.built{background:linear-gradient(145deg,#52618b,#303d60);border-color:#8f9de1;box-shadow:inset 0 0 22px #887cfc22}.city-icon{font-size:clamp(30px,5vw,48px);filter:drop-shadow(0 4px 4px #10142670)}
+.city-lot strong{font-size:13px}.city-lot small{font-size:11px;color:#d2e2e4}.city-map-title{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}.city-road{height:12px;background:repeating-linear-gradient(90deg,#e8e7b6 0 28px,transparent 28px 47px);border-block:6px solid #3a4055;box-sizing:content-box;margin:0 0 14px;border-radius:4px}
+@media(max-width:450px){.city-map{grid-template-columns:repeat(2,minmax(0,1fr))}.city-lot{min-height:108px}}
 </style></head><body>
 <header><div class="top"><a href="../">← Formwheel Hub</a><span class="sub">CITY TYCOON · v1.0</span></div>
 <h1>🏙️ CITY TYCOON</h1><div class="sub">작은 노점에서 시작해서 나만의 도시 경제를 키워 봐!</div></header>
@@ -25,7 +32,7 @@ footer{text-align:center;padding:15px;color:#a4afd6}a{color:#bfc2ff}
 <div class="stat">💰 현금<b id="cash"></b></div><div class="stat">📈 초당 순이익<b id="income"></b></div>
 <div class="stat">⭐ 명성<b id="rep"></b></div><div class="stat">🏢 총 사업장<b id="count"></b></div>
 <div class="stat">🗓️ 도시 운영일<b id="day"></b></div></section>
-<div class="layout"><section><div class="panel"><h2>🏗️ 사업장</h2><p class="small">사업장 구매 → 레벨 업그레이드 → 더 빠른 자동 수익. 자동으로 돈이 쌓여요.</p><div id="businesses" class="grid"></div></div></section>
+<div class="layout"><section><div class="panel" style="margin-bottom:18px"><div class="city-map-title"><h2>🌆 나의 도시</h2><span class="small" id="cityStatus">도시 불러오는 중…</span></div><p class="small">사업장을 구매하면 빈 부지가 건물로 변해요. 레벨을 올리면 도시도 성장합니다.</p><div class="city-road" aria-hidden="true"></div><div class="city-map" id="cityMap" aria-label="도시 건물 배치도"><div class="city-lot">🌱 도시 준비 중…</div></div></div><div class="panel"><h2>🏗️ 사업장</h2><p class="small">사업장 구매 → 레벨 업그레이드 → 더 빠른 자동 수익. 자동으로 돈이 쌓여요.</p><div id="businesses" class="grid"></div></div></section>
 <aside class="side">
 <div class="panel"><h2>🎯 운영</h2><button id="promo" class="action">📣 광고 캠페인</button><p class="small">명성을 올리고 60초 동안 전체 수익을 1.5배로 만들어요.</p><button id="grant" class="action">🏛️ 도시 지원금 신청</button><p class="small">수익이 막혔을 때만 받을 수 있는 1회 복구 지원</p><button id="save" class="action">💾 지금 저장</button><button id="reset" class="action">🗑️ 새 도시로 다시 시작</button></div>
 <div class="panel"><h2>🏆 목표</h2><div id="missions" class="small"></div></div>
@@ -55,7 +62,12 @@ function log(t){state.messages.unshift(t);state.messages=state.messages.slice(0,
 function save(){state.saved=Date.now();try{localStorage.setItem(KEY,JSON.stringify(state));return true}catch(e){toast('⚠️ 저장 공간에 접근할 수 없어요');return false}}
 function settle(seconds){if(seconds<=0)return;const amount=Math.max(0,rate()*multiplier()*seconds);state.cash+=amount;state.earned+=amount}
 const idle=Math.min(7200,Math.max(0,(Date.now()-state.saved)/1000));if(idle>2&&total()>0){settle(idle);log('🌙 오프라인 수익 +'+fmt(rate()*multiplier()*idle))}last=Date.now();
-function render(){const r=rate();$('cash').textContent=fmt(state.cash);$('income').textContent=fmt(r*multiplier());$('rep').textContent=fmt(state.rep).replace(' C','');$('count').textContent=total()+'개';$('day').textContent=Math.floor((Date.now()-state.started)/60000)+1+'일';
+function renderCity(){
+ const map=$('cityMap'),status=$('cityStatus');if(!map||!status)return;
+ map.innerHTML=TYPES.map((t,i)=>{const l=state.levels[i];return '<div class="city-lot '+(l?'built':'')+'" aria-label="'+t.name+', '+(l?'레벨 '+l:'빈 부지')+'"><span class="city-icon">'+(l?t.icon:'🌱')+'</span><strong>'+t.name+'</strong><small>'+(l?'건설 완료 · Lv.'+l:'아직 건설되지 않음')+'</small></div>'}).join('');
+ status.textContent='건설한 사업장 '+state.levels.filter(x=>x>0).length+' / '+TYPES.length+'종';
+}
+function render(){renderCity();const r=rate();$('cash').textContent=fmt(state.cash);$('income').textContent=fmt(r*multiplier());$('rep').textContent=fmt(state.rep).replace(' C','');$('count').textContent=total()+'개';$('day').textContent=Math.floor((Date.now()-state.started)/60000)+1+'일';
 $('businesses').innerHTML=TYPES.map((t,i)=>{const l=state.levels[i],c=cost(i),p=gain(i,l)-expense(i,l);return '<article class="business"><div class="emoji">'+t.icon+'</div><h3>'+t.name+' <span class="level">Lv.'+l+'</span></h3><p>'+t.desc+'</p><div>초당 수익 <strong>'+fmt(p)+'</strong></div><div class="bar"><div class="fill" style="width:"+(Math.min(100,(l%10)*10))+'%"></div></div><p>다음 '+(l?'업그레이드':'개설')+' 비용: '+fmt(c)+'</p><div class="buttons"><button data-buy="'+i+'" '+(state.cash<c?'disabled':'')+'>'+(l?'⬆️ 업그레이드':'➕ 개설')+'</button></div></article>'}).join('');
 $('promo').disabled=state.cash<200||Date.now()<state.promoUntil;$('promo').textContent=Date.now()<state.promoUntil?'📣 진행 중 ('+Math.ceil((state.promoUntil-Date.now())/1000)+'초)':'📣 광고 캠페인 (200 C)';
 $('grant').disabled=state.grantUsed||state.cash>=30;
