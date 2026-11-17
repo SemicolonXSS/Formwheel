@@ -1599,7 +1599,7 @@
           ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 12"
         },
         "score": {
-          ".validate": "newData.isString() && newData.val().matches(/^[0-9]{101}$/) && (newData.val().beginsWith('0') || newData.val() === '1' + '0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000')"
+          ".validate": "newData.isString() && newData.val().matches(/^(0[0-9]{100}|10{100})$/)"
         },
         "updatedAt": {
           ".validate": "newData.isNumber() && newData.val() >= now - 60000 && newData.val() <= now + 60000"
