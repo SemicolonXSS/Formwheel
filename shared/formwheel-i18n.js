@@ -91,7 +91,7 @@ const placeholders={"🔎 프로젝트 검색...":"🔎 Search projects...","친
 const dynamicOriginals=new WeakMap();
 let pending=false,observer=null;
 const changedRoots=new Set();
-const observerOptions={subtree:true,childList:true,characterData:true};
+const observerOptions={subtree:true,childList:true,characterData:true,attributes:true,attributeFilter:["placeholder","data-fw-i18n"]};
 function translateDynamic(lang,root=document.body){
  if(!root)return;
  const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
