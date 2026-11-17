@@ -33,6 +33,8 @@ IMPORTANT:
 
 
 const projects = [
+  {"name":"RULETORY","keywords":"Formwheel Ruletory 룰토리 공장 자동화 규칙 변경 컨베이어 물류 저장고 샌드박스","icon":"🏭","className":"purple","category":"game","mode":"solo","connection":"offline","difficulty":"보통","description":"규칙을 바꾸며 공장을 건설하고 컨베이어로 물품을 저장고까지 운반하는 자동화 샌드박스.","url":"https://semicolonxss.github.io/Formwheel_Ruletory/","addedAt":"2026-11-17T00:00:00Z","recent":true},
+
   {"name":"Duck","keywords":"Formwheel Duck 오리들의 끝없는 전쟁 샌드박스 국가 대전 포인트전 일반전 패자부활전 빵 경제","icon":"🦆","className":"purple","category":"game","mode":"solo","connection":"offline","difficulty":"보통","description":"나만의 오리 국가 대회를 만들고 일반전·포인트전, 탈락·패자부활, 경제와 규칙을 직접 운영하는 샌드박스.","url":"https://semicolonxss.github.io/Formwheel/duck.html","addedAt":"2026-11-16T00:00:00Z","recent":true},
   {"name":"Grid","keywords":"Formwheel Grid 격자 탐험 아이템 포션 열쇠 체력 HUD TOAST Tooltip","icon":"🧩","className":"purple","category":"game","mode":"solo","connection":"offline","difficulty":"쉬움","description":"포션과 열쇠를 활용해 문을 열고 출구를 찾는 격자 탐험 게임. HUD·알림·아이템 설명 지원.","url":"https://semicolonxss.github.io/Formwheel/grid.html","addedAt":"2026-11-16T00:00:00Z","recent":true},
   {"name":"PIXEL WAR","keywords":"픽셀 전쟁 r/place 그림 협동 멀티 실시간","icon":"🎨","className":"purple","category":"game","mode":"multi","connection":"online","difficulty":"쉬움","description":"30초마다 픽셀 한 칸! 모두가 함께 그리는 확장형 실시간 캔버스.","url":"https://semicolonxss.github.io/Formwheel/pixel-war.html","addedAt":"2026-11-15T00:00:00Z","recent":true},
