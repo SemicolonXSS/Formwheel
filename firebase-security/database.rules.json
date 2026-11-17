@@ -1583,6 +1583,31 @@
           "scoreKey"
         ]
       }
+    },
+    "clickerLeaderboardSeason2": {
+      ".read": true,
+      ".indexOn": [
+        "score"
+      ],
+      "$uid": {
+        ".write": "auth != null && auth.uid === $uid && newData.exists() && (!data.exists() || (data.child('updatedAt').isNumber() && data.child('updatedAt').val() <= now - 60000))",
+        ".validate": "newData.hasChildren(['uid','name','score','updatedAt']) && newData.child('uid').val() === $uid && (!data.exists() || newData.child('score').val() >= data.child('score').val())",
+        "uid": {
+          ".validate": "newData.isString() && newData.val() === $uid"
+        },
+        "name": {
+          ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 12"
+        },
+        "score": {
+          ".validate": "newData.isString() && newData.val().matches(/^[0-9]{101}$/) && (newData.val().beginsWith('0') || newData.val() === '1' + '0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000')"
+        },
+        "updatedAt": {
+          ".validate": "newData.isNumber() && newData.val() >= now - 60000 && newData.val() <= now + 60000"
+        },
+        "$other": {
+          ".validate": false
+        }
+      }
     }
   }
 }
