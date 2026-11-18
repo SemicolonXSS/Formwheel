@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#171d30"><link rel="icon" href="assets/formwheel-favicon.svg">
+<title>FORK LAB | Formwheel A/B 실험실</title>
+<style>
+:root{font-family:system-ui,-apple-system,sans-serif;color-scheme:dark}*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(circle at 85% 0%,#30345e,#121726 52%);color:#f3f5ff}
+main{max-width:970px;margin:auto;padding:24px 16px 64px}a{color:#b8d4ff}
+h1{font-size:clamp(32px,6vw,50px);margin:16px 0 8px}p{color:#bdc8da;line-height:1.6}
+.panel{background:#202a3d;border:1px solid #465575;border-radius:18px;padding:22px;margin:18px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:14px}
+label{display:grid;gap:7px;font-weight:650}input,button{font:inherit;padding:11px 12px;border-radius:11px}
+input{width:100%;color:#f8fafc;background:#111827;border:1px solid #71819b}
+button{border:0;cursor:pointer;font-weight:750;background:#a6c8ff;color:#10172a}button.secondary{background:#36465f;color:#f3f5ff;border:1px solid #60718e}button.danger{background:#5a3444;color:#ffedf3}button:disabled{cursor:not-allowed;opacity:.52}
+button:focus-visible,input:focus{outline:3px solid #ffce80;outline-offset:2px}.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}
+.notice{border-left:3px solid #e9bf81;padding-left:13px;font-size:14px}
+.preview{min-height:155px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;border-radius:16px;background:#121a2b;padding:24px;text-align:center}
+.preview .cta{min-width:170px;max-width:100%}.preview .cta.b{background:#ffbf80;color:#252036}
+.pill{border:1px solid #61728d;border-radius:999px;padding:4px 10px;display:inline-block;color:#d5e4ff;font-size:12px}
+.metric{padding:15px;background:#172032;border-radius:12px}.metric b{font-size:24px;display:block;margin-top:7px}
+.bar{height:10px;background:#0c1323;border-radius:999px;overflow:hidden;margin-top:9px}.bar span{height:100%;display:block;background:#9fc4ff}.bar .orange{background:#ffc086}
+small{color:#aebdd2}#status{min-height:24px;color:#ffd49a}
+</style></head><body><main>
+<a href="./">← Formwheel Hub</a>
+<h1>🧪 FORK LAB</h1>
+<p>같은 기능을 A안과 B안으로 나누고, 어떤 선택이 더 자주 눌리는지 안전하게 실험해 보세요.</p>
+<p class="notice">이것은 <strong>이 브라우저에서만 작동하는 A/B 테스트 시뮬레이터</strong>입니다. 실제 방문자에게 실험을 배포하지 않으며, Firebase·Hub 테마·운영 데이터에는 영향을 주지 않아요. 객관적인 실서비스 통계가 아닙니다.</p>
+<section class="panel">
+<h2>1. 실험 설계</h2>
+<form id="setup"><div class="grid">
+<label>실험 이름<input id="experiment" required maxlength="80" value="Hub 시작 버튼 문구 테스트"></label>
+<label>A안 버튼 문구<input id="labelA" required maxlength="40" value="게임 시작하기"></label>
+<label>B안 버튼 문구<input id="labelB" required maxlength="40" value="지금 플레이!"></label>
+</div><div class="actions"><button type="submit">설정 저장 · 결과 초기화</button></div></form>
+<p><small>실험 설정을 변경하면 이전 기록을 초기화합니다. 같은 실험 데이터를 이어가려면 설정을 그대로 두세요.</small></p>
+</section>
+<section class="panel">
+<h2>2. 실험 실행</h2>
+<p>새 실험 회차마다 A 또는 B를 무작위 배정합니다. 버튼을 누르면 성공 1회로 기록되고, 건너뛰면 노출만 기록돼요.</p>
+<div class="actions"><button id="next" type="button">새 회차 시작</button><button id="skip" class="secondary" type="button" disabled>건너뛰기</button></div>
+<div id="stage" class="preview" style="margin-top:16px" aria-live="polite"><span class="pill">대기 중</span><p>새 회차 시작을 눌러 주세요.</p></div>
+<p id="status" role="status" aria-live="polite"></p>
+</section>
+<section class="panel">
+<h2>3. 실험 결과</h2>
+<div class="grid">
+<div class="metric"><span class="pill">A안</span><b id="rateA">0%</b><small id="countA">노출 0 · 클릭 0</small><div class="bar"><span id="barA" style="width:0%"></span></div></div>
+<div class="metric"><span class="pill">B안</span><b id="rateB">0%</b><small id="countB">노출 0 · 클릭 0</small><div class="bar"><span class="orange" id="barB" style="width:0%"></span></div></div>
+</div>
+<p id="insight"></p>
+<div class="actions"><button class="secondary" id="download" type="button">결과 JSON 다운로드</button><button class="danger" id="reset" type="button">결과 초기화</button></div>
+</section>
+</main><script>
+(()=>{'use strict';
+const KEY='fw-fork-lab-v1', $=id=>document.getElementById(id);
+const defaults=()=>({name:'Hub 시작 버튼 문구 테스트',labels:['게임 시작하기','지금 플레이!'],counts:[{views:0,clicks:0},{views:0,clicks:0}]});
+function valid(o){return o&&typeof o.name==='string'&&o.name.length>0&&o.name.length<=80&&Array.isArray(o.labels)&&o.labels.length===2&&o.labels.every(x=>typeof x==='string'&&x.length>0&&x.length<=40)&&Array.isArray(o.counts)&&o.counts.length===2&&o.counts.every(x=>x&&Number.isSafeInteger(x.views)&&Number.isSafeInteger(x.clicks)&&x.views>=0&&x.clicks>=0&&x.clicks<=x.views)}
+let data=defaults();try{const v=JSON.parse(localStorage.getItem(KEY)||'null');if(valid(v))data=v}catch{}
+let active=null;
+function save(){try{localStorage.setItem(KEY,JSON.stringify(data));return true}catch{$('status').textContent='저장할 수 없어요. 브라우저 저장소를 확인해 주세요.';return false}}
+function render(){
+$('experiment').value=data.name;$('labelA').value=data.labels[0];$('labelB').value=data.labels[1];
+data.counts.forEach((c,i)=>{const letter=i?'B':'A',rate=c.views?100*c.clicks/c.views:0;
+$('rate'+letter).textContent=rate.toFixed(1)+'%';$('count'+letter).textContent='노출 '+c.views+' · 클릭 '+c.clicks;
+$('bar'+letter).style.width=rate+'%'});
+const total=data.counts.reduce((n,x)=>n+x.views,0);
+$('insight').textContent=total===0?'아직 실험 결과가 없어요.':total<30?'총 '+total+'회 노출. 표본이 매우 작으므로 승자를 판단하지 마세요.':'총 '+total+'회 노출. 이 결과는 단일 브라우저 시뮬레이션으로 실제 사용자 선호를 뜻하지 않습니다.';
+$('skip').disabled=active===null;$('next').disabled=active!==null;
+}
+function clearStage(message){$('stage').replaceChildren();const p=document.createElement('p');p.textContent=message;$('stage').append(p)}
+$('setup').addEventListener('submit',e=>{
+e.preventDefault();const name=$('experiment').value.trim(),a=$('labelA').value.trim(),b=$('labelB').value.trim();
+if(!name||!a||!b)return;
+if(name===data.name&&a===data.labels[0]&&b===data.labels[1]){$('status').textContent='설정 변경이 없어 기존 결과를 유지했어요.';return}
+if(!confirm('실험 설정을 바꾸면 기존 통계가 초기화됩니다. 계속할까요?')){render();return}
+const old=data;data={name,labels:[a,b],counts:[{views:0,clicks:0},{views:0,clicks:0}]};if(!save()){data=old;render();return}
+active=null;clearStage('새 설정이 적용됐어요. 새 회차를 시작하세요.');$('status').textContent='설정 저장 완료';render();
+});
+$('next').onclick=()=>{
+if(active!==null)return;
+const bytes=new Uint32Array(1);crypto.getRandomValues(bytes);const i=bytes[0]%2;
+const old=data.counts[i].views;data.counts[i].views++;if(!save()){data.counts[i].views=old;return}
+active=i;$('stage').replaceChildren();
+const pill=document.createElement('span');pill.className='pill';pill.textContent=(i?'B':'A')+'안 배정';
+const title=document.createElement('h3');title.textContent='이 버튼을 눌러 보세요';
+const btn=document.createElement('button');btn.className='cta'+(i?' b':'');btn.textContent=data.labels[i];
+btn.onclick=()=>finish(true);
+$('stage').append(pill,title,btn);$('status').textContent='한 회차에서 클릭은 최대 1번만 기록돼요.';render();
+};
+function finish(clicked){
+if(active===null)return;
+const i=active;
+if(clicked){data.counts[i].clicks++;if(!save()){data.counts[i].clicks--;return}}
+active=null;clearStage(clicked?'클릭이 기록됐어요. 다음 회차를 시작해 보세요.':'건너뛰었어요. 다음 회차를 시작해 보세요.');
+$('status').textContent=clicked?'클릭 +1 기록 완료':'노출만 기록했어요.';render();
+}
+$('skip').onclick=()=>finish(false);
+$('reset').onclick=()=>{
+if(!confirm('A/B 결과를 모두 초기화할까요?'))return;
+const old=data.counts;data.counts=[{views:0,clicks:0},{views:0,clicks:0}];
+if(!save()){data.counts=old;return}
+active=null;clearStage('결과가 초기화됐어요.');$('status').textContent='초기화 완료';render();
+};
+$('download').onclick=()=>{
+const blob=new Blob([JSON.stringify({version:1,exportedAt:new Date().toISOString(),experiment:data},null,2)],{type:'application/json'});
+const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='formwheel-fork-lab-results.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+$('status').textContent='결과를 내려받았어요.';
+};
+render();
+})();
+</script></body></html>
