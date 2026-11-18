@@ -72,9 +72,20 @@ reveal.type='button';
 reveal.onclick=()=>{reveal.remove();card.insertBefore(node('div',x.message,'note'),actions)};
 card.append(reveal);
 }else card.append(node('p','🔒 아직 봉인되어 있어요.','muted'));
-const actions=node('div',undefined,'actions'),del=node('button','삭제','danger');
-del.type='button';del.onclick=()=>{if(!confirm('이 캡슐을 영구 삭제할까요?'))return;const old=items;items=items.filter(v=>v.id!==x.id);if(!save()){items=old;return}say('캡슐이 삭제됐어요.');render()};
-actions.append(del);card.append(actions);wrap.append(card);
+const actions=node('div',undefined,'actions');
+if(ready){
+const del=node('button','삭제','danger');
+del.type='button';
+del.onclick=()=>{
+if(localDay()<x.unlock){say('봉인 기간이 끝난 뒤에만 삭제할 수 있어요.');render();return}
+if(!confirm('이 캡슐을 영구 삭제할까요?'))return;
+const old=items;items=items.filter(v=>v.id!==x.id);
+if(!save()){items=old;return}
+say('캡슐이 삭제됐어요.');render()
+};
+actions.append(del);
+}
+card.append(actions);wrap.append(card);
 });
 }
 $('unlock').min=localDay();$('unlock').value=localDay();
