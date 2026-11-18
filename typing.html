@@ -30,7 +30,7 @@ textarea{width:100%;min-height:105px;resize:vertical;margin-top:14px;line-height
 <div class="control"><label for="duration">제한 시간</label><select id="duration"><option value="30">30초</option><option value="60" selected>60초</option><option value="120">120초</option><option value="0">시간 제한 없음</option></select></div>
 <button id="restart" type="button">다시 연습</button>
 </div>
-<div id="selectionPanel" class="practice-options"><div class="control"><label for="snippet">반복할 예제 선택</label><select id="snippet"></select></div><label class="repeat-toggle"><input id="repeat" type="checkbox" checked> 완성 후 Enter로 같은 내용 반복 (남은 시간 유지)</label></div>
+<div id="selectionPanel" class="practice-options"><div class="control"><label for="snippet">반복할 예제 선택</label><select id="snippet"></select></div><label class="repeat-toggle"><input id="repeat" type="checkbox" checked> Enter로 반복 · 일반 문장은 새 문장, URL·코드는 같은 내용 (시간 유지)</label></div>
 <div id="customPanel" class="practice-options" hidden><label for="customText">직접 입력할 연습 내용</label><textarea id="customText" rows="4" maxlength="3000" placeholder="원하는 문장, URL 또는 코드를 여기에 입력하세요."></textarea><small>직접 입력한 글은 전송하거나 저장하지 않습니다.</small></div>
 </section>
 <section class="panel" aria-label="타자 연습">
@@ -119,9 +119,9 @@ function saveBest(n){if(n.correct+totalCorrect<=0)return;const all=bestData(),ke
 function finish(success){if(ended&&!awaitingEnter)return;const n=numbers();
 if(!success){ended=true;awaitingEnter=false;clearInterval(timer);timer=null;$('answer').disabled=true;$('answer').readOnly=false;$('status').textContent='⏰ 시간이 끝났어요! '+n.cpm+'타/분 · 정확도 '+n.accuracy+'%';saveBest(n);return}
 if(ended)return;ended=true;saveBest(n);
-if($('repeat').checked){awaitingEnter=true;$('answer').readOnly=true;completedRounds++;$('status').textContent='🎉 '+completedRounds+'회 완료! Enter를 누르면 같은 내용으로 즉시 반복 · 남은 시간 유지';$('answer').focus()}
+if($('repeat').checked){awaitingEnter=true;$('answer').readOnly=true;completedRounds++;$('status').textContent='🎉 '+completedRounds+'회 완료! Enter를 누르면 '+($('mode').value==='general'?'새 문장':'같은 내용')+'으로 즉시 반복 · 남은 시간 유지';$('answer').focus()}
 else{clearInterval(timer);timer=null;$('answer').disabled=true;$('status').textContent='🎉 문장 완성! '+n.cpm+'타/분 · 정확도 '+n.accuracy+'%'}}
-function nextRound(){if(!awaitingEnter||!$('repeat').checked)return;const n=numbers();totalCorrect+=n.correct;totalTyped+=n.typed.length;awaitingEnter=false;ended=false;$('answer').value='';$('answer').readOnly=false;$('status').textContent='🔁 같은 내용 반복 중 · '+completedRounds+'회 완료';update();$('answer').focus()}
+function nextRound(){if(!awaitingEnter||!$('repeat').checked)return;const n=numbers();totalCorrect+=n.correct;totalTyped+=n.typed.length;awaitingEnter=false;ended=false;if($('mode').value==='general')sentence=choose(true);$('answer').value='';$('answer').readOnly=false;$('status').textContent='🔁 '+($('mode').value==='general'?'새 문장 연습 중':'같은 내용 반복 중')+' · '+completedRounds+'회 완료';update();$('answer').focus()}
 $('answer').addEventListener('compositionstart',()=>composition=true);
 $('answer').addEventListener('compositionend',()=>{composition=false;handleInput()});
 function handleInput(){if(ended||composition)return;if(!sentence){$('status').textContent='먼저 위의 직접 입력란에 연습 문장을 작성해 주세요.';return;}if(!started){started=performance.now();timer=setInterval(update,100)}update()}
@@ -133,7 +133,7 @@ $('snippet').addEventListener('change',()=>{completedRounds=0;reset();$('answer'
 $('repeat').addEventListener('change',()=>{completedRounds=0;populate();reset()});
 $('customText').addEventListener('input',()=>{completedRounds=0;reset()});
 ['lang','level','duration'].forEach(id=>$(id).addEventListener('change',()=>{completedRounds=0;chosenGeneral='';reset()}));
-$('answer').addEventListener('keydown',event=>{if(event.key==='Enter'&&!event.isComposing&&event.keyCode!==229){if(awaitingEnter){event.preventDefault();nextRound();return}if($('mode').value==='url'&&$('repeat').checked&&!ended){event.preventDefault();const n=numbers();totalCorrect+=n.correct;totalTyped+=n.typed.length;$('answer').value='';$('status').textContent='🔁 URL 다시 입력 · 제한 시간 유지';update();$('answer').focus();return}}if(event.key==='Tab'&&$('answer').classList.contains('code')){event.preventDefault();const el=$('answer'),start=el.selectionStart,end=el.selectionEnd;el.setRangeText('    ',start,end,'end');el.dispatchEvent(new Event('input',{bubbles:true}))}});
+$('answer').addEventListener('keydown',event=>{if(event.key==='Enter'&&!event.isComposing&&event.keyCode!==229){if(awaitingEnter){event.preventDefault();nextRound();return}if(($('mode').value==='url'||$('mode').value==='general')&&$('repeat').checked&&!ended){event.preventDefault();const n=numbers();totalCorrect+=n.correct;totalTyped+=n.typed.length;if($('mode').value==='general')sentence=choose(true);$('answer').value='';$('status').textContent=$('mode').value==='general'?'🔁 새 문장으로 변경 · 제한 시간 유지':'🔁 URL 다시 입력 · 제한 시간 유지';update();$('answer').focus();return}}if(event.key==='Tab'&&$('answer').classList.contains('code')){event.preventDefault();const el=$('answer'),start=el.selectionStart,end=el.selectionEnd;el.setRangeText('    ',start,end,'end');el.dispatchEvent(new Event('input',{bubbles:true}))}});
 
 $('clearBest').addEventListener('click',()=>{if(!confirm('이 기기의 타자연습 최고 기록을 모두 초기화할까요?'))return;try{localStorage.removeItem(storageKey)}catch(_){}showBest()});
 populate();reset();
