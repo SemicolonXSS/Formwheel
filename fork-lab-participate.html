@@ -53,9 +53,9 @@ function encode(o){
 const bytes=new TextEncoder().encode(JSON.stringify(o));let binary='';bytes.forEach(c=>binary+=String.fromCharCode(c));
 return 'FWFORK1.'+btoa(binary).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
 }
-function done(code){
+function done(code,returning=false){
 $('question').hidden=true;$('result').hidden=false;$('code').value=code;
-$('explain').textContent='이미 이 브라우저에서 참여했어요. 결과 코드를 작성자에게 전달하면 됩니다.';
+$('explain').textContent=returning?'이미 이 브라우저에서 참여했어요. 기존 결과 코드를 작성자에게 전달하면 됩니다.':'참여가 완료됐어요. 아래 결과 코드를 작성자에게 전달하면 됩니다.';
 }
 let previous=null;try{previous=localStorage.getItem(key)}catch{}
 const alreadyParticipated=Boolean(previous&&/^FWFORK1\.[A-Za-z0-9_-]{20,700}$/.test(previous));
@@ -77,6 +77,6 @@ try{await navigator.clipboard.writeText($('code').value);$('status').textContent
 catch{$('code').focus();$('code').select();$('status').textContent='코드를 선택했어요. 직접 복사해 주세요.'}
 };
 // Register the copy handler before restoring a previously completed vote.
-if(alreadyParticipated)done(previous);
+if(alreadyParticipated)done(previous,true);
 })();
 </script></body></html>
