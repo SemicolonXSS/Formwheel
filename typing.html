@@ -8,7 +8,7 @@
 :root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color-scheme:dark;--bg:#111226;--panel:#20213c;--line:#383958;--accent:#b7a1ff;--muted:#b4b6ce}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% 0,#33305c,var(--bg) 58%);color:#faf9ff;min-height:100vh;padding:22px}
 main{max-width:940px;margin:auto}a{color:var(--accent)}h1{font-size:clamp(28px,5vw,44px);margin:18px 0 8px}.lead{color:var(--muted);line-height:1.7}.panel{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:20px;margin:18px 0;box-shadow:0 12px 35px #07081744}
-.controls{display:flex;gap:12px;flex-wrap:wrap;align-items:end}.control{display:grid;gap:6px;flex:1 1 160px}label{font-size:13px;color:var(--muted);font-weight:700}select,button,textarea{font:inherit;border-radius:12px}select,textarea{background:#15162e;border:1px solid #535478;color:#fff;padding:12px}button{border:0;padding:12px 18px;background:var(--accent);color:#17142d;font-weight:800;cursor:pointer}button.secondary{background:#39395a;color:#fff}button:focus-visible,textarea:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #ffc96d;outline-offset:3px}
+.controls{display:flex;gap:12px;flex-wrap:wrap;align-items:end}.control{display:grid;gap:6px;flex:1 1 160px}label{font-size:13px;color:var(--muted);font-weight:700}select,button,textarea{font:inherit;border-radius:12px}[hidden]{display:none!important}select,textarea{background:#15162e;border:1px solid #535478;color:#fff;padding:12px}button{border:0;padding:12px 18px;background:var(--accent);color:#17142d;font-weight:800;cursor:pointer}button.secondary{background:#39395a;color:#fff}button:focus-visible,textarea:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #ffc96d;outline-offset:3px}
 .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:18px 0}.stat{text-align:center;background:#16172f;border:1px solid #383957;border-radius:14px;padding:14px 8px}.stat strong{display:block;font-size:clamp(20px,4vw,30px);font-variant-numeric:tabular-nums}.stat span{font-size:12px;color:var(--muted)}
 #sample{font-size:clamp(19px,3vw,27px);line-height:1.9;white-space:pre-wrap;overflow-wrap:anywhere;min-height:100px;padding:16px;background:#14152b;border-radius:14px;user-select:none}
 #sample .correct{color:#9be8bd}#sample .wrong{color:#ff939e;background:#74394a66;border-radius:3px}#sample .current{background:#b7a1ff;color:#151329;border-radius:3px}
@@ -109,7 +109,7 @@ function choose(advance=false){const m=$('mode').value;
  if(pool.length>1&&index===lastIndex)index=(index+1)%pool.length;
  lastIndex=index;chosenGeneral=pool[index];return chosenGeneral;
 }
-function reset(){clearInterval(timer);timer=null;started=0;ended=false;composition=false;sentence=choose();$('answer').disabled=!sentence;$('answer').value='';$('status').textContent='준비 완료! 입력하면 시작합니다.';update();showBest()}
+function reset(){clearInterval(timer);timer=null;started=0;ended=false;composition=false;sentence=choose();$('answer').disabled=false;$('answer').readOnly=false;$('answer').value='';$('status').textContent=sentence?'준비 완료! 입력하면 시작합니다.':'먼저 위에 연습할 내용을 입력해 주세요.';update();showBest()}
 function numbers(){const typed=segment($('answer').value),target=segment(sentence);let correct=0;for(let i=0;i<typed.length;i++)if(i<target.length&&typed[i]===target[i])correct++;const sec=started?Math.max(.001,(performance.now()-started)/1000):0;return {typed,target,correct,sec,cpm:started?Math.round(correct/sec*60):0,accuracy:typed.length?Math.round(correct/typed.length*100):100}}
 function update(){const n=numbers(),limit=Number($('duration').value),left=limit?Math.max(0,Math.ceil(limit-n.sec)):null;$('speed').textContent=n.cpm;$('accuracy').textContent=n.accuracy+'%';$('progress').textContent=Math.min(100,Math.round(n.typed.length/Math.max(1,n.target.length)*100))+'%';$('remaining').textContent=left===null?'무제한':left+'초';
 const frag=document.createDocumentFragment();n.target.forEach((char,i)=>{const s=document.createElement('span');s.textContent=char;if(i<n.typed.length)s.className=n.typed[i]===char?'correct':'wrong';else if(i===n.typed.length&&!ended)s.className='current';frag.appendChild(s)});$('sample').replaceChildren(frag);
@@ -118,12 +118,12 @@ function finish(success){if(ended)return;ended=true;clearInterval(timer);timer=n
 if(n.correct>0){const all=bestData(),key=config(),old=all[key];if(!old||n.cpm>old.cpm||(n.cpm===old.cpm&&n.accuracy>old.accuracy)){all[key]={cpm:n.cpm,accuracy:n.accuracy};try{localStorage.setItem(storageKey,JSON.stringify(all))}catch(_){}showBest()}}}
 $('answer').addEventListener('compositionstart',()=>composition=true);
 $('answer').addEventListener('compositionend',()=>{composition=false;handleInput()});
-function handleInput(){if(ended||composition)return;if(!started){started=performance.now();timer=setInterval(update,100)}update()}
+function handleInput(){if(ended||composition)return;if(!sentence){$('status').textContent='먼저 위의 직접 입력란에 연습 문장을 작성해 주세요.';return;}if(!started){started=performance.now();timer=setInterval(update,100)}update()}
 $('answer').addEventListener('input',handleInput);
-$('restart').addEventListener('click',reset);
-$('next').addEventListener('click',()=>{if($('mode').value==='general'){choose(true);reset()}else if(exercises[$('mode').value]&&!$('repeat').checked){$('snippet').selectedIndex=($('snippet').selectedIndex+1)%exercises[$('mode').value].length;reset()}});
-$('mode').addEventListener('change',()=>{chosenGeneral='';populate();reset()});
-$('snippet').addEventListener('change',reset);
+$('restart').addEventListener('click',()=>{reset();$('answer').focus()});
+$('next').addEventListener('click',()=>{if($('mode').value==='general'){choose(true);reset()}else if(exercises[$('mode').value]&&!$('repeat').checked){$('snippet').selectedIndex=($('snippet').selectedIndex+1)%exercises[$('mode').value].length;reset()}$('answer').focus()});
+$('mode').addEventListener('change',()=>{chosenGeneral='';populate();reset();if($('mode').value!=='custom')$('answer').focus();else $('customText').focus()});
+$('snippet').addEventListener('change',()=>{reset();$('answer').focus()});
 $('repeat').addEventListener('change',()=>{populate();reset()});
 $('customText').addEventListener('input',reset);
 ['lang','level','duration'].forEach(id=>$(id).addEventListener('change',()=>{chosenGeneral='';reset()}));
