@@ -156,7 +156,7 @@ seen.add(v.voteId);add.push(v.voteId);counts[v.variant].views++;if(v.clicked)cou
 if(!add.length){$('shareStatus').textContent='추가된 기록 없음. 중복, 다른 실험 코드 또는 잘못된 형식일 수 있어요.';return}
 const oldCounts=data.counts,oldReceived=data.received;
 data.counts=counts;data.received=[...data.received,...add];
-if(!save()){data.counts=oldCounts;data.received=oldReceived;return}
+if(!save()){data.counts=oldCounts;data.received=oldReceived;$('shareStatus').textContent='참가 기록을 저장하지 못했어요. 브라우저 저장소를 확인한 뒤 다시 시도해 주세요.';return}
 $('voteCodes').value='';$('shareStatus').textContent=add.length+'개 참가 기록 합침 · '+rejected+'개 건너뜀';render();
 };
 syncForm();render();
