@@ -30,7 +30,7 @@ textarea{width:100%;min-height:105px;resize:vertical;margin-top:14px;line-height
 <div class="control"><label for="duration">제한 시간</label><select id="duration"><option value="30">30초</option><option value="60" selected>60초</option><option value="120">120초</option><option value="0">시간 제한 없음</option></select></div>
 <button id="restart" type="button">다시 연습</button>
 </div>
-<div id="selectionPanel" class="practice-options"><div class="control"><label for="snippet">반복할 예제 선택</label><select id="snippet"></select></div><label class="repeat-toggle"><input id="repeat" type="checkbox" checked> 선택한 내용만 반복 (끄면 다른 문장·예제로 변경 가능)</label></div>
+<div id="selectionPanel" class="practice-options"><div class="control"><label for="snippet">반복할 예제 선택</label><select id="snippet"></select></div><label class="repeat-toggle"><input id="repeat" type="checkbox" checked> 완성하면 같은 내용 자동 반복 (끄면 한 번만 연습)</label></div>
 <div id="customPanel" class="practice-options" hidden><label for="customText">직접 입력할 연습 내용</label><textarea id="customText" rows="4" maxlength="3000" placeholder="원하는 문장, URL 또는 코드를 여기에 입력하세요."></textarea><small>직접 입력한 글은 전송하거나 저장하지 않습니다.</small></div>
 </section>
 <section class="panel" aria-label="타자 연습">
@@ -85,7 +85,7 @@ const exercises={
  ]
 };
 const $=id=>document.getElementById(id);
-const segment=s=>Array.from(s);let sentence='',started=0,ended=false,timer=null,lastIndex=-1,composition=false,chosenGeneral='';
+const segment=s=>Array.from(s);let sentence='',started=0,ended=false,timer=null,repeatTimeout=null,completedRounds=0,lastIndex=-1,composition=false,chosenGeneral='';
 const storageKey='fw-typing-lab-best-v1';
 function config(){const m=$('mode').value;return (m==='general'?'general-'+$('lang').value+'-'+$('level').value:m+'-'+(m==='custom'?'own':$('snippet').value))+'-'+$('duration').value}
 function bestData(){try{return JSON.parse(localStorage.getItem(storageKey)||'{}')}catch(_){return {}}}
@@ -109,24 +109,24 @@ function choose(advance=false){const m=$('mode').value;
  if(pool.length>1&&index===lastIndex)index=(index+1)%pool.length;
  lastIndex=index;chosenGeneral=pool[index];return chosenGeneral;
 }
-function reset(){clearInterval(timer);timer=null;started=0;ended=false;composition=false;sentence=choose();$('answer').disabled=false;$('answer').readOnly=false;$('answer').value='';$('status').textContent=sentence?'준비 완료! 입력하면 시작합니다.':'먼저 위에 연습할 내용을 입력해 주세요.';update();showBest()}
+function reset(){clearInterval(timer);clearTimeout(repeatTimeout);repeatTimeout=null;timer=null;started=0;ended=false;composition=false;sentence=choose();$('answer').disabled=false;$('answer').readOnly=false;$('answer').value='';$('status').textContent=sentence?'준비 완료! 입력하면 시작합니다.':'먼저 위에 연습할 내용을 입력해 주세요.';update();showBest()}
 function numbers(){const typed=segment($('answer').value),target=segment(sentence);let correct=0;for(let i=0;i<typed.length;i++)if(i<target.length&&typed[i]===target[i])correct++;const sec=started?Math.max(.001,(performance.now()-started)/1000):0;return {typed,target,correct,sec,cpm:started?Math.round(correct/sec*60):0,accuracy:typed.length?Math.round(correct/typed.length*100):100}}
 function update(){const n=numbers(),limit=Number($('duration').value),left=limit?Math.max(0,Math.ceil(limit-n.sec)):null;$('speed').textContent=n.cpm;$('accuracy').textContent=n.accuracy+'%';$('progress').textContent=Math.min(100,Math.round(n.typed.length/Math.max(1,n.target.length)*100))+'%';$('remaining').textContent=left===null?'무제한':left+'초';
 const frag=document.createDocumentFragment();n.target.forEach((char,i)=>{const s=document.createElement('span');s.textContent=char;if(i<n.typed.length)s.className=n.typed[i]===char?'correct':'wrong';else if(i===n.typed.length&&!ended)s.className='current';frag.appendChild(s)});$('sample').replaceChildren(frag);
 if(started&&!ended&&limit&&n.sec>=limit)finish(false);else if(started&&!ended&&n.typed.length===n.target.length&&n.correct===n.target.length)finish(true)}
 function finish(success){if(ended)return;ended=true;clearInterval(timer);timer=null;$('answer').disabled=true;const n=numbers();$('status').textContent=success?'🎉 문장 완성! '+n.cpm+'타/분 · 정확도 '+n.accuracy+'%':'⏰ 시간이 끝났어요! '+n.cpm+'타/분 · 정확도 '+n.accuracy+'%';
-if(n.correct>0){const all=bestData(),key=config(),old=all[key];if(!old||n.cpm>old.cpm||(n.cpm===old.cpm&&n.accuracy>old.accuracy)){all[key]={cpm:n.cpm,accuracy:n.accuracy};try{localStorage.setItem(storageKey,JSON.stringify(all))}catch(_){}showBest()}}}
+if(n.correct>0){const all=bestData(),key=config(),old=all[key];if(!old||n.cpm>old.cpm||(n.cpm===old.cpm&&n.accuracy>old.accuracy)){all[key]={cpm:n.cpm,accuracy:n.accuracy};try{localStorage.setItem(storageKey,JSON.stringify(all))}catch(_){}showBest()}}if(success&&$('repeat').checked){completedRounds++;$('status').textContent='🎉 '+completedRounds+'회 완료! '+n.cpm+'타/분 · 정확도 '+n.accuracy+'% · 같은 내용으로 다시 시작합니다.';repeatTimeout=setTimeout(()=>{repeatTimeout=null;reset();$('status').textContent='🔁 같은 내용 반복 중 · '+completedRounds+'회 완료';$('answer').focus()},1000)}}
 $('answer').addEventListener('compositionstart',()=>composition=true);
 $('answer').addEventListener('compositionend',()=>{composition=false;handleInput()});
 function handleInput(){if(ended||composition)return;if(!sentence){$('status').textContent='먼저 위의 직접 입력란에 연습 문장을 작성해 주세요.';return;}if(!started){started=performance.now();timer=setInterval(update,100)}update()}
 $('answer').addEventListener('input',handleInput);
-$('restart').addEventListener('click',()=>{reset();$('answer').focus()});
+$('restart').addEventListener('click',()=>{completedRounds=0;reset();$('answer').focus()});
 $('next').addEventListener('click',()=>{if($('mode').value==='general'){choose(true);reset()}else if(exercises[$('mode').value]&&!$('repeat').checked){$('snippet').selectedIndex=($('snippet').selectedIndex+1)%exercises[$('mode').value].length;reset()}$('answer').focus()});
-$('mode').addEventListener('change',()=>{chosenGeneral='';populate();reset();if($('mode').value!=='custom')$('answer').focus();else $('customText').focus()});
-$('snippet').addEventListener('change',()=>{reset();$('answer').focus()});
-$('repeat').addEventListener('change',()=>{populate();reset()});
-$('customText').addEventListener('input',reset);
-['lang','level','duration'].forEach(id=>$(id).addEventListener('change',()=>{chosenGeneral='';reset()}));
+$('mode').addEventListener('change',()=>{completedRounds=0;chosenGeneral='';populate();reset();if($('mode').value!=='custom')$('answer').focus();else $('customText').focus()});
+$('snippet').addEventListener('change',()=>{completedRounds=0;reset();$('answer').focus()});
+$('repeat').addEventListener('change',()=>{completedRounds=0;populate();reset()});
+$('customText').addEventListener('input',()=>{completedRounds=0;reset()});
+['lang','level','duration'].forEach(id=>$(id).addEventListener('change',()=>{completedRounds=0;chosenGeneral='';reset()}));
 $('answer').addEventListener('keydown',event=>{if(event.key==='Tab'&&$('answer').classList.contains('code')){event.preventDefault();const el=$('answer'),start=el.selectionStart,end=el.selectionEnd;el.setRangeText('    ',start,end,'end');el.dispatchEvent(new Event('input',{bubbles:true}))}});
 
 $('clearBest').addEventListener('click',()=>{if(!confirm('이 기기의 타자연습 최고 기록을 모두 초기화할까요?'))return;try{localStorage.removeItem(storageKey)}catch(_){}showBest()});
