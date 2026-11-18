@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#171329">
+<title>TIME CAPSULE | Formwheel</title>
+<link rel="icon" href="assets/formwheel-favicon.svg">
+<style>
+:root{font-family:system-ui,-apple-system,sans-serif;color-scheme:dark}*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 15% 0%,#3a2758,#171329 50%);color:#f4efff;min-height:100vh}
+main{max-width:860px;margin:auto;padding:26px 16px 70px}a{color:#d4bdff}
+h1{font-size:clamp(30px,6vw,47px);margin:16px 0 8px}p{line-height:1.6;color:#c8bddb}
+.panel{padding:22px;border:1px solid #554875;background:#251d3b;border-radius:18px;margin-top:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:13px}
+label{display:grid;gap:7px;font-weight:600;margin:13px 0}
+input,textarea,button{font:inherit;border-radius:10px;padding:11px 13px}
+input,textarea{background:#171329;color:#fff;border:1px solid #766394;width:100%}
+textarea{min-height:110px;resize:vertical}input:focus,textarea:focus,button:focus-visible{outline:3px solid #dfb0ff;outline-offset:2px}
+button{cursor:pointer;background:#a882f9;color:#160e25;border:0;font-weight:750}
+button.secondary{background:#403456;color:#faf6ff;border:1px solid #766394}
+button.danger{background:#512c46;color:#ffd8e6}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.card{padding:17px;border-radius:14px;background:#2f2548;border:1px solid #5d4c7a;overflow-wrap:anywhere}
+.card h3{margin:0 0 7px}.muted{color:#c1b3d3;font-size:13px}
+.note{white-space:pre-wrap;background:#1b1630;border-radius:10px;padding:13px;margin:11px 0}
+#status{min-height:22px;color:#fbd38d}#cards{margin-top:14px}
+small{color:#c6b9d7} .empty{padding:20px;text-align:center;border:1px dashed #65527d;border-radius:12px}
+</style>
+</head><body><main>
+<a href="./">← Formwheel Hub</a>
+<h1>⏳ TIME CAPSULE</h1>
+<p>미래의 나에게 메시지를 남겨 보세요. 캡슐은 선택한 날짜가 될 때까지 열리지 않습니다.</p>
+<section class="panel">
+<h2>새 캡슐 만들기</h2>
+<form id="create">
+<label>캡슐 이름 <input id="title" required maxlength="60" placeholder="30일 뒤의 나에게"></label>
+<label>미래에 읽을 메시지 <textarea id="message" required maxlength="2000" placeholder="지금의 목표, 기록 또는 하고 싶은 말"></textarea></label>
+<label>열 수 있는 날짜 <input id="unlock" type="date" required></label>
+<div class="actions"><button type="submit">🔒 캡슐 봉인하기</button></div>
+</form>
+<p class="muted">이 버전은 현재 브라우저에만 저장합니다. 다른 기기와 자동 동기화되지 않으며, 브라우저 데이터를 지우면 사라질 수 있어요. 중요한 메시지는 아래 백업 기능을 사용해 주세요.</p>
+</section>
+<section class="panel">
+<div class="actions" style="justify-content:space-between;align-items:center"><h2>내 캡슐 <span id="count"></span></h2><button class="secondary" id="export" type="button">JSON 백업 다운로드</button></div>
+<div class="actions"><label style="flex:1;min-width:200px">백업 불러오기 (기존 데이터에 추가)<input id="import" type="file" accept=".json,application/json"></label></div>
+<p id="status" role="status" aria-live="polite"></p>
+<div id="cards" class="grid"></div>
+</section>
+</main>
+<script>
+(() => {'use strict';
+const KEY='fw-time-capsule-v1', $=id=>document.getElementById(id);
+const localDay=()=>{const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')};
+const validDate=s=>typeof s==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(s)&&!Number.isNaN(Date.parse(s+'T12:00:00'))&&new Date(s+'T12:00:00').toLocaleDateString('en-CA',{year:'numeric',month:'2-digit',day:'2-digit'}).length>0;
+const valid=x=>x&&typeof x==='object'&&!Array.isArray(x)&&typeof x.id==='string'&&x.id.length<=100&&typeof x.title==='string'&&x.title.length>0&&x.title.length<=60&&typeof x.message==='string'&&x.message.length>0&&x.message.length<=2000&&validDate(x.unlock)&&typeof x.created==='string'&&x.created.length<=35;
+let items=[];
+try{const a=JSON.parse(localStorage.getItem(KEY)||'[]');if(Array.isArray(a))items=a.filter(valid).slice(0,500)}catch{}
+const say=s=>{$('status').textContent=s};
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(items));return true}catch{say('저장 공간이 부족하거나 차단됐어요. 백업 후 다시 시도해 주세요.');return false}};
+const node=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n};
+function render(){
+$('count').textContent='('+items.length+'/500)';
+const wrap=$('cards');wrap.replaceChildren();
+if(!items.length){wrap.append(node('p','아직 캡슐이 없어요. 첫 번째 캡슐을 만들어 보세요!','empty'));return}
+items.slice().sort((a,b)=>a.unlock.localeCompare(b.unlock)).forEach(x=>{
+const ready=localDay()>=x.unlock;
+const card=node('article',undefined,'card');
+card.append(node('h3',x.title),node('p','열람 가능일: '+x.unlock,'muted'));
+if(ready){
+const reveal=node('button','🔓 메시지 열기','secondary');
+reveal.type='button';
+reveal.onclick=()=>{reveal.remove();card.insertBefore(node('div',x.message,'note'),actions)};
+card.append(reveal);
+}else card.append(node('p','🔒 아직 봉인되어 있어요.','muted'));
+const actions=node('div',undefined,'actions'),del=node('button','삭제','danger');
+del.type='button';del.onclick=()=>{if(!confirm('이 캡슐을 영구 삭제할까요?'))return;const old=items;items=items.filter(v=>v.id!==x.id);if(!save()){items=old;return}say('캡슐이 삭제됐어요.');render()};
+actions.append(del);card.append(actions);wrap.append(card);
+});
+}
+$('unlock').min=localDay();$('unlock').value=localDay();
+$('create').addEventListener('submit',e=>{
+e.preventDefault();
+const x={id:crypto.randomUUID(),title:$('title').value.trim(),message:$('message').value.trim(),unlock:$('unlock').value,created:new Date().toISOString()};
+if(!valid(x)||x.unlock<localDay()){say('올바른 제목·메시지·오늘 이후 날짜를 입력해 주세요.');return}
+if(items.length>=500){say('캡슐은 최대 500개까지 보관할 수 있어요.');return}
+items.push(x);if(!save()){items.pop();return}
+e.target.reset();$('unlock').value=localDay();say('캡슐 봉인 완료!');render();
+});
+$('export').onclick=()=>{
+const blob=new Blob([JSON.stringify({version:1,capsules:items},null,2)],{type:'application/json'});
+const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='formwheel-time-capsules-'+localDay()+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);say('백업 파일을 만들었어요. 메시지 원문이 들어 있으니 파일을 안전하게 보관해 주세요.');
+};
+$('import').onchange=async e=>{
+const file=e.target.files?.[0];e.target.value='';if(!file)return;
+if(file.size>1500000){say('백업 파일이 너무 커요.');return}
+try{
+const payload=JSON.parse(await file.text()),list=payload?.capsules;
+if(payload?.version!==1||!Array.isArray(list)||list.length>500||!list.every(valid))throw Error('invalid');
+const existing=new Set(items.map(x=>x.id)),incoming=list.filter(x=>!existing.has(x.id));
+if(items.length+incoming.length>500)throw Error('limit');
+if(!confirm(incoming.length+'개 캡슐을 추가할까요?'))return;
+const old=items;items=[...items,...incoming];if(!save()){items=old;return}
+say(incoming.length+'개 캡슐 가져오기 완료! 중복 ID는 건너뛰었어요.');render();
+}catch{say('올바른 TIME CAPSULE 백업 파일이 아니에요.')}
+};
+render();
+})();
+</script>
+</body></html>
