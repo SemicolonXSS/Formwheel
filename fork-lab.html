@@ -76,7 +76,7 @@ data.counts.forEach((c,i)=>{const letter=i?'B':'A',rate=c.views?100*c.clicks/c.v
 $('rate'+letter).textContent=rate.toFixed(1)+'%';$('count'+letter).textContent='노출 '+c.views+' · 클릭 '+c.clicks;
 $('bar'+letter).style.width=rate+'%'});
 const total=data.counts.reduce((n,x)=>n+x.views,0);
-$('insight').textContent=total===0?'아직 실험 결과가 없어요.':total<30?'총 '+total+'회 노출. 표본이 매우 작으므로 승자를 판단하지 마세요.':'총 '+total+'회 노출. 이 결과는 단일 브라우저 시뮬레이션으로 실제 사용자 선호를 뜻하지 않습니다.';
+$('insight').textContent=total===0?'아직 실험 결과가 없어요.':total<30?'총 '+total+'회 노출. 표본이 매우 작으므로 승자를 판단하지 마세요.':'총 '+total+'회 노출(외부 참가 코드 '+data.received.length+'개 포함). 자발적 참여와 반복 실험이 섞여 있어 전체 사용자 선호를 대표하지 않습니다.';
 $('next').disabled=active!==null;
 }
 function clearStage(message){$('stage').replaceChildren();const p=document.createElement('p');p.textContent=message;$('stage').append(p)}
