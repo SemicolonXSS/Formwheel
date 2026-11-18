@@ -1,0 +1,80 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#171d30"><link rel="icon" href="assets/formwheel-favicon.svg">
+<title>FORK LAB | 실험 참가</title>
+<style>
+:root{font-family:system-ui,-apple-system,sans-serif;color-scheme:dark}*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(circle at 80% 0%,#2b355c,#111725 55%);color:#f4f7ff}
+main{max-width:690px;margin:auto;padding:30px 17px 60px}a{color:#acd3ff}
+h1{font-size:clamp(29px,6vw,44px);margin:15px 0}
+p{color:#bdc9da;line-height:1.7}
+.panel{background:#202b41;border:1px solid #526582;border-radius:18px;padding:24px;margin-top:20px}
+button,textarea{font:inherit;border-radius:12px;padding:13px}button{border:0;background:#accfff;color:#18233a;font-weight:800;cursor:pointer;width:100%}
+button.secondary{background:#38465d;color:#f2f7ff;border:1px solid #73839a}button:focus-visible,textarea:focus-visible{outline:3px solid #ffd08b;outline-offset:3px}
+textarea{width:100%;background:#111827;color:#fff;border:1px solid #7285a2;min-height:110px;resize:vertical}
+.actions{display:grid;gap:10px;margin-top:16px}.preview{background:#121c2d;border-radius:15px;text-align:center;padding:25px;margin-top:20px}
+.variant{display:inline-block;border:1px solid #768caf;color:#cddcff;border-radius:20px;padding:5px 12px;font-size:12px}
+#choice{margin-top:16px}#choice.b{background:#ffbf80;color:#252036}
+#result[hidden],#question[hidden]{display:none!important}
+#status{color:#ffd490;min-height:25px}
+small{color:#adbed4}
+</style></head><body><main>
+<a href="./">← Formwheel Hub</a>
+<h1>🧪 FORK LAB</h1>
+<p>친구가 만든 A/B 실험에 참여해 보세요. 마음에 들면 선택하고, 아니라면 선택하지 않아도 돼요.</p>
+<section class="panel">
+<h2 id="name">실험 확인 중…</h2>
+<p id="explain">무작위로 한 가지 디자인을 보여줘요. 답은 정해져 있지 않습니다.</p>
+<div id="question" hidden>
+<div class="preview"><span class="variant" id="variant"></span><h3>이 디자인을 선택하고 싶나요?</h3>
+<button id="choice" type="button"></button></div>
+<div class="actions"><button class="secondary" id="decline" type="button">선택하지 않음</button></div>
+</div>
+<div id="result" hidden>
+<h3>참여 완료! 🎉</h3>
+<p><strong>아래 결과 코드를 실험을 만든 사람에게 보내 주세요.</strong> 이 코드를 전달해야 작성자가 투표를 합칠 수 있어요.</p>
+<textarea id="code" readonly aria-label="참가 결과 코드"></textarea>
+<div class="actions"><button type="button" id="copy">참가 결과 코드 복사</button></div>
+<p><small>이 실험은 아직 자동 서버 집계가 아니에요. 코드에는 실험 식별자와 선택 결과만 들어 있으며 이름·이메일은 포함하지 않습니다.</small></p>
+</div>
+<p id="status" role="status" aria-live="polite"></p>
+</section>
+</main><script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id),params=new URLSearchParams(location.search);
+const id=params.get('id'),name=params.get('name'),a=params.get('a'),b=params.get('b');
+const validId=x=>typeof x==='string'&&/^[0-9a-f-]{36}$/i.test(x);
+const validText=(x,max)=>typeof x==='string'&&x.trim().length>0&&x.length<=max;
+if(!validId(id)||!validText(name,80)||!validText(a,40)||!validText(b,40)){
+$('name').textContent='유효하지 않은 실험 링크예요';$('explain').textContent='FORK LAB에서 새 참가 링크를 받아 주세요.';return;
+}
+$('name').textContent=name;
+const key='fw-fork-participated-'+id;
+function encode(o){
+const bytes=new TextEncoder().encode(JSON.stringify(o));let binary='';bytes.forEach(c=>binary+=String.fromCharCode(c));
+return 'FWFORK1.'+btoa(binary).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+}
+function done(code){
+$('question').hidden=true;$('result').hidden=false;$('code').value=code;
+$('explain').textContent='이미 이 브라우저에서 참여했어요. 결과 코드를 작성자에게 전달하면 됩니다.';
+}
+let previous=null;try{previous=localStorage.getItem(key)}catch{}
+if(previous&&/^FWFORK1\.[A-Za-z0-9_-]{20,700}$/.test(previous)){done(previous);return}
+const pick=new Uint32Array(1);crypto.getRandomValues(pick);const variant=pick[0]%2;
+$('variant').textContent=(variant?'B':'A')+'안';
+$('choice').textContent=variant?b:a;
+$('choice').className=variant?'b':'';
+$('question').hidden=false;
+function submit(clicked){
+if($('result').hidden===false)return;
+const code=encode({v:1,id,voteId:crypto.randomUUID(),variant,clicked});
+try{localStorage.setItem(key,code)}catch{$('status').textContent='브라우저 저장이 차단됐어요. 참가 결과 코드를 반드시 복사해서 보관해 주세요.'}
+done(code);
+}
+$('choice').onclick=()=>submit(true);
+$('decline').onclick=()=>submit(false);
+$('copy').onclick=async()=>{
+try{await navigator.clipboard.writeText($('code').value);$('status').textContent='복사 완료! 실험 작성자에게 보내 주세요.'}
+catch{$('code').focus();$('code').select();$('status').textContent='코드를 선택했어요. 직접 복사해 주세요.'}
+};
+})();
+</script></body></html>
