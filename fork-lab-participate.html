@@ -58,7 +58,7 @@ $('question').hidden=true;$('result').hidden=false;$('code').value=code;
 $('explain').textContent='이미 이 브라우저에서 참여했어요. 결과 코드를 작성자에게 전달하면 됩니다.';
 }
 let previous=null;try{previous=localStorage.getItem(key)}catch{}
-if(previous&&/^FWFORK1\.[A-Za-z0-9_-]{20,700}$/.test(previous)){done(previous);return}
+const alreadyParticipated=Boolean(previous&&/^FWFORK1\.[A-Za-z0-9_-]{20,700}$/.test(previous));
 const pick=new Uint32Array(1);crypto.getRandomValues(pick);const variant=pick[0]%2;
 $('variant').textContent=(variant?'B':'A')+'안';
 $('choice').textContent=variant?b:a;
@@ -76,5 +76,7 @@ $('copy').onclick=async()=>{
 try{await navigator.clipboard.writeText($('code').value);$('status').textContent='복사 완료! 실험 작성자에게 보내 주세요.'}
 catch{$('code').focus();$('code').select();$('status').textContent='코드를 선택했어요. 직접 복사해 주세요.'}
 };
+// Register the copy handler before restoring a previously completed vote.
+if(alreadyParticipated)done(previous);
 })();
 </script></body></html>
