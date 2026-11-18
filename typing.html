@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Typing Lab | Formwheel 타자연습</title>
+<meta name="description" content="Formwheel 한글·영어 타자연습. 정확도, 분당 타수, 최고 기록을 확인해 보세요.">
+<style>
+:root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color-scheme:dark;--bg:#111226;--panel:#20213c;--line:#383958;--accent:#b7a1ff;--muted:#b4b6ce}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% 0,#33305c,var(--bg) 58%);color:#faf9ff;min-height:100vh;padding:22px}
+main{max-width:940px;margin:auto}a{color:var(--accent)}h1{font-size:clamp(28px,5vw,44px);margin:18px 0 8px}.lead{color:var(--muted);line-height:1.7}.panel{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:20px;margin:18px 0;box-shadow:0 12px 35px #07081744}
+.controls{display:flex;gap:12px;flex-wrap:wrap;align-items:end}.control{display:grid;gap:6px;flex:1 1 160px}label{font-size:13px;color:var(--muted);font-weight:700}select,button,textarea{font:inherit;border-radius:12px}select,textarea{background:#15162e;border:1px solid #535478;color:#fff;padding:12px}button{border:0;padding:12px 18px;background:var(--accent);color:#17142d;font-weight:800;cursor:pointer}button.secondary{background:#39395a;color:#fff}button:focus-visible,textarea:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #ffc96d;outline-offset:3px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:18px 0}.stat{text-align:center;background:#16172f;border:1px solid #383957;border-radius:14px;padding:14px 8px}.stat strong{display:block;font-size:clamp(20px,4vw,30px);font-variant-numeric:tabular-nums}.stat span{font-size:12px;color:var(--muted)}
+#sample{font-size:clamp(19px,3vw,27px);line-height:1.9;white-space:pre-wrap;overflow-wrap:anywhere;min-height:100px;padding:16px;background:#14152b;border-radius:14px;user-select:none}
+#sample .correct{color:#9be8bd}#sample .wrong{color:#ff939e;background:#74394a66;border-radius:3px}#sample .current{background:#b7a1ff;color:#151329;border-radius:3px}
+textarea{width:100%;min-height:105px;resize:vertical;margin-top:14px;line-height:1.7}textarea:disabled{opacity:.6;cursor:not-allowed}
+#status{min-height:26px;color:#ebd7aa;font-weight:700}#best{color:#c7f6db}small{color:var(--muted)}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:13px}
+@media(max-width:500px){body{padding:12px}.panel{padding:14px}.stats{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<main>
+<a href="./">← Formwheel Hub</a>
+<h1>⌨️ Typing Lab</h1>
+<p class="lead">한글·영어 문장을 빠르고 정확하게 입력해 보세요. 로그인 없이 연습할 수 있고, 기록은 이 브라우저에만 저장됩니다.</p>
+<section class="panel" aria-label="연습 설정">
+<div class="controls">
+<div class="control"><label for="lang">언어</label><select id="lang"><option value="ko">한국어</option><option value="en">English</option></select></div>
+<div class="control"><label for="level">난이도</label><select id="level"><option value="easy">쉬움</option><option value="normal">보통</option><option value="hard">어려움</option></select></div>
+<div class="control"><label for="duration">제한 시간</label><select id="duration"><option value="30">30초</option><option value="60" selected>60초</option><option value="120">120초</option><option value="0">시간 제한 없음</option></select></div>
+<button id="restart" type="button">새 연습 시작</button>
+</div>
+</section>
+<section class="panel" aria-label="타자 연습">
+<div class="stats">
+<div class="stat"><strong id="speed">0</strong><span>분당 타수 (CPM)</span></div>
+<div class="stat"><strong id="accuracy">100%</strong><span>정확도</span></div>
+<div class="stat"><strong id="remaining">60초</strong><span>남은 시간</span></div>
+<div class="stat"><strong id="progress">0%</strong><span>진행률</span></div>
+</div>
+<div id="sample" aria-label="입력할 문장"></div>
+<label for="answer" style="display:block;margin-top:14px">여기에 문장을 입력하세요 (첫 입력부터 시간이 흐릅니다)</label>
+<textarea id="answer" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="위 문장을 그대로 입력하세요"></textarea>
+<p id="status" role="status" aria-live="polite">준비 완료! 입력하면 시작합니다.</p>
+<div class="actions"><button id="next" type="button" class="secondary">다른 문장</button><button id="clearBest" type="button" class="secondary">최고 기록 초기화</button></div>
+<p id="best" aria-live="polite"></p>
+<small>분당 타수 = 정확하게 입력한 글자 수 ÷ 경과 시간(분). 정확도는 입력한 글자 중 맞은 글자의 비율입니다. 한글은 완성된 글자 기준입니다.</small>
+</section>
+</main>
+<script>
+(function(){
+'use strict';
+const texts={
+ko:{
+easy:['오늘은 새로운 것을 배워 봅니다.','작은 시작이 큰 변화를 만듭니다.','천천히 정확하게 입력해 보세요.','좋은 하루가 되기를 바랍니다.'],
+normal:['빠른 타자보다 중요한 것은 정확하고 꾸준한 연습입니다.','호기심은 새로운 아이디어를 발견하도록 우리를 이끌어 줍니다.','오늘 배운 내용을 내일 다시 연습하면 기억에 오래 남습니다.'],
+hard:['Formwheel에서는 실패를 기록하고, 실험을 개선하며, 새로운 가능성을 탐색합니다.','프로그래밍에서 0과 1은 단순한 숫자이지만, 수많은 선택과 동작을 표현합니다.','정확성 99%, 집중력 100%! 쉼표, 마침표와 숫자까지 빠짐없이 확인하세요.']},
+en:{
+easy:['Practice makes progress.','A small step can change your day.','Type slowly and stay focused.','Every word is a new chance.'],
+normal:['Creative ideas often begin with a simple question.','Typing accurately is more useful than rushing through every sentence.','A curious mind explores new possibilities every day.'],
+hard:['Formwheel experiments with ideas, learns from mistakes, and improves through iteration.','Precision matters: check commas, punctuation, numbers like 9831, and capitalization.','When debugging a tricky problem, consider the input, output, and edge cases carefully.']}}
+const $=id=>document.getElementById(id);
+const segment=s=>Array.from(s);let sentence='',started=0,ended=false,timer=null,lastIndex=-1,composition=false;
+const storageKey='fw-typing-lab-best-v1';
+function config(){return $('lang').value+'-'+$('level').value+'-'+$('duration').value}
+function bestData(){try{return JSON.parse(localStorage.getItem(storageKey)||'{}')}catch(_){return {}}}
+function showBest(){const v=bestData()[config()];$('best').textContent=v?'🏆 이 설정의 최고 기록: '+v.cpm+'타/분 · 정확도 '+v.accuracy+'%':'🏆 이 설정의 최고 기록은 아직 없어요.'}
+function choose(){const pool=texts[$('lang').value][$('level').value];let index=Math.floor(Math.random()*pool.length);if(pool.length>1&&index===lastIndex)index=(index+1)%pool.length;lastIndex=index;return pool[index]}
+function reset(){clearInterval(timer);timer=null;started=0;ended=false;composition=false;sentence=choose();$('answer').disabled=false;$('answer').value='';$('status').textContent='준비 완료! 입력하면 시작합니다.';update();showBest()}
+function numbers(){const typed=segment($('answer').value),target=segment(sentence);let correct=0;for(let i=0;i<typed.length;i++)if(i<target.length&&typed[i]===target[i])correct++;const sec=started?Math.max(.001,(performance.now()-started)/1000):0;return {typed,target,correct,sec,cpm:started?Math.round(correct/sec*60):0,accuracy:typed.length?Math.round(correct/typed.length*100):100}}
+function update(){const n=numbers(),limit=Number($('duration').value),left=limit?Math.max(0,Math.ceil(limit-n.sec)):null;$('speed').textContent=n.cpm;$('accuracy').textContent=n.accuracy+'%';$('progress').textContent=Math.min(100,Math.round(n.typed.length/n.target.length*100))+'%';$('remaining').textContent=left===null?'무제한':left+'초';
+const frag=document.createDocumentFragment();n.target.forEach((char,i)=>{const s=document.createElement('span');s.textContent=char;if(i<n.typed.length)s.className=n.typed[i]===char?'correct':'wrong';else if(i===n.typed.length&&!ended)s.className='current';frag.appendChild(s)});$('sample').replaceChildren(frag);
+if(started&&!ended&&limit&&n.sec>=limit)finish(false);else if(started&&!ended&&n.typed.length===n.target.length&&n.correct===n.target.length)finish(true)}
+function finish(success){if(ended)return;ended=true;clearInterval(timer);timer=null;$('answer').disabled=true;const n=numbers();$('status').textContent=success?'🎉 문장 완성! '+n.cpm+'타/분 · 정확도 '+n.accuracy+'%':'⏰ 시간이 끝났어요! '+n.cpm+'타/분 · 정확도 '+n.accuracy+'%';
+if(n.correct>0){const all=bestData(),key=config(),old=all[key];if(!old||n.cpm>old.cpm||(n.cpm===old.cpm&&n.accuracy>old.accuracy)){all[key]={cpm:n.cpm,accuracy:n.accuracy};try{localStorage.setItem(storageKey,JSON.stringify(all))}catch(_){}showBest()}}}
+$('answer').addEventListener('compositionstart',()=>composition=true);
+$('answer').addEventListener('compositionend',()=>{composition=false;handleInput()});
+function handleInput(){if(ended||composition)return;if(!started){started=performance.now();timer=setInterval(update,100)}update()}
+$('answer').addEventListener('input',handleInput);
+$('restart').addEventListener('click',reset);$('next').addEventListener('click',reset);
+['lang','level','duration'].forEach(id=>$(id).addEventListener('change',reset));
+$('clearBest').addEventListener('click',()=>{if(!confirm('이 기기의 타자연습 최고 기록을 모두 초기화할까요?'))return;try{localStorage.removeItem(storageKey)}catch(_){}showBest()});
+reset();
+})();
+</script>
+</body></html>
