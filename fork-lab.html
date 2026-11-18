@@ -50,12 +50,22 @@ small{color:#aebdd2}#status{min-height:24px;color:#ffd49a}
 <p id="insight"></p>
 <div class="actions"><button class="secondary" id="download" type="button">결과 JSON 다운로드</button><button class="danger" id="reset" type="button">결과 초기화</button></div>
 </section>
+<section class="panel" id="sharePanel"><h2>4. 다른 사람과 실험하기</h2>
+<p>공유 링크를 친구에게 보내세요. 친구는 무작위로 표시되는 A/B안 중 마음에 드는지 선택한 뒤 <strong>참가 결과 코드</strong>를 보내줄 수 있어요. 받은 코드를 아래에 붙여넣으면 결과가 합쳐집니다.</p>
+<div class="actions"><button id="shareLink" type="button">참가 링크 복사</button><button class="secondary" id="openShare" type="button">참가 화면 미리보기</button></div>
+<label style="margin-top:14px">참가 결과 코드 (한 줄에 하나씩)<textarea id="voteCodes" rows="4" maxlength="100000" placeholder="FWFORK1. ..."></textarea></label>
+<div class="actions"><button id="importVotes" type="button">참가 결과 합치기</button></div>
+<p id="shareStatus" role="status" aria-live="polite"></p>
+<p><small>참가자에게 로그인은 필요하지 않아요. 다만 이 첫 버전은 서버 공동 집계가 아니므로, 참가자가 결과 코드를 직접 보내줘야 합니다. 같은 참가 코드의 중복 입력은 차단하지만 악의적인 조작을 완전히 방지하지는 못합니다.</small></p></section>
 </main><script>
 (()=>{'use strict';
 const KEY='fw-fork-lab-v1', $=id=>document.getElementById(id);
-const defaults=()=>({name:'Hub 시작 버튼 문구 테스트',labels:['게임 시작하기','지금 플레이!'],counts:[{views:0,clicks:0},{views:0,clicks:0}]});
+const defaults=()=>({name:'Hub 시작 버튼 문구 테스트',labels:['게임 시작하기','지금 플레이!'],counts:[{views:0,clicks:0},{views:0,clicks:0}],shareId:crypto.randomUUID(),received:[]});
 function valid(o){return o&&typeof o.name==='string'&&o.name.length>0&&o.name.length<=80&&Array.isArray(o.labels)&&o.labels.length===2&&o.labels.every(x=>typeof x==='string'&&x.length>0&&x.length<=40)&&Array.isArray(o.counts)&&o.counts.length===2&&o.counts.every(x=>x&&Number.isSafeInteger(x.views)&&Number.isSafeInteger(x.clicks)&&x.views>=0&&x.clicks>=0&&x.clicks<=x.views)}
 let data=defaults();try{const v=JSON.parse(localStorage.getItem(KEY)||'null');if(valid(v))data=v}catch{}
+if(typeof data.shareId!=='string'||!/^[0-9a-f-]{36}$/i.test(data.shareId))data.shareId=crypto.randomUUID();
+if(!Array.isArray(data.received))data.received=[];
+data.received=data.received.filter(x=>typeof x==='string'&&/^[0-9a-f-]{36}$/i.test(x)).slice(0,1000);
 let active=null;
 function save(){try{localStorage.setItem(KEY,JSON.stringify(data));return true}catch{$('status').textContent='저장할 수 없어요. 브라우저 저장소를 확인해 주세요.';return false}}
 function render(){
@@ -73,7 +83,7 @@ e.preventDefault();const name=$('experiment').value.trim(),a=$('labelA').value.t
 if(!name||!a||!b)return;
 if(name===data.name&&a===data.labels[0]&&b===data.labels[1]){$('status').textContent='설정 변경이 없어 기존 결과를 유지했어요.';return}
 if(!confirm('실험 설정을 바꾸면 기존 통계가 초기화됩니다. 계속할까요?')){render();return}
-const old=data;data={name,labels:[a,b],counts:[{views:0,clicks:0},{views:0,clicks:0}]};if(!save()){data=old;render();return}
+const old=data;data={name,labels:[a,b],counts:[{views:0,clicks:0},{views:0,clicks:0}],shareId:crypto.randomUUID(),received:[]};if(!save()){data=old;render();return}
 active=null;clearStage('새 설정이 적용됐어요. 새 회차를 시작하세요.');$('status').textContent='설정 저장 완료';render();
 });
 $('next').onclick=()=>{
@@ -99,14 +109,50 @@ $('status').textContent=clicked?'선택 1회 기록 완료':'선택하지 않음
 
 $('reset').onclick=()=>{
 if(!confirm('A/B 결과를 모두 초기화할까요?'))return;
-const old=data.counts;data.counts=[{views:0,clicks:0},{views:0,clicks:0}];
-if(!save()){data.counts=old;return}
+const old=data.counts,received=data.received;data.counts=[{views:0,clicks:0},{views:0,clicks:0}];data.received=[];
+if(!save()){data.counts=old;data.received=received;return}
 active=null;clearStage('결과가 초기화됐어요.');$('status').textContent='초기화 완료';render();
 };
 $('download').onclick=()=>{
 const blob=new Blob([JSON.stringify({version:1,exportedAt:new Date().toISOString(),experiment:data},null,2)],{type:'application/json'});
 const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='formwheel-fork-lab-results.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
 $('status').textContent='결과를 내려받았어요.';
+};
+function participantLink(){
+const url=new URL('./fork-lab-participate.html',location.href);
+url.searchParams.set('id',data.shareId);url.searchParams.set('name',data.name);
+url.searchParams.set('a',data.labels[0]);url.searchParams.set('b',data.labels[1]);
+return url.href;
+}
+$('shareLink').onclick=async()=>{
+const link=participantLink();
+try{await navigator.clipboard.writeText(link);$('shareStatus').textContent='참가 링크 복사 완료!'}
+catch{$('shareStatus').textContent='복사가 차단됐어요. 참가 화면을 열어 주소를 복사하세요.'}
+};
+$('openShare').onclick=()=>{window.open(participantLink(),'_blank','noopener,noreferrer')};
+function decodeVote(encoded){
+if(!/^FWFORK1\.[A-Za-z0-9_-]{20,700}$/.test(encoded))throw Error('format');
+const value=encoded.slice(8).replace(/-/g,'+').replace(/_/g,'/');
+const binary=atob(value);
+return JSON.parse(new TextDecoder().decode(Uint8Array.from(binary,c=>c.charCodeAt(0))));
+}
+$('importVotes').onclick=()=>{
+const codes=$('voteCodes').value.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
+if(!codes.length||codes.length>200){$('shareStatus').textContent='한 번에 1~200개 코드를 붙여넣어 주세요.';return}
+const seen=new Set(data.received),add=[],counts=data.counts.map(x=>({...x}));let rejected=0;
+for(const code of codes){
+try{
+const v=decodeVote(code);
+if(v.v!==1||v.id!==data.shareId||typeof v.voteId!=='string'||!/^[0-9a-f-]{36}$/i.test(v.voteId)||![0,1].includes(v.variant)||typeof v.clicked!=='boolean'||seen.has(v.voteId))throw Error('invalid');
+if(seen.size>=1000)throw Error('full');
+seen.add(v.voteId);add.push(v.voteId);counts[v.variant].views++;if(v.clicked)counts[v.variant].clicks++;
+}catch{rejected++}
+}
+if(!add.length){$('shareStatus').textContent='추가된 기록 없음. 중복, 다른 실험 코드 또는 잘못된 형식일 수 있어요.';return}
+const oldCounts=data.counts,oldReceived=data.received;
+data.counts=counts;data.received=[...data.received,...add];
+if(!save()){data.counts=oldCounts;data.received=oldReceived;return}
+$('voteCodes').value='';$('shareStatus').textContent=add.length+'개 참가 기록 합침 · '+rejected+'개 건너뜀';render();
 };
 render();
 })();
