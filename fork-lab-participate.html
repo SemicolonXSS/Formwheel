@@ -42,7 +42,7 @@ small{color:#adbed4}
 (()=>{'use strict';
 const $=id=>document.getElementById(id),params=new URLSearchParams(location.search);
 const id=params.get('id'),name=params.get('name'),a=params.get('a'),b=params.get('b');
-const validId=x=>typeof x==='string'&&/^[0-9a-f-]{36}$/i.test(x);
+const validId=x=>typeof x==='string'&&/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(x);
 const validText=(x,max)=>typeof x==='string'&&x.trim().length>0&&x.length<=max;
 if(!validId(id)||!validText(name,80)||!validText(a,40)||!validText(b,40)){
 $('name').textContent='유효하지 않은 실험 링크예요';$('explain').textContent='FORK LAB에서 새 참가 링크를 받아 주세요.';return;
