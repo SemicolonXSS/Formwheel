@@ -70,8 +70,10 @@ let active=null;
 // Preserve the share ID for experiments created before sharing was introduced.
 try{localStorage.setItem(KEY,JSON.stringify(data))}catch{}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(data));return true}catch{$('status').textContent='저장할 수 없어요. 브라우저 저장소를 확인해 주세요.';return false}}
-function render(){
+function syncForm(){
 $('experiment').value=data.name;$('labelA').value=data.labels[0];$('labelB').value=data.labels[1];
+}
+function render(){
 data.counts.forEach((c,i)=>{const letter=i?'B':'A',rate=c.views?100*c.clicks/c.views:0;
 $('rate'+letter).textContent=rate.toFixed(1)+'%';$('count'+letter).textContent='노출 '+c.views+' · 클릭 '+c.clicks;
 $('bar'+letter).style.width=rate+'%'});
@@ -84,9 +86,9 @@ $('setup').addEventListener('submit',e=>{
 e.preventDefault();const name=$('experiment').value.trim(),a=$('labelA').value.trim(),b=$('labelB').value.trim();
 if(!name||!a||!b)return;
 if(name===data.name&&a===data.labels[0]&&b===data.labels[1]){$('status').textContent='설정 변경이 없어 기존 결과를 유지했어요.';return}
-if(!confirm('실험 설정을 바꾸면 기존 통계가 초기화됩니다. 계속할까요?')){render();return}
-const old=data;data={name,labels:[a,b],counts:[{views:0,clicks:0},{views:0,clicks:0}],shareId:crypto.randomUUID(),received:[]};if(!save()){data=old;render();return}
-active=null;clearStage('새 설정이 적용됐어요. 새 회차를 시작하세요.');$('status').textContent='설정 저장 완료';render();
+if(!confirm('실험 설정을 바꾸면 기존 통계가 초기화됩니다. 계속할까요?')){syncForm();render();return}
+const old=data;data={name,labels:[a,b],counts:[{views:0,clicks:0},{views:0,clicks:0}],shareId:crypto.randomUUID(),received:[]};if(!save()){data=old;syncForm();render();return}
+active=null;clearStage('새 설정이 적용됐어요. 새 회차를 시작하세요.');$('status').textContent='설정 저장 완료';syncForm();render();
 });
 $('next').onclick=()=>{
 if(active!==null)return;
@@ -157,6 +159,6 @@ data.counts=counts;data.received=[...data.received,...add];
 if(!save()){data.counts=oldCounts;data.received=oldReceived;return}
 $('voteCodes').value='';$('shareStatus').textContent=add.length+'개 참가 기록 합침 · '+rejected+'개 건너뜀';render();
 };
-render();
+syncForm();render();
 })();
 </script></body></html>
