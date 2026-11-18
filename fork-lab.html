@@ -110,9 +110,10 @@ $('status').textContent=clicked?'선택 1회 기록 완료':'선택하지 않음
 }
 
 $('reset').onclick=()=>{
-if(!confirm('A/B 결과를 모두 초기화할까요?'))return;
-const old=data.counts,received=data.received;data.counts=[{views:0,clicks:0},{views:0,clicks:0}];data.received=[];
-if(!save()){data.counts=old;data.received=received;return}
+if(!confirm('A/B 결과를 초기화하고 기존 참가 링크와 결과 코드를 무효화할까요? 새 참가 링크를 공유해야 합니다.'))return;
+const old=data.counts,received=data.received,oldShareId=data.shareId;
+data.counts=[{views:0,clicks:0},{views:0,clicks:0}];data.received=[];data.shareId=crypto.randomUUID();
+if(!save()){data.counts=old;data.received=received;data.shareId=oldShareId;return}
 active=null;clearStage('결과가 초기화됐어요.');$('status').textContent='초기화 완료';render();
 };
 $('download').onclick=()=>{
