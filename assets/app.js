@@ -33,6 +33,7 @@ IMPORTANT:
 
 
 const projects = [
+  {"name":"Typing Lab","keywords":"타자연습 한글 영어 타수 정확도 타이핑 연습 typing speed CPM keyboard","icon":"⌨️","className":"purple","category":"tool","mode":"solo","connection":"offline","difficulty":"쉬움","description":"한글·영어 타자연습! 난이도와 시간을 선택하고 분당 타수·정확도·최고 기록을 확인해 보세요.","url":"https://semicolonxss.github.io/Formwheel/typing.html","addedAt":"2026-11-18T00:00:00Z","recent":true},
   {"name":"CITY TYCOON","keywords":"Formwheel tycoon city 도시 타이쿤 경영 건설 자동수익 업그레이드 오프라인","icon":"🏙️","className":"purple","category":"game","mode":"solo","connection":"offline","difficulty":"쉬움","description":"노점에서 시작해 카페·공장·스카이 타워까지 키우는 도시 경영 게임! 자동 수익·광고·오프라인 수익·자동 저장 지원.","url":"https://semicolonxss.github.io/Formwheel/tycoon/","addedAt":"2026-11-17T03:51:00Z","recent":true},
   {"name":"RULETORY","keywords":"Formwheel Ruletory 룰토리 공장 자동화 규칙 변경 컨베이어 물류 저장고 샌드박스","icon":"🏭","className":"purple","category":"game","mode":"solo","connection":"offline","difficulty":"보통","description":"규칙을 바꾸며 공장을 건설하고 컨베이어로 물품을 저장고까지 운반하는 자동화 샌드박스.","url":"https://semicolonxss.github.io/Formwheel_Ruletory/","addedAt":"2026-11-17T00:00:00Z","recent":true},
 
