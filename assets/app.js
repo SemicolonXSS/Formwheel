@@ -1175,6 +1175,21 @@ function escapeHTML(value){
    SEARCH
 ====================================================== */
 
+/* Zero-interruption shortcut: pressing Enter on an exact project name opens it.
+   No popups, tracking, subscriptions, or additional saved state. */
+searchElement.addEventListener("keydown", event => {
+  if (event.key !== "Enter" || event.isComposing || event.ctrlKey || event.altKey || event.metaKey || event.shiftKey) return;
+  const query = searchElement.value.trim().toLocaleLowerCase();
+  if (!query) return;
+  const matches = projects.filter(project => project.name.toLocaleLowerCase() === query);
+  if (matches.length !== 1) return;
+  const project = matches[0];
+  const visibleLink = [...cardsElement.querySelectorAll(".card a[href]")].find(link => link.href === new URL(project.url, location.href).href);
+  if (!visibleLink) return; // Respect the current filters and collapsed sections.
+  event.preventDefault();
+  visibleLink.click(); // Reuse existing Hub navigation/visit tracking.
+});
+
 searchElement.addEventListener(
   "input",
   render
