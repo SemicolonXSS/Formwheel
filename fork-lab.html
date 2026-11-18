@@ -63,9 +63,9 @@ const KEY='fw-fork-lab-v1', $=id=>document.getElementById(id);
 const defaults=()=>({name:'Hub 시작 버튼 문구 테스트',labels:['게임 시작하기','지금 플레이!'],counts:[{views:0,clicks:0},{views:0,clicks:0}],shareId:crypto.randomUUID(),received:[]});
 function valid(o){return o&&typeof o.name==='string'&&o.name.length>0&&o.name.length<=80&&Array.isArray(o.labels)&&o.labels.length===2&&o.labels.every(x=>typeof x==='string'&&x.length>0&&x.length<=40)&&Array.isArray(o.counts)&&o.counts.length===2&&o.counts.every(x=>x&&Number.isSafeInteger(x.views)&&Number.isSafeInteger(x.clicks)&&x.views>=0&&x.clicks>=0&&x.clicks<=x.views)}
 let data=defaults();try{const v=JSON.parse(localStorage.getItem(KEY)||'null');if(valid(v))data=v}catch{}
-if(typeof data.shareId!=='string'||!/^[0-9a-f-]{36}$/i.test(data.shareId))data.shareId=crypto.randomUUID();
+if(typeof data.shareId!=='string'||!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(data.shareId))data.shareId=crypto.randomUUID();
 if(!Array.isArray(data.received))data.received=[];
-data.received=data.received.filter(x=>typeof x==='string'&&/^[0-9a-f-]{36}$/i.test(x)).slice(0,1000);
+data.received=data.received.filter(x=>typeof x==='string'&&/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(x)).slice(0,1000);
 let active=null;
 // Preserve the share ID for experiments created before sharing was introduced.
 try{localStorage.setItem(KEY,JSON.stringify(data))}catch{}
@@ -148,7 +148,7 @@ const seen=new Set(data.received),add=[],counts=data.counts.map(x=>({...x}));let
 for(const code of codes){
 try{
 const v=decodeVote(code);
-if(v.v!==1||v.id!==data.shareId||typeof v.voteId!=='string'||!/^[0-9a-f-]{36}$/i.test(v.voteId)||![0,1].includes(v.variant)||typeof v.clicked!=='boolean'||seen.has(v.voteId))throw Error('invalid');
+if(v.v!==1||v.id!==data.shareId||typeof v.voteId!=='string'||!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(v.voteId)||![0,1].includes(v.variant)||typeof v.clicked!=='boolean'||seen.has(v.voteId))throw Error('invalid');
 if(seen.size>=1000)throw Error('full');
 seen.add(v.voteId);add.push(v.voteId);counts[v.variant].views++;if(v.clicked)counts[v.variant].clicks++;
 }catch{rejected++}
