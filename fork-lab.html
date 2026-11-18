@@ -36,9 +36,9 @@ small{color:#aebdd2}#status{min-height:24px;color:#ffd49a}
 </section>
 <section class="panel">
 <h2>2. 실험 실행</h2>
-<p>새 실험 회차마다 A 또는 B를 무작위 배정합니다. 버튼을 누르면 성공 1회로 기록되고, 건너뛰면 노출만 기록돼요.</p>
-<div class="actions"><button id="next" type="button">새 회차 시작</button><button id="skip" class="secondary" type="button" disabled>건너뛰기</button></div>
-<div id="stage" class="preview" style="margin-top:16px" aria-live="polite"><span class="pill">대기 중</span><p>새 회차 시작을 눌러 주세요.</p></div>
+<p>새 회차마다 A안 또는 B안 디자인 하나가 무작위로 표시돼요. <strong>버튼이 마음에 들 때만 선택</strong>하고, 아니라면 <strong>선택하지 않음</strong>을 고르세요. 누르라고 시키는 테스트가 아니에요.</p>
+<div class="actions"><button id="next" type="button">디자인 하나 살펴보기</button></div>
+<div id="stage" class="preview" style="margin-top:16px" aria-live="polite"><span class="pill">대기 중</span><p>원할 때 디자인 하나를 살펴볼 수 있어요.</p></div>
 <p id="status" role="status" aria-live="polite"></p>
 </section>
 <section class="panel">
@@ -65,7 +65,7 @@ $('rate'+letter).textContent=rate.toFixed(1)+'%';$('count'+letter).textContent='
 $('bar'+letter).style.width=rate+'%'});
 const total=data.counts.reduce((n,x)=>n+x.views,0);
 $('insight').textContent=total===0?'아직 실험 결과가 없어요.':total<30?'총 '+total+'회 노출. 표본이 매우 작으므로 승자를 판단하지 마세요.':'총 '+total+'회 노출. 이 결과는 단일 브라우저 시뮬레이션으로 실제 사용자 선호를 뜻하지 않습니다.';
-$('skip').disabled=active===null;$('next').disabled=active!==null;
+$('next').disabled=active!==null;
 }
 function clearStage(message){$('stage').replaceChildren();const p=document.createElement('p');p.textContent=message;$('stage').append(p)}
 $('setup').addEventListener('submit',e=>{
@@ -82,19 +82,21 @@ const bytes=new Uint32Array(1);crypto.getRandomValues(bytes);const i=bytes[0]%2;
 const old=data.counts[i].views;data.counts[i].views++;if(!save()){data.counts[i].views=old;return}
 active=i;$('stage').replaceChildren();
 const pill=document.createElement('span');pill.className='pill';pill.textContent=(i?'B':'A')+'안 배정';
-const title=document.createElement('h3');title.textContent='이 버튼을 눌러 보세요';
+const title=document.createElement('h3');title.textContent='이 디자인, 선택하고 싶나요?';
 const btn=document.createElement('button');btn.className='cta'+(i?' b':'');btn.textContent=data.labels[i];
 btn.onclick=()=>finish(true);
-$('stage').append(pill,title,btn);$('status').textContent='한 회차에서 클릭은 최대 1번만 기록돼요.';render();
+const skip=document.createElement('button');skip.className='secondary';skip.type='button';skip.textContent='선택하지 않음';skip.onclick=()=>finish(false);
+const explanation=document.createElement('p');explanation.className='muted';explanation.textContent='선택은 자유예요. 마음에 들지 않으면 아래 버튼을 선택하세요.';
+$('stage').append(pill,title,btn,explanation,skip);$('status').textContent='실제 선호대로 선택해 주세요. 반복 실험 결과는 실제 방문자 통계가 아니에요.';render();
 };
 function finish(clicked){
 if(active===null)return;
 const i=active;
 if(clicked){data.counts[i].clicks++;if(!save()){data.counts[i].clicks--;return}}
-active=null;clearStage(clicked?'클릭이 기록됐어요. 다음 회차를 시작해 보세요.':'건너뛰었어요. 다음 회차를 시작해 보세요.');
-$('status').textContent=clicked?'클릭 +1 기록 완료':'노출만 기록했어요.';render();
+active=null;clearStage(clicked?'선택을 기록했어요. 다른 디자인도 보고 싶다면 새 회차를 시작하세요.':'선택하지 않음을 기록했어요.');
+$('status').textContent=clicked?'선택 1회 기록 완료':'선택하지 않음 기록 완료';render();
 }
-$('skip').onclick=()=>finish(false);
+
 $('reset').onclick=()=>{
 if(!confirm('A/B 결과를 모두 초기화할까요?'))return;
 const old=data.counts;data.counts=[{views:0,clicks:0},{views:0,clicks:0}];
