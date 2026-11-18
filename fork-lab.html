@@ -67,6 +67,8 @@ if(typeof data.shareId!=='string'||!/^[0-9a-f-]{36}$/i.test(data.shareId))data.s
 if(!Array.isArray(data.received))data.received=[];
 data.received=data.received.filter(x=>typeof x==='string'&&/^[0-9a-f-]{36}$/i.test(x)).slice(0,1000);
 let active=null;
+// Preserve the share ID for experiments created before sharing was introduced.
+try{localStorage.setItem(KEY,JSON.stringify(data))}catch{}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(data));return true}catch{$('status').textContent='저장할 수 없어요. 브라우저 저장소를 확인해 주세요.';return false}}
 function render(){
 $('experiment').value=data.name;$('labelA').value=data.labels[0];$('labelB').value=data.labels[1];
