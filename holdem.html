@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CHAOS HOLD'EM | Formwheel</title><link rel="icon" href="./assets/formwheel-favicon.svg">
+<style>
+:root{color-scheme:dark;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#203f55,#0b101c 75%);color:#f4f7ff;min-height:100vh}main{max-width:950px;margin:auto;padding:24px 16px 70px}a{color:#c6d8ff}header{display:flex;justify-content:space-between;align-items:center;gap:12px}.logo{font-size:clamp(29px,6vw,48px);font-weight:950;letter-spacing:-2px;margin:24px 0 8px}.muted{color:#adbbd0}.panel{background:#172336;border:1px solid #40526b;border-radius:22px;padding:22px;margin:18px 0}.menu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.choice{border:1px solid #53647a;background:#26374d;color:white;padding:24px 15px;border-radius:17px;text-align:left;cursor:pointer;font:inherit}.choice:hover,.choice:focus-visible,button:focus-visible{outline:3px solid #e7c778;outline-offset:2px}.choice strong{display:block;font-size:22px;margin-bottom:8px}.choice small{color:#bdc9db;line-height:1.5}button{font:inherit;cursor:pointer;border:0;border-radius:12px;padding:12px 18px;background:#ebce81;color:#172032;font-weight:800}button:disabled{opacity:.45;cursor:not-allowed}.secondary{background:#31465e;color:#fff}.table{background:radial-gradient(ellipse,#177455,#08452f);border:9px solid #463427;border-radius:95px;box-shadow:inset 0 0 0 3px #4aa077;padding:36px 12px;min-height:350px}.cards{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin:14px 0}.card{width:clamp(45px,10vw,70px);height:clamp(70px,15vw,103px);border-radius:9px;background:#fdfdfa;color:#1b2330;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 4px 6px #0523188c;font-weight:850;font-size:clamp(18px,4vw,29px)}.card.red{color:#d32347}.card.back{background:repeating-linear-gradient(45deg,#283e7b 0 9px,#344f9a 9px 18px);border:4px solid white;color:#fff}.card span{font-size:1.25em}.status{text-align:center;min-height:25px}.actions{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin:18px 0}.stats{display:flex;gap:12px;flex-wrap:wrap}.stats div{padding:10px 15px;background:#26374d;border-radius:10px}.hidden{display:none!important}ol{line-height:1.85}#rule{color:#ffe4a0;font-weight:700}.center{text-align:center}@media(max-width:550px){.menu{grid-template-columns:1fr}.table{border-width:6px;border-radius:55px;padding:25px 8px}.panel{padding:15px}}
+</style></head><body><main>
+<header><a href="./index.html">← Formwheel Hub</a><span class="muted">독립 게임 · 현금 / 결제 없음</span></header>
+<section id="home"><div class="logo">🃏 CHAOS HOLD'EM</div><p class="muted">평범한 홀덤에서 세계 붕괴까지. 원하는 규칙으로 즐겨 봐!</p>
+<div class="menu">
+<button class="choice" data-mode="normal"><strong>♠️ 일반</strong><small>표준 텍사스 홀덤. 2장 손패, 5장 공용 카드, 정통 족보.</small></button>
+<button class="choice" data-mode="variant"><strong>🪄 변형</strong><small>공용 카드 6장! 최강의 5장을 골라 승부.</small></button>
+<button class="choice" data-mode="chaos"><strong>🌪️ 혼돈</strong><small>매 판 무작위 규칙! 카드 한 장 추가 또는 약한 패 승리.</small></button>
+<button class="choice" data-mode="tutorial"><strong>📖 튜토리얼</strong><small>홀덤의 진행 순서와 족보를 차근차근 알아보기.</small></button>
+</div></section>
+<section id="guide" class="hidden panel"><h2>📖 홀덤 튜토리얼</h2><ol>
+<li>나와 상대에게 각자 <b>비공개 카드 2장</b>이 주어집니다.</li><li>플롭에서 공용 카드 3장, 턴에서 1장, 리버에서 1장이 공개됩니다.</li><li>공용 카드와 내 카드 중 <b>가장 강한 5장 조합</b>으로 승부합니다.</li>
+<li>족보 (강한 순): 로열 플러시(스트레이트 플러시의 최고 형태) → 스트레이트 플러시 → 포카드 → 풀하우스 → 플러시 → 스트레이트 → 트리플 → 투페어 → 원페어 → 하이카드.</li>
+<li>같은 족보라면 구성 숫자와 킥커를 비교합니다. A는 보통 가장 높으며 A-2-3-4-5 스트레이트에서는 1로 취급합니다.</li>
+<li>이 게임은 베팅 없는 <b>연습용 1대1 대결</b>입니다. 버튼을 눌러 카드를 공개하고 결과를 확인하세요.</li></ol>
+<div class="actions"><button id="practice">일반 모드로 연습</button><button class="secondary" data-home>메인 메뉴</button></div></section>
+<section id="game" class="hidden"><div class="panel"><div class="stats"><div>모드: <b id="modeName"></b></div><div>승 <b id="wins">0</b> / 무 <b id="ties">0</b> / 패 <b id="losses">0</b></div></div><p id="rule" aria-live="polite"></p></div>
+<div class="table"><p class="center">🤖 BOT-0731 <span class="muted">(상대)</span></p><div id="opponent" class="cards"></div>
+<p class="center">공용 카드 · <span id="street">프리플롭</span></p><div id="board" class="cards"></div>
+<p class="center">👤 내 카드</p><div id="mine" class="cards"></div></div>
+<div class="panel"><p id="message" class="status" aria-live="polite"></p><div class="actions"><button id="next">플롭 공개</button><button id="again" class="secondary hidden">다시 플레이</button><button id="back" class="secondary">메인 메뉴</button></div></div></section>
+</main><script>
+"use strict";
+const $=id=>document.getElementById(id);
+const suits=["♠","♥","♦","♣"], labels={normal:"일반",variant:"변형",chaos:"혼돈"};
+let mode="normal",rule="standard",deck=[],mine=[],opponent=[],board=[],stage=0,wins=0,ties=0,losses=0;
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function makeDeck(){return shuffle(suits.flatMap(s=>Array.from({length:13},(_,i)=>({s,r:i+2}))))}
+function label(c){return ({11:"J",12:"Q",13:"K",14:"A"})[c.r]||String(c.r)}
+function showCards(target,cards,hide){$(target).replaceChildren(...cards.map(c=>{const el=document.createElement("div");el.className="card"+(hide?" back":(["♥","♦"].includes(c.s)?" red":""));if(hide){el.textContent="✦"}else{const r=document.createElement("b");r.textContent=label(c);const s=document.createElement("span");s.textContent=c.s;el.append(r,s)}return el}))}
+function cmp(a,b){for(let i=0;i<Math.max(a.length,b.length);i++){let d=(a[i]||0)-(b[i]||0);if(d)return Math.sign(d)}return 0}
+function five(cards){
+ const counts=new Map();for(const c of cards)counts.set(c.r,(counts.get(c.r)||0)+1);
+ const ranks=[...counts.keys()].sort((a,b)=>b-a),flush=cards.every(c=>c.s===cards[0].s);
+ let uniq=[...new Set(cards.map(c=>c.r))].sort((a,b)=>b-a);
+ if(uniq.includes(14))uniq.push(1);
+ let straight=0;for(let i=0;i<=uniq.length-5;i++)if(uniq[i]-uniq[i+4]===4){straight=uniq[i];break}
+ const groups=[...counts].map(([r,n])=>({r,n})).sort((a,b)=>b.n-a.n||b.r-a.r);
+ const ordered=groups.flatMap(g=>Array(g.n).fill(g.r));
+ if(flush&&straight)return [8,straight];
+ if(groups[0].n===4)return [7,...ordered];
+ if(groups[0].n===3&&groups[1].n===2)return [6,...ordered];
+ if(flush)return [5,...ranks];
+ if(straight)return [4,straight];
+ if(groups[0].n===3)return [3,...ordered];
+ if(groups[0].n===2&&groups[1].n===2)return [2,...ordered];
+ if(groups[0].n===2)return [1,...ordered];
+ return [0,...ranks];
+}
+function best(cards){let result=null;for(let a=0;a<cards.length-4;a++)for(let b=a+1;b<cards.length-3;b++)for(let c=b+1;c<cards.length-2;c++)for(let d=c+1;d<cards.length-1;d++)for(let e=d+1;e<cards.length;e++){const v=five([cards[a],cards[b],cards[c],cards[d],cards[e]]);if(!result||cmp(v,result)>0)result=v}return result}
+const hands=["하이카드","원페어","투페어","트리플","스트레이트","플러시","풀하우스","포카드","스트레이트 플러시"];
+function handName(v){return v[0]===8&&v[1]===14?"로열 플러시":hands[v[0]]}
+function switchScreen(screen){["home","guide","game"].forEach(id=>$(id).classList.toggle("hidden",id!==screen))}
+function start(m){mode=m;if(m==="tutorial"){switchScreen("guide");return}wins=ties=losses=0;switchScreen("game");newHand()}
+function newHand(){
+ deck=makeDeck();mine=[deck.pop(),deck.pop()];opponent=[deck.pop(),deck.pop()];board=[];stage=0;
+ rule=mode==="chaos"?(Math.random()<.5?"reverse":"extra"):(mode==="variant"?"extra":"standard");
+ $("modeName").textContent=labels[mode];$("rule").textContent=rule==="reverse"?"🌪️ 혼돈 규칙: 더 약한 족보가 승리!":rule==="extra"?"✨ 공용 카드 6장 규칙 (가장 강한 5장 사용)":"♠️ 표준 텍사스 홀덤";
+ $("next").disabled=false;$("next").classList.remove("hidden");$("again").classList.add("hidden");$("message").textContent="카드를 확인하고 플롭을 공개하세요.";render()
+}
+function render(){
+ showCards("mine",mine,false);showCards("opponent",opponent,stage!==3);showCards("board",board,false);
+ $("street").textContent=["프리플롭","플롭","턴","리버 / 쇼다운"][stage];
+ $("wins").textContent=wins;$("ties").textContent=ties;$("losses").textContent=losses;
+ $("next").textContent=["플롭 공개","턴 공개","리버 공개",""][stage]
+}
+function advance(){
+ if(stage===3)return;const amount=stage===0?3:stage===1?1:(rule==="extra"?2:1);for(let i=0;i<amount;i++)board.push(deck.pop());stage++;
+ if(stage===3){const me=best([...mine,...board]),them=best([...opponent,...board]);let result=cmp(me,them);if(rule==="reverse")result=-result;if(result>0){wins++;$("message").textContent="🏆 승리! "+handName(me)+" vs "+handName(them)}else if(result<0){losses++;$("message").textContent="🤖 패배! "+handName(me)+" vs "+handName(them)}else{ties++;$("message").textContent="🤝 무승부! "+handName(me)+" (동률)"}$("next").classList.add("hidden");$("again").classList.remove("hidden")}
+ else $("message").textContent=stage===1?"플롭 공개!":"턴 공개! 다음은 리버입니다.";
+ render()
+}
+document.querySelectorAll("[data-mode]").forEach(b=>b.addEventListener("click",()=>start(b.dataset.mode)));
+document.querySelectorAll("[data-home]").forEach(b=>b.addEventListener("click",()=>switchScreen("home")));
+$("practice").addEventListener("click",()=>start("normal"));$("back").addEventListener("click",()=>switchScreen("home"));
+$("next").addEventListener("click",advance);$("again").addEventListener("click",newHand);
+</script></body></html>
