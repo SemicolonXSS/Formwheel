@@ -45,7 +45,7 @@ for (const [index, project] of projects.entries()) {
   let url;
   try { url = new URL(project.url); }
   catch { assert.fail(prefix + 'invalid URL'); }
-  assert(url.protocol === 'https:' && url.hostname === 'semicolonxss.github.io', prefix + 'unexpected URL origin');
+  assert(url.origin === 'https://semicolonxss.github.io' && !url.username && !url.password, prefix + 'unexpected URL origin');
   assert(!url.hash && [...url.searchParams.keys()].every(key => key === 'v'), prefix + 'unexpected URL parameters');
   assert(!usedUrls.has(url.href), prefix + 'duplicate URL');
   usedUrls.add(url.href);
@@ -59,7 +59,7 @@ assert(sitemapUrls.length > 0, 'Empty sitemap');
 const indexed = new Set();
 for (const href of sitemapUrls) {
   const url = new URL(href);
-  assert(url.protocol === 'https:' && url.hostname === 'semicolonxss.github.io' && url.pathname.startsWith('/Formwheel/'), 'Sitemap URL is outside the Hub: ' + href);
+  assert(url.origin === 'https://semicolonxss.github.io' && !url.username && !url.password && url.pathname.startsWith('/Formwheel/'), 'Sitemap URL is outside the Hub: ' + href);
   assert(!indexed.has(href), 'Duplicate sitemap URL: ' + href);
   indexed.add(href);
   const local = localFileForUrl(url);
