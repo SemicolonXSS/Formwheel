@@ -12,16 +12,26 @@ let best=0;try{best=Number(localStorage.getItem('fw-polyrhythm-best')||0)||0}cat
 function distance(a,b){return Math.abs(Math.atan2(Math.sin(a-b),Math.cos(a-b)))}
 function update(){scoreEl.textContent=score;comboEl.textContent=combo;periodEl.textContent=period.toFixed(1)+'초';successEl.textContent=(success%3)+' / 3';livesEl.textContent='❤️'.repeat(lives)+'🖤'.repeat(5-lives);bestEl.textContent=best}
 function targetCount(){return Math.min(3,1+Math.floor(stage/2))}
-function spawnTargets(){targets=[];const count=targetCount();for(let i=0;i<count;i++){const offset=1.05+(i+0.5)*(TAU-1.5)/count;targets.push({id:++nextId,at:progress+offset,angle:angle+offset})}}
+function addTarget(){
+  // Schedule each square independently, ahead of the moving player.
+  let at,tries=0;
+  do{
+    at=progress+1.15+Math.random()*(TAU-1.65);
+    tries++;
+  }while(tries<60&&targets.some(t=>distance(at,t.at)<0.8));
+  targets.push({id:++nextId,at,angle:at-Math.PI/2});
+}
+function fillTargets(){while(targets.length<targetCount())addTarget()}
+function spawnTargets(){targets=[];fillTargets()}
 function endGame(){running=false;cancelAnimationFrame(raf);feedback.textContent='💔 GAME OVER · 점수 '+score+' · 다시 시작할 수 있어요';update()}
 function lose(reason){if(!running)return;combo=0;lives=Math.max(0,lives-1);feedback.textContent=reason+' · 목숨 -1';update();if(lives===0)endGame()}
 function start(){cancelAnimationFrame(raf);running=true;angle=-Math.PI/2;period=4;stage=0;score=0;combo=0;success=0;lives=5;progress=0;nextId=0;last=performance.now();spawnTargets();feedback.textContent='READY · 타이밍을 맞추세요!';update();draw();raf=requestAnimationFrame(frame)}
 function hit(){if(!running)return;let chosen=null,nearest=Infinity;for(const t of targets){const d=distance(angle,t.angle);if(d<nearest){nearest=d;chosen=t}}
 if(chosen&&nearest<=GOOD){const perfect=nearest<=PERFECT;combo++;score+=perfect?100:50;success++;feedback.textContent=perfect?'✨ PERFECT +100':'👍 GOOD +50';if(score>best){best=score;try{localStorage.setItem('fw-polyrhythm-best',String(best))}catch(e){}}
 if(success%3===0){stage++;period=stage<sequence.length?sequence[stage]:1.5+Math.random()*3.5;feedback.textContent+=' · 🔄 '+period.toFixed(1)+'초/바퀴'}
-spawnTargets();update()}else lose('헛발질')}
+targets=targets.filter(t=>t.id!==chosen.id);fillTargets();update()}else lose('헛발질')}
 function frame(now){if(!running)return;const dt=Math.min(Math.max((now-last)/1000,0),0.06);last=now;const step=TAU*dt/period;progress+=step;angle+=step;
-const expired=targets.filter(t=>progress>t.at+GOOD);if(expired.length){targets=targets.filter(t=>progress<=t.at+GOOD);for(const t of expired){lose('MISS');if(!running)break}if(running)spawnTargets()}
+const expired=targets.filter(t=>progress>t.at+GOOD);if(expired.length){targets=targets.filter(t=>progress<=t.at+GOOD);for(const t of expired){lose('MISS');if(!running)break}if(running)fillTargets()}
 draw();if(running)raf=requestAnimationFrame(frame)}
 function draw(){ctx.clearRect(0,0,480,480);const cx=240,cy=240,r=172;ctx.beginPath();ctx.arc(cx,cy,r,0,TAU);ctx.strokeStyle='#536182';ctx.lineWidth=5;ctx.stroke();for(let i=0;i<12;i++){const a=i*TAU/12;ctx.beginPath();ctx.arc(cx+Math.cos(a)*r,cy+Math.sin(a)*r,2.5,0,TAU);ctx.fillStyle='#7583a5';ctx.fill()}
 for(const t of targets){ctx.save();ctx.translate(cx+Math.cos(t.angle)*r,cy+Math.sin(t.angle)*r);ctx.rotate(t.angle+Math.PI/2);ctx.fillStyle='#ffad3d';ctx.shadowColor='#ffb347';ctx.shadowBlur=20;ctx.fillRect(-19,-19,38,38);ctx.restore()}
