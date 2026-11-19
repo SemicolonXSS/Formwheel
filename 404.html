@@ -53,8 +53,10 @@ for(const v of variants){r-=v.weight;if(r<0)return v}
 return variants[0];
 }
 let gameTimer;
+let gameDeadline=0;
 function render(){
 clearTimeout(gameTimer);
+gameDeadline=0;
 const v=choose();
 document.body.dataset.type=v.id;
 $("title").textContent=v.title;
@@ -68,6 +70,7 @@ $("target").style.top="20px";
 if(!found.includes(v.id)){found.push(v.id);try{localStorage.setItem(key,JSON.stringify(found))}catch{}}
 drawCollection();
 if(v.id==="game"){
+gameDeadline=Date.now()+10000;
 // Keep the target stationary for visitors who prefer reduced motion.
 if(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches){
 $("gameResult").textContent="움직임 줄이기 설정에 따라 404가 움직이지 않습니다. 10초 안에 숫자를 눌러 잡아 보세요!";
@@ -87,7 +90,7 @@ gameTimer=setTimeout(move,Math.min(1200,Math.max(0,10000-(Date.now()-start))));
 gameTimer=setTimeout(move,Math.min(1200,Math.max(0,10000-(Date.now()-start))));
 }
 }
-$("target").addEventListener("click",()=>{clearTimeout(gameTimer);$("target").disabled=true;$("gameResult").textContent="성공! 도망가는 404를 잡았습니다 🎉"});
+$("target").addEventListener("click",()=>{clearTimeout(gameTimer);$("target").disabled=true;$("gameResult").textContent=Date.now()>=gameDeadline?"도전 종료! 다시 뽑거나 Hub로 돌아갈 수 있어요.":"성공! 도망가는 404를 잡았습니다 🎉"});
 $("reroll").addEventListener("click",render);
 $("clear").addEventListener("click",()=>{if(!confirm("이 브라우저의 404 발견 기록을 초기화할까요?"))return;found=[];try{localStorage.removeItem(key)}catch{}drawCollection()});
 drawCollection();render();
