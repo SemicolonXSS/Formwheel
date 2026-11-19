@@ -74,18 +74,17 @@ $("gameResult").textContent="움직임 줄이기 설정에 따라 404가 움직�
 gameTimer=setTimeout(()=>{if(document.body.dataset.type!=="game"||$("target").disabled)return;$("target").disabled=true;$("gameResult").textContent="도전 종료! 다시 뽑거나 Hub로 돌아갈 수 있어요."},10000);
 return;
 }
-let moves=0;const start=Date.now();
+const start=Date.now();
 function move(){
 // Do not move a keyboard-focused target away from the visitor.
-if(document.body.dataset.type!=="game"||moves>=7||Date.now()-start>=10000){$("target").disabled=true;$("gameResult").textContent="도전 종료! 다시 뽑거나 Hub로 돌아갈 수 있어요.";return}
+if(document.body.dataset.type!=="game"||Date.now()-start>=10000){$("target").disabled=true;$("gameResult").textContent="도전 종료! 다시 뽑거나 Hub로 돌아갈 수 있어요.";return}
 // Keep keyboard focus stationary while still honoring the game timeout.
-if(document.activeElement===$("target")){gameTimer=setTimeout(move,1200);return;}
+if(document.activeElement===$("target")){gameTimer=setTimeout(move,Math.min(1200,Math.max(0,10000-(Date.now()-start))));return;}
 $("target").style.left=(5+Math.random()*68)+"%";
 $("target").style.top=(5+Math.random()*45)+"px";
-moves++;
-gameTimer=setTimeout(move,1200);
+gameTimer=setTimeout(move,Math.min(1200,Math.max(0,10000-(Date.now()-start))));
 }
-gameTimer=setTimeout(move,1200);
+gameTimer=setTimeout(move,Math.min(1200,Math.max(0,10000-(Date.now()-start))));
 }
 }
 $("target").addEventListener("click",()=>{clearTimeout(gameTimer);$("target").disabled=true;$("gameResult").textContent="성공! 도망가는 404를 잡았습니다 🎉"});
