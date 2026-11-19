@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="./assets/formwheel-readme-banner.svg" alt="Formwheel — Make, Join, Play, Explore. Games, creative tools, and little surprises." width="100%" />
+
 # 🎡 Formwheel
 
 ### Make · Join · Play · Explore
