@@ -29,7 +29,26 @@ function spawnTargets(){targets=[];fillTargets()}
 function endGame(){running=false;cancelAnimationFrame(raf);feedback.textContent='💔 GAME OVER · 점수 '+score+' · 다시 시작할 수 있어요';update()}
 function lose(reason){if(!running)return;combo=0;lives=Math.max(0,lives-1);feedback.textContent=reason+' · 목숨 -1';update();if(lives===0)endGame()}
 function start(){cancelAnimationFrame(raf);running=true;angle=-Math.PI/2;period=4;stage=0;score=0;combo=0;success=0;lives=5;progress=0;nextId=0;last=performance.now();spawnTargets();feedback.textContent='READY · 타이밍을 맞추세요!';update();draw();raf=requestAnimationFrame(frame)}
-function hit(){if(!running)return;let chosen=null,nearest=Infinity;for(const t of targets){const d=distance(angle,t.angle);if(d<nearest){nearest=d;chosen=t}}
+let audioContext=null;
+function playDrum(){
+  try{
+    const AudioCtx=window.AudioContext||window.webkitAudioContext;
+    if(!AudioCtx)return;
+    if(!audioContext)audioContext=new AudioCtx();
+    if(audioContext.state==='suspended')audioContext.resume().catch(()=>{});
+    const now=audioContext.currentTime;
+    const osc=audioContext.createOscillator(),gain=audioContext.createGain();
+    osc.type='sine';
+    osc.frequency.setValueAtTime(175,now);
+    osc.frequency.exponentialRampToValueAtTime(58,now+0.16);
+    gain.gain.setValueAtTime(0.0001,now);
+    gain.gain.exponentialRampToValueAtTime(0.65,now+0.008);
+    gain.gain.exponentialRampToValueAtTime(0.0001,now+0.24);
+    osc.connect(gain);gain.connect(audioContext.destination);
+    osc.start(now);osc.stop(now+0.25);
+  }catch(e){/* Audio unavailable: gameplay continues. */}
+}
+function hit(){playDrum();if(!running)return;let chosen=null,nearest=Infinity;for(const t of targets){const d=distance(angle,t.angle);if(d<nearest){nearest=d;chosen=t}}
 if(chosen&&nearest<=goodWindow()){const perfect=nearest<=perfectWindow();combo++;score+=perfect?100:50;success++;feedback.textContent=perfect?'✨ PERFECT +100':'👍 GOOD +50';if(score>best){best=score;try{localStorage.setItem('fw-polyrhythm-best',String(best))}catch(e){}}
 if(success%3===0){stage++;period=stagePeriod();feedback.textContent+=' · 🔄 '+period.toFixed(1)+'초/바퀴'}
 targets=targets.filter(t=>t.id!==chosen.id);fillTargets();update()}else lose('헛발질')}
