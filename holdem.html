@@ -5,7 +5,7 @@
 :root{color-scheme:dark;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#203f55,#0b101c 75%);color:#f4f7ff;min-height:100vh}main{max-width:950px;margin:auto;padding:24px 16px 70px}a{color:#c6d8ff}header{display:flex;justify-content:space-between;align-items:center;gap:12px}.logo{font-size:clamp(29px,6vw,48px);font-weight:950;letter-spacing:-2px;margin:24px 0 8px}.muted{color:#adbbd0}.panel{background:#172336;border:1px solid #40526b;border-radius:22px;padding:22px;margin:18px 0}.menu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.choice{border:1px solid #53647a;background:#26374d;color:white;padding:24px 15px;border-radius:17px;text-align:left;cursor:pointer;font:inherit}.choice:hover,.choice:focus-visible,button:focus-visible{outline:3px solid #e7c778;outline-offset:2px}.choice strong{display:block;font-size:22px;margin-bottom:8px}.choice small{color:#bdc9db;line-height:1.5}button{font:inherit;cursor:pointer;border:0;border-radius:12px;padding:12px 18px;background:#ebce81;color:#172032;font-weight:800}button:disabled{opacity:.45;cursor:not-allowed}.secondary{background:#31465e;color:#fff}.table{background:radial-gradient(ellipse,#177455,#08452f);border:9px solid #463427;border-radius:95px;box-shadow:inset 0 0 0 3px #4aa077;padding:36px 12px;min-height:350px}.cards{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin:14px 0}.card{width:clamp(45px,10vw,70px);height:clamp(70px,15vw,103px);border-radius:9px;background:#fdfdfa;color:#1b2330;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 4px 6px #0523188c;font-weight:850;font-size:clamp(18px,4vw,29px)}.card.red{color:#d32347}.card.back{background:repeating-linear-gradient(45deg,#283e7b 0 9px,#344f9a 9px 18px);border:4px solid white;color:#fff}.card span{font-size:1.25em}.status{text-align:center;min-height:25px}select{background:#26374d;color:white;border:1px solid #61758d;border-radius:12px;padding:12px;min-width:min(100%,330px);font:inherit}#botProfile{margin:12px 0 0}#botProfile strong{font-size:22px}.actions{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin:18px 0}.stats{display:flex;gap:12px;flex-wrap:wrap}.stats div{padding:10px 15px;background:#26374d;border-radius:10px}.hidden{display:none!important}ol{line-height:1.85}#rule{color:#ffe4a0;font-weight:700}.center{text-align:center}@media(max-width:550px){.menu{grid-template-columns:1fr}.table{border-width:6px;border-radius:55px;padding:25px 8px}.panel{padding:15px}}
 </style></head><body><main>
 <header><a href="./index.html">← Formwheel Hub</a><span class="muted">독립 게임 · 현금 / 결제 없음</span></header>
-<section id="home"><div class="logo">🃏 CHAOS HOLD'EM</div><p class="muted">평범한 홀덤에서 세계 붕괴까지. 원하는 규칙으로 즐겨 봐!</p>
+<section id="home"><div class="logo">🃏 CHAOS HOLD'EM</div><p class="muted">시작 칩은 각자 100개! 한쪽이 파산할 때까지 계속되는 1대1 매치. 실제 돈과는 무관해.</p>
 <div class="panel"><h2>🤖 상대 봇 선택</h2><p class="muted">Chess.com처럼 이름과 성격, 단계로 상대를 골라 보세요. 봇은 가상의 독창적인 캐릭터입니다.</p>
 <div class="stats"><label for="botLevel">봇 목록</label><select id="botLevel" aria-label="홀덤 봇 선택"></select></div>
 <div id="botProfile" class="panel" aria-live="polite"></div>
@@ -23,12 +23,12 @@
 <li>같은 족보라면 구성 숫자와 킥커를 비교합니다. A는 보통 가장 높으며 A-2-3-4-5 스트레이트에서는 1로 취급합니다.</li>
 <li>실제 돈이나 구매 기능이 없는 연습용 포인트를 사용합니다. 체크는 추가 포인트 없이 진행, 베팅·레이즈는 포인트를 걸고, 콜은 상대 금액을 맞추고, 폴드는 현재 판을 포기하는 행동입니다.</li></ol>
 <div class="actions"><button id="practice">일반 모드로 연습</button><button class="secondary" data-home>메인 메뉴</button></div></section>
-<section id="game" class="hidden"><div class="panel"><div class="stats"><div>모드: <b id="modeName"></b></div><div>승 <b id="wins">0</b> / 무 <b id="ties">0</b> / 패 <b id="losses">0</b></div></div><p id="rule" aria-live="polite"></p></div>
+<section id="game" class="hidden"><div class="panel"><div class="stats"><div>모드: <b id="modeName"></b></div><div>진행 <b id="handNumber">1</b>판째</div><div>승 <b id="wins">0</b> / 무 <b id="ties">0</b> / 패 <b id="losses">0</b></div></div><p id="rule" aria-live="polite"></p></div>
 <div class="panel"><div class="stats"><div>내 연습 포인트 <b id="playerPoints">100</b></div><div>봇 포인트 <b id="botPoints">100</b></div><div>중앙 포인트 <b id="potPoints">0</b></div><div>맞출 포인트 <b id="toCall">0</b></div></div></div>
 <div class="table"><p class="center" id="opponentName">🤖 상대 봇</p><div id="opponent" class="cards"></div>
 <p class="center">공용 카드 · <span id="street">프리플롭</span></p><div id="board" class="cards"></div>
 <p class="center">👤 내 카드</p><div id="mine" class="cards"></div></div>
-<div class="panel"><p id="message" class="status" aria-live="polite"></p><div class="actions" id="betActions"><button id="check">체크</button><button id="bet">10 베팅</button><button id="call">콜</button><button id="raise">10 레이즈</button><button id="fold" class="secondary">폴드</button></div><div class="actions"><button id="next" class="hidden" disabled>플롭 공개</button><button id="again" class="secondary hidden">다시 플레이</button><button id="back" class="secondary">메인 메뉴</button></div></div></section>
+<div class="panel"><p id="message" class="status" aria-live="polite"></p><div class="actions" id="betActions"><button id="check">체크</button><button id="bet">10 베팅</button><button id="call">콜</button><button id="raise">10 레이즈</button><button id="fold" class="secondary">폴드</button></div><div class="actions"><button id="next" class="hidden" disabled>플롭 공개</button><button id="again" class="secondary hidden">다음 판</button><button id="restart" class="hidden">새 매치 시작</button><button id="back" class="secondary">메인 메뉴</button></div></div></section>
 </main><script>
 "use strict";
 const $=id=>document.getElementById(id);
@@ -48,7 +48,7 @@ const bots=[
  {name:"Nu6l",icon:"🌌",level:12,style:"최상급 균형형",line:"무한도 결국 하나의 숫자일 뿐.",strategy:"balanced"}
 ];
 let bot=bots[0],mode="normal",rule="standard",deck=[],mine=[],opponent=[],board=[],stage=0,wins=0,ties=0,losses=0;
-let playerPoints=100,botPoints=100,pot=0,playerPut=0,botPut=0,raises=0,finished=false;
+let playerPoints=100,botPoints=100,pot=0,playerPut=0,botPut=0,raises=0,finished=false,handNumber=1,matchOver=false;
 function owed(){return Math.max(0,botPut-playerPut)}
 function contribute(who,amount){
  const paid=Math.min(Math.max(0,amount),who==="player"?playerPoints:botPoints);
@@ -64,13 +64,22 @@ function updateActions(){
  $("raise").disabled=finished||owed()===0||playerPoints<=owed()||raises>=1||botPoints===0;
  $("fold").disabled=finished;
 }
-function resetPointsIfNeeded(){
- if(playerPoints===0||botPoints===0){playerPoints=100;botPoints=100;$("message").textContent="연습 포인트를 100씩 다시 지급했어요."}
+function completeHand(){
+ $("next").classList.add("hidden");
+ if(playerPoints<=0||botPoints<=0){
+  matchOver=true;
+  const outcome=playerPoints>0?"🏆 최종 승리!":botPoints>0?"🤖 봇의 최종 승리!":"🤝 최종 무승부";
+  $("message").textContent+=" · "+outcome+" "+handNumber+"판 만에 매치 종료! 새 매치를 시작할 수 있어요.";
+  $("again").classList.add("hidden");$("restart").classList.remove("hidden");
+ }else{
+  $("again").classList.remove("hidden");$("restart").classList.add("hidden");
+ }
+ render();
 }
 function finishFold(winner,reason){
  finished=true;if(winner==="player"){wins++;playerPoints+=pot}else{losses++;botPoints+=pot}
  pot=0;$("message").textContent=reason+" · "+(winner==="player"?"🏆 승리!":"🤖 패배");
- $("again").classList.remove("hidden");$("next").classList.add("hidden");render()
+ completeHand()
 }
 function finishShowdown(){
  finished=true;
@@ -79,7 +88,7 @@ function finishShowdown(){
  if(result>0){wins++;playerPoints+=pot;$("message").textContent="🏆 승리! "+handName(me)+" vs "+handName(them)}
  else if(result<0){losses++;botPoints+=pot;$("message").textContent="🤖 패배! "+handName(me)+" vs "+handName(them)}
  else{ties++;playerPoints+=Math.floor(pot/2);botPoints+=pot-Math.floor(pot/2);$("message").textContent="🤝 무승부! "+handName(me)}
- pot=0;$("again").classList.remove("hidden");$("next").classList.add("hidden");render()
+ pot=0;completeHand()
 }
 function advanceStreet(){
  if(stage===3){finishShowdown();return}
@@ -96,14 +105,14 @@ function botDecision(kind){
   // Call or fold, with an occasional single re-raise.
   if(strength<27&&Math.random()<Math.max(.05,.48-bot.level*.025)){finishFold("player",bot.name+" 폴드");return}
   contribute("bot",Math.min(playerPut-botPut,botPoints));
-  if(raises<1&&botPoints>=10&&playerPoints>=10&&strength>=53&&Math.random()<aggression*.35){
-   raises++;contribute("bot",10);$("message").textContent=bot.name+"이(가) 10포인트 레이즈! 콜 또는 폴드를 선택하세요.";render();return
+  if(raises<1&&botPoints>0&&playerPoints>0&&strength>=53&&Math.random()<aggression*.35){
+   raises++;contribute("bot",Math.min(10,botPoints,playerPoints));$("message").textContent=bot.name+"이(가) 10포인트 레이즈! 콜 또는 폴드를 선택하세요.";render();return
   }
   advanceStreet();return;
  }
  if(kind==="afterCheck"){
-  if(botPoints>=10&&playerPoints>=10&&strength>38&&Math.random()<aggression){
-   contribute("bot",10);$("message").textContent=bot.name+"이(가) 10포인트 베팅! 콜·레이즈·폴드 중 선택하세요.";render();return
+  if(botPoints>0&&playerPoints>0&&strength>38&&Math.random()<aggression){
+   contribute("bot",Math.min(10,botPoints,playerPoints));$("message").textContent=bot.name+"이(가) 10포인트 베팅! 콜·레이즈·폴드 중 선택하세요.";render();return
   }
   advanceStreet();
  }
@@ -113,9 +122,9 @@ function playerAction(action){
  const need=owed();
  if(action==="fold"){finishFold("bot","내가 폴드");return}
  if(action==="check"){if(need)return;botDecision("afterCheck");return}
- if(action==="bet"){if(need||playerPoints<=0||botPoints<=0)return;contribute("player",10);botDecision("faceBet");return}
+ if(action==="bet"){if(need||playerPoints<=0||botPoints<=0)return;contribute("player",Math.min(10,playerPoints,botPoints));botDecision("faceBet");return}
  if(action==="call"){if(!need)return;contribute("player",need);advanceStreet();return}
- if(action==="raise"){if(!need||raises>=1||playerPoints<=need||botPoints===0)return;contribute("player",need+10);raises++;botDecision("faceBet");}
+ if(action==="raise"){if(!need||raises>=1||playerPoints<=need||botPoints===0)return;contribute("player",need+Math.min(10,playerPoints-need,botPoints));raises++;botDecision("faceBet");}
 }
 function cardScore(cards,style){
  const [a,b]=cards.map(c=>c.r).sort((x,y)=>y-x),pair=a===b,suited=cards[0].s===cards[1].s,connected=Math.abs(a-b)<=2;
@@ -175,12 +184,12 @@ function best(cards){let result=null;for(let a=0;a<cards.length-4;a++)for(let b=
 const hands=["하이카드","원페어","투페어","트리플","스트레이트","플러시","풀하우스","포카드","스트레이트 플러시"];
 function handName(v){return v[0]===8&&v[1]===14?"로열 플러시":hands[v[0]]}
 function switchScreen(screen){["home","guide","game"].forEach(id=>$(id).classList.toggle("hidden",id!==screen))}
-function start(m){mode=m;if(m==="tutorial"){switchScreen("guide");return}wins=ties=losses=0;switchScreen("game");newHand()}
+function start(m){mode=m;if(m==="tutorial"){switchScreen("guide");return}wins=ties=losses=0;playerPoints=100;botPoints=100;handNumber=1;matchOver=false;switchScreen("game");newHand()}
 function newHand(){
- resetPointsIfNeeded();deck=makeDeck();mine=[deck.pop(),deck.pop()];opponent=chooseOpponent();board=[];stage=0;pot=0;playerPut=0;botPut=0;raises=0;finished=false;
+ if(matchOver)return;deck=makeDeck();mine=[deck.pop(),deck.pop()];opponent=chooseOpponent();board=[];stage=0;pot=0;playerPut=0;botPut=0;raises=0;finished=false;
  $("opponentName").textContent=bot.icon+" "+bot.name+" · LV."+bot.level;
  rule=mode==="chaos"?(Math.random()<.5?"reverse":"extra"):(mode==="variant"?"extra":"standard");
- $("modeName").textContent=labels[mode];$("rule").textContent=rule==="reverse"?"🌪️ 혼돈 규칙: 더 약한 족보가 승리!":rule==="extra"?"✨ 공용 카드 6장 규칙 (가장 강한 5장 사용)":"♠️ 표준 텍사스 홀덤";
+ $("handNumber").textContent=handNumber;$("restart").classList.add("hidden");$("modeName").textContent=labels[mode];$("rule").textContent=rule==="reverse"?"🌪️ 혼돈 규칙: 더 약한 족보가 승리!":rule==="extra"?"✨ 공용 카드 6장 규칙 (가장 강한 5장 사용)":"♠️ 표준 텍사스 홀덤";
  $("next").disabled=true;$("next").classList.add("hidden");$("again").classList.add("hidden");$("message").textContent="프리플롭: 체크하거나 연습 포인트로 행동하세요.";render()
 }
 function render(){
@@ -194,6 +203,6 @@ $("botLevel").addEventListener("change",setBot);setBot();
 document.querySelectorAll("[data-mode]").forEach(b=>b.addEventListener("click",()=>start(b.dataset.mode)));
 document.querySelectorAll("[data-home]").forEach(b=>b.addEventListener("click",()=>switchScreen("home")));
 $("practice").addEventListener("click",()=>start("normal"));$("back").addEventListener("click",()=>switchScreen("home"));
-$("next").addEventListener("click",advanceStreet);$("again").addEventListener("click",newHand);
+$("next").addEventListener("click",advanceStreet);$("again").addEventListener("click",()=>{if(matchOver)return;handNumber++;newHand()});$("restart").addEventListener("click",()=>start(mode));
 for(const action of ["check","bet","call","raise","fold"])$(action).addEventListener("click",()=>playerAction(action));
 </script></body></html>
