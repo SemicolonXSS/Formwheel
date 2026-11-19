@@ -140,7 +140,7 @@ $('answer').addEventListener('compositionend',()=>{composition=false;handleInput
 function handleInput(){if(ended||composition)return;if(!sentence){$('status').textContent='먼저 위의 직접 입력란에 연습 문장을 작성해 주세요.';return;}if(!started){started=performance.now();timer=setInterval(update,100)}update()}
 $('answer').addEventListener('input',handleInput);
 $('restart').addEventListener('click',()=>{completedRounds=0;reset();$('answer').focus()});
-$('next').addEventListener('click',()=>{if($('mode').value==='general'){choose(true);reset()}else if(exercises[$('mode').value]&&!$('repeat').checked){$('snippet').selectedIndex=($('snippet').selectedIndex+1)%exercises[$('mode').value].length;reset()}$('answer').focus()});
+$('next').addEventListener('click',()=>{if($('mode').value==='general'){chosenGeneral='';reset()}else if(exercises[$('mode').value]&&!$('repeat').checked){$('snippet').selectedIndex=($('snippet').selectedIndex+1)%exercises[$('mode').value].length;reset()}$('answer').focus()});
 $('mode').addEventListener('change',()=>{completedRounds=0;chosenGeneral='';populate();reset();if($('mode').value!=='custom')$('answer').focus();else $('customText').focus()});
 $('snippet').addEventListener('change',()=>{completedRounds=0;reset();$('answer').focus()});
 $('repeat').addEventListener('change',()=>{completedRounds=0;populate();reset()});
