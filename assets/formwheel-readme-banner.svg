@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="340" viewBox="0 0 1200 340" role="img" aria-labelledby="title desc">
+<title id="title">Formwheel — Make, Join, Play, Explore</title>
+<desc id="desc">Purple and orange Formwheel project banner with a colorful wheel graphic.</desc>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#120B2D"/><stop offset=".55" stop-color="#32206B"/><stop offset="1" stop-color="#4A2366"/></linearGradient>
+<linearGradient id="accent" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#A78BFA"/><stop offset="1" stop-color="#FB923C"/></linearGradient>
+<radialGradient id="glow"><stop stop-color="#A78BFA" stop-opacity=".28"/><stop offset="1" stop-color="#A78BFA" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1200" height="340" rx="30" fill="url(#bg)"/>
+<circle cx="1010" cy="170" r="250" fill="url(#glow)"/>
+<g opacity=".23" fill="none" stroke="#C4B5FD"><circle cx="1040" cy="170" r="145"/><circle cx="1040" cy="170" r="174"/><path d="M0 280Q350 140 700 285T1200 270"/></g>
+<g transform="translate(1010 170)">
+<circle r="99" fill="#160F39" stroke="#A78BFA" stroke-width="5"/>
+<g stroke="#E9D5FF" stroke-width="4">
+<path d="M0 -82V82M-82 0H82M-58 -58L58 58M58 -58L-58 58"/>
+</g>
+<circle r="74" fill="none" stroke="#FB923C" stroke-width="13" stroke-dasharray="69 17 44 17 69 17 44 17 69 17 44 17"/>
+<circle r="22" fill="url(#accent)" stroke="#F5F3FF" stroke-width="5"/>
+</g>
+<rect x="66" y="60" width="154" height="31" rx="15.5" fill="#FFFFFF" fill-opacity=".12" stroke="#C4B5FD" stroke-opacity=".5"/>
+<text x="143" y="81" font-family="Arial,sans-serif" font-size="14" font-weight="700" text-anchor="middle" fill="#E9D5FF">WEB PLAYGROUND</text>
+<text x="64" y="175" font-family="Arial,sans-serif" font-size="77" font-weight="800" letter-spacing="-2" fill="#FFFFFF">Formwheel</text>
+<rect x="66" y="202" width="340" height="5" rx="2.5" fill="url(#accent)"/>
+<text x="67" y="249" font-family="Arial,sans-serif" font-size="27" font-weight="600" fill="#F5F3FF">Make · Join · Play · Explore</text>
+<text x="67" y="289" font-family="Arial,sans-serif" font-size="18" fill="#DDD6FE">Games, creative tools, and little surprises.</text>
+</svg>
