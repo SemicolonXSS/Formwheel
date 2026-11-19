@@ -37,15 +37,22 @@ function playDrum(){
     if(!audioContext)audioContext=new AudioCtx();
     if(audioContext.state==='suspended')audioContext.resume().catch(()=>{});
     const now=audioContext.currentTime;
-    const osc=audioContext.createOscillator(),gain=audioContext.createGain();
-    osc.type='sine';
-    osc.frequency.setValueAtTime(175,now);
-    osc.frequency.exponentialRampToValueAtTime(58,now+0.16);
-    gain.gain.setValueAtTime(0.0001,now);
-    gain.gain.exponentialRampToValueAtTime(0.65,now+0.008);
-    gain.gain.exponentialRampToValueAtTime(0.0001,now+0.24);
-    osc.connect(gain);gain.connect(audioContext.destination);
-    osc.start(now);osc.stop(now+0.25);
+    // Layer a bass thump and a midrange attack so the hit is audible on phone speakers.
+    const compressor=audioContext.createDynamicsCompressor();
+    compressor.threshold.value=-15;compressor.knee.value=12;
+    compressor.ratio.value=5;compressor.attack.value=0.003;compressor.release.value=0.12;
+    compressor.connect(audioContext.destination);
+    for(const layer of [{from:190,to:62,level:0.85,duration:0.28,type:'sine'},{from:360,to:110,level:0.5,duration:0.13,type:'triangle'}]){
+      const osc=audioContext.createOscillator(),gain=audioContext.createGain();
+      osc.type=layer.type;
+      osc.frequency.setValueAtTime(layer.from,now);
+      osc.frequency.exponentialRampToValueAtTime(layer.to,now+layer.duration*0.7);
+      gain.gain.setValueAtTime(0.0001,now);
+      gain.gain.exponentialRampToValueAtTime(layer.level,now+0.005);
+      gain.gain.exponentialRampToValueAtTime(0.0001,now+layer.duration);
+      osc.connect(gain);gain.connect(compressor);
+      osc.start(now);osc.stop(now+layer.duration+0.01);
+    }
   }catch(e){/* Audio unavailable: gameplay continues. */}
 }
 function hit(){playDrum();if(!running)return;let chosen=null,nearest=Infinity;for(const t of targets){const d=distance(angle,t.angle);if(d<nearest){nearest=d;chosen=t}}
