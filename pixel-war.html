@@ -25,9 +25,13 @@ function tick(){const remaining=Math.max(0,30000-(Date.now()+serverOffset-last))
 canvas.addEventListener('click',e=>{const r=canvas.getBoundingClientRect();const x=Math.floor((e.clientX-r.left)*size/r.width),y=Math.floor((e.clientY-r.top)*size/r.height);if(x<0||y<0||x>=size||y>=size)return;selected={x,y};$('coord').textContent='('+x+', '+y+')';draw();tick()});
 $('plus').onclick=()=>{zoom=Math.min(20,zoom+1);draw()};$('minus').onclick=()=>{zoom=Math.max(2,zoom-1);draw()};
 $('place').onclick=async()=>{if(!ready||busy||!selected)return;tick();if($('place').disabled)return;busy=true;tick();const chosen={...selected},chosenColor=color;try{
-const result=await db.ref(root+'/players/'+uid).transaction(v=>{const now=Date.now()+serverOffset;const previous=v||{count:0,lastAt:0,moves:{}};if(previous.lastAt&&now-Number(previous.lastAt)<30000)return;const count=Number(previous.count||0)+1;if(count>10000)return;return {count,lastAt:firebase.database.ServerValue.TIMESTAMP,moves:{...(previous.moves||{}),[count]:{x:chosen.x,y:chosen.y,color:chosenColor,at:firebase.database.ServerValue.TIMESTAMP}}}},undefined,false);
-if(!result.committed){status('30초 쿨타임이 아직 남았거나 배치 제한에 도달했어요.');return}
-last=result.snapshot.val().lastAt||Date.now()+serverOffset;status('픽셀 배치 성공! 🎨');
+const count=Number(players[uid]?.count||0)+1;
+const timestamp=firebase.database.ServerValue.TIMESTAMP;
+await db.ref(root+'/players/'+uid).update({
+  count, lastAt:timestamp,
+  ['moves/'+count]:{x:chosen.x,y:chosen.y,color:chosenColor,at:timestamp}
+});
+last=Date.now()+serverOffset;status('픽셀 배치 성공! 🎨');
 }catch(e){status('저장 실패: '+e.message+' · 연결 상태와 Firebase 권한을 확인해 주세요.')}finally{busy=false;tick()}};
 async function start(){try{firebase.initializeApp(config);db=firebase.database();db.ref('.info/serverTimeOffset').on('value',s=>{serverOffset=s.val()||0});const auth=firebase.auth();let stopAuthListener;const existing=await new Promise((resolve,reject)=>{stopAuthListener=auth.onAuthStateChanged(resolve,reject)});stopAuthListener();const user=existing||(await auth.signInAnonymously()).user;uid=user.uid;
 db.ref(root+'/players').on('value',s=>{players=s.val()||{};last=(players[uid]||{}).lastAt||0;rebuild();ready=true;status('연결됨 · 모두가 같은 그림을 보고 있어요');tick()},e=>{ready=false;status('읽기 권한 오류: '+e.message);tick()});

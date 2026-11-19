@@ -1,5 +1,5 @@
 import {initializeApp,getApps} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
-import {getAuth,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import {getAuth,onAuthStateChanged,signInAnonymously} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 import {getDatabase,ref,get,set,remove,runTransaction,onValue,onDisconnect} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
 const config={apiKey:"AIzaSyBreTSe1m0-xlbF4aupnU5isRZCihR25IE",authDomain:"formwheel.firebaseapp.com",databaseURL:"https://formwheel-default-rtdb.firebaseio.com",projectId:"formwheel",appId:"1:431583088241:web:74e0e34ea1e3e1170c55d0"};
 const app=getApps()[0]||initializeApp(config),db=getDatabase(app),auth=getAuth(app);
@@ -11,7 +11,11 @@ const FRIEND_TTL=10*60*1000;
 // Use a unique ID for each page load, even when a tab inherits sessionStorage.
 const localId=token();
 let active=null,unsubscribe=null,heartbeat=null,queuePoll=null,authUser=null,matched=false,redirectStarted=false;
-const ownUid=()=>authUser?.uid||null;
+const ownUid=()=>auth.currentUser?.uid||null;
+async function ensureIdentity(){
+ await auth.authStateReady();
+ if(!auth.currentUser)await signInAnonymously(auth);
+}
 const testAllowed=()=>document.getElementById("fw-match-testmode")?.checked===true;
 const quickEligible=(item,now=Date.now())=>item?.status==="waiting"&&now-Number(item.updatedAt||item.createdAt)<90000&&item.owner!==localId&&!(ownUid()&&item.ownerUid===ownUid()&&!testAllowed());
 const quickStatus=(items)=>{const values=Object.values(items||{}),waiting=values.filter(v=>v?.status==="waiting"&&Date.now()-Number(v.updatedAt||v.createdAt)<90000);const blocked=waiting.filter(v=>v.owner!==localId&&ownUid()&&v.ownerUid===ownUid()&&!testAllowed()).length;return blocked?"같은 계정으로 대기 중인 상대 "+blocked+"명이 제외됐어요. 두 탭에서 🧪 테스트 허용을 체크해 주세요.":"다른 플레이어를 찾는 중이에요… 현재 유효한 공개 대기방 "+waiting.length+"개";};
@@ -69,6 +73,7 @@ $("fw-match-quick").onclick=async()=>{
  if(active)await stop();
  $("fw-match-actions").hidden=true;say("공개 대기열 검색 중…");
  try{
+  await ensureIdentity();
   const list=(await get(ref(db,ROOT+"/quick"))).val()||{};
   const now=Date.now();
   for(const [key,item] of Object.entries(list)){
@@ -76,7 +81,7 @@ $("fw-match-quick").onclick=async()=>{
    const claim=await runTransaction(ref(db,ROOT+"/quick/"+key),v=>{
     if(v===null)return null; // Firebase may invoke a transaction before local cache arrives
     if(!quickEligible(v))return;
-    v.guest=localId;v.game=GAMES[Math.floor(Math.random()*GAMES.length)][0];v.status="matched";return v;
+    v.guestUid=ownUid();v.guest=localId;v.game=GAMES[Math.floor(Math.random()*GAMES.length)][0];v.status="matched";return v;
    },{applyLocally:false});
    if(claim.committed&&claim.snapshot.val()?.guest===localId&&claim.snapshot.val()?.status==="matched"){watch("quick",key);return}
   }
@@ -98,7 +103,7 @@ $("fw-match-quick").onclick=async()=>{
      const claim=await runTransaction(ref(db,ROOT+"/quick/"+otherKey),v=>{
       if(v===null)return null;
       if(!quickEligible(v))return;
-      v.guest=localId;v.game=GAMES[Math.floor(Math.random()*GAMES.length)][0];v.status="matched";return v;
+      v.guestUid=ownUid();v.guest=localId;v.game=GAMES[Math.floor(Math.random()*GAMES.length)][0];v.status="matched";return v;
      },{applyLocally:false});
      if(claim.committed&&claim.snapshot.val()?.guest===localId&&claim.snapshot.val()?.status==="matched"){const oldCode=active.code;watch("quick",otherKey);runTransaction(ref(db,ROOT+"/quick/"+oldCode),v=>v?.owner===localId&&v.status==="waiting"?null:undefined,{applyLocally:false}).catch(console.warn);return}
     }
@@ -109,6 +114,7 @@ $("fw-match-quick").onclick=async()=>{
 $("fw-match-friend").onclick=async()=>{
  if(active)await stop();
  try{
+  await ensureIdentity();
   let code="",r;
   for(let i=0;i<10;i++){code=String(Math.floor(100000+Math.random()*900000));r=ref(db,ROOT+"/friend/"+code);if(!(await get(r)).exists())break;}
   if((await get(r)).exists())throw Error("코드 발급 실패");
@@ -122,11 +128,12 @@ $("fw-match-friend-join").onclick=async()=>{
  if(!/^\d{6}$/.test(code)){say("6자리 코드를 입력해 주세요.");return}
  try{
   if(active)await stop();
+  await ensureIdentity();
   const r=ref(db,ROOT+"/friend/"+code);
   const result=await runTransaction(r,v=>{
    if(v===null)return null; // Retry after reading server state instead of aborting immediately
    if(v.status!=="waiting"||Date.now()-(v.updatedAt||v.createdAt)>FRIEND_TTL||v.owner===localId)return;
-   v.guest=localId;v.game=GAMES[Math.floor(Math.random()*GAMES.length)][0];v.status="matched";return v;
+   v.guestUid=ownUid();v.guest=localId;v.game=GAMES[Math.floor(Math.random()*GAMES.length)][0];v.status="matched";return v;
   },{applyLocally:false});
   if(!result.committed||result.snapshot.val()?.guest!==localId||result.snapshot.val()?.status!=="matched"){
    const latest=(await get(r)).val();

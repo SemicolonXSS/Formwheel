@@ -8,11 +8,32 @@
           "players": {
             ".read": true,
             "$uid": {
-              ".write": "auth != null && auth.uid === $uid && newData.exists() && newData.hasChildren(['count','lastAt','moves']) && newData.child('count').isNumber() && newData.child('count').val() === (data.exists() ? data.child('count').val() + 1 : 1) && newData.child('count').val() <= 10000 && newData.child('lastAt').isNumber() && newData.child('lastAt').val() === now && (!data.exists() || now - data.child('lastAt').val() >= 30000) && newData.child('moves').numChildren() === newData.child('count').val() && newData.child('moves').child(newData.child('count').val() + '').exists()",
-              ".validate": "newData.hasChildren(['count','lastAt','moves']) && newData.numChildren() === 3",
+              ".validate": "auth != null && auth.uid === $uid && newData.exists() && newData.hasChildren(['count','lastAt','moves']) && newData.child('count').isNumber() && newData.child('count').val() === (data.exists() ? data.child('count').val() + 1 : 1) && newData.child('count').val() <= 10000 && newData.child('lastAt').isNumber() && newData.child('lastAt').val() === now && (!data.exists() || now - data.child('lastAt').val() >= 30000) && newData.child('moves').child(newData.child('count').val() + '').child('at').val() === now",
+              "count": {
+                ".write": "auth != null && auth.uid === $uid && newData.exists()"
+              },
+              "lastAt": {
+                ".write": "auth != null && auth.uid === $uid && newData.exists()"
+              },
               "moves": {
                 "$index": {
-                  ".validate": "$index.matches(/^[1-9][0-9]*$/) && newData.hasChildren(['x','y','color','at']) && newData.numChildren() === 4 && ((!data.exists() && $index === ((root.child('formwheelV2/pixelWar/v1/players/'+$uid+'/count').val() || 0) + 1 + '')) || (data.exists() && newData.child('x').val() === data.child('x').val() && newData.child('y').val() === data.child('y').val() && newData.child('color').val() === data.child('color').val() && newData.child('at').val() === data.child('at').val())) && newData.child('x').isNumber() && newData.child('x').val() % 1 === 0 && newData.child('x').val() >= 0 && newData.child('x').val() < 400 && newData.child('y').isNumber() && newData.child('y').val() % 1 === 0 && newData.child('y').val() >= 0 && newData.child('y').val() < 400 && newData.child('color').isNumber() && newData.child('color').val() % 1 === 0 && newData.child('color').val() >= 0 && newData.child('color').val() < 32 && newData.child('at').isNumber() && (data.exists() || newData.child('at').val() === now)"
+                  ".write": "auth != null && auth.uid === $uid && newData.exists() && !data.exists() && $index === (newData.parent().parent().child('count').val() + '')",
+                  ".validate": "newData.hasChildren(['x','y','color','at'])",
+                  "x": {
+                    ".validate": "newData.isNumber() && newData.val() % 1 === 0 && newData.val() >= 0 && newData.val() < 400"
+                  },
+                  "y": {
+                    ".validate": "newData.isNumber() && newData.val() % 1 === 0 && newData.val() >= 0 && newData.val() < 400"
+                  },
+                  "color": {
+                    ".validate": "newData.isNumber() && newData.val() % 1 === 0 && newData.val() >= 0 && newData.val() < 32"
+                  },
+                  "at": {
+                    ".validate": "newData.val() === now"
+                  },
+                  "$other": {
+                    ".validate": false
+                  }
                 }
               }
             }
@@ -56,10 +77,10 @@
             ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() % 1 === 0"
           },
           "returning": {
-            ".validate": "newData.isNumber() && newData.val() >= 0"
+            ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() % 1 === 0"
           },
           "engaged": {
-            ".validate": "newData.isNumber() && newData.val() >= 0"
+            ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() % 1 === 0"
           },
           "updatedAt": {
             ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= now + 60000"
@@ -69,12 +90,12 @@
           },
           "daily": {
             "$day": {
-              ".validate": "$day.matches(/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/) && newData.isNumber() && newData.val() >= 0"
+              ".validate": "$day.matches(/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/) && newData.isNumber() && newData.val() >= 0 && newData.val() % 1 === 0"
             }
           },
           "channels": {
             "$channel": {
-              ".validate": "$channel.matches(/^[a-zA-Z0-9_-]{1,32}$/) && newData.isNumber() && newData.val() >= 0"
+              ".validate": "$channel.matches(/^[a-zA-Z0-9_-]{1,32}$/) && newData.isNumber() && newData.val() >= 0 && newData.val() % 1 === 0"
             }
           },
           "$other": {
@@ -325,7 +346,7 @@
             "$project": {
               ".validate": "$project.length > 0 && $project.length <= 120 && newData.hasChildren(['count','last'])",
               "count": {
-                ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 100000"
+                ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 100000 && newData.val() % 1 === 0"
               },
               "last": {
                 ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= now + 60000"
@@ -476,7 +497,7 @@
             },
             "projectMs": {
               "$project": {
-                ".validate": "$project.matches(/^[A-Za-z0-9_-]{1,60}$/) && newData.isNumber() && newData.val() >= 0"
+                ".validate": "$project.matches(/^[A-Za-z0-9_-]{1,60}$/) && newData.isNumber() && newData.val() >= 0 && newData.val() <= 315360000000 && newData.val() % 1 === 0"
               }
             },
             "visitCount": {
@@ -525,7 +546,76 @@
       },
       "matchmaking": {
         ".read": false,
-        ".write": false
+        ".write": false,
+        "friend": {
+          "$code": {
+            ".read": "auth != null",
+            ".write": "auth != null && $code.matches(/^[0-9]{6}$/) && ((!data.exists() && newData.child('ownerUid').val() === auth.uid && newData.child('status').val() === 'waiting' && !newData.hasChild('guest') && !newData.hasChild('guestUid') && !newData.hasChild('game') && newData.child('updatedAt').val() >= now - 60000 && newData.child('updatedAt').val() <= now + 60000 && newData.child('createdAt').val() >= now - 60000 && newData.child('createdAt').val() <= now + 60000) || (data.child('status').val() === 'waiting' && ((!newData.exists() && data.child('ownerUid').val() === auth.uid) || (newData.child('owner').val() === data.child('owner').val() && newData.child('ownerUid').val() === data.child('ownerUid').val() && newData.child('createdAt').val() === data.child('createdAt').val() && ((data.child('ownerUid').val() === auth.uid && newData.child('status').val() === 'waiting' && !newData.hasChild('guest') && !newData.hasChild('guestUid') && !newData.hasChild('game') && newData.child('updatedAt').val() >= now - 60000 && newData.child('updatedAt').val() <= now + 60000) || (newData.child('guest').isString() && newData.child('guest').val() !== data.child('owner').val() && newData.child('guestUid').val() === auth.uid && newData.child('status').val() === 'matched' && newData.child('updatedAt').val() === data.child('updatedAt').val() && data.child('updatedAt').val() >= now - 600000 && newData.child('game').val().matches(/^(reflex|battle|territory|risk|gcrown|time|bomb)$/)))))))",
+            ".validate": "newData.hasChildren(['owner','ownerUid','status','createdAt','updatedAt'])",
+            "owner": {
+              ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 128"
+            },
+            "ownerUid": {
+              ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 128"
+            },
+            "status": {
+              ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 128"
+            },
+            "guest": {
+              ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 128"
+            },
+            "guestUid": {
+              ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 128"
+            },
+            "game": {
+              ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 128"
+            },
+            "createdAt": {
+              ".validate": "newData.isNumber()"
+            },
+            "updatedAt": {
+              ".validate": "newData.isNumber()"
+            },
+            "$other": {
+              ".validate": false
+            }
+          }
+        },
+        "quick": {
+          "$code": {
+            ".read": "auth != null",
+            ".write": "auth != null && $code.matches(/^[a-zA-Z0-9]{1,15}$/) && ((!data.exists() && newData.child('ownerUid').val() === auth.uid && newData.child('status').val() === 'waiting' && !newData.hasChild('guest') && !newData.hasChild('guestUid') && !newData.hasChild('game') && newData.child('updatedAt').val() >= now - 60000 && newData.child('updatedAt').val() <= now + 60000 && newData.child('createdAt').val() >= now - 60000 && newData.child('createdAt').val() <= now + 60000) || (data.child('status').val() === 'waiting' && ((!newData.exists() && data.child('ownerUid').val() === auth.uid) || (newData.child('owner').val() === data.child('owner').val() && newData.child('ownerUid').val() === data.child('ownerUid').val() && newData.child('createdAt').val() === data.child('createdAt').val() && ((data.child('ownerUid').val() === auth.uid && newData.child('status').val() === 'waiting' && !newData.hasChild('guest') && !newData.hasChild('guestUid') && !newData.hasChild('game') && newData.child('updatedAt').val() >= now - 60000 && newData.child('updatedAt').val() <= now + 60000) || (newData.child('guest').isString() && newData.child('guest').val() !== data.child('owner').val() && newData.child('guestUid').val() === auth.uid && newData.child('status').val() === 'matched' && newData.child('updatedAt').val() === data.child('updatedAt').val() && data.child('updatedAt').val() >= now - 90000 && newData.child('game').val().matches(/^(reflex|battle|territory|risk|gcrown|time|bomb)$/)))))))",
+            ".validate": "newData.hasChildren(['owner','ownerUid','status','createdAt','updatedAt'])",
+            "owner": {
+              ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 128"
+            },
+            "ownerUid": {
+              ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 128"
+            },
+            "status": {
+              ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 128"
+            },
+            "guest": {
+              ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 128"
+            },
+            "guestUid": {
+              ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 128"
+            },
+            "game": {
+              ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 128"
+            },
+            "createdAt": {
+              ".validate": "newData.isNumber()"
+            },
+            "updatedAt": {
+              ".validate": "newData.isNumber()"
+            },
+            "$other": {
+              ".validate": false
+            }
+          },
+          ".read": "auth != null"
+        }
       },
       "pvpRooms": {
         ".read": false,
@@ -577,6 +667,47 @@
             },
             "$other": {
               ".validate": false
+            }
+          }
+        }
+      },
+      "forms": {
+        "$id": {
+          "public": {
+            ".read": true,
+            ".write": "auth != null && ((!data.exists() && newData.child('owner').val() === auth.uid) || (data.child('owner').val() === auth.uid && newData.child('owner').val() === data.child('owner').val()))",
+            ".validate": "newData.hasChildren(['owner','title','questions'])"
+          },
+          "responses": {
+            ".read": "auth != null && root.child('formwheelV2/forms').child($id).child('public/owner').val() === auth.uid",
+            "$response": {
+              ".write": "auth != null && !data.exists() && newData.child('respondent').val() === auth.uid && root.child('formwheelV2/forms').child($id).child('public').exists()",
+              ".validate": "newData.hasChildren(['respondent','answers','submittedAt'])"
+            }
+          }
+        }
+      },
+      "chat": {
+        "public": {
+          "messages": {
+            ".read": "auth != null",
+            "$id": {
+              ".write": "auth != null && ((!data.exists() && newData.child('uid').val() === auth.uid && !root.child('formwheelV2/bans').child(auth.uid).exists()) || (data.exists() && (data.child('uid').val() === auth.uid || auth.token.producer === true)))",
+              ".validate": "newData.hasChildren(['uid','text','createdAt']) && newData.child('uid').val() === auth.uid && newData.child('text').isString() && newData.child('text').val().length > 0 && newData.child('text').val().length <= 2000 && (!data.exists() || newData.child('uid').val() === data.child('uid').val())",
+              "$other": {
+                ".validate": true
+              }
+            }
+          }
+        },
+        "rooms": {
+          "$room": {
+            ".read": "auth != null && root.child('formwheelV2/rooms').child($room).child('players').child(auth.uid).exists()",
+            "messages": {
+              "$id": {
+                ".write": "auth != null && root.child('formwheelV2/rooms').child($room).child('players').child(auth.uid).exists() && ((!data.exists() && newData.child('uid').val() === auth.uid && !root.child('formwheelV2/bans').child(auth.uid).exists()) || (data.exists() && (data.child('uid').val() === auth.uid || auth.token.producer === true)))",
+                ".validate": "newData.hasChildren(['uid','text','createdAt']) && newData.child('uid').val() === auth.uid && newData.child('text').isString() && newData.child('text').val().length > 0 && newData.child('text').val().length <= 2000"
+              }
             }
           }
         }
