@@ -6,27 +6,29 @@
 </style></head><body><main>
 <header><a href="./index.html">← Formwheel Hub</a><span class="muted">독립 게임 · 현금 / 결제 없음</span></header>
 <section id="home"><div class="logo">🃏 CHAOS HOLD'EM</div><p class="muted">평범한 홀덤에서 세계 붕괴까지. 원하는 규칙으로 즐겨 봐!</p>
+<div class="panel"><h2>🤖 상대 봇 선택</h2><p class="muted">Chess.com처럼 이름과 성격, 단계로 상대를 골라 보세요. 봇은 가상의 독창적인 캐릭터입니다.</p>
+<div class="stats"><label for="botLevel">봇 목록</label><select id="botLevel" aria-label="홀덤 봇 선택"></select></div>
+<div id="botProfile" class="panel" aria-live="polite"></div>
+<p class="muted">※ 봇 단계에 따라 시작 패와 의사결정 성향이 달라집니다. 공용 카드를 미리 보지 않습니다.</p></div>
 <div class="menu">
 <button class="choice" data-mode="normal"><strong>♠️ 일반</strong><small>표준 텍사스 홀덤. 2장 손패, 5장 공용 카드, 정통 족보.</small></button>
 <button class="choice" data-mode="variant"><strong>🪄 변형</strong><small>공용 카드 6장! 최강의 5장을 골라 승부.</small></button>
 <button class="choice" data-mode="chaos"><strong>🌪️ 혼돈</strong><small>매 판 무작위 규칙! 카드 한 장 추가 또는 약한 패 승리.</small></button>
 <button class="choice" data-mode="tutorial"><strong>📖 튜토리얼</strong><small>홀덤의 진행 순서와 족보를 차근차근 알아보기.</small></button>
 </div>
-<div class="panel"><h2>🤖 상대 봇 선택</h2><p class="muted">Chess.com처럼 이름과 성격, 단계로 상대를 골라 보세요. 봇은 가상의 독창적인 캐릭터입니다.</p>
-<div class="stats"><label for="botLevel">봇 목록</label><select id="botLevel" aria-label="홀덤 봇 선택"></select></div>
-<div id="botProfile" class="panel" aria-live="polite"></div>
-<p class="muted">※ 이 버전은 베팅 없는 카드 비교 게임입니다. 봇 난이도는 시작 손패의 강도와 성향에만 영향을 주며, 상대가 미래 공용 카드를 미리 보지는 않습니다.</p></div></section>
+</section>
 <section id="guide" class="hidden panel"><h2>📖 홀덤 튜토리얼</h2><ol>
 <li>나와 상대에게 각자 <b>비공개 카드 2장</b>이 주어집니다.</li><li>플롭에서 공용 카드 3장, 턴에서 1장, 리버에서 1장이 공개됩니다.</li><li>공용 카드와 내 카드 중 <b>가장 강한 5장 조합</b>으로 승부합니다.</li>
 <li>족보 (강한 순): 로열 플러시(스트레이트 플러시의 최고 형태) → 스트레이트 플러시 → 포카드 → 풀하우스 → 플러시 → 스트레이트 → 트리플 → 투페어 → 원페어 → 하이카드.</li>
 <li>같은 족보라면 구성 숫자와 킥커를 비교합니다. A는 보통 가장 높으며 A-2-3-4-5 스트레이트에서는 1로 취급합니다.</li>
-<li>이 게임은 베팅 없는 <b>연습용 1대1 대결</b>입니다. 버튼을 눌러 카드를 공개하고 결과를 확인하세요.</li></ol>
+<li>실제 돈이나 구매 기능이 없는 연습용 포인트를 사용합니다. 체크는 추가 포인트 없이 진행, 베팅·레이즈는 포인트를 걸고, 콜은 상대 금액을 맞추고, 폴드는 현재 판을 포기하는 행동입니다.</li></ol>
 <div class="actions"><button id="practice">일반 모드로 연습</button><button class="secondary" data-home>메인 메뉴</button></div></section>
 <section id="game" class="hidden"><div class="panel"><div class="stats"><div>모드: <b id="modeName"></b></div><div>승 <b id="wins">0</b> / 무 <b id="ties">0</b> / 패 <b id="losses">0</b></div></div><p id="rule" aria-live="polite"></p></div>
+<div class="panel"><div class="stats"><div>내 연습 포인트 <b id="playerPoints">100</b></div><div>봇 포인트 <b id="botPoints">100</b></div><div>중앙 포인트 <b id="potPoints">0</b></div><div>맞출 포인트 <b id="toCall">0</b></div></div></div>
 <div class="table"><p class="center" id="opponentName">🤖 상대 봇</p><div id="opponent" class="cards"></div>
 <p class="center">공용 카드 · <span id="street">프리플롭</span></p><div id="board" class="cards"></div>
 <p class="center">👤 내 카드</p><div id="mine" class="cards"></div></div>
-<div class="panel"><p id="message" class="status" aria-live="polite"></p><div class="actions"><button id="next">플롭 공개</button><button id="again" class="secondary hidden">다시 플레이</button><button id="back" class="secondary">메인 메뉴</button></div></div></section>
+<div class="panel"><p id="message" class="status" aria-live="polite"></p><div class="actions" id="betActions"><button id="check">체크</button><button id="bet">10 베팅</button><button id="call">콜</button><button id="raise">10 레이즈</button><button id="fold" class="secondary">폴드</button></div><div class="actions"><button id="next" class="hidden" disabled>플롭 공개</button><button id="again" class="secondary hidden">다시 플레이</button><button id="back" class="secondary">메인 메뉴</button></div></div></section>
 </main><script>
 "use strict";
 const $=id=>document.getElementById(id);
@@ -46,6 +48,75 @@ const bots=[
  {name:"Nu6l",icon:"🌌",level:12,style:"최상급 균형형",line:"무한도 결국 하나의 숫자일 뿐.",strategy:"balanced"}
 ];
 let bot=bots[0],mode="normal",rule="standard",deck=[],mine=[],opponent=[],board=[],stage=0,wins=0,ties=0,losses=0;
+let playerPoints=100,botPoints=100,pot=0,playerPut=0,botPut=0,raises=0,finished=false;
+function owed(){return Math.max(0,botPut-playerPut)}
+function contribute(who,amount){
+ const paid=Math.min(Math.max(0,amount),who==="player"?playerPoints:botPoints);
+ if(who==="player"){playerPoints-=paid;playerPut+=paid}else{botPoints-=paid;botPut+=paid}
+ pot+=paid;return paid;
+}
+function updateActions(){
+ $("playerPoints").textContent=playerPoints;$("botPoints").textContent=botPoints;$("potPoints").textContent=pot;$("toCall").textContent=owed();
+ $("betActions").classList.toggle("hidden",finished);
+ $("check").disabled=finished||owed()>0;
+ $("bet").disabled=finished||owed()>0||playerPoints===0||botPoints===0;
+ $("call").disabled=finished||owed()===0;
+ $("raise").disabled=finished||owed()===0||playerPoints<=owed()||raises>=1||botPoints===0;
+ $("fold").disabled=finished;
+}
+function resetPointsIfNeeded(){
+ if(playerPoints===0||botPoints===0){playerPoints=100;botPoints=100;$("message").textContent="연습 포인트를 100씩 다시 지급했어요."}
+}
+function finishFold(winner,reason){
+ finished=true;if(winner==="player"){wins++;playerPoints+=pot}else{losses++;botPoints+=pot}
+ pot=0;$("message").textContent=reason+" · "+(winner==="player"?"🏆 승리!":"🤖 패배");
+ $("again").classList.remove("hidden");$("next").classList.add("hidden");render()
+}
+function finishShowdown(){
+ finished=true;
+ const me=best([...mine,...board]),them=best([...opponent,...board]);
+ let result=cmp(me,them);if(rule==="reverse")result=-result;
+ if(result>0){wins++;playerPoints+=pot;$("message").textContent="🏆 승리! "+handName(me)+" vs "+handName(them)}
+ else if(result<0){losses++;botPoints+=pot;$("message").textContent="🤖 패배! "+handName(me)+" vs "+handName(them)}
+ else{ties++;playerPoints+=Math.floor(pot/2);botPoints+=pot-Math.floor(pot/2);$("message").textContent="🤝 무승부! "+handName(me)}
+ pot=0;$("again").classList.remove("hidden");$("next").classList.add("hidden");render()
+}
+function advanceStreet(){
+ if(stage===3){finishShowdown();return}
+ const amount=stage===0?3:stage===1?1:(rule==="extra"?2:1);
+ for(let i=0;i<amount;i++)board.push(deck.pop());
+ stage++;playerPut=0;botPut=0;raises=0;
+ if(stage===3){finishShowdown();return}
+ $("message").textContent=stage===1?"플롭 공개! 연습 포인트 행동을 선택하세요.":"턴 공개! 행동을 선택하세요.";
+ render()
+}
+function botDecision(kind){
+ const strength=cardScore(opponent,bot.strategy),aggression=Math.min(.55,.08+bot.level*.035);
+ if(kind==="faceBet"){
+  // Call or fold, with an occasional single re-raise.
+  if(strength<27&&Math.random()<Math.max(.05,.48-bot.level*.025)){finishFold("player",bot.name+" 폴드");return}
+  contribute("bot",Math.min(playerPut-botPut,botPoints));
+  if(raises<1&&botPoints>=10&&playerPoints>=10&&strength>=53&&Math.random()<aggression*.35){
+   raises++;contribute("bot",10);$("message").textContent=bot.name+"이(가) 10포인트 레이즈! 콜 또는 폴드를 선택하세요.";render();return
+  }
+  advanceStreet();return;
+ }
+ if(kind==="afterCheck"){
+  if(botPoints>=10&&playerPoints>=10&&strength>38&&Math.random()<aggression){
+   contribute("bot",10);$("message").textContent=bot.name+"이(가) 10포인트 베팅! 콜·레이즈·폴드 중 선택하세요.";render();return
+  }
+  advanceStreet();
+ }
+}
+function playerAction(action){
+ if(finished)return;
+ const need=owed();
+ if(action==="fold"){finishFold("bot","내가 폴드");return}
+ if(action==="check"){if(need)return;botDecision("afterCheck");return}
+ if(action==="bet"){if(need||playerPoints<=0||botPoints<=0)return;contribute("player",10);botDecision("faceBet");return}
+ if(action==="call"){if(!need)return;contribute("player",need);advanceStreet();return}
+ if(action==="raise"){if(!need||raises>=1||playerPoints<=need||botPoints===0)return;contribute("player",need+10);raises++;botDecision("faceBet");}
+}
 function cardScore(cards,style){
  const [a,b]=cards.map(c=>c.r).sort((x,y)=>y-x),pair=a===b,suited=cards[0].s===cards[1].s,connected=Math.abs(a-b)<=2;
  let score=a*2+b+ (pair?21+a:0)+(suited?5:0)+(connected?4:0);
@@ -106,28 +177,23 @@ function handName(v){return v[0]===8&&v[1]===14?"로열 플러시":hands[v[0]]}
 function switchScreen(screen){["home","guide","game"].forEach(id=>$(id).classList.toggle("hidden",id!==screen))}
 function start(m){mode=m;if(m==="tutorial"){switchScreen("guide");return}wins=ties=losses=0;switchScreen("game");newHand()}
 function newHand(){
- deck=makeDeck();mine=[deck.pop(),deck.pop()];opponent=chooseOpponent();board=[];stage=0;
+ resetPointsIfNeeded();deck=makeDeck();mine=[deck.pop(),deck.pop()];opponent=chooseOpponent();board=[];stage=0;pot=0;playerPut=0;botPut=0;raises=0;finished=false;
  $("opponentName").textContent=bot.icon+" "+bot.name+" · LV."+bot.level;
  rule=mode==="chaos"?(Math.random()<.5?"reverse":"extra"):(mode==="variant"?"extra":"standard");
  $("modeName").textContent=labels[mode];$("rule").textContent=rule==="reverse"?"🌪️ 혼돈 규칙: 더 약한 족보가 승리!":rule==="extra"?"✨ 공용 카드 6장 규칙 (가장 강한 5장 사용)":"♠️ 표준 텍사스 홀덤";
- $("next").disabled=false;$("next").classList.remove("hidden");$("again").classList.add("hidden");$("message").textContent="카드를 확인하고 플롭을 공개하세요.";render()
+ $("next").disabled=true;$("next").classList.add("hidden");$("again").classList.add("hidden");$("message").textContent="프리플롭: 체크하거나 연습 포인트로 행동하세요.";render()
 }
 function render(){
- showCards("mine",mine,false);showCards("opponent",opponent,stage!==3);showCards("board",board,false);
+ showCards("mine",mine,false);showCards("opponent",opponent,!finished||stage!==3);showCards("board",board,false);
  $("street").textContent=["프리플롭","플롭","턴","리버 / 쇼다운"][stage];
  $("wins").textContent=wins;$("ties").textContent=ties;$("losses").textContent=losses;
- $("next").textContent=["플롭 공개","턴 공개","리버 공개",""][stage]
-}
-function advance(){
- if(stage===3)return;const amount=stage===0?3:stage===1?1:(rule==="extra"?2:1);for(let i=0;i<amount;i++)board.push(deck.pop());stage++;
- if(stage===3){const me=best([...mine,...board]),them=best([...opponent,...board]);let result=cmp(me,them);if(rule==="reverse")result=-result;if(result>0){wins++;$("message").textContent="🏆 승리! "+handName(me)+" vs "+handName(them)}else if(result<0){losses++;$("message").textContent="🤖 패배! "+handName(me)+" vs "+handName(them)}else{ties++;$("message").textContent="🤝 무승부! "+handName(me)+" (동률)"}$("next").classList.add("hidden");$("again").classList.remove("hidden")}
- else $("message").textContent=stage===1?"플롭 공개!":"턴 공개! 다음은 리버입니다.";
- render()
+ $("next").textContent=["플롭 공개","턴 공개","리버 공개",""][stage];updateActions()
 }
 bots.forEach((b,i)=>{const opt=document.createElement("option");opt.value=String(i);opt.textContent="LV."+b.level+" · "+b.icon+" "+b.name+" — "+b.style;$("botLevel").append(opt)});
 $("botLevel").addEventListener("change",setBot);setBot();
 document.querySelectorAll("[data-mode]").forEach(b=>b.addEventListener("click",()=>start(b.dataset.mode)));
 document.querySelectorAll("[data-home]").forEach(b=>b.addEventListener("click",()=>switchScreen("home")));
 $("practice").addEventListener("click",()=>start("normal"));$("back").addEventListener("click",()=>switchScreen("home"));
-$("next").addEventListener("click",advance);$("again").addEventListener("click",newHand);
+$("next").addEventListener("click",advanceStreet);$("again").addEventListener("click",newHand);
+for(const action of ["check","bet","call","raise","fold"])$(action).addEventListener("click",()=>playerAction(action));
 </script></body></html>
