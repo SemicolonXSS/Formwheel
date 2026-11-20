@@ -8,7 +8,7 @@ const canvas=document.querySelector('#stage'),ctx=canvas.getContext('2d');
 const scoreEl=document.querySelector('#score'),comboEl=document.querySelector('#combo'),bestEl=document.querySelector('#best'),periodEl=document.querySelector('#period'),feedback=document.querySelector('#feedback'),successEl=document.querySelector('#success'),livesEl=document.querySelector('#lives');
 const TAU=Math.PI*2;
 const maps=[{name:'첫 박자',beats:[1.7,3.5,5.2,7.3,9.1,11.4,13.2,15.3]},{name:'엇박자',beats:[1.4,2.8,4.9,6.0,8.3,9.8,11.1,13.7,15.4,17.0]},{name:'트리플',beats:[1.2,2.4,3.6,5.5,6.7,7.9,10.0,11.2,12.4,14.5,15.7,16.9]},{name:'피날레',beats:[1.5,2.5,4.0,5.0,6.5,7.5,9.0,10.0,11.5,12.5,14.0,15.0,16.5,17.5]}];
-let mode='random',mapIndex=0,mapBeat=0;
+let mode='random',mapIndex=0,mapBeat=0,musicStep=0,musicNote=0;
 const mapInfo=document.querySelector('#mapInfo');
 function goodWindow(){return Math.max(0.48,0.78-stage*0.009)}
 function perfectWindow(){return Math.max(0.23,0.36-stage*0.004)}
@@ -37,28 +37,65 @@ function addTarget(){
 }
 function fillTargets(){while(targets.length<targetCount()&&(mode==='random'||mapBeat<maps[mapIndex].beats.length))addTarget()}
 function spawnTargets(){targets=[];fillTargets()}
-function showMode(){mapInfo.textContent=mode==='random'?'랜덤 모드 · 기존 방식':('맵 '+(mapIndex+1)+' / '+maps.length+' · '+maps[mapIndex].name+' · '+mapBeat+'/'+maps[mapIndex].beats.length+' 배치')}
+function showMode(){mapInfo.textContent=mode==='random'?'랜덤 모드 · 기존 방식':('맵 '+(mapIndex+1)+' / '+maps.length+' · '+maps[mapIndex].name+' ♪ '+musicNames[mapIndex]+' · '+mapBeat+'/'+maps[mapIndex].beats.length+' 배치')}
 function selectMode(next){if(running)return;mode=next;document.querySelector('#randomMode').classList.toggle('active',mode==='random');document.querySelector('#mapMode').classList.toggle('active',mode==='map');document.querySelector('#randomMode').setAttribute('aria-pressed',String(mode==='random'));document.querySelector('#mapMode').setAttribute('aria-pressed',String(mode==='map'));showMode();draw()}
-function mapAdvance(){if(mode!=='map'||targets.length||mapBeat<maps[mapIndex].beats.length||!running)return;mapIndex++;if(mapIndex>=maps.length){running=false;cancelAnimationFrame(raf);feedback.textContent='🏆 모든 맵 클리어! 점수 '+score;return}progress=0;angle=-Math.PI/2;mapBeat=0;stage=0;period=4;spawnTargets();showMode();feedback.textContent='🗺️ 다음 맵: '+maps[mapIndex].name;update()}
+function mapAdvance(){if(mode!=='map'||targets.length||mapBeat<maps[mapIndex].beats.length||!running)return;mapIndex++;if(mapIndex>=maps.length){running=false;cancelAnimationFrame(raf);feedback.textContent='🏆 모든 맵 클리어! 점수 '+score;return}progress=0;angle=-Math.PI/2;mapBeat=0;musicStep=0;musicNote=0;stage=0;period=4;spawnTargets();showMode();feedback.textContent='🗺️ 다음 맵: '+maps[mapIndex].name;update()}
 function endGame(){running=false;cancelAnimationFrame(raf);feedback.textContent='💔 GAME OVER · 점수 '+score+' · 다시 시작할 수 있어요';update()}
 function lose(reason){if(!running)return;combo=0;lives=Math.max(0,lives-1);feedback.textContent=reason+' · 목숨 -1';update();if(lives===0)endGame()}
-function start(){cancelAnimationFrame(raf);running=true;angle=-Math.PI/2;period=4;stage=0;score=0;combo=0;success=0;lives=5;progress=0;nextId=0;mapIndex=0;mapBeat=0;last=performance.now();spawnTargets();showMode();feedback.textContent='READY · 타이밍을 맞추세요!';update();draw();raf=requestAnimationFrame(frame)}
+function start(){if(mode==='map')try{initAudio()}catch(e){}cancelAnimationFrame(raf);running=true;angle=-Math.PI/2;period=4;stage=0;score=0;combo=0;success=0;lives=5;progress=0;nextId=0;mapIndex=0;mapBeat=0;musicStep=0;musicNote=0;last=performance.now();spawnTargets();showMode();feedback.textContent='READY · 타이밍을 맞추세요!';update();draw();raf=requestAnimationFrame(frame)}
 let audioContext=null,audioCompressor=null;
+const melodies=[
+  [262,330,392,523,392,330,294,392],
+  [220,330,277,440,330,247,370,294],
+  [294,370,440,587,554,440,370,494],
+  [196,392,494,587,659,587,494,784]
+];
+const musicNames=['First Pulse','Offbeat Circuit','Triple Orbit','Final Overdrive'];
+function initAudio(){
+  const AudioCtx=window.AudioContext||window.webkitAudioContext;
+  if(!AudioCtx)return false;
+  if(!audioContext)audioContext=new AudioCtx();
+  if(audioContext.state==='suspended')audioContext.resume().catch(()=>{});
+  if(!audioCompressor){
+    audioCompressor=audioContext.createDynamicsCompressor();
+    audioCompressor.threshold.value=-15;audioCompressor.knee.value=12;
+    audioCompressor.ratio.value=5;audioCompressor.attack.value=0.003;audioCompressor.release.value=0.12;
+    audioCompressor.connect(audioContext.destination);
+  }
+  return true;
+}
+function synthNote(frequency,duration=0.19,volume=0.11,type='triangle'){
+  if(!audioContext||audioContext.state!=='running')return;
+  const now=audioContext.currentTime;
+  const osc=audioContext.createOscillator(),gain=audioContext.createGain();
+  osc.type=type;osc.frequency.setValueAtTime(frequency,now);
+  gain.gain.setValueAtTime(0.0001,now);
+  gain.gain.exponentialRampToValueAtTime(volume,now+0.012);
+  gain.gain.exponentialRampToValueAtTime(0.0001,now+duration);
+  osc.connect(gain);gain.connect(audioCompressor);
+  osc.onended=()=>{osc.disconnect();gain.disconnect()};
+  osc.start(now);osc.stop(now+duration+0.01);
+}
+function mapMusic(){
+  if(mode!=='map'||!running)return;
+  const unit=[0.7,0.55,0.42,0.48][mapIndex];
+  const current=Math.floor(progress/unit);
+  if(current<=musicStep)return;
+  musicStep=current;
+  const notes=melodies[mapIndex];
+  const index=musicNote++%notes.length;
+  synthNote(notes[index],0.23,0.115,mapIndex===3?'sawtooth':'triangle');
+  if(index%2===0)synthNote(notes[index]/2,0.28,0.075,'sine');
+}
+
 const drumLayers=[{from:190,to:62,level:0.85,duration:0.28,type:'sine'},{from:360,to:110,level:0.5,duration:0.13,type:'triangle'}];
 function playDrum(){
   try{
     const AudioCtx=window.AudioContext||window.webkitAudioContext;
     if(!AudioCtx)return;
-    if(!audioContext)audioContext=new AudioCtx();
-    if(audioContext.state==='suspended')audioContext.resume().catch(()=>{});
+    if(!initAudio())return;
     const now=audioContext.currentTime;
     // Layer a bass thump and a midrange attack so the hit is audible on phone speakers.
-    if(!audioCompressor){
-      audioCompressor=audioContext.createDynamicsCompressor();
-      audioCompressor.threshold.value=-15;audioCompressor.knee.value=12;
-      audioCompressor.ratio.value=5;audioCompressor.attack.value=0.003;audioCompressor.release.value=0.12;
-      audioCompressor.connect(audioContext.destination);
-    }
     for(const layer of drumLayers){
       const osc=audioContext.createOscillator(),gain=audioContext.createGain();
       osc.type=layer.type;
@@ -77,7 +114,7 @@ function hit(){playDrum();if(!running)return;let chosen=null,nearest=Infinity;fo
 if(chosen&&nearest<=goodWindow()){const perfect=nearest<=perfectWindow();combo++;score+=perfect?100:50;success++;feedback.textContent=perfect?'✨ PERFECT +100':'👍 GOOD +50';if(score>best){best=score;bestEl.textContent=best;try{localStorage.setItem('fw-polyrhythm-best',String(best))}catch(e){}}
 if(success%3===0){stage++;period=stagePeriod();feedback.textContent+=' · 🔄 '+period.toFixed(1)+'초/바퀴'}
 targets=targets.filter(t=>t.id!==chosen.id);fillTargets();showMode();update();mapAdvance()}else lose('헛발질')}
-function frame(now){if(!running)return;const dt=Math.min(Math.max((now-last)/1000,0),0.06);last=now;const step=TAU*dt/period;progress+=step;angle+=step;
+function frame(now){if(!running)return;const dt=Math.min(Math.max((now-last)/1000,0),0.06);last=now;const step=TAU*dt/period;progress+=step;angle+=step;mapMusic();
 const windowSize=goodWindow();const missGrace=0.28;const expired=targets.filter(t=>progress>t.at+windowSize+missGrace);if(expired.length){targets=targets.filter(t=>progress<=t.at+windowSize+missGrace);for(const t of expired){lose('MISS');if(!running)break}if(running){fillTargets();showMode();mapAdvance()}}
 draw();if(running)raf=requestAnimationFrame(frame)}
 function draw(){ctx.clearRect(0,0,480,480);const cx=240,cy=240,r=172;ctx.beginPath();ctx.arc(cx,cy,r,0,TAU);ctx.strokeStyle='#536182';ctx.lineWidth=5;ctx.stroke();for(let i=0;i<12;i++){const a=i*TAU/12;ctx.beginPath();ctx.arc(cx+Math.cos(a)*r,cy+Math.sin(a)*r,2.5,0,TAU);ctx.fillStyle='#7583a5';ctx.fill()}
