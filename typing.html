@@ -128,7 +128,7 @@ function update(){const n=numbers(),limit=Number($('duration').value),left=limit
 const frag=document.createDocumentFragment();n.target.forEach((char,i)=>{const el=document.createElement('span');el.textContent=char;if(i<n.typed.length)el.className=n.typed[i]===char?'correct':'wrong';else if(i===n.typed.length&&!ended)el.className='current';frag.appendChild(el)});$('sample').replaceChildren(frag);
 if(started&&limit&&n.sec>=limit){finish(false);return}
 if(started&&!ended&&n.typed.length===n.target.length&&n.correct===n.target.length)finish(true)}
-function saveBest(n){if(n.correct+totalCorrect<=0)return;const all=bestData(),key=config(),old=all[key];if(!old||n.cpm>old.cpm||(n.cpm===old.cpm&&n.accuracy>old.accuracy)){all[key]={cpm:n.cpm,accuracy:n.accuracy};try{localStorage.setItem(storageKey,JSON.stringify(all))}catch(_){}showBest()}}
+function saveBest(n){if(n.correct+totalCorrect<=0)return;const all=bestData(),key=config(),old=all[key];if(!old||typeof old!=='object'||!Number.isFinite(old.cpm)||old.cpm<0||!Number.isFinite(old.accuracy)||old.accuracy<0||old.accuracy>100||n.cpm>old.cpm||(n.cpm===old.cpm&&n.accuracy>old.accuracy)){all[key]={cpm:n.cpm,accuracy:n.accuracy};try{localStorage.setItem(storageKey,JSON.stringify(all))}catch(_){}showBest()}}
 function finish(success){if(ended&&!awaitingEnter)return;const n=numbers();
 if(!success){ended=true;awaitingEnter=false;clearInterval(timer);timer=null;$('answer').disabled=true;$('answer').readOnly=false;$('status').textContent='⏰ 시간이 끝났어요! '+n.cpm+'타/분 · 정확도 '+n.accuracy+'% · Enter '+enterCount+'회';saveBest(n);return}
 if(ended)return;ended=true;saveBest(n);
