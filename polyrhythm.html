@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Formwheel_Polyrhythm</title><link rel="icon" href="./assets/formwheel-favicon.svg"><style>
 *{box-sizing:border-box}body{margin:0;background:#0c1024;color:#f4f5ff;font-family:system-ui,sans-serif;text-align:center}main{max-width:680px;margin:auto;padding:22px 14px}a{color:#b7b4ff}h1{font-size:clamp(24px,6vw,36px);margin:15px 0 5px}p{color:#b9c1d9} .stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:16px 0}.stats span{background:#202944;padding:10px 15px;border-radius:12px}strong{color:#fff}canvas{display:block;width:min(94vw,480px);height:auto;margin:0 auto;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}button{font:inherit;border:0;border-radius:14px;background:#806cff;color:#fff;font-weight:800;padding:13px 22px;cursor:pointer;min-height:48px}button:focus-visible{outline:3px solid #ffd166;outline-offset:3px}.controls{display:flex;gap:10px;justify-content:center;margin:12px 0}#hit{background:#ffab40;color:#1e1630;min-width:180px;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}#feedback{min-height:28px;font-weight:800;color:#ffda88}small{color:#a9b5d0}
- .mode-select{display:flex;gap:10px;justify-content:center;margin:12px auto;flex-wrap:wrap}.mode-select button{background:#263454}.mode-select button.active{background:#806cff;outline:2px solid #c7baff}#mapPicker{display:none;margin:10px auto 0;max-width:340px}#mapPicker.visible{display:block}#mapPicker select{width:100%;padding:12px;border-radius:12px;background:#202944;color:#fff;border:1px solid #67739a;font:inherit}#mapInfo{min-height:22px;color:#b7d8ff;font-weight:700}</style></head><body><main><a href="./#projects">← Formwheel 허브</a><h1>🌀 Formwheel_Polyrhythm</h1><p>회전하는 아이콘이 주황 네모에 닿는 순간 누르세요!</p><div class="mode-select"><button id="randomMode" class="active" type="button" aria-pressed="true">🎲 랜덤 모드</button><button id="mapMode" type="button" aria-pressed="false">🗺️ 맵 모드</button></div><div id="mapPicker"><label for="mapSelect">시작할 맵 선택</label><select id="mapSelect"></select></div><div id="mapInfo">랜덤 모드 · 기존 방식</div><div class="stats"><span>점수 <strong id="score">0</strong></span><span>콤보 <strong id="combo">0</strong></span><span>최고 <strong id="best">0</strong></span><span>회전 <strong id="period">4.0초</strong></span><span>성공 <strong id="success">0 / 3</strong></span><span>목숨 <strong id="lives">❤️❤️❤️❤️❤️</strong></span></div><canvas id="stage" width="480" height="480" aria-label="원형 리듬 게임"></canvas><div id="feedback" role="status" aria-live="polite">시작 버튼을 누르세요</div><div class="controls"><button id="start">시작 / 재시작</button><button id="hit">HIT! (Space)</button></div><small>성공 3번마다 조금씩 빨라지고 판정 범위가 서서히 좁아집니다 · 네모 최대 5개 · 총 20개 맵 · 64~176타일 · 음악과 타일 타이밍 동기화 · 판정 강화 · 맵: 파랑 ↺ 역방향 / 초록 ↻ 정방향 · 무지개 H는 길게 누르기 · 역방향 1.8초 · MISS·헛발질·홀드 실패 시 모든 모드에서 목숨 -1 · 0개면 GAME OVER</small></main><script>
+ .mode-select{display:flex;gap:10px;justify-content:center;margin:12px auto;flex-wrap:wrap}.mode-select button{background:#263454}.mode-select button.active{background:#806cff;outline:2px solid #c7baff}#mapPicker{display:none;margin:10px auto 0;max-width:340px}#mapPicker.visible{display:block}#mapPicker select{width:100%;padding:12px;border-radius:12px;background:#202944;color:#fff;border:1px solid #67739a;font:inherit}#mapInfo{min-height:22px;color:#b7d8ff;font-weight:700}</style></head><body><main><a href="./#projects">← Formwheel 허브</a><h1>🌀 Formwheel_Polyrhythm</h1><p>회전하는 아이콘이 주황 네모에 닿는 순간 누르세요!</p><div class="mode-select"><button id="randomMode" class="active" type="button" aria-pressed="true">🎲 랜덤 모드</button><button id="mapMode" type="button" aria-pressed="false">🗺️ 맵 모드</button></div><div id="mapPicker"><label for="mapSelect">시작할 맵 선택</label><select id="mapSelect"></select></div><div id="mapInfo">랜덤 모드 · 기존 방식</div><div class="stats"><span>점수 <strong id="score">0</strong></span><span>콤보 <strong id="combo">0</strong></span><span>최고 <strong id="best">0</strong></span><span>회전 <strong id="period">4.0초</strong></span><span>성공 <strong id="success">0 / 3</strong></span><span>목숨 <strong id="lives">❤️❤️❤️❤️❤️</strong></span></div><canvas id="stage" width="480" height="480" aria-label="원형 리듬 게임"></canvas><div id="feedback" role="status" aria-live="polite">시작 버튼을 누르세요</div><div class="controls"><button id="start">시작 / 재시작</button><button id="hit">HIT! (Space)</button></div><small>성공 3번마다 조금씩 빨라지고 판정 범위가 서서히 좁아집니다 · 네모 최대 5개 · 총 20개 맵 · 64~176타일 · 음악과 타일 타이밍 동기화 · 판정 강화 · 맵: 파랑 ↺ 역방향 / 초록 ↻ 정방향 · 무지개 H는 궤도 끝까지 누르기 · 랜덤 방향 타일은 1.8초/바퀴부터 · MISS·헛발질·홀드 실패 시 모든 모드에서 목숨 -1 · 0개면 GAME OVER</small></main><script>
 'use strict';
 'use strict';
 const canvas=document.querySelector('#stage'),ctx=canvas.getContext('2d');
@@ -19,7 +19,7 @@ const maps=mapNames.map((name,i)=>{
  const beats=[];let at=1.6;
  const count=i<4?64+i*16:80+Math.min(12,i)*8;
  const density=i<4?[1.12,1.02,0.95,0.9][i]:Math.max(1.12,1.35-i*0.008);
- for(let j=0;j<count;j++){beats.push(Number(at.toFixed(4)));at+=mapPatterns[i][j%mapPatterns[i].length]*density}
+ for(let j=0;j<count;j++){beats.push(Number(at.toFixed(4)));at+=mapPatterns[i][j%mapPatterns[i].length]*density;if(j>0&&j%9===4)at+=1.75}
  return {name,beats};
 });
 let mode='random',mapIndex=0,mapBeat=0,musicStep=0,musicNote=0,direction=1,selectedMap=0;
@@ -29,6 +29,7 @@ maps.forEach((m,i)=>mapSelect.add(new Option((i+1)+' · '+m.name+' ('+m.beats.le
 function goodWindow(){return Math.max(0.48,0.78-stage*0.009)*(mode==='map'?0.94:1)}
 function perfectWindow(){return Math.max(0.23,0.36-stage*0.004)*(mode==='map'?0.94:1)}
 function stagePeriod(){return Math.max(mode==='map'?2.25:1.8,(mode==='map'?3.8-Math.min(mapIndex,5)*0.17:4)-stage*(mode==='map'?0.045:0.12))}
+const HOLD_LENGTH=1.5;
 let holdTarget=null,holdStart=0,holding=false,reverseUntil=0;
 let running=false,angle=-Math.PI/2,period=4,stage=0,score=0,combo=0,success=0,lives=5,last=0,raf=0,targets=[],nextId=0,progress=0;
 let best=0;try{best=Number(localStorage.getItem('fw-polyrhythm-best')||0)||0}catch(e){}bestEl.textContent=best;
@@ -36,6 +37,7 @@ function distance(a,b){return Math.abs(Math.atan2(Math.sin(a-b),Math.cos(a-b)))}
 function update(){scoreEl.textContent=score;comboEl.textContent=combo;periodEl.textContent=period.toFixed(1)+'초';successEl.textContent=(success%3)+' / 3';livesEl.textContent='❤️'.repeat(lives)+'🖤'.repeat(5-lives);bestEl.textContent=best}
 function mapTileType(index){return index>0&&index%12===0?'forward':index>0&&index%8===0?'reverse':index>0&&index%9===4?'hold':'normal'}
 function alignTargets(){for(const t of targets)t.angle=angle+direction*(t.at-progress)}
+function overlaps(a,b){const aEnd=a.at+(a.kind==='hold'?HOLD_LENGTH:0),bEnd=b.at+(b.kind==='hold'?HOLD_LENGTH:0);return a.at<=bEnd+0.38&&b.at<=aEnd+0.38}
 function targetCount(){return mode==='map'?Math.min(5,3+Math.floor(mapIndex/2)):Math.min(5,1+Math.floor(stage/2))}
 function addTarget(){
   if(mode==='map'){
@@ -46,16 +48,19 @@ function addTarget(){
     targets.push({id:++nextId,at,angle:angle+direction*(at-progress),kind:mapTileType(index)});
     return;
   }
-  // Pick the best spaced location ahead of the player.
-  let bestAt=progress+1.05,bestGap=-1;
-  for(let i=0;i<40;i++){
-    const at=progress+1.05+Math.random()*(TAU-1.4);
-    const gap=targets.length?Math.min(...targets.map(t=>distance(at,t.at))):TAU;
+  const kind=period<=1.801?(nextId%11===0?'reverse':nextId%11===4?'forward':nextId%7===0?'hold':'normal'):(nextId%7===0?'hold':'normal');
+  let bestAt=progress+1.1,bestGap=-1;
+  for(let i=0;i<80;i++){
+    const at=progress+1.1+Math.random()*(TAU+1.5);
+    const candidate={at,kind};
+    if(targets.some(t=>overlaps(candidate,t)))continue;
+    const gap=targets.length?Math.min(...targets.map(t=>Math.abs(at-t.at))):TAU;
     if(gap>bestGap){bestGap=gap;bestAt=at}
   }
-  targets.push({id:++nextId,at:bestAt,angle:bestAt-Math.PI/2,kind:nextId%7===0?'hold':'normal'});
+  if(bestGap<0)return;
+  targets.push({id:++nextId,at:bestAt,angle:angle+direction*(bestAt-progress),kind});
 }
-function fillTargets(){while(targets.length<targetCount()&&(mode==='random'||mapBeat<maps[mapIndex].beats.length))addTarget()}
+function fillTargets(){let tries=0;while(targets.length<targetCount()&&(mode==='random'||mapBeat<maps[mapIndex].beats.length)&&tries++<8){const before=targets.length;addTarget();if(targets.length===before)break}}
 function spawnTargets(){targets=[];fillTargets()}
 function showMode(){mapInfo.textContent=mode==='random'?'랜덤 모드 · 기존 방식':('맵 '+(mapIndex+1)+' / '+maps.length+' · '+maps[mapIndex].name+' ♪ '+musicNames[mapIndex]+' · '+mapBeat+'/'+maps[mapIndex].beats.length+' 배치')}
 function selectMode(next){if(running)return;mode=next;document.querySelector('#mapPicker').classList.toggle('visible',mode==='map');document.querySelector('#randomMode').classList.toggle('active',mode==='random');document.querySelector('#mapMode').classList.toggle('active',mode==='map');document.querySelector('#randomMode').setAttribute('aria-pressed',String(mode==='random'));document.querySelector('#mapMode').setAttribute('aria-pressed',String(mode==='map'));showMode();draw()}
@@ -130,20 +135,20 @@ function playDrum(){
   }catch(e){/* Audio unavailable: gameplay continues. */}
 }
 function hit(){playDrum();if(!running||holdTarget)return;let chosen=null,nearest=Infinity;for(const t of targets){const d=Math.abs(progress-t.at);if(d<nearest){nearest=d;chosen=t}}
-if(chosen&&nearest<=goodWindow()){if(chosen.kind==='hold'){holdTarget=chosen;holdStart=progress;feedback.textContent='🌈 HOLD! 계속 누르세요';return}const perfect=nearest<=perfectWindow();combo++;score+=perfect?100:50;success++;feedback.textContent=perfect?'✨ PERFECT +100':'👍 GOOD +50';if(score>best){best=score;bestEl.textContent=best;try{localStorage.setItem('fw-polyrhythm-best',String(best))}catch(e){}}
+if(chosen&&nearest<=goodWindow()){if(chosen.kind==='hold'){holdTarget=chosen;holdStart=chosen.at;feedback.textContent='🌈 HOLD! 무지개 끝까지 누르세요';return}const perfect=nearest<=perfectWindow();combo++;score+=perfect?100:50;success++;feedback.textContent=perfect?'✨ PERFECT +100':'👍 GOOD +50';if(score>best){best=score;bestEl.textContent=best;try{localStorage.setItem('fw-polyrhythm-best',String(best))}catch(e){}}
 if(success%3===0){stage++;period=reverseUntil>progress?1.8:stagePeriod();feedback.textContent+=' · 🔄 '+period.toFixed(1)+'초/바퀴'}
 targets=targets.filter(t=>t.id!==chosen.id);if(chosen.kind==='reverse'){direction=-1;period=1.8;reverseUntil=progress+TAU*1.3;alignTargets();feedback.textContent+=' · ↺ 1.8초 역방향!'}else if(chosen.kind==='forward'){direction=1;reverseUntil=0;period=stagePeriod();alignTargets();feedback.textContent+=' · ↻ 정방향!'}fillTargets();showMode();update();mapAdvance()}else lose('헛발질')}
 function frame(now){if(!running)return;const dt=Math.min(Math.max((now-last)/1000,0),0.06);last=now;const step=TAU*dt/period;progress+=step;angle+=step*direction;
 if(reverseUntil&&progress>=reverseUntil){reverseUntil=0;direction=1;period=stagePeriod();alignTargets();feedback.textContent='↻ 정방향 복귀'}
-if(holdTarget&&holding&&progress-holdStart>=0.72){const done=holdTarget;holdTarget=null;targets=targets.filter(t=>t.id!==done.id);score+=150;combo++;success++;if(score>best){best=score;try{localStorage.setItem('fw-polyrhythm-best',String(best))}catch(e){}}if(success%3===0){stage++;period=reverseUntil?1.8:stagePeriod()}feedback.textContent='🌈 HOLD +150';fillTargets();showMode();update();mapAdvance()}
+if(holdTarget&&holding&&progress>=holdStart+HOLD_LENGTH){const done=holdTarget;holdTarget=null;targets=targets.filter(t=>t.id!==done.id);score+=150;combo++;success++;if(score>best){best=score;try{localStorage.setItem('fw-polyrhythm-best',String(best))}catch(e){}}if(success%3===0){stage++;period=reverseUntil?1.8:stagePeriod()}feedback.textContent='🌈 HOLD +150';fillTargets();showMode();update();mapAdvance()}
 mapMusic();
 const windowSize=goodWindow();const missGrace=0.28;const expired=targets.filter(t=>t!==holdTarget&&progress>t.at+windowSize+missGrace);if(expired.length){targets=targets.filter(t=>t===holdTarget||progress<=t.at+windowSize+missGrace);for(const t of expired){lose('MISS');if(!running)break}if(running){fillTargets();showMode();mapAdvance()}}
 draw();if(running)raf=requestAnimationFrame(frame)}
 function draw(){ctx.clearRect(0,0,480,480);const cx=240,cy=240,r=172;ctx.beginPath();ctx.arc(cx,cy,r,0,TAU);ctx.strokeStyle='#536182';ctx.lineWidth=5;ctx.stroke();for(let i=0;i<12;i++){const a=i*TAU/12;ctx.beginPath();ctx.arc(cx+Math.cos(a)*r,cy+Math.sin(a)*r,2.5,0,TAU);ctx.fillStyle='#7583a5';ctx.fill()}
-for(const t of targets){if(mode==='map'&&t.at-progress>3.4)continue;ctx.save();ctx.translate(cx+Math.cos(t.angle)*r,cy+Math.sin(t.angle)*r);ctx.rotate(t.angle+Math.PI/2);ctx.fillStyle=t.kind==='hold'?('hsl('+Math.floor(performance.now()/12%360)+' 100% 65%)'):t.kind==='reverse'?'#5ba8ff':t.kind==='forward'?'#65dfaa':'#ffad3d';ctx.shadowColor=ctx.fillStyle;ctx.shadowBlur=12;ctx.fillRect(-19,-19,38,38);if(t.kind==='hold'){ctx.shadowBlur=0;ctx.fillStyle='#12152b';ctx.font='bold 22px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('H',0,1)}if(t.kind&&t.kind!=='normal'){ctx.shadowBlur=0;ctx.fillStyle='#08142a';ctx.font='bold 29px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(t.kind==='reverse'?'↺':'↻',0,1)}ctx.restore()}
+for(const t of targets){if(mode==='map'&&t.at-progress>3.4)continue;if(t.kind==='hold'){const startAngle=t.angle,endAngle=startAngle+direction*HOLD_LENGTH;ctx.beginPath();ctx.arc(cx,cy,r,startAngle,endAngle,direction<0);ctx.strokeStyle=ctx.createLinearGradient(40,40,440,440);const rainbow=ctx.strokeStyle;rainbow.addColorStop(0,'#ff476a');rainbow.addColorStop(.25,'#ffe36d');rainbow.addColorStop(.5,'#64ef9c');rainbow.addColorStop(.75,'#55b9ff');rainbow.addColorStop(1,'#c679ff');ctx.lineWidth=26;ctx.lineCap='round';ctx.stroke();ctx.lineCap='butt'}ctx.save();ctx.translate(cx+Math.cos(t.angle)*r,cy+Math.sin(t.angle)*r);ctx.rotate(t.angle+Math.PI/2);ctx.fillStyle=t.kind==='hold'?('hsl('+Math.floor(performance.now()/12%360)+' 100% 65%)'):t.kind==='reverse'?'#5ba8ff':t.kind==='forward'?'#65dfaa':'#ffad3d';ctx.shadowColor=ctx.fillStyle;ctx.shadowBlur=12;ctx.fillRect(-19,-19,38,38);if(t.kind==='hold'){ctx.shadowBlur=0;ctx.fillStyle='#12152b';ctx.font='bold 22px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('H',0,1)}if(t.kind&&t.kind!=='normal'&&t.kind!=='hold'){ctx.shadowBlur=0;ctx.fillStyle='#08142a';ctx.font='bold 29px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(t.kind==='reverse'?'↺':'↻',0,1)}ctx.restore()}
 ctx.beginPath();ctx.arc(cx+Math.cos(angle)*r,cy+Math.sin(angle)*r,15,0,TAU);ctx.fillStyle='#71d6ff';ctx.shadowColor='#71d6ff';ctx.shadowBlur=9;ctx.fill();ctx.shadowBlur=0;ctx.fillStyle='#f3f5ff';ctx.textAlign='center';ctx.font='bold 36px system-ui';ctx.fillText(period.toFixed(1)+'s',cx,cy);ctx.font='16px system-ui';ctx.fillStyle='#aebbd7';ctx.fillText('성공 '+(success%3)+'/3 · 판정 '+Math.round(goodWindow()/0.78*100)+'%',cx,cy+29)}
 document.querySelector('#mapSelect').addEventListener('change',e=>{if(running)return;selectedMap=Number(e.target.value);mapIndex=selectedMap;showMode()});document.querySelector('#randomMode').addEventListener('click',()=>selectMode('random'));document.querySelector('#mapMode').addEventListener('click',()=>selectMode('map'));document.querySelector('#start').addEventListener('click',start);function press(){if(holding)return;holding=true;hit()}
-function release(){if(!holding)return;holding=false;if(holdTarget){holdTarget=null;lose('HOLD 실패')}}
+function release(){if(!holding)return;holding=false;if(holdTarget){const failed=holdTarget;holdTarget=null;targets=targets.filter(t=>t.id!==failed.id);lose('HOLD 실패');if(running){fillTargets();showMode();mapAdvance()}}}
 const hitButton=document.querySelector('#hit');
 for(const el of [hitButton,canvas]){el.addEventListener('pointerdown',e=>{e.preventDefault();el.setPointerCapture(e.pointerId);press()});el.addEventListener('pointerup',release);el.addEventListener('pointercancel',release)}
 document.addEventListener('keydown',e=>{if(e.code==='Space'){e.preventDefault();if(!e.repeat)press()}});
