@@ -142,7 +142,7 @@ function handleInput(){if(ended||composition)return;if(!sentence){$('status').te
 $('answer').addEventListener('input',handleInput);
 $('restart').addEventListener('click',()=>{completedRounds=0;reset();$('answer').focus()});
 $('next').addEventListener('click',()=>{if($('mode').value==='general'){chosenGeneral='';reset()}else if(exercises[$('mode').value]&&!$('repeat').checked){$('snippet').selectedIndex=($('snippet').selectedIndex+1)%exercises[$('mode').value].length;reset()}$('answer').focus()});
-$('mode').addEventListener('change',()=>{completedRounds=0;chosenGeneral='';populate();reset();if($('mode').value!=='custom')$('answer').focus();else $('customText').focus()});
+$('mode').addEventListener('change',()=>{completedRounds=0;chosenGeneral='';populate();$('snippet').selectedIndex=0;reset();if($('mode').value!=='custom')$('answer').focus();else $('customText').focus()});
 $('snippet').addEventListener('change',()=>{completedRounds=0;reset();$('answer').focus()});
 $('repeat').addEventListener('change',()=>{completedRounds=0;populate();reset()});
 $('customText').addEventListener('input',()=>{completedRounds=0;reset()});
