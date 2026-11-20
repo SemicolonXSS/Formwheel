@@ -137,7 +137,7 @@ else{clearInterval(timer);timer=null;$('answer').disabled=true;$('status').textC
 function nextRound(){if(!awaitingEnter||!$('repeat').checked)return;const n=numbers();totalCorrect+=n.correct;totalTyped+=n.typed.length;awaitingEnter=false;ended=false;if($('mode').value==='general')sentence=choose(true);$('answer').value='';$('answer').readOnly=false;$('status').textContent='🔁 '+($('mode').value==='general'?'새 문장 연습 중':'같은 내용 반복 중')+' · '+completedRounds+'회 완료';update();$('answer').focus()}
 $('answer').addEventListener('compositionstart',()=>composition=true);
 $('answer').addEventListener('compositionend',()=>{composition=false;handleInput()});
-function handleInput(){if(ended||composition)return;if(!sentence){$('status').textContent='먼저 위의 직접 입력란에 연습 문장을 작성해 주세요.';return;}if(!started){started=performance.now();timer=setInterval(update,100)}update()}
+function handleInput(){if(ended||composition)return;if(!sentence){$('status').textContent='먼저 위의 직접 입력란에 연습 문장을 작성해 주세요.';return;}if(!started&&$('answer').value.length>0){started=performance.now();timer=setInterval(update,100)}update()}
 $('answer').addEventListener('input',handleInput);
 $('restart').addEventListener('click',()=>{completedRounds=0;reset();$('answer').focus()});
 $('next').addEventListener('click',()=>{if($('mode').value==='general'){chosenGeneral='';reset()}else if(exercises[$('mode').value]&&!$('repeat').checked){$('snippet').selectedIndex=($('snippet').selectedIndex+1)%exercises[$('mode').value].length;reset()}$('answer').focus()});
