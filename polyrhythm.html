@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Formwheel_Polyrhythm</title><link rel="icon" href="./assets/formwheel-favicon.svg"><style>
 *{box-sizing:border-box}body{margin:0;background:#0c1024;color:#f4f5ff;font-family:system-ui,sans-serif;text-align:center}main{max-width:680px;margin:auto;padding:22px 14px}a{color:#b7b4ff}h1{font-size:clamp(24px,6vw,36px);margin:15px 0 5px}p{color:#b9c1d9} .stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:16px 0}.stats span{background:#202944;padding:10px 15px;border-radius:12px}strong{color:#fff}canvas{display:block;width:min(94vw,480px);height:auto;margin:0 auto;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}button{font:inherit;border:0;border-radius:14px;background:#806cff;color:#fff;font-weight:800;padding:13px 22px;cursor:pointer;min-height:48px}button:focus-visible{outline:3px solid #ffd166;outline-offset:3px}.controls{display:flex;gap:10px;justify-content:center;margin:12px 0}#hit{background:#ffab40;color:#1e1630;min-width:180px;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}#feedback{min-height:28px;font-weight:800;color:#ffda88}small{color:#a9b5d0}
- .mode-select{display:flex;gap:10px;justify-content:center;margin:12px auto;flex-wrap:wrap}.mode-select button{background:#263454}.mode-select button.active{background:#806cff;outline:2px solid #c7baff}#mapPicker{display:none;margin:10px auto 0;max-width:340px}#mapPicker.visible{display:block}#mapPicker select{width:100%;padding:12px;border-radius:12px;background:#202944;color:#fff;border:1px solid #67739a;font:inherit}#mapInfo{min-height:22px;color:#b7d8ff;font-weight:700}</style></head><body><main><a href="./#projects">← Formwheel 허브</a><h1>🌀 Formwheel_Polyrhythm</h1><p>회전하는 아이콘이 주황 네모에 닿는 순간 누르세요!</p><div class="mode-select"><button id="randomMode" class="active" type="button" aria-pressed="true">🎲 랜덤 모드</button><button id="mapMode" type="button" aria-pressed="false">🗺️ 맵 모드</button></div><div id="mapPicker"><label for="mapSelect">시작할 맵 선택</label><select id="mapSelect"></select></div><div id="mapInfo">랜덤 모드 · 기존 방식</div><div class="stats"><span>점수 <strong id="score">0</strong></span><span>콤보 <strong id="combo">0</strong></span><span>최고 <strong id="best">0</strong></span><span>회전 <strong id="period">4.0초</strong></span><span>성공 <strong id="success">0 / 3</strong></span><span>목숨 <strong id="lives">❤️❤️❤️❤️❤️</strong></span></div><canvas id="stage" width="480" height="480" aria-label="원형 리듬 게임"></canvas><div id="feedback" role="status" aria-live="polite">시작 버튼을 누르세요</div><div class="controls"><button id="start">시작 / 재시작</button><button id="hit">HIT! (Space)</button></div><small>성공 3번마다 조금씩 빨라지고 판정 범위가 서서히 좁아집니다 · 네모 최대 5개 · 총 20개 맵 · 64~176타일 · 음악과 타일 타이밍 동기화 · 판정 강화 · 맵: 파랑 ↺ 역방향 / 초록 ↻ 정방향 · 무지개 H는 궤도 끝까지 누르기 · 랜덤 방향 타일은 1.8초/바퀴부터 · MISS·헛발질·홀드 실패 시 모든 모드에서 목숨 -1 · 0개면 GAME OVER</small></main><script>
+ .mode-select{display:flex;gap:10px;justify-content:center;margin:12px auto;flex-wrap:wrap}.mode-select button{background:#263454}.mode-select button.active{background:#806cff;outline:2px solid #c7baff}#mapPicker{display:none;margin:10px auto 0;max-width:340px}#mapPicker.visible{display:block}#mapPicker select{width:100%;padding:12px;border-radius:12px;background:#202944;color:#fff;border:1px solid #67739a;font:inherit}#mapInfo{min-height:22px;color:#b7d8ff;font-weight:700}</style></head><body><main><a href="./#projects">← Formwheel 허브</a><h1>🌀 Formwheel_Polyrhythm</h1><p>회전하는 아이콘이 주황 네모에 닿는 순간 누르세요!</p><div class="mode-select"><button id="randomMode" class="active" type="button" aria-pressed="true">🎲 랜덤 모드</button><button id="mapMode" type="button" aria-pressed="false">🗺️ 맵 모드</button></div><div id="mapPicker"><label for="mapSelect">시작할 맵 선택</label><select id="mapSelect"></select></div><div id="mapInfo">랜덤 모드 · 기존 방식</div><div class="stats"><span>점수 <strong id="score">0</strong></span><span>콤보 <strong id="combo">0</strong></span><span>최고 <strong id="best">0</strong></span><span>회전 <strong id="period">4.0초</strong></span><span>성공 <strong id="success">0 / 3</strong></span><span>목숨 <strong id="lives">❤️❤️❤️❤️❤️</strong></span></div><canvas id="stage" width="480" height="480" aria-label="원형 리듬 게임"></canvas><div id="feedback" role="status" aria-live="polite">시작 버튼을 누르세요</div><div class="controls"><button id="start">시작 / 재시작</button><button id="hit">HIT! (Space)</button></div><small>성공 3번마다 속도가 조금씩 바뀌며 후반에도 판정 여유가 유지됩니다 · 네모 최대 5개 · 총 20개 맵 · 64~176타일 · 음악과 타일 타이밍 동기화 · 판정 강화 · 맵: 파랑 ↺ 역방향 / 초록 ↻ 정방향 · 무지개 H는 궤도 끝까지 누르기 · 랜덤 방향 타일은 1.8초/바퀴부터 · MISS·헛발질·홀드 실패 시 모든 모드에서 목숨 -1 · 0개면 GAME OVER</small></main><script>
 'use strict';
 'use strict';
 const canvas=document.querySelector('#stage'),ctx=canvas.getContext('2d');
@@ -18,7 +18,7 @@ const mapPatterns=[
 const maps=mapNames.map((name,i)=>{
  const beats=[];let at=1.6;
  const count=i<4?64+i*16:80+Math.min(12,i)*8;
- const density=i<4?[1.12,1.02,0.95,0.9][i]:Math.max(1.12,1.35-i*0.008);
+ const density=i<4?[1.05,1.0,0.98,0.96][i]:1.22+Math.min(i,16)*0.014;
  for(let j=0;j<count;j++){
   const isHold=j>0&&j%12!==0&&j%8!==0&&j%9===4;
   const prevHold=j>0&&(j-1)%12!==0&&(j-1)%8!==0&&(j-1)%9===4;
@@ -39,9 +39,9 @@ let mode='random',mapIndex=0,mapBeat=0,musicStep=0,musicNote=0,direction=1,selec
 const mapInfo=document.querySelector('#mapInfo');
 const mapSelect=document.querySelector('#mapSelect');
 maps.forEach((m,i)=>mapSelect.add(new Option((i+1)+' · '+m.name+' ('+m.beats.length+'타일)',String(i))));
-function goodWindow(){return Math.max(0.68,0.98-stage*0.004)*(mode==='map'?0.98:1)}
-function perfectWindow(){return Math.max(0.3,0.43-stage*0.002)*(mode==='map'?0.98:1)}
-function stagePeriod(){return Math.max(mode==='map'?2.25:1.8,(mode==='map'?3.8-Math.min(mapIndex,5)*0.17:4)-stage*(mode==='map'?0.045:0.12))}
+function goodWindow(){return (0.89+Math.min(stage,20)*0.004)*(mode==='map'?0.98:1)}
+function perfectWindow(){return (0.40+Math.min(stage,20)*0.0015)*(mode==='map'?0.98:1)}
+function stagePeriod(){return mode==='map'?Math.max(2.55,3.55-Math.min(mapIndex,12)*0.065-Math.min(stage,12)*0.018):Math.max(1.8,3.65-Math.min(stage,20)*0.0925)}
 const HOLD_LENGTH=1.5;
 let holdTarget=null,holdStart=0,holding=false,reverseUntil=0;
 let running=false,angle=-Math.PI/2,period=4,stage=0,score=0,combo=0,success=0,lives=5,last=0,raf=0,targets=[],nextId=0,progress=0;
@@ -51,7 +51,7 @@ function update(){scoreEl.textContent=score;comboEl.textContent=combo;periodEl.t
 function mapTileType(index){return index>0&&index%12===0?'forward':index>0&&index%8===0?'reverse':index>0&&index%9===4?'hold':'normal'}
 function alignTargets(){for(const t of targets)t.angle=angle+direction*(t.at-progress)}
 function overlaps(a,b){const aEnd=a.at+(a.kind==='hold'?HOLD_LENGTH:0),bEnd=b.at+(b.kind==='hold'?HOLD_LENGTH:0);if(a.at<=bEnd+0.55&&b.at<=aEnd+0.55)return true;const delta=((a.at-b.at)%TAU+TAU)%TAU;return (b.kind==='hold'&&(delta<1.95||delta>TAU-0.55))||(a.kind==='hold'&&(delta<0.55||delta>TAU-1.95))}
-function targetCount(){return mode==='map'?Math.min(5,3+Math.floor(mapIndex/2)):Math.min(5,1+Math.floor(stage/2))}
+function targetCount(){return mode==='map'?Math.min(5,3+Math.floor(mapIndex/4)):Math.min(4,2+Math.floor(stage/7))}
 function addTarget(){
   if(mode==='map'){
     const beats=maps[mapIndex].beats;
@@ -82,7 +82,7 @@ function selectMode(next){if(running)return;mode=next;document.querySelector('#m
 function mapAdvance(){if(mode!=='map'||targets.length||mapBeat<maps[mapIndex].beats.length||!running)return;mapIndex++;if(mapIndex>=maps.length){running=false;cancelAnimationFrame(raf);feedback.textContent='🏆 모든 맵 클리어! 점수 '+score;return}progress=0;angle=-Math.PI/2;direction=1;holdTarget=null;holding=false;reverseUntil=0;mapBeat=0;musicStep=0;musicNote=0;stage=0;period=stagePeriod();spawnTargets();showMode();feedback.textContent='🗺️ 다음 맵: '+maps[mapIndex].name;update()}
 function endGame(){running=false;cancelAnimationFrame(raf);feedback.textContent='💔 GAME OVER · 점수 '+score+' · 다시 시작할 수 있어요';update()}
 function lose(reason){if(!running)return;combo=0;lives=Math.max(0,lives-1);feedback.textContent=reason+' · 목숨 -1';update();if(lives===0)endGame()}
-function start(){if(mode==='map')try{initAudio()}catch(e){}cancelAnimationFrame(raf);running=true;angle=-Math.PI/2;mapIndex=mode==='map'?selectedMap:0;stage=0;period=mode==='map'?stagePeriod():4;score=0;combo=0;success=0;lives=5;progress=0;direction=1;holdTarget=null;holding=false;reverseUntil=0;nextId=0;mapBeat=0;musicStep=0;musicNote=0;last=performance.now();spawnTargets();showMode();feedback.textContent='READY · 타이밍을 맞추세요!';update();draw();raf=requestAnimationFrame(frame)}
+function start(){if(mode==='map')try{initAudio()}catch(e){}cancelAnimationFrame(raf);running=true;angle=-Math.PI/2;mapIndex=mode==='map'?selectedMap:0;stage=0;period=stagePeriod();score=0;combo=0;success=0;lives=5;progress=0;direction=1;holdTarget=null;holding=false;reverseUntil=0;nextId=0;mapBeat=0;musicStep=0;musicNote=0;last=performance.now();spawnTargets();showMode();feedback.textContent='READY · 타이밍을 맞추세요!';update();draw();raf=requestAnimationFrame(frame)}
 let audioContext=null,audioCompressor=null;
 const melodies=[
   [262,330,392,523,392,330,294,392],
