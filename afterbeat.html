@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>AFTERBEAT · Formwheel</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#10101a;color:#f6f3ff;font:16px system-ui,sans-serif}main{max-width:950px;margin:auto;padding:24px;display:grid;grid-template-columns:290px minmax(0,1fr);gap:24px}h1{margin:0;font-size:clamp(36px,6vw,56px);letter-spacing:-.075em;color:#ffae73}p{line-height:1.55;color:#c9bedc}label{display:grid;gap:6px;margin:12px 0;font-size:14px}select,button,input{font:inherit}select{width:100%;min-width:0}#stats{flex-wrap:wrap}select,button{padding:10px;border:1px solid #655477;border-radius:8px;background:#242033;color:inherit}button{cursor:pointer}#start{background:#ffae73;color:#211625;font-weight:800;border:0}#stats{display:flex;justify-content:space-between;gap:8px;margin-bottom:8px;font-variant-numeric:tabular-nums}canvas{display:block;width:100%;height:clamp(330px,70dvh,660px);background:#191525;border-radius:12px;touch-action:none}output{display:block;margin-top:10px;min-height:1.5em;color:#f9ddc5}small{color:#c9bedc}@media(max-width:640px){main{display:flex;flex-direction:column;gap:14px;padding:12px}header:has(+section) p{margin:5px 0}label{margin:6px 0}body.playing header h1,body.playing header p,body.playing header label{display:none}body.playing canvas{height:72dvh}}
+*{box-sizing:border-box}body{margin:0;background:#10101a;color:#f6f3ff;font:16px system-ui,sans-serif}main{max-width:950px;margin:auto;padding:24px;display:grid;grid-template-columns:290px minmax(0,1fr);gap:24px}h1{margin:0;font-size:clamp(36px,6vw,56px);letter-spacing:-.075em;color:#ffae73}p{line-height:1.55;color:#c9bedc}label{display:grid;gap:6px;margin:12px 0;font-size:14px}select,button,input{font:inherit}select{width:100%;min-width:0}#stats{flex-wrap:wrap}select,button{padding:10px;border:1px solid #655477;border-radius:8px;background:#242033;color:inherit}button{cursor:pointer}#start{background:#ffae73;color:#211625;font-weight:800;border:0}#stats{display:flex;justify-content:space-between;gap:8px;margin-bottom:8px;font-variant-numeric:tabular-nums}canvas{display:block;width:100%;height:clamp(330px,70dvh,660px);background:#191525;border-radius:12px;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}output{display:block;margin-top:10px;min-height:1.5em;color:#f9ddc5}small{color:#c9bedc}@media(max-width:640px){main{display:flex;flex-direction:column;gap:14px;padding:12px}header:has(+section) p{margin:5px 0}label{margin:6px 0}body.playing header h1,body.playing header p,body.playing header label{display:none}body.playing canvas{height:72dvh}}
 </style>
 <main>
 <header>
@@ -238,8 +238,17 @@ addEventListener("keyup",event=>{
  const lane=keys.indexOf(event.code);
  if(lane>=0){keyboard.delete(lane);release(lane,event.code,event);}
 });
+canvas.addEventListener("contextmenu",event=>event.preventDefault());
+canvas.addEventListener("wheel",event=>{
+ if(run&&(event.ctrlKey||event.metaKey))event.preventDefault();
+},{passive:false});
+// Safari exposes pinch gestures separately from pointer input.
+for(const type of ["gesturestart","gesturechange"]){
+ canvas.addEventListener(type,event=>{if(run)event.preventDefault();},{passive:false});
+}
 canvas.onpointerdown=event=>{
  if(!run||event.button!==0)return;
+ if(event.cancelable)event.preventDefault();
  const rect=canvas.getBoundingClientRect();
  const lane=Math.max(0,Math.min(3,Math.floor((event.clientX-rect.left)/rect.width*4)));
  if(!rect.width||pointers.has(event.pointerId))return;
