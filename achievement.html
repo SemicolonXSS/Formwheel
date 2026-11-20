@@ -7,7 +7,7 @@ import {getAuth,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/10.
 import {getDatabase,ref,get} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
 const cfg={apiKey:"AIzaSyBreTSe1m0-xlbF4aupnU5isRZCihR25IE",authDomain:"formwheel.firebaseapp.com",databaseURL:"https://formwheel-default-rtdb.firebaseio.com",projectId:"formwheel",appId:"1:431583088241:web:74e0e34ea1e3e1170c55d0"};
 const app=getApps()[0]||initializeApp(cfg),auth=getAuth(app),db=getDatabase(app);
-const el=id=>document.getElementById(id);let awards={},home=null,profile=null,stats=null,ready=false;
+const el=id=>document.getElementById(id);let awards={},home=null,profile=null,stats=null,ready=false,authGeneration=0;
 function render(){
 const all=BADGES.map(b=>({...b,owned:ready&&earnedBadge(b,awards,home,profile,stats)}));
 const n=all.filter(b=>b.owned).length;el("count").textContent=n+" / "+all.length;el("fill").style.width=(n/all.length*100||0)+"%";
@@ -22,7 +22,7 @@ card.append(icon,title,tag);el("grid").append(card);
 }
 ["search","group","state"].forEach(id=>el(id).addEventListener(id==="search"?"input":"change",render));
 render();
-onAuthStateChanged(auth,async user=>{ready=false;awards={};home=null;profile=null;stats=null;render();if(!user||user.isAnonymous){el("status").textContent="Formwheel ID로 로그인하면 업적을 확인할 수 있어요. Hub 하단에서 로그인하세요.";return}
+onAuthStateChanged(auth,async user=>{const generation=++authGeneration;ready=false;awards={};home=null;profile=null;stats=null;render();if(!user||user.isAnonymous){el("status").textContent="Formwheel ID로 로그인하면 업적을 확인할 수 있어요. Hub 하단에서 로그인하세요.";return}
 const uid=user.uid,base="formwheelV2/";const paths=[base+"anniversary4050/"+uid+"/badges",base+"hubHomes/"+uid,base+"hubProfiles/"+uid,base+"achievementStats/"+uid,base+"visitorStats/livePeak"];
-try{const results=await Promise.allSettled(paths.map(p=>get(ref(db,p))));const [a,h,p,s,peak]=results.map(x=>x.status==="fulfilled"?(x.value.val()||{}):{});awards=a;home=h;profile=p;stats={...s,communityLivePeak:peak.count};ready=true;render();const failed=results.filter(x=>x.status==="rejected").length;el("status").textContent=failed?"일부 기록("+failed+"개)을 읽지 못했어요. Firebase Rules를 확인해 주세요.":"Formwheel ID 업적을 불러왔어요."}catch(e){el("status").textContent="업적 조회 실패: "+(e.code||e.message)}});
+try{const results=await Promise.allSettled(paths.map(p=>get(ref(db,p))));if(generation!==authGeneration)return;const [a,h,p,s,peak]=results.map(x=>x.status==="fulfilled"?(x.value.val()||{}):{});awards=a;home=h;profile=p;stats={...s,communityLivePeak:peak.count};ready=true;render();const failed=results.filter(x=>x.status==="rejected").length;el("status").textContent=failed?"일부 기록("+failed+"개)을 읽지 못했어요. Firebase Rules를 확인해 주세요.":"Formwheel ID 업적을 불러왔어요."}catch(e){if(generation!==authGeneration)return;el("status").textContent="업적 조회 실패: "+(e.code||e.message)}});
 </script></body></html>
