@@ -101,7 +101,7 @@ const $=id=>document.getElementById(id);
 const segment=s=>Array.from(s);let sentence='',started=0,ended=false,awaitingEnter=false,timer=null,enterCount=0,completedRounds=0,totalCorrect=0,totalTyped=0,lastIndex=-1,composition=false,chosenGeneral='';
 const storageKey='fw-typing-lab-best-v1';
 function config(){const m=$('mode').value;return (m==='general'?'general-'+$('lang').value+'-'+$('level').value:m+'-'+(m==='custom'?'own':$('snippet').value))+'-'+$('duration').value}
-function bestData(){try{return JSON.parse(localStorage.getItem(storageKey)||'{}')}catch(_){return {}}}
+function bestData(){try{const data=JSON.parse(localStorage.getItem(storageKey)||'{}');return data&&typeof data==='object'&&!Array.isArray(data)?data:{}}catch(_){return {}}}
 function showBest(){const v=bestData()[config()];$('best').textContent=v?'🏆 이 설정의 최고 기록: '+v.cpm+'타/분 · 정확도 '+v.accuracy+'%':'🏆 이 설정의 최고 기록은 아직 없어요.'}
 function populate(){const m=$('mode').value,standard=m==='general',custom=m==='custom';
  $('lang').parentElement.hidden=!standard;$('level').parentElement.hidden=!standard;
