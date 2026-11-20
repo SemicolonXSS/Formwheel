@@ -19,7 +19,7 @@ const maps=mapNames.map((name,i)=>{
  const beats=[];let at=1.6;
  const count=i<4?64+i*16:80+Math.min(12,i)*8;
  const density=i<4?[1.12,1.02,0.95,0.9][i]:Math.max(1.12,1.35-i*0.008);
- for(let j=0;j<count;j++){beats.push(Number(at.toFixed(4)));at+=mapPatterns[i][j%mapPatterns[i].length]*density;if(j>0&&j%9===4)at+=1.75}
+ for(let j=0;j<count;j++){beats.push(Number(at.toFixed(4)));const spacing=mapPatterns[i][j%mapPatterns[i].length]*density;const isHold=j>0&&j%12!==0&&j%8!==0&&j%9===4;at+=Math.max(spacing,isHold?2.15:0)}
  return {name,beats};
 });
 let mode='random',mapIndex=0,mapBeat=0,musicStep=0,musicNote=0,direction=1,selectedMap=0;
@@ -45,7 +45,9 @@ function addTarget(){
     if(mapBeat>=beats.length)return;
     const index=mapBeat++;
     const at=beats[index];
-    targets.push({id:++nextId,at,angle:angle+direction*(at-progress),kind:mapTileType(index)});
+    const kind=mapTileType(index);
+    // Precomputed chart spacing guarantees a hold has no note inside its tail.
+    targets.push({id:++nextId,at,angle:angle+direction*(at-progress),kind});
     return;
   }
   const kind=period<=1.801?(nextId%11===0?'reverse':nextId%11===4?'forward':nextId%7===0?'hold':'normal'):(nextId%7===0?'hold':'normal');
