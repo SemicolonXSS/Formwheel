@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AFTERBEAT · Formwheel</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#10101a;color:#f6f3ff;font:16px system-ui,sans-serif}main{max-width:950px;margin:auto;padding:24px;display:grid;grid-template-columns:290px 1fr;gap:24px}h1{margin:0;font-size:clamp(36px,6vw,56px);letter-spacing:-.075em;color:#ffae73}p{line-height:1.55;color:#c9bedc}label{display:grid;gap:6px;margin:12px 0;font-size:14px}select,button,input{font:inherit}select,button{padding:10px;border:1px solid #655477;border-radius:8px;background:#242033;color:inherit}button{cursor:pointer}#start{background:#ffae73;color:#211625;font-weight:800;border:0}#stats{display:flex;justify-content:space-between;gap:8px;margin-bottom:8px;font-variant-numeric:tabular-nums}canvas{display:block;width:100%;height:clamp(330px,70dvh,660px);background:#191525;border-radius:12px;touch-action:none}output{display:block;margin-top:10px;min-height:1.5em;color:#f9ddc5}small{color:#c9bedc}@media(max-width:640px){main{display:flex;flex-direction:column;gap:14px;padding:12px}header:has(+section) p{margin:5px 0}label{margin:6px 0}body.playing header h1,body.playing header p,body.playing header label{display:none}body.playing canvas{height:72dvh}}
+</style>
+<main>
+<header>
+<h1>AFTERBEAT</h1>
+<p>탭 · 홀드 · 플릭<br><small>PC는 D F J K · 플릭은 Shift와 함께<br>터치는 해당 레인에서 위로 밀기</small></p>
+<label>곡<select id="track"></select></label>
+<label>난이도<select id="level"><option>EASY</option><option>NORMAL</option><option>HARD</option><option>EXPERT</option><option selected>OVERDRIVE</option><option>IMPOSSIBLE</option></select></label>
+<label>판정 보정 <span><input id="offset" type="range" min="-150" max="150" value="0" step="5"> <span id="offsetValue">0 ms</span></span></label>
+<button id="start">시작</button> <button id="stop" disabled>중단</button>
+</header>
+<section>
+<div id="stats"><span id="score">0점</span><span id="combo">0 콤보</span><span id="progress">0:00</span></div>
+<canvas id="field" aria-label="4레인 리듬게임 플레이 영역"></canvas>
+<output id="status" aria-live="polite">곡을 선택하고 시작하세요.</output>
+</section>
+</main>
+<script>
+"use strict";
+const tracks = [
+ ["Amber Circuit",148,45,0,32],["Glass Umbra",156,50,1,36],
+ ["Velvet Comet",164,48,2,36],["Ghost Current",172,47,3,40],
+ ["Neon Orchard",176,48,1,40],["Quartz Breaker",184,43,2,44],
+ ["Magenta Drift",188,46,0,44],["Paper Satellites",194,51,3,44],
+ ["Solar Static",198,44,2,48],["Denim Reactor",204,42,1,48],
+ ["Meteor Syntax",216,45,3,52],["Violet Singularity",228,41,0,56]
+];
+const scales=[[0,2,3,7,10],[0,3,5,7,12],[0,2,5,7,9],[0,1,5,7,8]];
+const keys=["KeyD","KeyF","KeyJ","KeyK"], labels=["D","F","J","K"];
+const windows=[.170,.135,.105,.082,.060,.045];
+const colors=["#bda3ff","#85e9dc","#ffae73","#f3a7d8"];
+const $=id=>document.getElementById(id);
+const canvas=$("field"), pen=canvas.getContext("2d");
+const pointers=new Map(), keyboard=new Set();
+let audio, run=null, feedback="", feedbackUntil=0;
+tracks.forEach(([title,bpm],i)=>$("track").add(new Option(title+" · "+bpm+" BPM",i)));
+$("offset").oninput=()=>{$("offsetValue").textContent=$("offset").value+" ms";};
+function random(seed){
+ return ()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
+}
+function chart(index,level){
+ const [,bpm,,,bars]=tracks[index], beat=60/bpm, notes=[], free=[0,0,0,0];
+ const rng=random(index*1301+77);
+
+ for(let bar=0;bar<bars;bar++){
+  const dense=bar>=4 && bar<bars-2;
+  const steps=[2,3,4,8,dense?16:8,dense?32:16][level];
+  for(let step=0;step<steps;step++){
+   if(level===4&&steps===16&&(bar%4===3?step%8===7:step%4===3))continue;
+   const t=(bar*4+step*4/steps)*beat;
+   const chord=dense&&level>=3&&step%(level>=4?4:8)===0;
+   const outer=(step+bar+index)%4;
+   const lead=bar%4===1&&level===4&&step%4<3?outer%2:outer;
+   const triple=level===5&&chord&&step%16===0&&bar%2===0;
+   const attempts=triple?[lead,(lead+1)%4,(lead+2)%4]:chord?[lead,(lead+2)%4]:[lead];
+   for(const lane of attempts){
+    if(t<free[lane])continue;
+    const roll=rng();
+    const hold=!chord&&(step%4===0||step%4===2)&&bar<bars-1&&roll<0.27;
+    const kind=hold?"hold":level>0&&roll>(level===1?.93:.78)?"flick":"tap";
+    const end=t+(hold?beat*(level<=2?1:1.5):0);
+    const gap=kind==="hold"?0.13:windows[level]*2;
+    free[lane]=end+gap;
+    notes.push({t,end,lane,kind,state:"waiting",owner:null});
+   }
+  }
+ }
+ return notes;
+}
+function noteSound(bus,time,freq,length,type,volume,sweep=freq){
+ const osc=audio.createOscillator(), gain=audio.createGain();
+ osc.type=type;
+ osc.frequency.setValueAtTime(freq,time);
+ if(sweep!==freq)osc.frequency.exponentialRampToValueAtTime(sweep,time+length);
+ gain.gain.setValueAtTime(0.0001,time);
+ gain.gain.exponentialRampToValueAtTime(volume,time+0.009);
+ gain.gain.exponentialRampToValueAtTime(0.0001,time+length);
+ osc.connect(gain).connect(bus);
+ osc.start(time);osc.stop(time+length+0.015);
+}
+function scheduleMusic(game){
+ const [,bpm,root,mode,bars]=tracks[game.index], beat=60/bpm;
+ const scale=scales[mode], now=audio.currentTime;
+ const freq=midi=>440*2**((midi-69)/12);
+ while(game.step<bars*16){
+  const s=game.step, t=game.start+s*beat/4;
+  if(t>now+0.18)break;
+  game.step++;
+  if(t<now-0.04)continue;
+  const clock=Math.max(t,now+0.003), pos=s%16, bar=Math.floor(s/16);
+  const progression=[[0,2,3,1],[0,3,1,2],[2,0,4,1],[0,1,3,4]][mode];
+  const bass=root+scale[progression[Math.floor(bar/2)%4]];
+  if(pos%4===0 || (mode===2&&pos===14))noteSound(game.bus,clock,132,.12,"sine",.38,42);
+  if(pos%4===2)noteSound(game.bus,clock,6500,.038,"triangle",.075,2150);
+  if(pos===4||pos===12)noteSound(game.bus,clock,245,.095,"triangle",.16,95);
+  if(pos%4===0 || pos===10)noteSound(game.bus,clock,freq(bass),beat*.68,mode%2?"triangle":"sawtooth",.12);
+  const sequence=[[0,2,4,3,1,4,2,0],[4,1,2,0,3,1,0,2],[0,1,0,4,2,3,2,4],[2,0,4,1,3,0,1,4]][mode];
+  if(pos%2===0 || (bar%8>=4&&pos%4===3)){
+   const degree=sequence[(Math.floor(pos/2)+bar+game.index)%8];
+   const pitch=bass+24+scale[degree]+(bar%8>=6?12:0);
+   noteSound(game.bus,clock,freq(pitch),beat*.32,mode===3?"square":"triangle",.1);
+  }
+  if(pos===0&&bar%2===0){
+   for(const interval of [0,scale[2],scale[3]])noteSound(game.bus,clock,freq(bass+12+interval),beat*1.8,"sine",.034);
+  }
+ }
+}
+function time(){return audio.currentTime-run.start-run.offset;}
+function points(note,hit){
+ if(note.state==="done")return;
+ note.state="done";
+ run.active[note.lane]=null;
+ if(hit){run.counts[hit]++;run.combo++;run.best=Math.max(run.best,run.combo);run.score+=hit==="PERFECT"?1000:650;}
+ else{run.counts.MISS++;run.combo=0;}
+ feedback=hit||"MISS";feedbackUntil=performance.now()+300;
+ $("score").textContent=run.score+"점";$("combo").textContent=run.combo+" 콤보";
+}
+function press(lane,flick,owner){
+ if(!run||run.active[lane])return;
+ const t=time(), window=run.window;
+ let note=null, delta=Infinity;
+ for(const candidate of run.lanes[lane]){
+  if(candidate.t>t+window)break;
+  if(candidate.state!=="waiting"||(candidate.kind==="flick")!==flick)continue;
+  const error=Math.abs(candidate.t-t);
+  if(error<=window&&error<delta){note=candidate;delta=error;}
+ }
+ if(!note)return;
+ const hit=delta<=window*.48?"PERFECT":"GOOD";
+ if(note.kind==="hold"){
+  note.state="holding";note.hit=hit;note.owner=owner;run.active[lane]=note;
+ }else points(note,hit);
+}
+function release(lane,owner){
+ const note=run?.active[lane];
+ if(note?.owner===owner)points(note,time()>=note.end-run.window*.65?note.hit:null);
+}
+function finish(completed){
+ if(!run)return;
+ const game=run;
+ run=null;pointers.clear();keyboard.clear();
+ game.bus.gain.setTargetAtTime(0,audio.currentTime,.025);
+ setTimeout(()=>game.bus.disconnect(),150);
+ document.body.classList.remove("playing");
+ $("start").disabled=false;$("stop").disabled=true;
+ const {PERFECT:p,GOOD:g,MISS:m}=game.counts;
+ $("status").textContent=completed
+  ? `정확도 ${((p+g*.65)/game.notes.length*100).toFixed(2)}% · 최고 ${game.best} 콤보 · PERFECT ${p} / GOOD ${g} / MISS ${m}`
+  : "플레이를 중단했어요.";
+}
+$("start").onclick=async()=>{
+ $("start").disabled=true;
+ try{
+  audio??=new (window.AudioContext||window.webkitAudioContext)();
+  await audio.resume();
+  const index=Number($("track").value),level=$("level").selectedIndex;
+  const notes=chart(index,level),bus=audio.createGain();
+  bus.gain.value=.55;bus.connect(audio.destination);
+  run={index,notes,bus,step:0,start:audio.currentTime+1.55,offset:Number($("offset").value)/1000,
+   window:windows[level],active:Array(4).fill(null),
+   lanes:keys.map((_,lane)=>notes.filter(note=>note.lane===lane)),
+   score:0,combo:0,best:0,counts:{PERFECT:0,GOOD:0,MISS:0}};
+  feedbackUntil=0;
+  $("score").textContent="0점";$("combo").textContent="0 콤보";$("status").textContent="";
+  $("stop").disabled=false;document.body.classList.add("playing");
+ }catch{
+  $("start").disabled=false;$("status").textContent="오디오를 시작할 수 없어요. 브라우저에서 다시 시도해 주세요.";
+ }
+};
+$("stop").onclick=()=>finish(false);
+addEventListener("keydown",event=>{
+ if(!run)return;
+ if(event.code==="Escape"){finish(false);return;}
+ const lane=keys.indexOf(event.code);
+ if(lane<0||event.repeat||keyboard.has(lane))return;
+ event.preventDefault();keyboard.add(lane);press(lane,event.shiftKey,event.code);if(event.shiftKey)press(lane,false,event.code);
+});
+addEventListener("keyup",event=>{
+ const lane=keys.indexOf(event.code);
+ if(lane>=0){keyboard.delete(lane);release(lane,event.code);}
+});
+canvas.onpointerdown=event=>{
+ if(!run||event.button!==0)return;
+ const rect=canvas.getBoundingClientRect();
+ const lane=Math.max(0,Math.min(3,Math.floor((event.clientX-rect.left)/rect.width*4)));
+ pointers.set(event.pointerId,{lane,y:event.clientY,flick:false});
+ canvas.setPointerCapture(event.pointerId);
+ press(lane,false,event.pointerId);
+};
+canvas.onpointermove=event=>{
+ const pointer=pointers.get(event.pointerId);
+ if(pointer&&!pointer.flick&&pointer.y-event.clientY>=22){
+  pointer.flick=true;press(pointer.lane,true,event.pointerId);
+ }
+};
+canvas.onpointerup=canvas.onpointercancel=canvas.onlostpointercapture=event=>{
+ const pointer=pointers.get(event.pointerId);
+ if(!pointer)return;
+ release(pointer.lane,event.pointerId);pointers.delete(event.pointerId);
+};
+addEventListener("blur",()=>{if(run)finish(false);});
+document.addEventListener("visibilitychange",()=>{if(document.hidden&&run)finish(false);});
+function frame(){
+ const rect=canvas.getBoundingClientRect(),dpr=Math.min(devicePixelRatio,2);
+ const w=rect.width,h=rect.height, laneWidth=w/4,line=h-55;
+ const pixelWidth=Math.round(w*dpr),pixelHeight=Math.round(h*dpr);
+ if(canvas.width!==pixelWidth||canvas.height!==pixelHeight){canvas.width=pixelWidth;canvas.height=pixelHeight;}
+ pen.setTransform(dpr,0,0,dpr,0,0);
+ pen.clearRect(0,0,w,h);
+ for(let lane=0;lane<4;lane++){
+  const x=lane*laneWidth;
+  pen.fillStyle=lane%2?"#211b30":"#191525";pen.fillRect(x,0,laneWidth-1,h);
+  const pressed=keyboard.has(lane)||[...pointers.values()].some(pointer=>pointer.lane===lane);
+  pen.fillStyle=pressed?"#463659":"#2b2340";pen.fillRect(x,line,laneWidth-1,h-line);
+  pen.fillStyle=colors[lane];pen.fillRect(x,line,laneWidth-1,2);
+  pen.font="bold 16px system-ui";pen.textAlign="center";pen.fillText(labels[lane],x+laneWidth/2,line+33);
+ }
+ if(run){
+  scheduleMusic(run);
+  const t=time(),speed=line/1.15;
+  for(const note of run.notes){
+   if(note.state==="done")continue;
+   if(note.t>t+1.25)break;
+   if(note.state==="holding"&&t>=note.end){points(note,note.hit);continue;}
+   if(note.state==="waiting"&&t>note.t+run.window){points(note,null);continue;}
+   const x=note.lane*laneWidth+7;
+   const y=note.state==="holding"?line:line-(note.t-t)*speed;
+   const tail=line-(note.end-t)*speed;
+   pen.fillStyle=colors[note.lane];
+   if(note.kind==="hold"){
+    pen.globalAlpha=.46;pen.fillRect(x+7,tail,laneWidth-28,Math.max(0,y-tail));pen.globalAlpha=1;
+    pen.fillRect(x,tail-3,laneWidth-14,6);
+   }
+   pen.fillRect(x,y-5,laneWidth-14,10);
+   if(note.kind==="flick"){
+    pen.font="bold 23px system-ui";pen.fillText("↑",x+(laneWidth-14)/2,y-8);
+   }
+  }
+  if(performance.now()<feedbackUntil||t<0){
+   pen.font="bold 25px system-ui";pen.fillStyle="#fff4e4";
+   pen.fillText(t<0?String(Math.ceil(-t)):feedback,w/2,h*.26);
+  }
+  const elapsed=Math.max(0,Math.floor(t));
+  $("progress").textContent=Math.floor(elapsed/60)+":"+String(elapsed%60).padStart(2,"0");
+  const [,bpm,,,bars]=tracks[run.index];
+  if(t>bars*240/bpm+.25)finish(true);
+ }
+ requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+</script>
+</html>
