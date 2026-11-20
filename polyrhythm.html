@@ -60,12 +60,12 @@ function playDrum(){
     }
   }catch(e){/* Audio unavailable: gameplay continues. */}
 }
-function hit(){playDrum();if(!running)return;let chosen=null,nearest=Infinity;for(const t of targets){const d=distance(angle,t.angle);if(d<nearest){nearest=d;chosen=t}}
+function hit(){playDrum();if(!running)return;let chosen=null,nearest=Infinity;for(const t of targets){const d=Math.abs(progress-t.at);if(d<nearest){nearest=d;chosen=t}}
 if(chosen&&nearest<=goodWindow()){const perfect=nearest<=perfectWindow();combo++;score+=perfect?100:50;success++;feedback.textContent=perfect?'✨ PERFECT +100':'👍 GOOD +50';if(score>best){best=score;bestEl.textContent=best;try{localStorage.setItem('fw-polyrhythm-best',String(best))}catch(e){}}
 if(success%3===0){stage++;period=stagePeriod();feedback.textContent+=' · 🔄 '+period.toFixed(1)+'초/바퀴'}
 targets=targets.filter(t=>t.id!==chosen.id);fillTargets();update()}else lose('헛발질')}
 function frame(now){if(!running)return;const dt=Math.min(Math.max((now-last)/1000,0),0.06);last=now;const step=TAU*dt/period;progress+=step;angle+=step;
-const windowSize=goodWindow();const expired=targets.filter(t=>progress>t.at+windowSize);if(expired.length){targets=targets.filter(t=>progress<=t.at+windowSize);for(const t of expired){lose('MISS');if(!running)break}if(running)fillTargets()}
+const windowSize=goodWindow();const missGrace=0.28;const expired=targets.filter(t=>progress>t.at+windowSize+missGrace);if(expired.length){targets=targets.filter(t=>progress<=t.at+windowSize+missGrace);for(const t of expired){lose('MISS');if(!running)break}if(running)fillTargets()}
 draw();if(running)raf=requestAnimationFrame(frame)}
 function draw(){ctx.clearRect(0,0,480,480);const cx=240,cy=240,r=172;ctx.beginPath();ctx.arc(cx,cy,r,0,TAU);ctx.strokeStyle='#536182';ctx.lineWidth=5;ctx.stroke();for(let i=0;i<12;i++){const a=i*TAU/12;ctx.beginPath();ctx.arc(cx+Math.cos(a)*r,cy+Math.sin(a)*r,2.5,0,TAU);ctx.fillStyle='#7583a5';ctx.fill()}
 for(const t of targets){ctx.save();ctx.translate(cx+Math.cos(t.angle)*r,cy+Math.sin(t.angle)*r);ctx.rotate(t.angle+Math.PI/2);ctx.fillStyle='#ffad3d';ctx.shadowColor='#ffb347';ctx.shadowBlur=12;ctx.fillRect(-19,-19,38,38);ctx.restore()}
