@@ -5,6 +5,7 @@
 <title>AFTERBEAT · Formwheel</title>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#10101a;color:#f6f3ff;font:16px system-ui,sans-serif}main{max-width:950px;margin:auto;padding:24px;display:grid;grid-template-columns:290px minmax(0,1fr);gap:24px}h1{margin:0;font-size:clamp(36px,6vw,56px);letter-spacing:-.075em;color:#ffae73}p{line-height:1.55;color:#c9bedc}label{display:grid;gap:6px;margin:12px 0;font-size:14px}select,button,input{font:inherit}select{width:100%;min-width:0}#stats{flex-wrap:wrap}select,button{padding:10px;border:1px solid #655477;border-radius:8px;background:#242033;color:inherit}button{cursor:pointer}#start{background:#ffae73;color:#211625;font-weight:800;border:0}#stats{display:flex;justify-content:space-between;gap:8px;margin-bottom:8px;font-variant-numeric:tabular-nums}canvas{display:block;width:100%;height:clamp(330px,70dvh,660px);background:#191525;border-radius:12px;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}output{display:block;margin-top:10px;min-height:1.5em;color:#f9ddc5}small{color:#c9bedc}@media(max-width:640px){main{display:flex;flex-direction:column;gap:14px;padding:12px}header:has(+section) p{margin:5px 0}label{margin:6px 0}body.playing header h1,body.playing header p,body.playing header label{display:none}body.playing canvas{height:72dvh}}
+body{background:radial-gradient(ellipse at top left,var(--glow),transparent 50%),#0d0d19;background-attachment:fixed}main{max-width:1060px;align-items:start}header{padding:14px;background:#151425ef;border:1px solid #ffffff27;border-radius:16px}h1,#life{color:var(--accent)}#start{background:var(--accent)}.controls{display:flex;gap:6px;flex-wrap:wrap}.stage{position:relative;overflow:hidden;border:1px solid #ffffff44;border-radius:16px;background:var(--scene);box-shadow:0 18px 50px #0008}.stage canvas{background:transparent;border-radius:0}#stats{padding:9px;background:#151425;border-radius:10px}#lesson{position:absolute;inset:8px 8px auto;background:#151425f5;padding:8px;border-radius:8px;text-align:center;pointer-events:none}button:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}@media(max-width:640px){body.playing header{padding:5px}body.playing #start,body.playing #tutorial{display:none}body.playing canvas{height:clamp(230px,calc(100dvh - 150px),660px)}}
 </style>
 <main>
 <header>
@@ -13,11 +14,11 @@
 <label>곡<select id="track"></select></label>
 <label>난이도<select id="level"><option>EASY</option><option>NORMAL</option><option>HARD</option><option>EXPERT</option><option selected>OVERDRIVE</option><option>IMPOSSIBLE</option></select></label>
 <label>판정 보정 (늦게 누르면 +) <span><input id="offset" type="range" min="-150" max="150" value="0" step="5"> <span id="offsetValue">0 ms</span></span></label>
-<button id="start">시작</button> <button id="stop" disabled>중단</button>
+<div class="controls"><button id="start">시작</button><button id="tutorial">튜토리얼</button><button id="stop" disabled>중단</button></div>
 </header>
 <section>
 <div id="stats"><span>라이프 <strong id="life">100</strong></span><span id="score">0점</span><span id="combo">0 콤보</span><span id="progress">0:00</span></div>
-<canvas id="field" aria-label="4레인 리듬게임 플레이 영역"></canvas>
+<div class="stage"><canvas id="field" aria-label="4레인 리듬게임 플레이 영역"></canvas><div id="lesson" role="status" hidden></div></div>
 <output id="status" aria-live="polite">곡을 선택하고 시작하세요.</output>
 </section>
 </main>
@@ -35,12 +36,43 @@ const scales=[[0,2,3,7,10],[0,3,5,7,12],[0,2,5,7,9],[0,1,5,7,8]];
 const keys=["KeyD","KeyF","KeyJ","KeyK"], labels=["D","F","J","K"];
 const maxLife=100;
 const windows=[.170,.135,.105,.082,.060,.045];
-const colors=["#bda3ff","#85e9dc","#ffae73","#f3a7d8"];
+const scenes=[
+ ["#ffbd78","#ffe2a0","#a4471d","repeating-linear-gradient(0deg,transparent 0 29px,#ffd59780 30px 31px),repeating-linear-gradient(90deg,transparent 0 37px,#ffb37e88 38px 39px)"],
+ ["#b4eaff","#d1c2ff","#45689f","repeating-conic-gradient(at 52% 36%,#d5f2ff55 0 12deg,transparent 13deg 36deg)"],
+ ["#ffaec9","#ffddbd","#91345f","linear-gradient(128deg,transparent 27%,#ff9ac3 29%,#f98ca850 35%,transparent 50%)"],
+ ["#8ff4dc","#acd9ff","#237a72","repeating-linear-gradient(165deg,transparent 0 29px,#7cf8e479 36px,transparent 45px 55px)"],
+ ["#bdf5a3","#faed9c","#457049","radial-gradient(circle at 28% 41%,#71f09cc0 0 14%,transparent 16%),radial-gradient(circle at 73% 29%,#deef82a0 0 11%,transparent 14%)"],
+ ["#dbc6ff","#b7fbff","#6552a0","conic-gradient(from 25deg at 70% 39%,#bfafff99,transparent,#c9ffffaa,#27114799,#bfafff99)"],
+ ["#ffaeea","#c9aaff","#8f347f","repeating-linear-gradient(126deg,transparent 0 35px,#ff73e792 36px,#ff73e735 42px,transparent 53px 69px)"],
+ ["#ffe0c5","#c3e6ff","#565984","linear-gradient(34deg,transparent 32%,#ffdfbe99 34% 49%,transparent 51%),linear-gradient(143deg,#6c90b055 24%,#b78fa199 26% 45%,transparent 47%)"],
+ ["#ffe38f","#ffbf8b","#b36122","repeating-radial-gradient(circle at 53% 30%,transparent 0 20px,#ffc76b88 21px 24px,transparent 25px 39px)"],
+ ["#a9d1ff","#b4ffec","#335e99","repeating-linear-gradient(45deg,transparent 0 5px,#95c9ff50 6px 7px),repeating-linear-gradient(-45deg,transparent 0 8px,#85d8ed45 9px 10px)"],
+ ["#ffbc9b","#fff0ba","#9f4756","repeating-linear-gradient(135deg,transparent 0 47px,#ffc29bb0 50px 52px,transparent 60px 99px)"],
+ ["#ddaaff","#bdbdff","#6b3c9f","radial-gradient(circle at 50% 38%,#131020 0 13%,#dc8fff 14%,#743ca9 17%,transparent 30%),repeating-conic-gradient(at 50% 38%,#b587ff50 0 6deg,transparent 7deg 27deg)"]
+];
+const lessons=["탭 · 노트가 판정선에 닿을 때 눌러요.","홀드 · 막대 끝이 판정선에 닿을 때까지 누르세요.","플릭 · 터치한 뒤 위로 밀어요. PC는 Shift와 레인 키를 함께 누르세요."];
+function practiceNotes(){
+ const beat=60/tracks[0][1];
+ return [[2,0,"tap"],[4,1,"tap"],[6,2,"tap"],[10,1,"hold",2],[13,2,"hold",2],
+  [18,1,"flick"],[20,2,"flick"],[23,3,"flick"]]
+  .map(([at,lane,kind,length=0])=>({t:at*beat,lane,kind,end:(at+length)*beat,state:"waiting",owner:null}));
+}
+let colors;
+function setScene(index){
+ const [accent,secondary,glow,motif]=scenes[index];
+ colors=[accent,secondary,accent,secondary];
+ const style=document.body.style;
+ style.setProperty("--accent",accent);
+ style.setProperty("--glow",glow);
+ style.setProperty("--scene",motif+",radial-gradient(ellipse at 47% 27%,"+glow+",#151129 75%)");
+}
 const $=id=>document.getElementById(id);
 const canvas=$("field"), pen=canvas.getContext("2d");
 const pointers=new Map(), keyboard=new Set();
 let audio, run=null, starting=false, startAttempt=0, feedback="", feedbackUntil=0;
 tracks.forEach(([title,bpm],i)=>$("track").add(new Option(title+" · "+bpm+" BPM",i)));
+$("track").onchange=()=>{if(!run)setScene(Number($("track").value));};
+setScene(0);
 $("offset").oninput=()=>{$("offsetValue").textContent=$("offset").value+" ms";};
 function random(seed){
  return ()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
@@ -89,7 +121,7 @@ function scheduleMusic(game){
  const [,bpm,root,mode,bars]=tracks[game.index], beat=60/bpm;
  const scale=scales[mode], now=audio.currentTime;
  const freq=midi=>440*2**((midi-69)/12);
- while(game.step<bars*16){
+ while(game.step<bars*16&&game.step*beat/4<game.duration){
   const s=game.step, t=game.start+s*beat/4;
   if(t>now+0.18)break;
   game.step++;
@@ -180,40 +212,52 @@ function finish(completed){
   if(canvas.hasPointerCapture(id))canvas.releasePointerCapture(id);
  }
  pointers.clear();keyboard.clear();
- $("start").disabled=false;$("stop").disabled=true;
+ $("start").disabled=false;$("tutorial").disabled=false;$("stop").disabled=true;
  if(!game){$("status").textContent="시작을 취소했어요.";return;}
  clearInterval(game.musicTimer);
  game.bus.gain.setTargetAtTime(0,audio.currentTime,.025);
  setTimeout(()=>game.bus.disconnect(),150);
  document.body.classList.remove("playing");
+ $("lesson").hidden=true;
+ setScene(Number($("track").value));
  const {PERFECT:p,GOOD:g,MISS:m}=game.counts;
+ if(game.practice&&completed){
+  $("status").textContent=m
+   ? `튜토리얼 완료 · ${p+g}/${game.notes.length} 성공 · 다시 연습할 수 있어요.`
+   : "튜토리얼 완료 · 탭, 홀드, 플릭을 모두 성공했어요!";
+  return;
+ }
  $("status").textContent=game.life===0
   ? `실패 · 라이프 0 · MISS ${m}`
   : completed
   ? `정확도 ${((p+g*.65)/game.notes.length*100).toFixed(2)}% · 최고 ${game.best} 콤보 · PERFECT ${p} / GOOD ${g} / MISS ${m}`
   : "플레이를 중단했어요.";
 }
-$("start").onclick=async()=>{
+async function startGame(practice=false){
  if(starting||run)return;
  starting=true;
  const attempt=++startAttempt;
- $("start").disabled=true;$("stop").disabled=false;
+ $("start").disabled=true;$("tutorial").disabled=true;$("stop").disabled=false;
  $("status").textContent="오디오 시작 중…";
  try{
   audio??=new (window.AudioContext||window.webkitAudioContext)();
   await audio.resume();
   if(attempt!==startAttempt)return;
   if(audio.state!=="running")throw Error("Audio unavailable");
-  const index=Number($("track").value),level=$("level").selectedIndex;
-  const notes=chart(index,level),bus=audio.createGain();
+  const index=practice?0:Number($("track").value),level=$("level").selectedIndex;
+  const [,bpm,,,bars]=tracks[index];
+  const notes=practice?practiceNotes():chart(index,level),bus=audio.createGain();
   bus.gain.value=.55;bus.connect(audio.destination);
-  run={index,notes,bus,step:0,start:audio.currentTime+1.55,offset:Number($("offset").value)/1000,
-   window:windows[level],active:Array(4).fill(null),cursor:[0,0,0,0],firstVisible:0,
+  run={index,notes,bus,practice,duration:(practice?26:bars*4)*60/bpm,lessonIndex:0,step:0,start:audio.currentTime+1.55,offset:Number($("offset").value)/1000,
+   window:practice ? .24 : windows[level],active:Array(4).fill(null),cursor:[0,0,0,0],firstVisible:0,
    lanes:keys.map((_,lane)=>notes.filter(note=>note.lane===lane)),
    score:0,combo:0,best:0,life:maxLife,counts:{PERFECT:0,GOOD:0,MISS:0}};
   const game=run;
   game.musicTimer=setInterval(()=>scheduleMusic(game),35);
   starting=false;
+  setScene(index);
+  $("lesson").hidden=!practice;
+  if(practice)$("lesson").textContent=lessons[0];
   feedbackUntil=0;
   $("progress").textContent="0:00";
   $("life").textContent=maxLife;
@@ -222,9 +266,11 @@ $("start").onclick=async()=>{
  }catch{
   if(attempt!==startAttempt)return;
   starting=false;
-  $("start").disabled=false;$("stop").disabled=true;$("status").textContent="오디오를 시작할 수 없어요. 브라우저에서 다시 시도해 주세요.";
+  $("start").disabled=false;$("tutorial").disabled=false;$("stop").disabled=true;$("status").textContent="오디오를 시작할 수 없어요. 브라우저에서 다시 시도해 주세요.";
  }
-};
+}
+$("start").onclick=()=>startGame();
+$("tutorial").onclick=()=>startGame(true);
 $("stop").onclick=()=>finish(false);
 addEventListener("keydown",event=>{
  if(event.code==="Escape"){finish(false);return;}
@@ -283,9 +329,9 @@ function frame(){
  pen.clearRect(0,0,w,h);
  for(let lane=0;lane<4;lane++){
   const x=lane*laneWidth;
-  pen.fillStyle=lane%2?"#211b30":"#191525";pen.fillRect(x,0,laneWidth-1,h);
+  pen.fillStyle=lane%2?"#171326ad":"#100d21bb";pen.fillRect(x,0,laneWidth-1,h);
   const pressed=keyboard.has(lane)||[...pointers.values()].some(pointer=>pointer.lane===lane);
-  pen.fillStyle=pressed?"#463659":"#2b2340";pen.fillRect(x,line,laneWidth-1,h-line);
+  pen.fillStyle=pressed?colors[lane]+"66":"#16152bea";pen.fillRect(x,line,laneWidth-1,h-line);
   pen.fillStyle=colors[lane];pen.fillRect(x,line,laneWidth-1,2);
   pen.font="bold 16px system-ui";pen.textAlign="center";pen.fillText(labels[lane],x+laneWidth/2,line+33);
  }
@@ -319,8 +365,12 @@ function frame(){
   }
   const elapsed=Math.max(0,Math.floor(t));
   $("progress").textContent=Math.floor(elapsed/60)+":"+String(elapsed%60).padStart(2,"0");
-  const [,bpm,,,bars]=tracks[run.index];
-  if(t>bars*240/bpm+.25&&run.cursor.every((cursor,lane)=>cursor===run.lanes[lane].length))finish(true);
+  if(run.practice){
+   const beat=t*tracks[0][1]/60;
+   const index=beat>=16?2:beat>=8?1:0;
+   if(index!==run.lessonIndex){run.lessonIndex=index;$("lesson").textContent=lessons[index];}
+  }
+  if(t>run.duration+.25&&run.cursor.every((cursor,lane)=>cursor===run.lanes[lane].length))finish(true);
  }
  requestAnimationFrame(frame);
 }
