@@ -84,8 +84,8 @@ function mapMusic(){
   musicStep=current;
   const notes=melodies[mapIndex];
   const index=musicNote++%notes.length;
-  synthNote(notes[index],0.23,0.115,mapIndex===3?'sawtooth':'triangle');
-  if(index%2===0)synthNote(notes[index]/2,0.28,0.075,'sine');
+  synthNote(notes[index],0.23,0.23,mapIndex===3?'sawtooth':'triangle');
+  if(index%2===0)synthNote(notes[index]/2,0.28,0.13,'sine');
 }
 
 const drumLayers=[{from:190,to:62,level:0.85,duration:0.28,type:'sine'},{from:360,to:110,level:0.5,duration:0.13,type:'triangle'}];
