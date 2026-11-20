@@ -16,7 +16,7 @@
 <button id="start">시작</button> <button id="stop" disabled>중단</button>
 </header>
 <section>
-<div id="stats"><span id="score">0점</span><span id="combo">0 콤보</span><span id="progress">0:00</span></div>
+<div id="stats"><span>라이프 <strong id="life">100</strong></span><span id="score">0점</span><span id="combo">0 콤보</span><span id="progress">0:00</span></div>
 <canvas id="field" aria-label="4레인 리듬게임 플레이 영역"></canvas>
 <output id="status" aria-live="polite">곡을 선택하고 시작하세요.</output>
 </section>
@@ -33,6 +33,7 @@ const tracks = [
 ];
 const scales=[[0,2,3,7,10],[0,3,5,7,12],[0,2,5,7,9],[0,1,5,7,8]];
 const keys=["KeyD","KeyF","KeyJ","KeyK"], labels=["D","F","J","K"];
+const maxLife=100;
 const windows=[.170,.135,.105,.082,.060,.045];
 const colors=["#bda3ff","#85e9dc","#ffae73","#f3a7d8"];
 const $=id=>document.getElementById(id);
@@ -123,7 +124,10 @@ function advance(game,t){
   const notes=game.lanes[lane];
   while(game.cursor[lane]<notes.length){
    const note=notes[game.cursor[lane]];
-   if(note.state==="waiting"&&t>note.t+game.window)points(note,null);
+   if(note.state==="waiting"&&t>note.t+game.window){
+    points(note,null);
+    if(!run)return;
+   }
    if(note.state!=="done")break;
    game.cursor[lane]++;
   }
@@ -134,15 +138,19 @@ function points(note,hit){
  note.state="done";
  if(run.active[note.lane]===note)run.active[note.lane]=null;
  if(hit){run.counts[hit]++;run.combo++;run.best=Math.max(run.best,run.combo);run.score+=hit==="PERFECT"?1000:650;}
- else{run.counts.MISS++;run.combo=0;}
+ else{
+  run.counts.MISS++;run.combo=0;run.life--;
+  $("life").textContent=run.life;
+ }
  feedback=hit||"MISS";feedbackUntil=performance.now()+300;
  $("score").textContent=run.score+"점";$("combo").textContent=run.combo+" 콤보";
+ if(run.life===0)finish(false);
 }
 function press(lane,flick,owner,event){
  if(!run)return false;
  const t=inputTime(event), window=run.window;
  advance(run,t);
- if(run.active[lane])return false;
+ if(!run||run.active[lane])return false;
  let note=null, delta=Infinity;
  for(let i=run.cursor[lane];i<run.lanes[lane].length;i++){
   const candidate=run.lanes[lane][i];
@@ -179,7 +187,9 @@ function finish(completed){
  setTimeout(()=>game.bus.disconnect(),150);
  document.body.classList.remove("playing");
  const {PERFECT:p,GOOD:g,MISS:m}=game.counts;
- $("status").textContent=completed
+ $("status").textContent=game.life===0
+  ? `실패 · 라이프 0 · MISS ${m}`
+  : completed
   ? `정확도 ${((p+g*.65)/game.notes.length*100).toFixed(2)}% · 최고 ${game.best} 콤보 · PERFECT ${p} / GOOD ${g} / MISS ${m}`
   : "플레이를 중단했어요.";
 }
@@ -200,12 +210,13 @@ $("start").onclick=async()=>{
   run={index,notes,bus,step:0,start:audio.currentTime+1.55,offset:Number($("offset").value)/1000,
    window:windows[level],active:Array(4).fill(null),cursor:[0,0,0,0],firstVisible:0,
    lanes:keys.map((_,lane)=>notes.filter(note=>note.lane===lane)),
-   score:0,combo:0,best:0,counts:{PERFECT:0,GOOD:0,MISS:0}};
+   score:0,combo:0,best:0,life:maxLife,counts:{PERFECT:0,GOOD:0,MISS:0}};
   const game=run;
   game.musicTimer=setInterval(()=>scheduleMusic(game),35);
   starting=false;
   feedbackUntil=0;
   $("progress").textContent="0:00";
+  $("life").textContent=maxLife;
   $("score").textContent="0점";$("combo").textContent="0 콤보";$("status").textContent="";
   $("stop").disabled=false;document.body.classList.add("playing");
  }catch{
@@ -232,8 +243,9 @@ canvas.onpointerdown=event=>{
  const rect=canvas.getBoundingClientRect();
  const lane=Math.max(0,Math.min(3,Math.floor((event.clientX-rect.left)/rect.width*4)));
  if(!rect.width||pointers.has(event.pointerId))return;
- canvas.setPointerCapture(event.pointerId);
  const consumed=press(lane,false,event.pointerId,event);
+ if(!run)return;
+ canvas.setPointerCapture(event.pointerId);
  pointers.set(event.pointerId,{lane,y:event.clientY,consumed});
 };
 canvas.onpointermove=event=>{
@@ -272,6 +284,7 @@ function frame(){
   const t=audio.currentTime-run.start,speed=line/1.15;
   // Give queued input time to arrive before expiring a note.
   advance(run,t-run.offset-.05);
+  if(!run){requestAnimationFrame(frame);return;}
   while(run.notes[run.firstVisible]?.state==="done")run.firstVisible++;
   for(let i=run.firstVisible;i<run.notes.length;i++){
    const note=run.notes[i];
