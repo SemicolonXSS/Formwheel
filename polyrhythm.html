@@ -1,25 +1,31 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Formwheel_Polyrhythm</title><link rel="icon" href="./assets/formwheel-favicon.svg"><style>
 *{box-sizing:border-box}body{margin:0;background:#0c1024;color:#f4f5ff;font-family:system-ui,sans-serif;text-align:center}main{max-width:680px;margin:auto;padding:22px 14px}a{color:#b7b4ff}h1{font-size:clamp(24px,6vw,36px);margin:15px 0 5px}p{color:#b9c1d9} .stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:16px 0}.stats span{background:#202944;padding:10px 15px;border-radius:12px}strong{color:#fff}canvas{display:block;width:min(94vw,480px);height:auto;margin:0 auto;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}button{font:inherit;border:0;border-radius:14px;background:#806cff;color:#fff;font-weight:800;padding:13px 22px;cursor:pointer;min-height:48px}button:focus-visible{outline:3px solid #ffd166;outline-offset:3px}.controls{display:flex;gap:10px;justify-content:center;margin:12px 0}#hit{background:#ffab40;color:#1e1630;min-width:180px;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}#feedback{min-height:28px;font-weight:800;color:#ffda88}small{color:#a9b5d0}
- .mode-select{display:flex;gap:10px;justify-content:center;margin:12px auto;flex-wrap:wrap}.mode-select button{background:#263454}.mode-select button.active{background:#806cff;outline:2px solid #c7baff}#mapPicker{display:none;margin:10px auto 0;max-width:340px}#mapPicker.visible{display:block}#mapPicker select{width:100%;padding:12px;border-radius:12px;background:#202944;color:#fff;border:1px solid #67739a;font:inherit}#mapInfo{min-height:22px;color:#b7d8ff;font-weight:700}</style></head><body><main><a href="./#projects">← Formwheel 허브</a><h1>🌀 Formwheel_Polyrhythm</h1><p>회전하는 아이콘이 주황 네모에 닿는 순간 누르세요!</p><div class="mode-select"><button id="randomMode" class="active" type="button" aria-pressed="true">🎲 랜덤 모드</button><button id="mapMode" type="button" aria-pressed="false">🗺️ 맵 모드</button></div><div id="mapPicker"><label for="mapSelect">시작할 맵 선택</label><select id="mapSelect"><option value="0">1 · 첫 박자</option><option value="1">2 · 엇박자</option><option value="2">3 · 트리플</option><option value="3">4 · 피날레</option></select></div><div id="mapInfo">랜덤 모드 · 기존 방식</div><div class="stats"><span>점수 <strong id="score">0</strong></span><span>콤보 <strong id="combo">0</strong></span><span>최고 <strong id="best">0</strong></span><span>회전 <strong id="period">4.0초</strong></span><span>성공 <strong id="success">0 / 3</strong></span><span>목숨 <strong id="lives">❤️❤️❤️❤️❤️</strong></span></div><canvas id="stage" width="480" height="480" aria-label="원형 리듬 게임"></canvas><div id="feedback" role="status" aria-live="polite">시작 버튼을 누르세요</div><div class="controls"><button id="start">시작 / 재시작</button><button id="hit">HIT! (Space)</button></div><small>성공 3번마다 조금씩 빨라지고 판정 범위가 서서히 좁아집니다 · 네모 최대 5개 · 맵 모드는 더 빠르고 판정이 좁습니다 · 맵: 파랑 ↺ 역방향 / 초록 ↻ 정방향 · MISS와 헛발질은 목숨 -1</small></main><script>
+ .mode-select{display:flex;gap:10px;justify-content:center;margin:12px auto;flex-wrap:wrap}.mode-select button{background:#263454}.mode-select button.active{background:#806cff;outline:2px solid #c7baff}#mapPicker{display:none;margin:10px auto 0;max-width:340px}#mapPicker.visible{display:block}#mapPicker select{width:100%;padding:12px;border-radius:12px;background:#202944;color:#fff;border:1px solid #67739a;font:inherit}#mapInfo{min-height:22px;color:#b7d8ff;font-weight:700}</style></head><body><main><a href="./#projects">← Formwheel 허브</a><h1>🌀 Formwheel_Polyrhythm</h1><p>회전하는 아이콘이 주황 네모에 닿는 순간 누르세요!</p><div class="mode-select"><button id="randomMode" class="active" type="button" aria-pressed="true">🎲 랜덤 모드</button><button id="mapMode" type="button" aria-pressed="false">🗺️ 맵 모드</button></div><div id="mapPicker"><label for="mapSelect">시작할 맵 선택</label><select id="mapSelect"><option value="0">1 · 첫 박자</option><option value="1">2 · 엇박자</option><option value="2">3 · 트리플</option><option value="3">4 · 피날레</option></select></div><div id="mapInfo">랜덤 모드 · 기존 방식</div><div class="stats"><span>점수 <strong id="score">0</strong></span><span>콤보 <strong id="combo">0</strong></span><span>최고 <strong id="best">0</strong></span><span>회전 <strong id="period">4.0초</strong></span><span>성공 <strong id="success">0 / 3</strong></span><span>목숨 <strong id="lives">❤️❤️❤️❤️❤️</strong></span></div><canvas id="stage" width="480" height="480" aria-label="원형 리듬 게임"></canvas><div id="feedback" role="status" aria-live="polite">시작 버튼을 누르세요</div><div class="controls"><button id="start">시작 / 재시작</button><button id="hit">HIT! (Space)</button></div><small>성공 3번마다 조금씩 빨라지고 판정 범위가 서서히 좁아집니다 · 네모 최대 5개 · 맵은 64~112타일 · 음악과 타일 타이밍 동기화 · 판정 강화 · 맵: 파랑 ↺ 역방향 / 초록 ↻ 정방향 · MISS와 헛발질은 목숨 -1</small></main><script>
 'use strict';
 'use strict';
 const canvas=document.querySelector('#stage'),ctx=canvas.getContext('2d');
 const scoreEl=document.querySelector('#score'),comboEl=document.querySelector('#combo'),bestEl=document.querySelector('#best'),periodEl=document.querySelector('#period'),feedback=document.querySelector('#feedback'),successEl=document.querySelector('#success'),livesEl=document.querySelector('#lives');
 const TAU=Math.PI*2;
-const maps=[{name:'첫 박자',beats:[1.7,3.5,5.2,7.3,9.1,11.4,13.2,15.3]},{name:'엇박자',beats:[1.4,2.8,4.9,6.0,8.3,9.8,11.1,13.7,15.4,17.0]},{name:'트리플',beats:[1.2,2.4,3.6,5.5,6.7,7.9,10.0,11.2,12.4,14.5,15.7,16.9]},{name:'피날레',beats:[1.5,2.5,4.0,5.0,6.5,7.5,9.0,10.0,11.5,12.5,14.0,15.0,16.5,17.5]}];
+const mapPatterns=[[1,1,0.75,1.25,0.75,1],[0.75,0.5,1,0.75,0.5,1.25],[0.5,0.5,0.75,0.5,1,0.5],[0.5,0.75,0.5,0.5,0.75,0.5]];
+const mapNames=['첫 박자','엇박자','트리플','피날레'];
+const maps=mapNames.map((name,i)=>{
+  const beats=[];let at=1.6;
+  for(let j=0;j<64+i*16;j++){beats.push(Number(at.toFixed(4)));at+=mapPatterns[i][j%mapPatterns[i].length]*(i===0?1.12:i===1?1.02:i===2?0.95:0.9)}
+  return {name,beats};
+});
 let mode='random',mapIndex=0,mapBeat=0,musicStep=0,musicNote=0,direction=1,selectedMap=0;
 const mapInfo=document.querySelector('#mapInfo');
-function goodWindow(){return Math.max(0.48,0.78-stage*0.009)*(mode==='map'?0.78:1)}
-function perfectWindow(){return Math.max(0.23,0.36-stage*0.004)*(mode==='map'?0.85:1)}
+function goodWindow(){return Math.max(0.48,0.78-stage*0.009)*(mode==='map'?0.69:1)}
+function perfectWindow(){return Math.max(0.23,0.36-stage*0.004)*(mode==='map'?0.75:1)}
 function stagePeriod(){return Math.max(mode==='map'?1.6:1.8,(mode==='map'?3.4-mapIndex*0.35:4)-stage*0.12)}
 let running=false,angle=-Math.PI/2,period=4,stage=0,score=0,combo=0,success=0,lives=5,last=0,raf=0,targets=[],nextId=0,progress=0;
 let best=0;try{best=Number(localStorage.getItem('fw-polyrhythm-best')||0)||0}catch(e){}bestEl.textContent=best;
 function distance(a,b){return Math.abs(Math.atan2(Math.sin(a-b),Math.cos(a-b)))}
 function update(){scoreEl.textContent=score;comboEl.textContent=combo;periodEl.textContent=period.toFixed(1)+'초';successEl.textContent=(success%3)+' / 3';livesEl.textContent='❤️'.repeat(lives)+'🖤'.repeat(5-lives);bestEl.textContent=best}
-function mapTileType(index){return index>0&&index%5===0?'forward':index%4===2?'reverse':'normal'}
+function mapTileType(index){return index>0&&index%12===0?'forward':index>0&&index%8===0?'reverse':'normal'}
 function alignTargets(){for(const t of targets)t.angle=angle+direction*(t.at-progress)}
-function targetCount(){return mode==='map'?Math.min(5,2+Math.floor(mapIndex/2)):Math.min(5,1+Math.floor(stage/2))}
+function targetCount(){return mode==='map'?Math.min(5,3+Math.floor(mapIndex/2)):Math.min(5,1+Math.floor(stage/2))}
 function addTarget(){
   if(mode==='map'){
     const beats=maps[mapIndex].beats;
@@ -45,7 +51,7 @@ function selectMode(next){if(running)return;mode=next;document.querySelector('#m
 function mapAdvance(){if(mode!=='map'||targets.length||mapBeat<maps[mapIndex].beats.length||!running)return;mapIndex++;if(mapIndex>=maps.length){running=false;cancelAnimationFrame(raf);feedback.textContent='🏆 모든 맵 클리어! 점수 '+score;return}progress=0;angle=-Math.PI/2;direction=1;mapBeat=0;musicStep=0;musicNote=0;stage=0;period=stagePeriod();spawnTargets();showMode();feedback.textContent='🗺️ 다음 맵: '+maps[mapIndex].name;update()}
 function endGame(){running=false;cancelAnimationFrame(raf);feedback.textContent='💔 GAME OVER · 점수 '+score+' · 다시 시작할 수 있어요';update()}
 function lose(reason){if(!running)return;combo=0;lives=Math.max(0,lives-1);feedback.textContent=reason+' · 목숨 -1';update();if(lives===0)endGame()}
-function start(){if(mode==='map')try{initAudio()}catch(e){}cancelAnimationFrame(raf);running=true;angle=-Math.PI/2;mapIndex=mode==='map'?selectedMap:0;period=mode==='map'?stagePeriod():4;stage=0;score=0;combo=0;success=0;lives=5;progress=0;direction=1;nextId=0;mapBeat=0;musicStep=0;musicNote=0;last=performance.now();spawnTargets();showMode();feedback.textContent='READY · 타이밍을 맞추세요!';update();draw();raf=requestAnimationFrame(frame)}
+function start(){if(mode==='map')try{initAudio()}catch(e){}cancelAnimationFrame(raf);running=true;angle=-Math.PI/2;mapIndex=mode==='map'?selectedMap:0;stage=0;period=mode==='map'?stagePeriod():4;score=0;combo=0;success=0;lives=5;progress=0;direction=1;nextId=0;mapBeat=0;musicStep=0;musicNote=0;last=performance.now();spawnTargets();showMode();feedback.textContent='READY · 타이밍을 맞추세요!';update();draw();raf=requestAnimationFrame(frame)}
 let audioContext=null,audioCompressor=null;
 const melodies=[
   [262,330,392,523,392,330,294,392],
@@ -81,14 +87,13 @@ function synthNote(frequency,duration=0.19,volume=0.11,type='triangle'){
 }
 function mapMusic(){
   if(mode!=='map'||!running)return;
-  const unit=[0.7,0.55,0.42,0.48][mapIndex];
-  const current=Math.floor(progress/unit);
-  if(current<=musicStep)return;
-  musicStep=current;
-  const notes=melodies[mapIndex];
-  const index=musicNote++%notes.length;
-  synthNote(notes[index],0.23,0.23,mapIndex===3?'sawtooth':'triangle');
-  if(index%2===0)synthNote(notes[index]/2,0.28,0.13,'sine');
+  // Notes and targets share the same angular timeline: each note sounds at a tile's hit position.
+  const beats=maps[mapIndex].beats,notes=melodies[mapIndex];
+  while(musicNote<beats.length&&progress>=beats[musicNote]){
+    const index=musicNote++;
+    synthNote(notes[index%notes.length],0.23,0.23,mapIndex===3?'sawtooth':'triangle');
+    if(index%2===0)synthNote(notes[index%notes.length]/2,0.28,0.13,'sine');
+  }
 }
 
 const drumLayers=[{from:190,to:62,level:0.85,duration:0.28,type:'sine'},{from:360,to:110,level:0.5,duration:0.13,type:'triangle'}];
