@@ -33,6 +33,7 @@ IMPORTANT:
 
 
 const projects = [
+  {"name":"AFTERBEAT","keywords":"Afterbeat 애프터비트 에프터비트 리듬게임 음악 건반 탭 홀드 플릭 rhythm","icon":"🎵","className":"purple","category":"game","mode":"solo","connection":"offline","difficulty":"어려움","description":"4레인에서 탭·홀드·플릭으로 연주하는 리듬게임. 오리지널 12곡과 EASY부터 IMPOSSIBLE까지 6단계 난이도를 즐겨보세요.","url":"https://semicolonxss.github.io/Formwheel/afterbeat.html","addedAt":"2026-11-20T00:00:00Z","recent":true},
   {name:"Workshop",keywords:"작품 만들기 창작 워크숍 만들기 공유 제작 메이커 workshop",icon:"🎨",className:"orange",category:"app",mode:"solo",connection:"online",difficulty:"쉬움",description:"Formwheel Workshop에서 나만의 작품을 만들어 보세요.",url:"https://semicolonxss.github.io/Formwheel/workshop/",addedAt:"2026-11-19T00:00:00Z",recent:true},
   {"name":"Typing Lab","keywords":"타자연습 한글 영어 타수 정확도 타이핑 연습 typing speed CPM keyboard","icon":"⌨️","className":"purple","category":"tool","mode":"solo","connection":"offline","difficulty":"쉬움","description":"한국어·영어 타자연습과 URL·Python·HTML·Java 코드 반복 입력! 직접 쓴 문장, 타수·정확도·최고 기록도 지원.","url":"https://semicolonxss.github.io/Formwheel/typing.html","addedAt":"2026-11-18T00:00:00Z","recent":true},
   {"name":"CITY TYCOON","keywords":"Formwheel tycoon city 도시 타이쿤 경영 건설 자동수익 업그레이드 오프라인","icon":"🏙️","className":"purple","category":"game","mode":"solo","connection":"offline","difficulty":"쉬움","description":"노점에서 시작해 카페·공장·스카이 타워까지 키우는 도시 경영 게임! 자동 수익·광고·오프라인 수익·자동 저장 지원.","url":"https://semicolonxss.github.io/Formwheel/tycoon/","addedAt":"2026-11-17T03:51:00Z","recent":true},
