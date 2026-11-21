@@ -7,7 +7,13 @@ const {test} = require('node:test');
 function harness(network, {cacheUnavailable = false} = {}) {
   const handlers = {}, saved = new Map();
   const key = request => typeof request === 'string' ? new URL(request, 'https://semicolonxss.github.io').href : request.url;
-  const cache = {match: async r => saved.get(key(r)), put: async (r, response) => saved.set(key(r), response), addAll: async () => {}};
+  const cache = {
+    match: async r => saved.get(key(r)),
+    put: async (r, response) => saved.set(key(r), response),
+    addAll: async routes => {
+      for (const route of routes) saved.set(key(route), await network({url: key(route)}));
+    }
+  };
   vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../sw.js'), 'utf8'), {
     self: {location: {origin: 'https://semicolonxss.github.io'}, addEventListener: (name, fn) => handlers[name] = fn, skipWaiting() {}, clients: {claim() {}}},
     caches: {open: async () => {if (cacheUnavailable) throw Error('storage unavailable'); return cache}, match: cache.match, keys: async () => []},
@@ -21,7 +27,9 @@ function harness(network, {cacheUnavailable = false} = {}) {
     await Promise.all(pending);
     return result;
   }
-  return {request, saved};
+  return {request, saved, install: () => new Promise((resolve, reject) => {
+    handlers.install({waitUntil: promise => promise.then(resolve, reject)});
+  })};
 }
 test('versioned assets update online and use exact cached version offline', async () => {
   let online = true, body = 'v1';
@@ -61,4 +69,25 @@ test('offline guidance survives unavailable storage', async () => {
   const response = await h.request('/Formwheel/profile.html', 'navigate');
   assert.equal(response.status, 503);
   assert.match(await response.text(), /인터넷 연결/);
+});
+
+
+test('fresh install preloads shared Hub styling and settings for offline use', async () => {
+  let online = true;
+  const h = harness(async request => {
+    if (!online) throw Error('offline');
+    return new Response(new URL(request.url).pathname);
+  });
+  await h.install();
+  online = false;
+  const route = '/Formwheel/shared/settings-state.js';
+  assert.equal(await (await h.request(route + '?v=release')).text(), route);
+  const stylesheet = '/Formwheel/shared/formwheel-ui.css';
+  assert.equal(await (await h.request(stylesheet + '?v=release')).text(), stylesheet);
+});
+
+test('index navigation can use the saved Hub root offline', async () => {
+  const h = harness(async () => {throw Error('offline')});
+  h.saved.set('https://semicolonxss.github.io/Formwheel/', new Response('saved Hub'));
+  assert.equal(await (await h.request('/Formwheel/index.html?v=release', 'navigate')).text(), 'saved Hub');
 });

@@ -6,6 +6,10 @@ const APP_SHELL = [
   "/Formwheel/profile.html",
   "/Formwheel/manifest.json",
   "/Formwheel/assets/styles.css",
+  "/Formwheel/shared/formwheel-ui.css",
+  "/Formwheel/shared/formwheel-ui.js",
+  "/Formwheel/shared/formwheel-i18n.js",
+  "/Formwheel/shared/settings-state.js",
   "/Formwheel/assets/app.js",
   "/Formwheel/assets/hub-visit-bridge.js",
   "/Formwheel/assets/home.css",
@@ -17,8 +21,7 @@ const APP_SHELL = [
   "/Formwheel/assets/formwheel-favicon.svg"
 ];
 self.addEventListener("install", event => {
-  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(APP_SHELL)));
-  self.skipWaiting();
+  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(APP_SHELL)).then(() => self.skipWaiting()));
 });
 self.addEventListener("activate", event => {
   event.waitUntil(caches.keys().then(keys => Promise.all(
@@ -64,7 +67,8 @@ self.addEventListener("fetch", event => {
       const cached = await match(request) || await match(url.pathname);
       if (cached) return cached;
       if (url.pathname === "/Formwheel/" || url.pathname === "/Formwheel/index.html") {
-        const home = await match("/Formwheel/index.html");
+        const alias = url.pathname === "/Formwheel/" ? "/Formwheel/index.html" : "/Formwheel/";
+        const home = await match(alias);
         if (home) return home;
       }
       const offline = await match('/Formwheel/offline.html');
