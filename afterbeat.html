@@ -12,7 +12,7 @@ body{background:radial-gradient(ellipse at top left,var(--glow),transparent 50%)
 <h1>AFTERBEAT</h1>
 <p>탭 · 홀드 · 플릭<br><small>PC는 D F J K · 플릭은 Shift와 함께<br>터치는 해당 레인에서 위로 밀기</small></p>
 <label>곡<select id="track"></select></label>
-<label>난이도<select id="level"><option>EASY</option><option>NORMAL</option><option>HARD</option><option>EXPERT</option><option selected>OVERDRIVE</option><option>IMPOSSIBLE</option></select></label>
+<label>난이도<select id="level"><option>EASY</option><option>NORMAL</option><option>HARD</option><option>EXPERT</option><option selected>OVERDRIVE</option><option>IMPOSSIBLE · LV38</option></select></label>
 <label>판정 보정 (늦게 누르면 +) <span><input id="offset" type="range" min="-150" max="150" value="0" step="5"> <span id="offsetValue">0 ms</span></span></label>
 <div class="controls"><button id="start">시작</button><button id="tutorial">튜토리얼</button><button id="stop" disabled>중단</button></div>
 </header>
@@ -83,21 +83,21 @@ function chart(index,level){
 
  for(let bar=0;bar<bars;bar++){
   const dense=bar>=4 && bar<bars-2;
-  const steps=[2,3,4,8,dense?16:8,dense?32:16][level];
+  const steps=[2,3,4,8,dense?16:8,level===5?(dense?(bar<8||bar>=bars-6?16:20):12):8][level];
   for(let step=0;step<steps;step++){
    if(level===4&&steps===16&&(bar%4===3?step%8===7:step%4===3))continue;
    const t=(bar*4+step*4/steps)*beat;
-   const chord=dense&&level>=3&&step%(level>=4?4:8)===0;
-   const outer=(step+bar+index)%4;
+   const chord=dense&&level>=3&&step%(level===5?5:level===4?4:8)===0;
+   const outer=(level===5&&step%5===2?bar+index+3-step:step+bar+index)%4;
    const lead=bar%4===1&&level===4&&step%4<3?outer%2:outer;
-   const triple=level===5&&chord&&step%16===0&&bar%2===0;
+   const triple=level===5&&chord&&step%10===0&&bar%2===0;
    const attempts=triple?[lead,(lead+1)%4,(lead+2)%4]:chord?[lead,(lead+2)%4]:[lead];
    for(const lane of attempts){
     if(t<free[lane])continue;
     const roll=rng();
-    const hold=!chord&&(step%4===0||step%4===2)&&bar<bars-1&&roll<0.27;
+    const hold=!chord&&(step%4===0||step%4===2)&&bar<bars-1&&roll<(level===5?.36:.27);
     const kind=hold?"hold":level>0&&roll>(level===1?.93:.78)?"flick":"tap";
-    const end=t+(hold?beat*(level<=2?1:1.5):0);
+    const end=t+(hold?beat*(level<=2?1:level===5?(step%3===0?2:1):1.5):0);
     const gap=kind==="hold"?0.13:windows[level]*2;
     free[lane]=end+gap;
     notes.push({t,end,lane,kind,state:"waiting",owner:null});
