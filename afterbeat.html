@@ -35,6 +35,7 @@ const tracks = [
 const scales=[[0,2,3,7,10],[0,3,5,7,12],[0,2,5,7,9],[0,1,5,7,8]];
 const keys=["KeyD","KeyF","KeyJ","KeyK"], labels=["D","F","J","K"];
 const maxLife=100;
+const inputGrace=.05;
 const windows=[.170,.135,.105,.082,.060,.045];
 const scenes=[
  ["#ffbd78","#ffe2a0","#a4471d","repeating-linear-gradient(0deg,transparent 0 29px,#ffd59780 30px 31px),repeating-linear-gradient(90deg,transparent 0 37px,#ffb37e88 38px 39px)"],
@@ -70,8 +71,16 @@ const $=id=>document.getElementById(id);
 const canvas=$("field"), pen=canvas.getContext("2d");
 const pointers=new Map(), keyboard=new Set();
 let audio, run=null, starting=false, startAttempt=0, feedback="", feedbackUntil=0;
+let frameId=0;
+function requestFrame(){
+ if(!frameId)frameId=requestAnimationFrame(frame);
+}
+function setBusy(busy){
+ for(const id of ["start","tutorial","track","level","offset"])$(id).disabled=busy;
+ $("stop").disabled=!busy;
+}
 tracks.forEach(([title,bpm],i)=>$("track").add(new Option(title+" · "+bpm+" BPM",i)));
-$("track").onchange=()=>{if(!run)setScene(Number($("track").value));};
+$("track").onchange=()=>{if(!run){setScene(Number($("track").value));requestFrame();}};
 setScene(0);
 $("offset").oninput=()=>{$("offsetValue").textContent=$("offset").value+" ms";};
 function random(seed){
@@ -88,7 +97,8 @@ function chart(index,level){
    if(level===4&&steps===16&&(bar%4===3?step%8===7:step%4===3))continue;
    const t=(bar*4+step*4/steps)*beat;
    const chord=dense&&level>=3&&step%(level===5?5:level===4?4:8)===0;
-   const outer=(level===5&&step%5===2?bar+index+3-step:step+bar+index)%4;
+   const pattern=level===5&&step%5===2?bar+index+3-step:step+bar+index;
+   const outer=((pattern%4)+4)%4;
    const lead=bar%4===1&&level===4&&step%4<3?outer%2:outer;
    const triple=level===5&&chord&&step%10===0&&bar%2===0;
    const attempts=triple?[lead,(lead+1)%4,(lead+2)%4]:chord?[lead,(lead+2)%4]:[lead];
@@ -98,7 +108,7 @@ function chart(index,level){
     const hold=!chord&&(step%4===0||step%4===2)&&bar<bars-1&&roll<(level===5?.36:.27);
     const kind=hold?"hold":level>0&&roll>(level===1?.93:.78)?"flick":"tap";
     const end=t+(hold?beat*(level<=2?1:level===5?(step%3===0?2:1):1.5):0);
-    const gap=kind==="hold"?0.13:windows[level]*2;
+    const gap=hold?Math.max(.13,windows[level]):windows[level]*2;
     free[lane]=end+gap;
     notes.push({t,end,lane,kind,state:"waiting",owner:null});
    }
@@ -145,8 +155,11 @@ function scheduleMusic(game){
  }
 }
 function inputTime(event){
- const delay=event?Math.max(0,(performance.now()-event.timeStamp)/1000):0;
- return audio.currentTime-run.start-run.offset-Math.min(delay,.12);
+ const now=performance.now();
+ const stamp=event?.timeStamp;
+ const relative=stamp>now&&stamp>performance.timeOrigin?stamp-performance.timeOrigin:stamp;
+ const delay=relative>0&&relative<=now?(now-relative)/1000:0;
+ return audio.currentTime-run.start-run.offset-Math.min(delay,inputGrace);
 }
 function advance(game,t){
  for(const note of game.active){
@@ -212,7 +225,8 @@ function finish(completed){
   if(canvas.hasPointerCapture(id))canvas.releasePointerCapture(id);
  }
  pointers.clear();keyboard.clear();
- $("start").disabled=false;$("tutorial").disabled=false;$("stop").disabled=true;
+ setBusy(false);
+ requestFrame();
  if(!game){$("status").textContent="시작을 취소했어요.";return;}
  clearInterval(game.musicTimer);
  game.bus.gain.setTargetAtTime(0,audio.currentTime,.025);
@@ -237,10 +251,15 @@ async function startGame(practice=false){
  if(starting||run)return;
  starting=true;
  const attempt=++startAttempt;
- $("start").disabled=true;$("tutorial").disabled=true;$("stop").disabled=false;
+ setBusy(true);
  $("status").textContent="오디오 시작 중…";
  try{
-  audio??=new (window.AudioContext||window.webkitAudioContext)();
+  if(!audio){
+   audio=new (window.AudioContext||window.webkitAudioContext)();
+   audio.addEventListener("statechange",()=>{
+    if(run&&audio.state!=="running")finish(false);
+   });
+  }
   await audio.resume();
   if(attempt!==startAttempt)return;
   if(audio.state!=="running")throw Error("Audio unavailable");
@@ -262,11 +281,12 @@ async function startGame(practice=false){
   $("progress").textContent="0:00";
   $("life").textContent=maxLife;
   $("score").textContent="0점";$("combo").textContent="0 콤보";$("status").textContent="";
-  $("stop").disabled=false;document.body.classList.add("playing");
+  document.body.classList.add("playing");
+  requestFrame();
  }catch{
   if(attempt!==startAttempt)return;
-  starting=false;
-  $("start").disabled=false;$("tutorial").disabled=false;$("stop").disabled=true;$("status").textContent="오디오를 시작할 수 없어요. 브라우저에서 다시 시도해 주세요.";
+  finish(false);
+  $("status").textContent="오디오를 시작할 수 없어요. 브라우저에서 다시 시도해 주세요.";
  }
 }
 $("start").onclick=()=>startGame();
@@ -308,21 +328,27 @@ canvas.onpointermove=event=>{
  if(!pointer||pointer.consumed)return;
  pointer.y=Math.max(pointer.y,event.clientY);
  if(pointer.y-event.clientY>=22){
-  pointer.y=event.clientY;
   pointer.consumed=press(pointer.lane,true,event.pointerId,event);
  }
 };
 canvas.onpointerup=canvas.onpointercancel=canvas.onlostpointercapture=event=>{
  const pointer=pointers.get(event.pointerId);
  if(!pointer)return;
- release(pointer.lane,event.pointerId,event,event.type!=="pointerup");pointers.delete(event.pointerId);
+ pointers.delete(event.pointerId);
+ if(event.type==="pointerup"&&!pointer.consumed&&pointer.y-event.clientY>=22){
+  press(pointer.lane,true,event.pointerId,event);
+ }
+ release(pointer.lane,event.pointerId,event,event.type!=="pointerup");
 };
-addEventListener("blur",()=>{if(run)finish(false);});
+addEventListener("blur",()=>finish(false));
 addEventListener("pagehide",()=>finish(false));
-document.addEventListener("visibilitychange",()=>{if(document.hidden&&run)finish(false);});
+document.addEventListener("visibilitychange",()=>{if(document.hidden)finish(false);});
 function frame(){
+ frameId=0;
  const rect=canvas.getBoundingClientRect(),dpr=Math.min(devicePixelRatio,2);
  const w=rect.width,h=rect.height, laneWidth=w/4,line=h-55;
+ const pressedLanes=new Set(keyboard);
+ for(const pointer of pointers.values())pressedLanes.add(pointer.lane);
  const pixelWidth=Math.round(w*dpr),pixelHeight=Math.round(h*dpr);
  if(canvas.width!==pixelWidth||canvas.height!==pixelHeight){canvas.width=pixelWidth;canvas.height=pixelHeight;}
  pen.setTransform(dpr,0,0,dpr,0,0);
@@ -330,7 +356,7 @@ function frame(){
  for(let lane=0;lane<4;lane++){
   const x=lane*laneWidth;
   pen.fillStyle=lane%2?"#171326ad":"#100d21bb";pen.fillRect(x,0,laneWidth-1,h);
-  const pressed=keyboard.has(lane)||[...pointers.values()].some(pointer=>pointer.lane===lane);
+  const pressed=pressedLanes.has(lane);
   pen.fillStyle=pressed?colors[lane]+"66":"#16152bea";pen.fillRect(x,line,laneWidth-1,h-line);
   pen.fillStyle=colors[lane];pen.fillRect(x,line,laneWidth-1,2);
   pen.font="bold 16px system-ui";pen.textAlign="center";pen.fillText(labels[lane],x+laneWidth/2,line+33);
@@ -338,14 +364,14 @@ function frame(){
  if(run){
   const t=audio.currentTime-run.start,speed=line/1.15;
   // Give queued input time to arrive before expiring a note.
-  advance(run,t-run.offset-.05);
-  if(!run){requestAnimationFrame(frame);return;}
+  advance(run,t-run.offset-inputGrace);
+  if(!run)return;
   while(run.notes[run.firstVisible]?.state==="done")run.firstVisible++;
   for(let i=run.firstVisible;i<run.notes.length;i++){
    const note=run.notes[i];
    if(note.state==="done")continue;
    if(note.t>t+1.25)break;
-   if(note.state==="waiting"&&t>note.t+run.window+Math.max(0,run.offset))continue;
+   if(note.state==="waiting"&&t>note.t+run.window+run.offset+inputGrace)continue;
    const x=note.lane*laneWidth+7;
    const y=note.state==="holding"?line:line-(note.t-t)*speed;
    const tail=Math.min(note.state==="holding"?line:h,line-(note.end-t)*speed);
@@ -364,7 +390,8 @@ function frame(){
    pen.fillText(t<0?String(Math.ceil(-t)):feedback,w/2,h*.26);
   }
   const elapsed=Math.max(0,Math.floor(t));
-  $("progress").textContent=Math.floor(elapsed/60)+":"+String(elapsed%60).padStart(2,"0");
+  const progress=Math.floor(elapsed/60)+":"+String(elapsed%60).padStart(2,"0");
+  if($("progress").textContent!==progress)$("progress").textContent=progress;
   if(run.practice){
    const beat=t*tracks[0][1]/60;
    const index=beat>=16?2:beat>=8?1:0;
@@ -372,8 +399,10 @@ function frame(){
   }
   if(t>run.duration+.25&&run.cursor.every((cursor,lane)=>cursor===run.lanes[lane].length))finish(true);
  }
- requestAnimationFrame(frame);
+ if(run)requestFrame();
 }
-requestAnimationFrame(frame);
+if(window.ResizeObserver)new ResizeObserver(requestFrame).observe(canvas);
+addEventListener("resize",requestFrame);
+requestFrame();
 </script>
 </html>
