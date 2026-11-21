@@ -246,8 +246,10 @@ function frame(now){
   for(const target of expired){
     if(!running)break;
     retireTarget(target);
-    // A missed direction tile is a miss, not an invisible direction command.
-    lose('MISS');
+    // Missing a visible direction tile still changes direction and costs a life.
+    const directionTile=target.kind==='reverse'||target.kind==='forward';
+    if(directionTile)changeDirection(target.kind);
+    lose(directionTile?(direction<0?'↺ 역방향 전환 · MISS':'↻ 정방향 전환 · MISS'):'MISS');
   }
   if(expired.length&&running)afterTarget();
   draw();
