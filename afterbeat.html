@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="ko">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>AFTERBEAT · Formwheel</title>
@@ -7,7 +8,9 @@
 *{box-sizing:border-box}body{margin:0;background:#10101a;color:#f6f3ff;font:16px system-ui,sans-serif}main{max-width:950px;margin:auto;padding:24px;display:grid;grid-template-columns:290px minmax(0,1fr);gap:24px}h1{margin:0;font-size:clamp(36px,6vw,56px);letter-spacing:-.075em;color:#ffae73}p{line-height:1.55;color:#c9bedc}label{display:grid;gap:6px;margin:12px 0;font-size:14px}select,button,input{font:inherit}select{width:100%;min-width:0}#stats{flex-wrap:wrap}select,button{padding:10px;border:1px solid #655477;border-radius:8px;background:#242033;color:inherit}button{cursor:pointer}#start{background:#ffae73;color:#211625;font-weight:800;border:0}#stats{display:flex;justify-content:space-between;gap:8px;margin-bottom:8px;font-variant-numeric:tabular-nums}canvas{display:block;width:100%;height:clamp(330px,70dvh,660px);background:#191525;border-radius:12px;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}output{display:block;margin-top:10px;min-height:1.5em;color:#f9ddc5}small{color:#c9bedc}@media(max-width:640px){main{display:flex;flex-direction:column;gap:14px;padding:12px}header:has(+section) p{margin:5px 0}label{margin:6px 0}body.playing header h1,body.playing header p,body.playing header label{display:none}body.playing canvas{height:72dvh}}
 body{background:radial-gradient(ellipse at top left,var(--glow),transparent 50%),#0d0d19;background-attachment:fixed}main{max-width:1060px;align-items:start}header{padding:14px;background:#151425ef;border:1px solid #ffffff27;border-radius:16px}h1,#life{color:var(--accent)}#start{background:var(--accent)}.controls{display:flex;gap:6px;flex-wrap:wrap}.stage{position:relative;overflow:hidden;border:1px solid #ffffff44;border-radius:16px;background:var(--scene);box-shadow:0 18px 50px #0008}.stage canvas{background:transparent;border-radius:0}#stats{padding:9px;background:#151425;border-radius:10px}#lesson{position:absolute;inset:8px 8px auto;background:#151425f5;padding:8px;border-radius:8px;text-align:center;pointer-events:none}button:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}@media(max-width:640px){body.playing header{padding:5px}body.playing #start,body.playing #tutorial{display:none}body.playing canvas{height:clamp(230px,calc(100dvh - 150px),660px)}}
 </style>
-<main>
+<link rel="icon" href="assets/formwheel-favicon.svg" type="image/svg+xml"><style id="fw-skip-link-style">.fw-skip-link{position:fixed;inset-inline-start:12px;top:12px;z-index:2147483647;padding:12px 16px;border:2px solid #24205a;border-radius:9px;background:#fff;color:#24205a;font:700 16px/1.4 system-ui,sans-serif;text-decoration:none;transform:translateY(-220%)}.fw-skip-link:focus{transform:none;outline:3px solid #ff9a21;outline-offset:2px}</style></head>
+<body><a class="fw-skip-link" href="#fw-main-content">본문으로 바로가기</a>
+<main id="fw-main-content" tabindex="-1">
 <header>
 <h1>AFTERBEAT</h1>
 <p>탭 · 홀드 · 플릭<br><small>PC는 D F J K · 플릭은 Shift와 함께<br>터치는 해당 레인에서 위로 밀기</small></p>
@@ -405,4 +408,5 @@ if(window.ResizeObserver)new ResizeObserver(requestFrame).observe(canvas);
 addEventListener("resize",requestFrame);
 requestFrame();
 </script>
+</body>
 </html>
