@@ -162,13 +162,13 @@ function playDrum(){
 }
 function changeDirection(kind){
   const nextDirection=kind==='reverse'?-1:1;
-  if(nextDirection===direction){reverseUntil=nextDirection<0?progress+TAU*1.3:0;return;}
+  if(nextDirection===direction)return;
   // Keep every existing tile at its current screen position; only the player orb reverses.
   // Recalculate its next encounter in the new direction, allowing a short reaction buffer.
   const oldDirection=direction;
   direction=nextDirection;
-  reverseUntil=direction<0?progress+TAU*1.3:0;
-  period=reverseUntil?1.8:stagePeriod();
+  reverseUntil=0;
+  period=stagePeriod();
   const minLead=TAU*0.42;
   for(const t of targets){
     const travel=((direction*(t.angle-angle))%TAU+TAU)%TAU;
@@ -224,7 +224,7 @@ function hit(){
     retireTarget(chosen);
     if(chosen.kind==='reverse'||chosen.kind==='forward'){
       changeDirection(chosen.kind);
-      feedback.textContent+=direction<0?' · ↺ 1.8초 역방향!':' · ↻ 정방향!';
+      feedback.textContent+=direction<0?' · ↺ 역방향!':' · ↻ 정방향!';
     }
     afterTarget();
   }else if(remaining>goodWindow()&&remaining<=goodWindow()+0.5){
@@ -239,10 +239,6 @@ function frame(now){
   last=now;
   const step=TAU*dt/period;
   progress+=step;angle+=step*direction;
-  if(reverseUntil&&progress>=reverseUntil){
-    changeDirection('forward');
-    if(mode==='map')feedback.textContent='↻ 정방향 복귀';
-  }
   mapMusic();
   if(holdTarget&&progress>=holdTarget.at+HOLD_LENGTH)finishHold(true);
   if(!running){draw();return;}
@@ -250,9 +246,8 @@ function frame(now){
   for(const target of expired){
     if(!running)break;
     retireTarget(target);
-    const changesDirection=target.kind==='reverse'||target.kind==='forward';
-    if(changesDirection)changeDirection(target.kind);
-    lose(changesDirection?(direction<0?'↺ 역방향 자동 전환 · MISS':'↻ 정방향 자동 전환 · MISS'):'MISS');
+    // A missed direction tile is a miss, not an invisible direction command.
+    lose('MISS');
   }
   if(expired.length&&running)afterTarget();
   draw();
