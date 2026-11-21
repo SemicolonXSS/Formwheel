@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>IMPACT MAP | Formwheel</title><style>
+:root{font-family:system-ui,-apple-system,sans-serif;color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#111323;color:#f4f2ff}main{max-width:1100px;margin:auto;padding:24px 16px 65px}a{color:#cbb6ff}.top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.hero{background:linear-gradient(135deg,#30234c,#18213c);padding:24px;border:1px solid #554877;border-radius:22px;margin:18px 0}.hero h1{margin:0;font-size:clamp(28px,5vw,43px)}.muted{color:#bcb7d0;line-height:1.6}.layout{display:grid;grid-template-columns:minmax(220px,310px) 1fr;gap:16px}.panel{border:1px solid #3b3b56;border-radius:16px;background:#1c1d31;padding:16px;min-width:0}input{width:100%;padding:12px;border-radius:10px;border:1px solid #69617f;background:#111323;color:white;font:inherit}button{cursor:pointer;border:1px solid #665b83;border-radius:10px;background:#2a2944;color:#fff;padding:10px 12px;font:inherit}button:focus-visible,a:focus-visible{outline:3px solid #e8baff;outline-offset:2px}.files{display:grid;gap:7px;max-height:540px;overflow:auto;margin-top:12px}.file{text-align:left;overflow-wrap:anywhere}.file.active{border-color:#c6a3ff;background:#4a346e}.pill{display:inline-block;border-radius:30px;padding:3px 8px;font-size:12px;background:#3a3550;margin:3px 4px 3px 0}.high{color:#ffb4b4}.medium{color:#ffd28c}.low{color:#a5edc1}.nodes{display:flex;gap:9px;flex-wrap:wrap;margin:15px 0}.node{border:1px solid #806ba6;padding:12px;border-radius:12px;background:#29233f;overflow-wrap:anywhere}.node strong{display:block}.line{border-left:3px solid #987bd4;margin:8px 0;padding:8px 12px;background:#26243a}.warning{background:#322b24;border:1px solid #776043;border-radius:12px;padding:12px;margin-top:16px}.small{font-size:13px}ul{padding-left:20px;line-height:1.8}@media(max-width:700px){.layout{grid-template-columns:1fr}.files{max-height:250px}}</style></head>
+<body><main><div class="top"><a href="./index.html">← Formwheel 허브</a><a href="https://github.com/SemicolonXSS/Formwheel" target="_blank" rel="noopener noreferrer">GitHub 저장소 ↗</a></div>
+<header class="hero"><h1>🕸️ IMPACT MAP</h1><p class="muted">파일 변경 전에 연결 관계와 점검 대상을 확인하는 개발자용 영향도 지도</p><span class="pill">읽기 전용</span><span class="pill">수동 검증된 일부 관계</span><span class="pill">Firebase 변경 없음</span></header>
+<div class="layout"><section class="panel"><h2>파일 선택</h2><label for="search">파일 검색</label><input id="search" placeholder="파일명 검색…" autocomplete="off"><div class="files" id="files"></div></section><section class="panel"><h2 id="selected">파일을 선택하세요</h2><div id="detail" aria-live="polite"></div></section></div>
+<section class="warning"><strong>⚠️ 분석 범위</strong><p class="muted small">이 화면은 실시간 저장소 스캐너가 아닙니다. GitHub에서 존재를 확인한 파일과 index.html에서 확인한 직접 참조만 표시합니다. 표시되지 않은 연결이 없다는 뜻이 아니며, 실제 수정 전에는 전체 코드 검색·테스트·Firebase Rules 검증이 필요합니다. 위험도는 보수적인 검토 우선순위 추정입니다.</p></section></main>
+<script>
+'use strict';
+const root='https://github.com/SemicolonXSS/Formwheel/blob/main/';
+const data=[
+{id:'index.html',label:'허브 메인',risk:'high',reason:'여러 프로젝트로 이동하는 진입점이므로 변경 영향이 넓을 수 있음',checks:['모바일/PC 허브 화면','프로젝트 카드 및 링크','기존 로그인·방문자 표시']},
+{id:'shared/formwheel-ui.js',label:'공통 UI 스크립트',risk:'high',reason:'허브가 로드하는 공통 스크립트',checks:['허브 UI 초기화','콘솔 오류','기존 설정·팝업 동작']},
+{id:'shared/formwheel-i18n.js',label:'번역 스크립트',risk:'medium',reason:'허브가 로드하는 번역 스크립트',checks:['한국어/영어 전환','문구 표시','언어 선택 유지']},
+{id:'assets/styles.css',label:'허브 스타일',risk:'medium',reason:'허브가 불러오는 스타일시트',checks:['모바일 레이아웃','테마별 가독성','카드·버튼 배치']},
+{id:'passport.html',label:'Play Passport',risk:'low',reason:'별도 탐험 여권 페이지',checks:['도장 로컬 저장','방문 링크','초기화 확인']},
+{id:'afterbeat.html',label:'Afterbeat',risk:'medium',reason:'독립 리듬게임 페이지',checks:['입력 판정','오디오 시작','모바일 조작']},
+{id:'polyrhythm.html',label:'Polyrhythm',risk:'medium',reason:'독립 리듬게임 페이지',checks:['홀드/터치 판정','랜덤 모드','모바일 입력']}
+];
+const edges=[
+{from:'index.html',to:'shared/formwheel-ui.js',why:'허브에서 defer script 로드',verified:true},
+{from:'index.html',to:'shared/formwheel-i18n.js',why:'허브에서 defer script 로드',verified:true},
+{from:'index.html',to:'assets/styles.css',why:'허브에서 stylesheet 로드',verified:true},
+{from:'index.html',to:'passport.html',why:'허브에서 여권 페이지로 이동하는 링크',verified:true}
+];
+const files=document.getElementById('files'),search=document.getElementById('search'),detail=document.getElementById('detail');
+let selected='index.html';
+const riskText={high:'높음',medium:'중간',low:'낮음'};
+function el(tag,text,cls){const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;}
+function renderFiles(){files.replaceChildren();const q=search.value.trim().toLowerCase();const matches=data.filter(d=>(d.id+' '+d.label).toLowerCase().includes(q));if(!matches.length)files.append(el('p','검색 결과 없음','muted'));for(const d of matches){const b=el('button',d.label+' · '+d.id,'file'+(selected===d.id?' active':''));b.type='button';b.addEventListener('click',()=>{selected=d.id;render();});files.append(b);}}
+function renderDetail(){const d=data.find(x=>x.id===selected);document.getElementById('selected').textContent=d.label;detail.replaceChildren();detail.append(el('p',d.id,'muted'));const risk=el('strong','검토 우선순위: '+riskText[d.risk],d.risk);detail.append(risk,el('p',d.reason,'muted'));const link=el('a','GitHub에서 원본 확인 ↗');link.href=root+d.id;link.target='_blank';link.rel='noopener noreferrer';detail.append(link);
+detail.append(el('h3','확인된 직접 연결'));const connected=edges.filter(e=>e.from===d.id||e.to===d.id);if(!connected.length)detail.append(el('p','현재 등록된 직접 연결 없음 (연결 부재를 의미하지 않음)','muted'));for(const edge of connected){const other=edge.from===d.id?edge.to:edge.from;const item=el('div',undefined,'line');const b=el('button',other);b.type='button';b.addEventListener('click',()=>{selected=other;render();});item.append(b,el('p',edge.why+' · index.html에서 확인','small'));detail.append(item);}
+detail.append(el('h3','변경 후 점검 항목'));const ul=el('ul');for(const check of d.checks)ul.append(el('li',check));detail.append(ul);detail.append(el('p','주의: 위 점검 항목은 제안이며 자동 테스트 결과가 아닙니다.','muted small'));}
+function render(){renderFiles();renderDetail()}search.addEventListener('input',renderFiles);render();
+</script></body></html>
