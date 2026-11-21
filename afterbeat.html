@@ -302,7 +302,8 @@ addEventListener("keydown",event=>{
  const lane=keys.indexOf(event.code);
  if(lane<0||event.repeat||keyboard.has(lane))return;
  event.preventDefault();keyboard.add(lane);
- if(!event.shiftKey||!press(lane,true,event.code,event))press(lane,false,event.code,event);
+ if(event.shiftKey)press(lane,true,event.code,event);
+ else press(lane,false,event.code,event);
 });
 addEventListener("keyup",event=>{
  const lane=keys.indexOf(event.code);
