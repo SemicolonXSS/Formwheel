@@ -31,7 +31,8 @@ function walk(dir){
    const html=fs.readFileSync(file,'utf8');
    for(const m of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script\s*>/gi)){
     if(/\bsrc\s*=/i.test(m[1]))continue;
-    const type=m[1].match(/\btype\s*=\s*(?:["']([^"']+)["']|([^\s>]+))/i)?.[1] ?? m[1].match(/\btype\s*=\s*(?:["']([^"']+)["']|([^\s>]+))/i)?.[2];
+    const typeMatch=m[1].match(/\btype\s*=\s*(?:["']([^"']+)["']|([^\s>]+))/i);
+    const type=typeMatch?.[1] ?? typeMatch?.[2];
     if(type&&!['module','text/javascript','application/javascript'].includes(type))continue;
     check(m[2],file,type==='module');
    }
