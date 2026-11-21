@@ -263,8 +263,9 @@ for(const el of [hitButton,canvas]){
   el.addEventListener('pointercancel',e=>release(e.pointerId,true));
   el.addEventListener('lostpointercapture',e=>release(e.pointerId,true));
 }
+let lastKeyboardRelease=-Infinity;
 hitButton.addEventListener('click',e=>{
-  if(e.detail!==0)return;
+  if(e.detail!==0||performance.now()-lastKeyboardRelease<350)return;
   press('button');
   release('button');
 });
@@ -278,6 +279,7 @@ document.addEventListener('keyup',e=>{
   if(e.code!=='Space'||activeInput!=='keyboard')return;
   e.preventDefault();
   release('keyboard');
+  lastKeyboardRelease=performance.now();
 });
 window.addEventListener('blur',()=>{release(activeInput,true);pausedAt=performance.now()});
 document.addEventListener('visibilitychange',()=>{if(document.hidden){release(activeInput,true);pausedAt=performance.now()}else if(pausedAt){last=performance.now();pausedAt=0}});
