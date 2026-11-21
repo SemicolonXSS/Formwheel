@@ -10,8 +10,8 @@ function checkLinks(html,file){
  // Only inspect markup: generated URLs inside script strings are not static links.
  const markup=html.replace(/(<script\b[^>]*>)[\s\S]*?<\/script\s*>/gi,'$1</script>');
  const base=new URL(prefix+path.relative(root,file).split(path.sep).join('/'),origin);
- for(const m of markup.matchAll(/\b(?:src|href)\s*=\s*(["'])(.*?)\1/gi)){
-  const href=m[2].replace(/&amp;/g,'&');
+ for(const m of markup.matchAll(/\b(?:src|href)\s*=\s*(?:(["'])(.*?)\1|([^\s>"'=\x60]+))/gi)){
+  const href=(m[2]??m[3]).replace(/&amp;/g,'&');
   if(!href||href.startsWith('#')||/^(?:data|blob|mailto|tel|javascript):/i.test(href))continue;
   const url=new URL(href,base);
   if(url.origin!==origin||!url.pathname.startsWith(prefix))continue;
