@@ -29,7 +29,10 @@ const maps=mapNames.map((name,i)=>{
     if(at-old>TAU+5)return false;
     const oldHold=k>0&&k%12!==0&&k%8!==0&&k%9===4;
     const delta=((at-old)%TAU+TAU)%TAU;
-    return (oldHold&&(delta<1.9||delta>TAU-0.5))||(isHold&&(delta<0.65||delta>TAU-1.9));
+    // Reject any pair of visible tiles sharing the same circular position.
+    // Holds occupy an extended arc, including their rounded endpoints.
+    const minGap=0.48;
+    return (oldHold&&(delta<1.5+minGap||delta>TAU-minGap))||(isHold&&(delta<minGap||delta>TAU-1.5-minGap))||Math.min(delta,TAU-delta)<minGap;
   }))at+=0.35;
   beats.push(Number(at.toFixed(4)));
 }
@@ -57,9 +60,15 @@ function addTarget(){
     const beats=maps[mapIndex].beats;
     if(mapBeat>=beats.length)return;
     const index=mapBeat++;
-    const at=beats[index];
+    let at=beats[index];
     const kind=mapTileType(index);
-    // Precomputed chart spacing guarantees a hold has no note inside its tail.
+    // A direction change can retime existing targets: keep new notes away from them.
+    const minGap=0.55;
+    let guard=0;
+    while(guard++<100&&targets.some(t=>{
+      const delta=((at-t.at)%TAU+TAU)%TAU;
+      return (t.kind==='hold'&&(delta<1.5+minGap||delta>TAU-minGap))||(kind==='hold'&&(delta<minGap||delta>TAU-1.5-minGap))||Math.min(delta,TAU-delta)<minGap;
+    }))at+=0.2;
     targets.push({id:++nextId,at,angle:angle+direction*(at-progress),kind});
     return;
   }
