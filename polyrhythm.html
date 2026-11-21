@@ -43,7 +43,7 @@ function goodWindow(){return (0.89+Math.min(stage,20)*0.004)*(mode==='map'?0.98:
 function perfectWindow(){return (0.40+Math.min(stage,20)*0.0015)*(mode==='map'?0.98:1)}
 function stagePeriod(){return Math.max(mode==='map'?2.25:1.8,(mode==='map'?3.8-Math.min(mapIndex,5)*0.17:4)-stage*(mode==='map'?0.045:0.12))}
 const HOLD_LENGTH=1.5;
-let holdTarget=null,activeInput=null,reverseUntil=0;
+let holdTarget=null,activeInput=null,reverseUntil=0,pausedAt=0;
 let running=false,angle=-Math.PI/2,period=4,stage=0,score=0,combo=0,success=0,lives=5,last=0,raf=0,targets=[],nextId=0,progress=0;
 let best=0;try{best=Number(localStorage.getItem('fw-polyrhythm-best')||0)||0}catch(e){}bestEl.textContent=best;
 function distance(a,b){return Math.abs(Math.atan2(Math.sin(a-b),Math.cos(a-b)))}
@@ -177,6 +177,7 @@ function afterTarget(){
 }
 function finishHold(completed){
   const target=holdTarget;
+  if(!target)return;
   holdTarget=null;
   retireTarget(target);
   if(completed)award(150,'🌈 HOLD +150');
@@ -185,9 +186,11 @@ function finishHold(completed){
 }
 function hit(){
   if(!running||holdTarget)return;
-  playDrum();
   if(!targets.length)return;
-  const chosen=targets.reduce((nearest,target)=>
+  playDrum();
+  const available=targets.filter(t=>t.at-progress>=-goodWindow());
+  if(!available.length){lose('헛발질');return;}
+  const chosen=available.reduce((nearest,target)=>
     Math.abs(target.at-progress)<Math.abs(nearest.at-progress)?target:nearest);
   const remaining=chosen.at-progress;
   if(Math.abs(remaining)<=goodWindow()){
@@ -204,7 +207,7 @@ function hit(){
       feedback.textContent+=direction<0?' · ↺ 1.8초 역방향!':' · ↻ 정방향!';
     }
     afterTarget();
-  }else if(remaining<=goodWindow()+0.5){
+  }else if(remaining>goodWindow()&&remaining<=goodWindow()+0.5){
     feedback.textContent='⏳ 조금만 더!';
   }else{
     lose('헛발질');
@@ -212,7 +215,7 @@ function hit(){
 }
 function frame(now){
   if(!running)return;
-  const dt=Math.min(Math.max((now-last)/1000,0),0.06);
+  const dt=Math.min(Math.max((now-last)/1000,0),0.12);
   last=now;
   const step=TAU*dt/period;
   progress+=step;angle+=step*direction;
@@ -222,6 +225,7 @@ function frame(now){
   }
   mapMusic();
   if(holdTarget&&progress>=holdTarget.at+HOLD_LENGTH)finishHold(true);
+  if(!running){draw();return;}
   const expired=targets.filter(t=>t!==holdTarget&&progress>t.at+goodWindow());
   for(const target of expired){
     if(!running)break;
@@ -275,6 +279,8 @@ document.addEventListener('keyup',e=>{
   e.preventDefault();
   release('keyboard');
 });
-window.addEventListener('blur',()=>release(activeInput,true));
+window.addEventListener('blur',()=>{release(activeInput,true);pausedAt=performance.now()});
+document.addEventListener('visibilitychange',()=>{if(document.hidden){release(activeInput,true);pausedAt=performance.now()}else if(pausedAt){last=performance.now();pausedAt=0}});
+for(const el of [hitButton,canvas])el.addEventListener('contextmenu',e=>e.preventDefault());
 showMode();draw();
 </script></body></html>
