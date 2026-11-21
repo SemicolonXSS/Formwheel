@@ -152,10 +152,21 @@ function playDrum(){
   }catch(e){/* Audio unavailable: gameplay continues. */}
 }
 function changeDirection(kind){
-  direction=kind==='reverse'?-1:1;
+  const nextDirection=kind==='reverse'?-1:1;
+  if(nextDirection===direction){reverseUntil=nextDirection<0?progress+TAU*1.3:0;return;}
+  // Keep every existing tile at its current screen position; only the player orb reverses.
+  // Recalculate its next encounter in the new direction, allowing a short reaction buffer.
+  const oldDirection=direction;
+  direction=nextDirection;
   reverseUntil=direction<0?progress+TAU*1.3:0;
   period=reverseUntil?1.8:stagePeriod();
-  alignTargets();
+  const minLead=TAU*0.42;
+  for(const t of targets){
+    const travel=((direction*(t.angle-angle))%TAU+TAU)%TAU;
+    const lead=travel<minLead?travel+TAU:travel;
+    t.at=progress+lead;
+  }
+  targets.sort((a,b)=>a.at-b.at);
 }
 function retireTarget(target){
   targets=targets.filter(t=>t!==target);
