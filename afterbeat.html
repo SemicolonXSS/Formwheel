@@ -320,8 +320,11 @@ for(const type of ["gesturestart","gesturechange"]){
 // Prevent mobile Safari double-tap zoom within the play surface without disabling page accessibility zoom.
 const stage=canvas.closest(".stage");
 stage.addEventListener("dblclick",event=>event.preventDefault());
+// Capture touch gestures before Safari can turn an upward flick into page scrolling.
 for(const type of ["touchstart","touchmove"]){
- stage.addEventListener(type,event=>{if(run&&event.cancelable)event.preventDefault();},{passive:false});
+ document.addEventListener(type,event=>{
+  if(run&&event.target instanceof Node&&stage.contains(event.target)&&event.cancelable)event.preventDefault();
+ },{capture:true,passive:false});
 }
 for(const type of ["gesturestart","gesturechange"]){
  stage.addEventListener(type,event=>{if(run&&event.cancelable)event.preventDefault();},{passive:false});
