@@ -48,7 +48,7 @@ const problemKey=(lang,index)=>'fw-code-problem-v2-'+lang+'-'+index;
 const blankTemplate=lang=>({html:'<!doctype html>\n<html lang="ko">\n<head><meta charset="utf-8"><title>연습</title></head>\n<body>\n\n</body>\n</html>',python:'# 여기에 코드를 작성하세요\n',c:'#include <stdio.h>\nint main(void) {\n    return 0;\n}',cpp:'#include <iostream>\nint main() {\n    return 0;\n}',java:'public class Main {\n    public static void main(String[] args) {\n    }\n}',fw:''})[lang]??'';
 function save(){try{localStorage.setItem(current<0?key(language.value):problemKey(language.value,current),editor.value)}catch{}}
 function load(){let saved=null;try{saved=localStorage.getItem(current<0?key(language.value):problemKey(language.value,current))}catch{}editor.value=saved??(current<0?starters[language.value]:blankTemplate(language.value));preview.hidden=true;output.textContent='';status.textContent='';fwGuide.hidden=language.value!=='fw';}
-language.addEventListener('change',()=>{current=-1;renderProblem();load()});editor.addEventListener('input',save);
+language.addEventListener('change',()=>{current=-1;renderProblem();load();renderList()});editor.addEventListener('input',save);
 editor.addEventListener('keydown',e=>{
 if(e.isComposing||e.ctrlKey||e.metaKey||e.altKey)return;
 const a=editor.selectionStart,b=editor.selectionEnd,value=editor.value,selected=value.slice(a,b);
