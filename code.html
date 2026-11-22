@@ -71,7 +71,7 @@ const units=[
 {name:'06 · 함수와 알고리즘',ids:[15,24,25]}
 ];
 const solvedKey='fw-code-solved-v1';
-function solvedSet(){try{return new Set(JSON.parse(localStorage.getItem(solvedKey)||'[]'))}catch{return new Set()}}
+function solvedSet(){try{const saved=JSON.parse(localStorage.getItem(solvedKey)||'[]');return new Set(Array.isArray(saved)?saved.filter(i=>Number.isInteger(i)&&i>=0&&i<problems.length):[])}catch{return new Set()}}
 function markSolved(index){const set=solvedSet();set.add(index);try{localStorage.setItem(solvedKey,JSON.stringify([...set]))}catch{return false}renderList();return true}
 function renderList(){const root=$('problems');root.replaceChildren();const done=solvedSet(),query=$('problemSearch').value.trim().toLocaleLowerCase(),onlyUnsolved=$('unsolvedOnly').checked;
 const progress=document.createElement('p');progress.className='muted';progress.textContent='학습 진도 '+done.size+' / '+problems.length+'문제';root.append(progress);
