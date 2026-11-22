@@ -8,7 +8,7 @@ const $=id=>document.getElementById(id),editor=$('editor'),language=$('language'
 const starters={
 html:'<!doctype html>\n<html lang="ko">\n<head><meta charset="utf-8"><style>body{font-family:sans-serif;padding:24px;color:#333}</style></head>\n<body><h1>Hello, Formwheel!</h1><button onclick="alert(\'안녕!\')">클릭</button></body>\n</html>',
 python:'print("Hello, Formwheel!")',
-fw:'import <basic>\n\nmain() int\n{\n    [Hello, World!]\\n;\n    end 0;\n}',
+fw:'import <basic>\n\nmain() int\n{\n    [Hello, World!]\\n;\n}',
 c:'#include <stdio.h>\nint main(void) {\n    printf("Hello, Formwheel!\\n");\n    return 0;\n}',
 cpp:'#include <iostream>\nint main() {\n    std::cout << "Hello, Formwheel!\\n";\n    return 0;\n}',
 java:'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, Formwheel!");\n    }\n}'};
@@ -42,7 +42,7 @@ const problems=[
 {title:'027 · 온도 변환',desc:'섭씨 0도를 화씨로 변환해 정수로 출력하세요.',langs:['python','c','cpp','java'],expected:'32'},
 {title:'028 · 평균',desc:'10, 20, 30의 평균을 정수로 출력하세요.',langs:['python','c','cpp','java'],expected:'20'}
 ];let current=-1,pyodide=null,loading=null;
-const fwGuide=document.createElement('details');fwGuide.innerHTML='<summary>📘 FW 0.6 문법 안내</summary><p><code>import &lt;basic&gt;</code> · <code>main() int</code> 또는 <code>int main()</code> · <code>[문자열], 변수, \\n;</code> · <code>ask(age);</code> · <code>end 0;</code></p><p>변수와 if/else, 함수는 C 스타일이며 반복은 <code>while (int i = 1, &lt;= 5, i++)</code> 형식입니다. 현재 실행기는 출력·변수·조건·반복·입력의 기본형을 지원합니다. 모든 출력문은 세미콜론(;)으로 끝나야 합니다.</p>';$('lesson').before(fwGuide);fwGuide.hidden=true;
+const fwGuide=document.createElement('details');fwGuide.innerHTML='<summary>📘 FW 0.6 문법 안내</summary><p><code>import &lt;basic&gt;</code> · <code>main() int</code> 또는 <code>int main()</code> · <code>[문자열], 변수, \\n;</code> · <code>ask(age);</code> · <code>end 0;</code> (main에서는 생략 가능)</p><p>변수와 if/else, 함수는 C 스타일이며 반복은 <code>while (int i = 1, &lt;= 5, i++)</code> 형식입니다. 현재 실행기는 출력·변수·조건·반복·입력의 기본형을 지원합니다. 모든 출력문은 세미콜론(;)으로 끝나야 합니다. main 함수 끝의 end 0;은 선택 사항입니다.</p>';$('lesson').before(fwGuide);fwGuide.hidden=true;
 const key=lang=>'fw-code-v1-'+lang;
 const problemKey=(lang,index)=>'fw-code-problem-v2-'+lang+'-'+index;
 const blankTemplate=lang=>({html:'<!doctype html>\n<html lang="ko">\n<head><meta charset="utf-8"><title>연습</title></head>\n<body>\n\n</body>\n</html>',python:'# 여기에 코드를 작성하세요\n',c:'#include <stdio.h>\nint main(void) {\n    return 0;\n}',cpp:'#include <iostream>\nint main() {\n    return 0;\n}',java:'public class Main {\n    public static void main(String[] args) {\n    }\n}',fw:''})[lang]??'';
