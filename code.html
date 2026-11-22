@@ -17,7 +17,7 @@ const problems=[
 {title:'002 · 두 수의 합',desc:'3과 5를 더한 결과 8을 출력하세요.',langs:['python','c','cpp','java'],expected:'8'},
 {title:'003 · 웹 제목',desc:'HTML 문서에 Formwheel Code라는 제목(h1)을 만들어 보세요.',langs:['html'],expected:'Formwheel Code'}
 ];let current=-1,pyodide=null,loading=null;
-const fwGuide=document.createElement('details');fwGuide.innerHTML='<summary>📘 FW 0.6 문법 안내</summary><p><code>import &lt;basic&gt;</code> · <code>main() int</code> · <code>[문자열], 변수, \\n;</code> · <code>ask(age);</code> · <code>end 0;</code></p><p>변수와 if/else, 함수는 C 스타일이며 반복은 <code>while (int i = 1, &lt;= 5, i++)</code> 형식입니다. 현재 실행기는 출력·변수·조건·반복·입력의 기본형을 지원합니다.</p>';$('lesson').before(fwGuide);fwGuide.hidden=true;
+const fwGuide=document.createElement('details');fwGuide.innerHTML='<summary>📘 FW 0.6 문법 안내</summary><p><code>import &lt;basic&gt;</code> · <code>main() int</code> 또는 <code>int main()</code> · <code>[문자열], 변수, \\n;</code> · <code>ask(age);</code> · <code>end 0;</code></p><p>변수와 if/else, 함수는 C 스타일이며 반복은 <code>while (int i = 1, &lt;= 5, i++)</code> 형식입니다. 현재 실행기는 출력·변수·조건·반복·입력의 기본형을 지원합니다.</p>';$('lesson').before(fwGuide);fwGuide.hidden=true;
 const key=lang=>'fw-code-v1-'+lang;
 const problemKey=(lang,index)=>'fw-code-problem-v2-'+lang+'-'+index;
 const blankTemplate=lang=>({html:'<!doctype html>\n<html lang="ko">\n<head><meta charset="utf-8"><title>연습</title></head>\n<body>\n\n</body>\n</html>',python:'# 여기에 코드를 작성하세요\n',c:'#include <stdio.h>\nint main(void) {\n    return 0;\n}',cpp:'#include <iostream>\nint main() {\n    return 0;\n}',java:'public class Main {\n    public static void main(String[] args) {\n    }\n}',fw:''})[lang]??'';
@@ -40,7 +40,7 @@ function runFw(){
  function compare(){let v=add();while(['<','>','<=','>=','==','!=','===','!=='].includes(tokens[i])){let op=tokens[i++],b=add();v=op==='<'?v<b:op==='>'?v>b:op==='<='?v<=b:op==='>='?v>=b:op==='=='||op==='==='?v===b:v!==b}return v}
  function logic(){let v=compare();while(['&&','||'].includes(tokens[i])){let op=tokens[i++],b=compare();v=op==='&&'?Boolean(v&&b):Boolean(v||b)}return v}
  let v=logic();if(i!==tokens.length)throw Error('표현식 오류: '+raw);return v}
- const body=src.match(/main\s*\(\s*\)\s*int\s*\{([\s\S]*)\}\s*$/);if(!body)throw Error('main() int { ... } 형식이 필요합니다.');
+ const body=src.match(/main\s*\(\s*\)\s*int\s*\{([\s\S]*)\}\s*$/);if(!body)throw Error('main() int 또는 int main() 형식이 필요합니다.');
  const lines=body[1].split('\n').map(x=>x.trim()).filter(Boolean);
  function block(start,end){let pc=start;while(pc<end){if(++steps>20000)throw Error('반복 실행 제한(20,000단계)을 초과했습니다.');let line=lines[pc];if(line==='}'||line==='{'||/^else\b/.test(line)){pc++;continue}
  let m=line.match(/^while\s*\(\s*int\s+(\w+)\s*=\s*(.+?)\s*,\s*(<=|>=|<|>|==|!=)\s*(.+?)\s*,\s*(\w+)\+\+\s*\)\s*\{$/);
