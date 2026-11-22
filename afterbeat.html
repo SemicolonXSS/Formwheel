@@ -7,7 +7,7 @@
 <link rel="apple-touch-icon" href="./assets/formwheel-apple-touch-icon.svg">
 <style>
 *{box-sizing:border-box}body{margin:0;background:#10101a;color:#f6f3ff;font:16px system-ui,sans-serif}main{max-width:950px;margin:auto;padding:24px;display:grid;grid-template-columns:290px minmax(0,1fr);gap:24px}h1{margin:0;font-size:clamp(36px,6vw,56px);letter-spacing:-.075em;color:#ffae73}p{line-height:1.55;color:#c9bedc}label{display:grid;gap:6px;margin:12px 0;font-size:14px}select,button,input{font:inherit}select{width:100%;min-width:0}#stats{flex-wrap:wrap}select,button{padding:10px;border:1px solid #655477;border-radius:8px;background:#242033;color:inherit}button{cursor:pointer}#start{background:#ffae73;color:#211625;font-weight:800;border:0}#stats{display:flex;justify-content:space-between;gap:8px;margin-bottom:8px;font-variant-numeric:tabular-nums}canvas{display:block;width:100%;height:clamp(330px,70dvh,660px);background:#191525;border-radius:12px;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}output{display:block;margin-top:10px;min-height:1.5em;color:#f9ddc5}small{color:#c9bedc}@media(max-width:640px){main{display:flex;flex-direction:column;gap:14px;padding:12px}header:has(+section) p{margin:5px 0}label{margin:6px 0}body.playing header h1,body.playing header p,body.playing header label{display:none}body.playing canvas{height:72dvh}}
-body{background:radial-gradient(ellipse at top left,var(--glow),transparent 50%),#0d0d19;background-attachment:fixed}main{max-width:1060px;align-items:start}header{padding:14px;background:#151425ef;border:1px solid #ffffff27;border-radius:16px}h1,#life{color:var(--accent)}#start{background:var(--accent)}.controls{display:flex;gap:6px;flex-wrap:wrap}.stage{position:relative;overflow:hidden;border:1px solid #ffffff44;border-radius:16px;background:var(--scene);box-shadow:0 18px 50px #0008}.stage canvas{background:transparent;border-radius:0}#stats{padding:9px;background:#151425;border-radius:10px}#lesson{position:absolute;inset:8px 8px auto;background:#151425f5;padding:8px;border-radius:8px;text-align:center;pointer-events:none}button:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}@media(max-width:640px){body.playing header{padding:5px}body.playing #start,body.playing #tutorial{display:none}body.playing canvas{height:clamp(230px,calc(100dvh - 150px),660px)}}
+body{background:radial-gradient(ellipse at top left,var(--glow),transparent 50%),#0d0d19;background-attachment:fixed}main{max-width:1060px;align-items:start}header{padding:14px;background:#151425ef;border:1px solid #ffffff27;border-radius:16px}h1,#life{color:var(--accent)}#start{background:var(--accent)}.controls{display:flex;gap:6px;flex-wrap:wrap}.stage{position:relative;overflow:hidden;border:1px solid #ffffff44;border-radius:16px;background:var(--scene);box-shadow:0 18px 50px #0008}.stage canvas{background:transparent;border-radius:0}.stage{touch-action:none;overscroll-behavior:contain;-webkit-user-select:none;user-select:none}#stats{padding:9px;background:#151425;border-radius:10px}#lesson{position:absolute;inset:8px 8px auto;background:#151425f5;padding:8px;border-radius:8px;text-align:center;pointer-events:none}button:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}@media(max-width:640px){body.playing header{padding:5px}body.playing #start,body.playing #tutorial{display:none}body.playing canvas{height:clamp(230px,calc(100dvh - 150px),660px)}}
  .hub-link{display:inline-flex;align-items:center;gap:6px;margin-bottom:12px;padding:8px 12px;border:1px solid #ffffff44;border-radius:10px;background:#242033;color:#f6f3ff;text-decoration:none;font-size:14px;font-weight:650}.hub-link:hover{border-color:var(--accent,#ffae73);color:var(--accent,#ffae73)}.hub-link:focus-visible{outline:2px solid var(--accent,#ffae73);outline-offset:2px}
 </style>
 <main>
@@ -316,6 +316,15 @@ canvas.addEventListener("wheel",event=>{
 // Safari exposes pinch gestures separately from pointer input.
 for(const type of ["gesturestart","gesturechange"]){
  canvas.addEventListener(type,event=>{if(run)event.preventDefault();},{passive:false});
+}
+// Prevent mobile Safari double-tap zoom within the play surface without disabling page accessibility zoom.
+const stage=canvas.closest(".stage");
+stage.addEventListener("dblclick",event=>event.preventDefault());
+for(const type of ["touchstart","touchmove"]){
+ stage.addEventListener(type,event=>{if(run&&event.cancelable)event.preventDefault();},{passive:false});
+}
+for(const type of ["gesturestart","gesturechange"]){
+ stage.addEventListener(type,event=>{if(run&&event.cancelable)event.preventDefault();},{passive:false});
 }
 canvas.onpointerdown=event=>{
  if(!run||event.button!==0)return;
