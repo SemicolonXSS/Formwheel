@@ -41,7 +41,7 @@ const problems=[
 {title:'026 · 소수 판별',desc:'숫자 29가 소수라면 PRIME을 출력하세요.',langs:['python','c','cpp','java'],expected:'PRIME'},
 {title:'027 · 온도 변환',desc:'섭씨 0도를 화씨로 변환해 정수로 출력하세요.',langs:['python','c','cpp','java'],expected:'32'},
 {title:'028 · 평균',desc:'10, 20, 30의 평균을 정수로 출력하세요.',langs:['python','c','cpp','java'],expected:'20'}
-];let current=-1,pyodide=null,loading=null;
+];let current=-1,pyodide=null,loading=null,scriptLoading=null;
 const fwGuide=document.createElement('details');fwGuide.innerHTML='<summary>📘 FW 0.6 문법 안내</summary><p><code>import &lt;basic&gt;</code> · <code>main() int</code> 또는 <code>int main()</code> · <code>[문자열], 변수, \\n;</code> · <code>ask(age);</code> · <code>end 0;</code> (main에서는 생략 가능)</p><p>변수와 if/else, 함수는 C 스타일이며 반복은 <code>while (int i = 1, &lt;= 5, i++)</code> 형식입니다. 현재 실행기는 출력·변수·조건·반복·입력의 기본형을 지원합니다. 모든 출력문은 세미콜론(;)으로 끝나야 합니다. main 함수 끝의 end 0;은 선택 사항입니다.</p>';$('lesson').before(fwGuide);fwGuide.hidden=true;
 const key=lang=>'fw-code-v1-'+lang;
 const problemKey=(lang,index)=>'fw-code-problem-v2-'+lang+'-'+index;
@@ -86,7 +86,7 @@ $('problemSearch').addEventListener('input',renderList);
 $('unsolvedOnly').addEventListener('change',renderList);
 $('freeMode').addEventListener('click',()=>{save();current=-1;load();renderProblem();renderList();status.textContent='자유 코딩 모드입니다.'});
 function runHtml(){preview.hidden=false;output.textContent='미리보기에서 웹 페이지를 확인하세요.';preview.srcdoc=editor.value;return editor.value}
-async function runPython(){const source=editor.value;if(!window.loadPyodide){status.textContent='Python 실행 환경을 불러오는 중…';await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/pyodide/v0.27.7/full/pyodide.js';s.onload=resolve;s.onerror=()=>reject(Error('Python 실행 환경 다운로드 실패'));document.head.append(s)})}if(!pyodide){loading??=window.loadPyodide({indexURL:'https://cdn.jsdelivr.net/pyodide/v0.27.7/full/'}).catch(error=>{loading=null;throw error});pyodide=await loading}let lines=[];pyodide.setStdout({batched:s=>lines.push(s)});pyodide.setStderr({batched:s=>lines.push(s)});try{await pyodide.runPythonAsync(source)}finally{output.textContent=lines.join('\n')}return lines.join('\n')}
+async function runPython(){const source=editor.value;if(!window.loadPyodide){status.textContent='Python 실행 환경을 불러오는 중…';scriptLoading??=new Promise((resolve,reject)=>{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/pyodide/v0.27.7/full/pyodide.js';s.onload=resolve;s.onerror=()=>{s.remove();reject(Error('Python 실행 환경 다운로드 실패'))};document.head.append(s)}).catch(error=>{scriptLoading=null;throw error});await scriptLoading}if(!pyodide){loading??=window.loadPyodide({indexURL:'https://cdn.jsdelivr.net/pyodide/v0.27.7/full/'}).catch(error=>{loading=null;throw error});pyodide=await loading}let lines=[];pyodide.setStdout({batched:s=>lines.push(s)});pyodide.setStderr({batched:s=>lines.push(s)});try{await pyodide.runPythonAsync(source)}finally{output.textContent=lines.join('\n')}return lines.join('\n')}
 
 function runFw(){
  const src=editor.value.replace(/\/\/[^\n]*/g,'').replace(/^\s*import\s*<basic>\s*$/gm,'');
