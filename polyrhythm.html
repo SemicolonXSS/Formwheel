@@ -23,6 +23,7 @@ const mapPatterns=[
  [0.5,0.5,0.5,0.75,0.5,1],[1,0.5,0.75,0.5,0.5,0.75],[0.75,0.5,0.75,0.5,1,0.5],[0.5,0.75,0.5,0.5,0.5,1],
  [0.5,0.5,0.75,0.5,0.5,0.75],[0.75,1,0.5,0.75,0.5,0.5],[0.5,0.5,0.5,0.5,0.75,0.5],[0.5,0.75,0.5,0.5,0.5,0.75]
 ];
+const HOLD_ARC_LENGTH=1.5;
 const maps=mapNames.map((name,i)=>{
  const beats=[];let at=1.6;
  const count=i<4?64+i*16:80+Math.min(12,i)*8;
@@ -30,7 +31,9 @@ const maps=mapNames.map((name,i)=>{
  for(let j=0;j<count;j++){
   const isHold=j>0&&j%12!==0&&j%8!==0&&j%9===4;
   const prevHold=j>0&&(j-1)%12!==0&&(j-1)%8!==0&&(j-1)%9===4;
-  if(j>0)at+=Math.max(mapPatterns[i][(j-1)%mapPatterns[i].length]*density,prevHold?2.3:isHold?1.15:0.95);
+  // Reserve the full hold duration plus a reaction buffer before the next note.
+  // A hold cannot be released and a normal tile hit at the same instant.
+  if(j>0)at+=Math.max(mapPatterns[i][(j-1)%mapPatterns[i].length]*density,prevHold?HOLD_ARC_LENGTH+0.8:isHold?1.15:0.95);
   // Never put another visible note on the same circular arc as a hold.
   let guard=0;
   while(guard++<24&&beats.some((old,k)=>{
@@ -53,7 +56,7 @@ maps.forEach((m,i)=>mapSelect.add(new Option((i+1)+' · '+m.name+' ('+m.beats.le
 function goodWindow(){return (0.89+Math.min(stage,20)*0.004)*(mode==='map'?0.98:1)}
 function perfectWindow(){return (0.40+Math.min(stage,20)*0.0015)*(mode==='map'?0.98:1)}
 function stagePeriod(){return Math.max(mode==='map'?2.25:1.8,(mode==='map'?3.8-Math.min(mapIndex,5)*0.17:4)-stage*(mode==='map'?0.045:0.12))}
-const HOLD_LENGTH=1.5;
+const HOLD_LENGTH=HOLD_ARC_LENGTH;
 let holdTarget=null,activeInput=null,reverseUntil=0,pausedAt=0;
 let running=false,angle=-Math.PI/2,period=4,stage=0,score=0,combo=0,success=0,lives=5,last=0,raf=0,targets=[],nextId=0,progress=0;
 let best=0;try{best=Number(localStorage.getItem('fw-polyrhythm-best')||0)||0}catch(e){}bestEl.textContent=best;
@@ -71,7 +74,10 @@ function addTarget(){
     let at=beats[index];
     const kind=mapTileType(index);
     // A direction change can retime existing targets: keep new notes away from them.
-    const minGap=0.55;
+    const minGap=0.7;
+    // Also preserve a clear time window after a hold, not just an arc gap.
+    const previous=targets.filter(t=>t.at<=at).sort((a,b)=>b.at-a.at)[0];
+    if(previous&&previous.kind==='hold')at=Math.max(at,previous.at+HOLD_LENGTH+0.8);
     let guard=0;
     while(guard++<100&&targets.some(t=>{
       const delta=((at-t.at)%TAU+TAU)%TAU;
