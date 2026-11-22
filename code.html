@@ -76,7 +76,7 @@ function runFw(){
  function compare(){let v=add();while(['<','>','<=','>=','==','!=','===','!=='].includes(tokens[i])){let op=tokens[i++],b=add();v=op==='<'?v<b:op==='>'?v>b:op==='<='?v<=b:op==='>='?v>=b:op==='=='||op==='==='?v===b:v!==b}return v}
  function logic(){let v=compare();while(['&&','||'].includes(tokens[i])){let op=tokens[i++],b=compare();v=op==='&&'?Boolean(v&&b):Boolean(v||b)}return v}
  let v=logic();if(i!==tokens.length)throw Error('표현식 오류: '+raw);return v}
- const body=src.match(/main\s*\(\s*\)\s*int\s*\{([\s\S]*)\}\s*$/);if(!body)throw Error('main() int 또는 int main() 형식이 필요합니다.');
+ const body=src.match(/(?:main\s*\(\s*\)\s*int|int\s+main\s*\(\s*\))\s*\{([\s\S]*)\}\s*$/);if(!body)throw Error('main() int 또는 int main() 형식이 필요합니다.');
  const lines=body[1].split('\n').map(x=>x.trim()).filter(Boolean);
  function block(start,end){let pc=start;while(pc<end){if(++steps>20000)throw Error('반복 실행 제한(20,000단계)을 초과했습니다.');let line=lines[pc];if(line==='}'||line==='{'||/^else\b/.test(line)){pc++;continue}
  let m=line.match(/^while\s*\(\s*int\s+(\w+)\s*=\s*(.+?)\s*,\s*(<=|>=|<|>|==|!=)\s*(.+?)\s*,\s*(\w+)\+\+\s*\)\s*\{$/);
