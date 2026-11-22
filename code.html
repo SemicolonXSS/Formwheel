@@ -15,7 +15,32 @@ java:'public class Main {\n    public static void main(String[] args) {\n       
 const problems=[
 {title:'001 · Hello, Formwheel!',desc:'Hello, Formwheel!을 한 줄 출력하세요.',langs:['python','fw','c','cpp','java'],expected:'Hello, Formwheel!'},
 {title:'002 · 두 수의 합',desc:'3과 5를 더한 결과 8을 출력하세요.',langs:['python','c','cpp','java'],expected:'8'},
-{title:'003 · 웹 제목',desc:'HTML 문서에 Formwheel Code라는 제목(h1)을 만들어 보세요.',langs:['html'],expected:'Formwheel Code'}
+{title:'003 · 웹 제목',desc:'HTML 문서에 Formwheel Code라는 제목(h1)을 만들어 보세요.',langs:['html'],expected:'Formwheel Code'},
+{title:'004 · 첫 인사',desc:'안녕하세요!를 출력하세요.',langs:['python','c','cpp','java'],expected:'안녕하세요!'},
+{title:'005 · 곱셈',desc:'7 × 6의 결과를 출력하세요.',langs:['python','c','cpp','java'],expected:'42'},
+{title:'006 · 나눗셈',desc:'20 ÷ 4의 결과를 정수로 출력하세요.',langs:['python','c','cpp','java'],expected:'5'},
+{title:'007 · 나머지',desc:'17을 5로 나눈 나머지를 출력하세요.',langs:['python','c','cpp','java'],expected:'2'},
+{title:'008 · 제곱',desc:'9의 제곱을 출력하세요.',langs:['python','c','cpp','java'],expected:'81'},
+{title:'009 · 세 수의 합',desc:'10, 20, 30의 합을 출력하세요.',langs:['python','c','cpp','java'],expected:'60'},
+{title:'010 · 음수 계산',desc:'5에서 12를 뺀 결과를 출력하세요.',langs:['python','c','cpp','java'],expected:'-7'},
+{title:'011 · 큰 수 찾기',desc:'15와 28 중 큰 수를 출력하세요.',langs:['python','c','cpp','java'],expected:'28'},
+{title:'012 · 짝수 판별',desc:'숫자 24가 짝수라면 EVEN을 출력하세요.',langs:['python','c','cpp','java'],expected:'EVEN'},
+{title:'013 · 홀수 판별',desc:'숫자 17이 홀수라면 ODD를 출력하세요.',langs:['python','c','cpp','java'],expected:'ODD'},
+{title:'014 · 반복 출력',desc:'1부터 5까지 숫자를 각각 한 줄에 출력하세요.',langs:['python','c','cpp','java'],expected:'1\n2\n3\n4\n5'},
+{title:'015 · 별 세 개',desc:'별표(*) 3개를 한 줄에 출력하세요.',langs:['python','c','cpp','java'],expected:'***'},
+{title:'016 · 팩토리얼',desc:'5! (5 팩토리얼)의 결과를 출력하세요.',langs:['python','c','cpp','java'],expected:'120'},
+{title:'017 · 구구단',desc:'3단의 3×1부터 3×3까지 결과를 한 줄씩 출력하세요.',langs:['python','c','cpp','java'],expected:'3\n6\n9'},
+{title:'018 · 문자열 길이',desc:'Formwheel의 글자 수를 출력하세요.',langs:['python','c','cpp','java'],expected:'9'},
+{title:'019 · 배열의 합',desc:'배열 [2,4,6,8]의 원소 합을 출력하세요.',langs:['python','c','cpp','java'],expected:'20'},
+{title:'020 · 최솟값',desc:'9, 3, 7, 1, 5 중 최솟값을 출력하세요.',langs:['python','c','cpp','java'],expected:'1'},
+{title:'021 · 최댓값',desc:'9, 3, 7, 1, 5 중 최댓값을 출력하세요.',langs:['python','c','cpp','java'],expected:'9'},
+{title:'022 · 거꾸로 출력',desc:'문자열 CODE를 거꾸로 출력하세요.',langs:['python','c','cpp','java'],expected:'EDOC'},
+{title:'023 · 조건문',desc:'점수 85가 60 이상이면 PASS를 출력하세요.',langs:['python','c','cpp','java'],expected:'PASS'},
+{title:'024 · 반복 합계',desc:'1부터 10까지의 합을 출력하세요.',langs:['python','c','cpp','java'],expected:'55'},
+{title:'025 · 피보나치',desc:'피보나치 수열의 첫 7개 항(0부터 시작)을 공백으로 구분해 출력하세요.',langs:['python','c','cpp','java'],expected:'0 1 1 2 3 5 8'},
+{title:'026 · 소수 판별',desc:'숫자 29가 소수라면 PRIME을 출력하세요.',langs:['python','c','cpp','java'],expected:'PRIME'},
+{title:'027 · 온도 변환',desc:'섭씨 0도를 화씨로 변환해 정수로 출력하세요.',langs:['python','c','cpp','java'],expected:'32'},
+{title:'028 · 평균',desc:'10, 20, 30의 평균을 정수로 출력하세요.',langs:['python','c','cpp','java'],expected:'20'}
 ];let current=-1,pyodide=null,loading=null;
 const fwGuide=document.createElement('details');fwGuide.innerHTML='<summary>📘 FW 0.6 문법 안내</summary><p><code>import &lt;basic&gt;</code> · <code>main() int</code> 또는 <code>int main()</code> · <code>[문자열], 변수, \\n;</code> · <code>ask(age);</code> · <code>end 0;</code></p><p>변수와 if/else, 함수는 C 스타일이며 반복은 <code>while (int i = 1, &lt;= 5, i++)</code> 형식입니다. 현재 실행기는 출력·변수·조건·반복·입력의 기본형을 지원합니다. 모든 출력문은 세미콜론(;)으로 끝나야 합니다.</p>';$('lesson').before(fwGuide);fwGuide.hidden=true;
 const key=lang=>'fw-code-v1-'+lang;
