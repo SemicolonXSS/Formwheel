@@ -101,7 +101,8 @@ exercises.java.push(...[["조건문","public class Main {\n    public static voi
 const $=id=>document.getElementById(id);
 const segment=s=>Array.from(s);let sentence='',started=0,ended=false,awaitingEnter=false,timer=null,enterCount=0,completedRounds=0,totalCorrect=0,totalTyped=0,lastIndex=-1,composition=false,chosenGeneral='';
 const storageKey='fw-typing-lab-best-v1';
-function config(){const m=$('mode').value;return (m==='general'?'general-'+$('lang').value+'-'+$('level').value:m+'-'+(m==='custom'?'own':$('snippet').value))+'-'+$('duration').value}
+function customTextKey(value){let h1=2166136261,h2=2246822519;for(let i=0;i<value.length;i++){const c=value.charCodeAt(i);h1=Math.imul(h1^c,16777619);h2=Math.imul(h2^c,3266489917)}return value.length.toString(36)+'-'+(h1>>>0).toString(36)+'-'+(h2>>>0).toString(36)}
+function config(){const m=$('mode').value;return (m==='general'?'general-'+$('lang').value+'-'+$('level').value:m+'-'+(m==='custom'?'own-'+customTextKey($('customText').value):$('snippet').value))+'-'+$('duration').value}
 function bestData(){try{const data=JSON.parse(localStorage.getItem(storageKey)||'{}');return data&&typeof data==='object'&&!Array.isArray(data)?data:{}}catch(_){return {}}}
 function showBest(){const v=bestData()[config()];const valid=v&&typeof v==='object'&&Number.isFinite(v.cpm)&&v.cpm>=0&&Number.isFinite(v.accuracy)&&v.accuracy>=0&&v.accuracy<=100;$('best').textContent=valid?'🏆 이 설정의 최고 기록: '+v.cpm+'타/분 · 정확도 '+v.accuracy+'%':'🏆 이 설정의 최고 기록은 아직 없어요.'}
 function populate(){const m=$('mode').value,standard=m==='general',custom=m==='custom';
