@@ -28,7 +28,7 @@ function currentResult(){
 const explicit=document.querySelector('[data-fw-share-result]');
 const rawValue=explicit?.getAttribute('data-fw-share-result')||((location.pathname.toLowerCase().includes('clicker')||location.hostname.toLowerCase().includes('formwheel_clicker'))?document.getElementById('score')?.textContent:'')||'';
 const value=String(rawValue).trim().slice(0,35);
-return value&&/^[\\p{L}\\p{N}.,+%: /_-]+$/u.test(value)?value:'';
+return value&&/^[\p{L}\p{N}.,+%: /_-]+$/u.test(value)?value:'';
 }
 function refreshResult(){result=manualResult===null?currentResult():manualResult;$('.tag').textContent=result?'MY RESULT · '+result:'PLAY · CHALLENGE · SHARE'}
 refreshResult();
