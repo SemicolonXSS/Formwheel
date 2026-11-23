@@ -49,7 +49,9 @@ async function publishUniqueTotal() {
   }
   let actual = 0;
   visitorSnapshot.forEach(child => {
-    if (child.val() && typeof child.val() === "object") actual++;
+    const record = child.val();
+    // Arrays are malformed visitor records and must not increase the total.
+    if (record && typeof record === "object" && !Array.isArray(record)) actual++;
   });
   if (!Number.isSafeInteger(actual) || actual < 1) throw new Error("Invalid unique visitor count.");
   const ref = db.ref(root + "/publicVisitorCounts/total");
