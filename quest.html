@@ -10,19 +10,22 @@
 const choices=[["wheel","🎡","Wheel","https://semicolonxss.github.io/Formwheel_Wheel/"],["quiz","❓","Quiz","https://semicolonxss.github.io/Formwheel_Quiz/"],["battle","⚔️","Battle","https://semicolonxss.github.io/Formwheel_Battle/"],["spy","🕵️","Spy","https://semicolonxss.github.io/Formwheel_Spy/"],["reflex","⚡","Reflex","https://semicolonxss.github.io/Formwheel_Reflex/"],["cook","🍳","Cook","https://semicolonxss.github.io/Formwheel_Cook/"],["clicker","👆","Clicker","https://semicolonxss.github.io/Formwheel_Clicker/"],["decode","🔎","Decode","https://semicolonxss.github.io/Formwheel_Decode/"],["check","✅","Check","https://semicolonxss.github.io/Formwheel_Check/"],["form","📝","Form","https://semicolonxss.github.io/Formwheel_Form/"],["time","⏳","Time","https://semicolonxss.github.io/Formwheel_Time/"],["territory","🗺️","Territory","https://semicolonxss.github.io/Formwheel_Territory/"]];
 const el=id=>document.getElementById(id);
 const today=()=>new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Seoul",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
-const load=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key)||"null")||fallback}catch{return fallback}};
+let storageFailed=false;
+const object=value=>value&&typeof value==='object'&&!Array.isArray(value)?value:{};
+const load=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key)||"null")||fallback}catch{storageFailed=true;return fallback}};
+const saveLocal=(key,value)=>{try{localStorage.setItem(key,JSON.stringify(value));return true}catch{storageFailed=true;return false}};
 function counts(){const a=load("fw:hub:home:v1",{}).visits||{};return Object.fromEntries(Object.entries(a).map(([k,v])=>[k,Math.max(0,Number(v?.count)||0)]))}
 function selection(day){let h=2166136261;for(const c of day)h=Math.imul(h^c.charCodeAt(0),16777619)>>>0;const pool=[...choices];for(let i=pool.length-1;i>0;i--){h=(Math.imul(h,1664525)+1013904223)>>>0;const j=h%(i+1);[pool[i],pool[j]]=[pool[j],pool[i]]}return pool.slice(0,3)}
 const key="fw:quest:daily:v1",historyKey="fw:quest:history:v1";let record=null;
 function render(){
- const day=today(),list=selection(day);if(!record||record.day!==day){record={day,baseline:counts()};localStorage.setItem(key,JSON.stringify(record))}
+ const day=today(),list=selection(day);if(!record||record.day!==day){record={day,baseline:counts()};saveLocal(key,record)}
  const current=counts(),done=list.filter(([id])=>(current[id]||0)>(record.baseline[id]||0)).length;
  el("day").textContent=day;el("score").textContent=done+" / 3 완료";el("fill").style.width=(done/3*100)+"%";el("reward").textContent="오늘의 탐험 도장: "+done+"개";const grid=el("tasks");grid.replaceChildren();
  for(const [id,emoji,name,url] of list){const completed=(current[id]||0)>(record.baseline[id]||0);const card=document.createElement("article");card.className="task"+(completed?" done":"");const ico=document.createElement("div");ico.className="emoji";ico.textContent=emoji;const title=document.createElement("h3");title.textContent=name+" 탐험";const state=document.createElement("p");state.className="muted";state.textContent=completed?"✓ 오늘 방문 기록 확인":"Hub에서 "+name+" 프로젝트를 열어보세요.";const link=document.createElement("a");link.className="button";link.href="./#projects";link.textContent=completed?"다시 탐험하기 →":"Hub에서 찾기 →";card.append(ico,title,state,link);grid.append(card)}
- const history=load(historyKey,{});history[day]=Math.max(history[day]||0,done);const keys=Object.keys(history).sort().slice(-14);const trimmed=Object.fromEntries(keys.map(k=>[k,history[k]]));localStorage.setItem(historyKey,JSON.stringify(trimmed));el("history").textContent=keys.length?keys.reverse().map(d=>d+" · "+trimmed[d]+"/3").join("   |   "):"아직 기록이 없습니다.";
- el("status").textContent=done===3?"🎉 오늘의 탐험 미션을 모두 완료했어요!":"진행도를 갱신하려면 이 페이지로 돌아오세요. 미션은 처음 열었을 때의 방문 수를 기준으로 계산합니다.";
+ const history=object(load(historyKey,{}));history[day]=Math.max(history[day]||0,done);const keys=Object.keys(history).sort().slice(-14);const trimmed=Object.fromEntries(keys.map(k=>[k,history[k]]));saveLocal(historyKey,trimmed);el("history").textContent=keys.length?keys.reverse().map(d=>d+" · "+trimmed[d]+"/3").join("   |   "):"아직 기록이 없습니다.";
+ el("status").textContent=storageFailed?"브라우저에 기록을 저장할 수 없어 이번 화면에서만 진행도를 표시합니다. 저장소 설정을 확인해 주세요.":done===3?"🎉 오늘의 탐험 미션을 모두 완료했어요!":"진행도를 갱신하려면 이 페이지로 돌아오세요. 미션은 처음 열었을 때의 방문 수를 기준으로 계산합니다.";
 }
-record=load(key,null);render();document.addEventListener("visibilitychange",()=>{if(!document.hidden)render()});window.addEventListener("pageshow",render);setInterval(()=>{if(today()!==record.day)render()},60000);
+record=load(key,null);if(record&&(!record.baseline||typeof record.baseline!=='object'||Array.isArray(record.baseline)))record=null;render();document.addEventListener("visibilitychange",()=>{if(!document.hidden)render()});window.addEventListener("pageshow",render);setInterval(()=>{if(today()!==record.day)render()},60000);
 })();
 </script><script type="module">
 import {initializeApp,getApps} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
