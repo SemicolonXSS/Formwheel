@@ -39,4 +39,4 @@
   <url>
     <loc>https://semicolonxss.github.io/Formwheel/optical-chaos.html</loc>
   </url>
-</urlset>
+  <url>\n    <loc>https://semicolonxss.github.io/Formwheel/promotion.html</loc>\n  </url>\n  <url>\n    <loc>https://semicolonxss.github.io/Formwheel/play-polyrhythm.html</loc>\n  </url>\n</urlset>
