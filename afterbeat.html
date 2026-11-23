@@ -271,7 +271,7 @@ async function startGame(practice=false){
   const [,bpm,,,bars]=tracks[index];
   const notes=practice?practiceNotes():chart(index,level),bus=audio.createGain();
   bus.gain.value=.55;bus.connect(audio.destination);
-  run={index,notes,bus,practice,duration:(practice?26:bars*4)*60/bpm,lessonIndex:0,step:0,start:audio.currentTime+1.55,offset:Number($("offset").value)/1000,
+  run={index,notes,bus,practice,duration:practice?Math.max(...notes.map(note=>note.end))+2:bars*4*60/bpm,lessonIndex:0,step:0,start:audio.currentTime+1.55,offset:Number($("offset").value)/1000,
    window:practice ? .24 : windows[level],active:Array(4).fill(null),cursor:[0,0,0,0],firstVisible:0,
    lanes:keys.map((_,lane)=>notes.filter(note=>note.lane===lane)),
    score:0,combo:0,best:0,life:maxLife,counts:{PERFECT:0,GOOD:0,MISS:0}};
