@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#17142b">
+<title>Formwheel 홍보 엔진 | 게임 공유 · 도전 카드 · QR</title>
+<meta name="description" content="Formwheel 게임별 도전 링크, 기록 공유 카드, QR코드를 만드는 무료 홍보 센터.">
+<link rel="canonical" href="https://semicolonxss.github.io/Formwheel/promotion.html">
+<link rel="icon" href="./assets/formwheel-favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Formwheel 홍보 엔진 · 함께 도전해요!">
+<meta property="og:description" content="게임을 선택해 친구에게 도전 링크를 보내보세요.">
+<meta property="og:image" content="https://semicolonxss.github.io/Formwheel/og-image.png">
+<style>
+:root{font-family:system-ui,-apple-system,sans-serif;color-scheme:dark;background:#121024;color:#f7f5ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#35245c 0,#121024 60%);min-height:100vh}
+main{max-width:1050px;margin:auto;padding:24px 16px 72px}a{color:#cbb6ff}header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:30px}
+header a{font-weight:800;text-decoration:none}.eyebrow{letter-spacing:.14em;font-size:.76rem;color:#bda5ff;font-weight:800}
+h1{font-size:clamp(2rem,6vw,3.8rem);letter-spacing:-.06em;margin:8px 0}h2{margin:0 0 15px;font-size:1.25rem}p{color:#cfc8e4;line-height:1.6}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;margin-top:26px}
+.panel{background:#201a38;border:1px solid #51446d;border-radius:22px;padding:23px;min-width:0;box-shadow:0 12px 45px #0b081944}
+label{display:block;font-weight:750;margin:14px 0 7px}input,select{width:100%;border:1px solid #70618f;border-radius:12px;padding:12px;background:#110e21;color:white;font:inherit;min-height:47px}
+input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #fbcf78;outline-offset:2px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 4px}
+button,.btn{border:0;border-radius:12px;padding:12px 15px;min-height:46px;font:inherit;font-weight:800;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+button{background:#cbb3ff;color:#201232}.secondary{background:#3c315a;color:white}.btn{background:#ffc773;color:#23192e}
+#preview{width:100%;border-radius:18px;background:#181329;display:block;aspect-ratio:1.6;object-fit:contain}
+#qr{background:white;border-radius:12px;padding:14px;display:inline-flex;align-items:center;justify-content:center;min-height:148px;min-width:148px}
+#qr img,#qr canvas{max-width:180px;max-height:180px}#qr-status{font-size:.85rem}
+#link-output{overflow-wrap:anywhere;font-size:.88rem;color:#e0d3ff}
+.note{font-size:.85rem;color:#b9afcc}.wide{grid-column:1/-1}.info{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+#notice{min-height:1.5em;color:#ffe0a1;font-weight:650}
+@media(max-width:720px){.layout{grid-template-columns:1fr}.panel{padding:18px}}
+</style>
+</head>
+<body>
+<main>
+<header><a href="./index.html">🎡 Formwheel</a><a href="./share.html">기존 공유 페이지 ↗</a></header>
+<div class="eyebrow">FORMWHEEL · PROMOTION ENGINE 1.0</div>
+<h1>재미있었다면, 함께 도전! 🚀</h1>
+<p>게임을 선택하고 친구에게 보낼 도전 링크, 점수 이미지, QR코드를 만들어 보세요. 공유는 완전히 선택 사항이에요.</p>
+<div class="layout">
+<section class="panel" aria-labelledby="make-heading">
+<h2 id="make-heading">🎮 도전 만들기</h2>
+<label for="game">공유할 게임</label>
+<select id="game">
+<option value="">Formwheel 전체 허브</option>
+<option value="polyrhythm.html">Polyrhythm</option>
+<option value="afterbeat.html">Afterbeat</option>
+<option value="reflex.html">Reflex</option>
+<option value="clicker.html">Clicker</option>
+</select>
+<label for="score">내 기록 (선택 · 직접 입력)</label>
+<input id="score" maxlength="24" placeholder="예: 16750 또는 LV 7" autocomplete="off">
+<label for="message">친구에게 보낼 말 (선택)</label>
+<input id="message" maxlength="75" placeholder="이 기록 넘을 수 있어?">
+<p class="note">점수는 서버에서 검증하지 않으며, 게임 기록을 자동으로 읽거나 저장하지 않아요.</p>
+<div class="actions">
+<button id="copy" type="button">🔗 링크 복사</button>
+<button id="native" class="secondary" type="button">📤 공유하기</button>
+<a id="play" class="btn" href="./index.html">▶ 게임 열기</a>
+</div>
+<p id="link-output"></p>
+<p id="notice" role="status" aria-live="polite"></p>
+</section>
+<section class="panel" aria-labelledby="card-heading">
+<h2 id="card-heading">🏆 기록 공유 카드</h2>
+<canvas id="preview" width="960" height="600" aria-label="공유 카드 미리보기"></canvas>
+<div class="actions"><button id="download" type="button">🖼️ PNG 이미지 저장</button></div>
+<p class="note">직접 입력한 기록이 이미지에 표시됩니다. 이미지에 게임 주소도 함께 들어갑니다.</p>
+</section>
+<section class="panel wide info" aria-labelledby="qr-heading">
+<div><h2 id="qr-heading">📱 게임별 QR코드</h2><p>QR을 인쇄하거나 화면에 보여주면 해당 게임으로 이동할 수 있어요.</p><div class="actions"><button id="qrdownload" type="button">QR 이미지 저장</button></div><p id="qr-status" role="status"></p></div>
+<div id="qr" aria-label="선택한 게임의 QR코드"></div>
+</section>
+<section class="panel wide" aria-labelledby="privacy-heading">
+<h2 id="privacy-heading">🔒 개인정보 · 작동 방식</h2>
+<p>이 페이지는 Firebase 로그인이나 데이터베이스 쓰기를 사용하지 않아요. 입력한 점수와 문구는 이 브라우저에서만 카드 제작에 사용됩니다. 공유 주소에는 유입 경로 구분용 <code>utm_source=formwheel_promotion</code>이 포함되지만, 이 페이지 자체에서 방문 통계를 수집하거나 실제 기록을 검증하지는 않습니다.</p>
+</section>
+</div>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+<script>
+(function(){
+'use strict';
+const base=new URL('./',location.href);
+const game=document.getElementById('game'),score=document.getElementById('score'),message=document.getElementById('message');
+const canvas=document.getElementById('preview'),ctx=canvas.getContext('2d');
+const qr=document.getElementById('qr'),status=document.getElementById('notice'),qrStatus=document.getElementById('qr-status');
+const names={'':'FORMWHEEL','polyrhythm.html':'POLYRHYTHM','afterbeat.html':'AFTERBEAT','reflex.html':'REFLEX','clicker.html':'CLICKER'};
+let currentUrl='';
+function url(){const u=new URL(game.value||'index.html',base);u.searchParams.set('utm_source','formwheel_promotion');u.searchParams.set('utm_medium','share');return u.href;}
+function draw(){
+const title=names[game.value]||'FORMWHEEL';currentUrl=url();
+document.getElementById('play').href=currentUrl;
+document.getElementById('link-output').textContent=currentUrl;
+const bg=ctx.createLinearGradient(0,0,960,600);bg.addColorStop(0,'#5d38b1');bg.addColorStop(1,'#171127');
+ctx.fillStyle=bg;ctx.fillRect(0,0,960,600);ctx.fillStyle='#ffcf87';ctx.font='bold 28px system-ui';ctx.fillText('🎡 FORMWHEEL · CHALLENGE',48,65);
+ctx.fillStyle='#ffffff';ctx.font='bold 66px system-ui';ctx.fillText(title,48,175,855);
+ctx.font='bold 96px system-ui';const value=score.value.trim()||'PLAY & CHALLENGE';ctx.fillText(value,48,330,856);
+ctx.fillStyle='#e1d1ff';ctx.font='32px system-ui';ctx.fillText(message.value.trim()||'친구와 함께 도전해 보세요!',48,405,840);
+ctx.fillStyle='#ffcf87';ctx.font='bold 28px system-ui';ctx.fillText('semicolonxss.github.io/Formwheel/',48,533,850);
+updateQr();
+}
+function updateQr(){
+qr.replaceChildren();qrStatus.textContent='';
+if(typeof QRCode==='undefined'){qrStatus.textContent='QR 기능 라이브러리를 불러오지 못했어요. 링크 복사는 정상 이용할 수 있어요.';return;}
+try{new QRCode(qr,{text:currentUrl,width:172,height:172,colorDark:'#161128',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M});}
+catch(e){qrStatus.textContent='QR코드를 생성하지 못했어요.';}
+}
+function shareText(){const n=names[game.value]||'Formwheel';const s=score.value.trim();return '🎮 '+n+(s?' · 내 기록 '+s:'')+'\n'+(message.value.trim()||'이 게임에 도전해 봐!')+'\n'+currentUrl;}
+async function copy(){try{await navigator.clipboard.writeText(shareText());status.textContent='공유 문구와 링크를 복사했어요!';}catch(e){status.textContent='자동 복사가 어려워요. 아래 주소를 길게 눌러 복사해 주세요.';}}
+function saveBlob(blob,name){if(!blob){status.textContent='이미지 저장에 실패했어요.';return;}const a=document.createElement('a'),u=URL.createObjectURL(blob);a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);}
+game.addEventListener('change',draw);score.addEventListener('input',draw);message.addEventListener('input',draw);
+document.getElementById('copy').addEventListener('click',copy);
+document.getElementById('native').addEventListener('click',async()=>{if(navigator.share){try{await navigator.share({title:'Formwheel 도전',text:shareText(),url:currentUrl});}catch(e){if(e.name!=='AbortError')status.textContent='공유할 수 없어요. 링크 복사를 사용해 주세요.';}}else await copy();});
+document.getElementById('download').addEventListener('click',()=>canvas.toBlob(b=>saveBlob(b,'formwheel-challenge.png'),'image/png'));
+document.getElementById('qrdownload').addEventListener('click',()=>{const c=qr.querySelector('canvas');if(c){c.toBlob(b=>saveBlob(b,'formwheel-qr.png'),'image/png');return;}const img=qr.querySelector('img');if(img){const a=document.createElement('a');a.href=img.src;a.download='formwheel-qr.png';a.click();}else qrStatus.textContent='QR코드가 아직 준비되지 않았어요.';});
+window.addEventListener('load',draw);draw();
+})();
+</script>
+</body>
+</html>
