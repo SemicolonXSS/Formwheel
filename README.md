@@ -263,3 +263,4 @@ PC와 모바일 브라우저를 지원하도록 개발하고 있습니다. 다�
 **🎡 Formwheel — Make · Join · Play · Explore**
 
 [**Hub로 돌아가기 →**](https://semicolonxss.github.io/Formwheel/)
+\n## 🌍 Play & Share Polyrhythm\n\n- [🎵 Play Polyrhythm — English landing page](https://semicolonxss.github.io/Formwheel/play-polyrhythm.html)\n- [🌀 Polyrhythm — full rhythm game](https://semicolonxss.github.io/Formwheel/polyrhythm.html)\n- [🚀 Promotion Engine — challenge links, image cards & QR](https://semicolonxss.github.io/Formwheel/promotion.html)\n\n
