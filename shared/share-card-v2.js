@@ -23,16 +23,16 @@ button:focus-visible,a:focus-visible{outline:3px solid #ffd67c;outline-offset:3p
 const $=s=>sh.querySelector(s),launch=$('.launch'),back=$('.backdrop'),close=$('.close'),status=$('.status');
 const raw=(document.querySelector('h1')?.textContent||document.title||'Formwheel Game').trim().replace(/\s+/g,' ').slice(0,60);
 const game=raw||'Formwheel Game';$('.game').textContent=game;
-let result='';
+let result='';let manualResult=null;
 function currentResult(){
 const explicit=document.querySelector('[data-fw-share-result]');
 const rawValue=explicit?.getAttribute('data-fw-share-result')||((location.pathname.toLowerCase().includes('clicker')||location.hostname.toLowerCase().includes('formwheel_clicker'))?document.getElementById('score')?.textContent:'')||'';
 const value=String(rawValue).trim().slice(0,35);
 return value&&/^[\\p{L}\\p{N}.,+%: /_-]+$/u.test(value)?value:'';
 }
-function refreshResult(){result=currentResult();$('.tag').textContent=result?'MY RESULT · '+result:'PLAY · CHALLENGE · SHARE'}
+function refreshResult(){result=manualResult===null?currentResult():manualResult;$('.tag').textContent=result?'MY RESULT · '+result:'PLAY · CHALLENGE · SHARE'}
 refreshResult();
-window.FormwheelShare={setResult(value){const v=String(value??'').trim().slice(0,35);result=v;$('.tag').textContent=v?'MY RESULT · '+v:'PLAY · CHALLENGE · SHARE'},open(){show()}};
+window.FormwheelShare={setResult(value){const v=String(value??'').trim().slice(0,35);manualResult=v;result=v;$('.tag').textContent=v?'MY RESULT · '+v:'PLAY · CHALLENGE · SHARE'},open(){show()}};
 
 const url=new URL(location.href);url.hash='';url.search='';url.searchParams.set('utm_source','game_share');url.searchParams.set('utm_medium','friend');const link=url.href;
 const landing=new URL('https://semicolonxss.github.io/Formwheel/promotion.html');landing.searchParams.set('game_url',location.origin+location.pathname);landing.searchParams.set('game_name',game);$('#custom').href=landing.href;
