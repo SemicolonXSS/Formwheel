@@ -24,7 +24,7 @@ const server=http.createServer((req,res)=>{
 });
 (async()=>{
  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
- const browser=await chromium.launch({headless:true});
+ const browser=await chromium.launch({headless:true,...(process.env.FORMWHEEL_CHROMIUM_PATH?{executablePath:process.env.FORMWHEEL_CHROMIUM_PATH}:{})});
  try{
   const url='http://127.0.0.1:'+server.address().port+'/Formwheel/index.html';
   async function page(options={},blocked=false){

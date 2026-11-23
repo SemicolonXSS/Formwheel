@@ -249,10 +249,10 @@ body.fw-beta-simple > :not(#fw-beta-switch):not(#fw-beta-simple-view):not(#fw-ha
 @media(max-width:320px){#fw-beta-simple-view .fw-b-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){#fw-beta-simple-view .fw-b-item:active{transform:none}}
 </style>
-<script src="./shared/settings-state.js?v=20261108-settings3"></script></head>
+<script src="./shared/settings-state.js?v=20261108-settings3"></script><style id="fw-skip-link-style">.fw-skip-link{position:fixed;inset-inline-start:12px;top:12px;z-index:2147483647;padding:12px 16px;border:2px solid #24205a;border-radius:9px;background:#fff;color:#24205a;font:700 16px/1.4 system-ui,sans-serif;text-decoration:none;transform:translateY(-220%)}.fw-skip-link:focus{transform:none;outline:3px solid #ff9a21;outline-offset:2px}</style></head>
 
 
-<body>
+<body><div role="navigation" aria-label="본문 이동"><a class="fw-skip-link" href="#fw-main-content">본문으로 바로가기</a></div>
 
 
 <!-- =========================
@@ -360,7 +360,7 @@ header .fw-profile-trigger{margin-left:0}
 
 <!-- Compact game discovery: short, optional choices above the full catalogue -->
 <section id="fw-quick-picks" aria-labelledby="fw-quick-title">
-  <div class="fw-picks-heading"><strong id="fw-quick-title">🎮 지금 뭐 하지?</strong><button id="fw-picks-refresh" type="button" aria-label="다른 게임 추천 보기">🔄 다른 추천</button></div>
+  <div class="fw-picks-heading"><strong id="fw-quick-title">🎮 지금 뭐 하지?</strong><button id="fw-picks-refresh" type="button">🔄 다른 추천</button></div>
   <div id="fw-picks-list" class="fw-picks-list">
     <a href="https://semicolonxss.github.io/Formwheel_Maze/">🌀 Maze <small>미로 탈출</small></a>
     <a href="https://semicolonxss.github.io/Formwheel_Reflex/">⚡ Reflex <small>반응속도 도전</small></a>
@@ -371,7 +371,7 @@ header .fw-profile-trigger{margin-left:0}
 <!-- Compact utility links above projects; detailed feature panels remain below. -->
 <nav id="fw-hub-shortcuts" aria-label="빠른 참여 및 이벤트">
   <a href="./playtest.html">🧪 플레이테스터 모집</a>
-  <a href="./playtest.html#find10-title" aria-label="10초 챌린지에 참여하기" style="display:inline-flex;align-items:center;gap:4px;padding:5px 9px;font-size:12px;line-height:1.3;border-radius:999px;white-space:nowrap;background:#ebe8ff;color:#3b318a;border:1px solid #d7d0ff;text-decoration:none">⏱️ 10초 챌린지</a>
+  <a href="./playtest.html#find10-title" style="display:inline-flex;align-items:center;gap:4px;padding:5px 9px;font-size:12px;line-height:1.3;border-radius:999px;white-space:nowrap;background:#ebe8ff;color:#3b318a;border:1px solid #d7d0ff;text-decoration:none">⏱️ 10초 챌린지</a>
   <a href="./party.html">👥 파티</a>
   <a href="./festival.html">🎮 페스티벌</a>
 </nav>
@@ -492,9 +492,9 @@ header .fw-profile-trigger{margin-left:0}
 
 
 <!-- LOOP music sandbox: featured hub card -->
-<a href="./loop.html" aria-label="LOOP 순환형 음악 샌드박스 열기" style="display:flex;align-items:center;gap:14px;margin:12px 0 18px;padding:17px 20px;border:1px solid #bcb1f4;border-radius:16px;background:linear-gradient(115deg,#eeeaff,#f8f7ff);color:#342568;text-decoration:none;box-shadow:0 6px 20px #43358c15"><span aria-hidden="true" style="font-size:32px">🔁</span><span style="flex:1"><strong style="display:block;font-size:18px">LOOP · 순환 음악 샌드박스</strong><small style="display:block;margin-top:4px;color:#655987">여러 궤도의 소리를 조합해 나만의 음악 만들기</small></span><span aria-hidden="true">→</span></a>
-<a href="./code.html" style="display:flex;align-items:center;gap:12px;max-width:920px;margin:12px auto;padding:16px 18px;border:1px solid #b5a9ef;border-radius:16px;background:#f4f0ff;color:#33265b;text-decoration:none;box-shadow:0 4px 14px #46358b14" aria-label="Formwheel Code 코딩 학습 및 편집기 열기"><span aria-hidden="true" style="font-size:32px">💻</span><span style="flex:1"><strong style="display:block;font-size:18px">Formwheel Code · 코딩 IDE & 문제 풀이</strong><small style="display:block;margin-top:4px;color:#655987">HTML·CSS·JavaScript·Python·C·C++·Java 편집과 코딩 문제 도전</small></span><span aria-hidden="true">→</span></a>
-<a href="./polyrhythm.html" style="display:flex;align-items:center;gap:12px;max-width:920px;margin:12px auto;padding:16px 18px;border:1px solid #b5a9ef;border-radius:16px;background:#f4f0ff;color:#33265b;text-decoration:none;box-shadow:0 4px 14px #46358b14" aria-label="Polyrhythm 게임 플레이"><span aria-hidden="true" style="font-size:32px">🌀</span><span style="flex:1"><strong style="display:block;font-size:18px">Polyrhythm</strong><small style="display:block;margin-top:4px;color:#655987">회전하는 아이콘과 이동하는 네모! 3바퀴마다 바뀌는 리듬에 맞춰 터치하세요.</small></span><span aria-hidden="true">→</span></a>
+<a href="./loop.html" style="display:flex;align-items:center;gap:14px;margin:12px 0 18px;padding:17px 20px;border:1px solid #bcb1f4;border-radius:16px;background:linear-gradient(115deg,#eeeaff,#f8f7ff);color:#342568;text-decoration:none;box-shadow:0 6px 20px #43358c15"><span aria-hidden="true" style="font-size:32px">🔁</span><span style="flex:1"><strong style="display:block;font-size:18px">LOOP · 순환 음악 샌드박스</strong><small style="display:block;margin-top:4px;color:#655987">여러 궤도의 소리를 조합해 나만의 음악 만들기</small></span><span aria-hidden="true">→</span></a>
+<a href="./code.html" style="display:flex;align-items:center;gap:12px;max-width:920px;margin:12px auto;padding:16px 18px;border:1px solid #b5a9ef;border-radius:16px;background:#f4f0ff;color:#33265b;text-decoration:none;box-shadow:0 4px 14px #46358b14"><span aria-hidden="true" style="font-size:32px">💻</span><span style="flex:1"><strong style="display:block;font-size:18px">Formwheel Code · 코딩 IDE & 문제 풀이</strong><small style="display:block;margin-top:4px;color:#655987">HTML·CSS·JavaScript·Python·C·C++·Java 편집과 코딩 문제 도전</small></span><span aria-hidden="true">→</span></a>
+<a href="./polyrhythm.html" style="display:flex;align-items:center;gap:12px;max-width:920px;margin:12px auto;padding:16px 18px;border:1px solid #b5a9ef;border-radius:16px;background:#f4f0ff;color:#33265b;text-decoration:none;box-shadow:0 4px 14px #46358b14"><span aria-hidden="true" style="font-size:32px">🌀</span><span style="flex:1"><strong style="display:block;font-size:18px">Polyrhythm</strong><small style="display:block;margin-top:4px;color:#655987">회전하는 아이콘과 이동하는 네모! 3바퀴마다 바뀌는 리듬에 맞춰 터치하세요.</small></span><span aria-hidden="true">→</span></a>
 <!-- CARDS -->
 
 <div id="cards" class="cards"></div>
@@ -516,7 +516,7 @@ header .fw-profile-trigger{margin-left:0}
     <div class="featureIcon" aria-hidden="true">🔎</div>
     <strong style="font-size:14px;color:#282f46;margin-bottom:7px">숨겨진 비밀...?</strong>
     <span style="display:block;margin-bottom:8px">Formwheel 곳곳에 누군가 남긴 흔적이 있습니다.</span>
-    <a href="https://semicolonxss.github.io/Formwheel_AQS/" style="color:#2563eb;text-decoration:underline;text-underline-offset:3px;font-size:13px;font-weight:650">비밀을 찾아보시겠어요...? →</a><span style="display:block;margin-top:8px;font-size:12px"><a href="https://semicolonxss.github.io/Formwheel_LEEHWMROF/mirror-hub.html" style="color:#6c49a8;text-decoration:underline;text-underline-offset:3px" aria-label="수상한 흔적을 조사하기">희미한 흔적을 조사한다 ···</a></span>
+    <a href="https://semicolonxss.github.io/Formwheel_AQS/" style="color:#2563eb;text-decoration:underline;text-underline-offset:3px;font-size:13px;font-weight:650">비밀을 찾아보시겠어요...? →</a><span style="display:block;margin-top:8px;font-size:12px"><a href="https://semicolonxss.github.io/Formwheel_LEEHWMROF/mirror-hub.html" style="color:#6c49a8;text-decoration:underline;text-underline-offset:3px">희미한 흔적을 조사한다 ···</a></span>
   </div>
 </section>
 
@@ -543,9 +543,9 @@ header .fw-profile-trigger{margin-left:0}
 <section id="fw-road300" aria-label="처음 방문자를 위한 빠른 시작">
   <strong>🚀 처음 왔다면? 10초 안에 시작해요!</strong>
   <div class="fw-road300-links">
-    <a href="https://semicolonxss.github.io/Formwheel_Reflex/" aria-label="Reflex 반응속도 게임 바로 플레이">⚡ 10초 도전 <small>Reflex</small></a>
-    <a href="https://semicolonxss.github.io/Formwheel_Cook/" aria-label="Cook 요리 게임 바로 플레이">🍳 자유롭게 요리 <small>Cook</small></a>
-    <a href="./share.html" aria-label="Formwheel 친구에게 공유하기">💌 친구에게 공유</a>
+    <a href="https://semicolonxss.github.io/Formwheel_Reflex/">⚡ 10초 도전 <small>Reflex</small></a>
+    <a href="https://semicolonxss.github.io/Formwheel_Cook/">🍳 자유롭게 요리 <small>Cook</small></a>
+    <a href="./share.html">💌 친구에게 공유</a>
   </div>
 </section>
 <section id="fw-hub-next" aria-label="HUB NEXT 개인화" style="max-width:900px;margin:6px auto;padding:8px 11px;border:1px solid #deddf0;border-radius:12px;background:#fff;color:#23243b;font-size:12px">
@@ -596,10 +596,10 @@ header .fw-profile-trigger{margin-left:0}
 <h3 style="margin:0 0 7px">💡 Formwheel 개선점 제출</h3>
 <p style="font-size:13px;color:#60677c;margin:0 0 12px">불편했던 점이나 새로운 아이디어를 알려주세요.</p>
 <a href="./feedback.html" style="display:inline-block;padding:10px 14px;background:#3439bd;color:white;border-radius:10px;text-decoration:none;font-weight:700">개선점 제출하기 →</a>
-<p style="font-size:12px;text-align:center;margin:14px 0 0"><a href="./feedback.html#admin" style="color:#777f93;text-decoration:underline">개선점 확인</a></p>
+<p style="font-size:12px;text-align:center;margin:14px 0 0"><a href="./feedback.html#admin" style="color:#626773;text-decoration:underline">개선점 확인</a></p>
 </section>
 <p style="text-align:center"><a href="./more.html">Wiki · ID 센터 · 기타 안내 →</a></p>
-<details style="margin:8px auto;max-width:240px;font-size:10px;opacity:.55"><summary style="cursor:pointer">· · ·</summary><span style="letter-spacing:.07em">FORM-TRACE</span></details>
+<details style="margin:8px auto;max-width:240px;font-size:10px"><summary style="cursor:pointer">· · ·</summary><span style="letter-spacing:.07em">FORM-TRACE</span></details>
 <p style="text-align:center;margin:16px 0 10px"><a href="./badge-admin.html" style="font-size:12px;color:#6054ab;text-decoration:underline;text-underline-offset:3px">🏅 배지 통계 · 관리자</a></p>
 <div class="footerLogo">
   FormWheel
@@ -615,7 +615,7 @@ header .fw-profile-trigger{margin-left:0}
 <!-- Tiny optional Easter egg: SECOL LAB. No Firebase, tracking, or Hub state changes. -->
 <div style="margin-top:2px;text-align:center">
   <a href="./secol-lab.html" title="비밀 연구소" aria-label="세콜의 비밀 연구소 입장"
-     style="display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;font-size:10px;line-height:1;color:#b5a2d5;text-decoration:none;opacity:.65"
+     style="display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;font-size:10px;line-height:1;color:#665080;text-decoration:none"
      onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.65'"
      onfocus="this.style.opacity='1'" onblur="this.style.opacity='.65'">✦</a>
 </div>
@@ -1166,8 +1166,8 @@ function refreshActivity(){const data=window.FormwheelSettings.activity();docume
 document.getElementById('fw21-logout').onclick=async()=>{if(!confirm('Formwheel에서 로그아웃할까요?'))return;try{if(typeof window.FormwheelCore?.logout!=='function')throw Error('auth-not-ready');await window.FormwheelCore.logout();alert('로그아웃 완료');location.href='./index.html';}catch(e){alert('로그아웃을 확인할 수 없습니다. 로그인 연결을 확인한 뒤 다시 시도해 주세요.');}};
 
 })();
-</script><!-- Haunted Night 2026 archived: source kept for next season; no runtime activation. --><script defer src="./assets/edu-hub-beta.js?v=20261030"></script><script defer src="./assets/null-hub-entry.js?v=20261030"></script><script defer src="./assets/secol-hub-tools.js?v=20261030"></script><script defer src="./assets/formwheel-devtools.js?v=20261111-glitch-detector"></script><script defer src="./assets/formwheel-virtual-keyboard.js?v=20261110-fw12"></script><div style="text-align:center;padding:14px"><a href="./hall-of-fame.html" style="display:inline-block;margin:8px;padding:9px 14px;border-radius:12px;background:#36205b;color:#fff;text-decoration:none;font-weight:700">🏆 명예의 전당</a></div><script defer src="./assets/hub-command-palette.js?v=20261108-racefix2"></script>
-<div id="fw-project-rush-entry" style="max-width:940px;margin:18px auto;padding:17px;border:1px solid #8d78df;border-radius:18px;background:linear-gradient(110deg,#27204e,#334c7d);color:#fff;text-align:center"><strong style="font-size:20px">🚀 TRIP 2 1000 · PROJECT RUSH: MEGA CHAOS</strong><p style="margin:9px 0;color:#e4dfff">15개 탐험 미션 · 비밀 퀴즈 · 무료 자유 참여</p><a href="./project-rush.html" style="display:inline-block;background:#efeaff;color:#32265c;padding:11px 18px;border-radius:12px;font-weight:800;text-decoration:none">🎯 이벤트 시작하기</a></div>
+</script><!-- Haunted Night 2026 archived: source kept for next season; no runtime activation. --><script defer src="./assets/edu-hub-beta.js?v=20261030"></script><script defer src="./assets/null-hub-entry.js?v=20261030"></script><script defer src="./assets/secol-hub-tools.js?v=20261030"></script><script defer src="./assets/formwheel-devtools.js?v=20261111-glitch-detector"></script><script defer src="./assets/formwheel-virtual-keyboard.js?v=20261110-fw12"></script><div role="navigation" aria-label="명예의 전당" style="text-align:center;padding:14px"><a href="./hall-of-fame.html" style="display:inline-block;margin:8px;padding:9px 14px;border-radius:12px;background:#36205b;color:#fff;text-decoration:none;font-weight:700">🏆 명예의 전당</a></div><script defer src="./assets/hub-command-palette.js?v=20261108-racefix2"></script>
+<div id="fw-project-rush-entry" role="region" aria-label="PROJECT RUSH 안내" style="max-width:940px;margin:18px auto;padding:17px;border:1px solid #8d78df;border-radius:18px;background:linear-gradient(110deg,#27204e,#334c7d);color:#fff;text-align:center"><strong style="font-size:20px">🚀 TRIP 2 1000 · PROJECT RUSH: MEGA CHAOS</strong><p style="margin:9px 0;color:#e4dfff">15개 탐험 미션 · 비밀 퀴즈 · 무료 자유 참여</p><a href="./project-rush.html" style="display:inline-block;background:#efeaff;color:#32265c;padding:11px 18px;border-radius:12px;font-weight:800;text-decoration:none">🎯 이벤트 시작하기</a></div>
 
 <script>
 /* Hub project search keyboard accessibility; does not change saved preferences. */
