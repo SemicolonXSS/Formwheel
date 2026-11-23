@@ -12,8 +12,8 @@ const games=[
 {name:'LOOP',url:'https://semicolonxss.github.io/Formwheel/loop.html',tag:'음악'},
 {name:'RULETORY',url:'https://semicolonxss.github.io/Formwheel_Ruletory/',tag:'전략'}
 ];
-const utcDay=Math.floor(Date.now()/86400000);
-const daily=games[(utcDay+3)%games.length];
+const kstDay=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+const daily=games[(Number(kstDay.replace(/\\D/g,''))+3)%games.length];
 const style=document.createElement('style');style.textContent=`
 #fw-discovery{max-width:1050px;margin:22px auto;padding:20px;border-radius:22px;background:linear-gradient(135deg,#291b50,#16152c);border:1px solid #7552b0;color:#faf7ff;font:15px/1.55 system-ui,sans-serif;box-sizing:border-box}
 #fw-discovery *{box-sizing:border-box}#fw-discovery h2{color:white;margin:0 0 8px;font-size:22px}#fw-discovery p{color:#d8ccec;margin:5px 0 12px}
@@ -26,7 +26,7 @@ function init(){
 if(document.getElementById('fw-discovery'))return;
 const wrap=document.createElement('section');wrap.id='fw-discovery';wrap.setAttribute('aria-label','오늘의 게임 도전과 추천');
 const h=document.createElement('h2');h.textContent='🏆 오늘의 도전 · '+daily.name;
-const p=document.createElement('p');p.textContent='오늘의 추천 게임은 '+daily.name+'! 친구와 기록을 비교하고 새로운 게임도 발견해 보세요. (매일 UTC 기준 변경)';
+const p=document.createElement('p');p.textContent='오늘의 추천 게임은 '+daily.name+'! 친구와 기록을 비교하고 새로운 게임도 발견해 보세요. (매일 한국 시간 기준 변경)';
 const actions=document.createElement('div');actions.className='fw-discovery-actions';
 const play=document.createElement('a');play.textContent='🎮 오늘의 게임 플레이';play.href=daily.url+(daily.url.includes('?')?'&':'?')+'utm_source=formwheel_daily&utm_medium=discovery';
 const random=document.createElement('button');random.type='button';random.textContent='🎲 랜덤 게임 추천';
