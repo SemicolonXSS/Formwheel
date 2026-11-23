@@ -79,3 +79,21 @@ jobs:
         run: node tests/browser-smoke.cjs
       - name: Check WCAG contrast, names and Sudoku navigation on desktop and mobile
         run: node tests/accessibility-sweep.cjs
+      - name: Check out Tool regression subject
+        uses: actions/checkout@v4
+        with:
+          repository: SemicolonXSS/Formwheel_Tool
+          ref: e8c936367cfe14f65d15af236b596405a335db43
+          path: ecosystem/Formwheel_Tool
+          persist-credentials: false
+      - name: Check out Music regression subject
+        uses: actions/checkout@v4
+        with:
+          repository: SemicolonXSS/Formwheel_Music
+          ref: 0c860fc7bfb82b7d94d78f3a59c6c0c44f4e403f
+          path: ecosystem/Formwheel_Music
+          persist-credentials: false
+      - name: Exercise storage recovery, owned themes and all editor keys
+        env:
+          FW_ECOSYSTEM_ROOT: ${{ github.workspace }}/ecosystem
+        run: node tests/extended-regression.cjs

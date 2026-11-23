@@ -1,0 +1,5180 @@
+{
+  "date": "2026-11-23",
+  "previousAudit": "quality-audit-2026-11-23.json",
+  "summary": {
+    "newOccurrences": 300,
+    "repositories": 21,
+    "byKind": {
+      "axe": 180,
+      "html-validate": 48,
+      "axe-theme": 19,
+      "axe-compact": 12,
+      "browser-interaction": 41
+    },
+    "byRepository": {
+      "Formwheel_Tool": 49,
+      "Formwheel_Form": 9,
+      "Formwheel_Music": 53,
+      "Formwheel_Piano": 20,
+      "Formwheel_Animation": 4,
+      "Formwheel_Check": 10,
+      "Formwheel_Balance": 5,
+      "Formwheel_Edit": 7,
+      "Formwheel_Decode": 16,
+      "Formwheel_Cook": 11,
+      "Formwheel_Maze": 1,
+      "Formwheel_Note": 5,
+      "Formwheel_Quiz": 4,
+      "Formwheel_Story": 1,
+      "Formwheel_Vault": 8,
+      "Formwheel_Vote": 7,
+      "Formwheel_Whiteboard": 3,
+      "Formwheel_Wheel": 28,
+      "Formwheel_AI": 13,
+      "Formwheel_Chat": 13,
+      "Formwheel": 33
+    },
+    "ecosystemStates": 54,
+    "ecosystemViewportChecks": 108,
+    "hubRegressionViewportChecks": 56
+  },
+  "counting": "One repository/file/rule/element occurrence; repeated UI states and themes are deduplicated. Not a count of independent root causes. Existing axe label/select-name failures are not recounted as static label-association failures. Prior Hub findings are excluded; footer nth-child variations are normalized for matching.",
+  "scope": "UI and local browser behavior only. Firebase network requests were blocked. Cached public SDK files were used for ecosystem scans; the Music local-editor regression uses a fail-closed transport fixture. No production data, Rules, saved-data format or deployment changes.",
+  "repositories": [
+    {
+      "repo": "Formwheel",
+      "baseline": "7bfc82911dee866582c59c728ecfe456c9dc3cab",
+      "branch": "codex/formwheel-more-300-fixes-20261123",
+      "occurrences": 33
+    },
+    {
+      "repo": "Formwheel_AI",
+      "baseline": "d401e1976f987880befda04a928bdabb82be6121",
+      "sha": "2b3b0224939fa0c0ad7c7b0b7b58bfe434966fe9",
+      "tree": "c45d81e78dc4e747b85bb4ee646ab4ac00cd4783",
+      "url": "https://github.com/SemicolonXSS/Formwheel_AI/pull/1",
+      "number": 1,
+      "occurrences": 13
+    },
+    {
+      "repo": "Formwheel_Animation",
+      "baseline": "2749e8ab18bf9bf253c03f0945545e322c42d9b7",
+      "sha": "5dc8c5a6978acda0d93f30b75dbcb962dc656cce",
+      "tree": "051612c6220f2d1bdfc17b1be177282e8bc0da59",
+      "url": "https://github.com/SemicolonXSS/Formwheel_Animation/pull/1",
+      "number": 1,
+      "occurrences": 4
+    },
+    {
+      "repo": "Formwheel_Balance",
+      "baseline": "d37d45ab6f6479c5c3733d2d1d35f60594966da9",
+      "sha": "adf826f3ace254ecf2d9b26131ebb2afe37478ce",
+      "tree": "f2b976b2fd052b832897c46751cab83de95e6749",
+      "url": "https://github.com/SemicolonXSS/Formwheel_Balance/pull/1",
+      "number": 1,
+      "occurrences": 5
+    },
+    {
+      "repo": "Formwheel_Chat",
+      "baseline": "252fd295877274ae8652ff4982f1074f22d27504",
+      "sha": "de7f9ed235fe4649e1bb58159456f384315a8eb8",
+      "tree": "a8f9fa59063372a64577a73c3f99e00133fa68b1",
+      "url": "https://github.com/SemicolonXSS/Formwheel_Chat/pull/1",
+      "number": 1,
+      "occurrences": 13
+    },
+    {
+      "repo": "Formwheel_Check",
+      "baseline": "507bfeb4015c9aa793a650979e25d53cf615e543",
+      "sha": "58a6867cd0ee3f306a08fd4705a10073ada519ab",
+      "tree": "0f0a062160a5e24e672e758ae9d1a094f8c1f312",
+      "occurrences": 10,
+      "url": "https://github.com/SemicolonXSS/Formwheel_Check/pull/1",
+      "number": 1
+    },
+    {
+      "repo": "Formwheel_Cook",
+      "baseline": "113cce5dc8d27546e14b573869049028e1f85209",
+      "sha": "3e2cbc0836a6a6c1bf2dd168a9e0170f9a5ad8dc",
+      "tree": "0455a8d809c8cfb4fbdfa2e9803e33535b250fc1",
+      "occurrences": 11,
+      "url": "https://github.com/SemicolonXSS/Formwheel_Cook/pull/1",
+      "number": 1
+    },
+    {
+      "repo": "Formwheel_Decode",
+      "baseline": "8e3a858f8f9b8eabc08493d3926733971124a7eb",
+      "sha": "48884356ef444951b520155a25794858d5e8e13a",
+      "tree": "faea99d48c2630c395ea15a9ff124327bf8735b3",
+      "occurrences": 16,
+      "url": "https://github.com/SemicolonXSS/Formwheel_Decode/pull/1",
+      "number": 1
+    },
+    {
+      "repo": "Formwheel_Edit",
+      "baseline": "57e5c390604bc3bea73c944f14455ada5609ff16",
+      "sha": "c732bccae705de5d0716933b6a9f5927005c9f76",
+      "tree": "35605b4001f64e0411071d7ba84fac6f8502d36b",
+      "occurrences": 7,
+      "url": "https://github.com/SemicolonXSS/Formwheel_Edit/pull/1",
+      "number": 1
+    },
+    {
+      "repo": "Formwheel_Form",
+      "baseline": "5dbc91bc071831f9e70e073eebfc17a9dd4eda12",
+      "sha": "7a412899a10c8808a06614222deb5e45eec4fbd8",
+      "tree": "b1003eb9726a5f5477385c3e25d48271dbc8dad4",
+      "occurrences": 9,
+      "url": "https://github.com/SemicolonXSS/Formwheel_Form/pull/1",
+      "number": 1
+    },
+    {
+      "repo": "Formwheel_Maze",
+      "baseline": "bd359f7f92466088d6bdc8e2b7c7ae159709f857",
+      "sha": "402e81cca0bc12e4c46d055cbeeac645dc6625cc",
+      "tree": "d5d5f202b5ceb5bf074a7734f0fb7629fec1d89c",
+      "occurrences": 1,
+      "url": "https://github.com/SemicolonXSS/Formwheel_Maze/pull/1",
+      "number": 1
+    },
+    {
+      "repo": "Formwheel_Music",
+      "baseline": "a8b43625df42f1c78a4f2a5652d905cbd56a938d",
+      "sha": "0c860fc7bfb82b7d94d78f3a59c6c0c44f4e403f",
+      "tree": "55830584166603eb16ac76adaf3b227b4f2859e1",
+      "occurrences": 53,
+      "url": "https://github.com/SemicolonXSS/Formwheel_Music/pull/1",
+      "number": 1
+    },
+    {
+      "repo": "Formwheel_Note",
+      "baseline": "748ba9853c6d321e4ceffc0d213ef26513c98f2f",
+      "sha": "5fd42de8950ba5d75119ca14ffca3fc1b46c3088",
+      "tree": "74184ca2f3c2c1d3b8d4c3b8fdee2f672def331f",
+      "occurrences": 5,
+      "url": "https://github.com/SemicolonXSS/Formwheel_Note/pull/1",
+      "number": 1
+    },
+    {
+      "repo": "Formwheel_Piano",
+      "baseline": "e2d2f0f590e45ecc76749c36045dc767570d7054",
+      "sha": "b574ef953d4bd688abf6553ecb82ab0e40c985aa",
+      "tree": "466a40f1c169a40359da8b8b445ea303fa1fd960",
+      "occurrences": 20,
+      "url": "https://github.com/SemicolonXSS/Formwheel_Piano/pull/1",
+      "number": 1
+    },
+    {
+      "repo": "Formwheel_Quiz",
+      "baseline": "e161a713059bed778d88007542318e1c5a37d3f4",
+      "sha": "1301c31bb556e4a418e758032decc30d2fed82e6",
+      "tree": "019a09cfc96708ca6c8799b51bbbccd078214165",
+      "occurrences": 4,
+      "url": "https://github.com/SemicolonXSS/Formwheel_Quiz/pull/1",
+      "number": 1
+    },
+    {
+      "repo": "Formwheel_Story",
+      "baseline": "71ca23562f922aa5afdbee3d89390f9dec3e92c5",
+      "sha": "8f228f314f7f9b2a29f7c2c06f773c59ccb75139",
+      "tree": "d6cb6d1ee309aacb49c4e00f50ee734ecd9e8608",
+      "occurrences": 1,
+      "url": "https://github.com/SemicolonXSS/Formwheel_Story/pull/1",
+      "number": 1
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "baseline": "5caf1a95cdc46c8863e166f1ceed77299db7953f",
+      "sha": "e8c936367cfe14f65d15af236b596405a335db43",
+      "tree": "af942226824b16cf99efd59582464e47ca19ae82",
+      "occurrences": 49,
+      "url": "https://github.com/SemicolonXSS/Formwheel_Tool/pull/1",
+      "number": 1
+    },
+    {
+      "repo": "Formwheel_Vault",
+      "baseline": "185a5f54114759b3df4bae4aded2b5d54a032ff7",
+      "sha": "2f4904afad998d72bf9be500b22921dcfe87df67",
+      "tree": "a880e78219ed466af4f613148443a58dff5af824",
+      "occurrences": 8,
+      "url": "https://github.com/SemicolonXSS/Formwheel_Vault/pull/1",
+      "number": 1
+    },
+    {
+      "repo": "Formwheel_Vote",
+      "baseline": "4b6ba7a59f61b39ee4a32cf2dc20b8f8c57c6a8a",
+      "sha": "143dcce2d2bef44640ae8a23f3c6cb3ca542930a",
+      "tree": "6ecbaeafa0cb79db45d684f1328d0653aa14030a",
+      "occurrences": 7,
+      "url": "https://github.com/SemicolonXSS/Formwheel_Vote/pull/1",
+      "number": 1
+    },
+    {
+      "repo": "Formwheel_Wheel",
+      "baseline": "a9f057a9b5872b5e20a15737f3acb8d188b1a6f2",
+      "sha": "b0e77df75b9024fa5ee312e2fb2f645ecaecb649",
+      "tree": "53446b1a9ff4ec6b5802487bf722a7e2f4fbf972",
+      "occurrences": 28,
+      "url": "https://github.com/SemicolonXSS/Formwheel_Wheel/pull/1",
+      "number": 1
+    },
+    {
+      "repo": "Formwheel_Whiteboard",
+      "baseline": "e459570c00fa676f319a616b78e328698422cf4d",
+      "sha": "7fe00996577de9ed126e535c7a8e079f2fdd3447",
+      "tree": "b6e28408378bca584ba16c23afe663861aa4b168",
+      "occurrences": 3,
+      "url": "https://github.com/SemicolonXSS/Formwheel_Whiteboard/pull/1",
+      "number": 1
+    }
+  ],
+  "checks": {
+    "desktopAndMobileRemainingViolations": 0,
+    "sourceChecks": [
+      {
+        "repo": "Formwheel",
+        "checks": [
+          {
+            "command": "node scripts/check-syntax.cjs",
+            "ok": true,
+            "output": "PASS 154 JavaScript blocks/files; relative and same-origin local links\n"
+          },
+          {
+            "command": "git diff --check",
+            "ok": true,
+            "output": ""
+          }
+        ]
+      },
+      {
+        "repo": "Formwheel_AI",
+        "checks": [
+          {
+            "command": "node scripts/check-syntax.cjs",
+            "ok": true,
+            "output": "PASS 3 JavaScript blocks/files; local asset references\n"
+          },
+          {
+            "command": "git diff --check",
+            "ok": true,
+            "output": ""
+          }
+        ]
+      },
+      {
+        "repo": "Formwheel_Animation",
+        "checks": [
+          {
+            "command": "node --check /workspace/Formwheel_Animation/keyframes.js",
+            "ok": true,
+            "output": ""
+          },
+          {
+            "command": "node --check /workspace/Formwheel_Animation/frame-objects.js",
+            "ok": true,
+            "output": ""
+          },
+          {
+            "command": "index.html:inline",
+            "ok": true,
+            "output": ""
+          },
+          {
+            "command": "index.html:inline",
+            "ok": true,
+            "output": ""
+          },
+          {
+            "command": "index.html:inline",
+            "ok": true,
+            "output": ""
+          },
+          {
+            "command": "index.html:inline",
+            "ok": true,
+            "output": ""
+          },
+          {
+            "command": "git diff --check",
+            "ok": true,
+            "output": ""
+          }
+        ]
+      },
+      {
+        "repo": "Formwheel_Balance",
+        "checks": [
+          {
+            "command": "node scripts/check-syntax.cjs",
+            "ok": true,
+            "output": "PASS 2 JavaScript blocks/files; local asset references\n"
+          },
+          {
+            "command": "git diff --check",
+            "ok": true,
+            "output": ""
+          }
+        ]
+      },
+      {
+        "repo": "Formwheel_Chat",
+        "checks": [
+          {
+            "command": "node scripts/check-syntax.cjs",
+            "ok": true,
+            "output": "PASS 2 JavaScript blocks/files; local asset references\n"
+          },
+          {
+            "command": "git diff --check",
+            "ok": true,
+            "output": ""
+          }
+        ]
+      },
+      {
+        "repo": "Formwheel_Check",
+        "checks": [
+          {
+            "command": "node scripts/check-syntax.cjs",
+            "ok": true,
+            "output": "PASS 6 JavaScript blocks/files; local asset references\n"
+          },
+          {
+            "command": "node tests/regression.test.cjs",
+            "ok": true,
+            "output": "{\"syntax\":\"pass\",\"stableIds\":377,\"verified\":144,\"newlyImplemented\":52,\"evidence\":286,\"checks\":[\"offline initial render\",\"migration preserves unrelated data\",\"dated migration only once\",\"manual uncheck/reset retained\",\"pending overrides stale snapshots\",\"concurrent toggles retained\",\"automatic write retry\",\"disconnect state\",\"incomplete filter\"]}\nFirebase 저장 실패: Error: simulated write failure\n    at Object.update (/workspace/Formwheel_Check/tests/regression.test.cjs:10:437)\n    at flushPending (evalmachine.<anonymous>:3579:34)\n    at save (evalmachine.<anonymous>:3570:2)\n    at evalmachine.<anonymous>:1:1\n    at Script.runInContext (node:vm:149:12)\n    at Object.runInContext (node:vm:301:6)\n    at run (/workspace/Formwheel_Check/tests/regression.test.cjs:11:17)\n    at /workspace/Formwheel_Check/tests/regression.test.cjs:26:18\n"
+          },
+          {
+            "command": "git diff --check",
+            "ok": true,
+            "output": ""
+          }
+        ]
+      },
+      {
+        "repo": "Formwheel_Cook",
+        "checks": [
+          {
+            "command": "node scripts/check-syntax.cjs",
+            "ok": true,
+            "output": "PASS 6 JavaScript blocks/files; local asset references\n"
+          },
+          {
+            "command": "git diff --check",
+            "ok": true,
+            "output": ""
+          }
+        ]
+      },
+      {
+        "repo": "Formwheel_Decode",
+        "checks": [
+          {
+            "command": "node scripts/check-syntax.cjs",
+            "ok": true,
+            "output": "PASS 1 JavaScript blocks/files; local asset references\n"
+          },
+          {
+            "command": "node tests/regression.test.cjs",
+            "ok": true,
+            "output": "PASS 9 Unicode round trips, reversible ciphers, empty/control characters, malformed inputs and invalid UTF-8\n"
+          },
+          {
+            "command": "git diff --check",
+            "ok": true,
+            "output": ""
+          }
+        ]
+      },
+      {
+        "repo": "Formwheel_Edit",
+        "checks": [
+          {
+            "command": "node scripts/check-syntax.cjs",
+            "ok": true,
+            "output": "PASS 1 JavaScript blocks/files; local asset references\n"
+          },
+          {
+            "command": "git diff --check",
+            "ok": true,
+            "output": ""
+          }
+        ]
+      },
+      {
+        "repo": "Formwheel_Form",
+        "checks": [
+          {
+            "command": "node scripts/check-syntax.cjs",
+            "ok": true,
+            "output": "PASS 3 JavaScript blocks/files; local asset references\n"
+          },
+          {
+            "command": "git diff --check",
+            "ok": true,
+            "output": ""
+          }
+        ]
+      },
+      {
+        "repo": "Formwheel_Maze",
+        "checks": [
+          {
+            "command": "index.html:inline",
+            "ok": true,
+            "output": ""
+          },
+          {
+            "command": "index.html:inline",
+            "ok": true,
+            "output": ""
+          },
+          {
+            "command": "index.html:inline",
+            "ok": true,
+            "output": ""
+          },
+          {
+            "command": "git diff --check",
+            "ok": true,
+            "output": ""
+          }
+        ]
+      },
+      {
+        "repo": "Formwheel_Music",
+        "checks": [
+          {
+            "command": "node scripts/check-syntax.cjs",
+            "ok": true,
+            "output": "PASS 10 JavaScript blocks/files; local asset references\n"
+          },
+          {
+            "command": "node tests/regression.test.cjs",
+            "ok": true,
+            "output": "PASS note validation, hand limits/partition, 15/30/60/120 FPS-independent audio schedule, judging and replay\n"
+          },
+          {
+            "command": "git diff --check",
+            "ok": true,
+            "output": ""
+          }
+        ]
+      },
+      {
+        "repo": "Formwheel_Note",
+        "checks": [
+          {
+            "command": "index.html:inline",
+            "ok": true,
+            "output": ""
+          },
+          {
+            "command": "index.html:inline",
+            "ok": true,
+            "output": ""
+          },
+          {
+            "command": "node tests/regression.test.cjs",
+            "ok": true,
+            "output": "✔ import warns before discarding unsaved edits, merges records and clears the editor (9.547855ms)\n✔ cancelling import keeps unsaved text and stored records intact (1.667541ms)\nℹ tests 2\nℹ suites 0\nℹ pass 2\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 16.253593\n"
+          },
+          {
+            "command": "git diff --check",
+            "ok": true,
+            "output": ""
+          }
+        ]
+      },
+      {
+        "repo": "Formwheel_Piano",
+        "checks": [
+          {
+            "command": "node scripts/check-syntax.cjs",
+            "ok": true,
+            "output": "PASS 5 JavaScript blocks/files; local asset references\n"
+          },
+          {
+            "command": "git diff --check",
+            "ok": true,
+            "output": ""
+          }
+        ]
+      },
+      {
+        "repo": "Formwheel_Quiz",
+        "checks": [
+          {
+            "command": "node scripts/check-syntax.cjs",
+            "ok": true,
+            "output": "PASS 6 JavaScript blocks/files; local asset references\n"
+          },
+          {
+            "command": "git diff --check",
+            "ok": true,
+            "output": ""
+          }
+        ]
+      },
+      {
+        "repo": "Formwheel_Story",
+        "checks": [
+          {
+            "command": "index.html:inline",
+            "ok": true,
+            "output": ""
+          },
+          {
+            "command": "index.html:inline",
+            "ok": true,
+            "output": ""
+          },
+          {
+            "command": "git diff --check",
+            "ok": true,
+            "output": ""
+          }
+        ]
+      },
+      {
+        "repo": "Formwheel_Tool",
+        "checks": [
+          {
+            "command": "node scripts/check-syntax.cjs",
+            "ok": true,
+            "output": "PASS 5 JavaScript blocks/files; local asset references\n"
+          },
+          {
+            "command": "node tests/regression.test.cjs",
+            "ok": true,
+            "output": "PASS gender patterns, blank seats, capacity, corrupt saves, unbiased permutations and rejection sampling\n"
+          },
+          {
+            "command": "git diff --check",
+            "ok": true,
+            "output": ""
+          }
+        ]
+      },
+      {
+        "repo": "Formwheel_Vault",
+        "checks": [
+          {
+            "command": "node scripts/check-syntax.cjs",
+            "ok": true,
+            "output": "PASS 2 JavaScript blocks/files; local asset references\n"
+          },
+          {
+            "command": "git diff --check",
+            "ok": true,
+            "output": ""
+          }
+        ]
+      },
+      {
+        "repo": "Formwheel_Vote",
+        "checks": [
+          {
+            "command": "node scripts/check-syntax.cjs",
+            "ok": true,
+            "output": "PASS 2 JavaScript blocks/files; local asset references\n"
+          },
+          {
+            "command": "git diff --check",
+            "ok": true,
+            "output": ""
+          }
+        ]
+      },
+      {
+        "repo": "Formwheel_Wheel",
+        "checks": [
+          {
+            "command": "node scripts/check-syntax.cjs",
+            "ok": true,
+            "output": "PASS 8 JavaScript blocks/files; local asset references\n"
+          },
+          {
+            "command": "node tests/regression.test.cjs",
+            "ok": true,
+            "output": "PASS weighted exact boundaries, exclusion, empty candidates, distribution and invalid weights\n"
+          },
+          {
+            "command": "git diff --check",
+            "ok": true,
+            "output": ""
+          }
+        ]
+      },
+      {
+        "repo": "Formwheel_Whiteboard",
+        "checks": [
+          {
+            "command": "index.html:inline",
+            "ok": true,
+            "output": ""
+          },
+          {
+            "command": "index.html:inline",
+            "ok": true,
+            "output": ""
+          },
+          {
+            "command": "git diff --check",
+            "ok": true,
+            "output": ""
+          }
+        ]
+      }
+    ],
+    "functionalBaseline": [
+      {
+        "repo": "Formwheel",
+        "file": "quest.html",
+        "state": "denied",
+        "count": 0,
+        "errors": [
+          "Storage denied"
+        ]
+      },
+      {
+        "repo": "Formwheel",
+        "file": "quest.html",
+        "state": "quota",
+        "count": 0,
+        "errors": [
+          "Full"
+        ]
+      },
+      {
+        "repo": "Formwheel",
+        "file": "secret/index.html",
+        "state": "denied",
+        "count": 0,
+        "errors": [
+          "Storage denied"
+        ]
+      },
+      {
+        "repo": "Formwheel",
+        "file": "secret/index.html",
+        "state": "quota",
+        "count": 38,
+        "errors": []
+      },
+      {
+        "repo": "Formwheel",
+        "file": "index.html",
+        "state": "theme:sunset",
+        "violations": [
+          {
+            "id": "color-contrast",
+            "targets": [
+              [
+                ".hero > h2"
+              ],
+              [
+                ".hero > p"
+              ],
+              [
+                "#fw-hero-solo"
+              ],
+              [
+                "div:nth-child(7) > a[href$=\"optical-chaos.html\"]"
+              ],
+              [
+                "#fw-filter-panel > label:nth-child(1)"
+              ],
+              [
+                "#fw-filter-panel > label:nth-child(2)"
+              ],
+              [
+                "#fw-filter-panel > label:nth-child(3)"
+              ],
+              [
+                ".resultText"
+              ],
+              [
+                "#count"
+              ],
+              [
+                "a[data-spotlight-link=\"\"]"
+              ],
+              [
+                "#fw-party-entry > a[href$=\"party.html\"]"
+              ],
+              [
+                "div:nth-child(16) > a[href$=\"festival.html\"]"
+              ],
+              [
+                "#fw-unite-entry > a[href$=\"unite.html\"]"
+              ],
+              [
+                "#fw-main-content > p"
+              ],
+              [
+                "section[aria-label=\"새 기능 TIME CAPSULE\"] > a[href$=\"time-capsule.html\"]"
+              ],
+              [
+                "section[aria-label=\"FORK LAB A/B 테스트\"] > a[href$=\"fork-lab.html\"]"
+              ],
+              [
+                "a[href$=\"promotion.html\"]"
+              ],
+              [
+                "section[aria-label=\"개선점 보내기\"] > a[href$=\"feedback.html\"]"
+              ],
+              [
+                "p:nth-child(4) > a[href$=\"more.html\"]"
+              ],
+              [
+                "footer > details > summary"
+              ],
+              [
+                "a[href$=\"badge-admin.html\"]"
+              ],
+              [
+                ".footerLogo"
+              ],
+              [
+                "footer > div:nth-child(8)"
+              ],
+              [
+                "footer > div:nth-child(9)"
+              ],
+              [
+                "#fw-playtest-entry > a[href$=\"playtest.html\"]"
+              ],
+              [
+                "div[aria-label=\"명예의 전당\"] > a[href$=\"hall-of-fame.html\"]"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "repo": "Formwheel",
+        "file": "index.html",
+        "state": "theme:forest",
+        "violations": [
+          {
+            "id": "color-contrast",
+            "targets": [
+              [
+                ".hero > h2"
+              ],
+              [
+                ".hero > p"
+              ],
+              [
+                "#fw-hero-solo"
+              ],
+              [
+                "div:nth-child(7) > a[href$=\"optical-chaos.html\"]"
+              ],
+              [
+                "#fw-filter-panel > label:nth-child(1)"
+              ],
+              [
+                "#fw-filter-panel > label:nth-child(2)"
+              ],
+              [
+                "#fw-filter-panel > label:nth-child(3)"
+              ],
+              [
+                ".resultText"
+              ],
+              [
+                "#count"
+              ],
+              [
+                "a[data-spotlight-link=\"\"]"
+              ],
+              [
+                "#fw-party-entry > a[href$=\"party.html\"]"
+              ],
+              [
+                "div:nth-child(16) > a[href$=\"festival.html\"]"
+              ],
+              [
+                "#fw-unite-entry > a[href$=\"unite.html\"]"
+              ],
+              [
+                "#fw-main-content > p"
+              ],
+              [
+                "section[aria-label=\"새 기능 TIME CAPSULE\"] > a[href$=\"time-capsule.html\"]"
+              ],
+              [
+                "section[aria-label=\"FORK LAB A/B 테스트\"] > a[href$=\"fork-lab.html\"]"
+              ],
+              [
+                "a[href$=\"promotion.html\"]"
+              ],
+              [
+                "section[aria-label=\"개선점 보내기\"] > a[href$=\"feedback.html\"]"
+              ],
+              [
+                "p:nth-child(4) > a[href$=\"more.html\"]"
+              ],
+              [
+                "footer > details > summary"
+              ],
+              [
+                "a[href$=\"badge-admin.html\"]"
+              ],
+              [
+                ".footerLogo"
+              ],
+              [
+                "footer > div:nth-child(8)"
+              ],
+              [
+                "footer > div:nth-child(9)"
+              ],
+              [
+                "#fw-playtest-entry > a[href$=\"playtest.html\"]"
+              ],
+              [
+                "div[aria-label=\"명예의 전당\"] > a[href$=\"hall-of-fame.html\"]"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "repo": "Formwheel",
+        "file": "index.html",
+        "state": "theme:midnight",
+        "violations": [
+          {
+            "id": "color-contrast",
+            "targets": [
+              [
+                ".hero > h2"
+              ],
+              [
+                ".hero > p"
+              ],
+              [
+                "#fw-hero-solo"
+              ],
+              [
+                "div:nth-child(7) > a[href$=\"optical-chaos.html\"]"
+              ],
+              [
+                "#fw-filter-panel > label:nth-child(1)"
+              ],
+              [
+                "#fw-filter-panel > label:nth-child(2)"
+              ],
+              [
+                "#fw-filter-panel > label:nth-child(3)"
+              ],
+              [
+                ".resultText"
+              ],
+              [
+                "#count"
+              ],
+              [
+                "a[data-spotlight-link=\"\"]"
+              ],
+              [
+                "#fw-party-entry > a[href$=\"party.html\"]"
+              ],
+              [
+                "div:nth-child(16) > a[href$=\"festival.html\"]"
+              ],
+              [
+                "#fw-unite-entry > a[href$=\"unite.html\"]"
+              ],
+              [
+                "#fw-main-content > p"
+              ],
+              [
+                "section[aria-label=\"새 기능 TIME CAPSULE\"] > a[href$=\"time-capsule.html\"]"
+              ],
+              [
+                "section[aria-label=\"FORK LAB A/B 테스트\"] > a[href$=\"fork-lab.html\"]"
+              ],
+              [
+                "a[href$=\"promotion.html\"]"
+              ],
+              [
+                "section[aria-label=\"개선점 보내기\"] > a[href$=\"feedback.html\"]"
+              ],
+              [
+                "p:nth-child(4) > a[href$=\"more.html\"]"
+              ],
+              [
+                "footer > details > summary"
+              ],
+              [
+                "a[href$=\"badge-admin.html\"]"
+              ],
+              [
+                ".footerLogo"
+              ],
+              [
+                "footer > div:nth-child(8)"
+              ],
+              [
+                "footer > div:nth-child(9)"
+              ],
+              [
+                "#fw-playtest-entry > a[href$=\"playtest.html\"]"
+              ],
+              [
+                "div[aria-label=\"명예의 전당\"] > a[href$=\"hall-of-fame.html\"]"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "repo": "Formwheel",
+        "file": "index.html",
+        "state": "theme:echo",
+        "violations": [
+          {
+            "id": "color-contrast",
+            "targets": [
+              [
+                ".hero > h2"
+              ],
+              [
+                ".hero > p"
+              ],
+              [
+                "#fw-hero-solo"
+              ],
+              [
+                "div:nth-child(7) > a[href$=\"optical-chaos.html\"]"
+              ],
+              [
+                "#fw-filter-panel > label:nth-child(1)"
+              ],
+              [
+                "#fw-filter-panel > label:nth-child(2)"
+              ],
+              [
+                "#fw-filter-panel > label:nth-child(3)"
+              ],
+              [
+                ".resultText"
+              ],
+              [
+                "#count"
+              ],
+              [
+                "a[data-spotlight-link=\"\"]"
+              ],
+              [
+                "#fw-party-entry > a[href$=\"party.html\"]"
+              ],
+              [
+                "div:nth-child(16) > a[href$=\"festival.html\"]"
+              ],
+              [
+                "#fw-unite-entry > a[href$=\"unite.html\"]"
+              ],
+              [
+                "#fw-main-content > p"
+              ],
+              [
+                "section[aria-label=\"새 기능 TIME CAPSULE\"] > a[href$=\"time-capsule.html\"]"
+              ],
+              [
+                "section[aria-label=\"FORK LAB A/B 테스트\"] > a[href$=\"fork-lab.html\"]"
+              ],
+              [
+                "a[href$=\"promotion.html\"]"
+              ],
+              [
+                "section[aria-label=\"개선점 보내기\"] > a[href$=\"feedback.html\"]"
+              ],
+              [
+                "p:nth-child(4) > a[href$=\"more.html\"]"
+              ],
+              [
+                "footer > details > summary"
+              ],
+              [
+                "a[href$=\"badge-admin.html\"]"
+              ],
+              [
+                ".footerLogo"
+              ],
+              [
+                "footer > div:nth-child(8)"
+              ],
+              [
+                "footer > div:nth-child(9)"
+              ],
+              [
+                "#fw-playtest-entry > a[href$=\"playtest.html\"]"
+              ],
+              [
+                "div[aria-label=\"명예의 전당\"] > a[href$=\"hall-of-fame.html\"]"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "repo": "Formwheel",
+        "file": "index.html",
+        "state": "theme:cosmic-eternity",
+        "violations": [
+          {
+            "id": "color-contrast",
+            "targets": [
+              [
+                ".hero > h2"
+              ],
+              [
+                ".hero > p"
+              ],
+              [
+                "#fw-hero-solo"
+              ],
+              [
+                "div:nth-child(7) > a[href$=\"optical-chaos.html\"]"
+              ],
+              [
+                "#fw-filter-panel > label:nth-child(1)"
+              ],
+              [
+                "#fw-filter-panel > label:nth-child(2)"
+              ],
+              [
+                "#fw-filter-panel > label:nth-child(3)"
+              ],
+              [
+                ".resultText"
+              ],
+              [
+                "#count"
+              ],
+              [
+                "a[data-spotlight-link=\"\"]"
+              ],
+              [
+                "#fw-party-entry > a[href$=\"party.html\"]"
+              ],
+              [
+                "div:nth-child(16) > a[href$=\"festival.html\"]"
+              ],
+              [
+                "#fw-unite-entry > a[href$=\"unite.html\"]"
+              ],
+              [
+                "#fw-main-content > p"
+              ],
+              [
+                "section[aria-label=\"새 기능 TIME CAPSULE\"] > a[href$=\"time-capsule.html\"]"
+              ],
+              [
+                "section[aria-label=\"FORK LAB A/B 테스트\"] > a[href$=\"fork-lab.html\"]"
+              ],
+              [
+                "a[href$=\"promotion.html\"]"
+              ],
+              [
+                "section[aria-label=\"개선점 보내기\"] > a[href$=\"feedback.html\"]"
+              ],
+              [
+                "p:nth-child(4) > a[href$=\"more.html\"]"
+              ],
+              [
+                "footer > details > summary"
+              ],
+              [
+                "a[href$=\"badge-admin.html\"]"
+              ],
+              [
+                ".footerLogo"
+              ],
+              [
+                "footer > div:nth-child(8)"
+              ],
+              [
+                "footer > div:nth-child(9)"
+              ],
+              [
+                "#fw-playtest-entry > a[href$=\"playtest.html\"]"
+              ],
+              [
+                "div[aria-label=\"명예의 전당\"] > a[href$=\"hall-of-fame.html\"]"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "repo": "Formwheel",
+        "file": "index.html",
+        "state": "simple",
+        "violations": [
+          {
+            "id": "landmark-one-main",
+            "targets": [
+              [
+                "html"
+              ]
+            ]
+          },
+          {
+            "id": "region",
+            "targets": [
+              [
+                ".fw-b-hero"
+              ],
+              [
+                ".fw-b-panel:nth-child(2) > h2"
+              ],
+              [
+                "#fw-b-home-search"
+              ],
+              [
+                ".fw-b-action[href$=\"playtest.html\"]:nth-child(2)"
+              ],
+              [
+                ".fw-b-action[href$=\"playtest.html\"]:nth-child(3)"
+              ],
+              [
+                ".fw-b-action:nth-child(4)"
+              ],
+              [
+                ".fw-b-panel:nth-child(3) > h2"
+              ],
+              [
+                ".fw-b-panel:nth-child(4) > h2"
+              ],
+              [
+                ".fw-b-action:nth-child(1)"
+              ],
+              [
+                ".fw-b-panel:nth-child(4) > .fw-b-actions > .fw-b-action:nth-child(2)"
+              ],
+              [
+                "#fw-beta-simple-view > .fw-b-panel > .fw-b-actions > .fw-b-action"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "repo": "Formwheel_Tool",
+        "file": "assets/app.js",
+        "state": "todos:null",
+        "count": 0,
+        "errors": [
+          "Cannot read properties of null (reading 'forEach')"
+        ]
+      },
+      {
+        "repo": "Formwheel_Tool",
+        "file": "assets/app.js",
+        "state": "todos:{}",
+        "count": 0,
+        "errors": [
+          "todos.forEach is not a function"
+        ]
+      },
+      {
+        "repo": "Formwheel_Tool",
+        "file": "assets/app.js",
+        "state": "todos:[null,{\"text\":\"Keep\",\"done\":true},{\"foo\":1}]",
+        "count": 0,
+        "errors": [
+          "Cannot read properties of null (reading 'done')"
+        ]
+      },
+      {
+        "repo": "Formwheel_Tool",
+        "file": "assets/app.js",
+        "state": "generated-labels",
+        "todoLabels": 0,
+        "mathLabels": 0
+      },
+      {
+        "repo": "Formwheel_Music",
+        "file": "modules/app.js",
+        "state": "editor-keyboard",
+        "keys": [
+          {
+            "note": "C3",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          },
+          {
+            "note": "D3",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          },
+          {
+            "note": "E3",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          },
+          {
+            "note": "F3",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          },
+          {
+            "note": "G3",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          },
+          {
+            "note": "A3",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          },
+          {
+            "note": "B3",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          },
+          {
+            "note": "C4",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          },
+          {
+            "note": "D4",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          },
+          {
+            "note": "E4",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          },
+          {
+            "note": "F4",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          },
+          {
+            "note": "G4",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          },
+          {
+            "note": "A4",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          },
+          {
+            "note": "B4",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          },
+          {
+            "note": "C5",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          },
+          {
+            "note": "D5",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          },
+          {
+            "note": "E5",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          },
+          {
+            "note": "F5",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          },
+          {
+            "note": "G5",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          },
+          {
+            "note": "A5",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          },
+          {
+            "note": "B5",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          },
+          {
+            "note": "C#3",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          },
+          {
+            "note": "D#3",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          },
+          {
+            "note": "F#3",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          },
+          {
+            "note": "G#3",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          },
+          {
+            "note": "A#3",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          },
+          {
+            "note": "C#4",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          },
+          {
+            "note": "D#4",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          },
+          {
+            "note": "F#4",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          },
+          {
+            "note": "G#4",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          },
+          {
+            "note": "A#4",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          },
+          {
+            "note": "C#5",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          },
+          {
+            "note": "D#5",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          },
+          {
+            "note": "F#5",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          },
+          {
+            "note": "G#5",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          },
+          {
+            "note": "A#5",
+            "tag": "DIV",
+            "tabIndex": -1,
+            "pressed": null
+          }
+        ]
+      }
+    ],
+    "functionalAfter": [
+      {
+        "repo": "Formwheel",
+        "file": "quest.html",
+        "state": "denied",
+        "count": 3,
+        "errors": []
+      },
+      {
+        "repo": "Formwheel",
+        "file": "quest.html",
+        "state": "quota",
+        "count": 3,
+        "errors": []
+      },
+      {
+        "repo": "Formwheel",
+        "file": "secret/index.html",
+        "state": "denied",
+        "count": 38,
+        "errors": []
+      },
+      {
+        "repo": "Formwheel",
+        "file": "secret/index.html",
+        "state": "quota",
+        "count": 38,
+        "errors": []
+      },
+      {
+        "repo": "Formwheel",
+        "file": "index.html",
+        "state": "theme:sunset",
+        "violations": []
+      },
+      {
+        "repo": "Formwheel",
+        "file": "index.html",
+        "state": "theme:forest",
+        "violations": []
+      },
+      {
+        "repo": "Formwheel",
+        "file": "index.html",
+        "state": "theme:midnight",
+        "violations": []
+      },
+      {
+        "repo": "Formwheel",
+        "file": "index.html",
+        "state": "theme:echo",
+        "violations": []
+      },
+      {
+        "repo": "Formwheel",
+        "file": "index.html",
+        "state": "theme:cosmic-eternity",
+        "violations": []
+      },
+      {
+        "repo": "Formwheel",
+        "file": "index.html",
+        "state": "simple",
+        "violations": []
+      },
+      {
+        "repo": "Formwheel_Tool",
+        "file": "assets/app.js",
+        "state": "todos:null",
+        "count": 0,
+        "errors": []
+      },
+      {
+        "repo": "Formwheel_Tool",
+        "file": "assets/app.js",
+        "state": "todos:{}",
+        "count": 0,
+        "errors": []
+      },
+      {
+        "repo": "Formwheel_Tool",
+        "file": "assets/app.js",
+        "state": "todos:[null,{\"text\":\"Keep\",\"done\":true},{\"foo\":1}]",
+        "count": 1,
+        "errors": []
+      },
+      {
+        "repo": "Formwheel_Tool",
+        "file": "assets/app.js",
+        "state": "generated-labels",
+        "todoLabels": 1,
+        "mathLabels": 1
+      },
+      {
+        "repo": "Formwheel_Music",
+        "file": "modules/app.js",
+        "state": "editor-keyboard",
+        "keys": [
+          {
+            "note": "C3",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          },
+          {
+            "note": "D3",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          },
+          {
+            "note": "E3",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          },
+          {
+            "note": "F3",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          },
+          {
+            "note": "G3",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          },
+          {
+            "note": "A3",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          },
+          {
+            "note": "B3",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          },
+          {
+            "note": "C4",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          },
+          {
+            "note": "D4",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          },
+          {
+            "note": "E4",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          },
+          {
+            "note": "F4",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          },
+          {
+            "note": "G4",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          },
+          {
+            "note": "A4",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          },
+          {
+            "note": "B4",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          },
+          {
+            "note": "C5",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          },
+          {
+            "note": "D5",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          },
+          {
+            "note": "E5",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          },
+          {
+            "note": "F5",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          },
+          {
+            "note": "G5",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          },
+          {
+            "note": "A5",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          },
+          {
+            "note": "B5",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          },
+          {
+            "note": "C#3",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          },
+          {
+            "note": "D#3",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          },
+          {
+            "note": "F#3",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          },
+          {
+            "note": "G#3",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          },
+          {
+            "note": "A#3",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          },
+          {
+            "note": "C#4",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          },
+          {
+            "note": "D#4",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          },
+          {
+            "note": "F#4",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          },
+          {
+            "note": "G#4",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          },
+          {
+            "note": "A#4",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          },
+          {
+            "note": "C#5",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          },
+          {
+            "note": "D#5",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          },
+          {
+            "note": "F#5",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          },
+          {
+            "note": "G#5",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          },
+          {
+            "note": "A#5",
+            "tag": "BUTTON",
+            "tabIndex": 0,
+            "pressed": "false"
+          }
+        ]
+      }
+    ]
+  },
+  "occurrences": [
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:timer",
+      "rule": "label",
+      "target": "#timerMin",
+      "before": "<input id=\"timerMin\" type=\"number\" min=\"0\" value=\"1\">",
+      "kind": "axe",
+      "id": "FW-MORE-001",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:timer",
+      "rule": "label",
+      "target": "#timerSec",
+      "before": "<input id=\"timerSec\" type=\"number\" min=\"0\" max=\"59\" value=\"0\">",
+      "kind": "axe",
+      "id": "FW-MORE-002",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:timer",
+      "rule": "landmark-unique",
+      "target": "#toolNav",
+      "before": "<aside class=\"sidebar\" id=\"toolNav\">",
+      "kind": "axe",
+      "id": "FW-MORE-003",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:timer",
+      "rule": "region",
+      "target": "h1",
+      "before": "<h1>FormWheel Tool</h1>",
+      "kind": "axe",
+      "id": "FW-MORE-004",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:timer",
+      "rule": "region",
+      "target": ".sub",
+      "before": "<p class=\"sub\">실생활에서 바로 사용할 수 있는 도구 모음</p>",
+      "kind": "axe",
+      "id": "FW-MORE-005",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:calculator",
+      "rule": "label",
+      "target": "#calcDisplay",
+      "before": "<input id=\"calcDisplay\" class=\"calc-display\" readonly=\"\" value=\"0\">",
+      "kind": "axe",
+      "id": "FW-MORE-006",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:number",
+      "rule": "label",
+      "target": "#numMin",
+      "before": "<input id=\"numMin\" type=\"number\" value=\"1\">",
+      "kind": "axe",
+      "id": "FW-MORE-007",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:number",
+      "rule": "label",
+      "target": "#numMax",
+      "before": "<input id=\"numMax\" type=\"number\" value=\"100\">",
+      "kind": "axe",
+      "id": "FW-MORE-008",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:password",
+      "rule": "label",
+      "target": "#pwLen",
+      "before": "<input id=\"pwLen\" type=\"number\" min=\"4\" max=\"128\" value=\"16\">",
+      "kind": "axe",
+      "id": "FW-MORE-009",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:password",
+      "rule": "select-name",
+      "target": "#pwMode",
+      "before": "<select id=\"pwMode\"><option value=\"all\">대/소문자 + 숫자 + 특수문자</option><option value=\"letters\">대/소문자 + 숫자</option><option value=\"simple\">소문자 + 숫자</option></select>",
+      "kind": "axe",
+      "id": "FW-MORE-010",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:unit",
+      "rule": "label",
+      "target": "#unitValue",
+      "before": "<input id=\"unitValue\" type=\"number\" value=\"1\">",
+      "kind": "axe",
+      "id": "FW-MORE-011",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:unit",
+      "rule": "select-name",
+      "target": "#unitType",
+      "before": "<select id=\"unitType\"><option value=\"length\">길이</option><option value=\"weight\">무게</option><option value=\"temp\">온도</option></select>",
+      "kind": "axe",
+      "id": "FW-MORE-012",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:unit",
+      "rule": "select-name",
+      "target": "#unitFrom",
+      "before": "<select id=\"unitFrom\"><option value=\"m\">m</option><option value=\"cm\">cm</option><option value=\"mm\">mm</option><option value=\"km\">km</option><option value=\"ft\">ft</option></select>",
+      "kind": "axe",
+      "id": "FW-MORE-013",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:unit",
+      "rule": "select-name",
+      "target": "#unitTo",
+      "before": "<select id=\"unitTo\"><option value=\"m\">m</option><option value=\"cm\">cm</option><option value=\"mm\">mm</option><option value=\"km\">km</option><option value=\"ft\">ft</option></select>",
+      "kind": "axe",
+      "id": "FW-MORE-014",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:date",
+      "rule": "label",
+      "target": "#dateA",
+      "before": "<input id=\"dateA\" type=\"date\">",
+      "kind": "axe",
+      "id": "FW-MORE-015",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:date",
+      "rule": "label",
+      "target": "#dateB",
+      "before": "<input id=\"dateB\" type=\"date\">",
+      "kind": "axe",
+      "id": "FW-MORE-016",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:dday",
+      "rule": "label",
+      "target": "#ddayDate",
+      "before": "<input id=\"ddayDate\" type=\"date\">",
+      "kind": "axe",
+      "id": "FW-MORE-017",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:math",
+      "rule": "label",
+      "target": "#mx",
+      "before": "<input id=\"mx\" type=\"number\" value=\"5\">",
+      "kind": "axe",
+      "id": "FW-MORE-018",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:math",
+      "rule": "select-name",
+      "target": "#mathType",
+      "before": "<select id=\"mathType\"><option value=\"circle\">원</option><option value=\"avg\">평균</option><option value=\"pyth\">피타고라스</option></select>",
+      "kind": "axe",
+      "id": "FW-MORE-019",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:color",
+      "rule": "label",
+      "target": "#colorPicker",
+      "before": "<input id=\"colorPicker\" type=\"color\" value=\"#4f46e5\" style=\"height:50px;padding:4px\">",
+      "kind": "axe",
+      "id": "FW-MORE-020",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:ratio",
+      "rule": "label",
+      "target": "#ra",
+      "before": "<input id=\"ra\" type=\"number\" value=\"2\">",
+      "kind": "axe",
+      "id": "FW-MORE-021",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:ratio",
+      "rule": "label",
+      "target": "#rb",
+      "before": "<input id=\"rb\" type=\"number\" value=\"3\">",
+      "kind": "axe",
+      "id": "FW-MORE-022",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:ratio",
+      "rule": "label",
+      "target": "#rc",
+      "before": "<input id=\"rc\" type=\"number\" value=\"10\">",
+      "kind": "axe",
+      "id": "FW-MORE-023",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:seats",
+      "rule": "label",
+      "target": "#seatRows",
+      "before": "<input id=\"seatRows\" type=\"number\" min=\"1\" max=\"20\" value=\"4\">",
+      "kind": "axe",
+      "id": "FW-MORE-024",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:seats",
+      "rule": "label",
+      "target": "#seatCols",
+      "before": "<input id=\"seatCols\" type=\"number\" min=\"1\" max=\"20\" value=\"5\">",
+      "kind": "axe",
+      "id": "FW-MORE-025",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:video",
+      "rule": "label",
+      "target": "#videoFile",
+      "before": "<input id=\"videoFile\" type=\"file\" accept=\"video/*\">",
+      "kind": "axe",
+      "id": "FW-MORE-026",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:video",
+      "rule": "label",
+      "target": "#videoSpeed",
+      "before": "<input id=\"videoSpeed\" type=\"range\" min=\"0.25\" max=\"4\" step=\"0.05\" value=\"1\">",
+      "kind": "axe",
+      "id": "FW-MORE-027",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:voice",
+      "rule": "label",
+      "target": "#voiceAmount",
+      "before": "<input id=\"voiceAmount\" type=\"range\" min=\"0\" max=\"100\" value=\"60\">",
+      "kind": "axe",
+      "id": "FW-MORE-028",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:voice",
+      "rule": "select-name",
+      "target": "#voiceEffect",
+      "before": "<select id=\"voiceEffect\">",
+      "kind": "axe",
+      "id": "FW-MORE-029",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:audio",
+      "rule": "label",
+      "target": "#audioFile",
+      "before": "<input id=\"audioFile\" type=\"file\" accept=\"audio/*\">",
+      "kind": "axe",
+      "id": "FW-MORE-030",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:audio",
+      "rule": "label",
+      "target": "#audioSpeed",
+      "before": "<input id=\"audioSpeed\" type=\"range\" min=\"0.25\" max=\"3\" step=\"0.05\" value=\"1\">",
+      "kind": "axe",
+      "id": "FW-MORE-031",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:audio",
+      "rule": "label",
+      "target": "#audioVolume",
+      "before": "<input id=\"audioVolume\" type=\"range\" min=\"0\" max=\"100\" value=\"100\">",
+      "kind": "axe",
+      "id": "FW-MORE-032",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:tts",
+      "rule": "label",
+      "target": "#ttsRate",
+      "before": "<input id=\"ttsRate\" type=\"range\" min=\"0.5\" max=\"2\" step=\"0.05\" value=\"1\">",
+      "kind": "axe",
+      "id": "FW-MORE-033",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:tts",
+      "rule": "label",
+      "target": "#ttsPitch",
+      "before": "<input id=\"ttsPitch\" type=\"range\" min=\"0\" max=\"2\" step=\"0.05\" value=\"1\">",
+      "kind": "axe",
+      "id": "FW-MORE-034",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:tts",
+      "rule": "select-name",
+      "target": "#ttsVoice",
+      "before": "<select id=\"ttsVoice\"></select>",
+      "kind": "axe",
+      "id": "FW-MORE-035",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Form",
+      "file": "index.html",
+      "state": "home",
+      "rule": "aria-prohibited-attr",
+      "target": "#secol-main-content",
+      "before": "<span id=\"secol-main-content\" tabindex=\"-1\" style=\"position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)\" aria-label=\"본문 시작\"></span>",
+      "kind": "axe",
+      "id": "FW-MORE-036",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Form",
+      "file": "index.html",
+      "state": "home",
+      "rule": "color-contrast",
+      "target": "#publishBtn",
+      "before": "<button class=\"btn primary publish\" id=\"publishBtn\" type=\"button\">설문 게시</button>",
+      "kind": "axe",
+      "id": "FW-MORE-037",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Form",
+      "file": "index.html",
+      "state": "home",
+      "rule": "color-contrast",
+      "target": ".hero > p",
+      "before": "<p>간단하게 질문을 추가하고 나만의 설문을 만들어보세요.</p>",
+      "kind": "axe",
+      "id": "FW-MORE-038",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Form",
+      "file": "index.html",
+      "state": "home",
+      "rule": "color-contrast",
+      "target": "button[title=\"질문 삭제\"]",
+      "before": "<button type=\"button\" class=\"iconbtn\" title=\"질문 삭제\">삭제</button>",
+      "kind": "axe",
+      "id": "FW-MORE-039",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Form",
+      "file": "index.html",
+      "state": "home",
+      "rule": "color-contrast",
+      "target": ".preview-desc",
+      "before": "<div class=\"preview-desc\">설명 없음</div>",
+      "kind": "axe",
+      "id": "FW-MORE-040",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Form",
+      "file": "index.html",
+      "state": "home",
+      "rule": "label",
+      "target": ".choice-row:nth-child(1) > input[maxlength=\"200\"]",
+      "before": "<input type=\"text\" maxlength=\"200\">",
+      "kind": "axe",
+      "id": "FW-MORE-041",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Form",
+      "file": "index.html",
+      "state": "home",
+      "rule": "label",
+      "target": ".choice-row:nth-child(2) > input[maxlength=\"200\"]",
+      "before": "<input type=\"text\" maxlength=\"200\">",
+      "kind": "axe",
+      "id": "FW-MORE-042",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Form",
+      "file": "index.html",
+      "state": "home",
+      "rule": "region",
+      "target": "#secol-main-content",
+      "before": "<span id=\"secol-main-content\" tabindex=\"-1\" style=\"position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)\" aria-label=\"본문 시작\"></span>",
+      "kind": "axe",
+      "id": "FW-MORE-043",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Form",
+      "file": "index.html",
+      "state": "home",
+      "rule": "select-name",
+      "target": "select",
+      "before": "<select><option value=\"choice\">객관식</option><option value=\"checkbox\">체크박스</option><option value=\"text\">주관식</option></select>",
+      "kind": "axe",
+      "id": "FW-MORE-044",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:image",
+      "rule": "label",
+      "target": "#imageFile",
+      "before": "<input id=\"imageFile\" type=\"file\" accept=\"image/*\">",
+      "kind": "axe",
+      "id": "FW-MORE-045",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:image",
+      "rule": "label",
+      "target": "#imageWidth",
+      "before": "<input id=\"imageWidth\" type=\"number\" min=\"1\">",
+      "kind": "axe",
+      "id": "FW-MORE-046",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:image",
+      "rule": "label",
+      "target": "#imageHeight",
+      "before": "<input id=\"imageHeight\" type=\"number\" min=\"1\">",
+      "kind": "axe",
+      "id": "FW-MORE-047",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "index.html",
+      "state": "screen:create",
+      "rule": "color-contrast",
+      "target": "#noteList > .empty",
+      "before": "<div class=\"empty\">아직 음표가 없습니다.</div>",
+      "kind": "axe",
+      "id": "FW-MORE-048",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "index.html",
+      "state": "screen:create",
+      "rule": "color-contrast",
+      "target": "main > details > summary",
+      "before": "<summary style=\"cursor:pointer\">♪ ...</summary>",
+      "kind": "axe",
+      "id": "FW-MORE-049",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "index.html",
+      "state": "screen:create",
+      "rule": "label",
+      "target": "#songTitle",
+      "before": "<input id=\"songTitle\" value=\"나의 음악\">",
+      "kind": "axe",
+      "id": "FW-MORE-050",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "index.html",
+      "state": "screen:create",
+      "rule": "label",
+      "target": "#tempo",
+      "before": "<input id=\"tempo\" type=\"number\" min=\"30\" max=\"300\" value=\"120\">",
+      "kind": "axe",
+      "id": "FW-MORE-051",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "index.html",
+      "state": "screen:create",
+      "rule": "label",
+      "target": "#selectedNotes",
+      "before": "<input id=\"selectedNotes\" value=\"없음\" readonly=\"\">",
+      "kind": "axe",
+      "id": "FW-MORE-052",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "index.html",
+      "state": "screen:create",
+      "rule": "page-has-heading-one",
+      "target": "html",
+      "before": "<html lang=\"ko\">",
+      "kind": "axe",
+      "id": "FW-MORE-053",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "index.html",
+      "state": "screen:create",
+      "rule": "region",
+      "target": "#fw-battle-entry",
+      "before": "<div id=\"fw-battle-entry\" style=\"position:relative;z-index:999;display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:12px;padding:12px;background:#eef2ff;border:2px solid #a4b3ed;border-radius:14px;font-family:system-ui,sans-serif\">",
+      "kind": "axe",
+      "id": "FW-MORE-054",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "index.html",
+      "state": "screen:create",
+      "rule": "select-name",
+      "target": "#instrument",
+      "before": "<select id=\"instrument\"><option value=\"piano\">🎹 피아노</option><option value=\"violin\">🎻 바이올린</option><option value=\"guitar\">🎸 기타</option><option value=\"drum\">🥁 드럼</option></select>",
+      "kind": "axe",
+      "id": "FW-MORE-055",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "index.html",
+      "state": "screen:create",
+      "rule": "select-name",
+      "target": "#handMode",
+      "before": "<select id=\"handMode\"><option value=\"one\">한 손</option><option value=\"two\">두 손</option><option value=\"four\">포 핸드</option></select>",
+      "kind": "axe",
+      "id": "FW-MORE-056",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "index.html",
+      "state": "screen:create",
+      "rule": "select-name",
+      "target": "#duration",
+      "before": "<select id=\"duration\"><option value=\".5\">8분음표</option><option value=\"1\" selected=\"\">4분음표</option><option value=\"1.5\">점4분음표</option><option value=\"2\">2분음표</option><option value=\"4\">온음표</option></select>",
+      "kind": "axe",
+      "id": "FW-MORE-057",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Piano",
+      "file": "index.html",
+      "state": "setup",
+      "rule": "heading-order",
+      "target": "h3",
+      "before": "<h3>🎹 세콜의 연습 카드</h3>",
+      "kind": "axe",
+      "id": "FW-MORE-058",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "index.html",
+      "state": "screen:library",
+      "rule": "color-contrast",
+      "target": "#songGrid > .empty",
+      "before": "<div class=\"empty\">음악을 불러오는 중...</div>",
+      "kind": "axe",
+      "id": "FW-MORE-059",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "index.html",
+      "state": "screen:library",
+      "rule": "label",
+      "target": "#mp3Upload",
+      "before": "<input id=\"mp3Upload\" type=\"file\" accept=\"audio/*,.mp3\">",
+      "kind": "axe",
+      "id": "FW-MORE-060",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "index.html",
+      "state": "screen:game",
+      "rule": "color-contrast",
+      "target": "#leaderboard",
+      "before": "<div id=\"leaderboard\" class=\"empty\">곡을 선택하면 리더보드가 표시됩니다.</div>",
+      "kind": "axe",
+      "id": "FW-MORE-061",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "index.html",
+      "state": "screen:game",
+      "rule": "select-name",
+      "target": "#gameSong",
+      "before": "<select id=\"gameSong\"><option value=\"\">저장된 음악 없음</option></select>",
+      "kind": "axe",
+      "id": "FW-MORE-062",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "index.html",
+      "state": "screen:game",
+      "rule": "select-name",
+      "target": "#judgeRange",
+      "before": "<select id=\"judgeRange\"><option value=\".12\">엄격</option><option value=\".22\" selected=\"\">일반</option><option value=\".38\">쉬움</option></select>",
+      "kind": "axe",
+      "id": "FW-MORE-063",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Piano",
+      "file": "index.html",
+      "state": "solo",
+      "rule": "region",
+      "target": "#soloModal > .settingsBox.modalBox > h2",
+      "before": "<h2>🤖 솔로 모드</h2>",
+      "kind": "axe",
+      "id": "FW-MORE-064",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Piano",
+      "file": "index.html",
+      "state": "solo",
+      "rule": "region",
+      "target": "#soloModal > .settingsBox.modalBox > .desc",
+      "before": "<p class=\"desc\">컴퓨터를 상대로 혼자 연습해보세요. 인터넷 연결 없이도 진행됩니다.</p>",
+      "kind": "axe",
+      "id": "FW-MORE-065",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Piano",
+      "file": "index.html",
+      "state": "solo",
+      "rule": "region",
+      "target": ".setRow:nth-child(3)",
+      "before": "<div class=\"setRow\">\n      <div class=\"lbl\">컴퓨터 인원<small>함께 대전할 AI 수</small></div>\n      <select id=\"solo_count\">\n        <option value=\"1\">1명</option>\n        <option value=\"2\">2명</option>\n        <option value=\"3\">3명</option>\n      </select>\n    </div>",
+      "kind": "axe",
+      "id": "FW-MORE-066",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Piano",
+      "file": "index.html",
+      "state": "solo",
+      "rule": "region",
+      "target": "#soloModal > .settingsBox.modalBox > .setRow:nth-child(4)",
+      "before": "<div class=\"setRow\">",
+      "kind": "axe",
+      "id": "FW-MORE-067",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Piano",
+      "file": "index.html",
+      "state": "solo",
+      "rule": "region",
+      "target": "#soloUnlockHint",
+      "before": "<div id=\"soloUnlockHint\" class=\"notice\" style=\"margin-top:12px\">💡 어려움 난이도를 클리어하면 <b>익스트림</b> 봇이 해금됩니다.</div>",
+      "kind": "axe",
+      "id": "FW-MORE-068",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Piano",
+      "file": "index.html",
+      "state": "solo",
+      "rule": "select-name",
+      "target": "#solo_count",
+      "before": "<select id=\"solo_count\">\n        <option value=\"1\">1명</option>\n        <option value=\"2\">2명</option>\n        <option value=\"3\">3명</option>\n      </select>",
+      "kind": "axe",
+      "id": "FW-MORE-069",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Piano",
+      "file": "index.html",
+      "state": "solo",
+      "rule": "select-name",
+      "target": "#solo_diff",
+      "before": "<select id=\"solo_diff\">\n        <option value=\"easy\">쉬움</option>\n        <option value=\"normal\" selected=\"\">보통</option>\n        <option value=\"hard\">어려움</option>\n        <option value=\"extreme\" id=\"soloExtremeOption\" disabled=\"\">🔒 익스트림 (어려움 클리어 필요)</option>\n      </select>",
+      "kind": "axe",
+      "id": "FW-MORE-070",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Piano",
+      "file": "index.html",
+      "state": "tutorial",
+      "rule": "page-has-heading-one",
+      "target": "html",
+      "before": "<html lang=\"ko\">",
+      "kind": "axe",
+      "id": "FW-MORE-071",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Animation",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": "#modeFrame",
+      "before": "<button id=\"modeFrame\" class=\"active\">✏️ 프레임</button>",
+      "kind": "axe",
+      "id": "FW-MORE-072",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Animation",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": "button[data-tool=\"pen\"]",
+      "before": "<button data-tool=\"pen\" class=\"active\">✏️ 펜</button>",
+      "kind": "axe",
+      "id": "FW-MORE-073",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Animation",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "image-redundant-alt",
+      "target": "img[alt=\"프레임 1\"]",
+      "before": "<img src=\"data:image/png;base6...\" alt=\"프레임 1\">",
+      "kind": "axe",
+      "id": "FW-MORE-074",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Animation",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "page-has-heading-one",
+      "target": "html",
+      "before": "<html lang=\"ko\">",
+      "kind": "axe",
+      "id": "FW-MORE-075",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Check",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "aria-prohibited-attr",
+      "target": "#secol-main-content",
+      "before": "<span id=\"secol-main-content\" tabindex=\"-1\" style=\"position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)\" aria-label=\"본문 시작\"></span>",
+      "kind": "axe",
+      "id": "FW-MORE-076",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Check",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": ".home",
+      "before": "<a class=\"home\" href=\"https://semicolonxss.github.io/Formwheel/\">\n      Home\n    </a>",
+      "kind": "axe",
+      "id": "FW-MORE-077",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Check",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": ".hero > p",
+      "before": "<p>\n      FormWheel 작업을 5단계로 관리하세요. 항목의 단계 버튼을 누를 때마다 한 단계씩 올라갑니다.\n      <br><small>2026-10-08 · 30개 저장소 개선 · 신규 개선 52개 항목 반영. 서버 적용·실기기 검증이 남은 항목은 별도로 표시했습니다.</small>\n    </p>",
+      "kind": "axe",
+      "id": "FW-MORE-078",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Check",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": "small",
+      "before": "<small>2026-10-08 · 30개 저장소 개선 · 신규 개선 52개 항목 반영. 서버 적용·실기기 검증이 남은 항목은 별도로 표시했습니다.</small>",
+      "kind": "axe",
+      "id": "FW-MORE-079",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Check",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": ".personal-hint:nth-child(2)",
+      "before": "<p class=\"personal-hint\">나만의 목록을 여러 개 만들고 할 일을 관리하세요. 기존 공유 개선 목록과는 별개입니다.</p>",
+      "kind": "axe",
+      "id": "FW-MORE-080",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Check",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": "summary",
+      "before": "<summary style=\"cursor:pointer;font-weight:750\">💡 체크리스트 사용법과 백업 안내</summary>",
+      "kind": "axe",
+      "id": "FW-MORE-081",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Check",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": "#personalNotice",
+      "before": "<p id=\"personalNotice\" class=\"personal-hint\" role=\"status\" aria-live=\"polite\">목록은 현재 이 브라우저에 저장됩니다. 다른 사람과 실시간 협업하려면 서버 보안 규칙 설정이 필요합니다.</p>",
+      "kind": "axe",
+      "id": "FW-MORE-082",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Check",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": ".personal-empty",
+      "before": "<p class=\"personal-empty\">첫 체크리스트를 만들어 보세요!</p>",
+      "kind": "axe",
+      "id": "FW-MORE-083",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Check",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": ".footer",
+      "before": "<div class=\"footer\">\n    공유 체크리스트 · 5단계 진행 상태는 항목별로 Firebase에 저장됩니다.<br>2026-10-08 코드 검토 144개 + 신규 개선 52개 항목 반영 · 기존 체크 데이터와 검토 근거를 보존하며 단계값은 별도로 저장됩니다. 저장 실패 시 변경을 기기에 보관하고 재시도합니다.\n  </div>",
+      "kind": "axe",
+      "id": "FW-MORE-084",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Check",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": "#secol-main-content",
+      "before": "<span id=\"secol-main-content\" tabindex=\"-1\" style=\"position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)\" aria-label=\"본문 시작\"></span>",
+      "kind": "axe",
+      "id": "FW-MORE-085",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Balance",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "aria-prohibited-attr",
+      "target": "#secol-main-content",
+      "before": "<span id=\"secol-main-content\" tabindex=\"-1\" style=\"position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)\" aria-label=\"본문 시작\"></span>",
+      "kind": "axe",
+      "id": "FW-MORE-086",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Balance",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": ".hero > p",
+      "before": "<p>욕심과 안전 사이에서 균형을 잡아라.</p>",
+      "kind": "axe",
+      "id": "FW-MORE-087",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Balance",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": "#setup > details > summary",
+      "before": "<summary style=\"cursor:pointer;font-weight:800\">📖 게임 방법 보기</summary>",
+      "kind": "axe",
+      "id": "FW-MORE-088",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Balance",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": "#secol-main-content",
+      "before": "<span id=\"secol-main-content\" tabindex=\"-1\" style=\"position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)\" aria-label=\"본문 시작\"></span>",
+      "kind": "axe",
+      "id": "FW-MORE-089",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Edit",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": ".sectionTitle:nth-child(1)",
+      "before": "<div class=\"sectionTitle\">미디어</div>",
+      "kind": "axe",
+      "id": "FW-MORE-090",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Edit",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": ".sectionTitle:nth-child(10)",
+      "before": "<div class=\"sectionTitle\">편집</div>",
+      "kind": "axe",
+      "id": "FW-MORE-091",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Edit",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": ".danger",
+      "before": "<button class=\"danger\" onclick=\"deleteSelectedObject()\">🗑️ 선택 삭제</button>",
+      "kind": "axe",
+      "id": "FW-MORE-092",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Edit",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": "#timeLabel",
+      "before": "<span class=\"small\" id=\"timeLabel\">00:00 / 00:00</span>",
+      "kind": "axe",
+      "id": "FW-MORE-093",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Edit",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "landmark-unique",
+      "target": "aside:nth-child(1)",
+      "before": "<aside>",
+      "kind": "axe",
+      "id": "FW-MORE-094",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Edit",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "page-has-heading-one",
+      "target": "html",
+      "before": "<html lang=\"ko\">",
+      "kind": "axe",
+      "id": "FW-MORE-095",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Edit",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": "#toast",
+      "before": "<div id=\"toast\" class=\"toast\" style=\"display: block;\">미디어를 추가했습니다.</div>",
+      "kind": "axe",
+      "id": "FW-MORE-096",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Decode",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "aria-prohibited-attr",
+      "target": "#secol-main-content",
+      "before": "<span id=\"secol-main-content\" tabindex=\"-1\" style=\"position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)\" aria-label=\"본문 시작\"></span>",
+      "kind": "axe",
+      "id": "FW-MORE-097",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Decode",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": "#decodeBtn",
+      "before": "<button id=\"decodeBtn\" onclick=\"setMode('decode')\">\n      Decode\n    </button>",
+      "kind": "axe",
+      "id": "FW-MORE-098",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Decode",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": "#toolDescription",
+      "before": "<span id=\"toolDescription\">텍스트를 Base64로 변환하거나 복원합니다. Base64URL(-, _) 입력도 지원합니다.</span>",
+      "kind": "axe",
+      "id": "FW-MORE-099",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Decode",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": ".card:nth-child(2) > .tool-info > span",
+      "before": "<span>\n      Encode는 일반 텍스트를 변환할 때,\n      Decode는 이미 변환된 문자열을 원래 형태로 되돌릴 때 사용합니다.\n      자동 인식을 이용하면 형식을 직접 선택하지 않아도 됩니다.\n    </span>",
+      "kind": "axe",
+      "id": "FW-MORE-100",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Decode",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": ".num:nth-child(1) > b",
+      "before": "<b>2진수</b>",
+      "kind": "axe",
+      "id": "FW-MORE-101",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Decode",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": ".num:nth-child(2) > b",
+      "before": "<b>8진수</b>",
+      "kind": "axe",
+      "id": "FW-MORE-102",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Decode",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": ".num:nth-child(3) > b",
+      "before": "<b>10진수</b>",
+      "kind": "axe",
+      "id": "FW-MORE-103",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Decode",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": ".num:nth-child(4) > b",
+      "before": "<b>16진수</b>",
+      "kind": "axe",
+      "id": "FW-MORE-104",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Decode",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": "footer",
+      "before": "<footer>\n  FormWheel Decode · 텍스트 변환 도구 <details style=\"font-size:10px;opacity:.5;margin-top:8px\"><summary style=\"cursor:pointer\">···</summary><span>DECODE-ECHO</span></details>\n</footer>",
+      "kind": "axe",
+      "id": "FW-MORE-105",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Decode",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": "summary",
+      "before": "<summary style=\"cursor:pointer\">···</summary>",
+      "kind": "axe",
+      "id": "FW-MORE-106",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Decode",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "heading-order",
+      "target": "#detect > h3",
+      "before": "<h3>🔍 자동 인식</h3>",
+      "kind": "axe",
+      "id": "FW-MORE-107",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Decode",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": "#secol-main-content",
+      "before": "<span id=\"secol-main-content\" tabindex=\"-1\" style=\"position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)\" aria-label=\"본문 시작\"></span>",
+      "kind": "axe",
+      "id": "FW-MORE-108",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Decode",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "select-name",
+      "target": "#method",
+      "before": "<select id=\"method\" onchange=\"updateToolInfo()\">",
+      "kind": "axe",
+      "id": "FW-MORE-109",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Cook",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": "#soloStart",
+      "before": "<button class=\"big\" id=\"soloStart\">랜덤 챌린지 시작</button>",
+      "kind": "axe",
+      "id": "FW-MORE-110",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Cook",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": "#tutorialNext",
+      "before": "<button class=\"big\" id=\"tutorialNext\">다음</button>",
+      "kind": "axe",
+      "id": "FW-MORE-111",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Cook",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": "button[data-heat=\"microwave\"]",
+      "before": "<button class=\"mini go\" data-heat=\"microwave\">가열</button>",
+      "kind": "axe",
+      "id": "FW-MORE-112",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Cook",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": "#boilKettle",
+      "before": "<button class=\"mini go\" id=\"boilKettle\">끓이기</button>",
+      "kind": "axe",
+      "id": "FW-MORE-113",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Cook",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": "button[data-cook=\"pot\"][data-mode=\"boil\"][data-sec=\"40\"]",
+      "before": "<button class=\"mini go\" data-cook=\"pot\" data-mode=\"boil\" data-sec=\"40\">40초 끓이기</button>",
+      "kind": "axe",
+      "id": "FW-MORE-114",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Cook",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": "button[data-cook=\"pot\"][data-mode=\"boil\"][data-sec=\"60\"]",
+      "before": "<button class=\"mini go\" data-cook=\"pot\" data-mode=\"boil\" data-sec=\"60\">1분 끓이기</button>",
+      "kind": "axe",
+      "id": "FW-MORE-115",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Cook",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": "button[data-mode=\"fry\"]",
+      "before": "<button class=\"mini go\" data-cook=\"pan\" data-mode=\"fry\" data-sec=\"40\">40초 볶기</button>",
+      "kind": "axe",
+      "id": "FW-MORE-116",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Cook",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": "button[data-mode=\"grill\"]",
+      "before": "<button class=\"mini go\" data-cook=\"pan\" data-mode=\"grill\" data-sec=\"40\">40초 굽기</button>",
+      "kind": "axe",
+      "id": "FW-MORE-117",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Cook",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": "#judgeBtn",
+      "before": "<button class=\"action primary\" style=\"width:100%\" id=\"judgeBtn\">완성! 평가하기</button>",
+      "kind": "axe",
+      "id": "FW-MORE-118",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Cook",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "landmark-unique",
+      "target": ".layout > aside",
+      "before": "<aside class=\"panel\">",
+      "kind": "axe",
+      "id": "FW-MORE-119",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "aria-prohibited-attr",
+      "target": "#board",
+      "before": "<div id=\"board\" aria-label=\"미로 게임판\" style=\"grid-template-columns: repeat(17, minmax(0px, 1fr)); grid-template-rows: repeat(17, minmax(0px, 1fr));\">",
+      "kind": "axe",
+      "id": "FW-MORE-120",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Note",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "aria-prohibited-attr",
+      "target": "#secol-main-content",
+      "before": "<span id=\"secol-main-content\" tabindex=\"-1\" style=\"position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)\" aria-label=\"본문 시작\"></span>",
+      "kind": "axe",
+      "id": "FW-MORE-121",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Note",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": ".sub",
+      "before": "<p class=\"sub\">작은 순간도 오래 남도록. 나만의 전자일기</p>",
+      "kind": "axe",
+      "id": "FW-MORE-122",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Note",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": ".empty",
+      "before": "<p class=\"empty\">아직 일기가 없어요. 오늘부터 기록해 볼까요?</p>",
+      "kind": "axe",
+      "id": "FW-MORE-123",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Note",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": ".hint",
+      "before": "<p class=\"hint\">🔒 현재 이 기기의 브라우저에만 저장돼요. 다른 기기에서는 보이지 않으며 브라우저 데이터를 삭제하면 사라질 수 있으니 백업하세요. 공용 기기에서는 사용하지 않는 것이 좋아요.</p>",
+      "kind": "axe",
+      "id": "FW-MORE-124",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Note",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": "#secol-main-content",
+      "before": "<span id=\"secol-main-content\" tabindex=\"-1\" style=\"position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)\" aria-label=\"본문 시작\"></span>",
+      "kind": "axe",
+      "id": "FW-MORE-125",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Quiz",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "heading-order",
+      "target": ".fw-tutorial-target",
+      "before": "<h3 class=\"fw-tutorial-target\">퀴즈 만들기</h3>",
+      "kind": "axe",
+      "id": "FW-MORE-126",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Quiz",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": "#fw-battle-entry",
+      "before": "<div id=\"fw-battle-entry\" style=\"position:relative;z-index:999;display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:12px;padding:12px;background:#eef2ff;border:2px solid #a4b3ed;border-radius:14px;font-family:system-ui,sans-serif\">",
+      "kind": "axe",
+      "id": "FW-MORE-127",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Story",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "aria-prohibited-attr",
+      "target": ".progress",
+      "before": "<div class=\"progress\" aria-label=\"챕터 진행도\"><div id=\"progress\" style=\"width: 0%;\"></div></div>",
+      "kind": "axe",
+      "id": "FW-MORE-128",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Vault",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": "#homeScreen > .hero > p",
+      "before": "<p>공용 금고를 탐험하고, 얻은 보물을 나의 금고에 보관하세요.</p>",
+      "kind": "axe",
+      "id": "FW-MORE-129",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Vault",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": ".grid > .card:nth-child(2) > .stat-grid > .stat:nth-child(1) > span",
+      "before": "<span>🔑 열쇠</span>",
+      "kind": "axe",
+      "id": "FW-MORE-130",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Vault",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": ".grid > .card:nth-child(2) > .stat-grid > .stat:nth-child(2) > span",
+      "before": "<span>💎 보물</span>",
+      "kind": "axe",
+      "id": "FW-MORE-131",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Vault",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": ".grid > .card:nth-child(2) > .stat-grid > .stat:nth-child(3) > span",
+      "before": "<span>🛡️ 방어</span>",
+      "kind": "axe",
+      "id": "FW-MORE-132",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Vault",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": ".grid > .card:nth-child(2) > .stat-grid > .stat:nth-child(4) > span",
+      "before": "<span>🎮 플레이</span>",
+      "kind": "axe",
+      "id": "FW-MORE-133",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Vote",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": ".hero > p",
+      "before": "<p>간단하게 투표방을 만들고 친구들과 함께 투표해보세요.</p>",
+      "kind": "axe",
+      "id": "FW-MORE-134",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Vote",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": "#joinTab",
+      "before": "<button class=\"tab\" id=\"joinTab\">방 참가</button>",
+      "kind": "axe",
+      "id": "FW-MORE-135",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Whiteboard",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "label",
+      "target": "#width",
+      "before": "<input id=\"width\" type=\"range\" min=\"1\" max=\"50\" value=\"6\">",
+      "kind": "axe",
+      "id": "FW-MORE-136",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Wheel",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "aria-prohibited-attr",
+      "target": "#secol-main-content",
+      "before": "<span id=\"secol-main-content\" tabindex=\"-1\" style=\"position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)\" aria-label=\"본문 시작\"></span>",
+      "kind": "axe",
+      "id": "FW-MORE-137",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Wheel",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "label-title-only",
+      "target": "#wa-lang-select",
+      "before": "<select class=\"wa-lang-select\" id=\"wa-lang-select\" title=\"언어\"><option value=\"ko\" selected=\"\">한국어</option><option value=\"en\">English</option></select>",
+      "kind": "axe",
+      "id": "FW-MORE-138",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Wheel",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "landmark-one-main",
+      "target": "html",
+      "before": "<html lang=\"ko\">",
+      "kind": "axe",
+      "id": "FW-MORE-139",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Wheel",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "page-has-heading-one",
+      "target": "html",
+      "before": "<html lang=\"ko\">",
+      "kind": "axe",
+      "id": "FW-MORE-140",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Wheel",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": "#secol-main-content",
+      "before": "<span id=\"secol-main-content\" tabindex=\"-1\" style=\"position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)\" aria-label=\"본문 시작\"></span>",
+      "kind": "axe",
+      "id": "FW-MORE-141",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Wheel",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": "#fw-battle-entry",
+      "before": "<div id=\"fw-battle-entry\" style=\"position:relative;z-index:999;display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:12px;padding:12px;background:#eef2ff;border:2px solid #a4b3ed;border-radius:14px;font-family:system-ui,sans-serif\">",
+      "kind": "axe",
+      "id": "FW-MORE-142",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Wheel",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": ".fw-logo",
+      "before": "<a class=\"fw-logo fw-hub-logo\" href=\"https://semicolonxss.github.io/Formwheel/\" aria-label=\"FormWheel 메인으로 이동\"><span class=\"fw-hub-form\">Form</span><span class=\"fw-hub-icon\" aria-hidden=\"true\"></span><span class=\"fw-hub-wheel\">Wheel</span></a>",
+      "kind": "axe",
+      "id": "FW-MORE-143",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Wheel",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": "#wa-lang-select",
+      "before": "<select class=\"wa-lang-select\" id=\"wa-lang-select\" title=\"언어\"><option value=\"ko\" selected=\"\">한국어</option><option value=\"en\">English</option></select>",
+      "kind": "axe",
+      "id": "FW-MORE-144",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Wheel",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": ".wa-sub",
+      "before": "<p class=\"wa-sub\"><code>[어쩌고] [저쩌고]</code> 처럼 대괄호로 적으면 각각 개별 항목으로 들어가고, 대괄호 없이 줄바꿈만 해도 한 줄씩 항목으로 들어가요. <code>[항목-5]</code>처럼 \"-\" 뒤에 숫자만 쓰면 그 숫자가 초기 가중치(1~10)로 설정돼요. <code>[어쩌고-저쩌고]</code>처럼 \"-\" 뒤가 숫자가 아니면 그 부분은 note로 저장되어, 그 항목이 당첨된 뒤 팝업이 닫히면 하단에 작게 표시돼요.</p>",
+      "kind": "axe",
+      "id": "FW-MORE-145",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Wheel",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": ".wa-panel:nth-child(1) > .wa-panel-header > h2",
+      "before": "<h2>항목 목록 (0개)</h2>",
+      "kind": "axe",
+      "id": "FW-MORE-146",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Wheel",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": ".wa-form-row:nth-child(1)",
+      "before": "<div class=\"wa-form-row\" style=\"flex-direction:column;\"><textarea class=\"wa-input\" id=\"wa-new-input\" rows=\"2\" placeholder=\"[어쩌고] [저쩌고]  또는  줄바꿈으로 한 줄씩\" style=\"resize:vertical;\"></textarea></div>",
+      "kind": "axe",
+      "id": "FW-MORE-147",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Wheel",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": "#wa-form-slot > .wa-hint",
+      "before": "<p class=\"wa-hint\">예: <code>[인터스텔라] [듄] [기생충-3]</code> 처럼 <code>-숫자</code>를 붙이면 그 항목 초기 크기(가중치)가 바로 설정돼요. 나중에 목록에서 항목 옆 숫자로도 언제든 조절할 수 있어요.</p>",
+      "kind": "axe",
+      "id": "FW-MORE-148",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Wheel",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": ".wa-settings-box:nth-child(3)",
+      "before": "<div class=\"wa-settings-box\">",
+      "kind": "axe",
+      "id": "FW-MORE-149",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Wheel",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": ".wa-panel:nth-child(1) > .wa-settings-box:nth-child(4)",
+      "before": "<div class=\"wa-settings-box\">",
+      "kind": "axe",
+      "id": "FW-MORE-150",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Wheel",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": ".wa-settings-box:nth-child(5)",
+      "before": "<div class=\"wa-settings-box\">",
+      "kind": "axe",
+      "id": "FW-MORE-151",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Wheel",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": ".wa-settings-box:nth-child(6) > .wa-settings-title",
+      "before": "<p class=\"wa-settings-title\">당첨 팝업 설정</p>",
+      "kind": "axe",
+      "id": "FW-MORE-152",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Wheel",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": ".wa-settings-box:nth-child(6) > .wa-settings-row:nth-child(2)",
+      "before": "<div class=\"wa-settings-row\">",
+      "kind": "axe",
+      "id": "FW-MORE-153",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Wheel",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": ".wa-settings-box:nth-child(6) > .wa-settings-row:nth-child(3)",
+      "before": "<div class=\"wa-settings-row\" style=\"margin-top:10px;\">",
+      "kind": "axe",
+      "id": "FW-MORE-154",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Wheel",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": ".wa-settings-box:nth-child(6) > .wa-settings-row:nth-child(4) > .wa-settings-field:nth-child(1)",
+      "before": "<div class=\"wa-settings-field\"><label for=\"wa-secret-code-input\">시크릿 코드</label><input class=\"wa-input\" id=\"wa-secret-code-input\" type=\"text\" placeholder=\"코드를 입력하세요\" value=\"\"></div>",
+      "kind": "axe",
+      "id": "FW-MORE-155",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Wheel",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": ".wa-settings-box:nth-child(7)",
+      "before": "<div class=\"wa-settings-box\">",
+      "kind": "axe",
+      "id": "FW-MORE-156",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Wheel",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": ".wa-settings-box:nth-child(8) > .wa-settings-title",
+      "before": "<p class=\"wa-settings-title\">돌림판 저장</p>",
+      "kind": "axe",
+      "id": "FW-MORE-157",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Wheel",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": "#wa-preset-name-input",
+      "before": "<input class=\"wa-input\" id=\"wa-preset-name-input\" type=\"text\" placeholder=\"프리셋 이름 (예: 점심 메뉴)\" value=\"\">",
+      "kind": "axe",
+      "id": "FW-MORE-158",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Wheel",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": ".wa-settings-box:nth-child(8) > .wa-hint",
+      "before": "<p class=\"wa-hint\" style=\"margin:2px 0 0;\">아직 저장된 돌림판이 없어요.</p>",
+      "kind": "axe",
+      "id": "FW-MORE-159",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Wheel",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": "#wa-list",
+      "before": "<div class=\"wa-list\" id=\"wa-list\"><div class=\"wa-empty\">아직 항목이 없어요. 위에서 추가해보세요.</div></div>",
+      "kind": "axe",
+      "id": "FW-MORE-160",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Wheel",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": ".wa-wheel-col > .wa-settings-box",
+      "before": "<div class=\"wa-settings-box\" style=\"width:100%;margin-top:10px;\"><div class=\"wa-panel-header\" style=\"margin-bottom:8px;\"><h2>당첨 히스토리</h2></div><p class=\"wa-hint\" style=\"margin:0;\">아직 당첨 기록이 없어요.</p></div>",
+      "kind": "axe",
+      "id": "FW-MORE-161",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Wheel",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": ".wa-footer",
+      "before": "<div class=\"wa-footer\">데이터는 이 앱에 안전하게 저장됩니다.</div>",
+      "kind": "axe",
+      "id": "FW-MORE-162",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_AI",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": "#status",
+      "before": "<div id=\"status\" class=\"status\">\n    AI 시작 중...\n  </div>",
+      "kind": "axe",
+      "id": "FW-MORE-163",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_AI",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "heading-order",
+      "target": ".card:nth-child(2) > h3",
+      "before": "<h3>📊 AI 상태</h3>",
+      "kind": "axe",
+      "id": "FW-MORE-164",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_AI",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "landmark-one-main",
+      "target": "html",
+      "before": "<html lang=\"ko\">",
+      "kind": "axe",
+      "id": "FW-MORE-165",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_AI",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": "h1",
+      "before": "<h1>🧠 FormWheel AI</h1>",
+      "kind": "axe",
+      "id": "FW-MORE-166",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_AI",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": ".subtitle",
+      "before": "<div class=\"subtitle\">\n    아무것도 모르는 AI가 대화하면서 배우고 성장합니다.\n  </div>",
+      "kind": "axe",
+      "id": "FW-MORE-167",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_AI",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": "#input",
+      "before": "<input id=\"input\" maxlength=\"500\" placeholder=\"AI에게 말을 걸어보세요...\" autocomplete=\"off\">",
+      "kind": "axe",
+      "id": "FW-MORE-168",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_AI",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": "#status",
+      "before": "<div id=\"status\" class=\"status\">\n    AI 시작 중...\n  </div>",
+      "kind": "axe",
+      "id": "FW-MORE-169",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_AI",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": ".side > .card:nth-child(1)",
+      "before": "<div class=\"card\">",
+      "kind": "axe",
+      "id": "FW-MORE-170",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_AI",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": ".card:nth-child(2)",
+      "before": "<div class=\"card\">",
+      "kind": "axe",
+      "id": "FW-MORE-171",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_AI",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": ".help",
+      "before": "<div class=\"card help\">",
+      "kind": "axe",
+      "id": "FW-MORE-172",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_AI",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": ".card:nth-child(4)",
+      "before": "<div class=\"card\">\n\n    <h3>🧠 기억</h3>\n\n    <div id=\"memoryList\" class=\"memory\">\n      아직 기억이 없습니다.\n    </div>\n\n  </div>",
+      "kind": "axe",
+      "id": "FW-MORE-173",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_AI",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": ".card:nth-child(5)",
+      "before": "<div class=\"card\">\n\n    <h3>🌱 발전 과정</h3>\n\n    <div id=\"learningLog\" class=\"learning-log\">\n      아직 학습 기록이 없습니다.\n    </div>\n\n  </div>",
+      "kind": "axe",
+      "id": "FW-MORE-174",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Chat",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": ".loginSub",
+      "before": "<div class=\"loginSub\">계정 가입 없이 닉네임으로 채팅하세요.</div>",
+      "kind": "axe",
+      "id": "FW-MORE-175",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Chat",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "color-contrast",
+      "target": ".loginCard > p",
+      "before": "<p style=\"text-align:center;color:#777;font-size:12px;line-height:1.5\">\n        닉네임은 다른 사람과 중복될 수 있으며 본인 인증 수단이 아닙니다.\n      </p>",
+      "kind": "axe",
+      "id": "FW-MORE-176",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Chat",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": ".loginLogo",
+      "before": "<div class=\"loginLogo\">FormWheel Chat</div>",
+      "kind": "axe",
+      "id": "FW-MORE-177",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Chat",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": ".loginSub",
+      "before": "<div class=\"loginSub\">계정 가입 없이 닉네임으로 채팅하세요.</div>",
+      "kind": "axe",
+      "id": "FW-MORE-178",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Chat",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": "#nicknameForm > .field",
+      "before": "<div class=\"field\">\n          <label for=\"nicknameInput\">닉네임</label>\n          <input id=\"nicknameInput\" maxlength=\"12\" autocomplete=\"nickname\" placeholder=\"1~12자 닉네임\" required=\"\">\n        </div>",
+      "kind": "axe",
+      "id": "FW-MORE-179",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_Chat",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "region",
+      "target": ".loginCard > p",
+      "before": "<p style=\"text-align:center;color:#777;font-size:12px;line-height:1.5\">\n        닉네임은 다른 사람과 중복될 수 있으며 본인 인증 수단이 아닙니다.\n      </p>",
+      "kind": "axe",
+      "id": "FW-MORE-180",
+      "verification": "Same production page/state has zero axe violations on desktop and mobile."
+    },
+    {
+      "repo": "Formwheel_AI",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#input",
+      "before": "<input> element does not have a <label>",
+      "line": 43,
+      "kind": "html-validate",
+      "id": "FW-MORE-181",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Balance",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#nickname",
+      "before": "<input> element does not have a <label>",
+      "line": 41,
+      "kind": "html-validate",
+      "id": "FW-MORE-182",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Chat",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#createRoomName",
+      "before": "<input> element does not have a <label>",
+      "line": 272,
+      "kind": "html-validate",
+      "id": "FW-MORE-183",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Chat",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#joinRoomCode",
+      "before": "<input> element does not have a <label>",
+      "line": 310,
+      "kind": "html-validate",
+      "id": "FW-MORE-184",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Chat",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#editInput",
+      "before": "<textarea> element does not have a <label>",
+      "line": 352,
+      "kind": "html-validate",
+      "id": "FW-MORE-185",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Chat",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#banMinutes",
+      "before": "<select> element does not have a <label>",
+      "line": 394,
+      "kind": "html-validate",
+      "id": "FW-MORE-186",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Chat",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#commandName",
+      "before": "<input> element does not have a <label>",
+      "line": 440,
+      "kind": "html-validate",
+      "id": "FW-MORE-187",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Chat",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#commandText",
+      "before": "<textarea> element does not have a <label>",
+      "line": 447,
+      "kind": "html-validate",
+      "id": "FW-MORE-188",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Chat",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#commandAction",
+      "before": "<select> element does not have a <label>",
+      "line": 455,
+      "kind": "html-validate",
+      "id": "FW-MORE-189",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Cook",
+      "file": "battle.html",
+      "rule": "input-label-association",
+      "target": "#codeInput",
+      "before": "<input> element does not have a <label>",
+      "line": 4,
+      "kind": "html-validate",
+      "id": "FW-MORE-190",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Decode",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#input",
+      "before": "<textarea> element does not have a <label>",
+      "line": 90,
+      "kind": "html-validate",
+      "id": "FW-MORE-191",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Decode",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#output",
+      "before": "<textarea> element does not have a <label>",
+      "line": 112,
+      "kind": "html-validate",
+      "id": "FW-MORE-192",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Decode",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#decimalInput",
+      "before": "<input> element does not have a <label>",
+      "line": 176,
+      "kind": "html-validate",
+      "id": "FW-MORE-193",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "battle.html",
+      "rule": "input-label-association",
+      "target": "#nick",
+      "before": "<input> element does not have a <label>",
+      "line": 1,
+      "kind": "html-validate",
+      "id": "FW-MORE-194",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "battle.html",
+      "rule": "input-label-association",
+      "target": "#codeInput",
+      "before": "<input> element does not have a <label>",
+      "line": 1,
+      "kind": "html-validate",
+      "id": "FW-MORE-195",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Piano",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#myName",
+      "before": "<input> element does not have a <label>",
+      "line": 38,
+      "kind": "html-validate",
+      "id": "FW-MORE-196",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Piano",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#joinCode",
+      "before": "<input> element does not have a <label>",
+      "line": 43,
+      "kind": "html-validate",
+      "id": "FW-MORE-197",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Piano",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#set_pieces",
+      "before": "<select> element does not have a <label>",
+      "line": 187,
+      "kind": "html-validate",
+      "id": "FW-MORE-198",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Piano",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#set_goal",
+      "before": "<select> element does not have a <label>",
+      "line": 191,
+      "kind": "html-validate",
+      "id": "FW-MORE-199",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Piano",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#set_octaves",
+      "before": "<select> element does not have a <label>",
+      "line": 195,
+      "kind": "html-validate",
+      "id": "FW-MORE-200",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Piano",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#set_cards",
+      "before": "<select> element does not have a <label>",
+      "line": 199,
+      "kind": "html-validate",
+      "id": "FW-MORE-201",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Piano",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#set_collision",
+      "before": "<select> element does not have a <label>",
+      "line": 203,
+      "kind": "html-validate",
+      "id": "FW-MORE-202",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Piano",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#set_reward",
+      "before": "<select> element does not have a <label>",
+      "line": 209,
+      "kind": "html-validate",
+      "id": "FW-MORE-203",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Piano",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#set_shield",
+      "before": "<select> element does not have a <label>",
+      "line": 214,
+      "kind": "html-validate",
+      "id": "FW-MORE-204",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Piano",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#set_limit",
+      "before": "<select> element does not have a <label>",
+      "line": 218,
+      "kind": "html-validate",
+      "id": "FW-MORE-205",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Piano",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#set_memo",
+      "before": "<textarea> element does not have a <label>",
+      "line": 226,
+      "kind": "html-validate",
+      "id": "FW-MORE-206",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Quiz",
+      "file": "battle.html",
+      "rule": "input-label-association",
+      "target": "#nick",
+      "before": "<input> element does not have a <label>",
+      "line": 1,
+      "kind": "html-validate",
+      "id": "FW-MORE-207",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Quiz",
+      "file": "battle.html",
+      "rule": "input-label-association",
+      "target": "#codeInput",
+      "before": "<input> element does not have a <label>",
+      "line": 1,
+      "kind": "html-validate",
+      "id": "FW-MORE-208",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#randomItems",
+      "before": "<textarea> element does not have a <label>",
+      "line": 84,
+      "kind": "html-validate",
+      "id": "FW-MORE-209",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#memoText",
+      "before": "<textarea> element does not have a <label>",
+      "line": 99,
+      "kind": "html-validate",
+      "id": "FW-MORE-210",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#todoInput",
+      "before": "<input> element does not have a <label>",
+      "line": 104,
+      "kind": "html-validate",
+      "id": "FW-MORE-211",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#textInput",
+      "before": "<textarea> element does not have a <label>",
+      "line": 142,
+      "kind": "html-validate",
+      "id": "FW-MORE-212",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#qrText",
+      "before": "<textarea> element does not have a <label>",
+      "line": 233,
+      "kind": "html-validate",
+      "id": "FW-MORE-213",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#jsonInput",
+      "before": "<textarea> element does not have a <label>",
+      "line": 244,
+      "kind": "html-validate",
+      "id": "FW-MORE-214",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#ttsText",
+      "before": "<textarea> element does not have a <label>",
+      "line": 256,
+      "kind": "html-validate",
+      "id": "FW-MORE-215",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#seatNames",
+      "before": "<textarea> element does not have a <label>",
+      "line": 299,
+      "kind": "html-validate",
+      "id": "FW-MORE-216",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Vault",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#hostName",
+      "before": "<input> element does not have a <label>",
+      "line": 121,
+      "kind": "html-validate",
+      "id": "FW-MORE-217",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Vault",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#joinName",
+      "before": "<input> element does not have a <label>",
+      "line": 137,
+      "kind": "html-validate",
+      "id": "FW-MORE-218",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Vault",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#joinCode",
+      "before": "<input> element does not have a <label>",
+      "line": 142,
+      "kind": "html-validate",
+      "id": "FW-MORE-219",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Vote",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#title",
+      "before": "<input> element does not have a <label>",
+      "line": 38,
+      "kind": "html-validate",
+      "id": "FW-MORE-220",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Vote",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#choices > div:nth-child(1) > input",
+      "before": "<input> element does not have a <label>",
+      "line": 42,
+      "kind": "html-validate",
+      "id": "FW-MORE-221",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Vote",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#choices > div:nth-child(2) > input",
+      "before": "<input> element does not have a <label>",
+      "line": 43,
+      "kind": "html-validate",
+      "id": "FW-MORE-222",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Vote",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#joinCode",
+      "before": "<input> element does not have a <label>",
+      "line": 52,
+      "kind": "html-validate",
+      "id": "FW-MORE-223",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Vote",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#joinName",
+      "before": "<input> element does not have a <label>",
+      "line": 54,
+      "kind": "html-validate",
+      "id": "FW-MORE-224",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Wheel",
+      "file": "battle.html",
+      "rule": "input-label-association",
+      "target": "#nick",
+      "before": "<input> element does not have a <label>",
+      "line": 1,
+      "kind": "html-validate",
+      "id": "FW-MORE-225",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Wheel",
+      "file": "battle.html",
+      "rule": "input-label-association",
+      "target": "#codeInput",
+      "before": "<input> element does not have a <label>",
+      "line": 1,
+      "kind": "html-validate",
+      "id": "FW-MORE-226",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Whiteboard",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#nickname",
+      "before": "<input> element does not have a <label>",
+      "line": 15,
+      "kind": "html-validate",
+      "id": "FW-MORE-227",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel_Whiteboard",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#roomCode",
+      "before": "<input> element does not have a <label>",
+      "line": 16,
+      "kind": "html-validate",
+      "id": "FW-MORE-228",
+      "verification": "Input-label validation now reports zero missing labels in these source documents."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "state": "owned-theme",
+      "target": ".hero > h2",
+      "before": "<h2>\n설치 없이, 무료 게임과 창작을 바로 즐겨보세요!\n</h2>",
+      "kind": "axe-theme",
+      "id": "FW-MORE-229",
+      "verification": "Five owned-theme fixtures pass color contrast; repeated themes counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "state": "owned-theme",
+      "target": "#fw-hero-solo",
+      "before": "<a class=\"heroButton primary\" href=\"#\" id=\"fw-hero-solo\">🎲 랜덤 게임 시작</a>",
+      "kind": "axe-theme",
+      "id": "FW-MORE-230",
+      "verification": "Five owned-theme fixtures pass color contrast; repeated themes counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "state": "owned-theme",
+      "target": "div:nth-child(7) > a[href$=\"optical-chaos.html\"]",
+      "before": "<a href=\"./optical-chaos.html\" style=\"color:#e9d5ff;font-weight:800;text-decoration:none\">🌈 NEW GAME · OPTICAL CHAOS — 반사 × 굴절 광학 퍼즐 플레이 →</a>",
+      "kind": "axe-theme",
+      "id": "FW-MORE-231",
+      "verification": "Five owned-theme fixtures pass color contrast; repeated themes counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "state": "owned-theme",
+      "target": "#fw-filter-panel > label:nth-child(1)",
+      "before": "<label>인원 <select id=\"modeFilter\" aria-label=\"플레이 인원\"><option value=\"all\">전체 인원</option><option value=\"solo\">1인 가능</option><option value=\"multi\">다인 가능</option><option value=\"both\">1인·다인 모두</option></select></label>",
+      "kind": "axe-theme",
+      "id": "FW-MORE-232",
+      "verification": "Five owned-theme fixtures pass color contrast; repeated themes counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "state": "owned-theme",
+      "target": "#fw-filter-panel > label:nth-child(2)",
+      "before": "<label>연결 <select id=\"connectionFilter\" aria-label=\"인터넷 연결 조건\"><option value=\"all\">전체 연결</option><option value=\"online\">온라인</option><option value=\"offline\">오프라인</option></select></label>",
+      "kind": "axe-theme",
+      "id": "FW-MORE-233",
+      "verification": "Five owned-theme fixtures pass color contrast; repeated themes counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "state": "owned-theme",
+      "target": "#fw-filter-panel > label:nth-child(3)",
+      "before": "<label>난이도 <select id=\"difficultyFilter\" aria-label=\"프로젝트 난이도\"><option value=\"all\">전체 난이도</option><option value=\"쉬움\">쉬움</option><option value=\"보통\">보통</option><option value=\"어려움\">어려움</option></select></label>",
+      "kind": "axe-theme",
+      "id": "FW-MORE-234",
+      "verification": "Five owned-theme fixtures pass color contrast; repeated themes counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "state": "owned-theme",
+      "target": "#count",
+      "before": "<strong id=\"count\" aria-live=\"polite\">75</strong>",
+      "kind": "axe-theme",
+      "id": "FW-MORE-235",
+      "verification": "Five owned-theme fixtures pass color contrast; repeated themes counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "state": "owned-theme",
+      "target": "a[data-spotlight-link=\"\"]",
+      "before": "<a data-spotlight-link=\"\" href=\"https://semicolonxss.github.io/Formwheel_Spotlight/\" style=\"display:inline-block;background:#3439bd;color:white;font-size:13px;font-weight:800;text-decoration:none;padding:10px 17px;border-radius:11px\" aria-label=\"Spotlight 자세히 보기 → (Time)\">Spotlight 자세히 보기 →</a>",
+      "kind": "axe-theme",
+      "id": "FW-MORE-236",
+      "verification": "Five owned-theme fixtures pass color contrast; repeated themes counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "state": "owned-theme",
+      "target": "#fw-party-entry > a[href$=\"party.html\"]",
+      "before": "<a href=\"./party.html\" style=\"display:inline-block;padding:10px 15px;border-radius:10px;background:#4637b8;color:#fff;text-decoration:none;font-weight:700\">🎉 파티 시작 →</a>",
+      "kind": "axe-theme",
+      "id": "FW-MORE-237",
+      "verification": "Five owned-theme fixtures pass color contrast; repeated themes counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "state": "owned-theme",
+      "target": "div:nth-child(16) > a[href$=\"festival.html\"]",
+      "before": "<a href=\"./festival.html\" style=\"padding:8px 12px;background:#503cbb;border-radius:9px;color:white;text-decoration:none;font-weight:700\">🎮 페스티벌 입장 →</a>",
+      "kind": "axe-theme",
+      "id": "FW-MORE-238",
+      "verification": "Five owned-theme fixtures pass color contrast; repeated themes counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "state": "owned-theme",
+      "target": "#fw-unite-entry > a[href$=\"unite.html\"]",
+      "before": "<a href=\"./unite.html\" style=\"padding:9px 12px;background:#4e3ba6;color:#fff;border-radius:10px;text-decoration:none;font-weight:750\">피날레 입장 →</a>",
+      "kind": "axe-theme",
+      "id": "FW-MORE-239",
+      "verification": "Five owned-theme fixtures pass color contrast; repeated themes counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "state": "owned-theme",
+      "target": "#fw-main-content > p",
+      "before": "<p style=\"text-align:center;font-size:12px\">최근 추가·NEW: 저장소 생성일 기준 14일 · 실제 서비스 공개일과 다를 수 있습니다.</p>",
+      "kind": "axe-theme",
+      "id": "FW-MORE-240",
+      "verification": "Five owned-theme fixtures pass color contrast; repeated themes counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "state": "owned-theme",
+      "target": "section[aria-label=\"새 기능 TIME CAPSULE\"] > a[href$=\"time-capsule.html\"]",
+      "before": "<a href=\"./time-capsule.html\" style=\"padding:10px 14px;border-radius:10px;background:#6843b5;color:#fff;text-decoration:none;font-weight:700\">캡슐 만들기 →</a>",
+      "kind": "axe-theme",
+      "id": "FW-MORE-241",
+      "verification": "Five owned-theme fixtures pass color contrast; repeated themes counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "state": "owned-theme",
+      "target": "section[aria-label=\"FORK LAB A/B 테스트\"] > a[href$=\"fork-lab.html\"]",
+      "before": "<a href=\"./fork-lab.html\" style=\"padding:10px 14px;border-radius:10px;background:#355f9e;color:#fff;text-decoration:none;font-weight:700\">실험실 입장 →</a>",
+      "kind": "axe-theme",
+      "id": "FW-MORE-242",
+      "verification": "Five owned-theme fixtures pass color contrast; repeated themes counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "state": "owned-theme",
+      "target": "a[href$=\"promotion.html\"]",
+      "before": "<a href=\"./promotion.html\" style=\"padding:11px 17px;border-radius:12px;background:#493390;color:white;text-decoration:none;font-weight:800\">홍보 엔진 열기 →</a>",
+      "kind": "axe-theme",
+      "id": "FW-MORE-243",
+      "verification": "Five owned-theme fixtures pass color contrast; repeated themes counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "state": "owned-theme",
+      "target": "section[aria-label=\"개선점 보내기\"] > a[href$=\"feedback.html\"]",
+      "before": "<a href=\"./feedback.html\" style=\"display:inline-block;padding:10px 14px;background:#3439bd;color:white;border-radius:10px;text-decoration:none;font-weight:700\">개선점 제출하기 →</a>",
+      "kind": "axe-theme",
+      "id": "FW-MORE-244",
+      "verification": "Five owned-theme fixtures pass color contrast; repeated themes counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "state": "owned-theme",
+      "target": "a[href$=\"badge-admin.html\"]",
+      "before": "<a href=\"./badge-admin.html\" style=\"font-size:12px;color:#6054ab;text-decoration:underline;text-underline-offset:3px\">🏅 배지 통계 · 관리자</a>",
+      "kind": "axe-theme",
+      "id": "FW-MORE-245",
+      "verification": "Five owned-theme fixtures pass color contrast; repeated themes counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "state": "owned-theme",
+      "target": "#fw-playtest-entry > a[href$=\"playtest.html\"]",
+      "before": "<a href=\"./playtest.html\" style=\"display:inline-block;background:#4637b8;color:#fff;padding:10px 18px;border-radius:10px;text-decoration:none;font-weight:700\">지원 안내 · 튜토리얼 보기 →</a>",
+      "kind": "axe-theme",
+      "id": "FW-MORE-246",
+      "verification": "Five owned-theme fixtures pass color contrast; repeated themes counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "state": "owned-theme",
+      "target": "div[aria-label=\"명예의 전당\"] > a[href$=\"hall-of-fame.html\"]",
+      "before": "<a href=\"./hall-of-fame.html\" style=\"display:inline-block;margin:8px;padding:9px 14px;border-radius:12px;background:#36205b;color:#fff;text-decoration:none;font-weight:700\">🏆 명예의 전당</a>",
+      "kind": "axe-theme",
+      "id": "FW-MORE-247",
+      "verification": "Five owned-theme fixtures pass color contrast; repeated themes counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "rule": "landmark-one-main",
+      "state": "simple",
+      "target": "html",
+      "before": "<html lang=\"ko\" style=\"font-size: 16px;\">",
+      "kind": "axe-compact",
+      "id": "FW-MORE-248",
+      "verification": "Compact mode passes main-landmark and region checks."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "rule": "region",
+      "state": "simple",
+      "target": ".fw-b-hero",
+      "before": "<div class=\"fw-b-panel fw-b-hero\"><small>YOUR UNIVERSE, YOUR PLAY</small><h1>오늘은 무엇을 해볼까?</h1><p>찾는 건 빠르게, 새로운 발견은 즐겁게.</p></div>",
+      "kind": "axe-compact",
+      "id": "FW-MORE-249",
+      "verification": "Compact mode passes main-landmark and region checks."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "rule": "region",
+      "state": "simple",
+      "target": ".fw-b-panel:nth-child(2) > h2",
+      "before": "<h2>🔎 바로 찾기</h2>",
+      "kind": "axe-compact",
+      "id": "FW-MORE-250",
+      "verification": "Compact mode passes main-landmark and region checks."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "rule": "region",
+      "state": "simple",
+      "target": "#fw-b-home-search",
+      "before": "<input id=\"fw-b-home-search\" placeholder=\"원하는 프로젝트 검색\" aria-label=\"프로젝트 검색\" data-fw-original-placeholder=\"원하는 프로젝트 검색\">",
+      "kind": "axe-compact",
+      "id": "FW-MORE-251",
+      "verification": "Compact mode passes main-landmark and region checks."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "rule": "region",
+      "state": "simple",
+      "target": ".fw-b-action[href$=\"playtest.html\"]:nth-child(2)",
+      "before": "<a class=\"fw-b-action\" href=\"./playtest.html\">🧪 플레이테스터</a>",
+      "kind": "axe-compact",
+      "id": "FW-MORE-252",
+      "verification": "Compact mode passes main-landmark and region checks."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "rule": "region",
+      "state": "simple",
+      "target": ".fw-b-action[href$=\"playtest.html\"]:nth-child(3)",
+      "before": "<a class=\"fw-b-action\" href=\"./playtest.html\">⏱️ 10초 챌린지</a>",
+      "kind": "axe-compact",
+      "id": "FW-MORE-253",
+      "verification": "Compact mode passes main-landmark and region checks."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "rule": "region",
+      "state": "simple",
+      "target": ".fw-b-action:nth-child(4)",
+      "before": "<a class=\"fw-b-action\" href=\"https://semicolonxss.github.io/Formwheel_AQS/\">🏆 AQS</a>",
+      "kind": "axe-compact",
+      "id": "FW-MORE-254",
+      "verification": "Compact mode passes main-landmark and region checks."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "rule": "region",
+      "state": "simple",
+      "target": ".fw-b-panel:nth-child(3) > h2",
+      "before": "<h2>🪐 빠른 탐색</h2>",
+      "kind": "axe-compact",
+      "id": "FW-MORE-255",
+      "verification": "Compact mode passes main-landmark and region checks."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "rule": "region",
+      "state": "simple",
+      "target": ".fw-b-panel:nth-child(4) > h2",
+      "before": "<h2>👥 친구와 플레이</h2>",
+      "kind": "axe-compact",
+      "id": "FW-MORE-256",
+      "verification": "Compact mode passes main-landmark and region checks."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "rule": "region",
+      "state": "simple",
+      "target": ".fw-b-action:nth-child(1)",
+      "before": "<a class=\"fw-b-action\" href=\"https://semicolonxss.github.io/Formwheel_Battle/\">⚔️ Battle</a>",
+      "kind": "axe-compact",
+      "id": "FW-MORE-257",
+      "verification": "Compact mode passes main-landmark and region checks."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "rule": "region",
+      "state": "simple",
+      "target": ".fw-b-panel:nth-child(4) > .fw-b-actions > .fw-b-action:nth-child(2)",
+      "before": "<a class=\"fw-b-action\" href=\"https://semicolonxss.github.io/Formwheel_Spy/\">🕵️ Spy</a>",
+      "kind": "axe-compact",
+      "id": "FW-MORE-258",
+      "verification": "Compact mode passes main-landmark and region checks."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "rule": "region",
+      "state": "simple",
+      "target": "#fw-beta-simple-view > .fw-b-panel > .fw-b-actions > .fw-b-action",
+      "before": "<a class=\"fw-b-action\" href=\"https://semicolonxss.github.io/Formwheel_AQS/\">🏆 AQS</a>",
+      "kind": "axe-compact",
+      "id": "FW-MORE-259",
+      "verification": "Compact mode passes main-landmark and region checks."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"C3\"]",
+      "before": {
+        "note": "C3",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-260",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"D3\"]",
+      "before": {
+        "note": "D3",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-261",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"E3\"]",
+      "before": {
+        "note": "E3",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-262",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"F3\"]",
+      "before": {
+        "note": "F3",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-263",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"G3\"]",
+      "before": {
+        "note": "G3",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-264",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"A3\"]",
+      "before": {
+        "note": "A3",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-265",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"B3\"]",
+      "before": {
+        "note": "B3",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-266",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"C4\"]",
+      "before": {
+        "note": "C4",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-267",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"D4\"]",
+      "before": {
+        "note": "D4",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-268",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"E4\"]",
+      "before": {
+        "note": "E4",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-269",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"F4\"]",
+      "before": {
+        "note": "F4",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-270",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"G4\"]",
+      "before": {
+        "note": "G4",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-271",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"A4\"]",
+      "before": {
+        "note": "A4",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-272",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"B4\"]",
+      "before": {
+        "note": "B4",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-273",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"C5\"]",
+      "before": {
+        "note": "C5",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-274",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"D5\"]",
+      "before": {
+        "note": "D5",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-275",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"E5\"]",
+      "before": {
+        "note": "E5",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-276",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"F5\"]",
+      "before": {
+        "note": "F5",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-277",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"G5\"]",
+      "before": {
+        "note": "G5",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-278",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"A5\"]",
+      "before": {
+        "note": "A5",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-279",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"B5\"]",
+      "before": {
+        "note": "B5",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-280",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"C#3\"]",
+      "before": {
+        "note": "C#3",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-281",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"D#3\"]",
+      "before": {
+        "note": "D#3",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-282",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"F#3\"]",
+      "before": {
+        "note": "F#3",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-283",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"G#3\"]",
+      "before": {
+        "note": "G#3",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-284",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"A#3\"]",
+      "before": {
+        "note": "A#3",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-285",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"C#4\"]",
+      "before": {
+        "note": "C#4",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-286",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"D#4\"]",
+      "before": {
+        "note": "D#4",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-287",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"F#4\"]",
+      "before": {
+        "note": "F#4",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-288",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"G#4\"]",
+      "before": {
+        "note": "G#4",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-289",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"A#4\"]",
+      "before": {
+        "note": "A#4",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-290",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"C#5\"]",
+      "before": {
+        "note": "C#5",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-291",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"D#5\"]",
+      "before": {
+        "note": "D#5",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-292",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"F#5\"]",
+      "before": {
+        "note": "F#5",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-293",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"G#5\"]",
+      "before": {
+        "note": "G#5",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-294",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Music",
+      "file": "modules/app.js",
+      "rule": "keyboard-accessible-control",
+      "target": "#editorPiano [data-note=\"A#5\"]",
+      "before": {
+        "note": "A#5",
+        "tag": "DIV",
+        "tabIndex": -1,
+        "pressed": null
+      },
+      "kind": "browser-interaction",
+      "id": "FW-MORE-295",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "quest.html",
+      "rule": "storage-failure-recovery",
+      "target": "#tasks",
+      "kind": "browser-interaction",
+      "id": "FW-MORE-296",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "secret/index.html",
+      "rule": "storage-failure-recovery",
+      "target": "#cards",
+      "kind": "browser-interaction",
+      "id": "FW-MORE-297",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "assets/app.js",
+      "rule": "corrupt-storage-recovery",
+      "target": "#todoList",
+      "kind": "browser-interaction",
+      "id": "FW-MORE-298",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "assets/app.js",
+      "rule": "generated-input-label",
+      "target": "#todoList input[type=\"checkbox\"]",
+      "kind": "browser-interaction",
+      "id": "FW-MORE-299",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "assets/app.js",
+      "rule": "generated-input-label",
+      "target": "#my",
+      "kind": "browser-interaction",
+      "id": "FW-MORE-300",
+      "verification": "Production browser interaction regression passes; see extended-regression.cjs."
+    }
+  ]
+}
