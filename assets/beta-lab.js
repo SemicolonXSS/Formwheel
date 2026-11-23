@@ -15,12 +15,19 @@ const key=()=>PREFIX+account;
 const preview=document.getElementById('lab-preview');
 const previewStatus=document.getElementById('preview-status');
 const previewUrl='https://semicolonxss.github.io/FormLab/lab-preview.html';
-let channelId=crypto.randomUUID();
+// Preview messaging is optional: unsupported browser APIs must not disable the lab.
+const randomBytes=new Uint8Array(16);
+if(globalThis.crypto?.getRandomValues)globalThis.crypto.getRandomValues(randomBytes);
+else for(let i=0;i<randomBytes.length;i++)randomBytes[i]=Math.floor(Math.random()*256);
+let channelId=Array.from(randomBytes,byte=>byte.toString(16).padStart(2,'0')).join('');
 try{
   channelId=sessionStorage.getItem('fw.betaLab.previewChannel')||channelId;
   sessionStorage.setItem('fw.betaLab.previewChannel',channelId);
 }catch{}
-const channel=typeof BroadcastChannel==='function'?new BroadcastChannel('fw.betaLab.'+channelId):null;
+let channel=null;
+try{
+  if(typeof BroadcastChannel==='function')channel=new BroadcastChannel('fw.betaLab.'+channelId);
+}catch{ /* Private browsing can block cross-tab channels; iframe previews still work. */ }
 let previewRevision=0,previewTimer;
 const enabledFeatures=()=>ready?Object.entries(read()).filter(([,on])=>on).map(([id])=>id):[];
 const publishSelection=()=>channel?.postMessage({type:'formwheel-beta-preview',enabled:enabledFeatures()});
