@@ -88,6 +88,19 @@ const game=document.getElementById('game'),score=document.getElementById('score'
 const canvas=document.getElementById('preview'),ctx=canvas.getContext('2d');
 const qr=document.getElementById('qr'),status=document.getElementById('notice'),qrStatus=document.getElementById('qr-status');
 const names={'':'FORMWHEEL','polyrhythm.html':'POLYRHYTHM','afterbeat.html':'AFTERBEAT','reflex.html':'REFLEX','clicker.html':'CLICKER'};
+/* Optional project deep link from the shared game card. Restrict to the official GitHub Pages host. */
+const params=new URLSearchParams(location.search);
+const supplied=params.get('game_url');
+if(supplied){
+try{
+const target=new URL(supplied);
+if(target.protocol==='https:'&&target.hostname==='semicolonxss.github.io'){
+const option=document.createElement('option');option.value=target.origin+target.pathname;
+option.textContent=(params.get('game_name')||target.pathname.split('/').filter(Boolean)[0]||'Game').slice(0,60)+' · 현재 게임';
+game.prepend(option);game.value=option.value;names[option.value]=option.textContent.replace(' · 현재 게임','').toUpperCase();
+}
+}catch(e){}
+}
 let currentUrl='';
 function url(){const u=new URL(game.value||'index.html',base);u.searchParams.set('utm_source','formwheel_promotion');u.searchParams.set('utm_medium','share');return u.href;}
 function draw(){
