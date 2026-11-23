@@ -423,28 +423,4 @@ addEventListener("resize",requestFrame);
 requestFrame();
 </script>
 
-<!-- Formwheel optional game sharing: no login, tracking or database writes. -->
-<div id="fw-game-share" style="max-width:740px;margin:24px auto;padding:18px;text-align:center;background:#25203c;color:#f8f5ff;border:1px solid #655588;border-radius:16px;font:16px/1.5 system-ui,sans-serif">
-<strong>🎮 친구와 이 게임 공유하기</strong>
-<p style="margin:8px 0;color:#d5c9ef;font-size:14px">재미있었다면 친구에게 도전 링크를 보내 보세요!</p>
-<button type="button" id="fw-game-share-btn" style="cursor:pointer;padding:11px 19px;min-height:44px;border:0;border-radius:11px;background:#c5a6ff;color:#1b1230;font:700 15px system-ui,sans-serif">📤 공유하기</button>
-<a href="https://semicolonxss.github.io/Formwheel/promotion.html" style="display:inline-block;padding:10px 14px;color:#e9d8ff;text-decoration:underline">🎡 홍보 카드 · QR 만들기</a>
-<p id="fw-game-share-status" role="status" aria-live="polite" style="font-size:13px;min-height:1.5em;margin:8px 0 0;color:#f4dba8"></p>
-</div>
-<script>
-(function(){
-const button=document.getElementById('fw-game-share-btn');
-const status=document.getElementById('fw-game-share-status');
-const u=new URL(location.href);u.hash='';u.search='';
-u.searchParams.set('utm_source','formwheel_game_share');u.searchParams.set('utm_medium','friend');
-button.addEventListener('click',async function(){
-const url=u.href;
-try{
-if(navigator.share){await navigator.share({title:document.title,text:'🎮 Formwheel에서 이 게임에 도전해 봐!',url:url});return;}
-if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(url);status.textContent='링크를 복사했어요!';return;}
-status.textContent='공유 주소: '+url;
-}catch(e){if(e&&e.name==='AbortError')return;status.textContent='공유 주소: '+url;}
-});
-})();
-</script>
 </html>
