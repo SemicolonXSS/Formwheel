@@ -7,7 +7,7 @@ const path = require('node:path');
 const pages = [
   "404.html",
   "achievement.html",
-  "anniversary-40-50.html",
+  "afterbeat.html",
   "atom.html",
   "beta-lab.html",
   "board/index.html",
@@ -21,11 +21,14 @@ const pages = [
   "feedback.html",
   "festival.html",
   "find10-stats.html",
+  "ended.html",
   "glitch-detector.html",
   "grid.html",
   "hall-of-fame.html",
   "id-center.html",
+  "holdem.html",
   "index.html",
+  "loop.html",
   "maker/index.html",
   "more.html",
   "null.html",
@@ -37,6 +40,8 @@ const pages = [
   "party.html",
   "pixel-war.html",
   "playtest.html",
+  "polyrhythm.html",
+  "privacy.html",
   "profile.html",
   "project-rush.html",
   "quest.html",
@@ -56,8 +61,8 @@ const pages = [
   "workshop/gallery.html",
   "workshop/index.html"
 ];
-assert.equal(pages.length, 50, 'Expected exactly 50 checked pages');
-assert.equal(new Set(pages).size, 50, 'Duplicate page in checklist');
+
+assert.equal(new Set(pages).size, pages.length, 'Duplicate page in checklist');
 for (const page of pages) {
   const html = fs.readFileSync(path.join(__dirname, '..', page), 'utf8');
   const prefix = page + ': ';
@@ -72,4 +77,4 @@ for (const page of pages) {
   const mainStart = html.indexOf(main[0]);
   assert(bodyStart >= 0 && bodyStart < skipStart && skipStart < mainStart, prefix + 'skip link must precede main inside body');
 }
-console.log('PASS: 50 pages have keyboard skip navigation and focusable main landmarks (100 page-level improvements).');
+console.log('PASS: ' + pages.length + ' pages have keyboard skip navigation and focusable main landmarks.');

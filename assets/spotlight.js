@@ -27,7 +27,7 @@
   description.textContent = project.description || "오늘의 프로젝트를 발견해 보세요.";
   challenge.textContent = pick.tag + " · " + pick.challenge;
   link.href = "https://semicolonxss.github.io/Formwheel_Spotlight/";
-  link.setAttribute("aria-label", "Spotlight에서 " + project.name + " 자세히 보기");
+  link.setAttribute("aria-label", "Spotlight 자세히 보기 → (" + project.name + ")");
   date.textContent = today + " · 매일 자정(KST) 변경";
   root.hidden = false;
 })();

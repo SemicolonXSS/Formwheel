@@ -181,7 +181,7 @@ main{
   padding:6px 10px;
 
   background:#eaf1ff;
-  color:#2867e8;
+  color:#245bd1;
 
   border-radius:999px;
 
@@ -235,7 +235,7 @@ main{
 
   margin:12px auto 0;
 
-  color:#777b84;
+  color:#626773;
 
   font-size:12px;
   line-height:1.7;
@@ -358,7 +358,7 @@ main{
 }
 
 .resultText{
-  color:#858992;
+  color:#626773;
   font-size:12px;
 }
 
@@ -436,7 +436,7 @@ main{
   border-radius:5px;
 
   background:#eaf1ff;
-  color:#2867e8;
+  color:#245bd1;
 
   font-size:12px;
   font-weight:900;
@@ -491,7 +491,7 @@ main{
 .cardCategory{
   margin-top:2px;
 
-  color:#92969e;
+  color:#626773;
 
   font-size:12px;
   font-weight:800;
@@ -505,7 +505,7 @@ main{
 
   margin:8px 0 8px;
 
-  color:#777b84;
+  color:#626773;
 
   font-size:12px;
   line-height:1.45;
@@ -531,7 +531,7 @@ main{
 
   background:#f3f4f7;
 
-  color:#737780;
+  color:#626773;
 
   font-size:12px;
   font-weight:800;
@@ -539,17 +539,17 @@ main{
 
 .tag.online{
   background:#eef9f2;
-  color:#20864a;
+  color:#18753e;
 }
 
 .tag.offline{
   background:#f1f2f4;
-  color:#737780;
+  color:#626773;
 }
 
 .tag.difficulty{
   background:#fff7e8;
-  color:#a66a00;
+  color:#925c00;
 }
 
 
@@ -586,7 +586,7 @@ main{
 }
 
 .linkWarning{
-  color:#b1b4bb;
+  color:#626773;
   font-size:12px;
 }
 
@@ -687,7 +687,7 @@ main{
 }
 
 .feature span{
-  color:#858991;
+  color:#626773;
 
   font-size:12px;
   line-height:1.5;
@@ -705,7 +705,7 @@ footer{
 
   text-align:center;
 
-  color:#a0a3aa;
+  color:#626773;
 
   font-size:12px;
 }
@@ -713,7 +713,7 @@ footer{
 .footerLogo{
   margin-bottom:3px;
 
-  color:#777b83;
+  color:#626773;
 
   font-size:10px;
   font-weight:900;

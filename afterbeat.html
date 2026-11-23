@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ko"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>AFTERBEAT · Formwheel</title>
@@ -10,9 +10,9 @@
 body{background:radial-gradient(ellipse at top left,var(--glow),transparent 50%),#0d0d19;background-attachment:fixed}main{max-width:1060px;align-items:start}header{padding:14px;background:#151425ef;border:1px solid #ffffff27;border-radius:16px}h1,#life{color:var(--accent)}#start{background:var(--accent)}.controls{display:flex;gap:6px;flex-wrap:wrap}.stage{position:relative;overflow:hidden;border:1px solid #ffffff44;border-radius:16px;background:var(--scene);box-shadow:0 18px 50px #0008}.stage canvas{background:transparent;border-radius:0}.stage{touch-action:none;overscroll-behavior:contain;-webkit-user-select:none;user-select:none}#stats{padding:9px;background:#151425;border-radius:10px}#lesson{position:absolute;inset:8px 8px auto;background:#151425f5;padding:8px;border-radius:8px;text-align:center;pointer-events:none}button:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}@media(max-width:640px){body.playing header{padding:5px}body.playing #start,body.playing #tutorial{display:none}body.playing canvas{height:clamp(230px,calc(100dvh - 150px),660px)}}
  .hub-link{display:inline-flex;align-items:center;gap:6px;margin-bottom:12px;padding:8px 12px;border:1px solid #ffffff44;border-radius:10px;background:#242033;color:#f6f3ff;text-decoration:none;font-size:14px;font-weight:650}.hub-link:hover{border-color:var(--accent,#ffae73);color:var(--accent,#ffae73)}.hub-link:focus-visible{outline:2px solid var(--accent,#ffae73);outline-offset:2px}
 </style>
-<main>
+<style id="fw-skip-link-style">.fw-skip-link{position:fixed;inset-inline-start:12px;top:12px;z-index:2147483647;padding:12px 16px;border:2px solid #24205a;border-radius:9px;background:#fff;color:#24205a;font:700 16px/1.4 system-ui,sans-serif;text-decoration:none;transform:translateY(-220%)}.fw-skip-link:focus{transform:none;outline:3px solid #ff9a21;outline-offset:2px}</style></head><body><a class="fw-skip-link" href="#fw-main-content">본문으로 바로가기</a><main id="fw-main-content" tabindex="-1">
 <header>
-<a class="hub-link" href="./index.html" aria-label="Formwheel 메인 허브로 돌아가기">← Formwheel 허브</a>
+<a class="hub-link" href="./index.html">← Formwheel 허브</a>
 <h1>AFTERBEAT</h1>
 <p>탭 · 홀드 · 플릭<br><small>PC는 D F J K · 플릭은 Shift와 함께<br>터치는 해당 레인에서 위로 밀기</small></p>
 <label>곡<select id="track"></select></label>
@@ -424,7 +424,7 @@ requestFrame();
 </script>
 
 <!-- Formwheel optional game sharing: no login, tracking or database writes. -->
-<div id="fw-game-share" style="max-width:740px;margin:24px auto;padding:18px;text-align:center;background:#25203c;color:#f8f5ff;border:1px solid #655588;border-radius:16px;font:16px/1.5 system-ui,sans-serif">
+<div id="fw-game-share" role="region" aria-label="친구와 게임 공유" style="max-width:740px;margin:24px auto;padding:18px;text-align:center;background:#25203c;color:#f8f5ff;border:1px solid #655588;border-radius:16px;font:16px/1.5 system-ui,sans-serif">
 <strong>🎮 친구와 이 게임 공유하기</strong>
 <p style="margin:8px 0;color:#d5c9ef;font-size:14px">재미있었다면 친구에게 도전 링크를 보내 보세요!</p>
 <button type="button" id="fw-game-share-btn" style="cursor:pointer;padding:11px 19px;min-height:44px;border:0;border-radius:11px;background:#c5a6ff;color:#1b1230;font:700 15px system-ui,sans-serif">📤 공유하기</button>
@@ -447,4 +447,4 @@ status.textContent='공유 주소: '+url;
 });
 })();
 </script>
-</html>
+</body></html>
