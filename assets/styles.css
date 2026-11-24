@@ -874,3 +874,14 @@ footer{
 
 /* Sort direction toggle: touch friendly and compact */
 .subToolbar .sortDirectionButton{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:30px;padding:0 8px;border:1px solid #dfe2e8;border-radius:7px;background:#fff;color:#253251;font-size:17px;font-weight:800;cursor:pointer;flex-shrink:0}.subToolbar .sortDirectionButton:hover{background:#f1f4fc}.subToolbar .sortDirectionButton:focus-visible{outline:3px solid #6086df;outline-offset:2px}body[data-fw-global-theme] .subToolbar .sortDirectionButton{background:var(--fw-theme-surface,#fff);color:var(--fw-theme-text,#253251);border-color:var(--fw-theme-accent,#6086df)}
+
+/* Hub card status refresh */
+.fw-maturity-track{height:8px}
+.fw-maturity-caption{font-size:11px;gap:8px}
+.fw-maturity[data-band="stable"] .fw-maturity-fill{background:linear-gradient(90deg,#16885d,#3bc69b)}
+.fw-maturity[data-band="developing"] .fw-maturity-fill{background:linear-gradient(90deg,#4268dc,#7b9efa)}
+.fw-maturity[data-band="beta"] .fw-maturity-fill{background:linear-gradient(90deg,#b46a16,#e9a641)}
+.fw-maturity[data-band="early"] .fw-maturity-fill{background:linear-gradient(90deg,#8461bf,#ba93eb)}
+.fw-maturity[data-band="pending"] .fw-maturity-track{background:repeating-linear-gradient(135deg,transparent 0 4px,rgba(123,133,156,.22) 4px 8px)}
+.newBadge{letter-spacing:.04em;font-weight:800}
+@media(prefers-reduced-motion:reduce){.fw-maturity-fill,.newBadge{animation:none!important;transition:none!important}}
