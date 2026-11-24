@@ -64,13 +64,81 @@ test('Clicker Battle has two seats, isolated scores, rejoin and guest exit',asyn
  await assertSucceeds(update(at(g),{guest:null,'players/guest-tab':null,phase:'finished'}));
  await assertFails(remove(at(o)));
  await assertSucceeds(remove(at(h)));
- await assertFails(set(ref(h,'formwheelBattles/casino/ABC234'),start));
 });
 
-for(const path of ['battle/1234','rooms/ABC234','gcrown/rooms/1234','timeRooms/ABC234','bombRooms/ABC234','formwheelBattles/casino/ABC234','formwheelBattles/marble/ABC234','formwheelBattles/music/ABC234','formwheelBattles/quiz/ABC234']){
+for(const path of ['battle/1234','rooms/ABC234','gcrown/rooms/1234','timeRooms/ABC234','bombRooms/ABC234','formwheelBattles/marble/ABC234']){
  test('Legacy writes remain denied at '+path,async()=>{
   const target=ref(db('host'),path);
   await assertFails(get(target));
   await assertFails(set(target,{host:'host',status:'waiting'}));
  });
 }
+
+test('Casino Battle has two seats, isolated scores, rejoin and guest exit',async()=>{
+ const h=db('host'),g=db('guest'),o=db('other'),p='formwheelBattles/casino/ABC234';
+ const at=(x,s='')=>ref(x,p+s);
+ const player=(uid,name)=>({uid,name,score:0});
+ const start={host:'host-tab',hostUid:'host',phase:'waiting',createdAt:Date.now(),players:{'host-tab':player('host','Host')}};
+ await assertFails(set(at(g),start));
+ await assertSucceeds(set(at(h),start));
+ await assertFails(get(ref(o,'formwheelBattles/casino')));
+ await assertFails(update(at(g),{guest:'guest-tab','players/guest-tab':player('other','Guest')}));
+ await assertSucceeds(update(at(g),{guest:'guest-tab','players/guest-tab':player('guest','Guest')}));
+ await assertFails(update(at(o),{guest:'other-tab','players/other-tab':player('other','Other')}));
+ await assertFails(update(at(g),{phase:'playing',startedAt:serverTimestamp()}));
+ await assertSucceeds(update(at(h),{phase:'playing',startedAt:serverTimestamp()}));
+ await assertFails(set(at(g,'/players/host-tab/score'),8));
+ await assertFails(set(at(h,'/players/guest-tab/score'),100));
+ await assertSucceeds(set(at(g,'/players/guest-tab/score'),8));
+ await assertFails(set(at(g,'/players/guest-tab/score'),4));
+ assert.equal((await get(at(db('guest'),'/players/guest-tab/score'))).val(),8);
+ await assertSucceeds(update(at(g),{guest:null,'players/guest-tab':null,phase:'finished'}));
+ await assertFails(remove(at(o)));
+ await assertSucceeds(remove(at(h)));
+});
+
+test('Music Battle has two seats, isolated scores, rejoin and guest exit',async()=>{
+ const h=db('host'),g=db('guest'),o=db('other'),p='formwheelBattles/music/ABC234';
+ const at=(x,s='')=>ref(x,p+s);
+ const player=(uid,name)=>({uid,name,score:0});
+ const start={host:'host-tab',hostUid:'host',phase:'waiting',createdAt:Date.now(),players:{'host-tab':player('host','Host')}};
+ await assertFails(set(at(g),start));
+ await assertSucceeds(set(at(h),start));
+ await assertFails(get(ref(o,'formwheelBattles/music')));
+ await assertFails(update(at(g),{guest:'guest-tab','players/guest-tab':player('other','Guest')}));
+ await assertSucceeds(update(at(g),{guest:'guest-tab','players/guest-tab':player('guest','Guest')}));
+ await assertFails(update(at(o),{guest:'other-tab','players/other-tab':player('other','Other')}));
+ await assertFails(update(at(g),{phase:'playing',startedAt:serverTimestamp()}));
+ await assertSucceeds(update(at(h),{phase:'playing',startedAt:serverTimestamp()}));
+ await assertFails(set(at(g,'/players/host-tab/score'),8));
+ await assertFails(set(at(h,'/players/guest-tab/score'),100));
+ await assertSucceeds(set(at(g,'/players/guest-tab/score'),8));
+ await assertFails(set(at(g,'/players/guest-tab/score'),4));
+ assert.equal((await get(at(db('guest'),'/players/guest-tab/score'))).val(),8);
+ await assertSucceeds(update(at(g),{guest:null,'players/guest-tab':null,phase:'finished'}));
+ await assertFails(remove(at(o)));
+ await assertSucceeds(remove(at(h)));
+});
+
+test('Quiz Battle has two seats, isolated scores, rejoin and guest exit',async()=>{
+ const h=db('host'),g=db('guest'),o=db('other'),p='formwheelBattles/quiz/ABC234';
+ const at=(x,s='')=>ref(x,p+s);
+ const player=(uid,name)=>({uid,name,score:0});
+ const start={host:'host-tab',hostUid:'host',phase:'waiting',createdAt:Date.now(),players:{'host-tab':player('host','Host')}};
+ await assertFails(set(at(g),start));
+ await assertSucceeds(set(at(h),start));
+ await assertFails(get(ref(o,'formwheelBattles/quiz')));
+ await assertFails(update(at(g),{guest:'guest-tab','players/guest-tab':player('other','Guest')}));
+ await assertSucceeds(update(at(g),{guest:'guest-tab','players/guest-tab':player('guest','Guest')}));
+ await assertFails(update(at(o),{guest:'other-tab','players/other-tab':player('other','Other')}));
+ await assertFails(update(at(g),{phase:'playing',startedAt:serverTimestamp()}));
+ await assertSucceeds(update(at(h),{phase:'playing',startedAt:serverTimestamp()}));
+ await assertFails(set(at(g,'/players/host-tab/score'),8));
+ await assertFails(set(at(h,'/players/guest-tab/score'),100));
+ await assertSucceeds(set(at(g,'/players/guest-tab/score'),8));
+ await assertFails(set(at(g,'/players/guest-tab/score'),4));
+ assert.equal((await get(at(db('guest'),'/players/guest-tab/score'))).val(),8);
+ await assertSucceeds(update(at(g),{guest:null,'players/guest-tab':null,phase:'finished'}));
+ await assertFails(remove(at(o)));
+ await assertSucceeds(remove(at(h)));
+});

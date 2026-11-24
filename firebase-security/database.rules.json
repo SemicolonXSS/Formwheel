@@ -1755,6 +1755,156 @@
             ".validate": false
           }
         }
+      },
+      "casino": {
+        "$code": {
+          ".read": "auth != null && $code.matches(/^[A-HJ-NP-Z2-9]{6}$/)",
+          ".write": "auth != null && $code.matches(/^[A-HJ-NP-Z2-9]{6}$/) && ((!data.exists() && newData.child('hostUid').val() === auth.uid && newData.child('phase').val() === 'waiting' && !newData.hasChild('guest') && !newData.hasChild('startedAt') && newData.child('players').child(newData.child('host').val()).child('score').val() === 0) || (data.child('hostUid').val() === auth.uid && (!newData.exists() || (data.hasChild('guest') && !newData.hasChild('guest') && newData.child('createdAt').val() === data.child('createdAt').val() && newData.child('startedAt').val() === data.child('startedAt').val() && newData.child('host').val() === data.child('guest').val() && newData.child('hostUid').val() === data.child('players').child(data.child('guest').val()).child('uid').val() && newData.child('players').child(data.child('guest').val()).child('score').val() === data.child('players').child(data.child('guest').val()).child('score').val() && newData.child('players').child(data.child('guest').val()).child('name').val() === data.child('players').child(data.child('guest').val()).child('name').val() && ((data.child('phase').val() !== 'playing' && newData.child('phase').val() === data.child('phase').val()) || (data.child('phase').val() === 'playing' && newData.child('phase').val() === 'finished'))))))",
+          ".validate": "newData.hasChildren(['host','hostUid','phase','createdAt','players']) && newData.child('players').child(newData.child('host').val()).child('uid').val() === newData.child('hostUid').val() && (!newData.hasChild('guest') || (newData.child('guest').val() !== newData.child('host').val() && newData.child('players').child(newData.child('guest').val()).exists())) && (newData.child('phase').val() !== 'playing' || newData.hasChildren(['guest','startedAt']))",
+          "host": {
+            ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 64"
+          },
+          "hostUid": {
+            ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 128"
+          },
+          "guest": {
+            ".write": "auth != null && $code.matches(/^[A-HJ-NP-Z2-9]{6}$/) && data.parent().child('host').exists() && ((!data.exists() && data.parent().child('phase').val() === 'waiting' && newData.parent().child('players').child(newData.val()).child('uid').val() === auth.uid) || (data.exists() && !newData.exists() && data.parent().child('players').child(data.val()).child('uid').val() === auth.uid && !newData.parent().child('players').child(data.val()).exists()))",
+            ".validate": "newData.isString() && newData.val().matches(/^[A-Za-z0-9-]{1,64}$/)"
+          },
+          "phase": {
+            ".write": "auth != null && $code.matches(/^[A-HJ-NP-Z2-9]{6}$/) && ((data.parent().child('hostUid').val() === auth.uid && ((data.val() === 'waiting' && newData.val() === 'playing' && data.parent().hasChild('guest') && newData.parent().child('startedAt').isNumber()) || (data.val() === 'playing' && newData.val() === 'finished' && now >= data.parent().child('startedAt').val() + 120000))) || (data.val() === 'playing' && newData.val() === 'finished' && data.parent().child('players').child(data.parent().child('guest').val()).child('uid').val() === auth.uid && !newData.parent().hasChild('guest')))",
+            ".validate": "newData.val() === 'waiting' || newData.val() === 'playing' || newData.val() === 'finished'"
+          },
+          "createdAt": {
+            ".validate": "newData.isNumber() && newData.val() > 0 && newData.val() <= now + 60000"
+          },
+          "startedAt": {
+            ".write": "auth != null && $code.matches(/^[A-HJ-NP-Z2-9]{6}$/) && data.parent().child('hostUid').val() === auth.uid && data.parent().child('phase').val() === 'waiting' && newData.parent().child('phase').val() === 'playing' && !data.exists() && newData.val() === now",
+            ".validate": "newData.isNumber() && newData.val() > 0 && newData.val() <= now + 60000"
+          },
+          "players": {
+            "$id": {
+              ".write": "auth != null && $code.matches(/^[A-HJ-NP-Z2-9]{6}$/) && ((!data.exists() && newData.child('uid').val() === auth.uid && newData.child('score').val() === 0 && root.child('formwheelBattles').child('casino').child($code).child('phase').val() === 'waiting' && !root.child('formwheelBattles').child('casino').child($code).hasChild('guest') && newData.parent().parent().child('guest').val() === $id) || (data.child('uid').val() === auth.uid && !newData.exists() && root.child('formwheelBattles').child('casino').child($code).child('guest').val() === $id && !newData.parent().parent().hasChild('guest')))",
+              ".validate": "$id.matches(/^[A-Za-z0-9-]{1,64}$/) && newData.hasChildren(['uid','name','score']) && ($id === newData.parent().parent().child('host').val() || $id === newData.parent().parent().child('guest').val())",
+              "uid": {
+                ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 128"
+              },
+              "name": {
+                ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 14"
+              },
+              "score": {
+                ".write": "auth != null && $code.matches(/^[A-HJ-NP-Z2-9]{6}$/) && root.child('formwheelBattles').child('casino').child($code).child('players').child($id).child('uid').val() === auth.uid && root.child('formwheelBattles').child('casino').child($code).child('phase').val() === 'playing' && now <= root.child('formwheelBattles').child('casino').child($code).child('startedAt').val() + 122000 && newData.val() >= data.val()",
+                ".validate": "newData.isNumber() && newData.val() % 1 === 0 && newData.val() >= 0 && newData.val() <= 9007199254740991"
+              },
+              "$other": {
+                ".validate": false
+              }
+            }
+          },
+          "$other": {
+            ".validate": false
+          }
+        }
+      },
+      "music": {
+        "$code": {
+          ".read": "auth != null && $code.matches(/^[A-HJ-NP-Z2-9]{6}$/)",
+          ".write": "auth != null && $code.matches(/^[A-HJ-NP-Z2-9]{6}$/) && ((!data.exists() && newData.child('hostUid').val() === auth.uid && newData.child('phase').val() === 'waiting' && !newData.hasChild('guest') && !newData.hasChild('startedAt') && newData.child('players').child(newData.child('host').val()).child('score').val() === 0) || (data.child('hostUid').val() === auth.uid && (!newData.exists() || (data.hasChild('guest') && !newData.hasChild('guest') && newData.child('createdAt').val() === data.child('createdAt').val() && newData.child('startedAt').val() === data.child('startedAt').val() && newData.child('host').val() === data.child('guest').val() && newData.child('hostUid').val() === data.child('players').child(data.child('guest').val()).child('uid').val() && newData.child('players').child(data.child('guest').val()).child('score').val() === data.child('players').child(data.child('guest').val()).child('score').val() && newData.child('players').child(data.child('guest').val()).child('name').val() === data.child('players').child(data.child('guest').val()).child('name').val() && ((data.child('phase').val() !== 'playing' && newData.child('phase').val() === data.child('phase').val()) || (data.child('phase').val() === 'playing' && newData.child('phase').val() === 'finished'))))))",
+          ".validate": "newData.hasChildren(['host','hostUid','phase','createdAt','players']) && newData.child('players').child(newData.child('host').val()).child('uid').val() === newData.child('hostUid').val() && (!newData.hasChild('guest') || (newData.child('guest').val() !== newData.child('host').val() && newData.child('players').child(newData.child('guest').val()).exists())) && (newData.child('phase').val() !== 'playing' || newData.hasChildren(['guest','startedAt']))",
+          "host": {
+            ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 64"
+          },
+          "hostUid": {
+            ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 128"
+          },
+          "guest": {
+            ".write": "auth != null && $code.matches(/^[A-HJ-NP-Z2-9]{6}$/) && data.parent().child('host').exists() && ((!data.exists() && data.parent().child('phase').val() === 'waiting' && newData.parent().child('players').child(newData.val()).child('uid').val() === auth.uid) || (data.exists() && !newData.exists() && data.parent().child('players').child(data.val()).child('uid').val() === auth.uid && !newData.parent().child('players').child(data.val()).exists()))",
+            ".validate": "newData.isString() && newData.val().matches(/^[A-Za-z0-9-]{1,64}$/)"
+          },
+          "phase": {
+            ".write": "auth != null && $code.matches(/^[A-HJ-NP-Z2-9]{6}$/) && ((data.parent().child('hostUid').val() === auth.uid && ((data.val() === 'waiting' && newData.val() === 'playing' && data.parent().hasChild('guest') && newData.parent().child('startedAt').isNumber()) || (data.val() === 'playing' && newData.val() === 'finished' && now >= data.parent().child('startedAt').val() + 120000))) || (data.val() === 'playing' && newData.val() === 'finished' && data.parent().child('players').child(data.parent().child('guest').val()).child('uid').val() === auth.uid && !newData.parent().hasChild('guest')))",
+            ".validate": "newData.val() === 'waiting' || newData.val() === 'playing' || newData.val() === 'finished'"
+          },
+          "createdAt": {
+            ".validate": "newData.isNumber() && newData.val() > 0 && newData.val() <= now + 60000"
+          },
+          "startedAt": {
+            ".write": "auth != null && $code.matches(/^[A-HJ-NP-Z2-9]{6}$/) && data.parent().child('hostUid').val() === auth.uid && data.parent().child('phase').val() === 'waiting' && newData.parent().child('phase').val() === 'playing' && !data.exists() && newData.val() === now",
+            ".validate": "newData.isNumber() && newData.val() > 0 && newData.val() <= now + 60000"
+          },
+          "players": {
+            "$id": {
+              ".write": "auth != null && $code.matches(/^[A-HJ-NP-Z2-9]{6}$/) && ((!data.exists() && newData.child('uid').val() === auth.uid && newData.child('score').val() === 0 && root.child('formwheelBattles').child('music').child($code).child('phase').val() === 'waiting' && !root.child('formwheelBattles').child('music').child($code).hasChild('guest') && newData.parent().parent().child('guest').val() === $id) || (data.child('uid').val() === auth.uid && !newData.exists() && root.child('formwheelBattles').child('music').child($code).child('guest').val() === $id && !newData.parent().parent().hasChild('guest')))",
+              ".validate": "$id.matches(/^[A-Za-z0-9-]{1,64}$/) && newData.hasChildren(['uid','name','score']) && ($id === newData.parent().parent().child('host').val() || $id === newData.parent().parent().child('guest').val())",
+              "uid": {
+                ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 128"
+              },
+              "name": {
+                ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 14"
+              },
+              "score": {
+                ".write": "auth != null && $code.matches(/^[A-HJ-NP-Z2-9]{6}$/) && root.child('formwheelBattles').child('music').child($code).child('players').child($id).child('uid').val() === auth.uid && root.child('formwheelBattles').child('music').child($code).child('phase').val() === 'playing' && now <= root.child('formwheelBattles').child('music').child($code).child('startedAt').val() + 122000 && newData.val() >= data.val()",
+                ".validate": "newData.isNumber() && newData.val() % 1 === 0 && newData.val() >= 0 && newData.val() <= 9007199254740991"
+              },
+              "$other": {
+                ".validate": false
+              }
+            }
+          },
+          "$other": {
+            ".validate": false
+          }
+        }
+      },
+      "quiz": {
+        "$code": {
+          ".read": "auth != null && $code.matches(/^[A-HJ-NP-Z2-9]{6}$/)",
+          ".write": "auth != null && $code.matches(/^[A-HJ-NP-Z2-9]{6}$/) && ((!data.exists() && newData.child('hostUid').val() === auth.uid && newData.child('phase').val() === 'waiting' && !newData.hasChild('guest') && !newData.hasChild('startedAt') && newData.child('players').child(newData.child('host').val()).child('score').val() === 0) || (data.child('hostUid').val() === auth.uid && (!newData.exists() || (data.hasChild('guest') && !newData.hasChild('guest') && newData.child('createdAt').val() === data.child('createdAt').val() && newData.child('startedAt').val() === data.child('startedAt').val() && newData.child('host').val() === data.child('guest').val() && newData.child('hostUid').val() === data.child('players').child(data.child('guest').val()).child('uid').val() && newData.child('players').child(data.child('guest').val()).child('score').val() === data.child('players').child(data.child('guest').val()).child('score').val() && newData.child('players').child(data.child('guest').val()).child('name').val() === data.child('players').child(data.child('guest').val()).child('name').val() && ((data.child('phase').val() !== 'playing' && newData.child('phase').val() === data.child('phase').val()) || (data.child('phase').val() === 'playing' && newData.child('phase').val() === 'finished'))))))",
+          ".validate": "newData.hasChildren(['host','hostUid','phase','createdAt','players']) && newData.child('players').child(newData.child('host').val()).child('uid').val() === newData.child('hostUid').val() && (!newData.hasChild('guest') || (newData.child('guest').val() !== newData.child('host').val() && newData.child('players').child(newData.child('guest').val()).exists())) && (newData.child('phase').val() !== 'playing' || newData.hasChildren(['guest','startedAt']))",
+          "host": {
+            ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 64"
+          },
+          "hostUid": {
+            ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 128"
+          },
+          "guest": {
+            ".write": "auth != null && $code.matches(/^[A-HJ-NP-Z2-9]{6}$/) && data.parent().child('host').exists() && ((!data.exists() && data.parent().child('phase').val() === 'waiting' && newData.parent().child('players').child(newData.val()).child('uid').val() === auth.uid) || (data.exists() && !newData.exists() && data.parent().child('players').child(data.val()).child('uid').val() === auth.uid && !newData.parent().child('players').child(data.val()).exists()))",
+            ".validate": "newData.isString() && newData.val().matches(/^[A-Za-z0-9-]{1,64}$/)"
+          },
+          "phase": {
+            ".write": "auth != null && $code.matches(/^[A-HJ-NP-Z2-9]{6}$/) && ((data.parent().child('hostUid').val() === auth.uid && ((data.val() === 'waiting' && newData.val() === 'playing' && data.parent().hasChild('guest') && newData.parent().child('startedAt').isNumber()) || (data.val() === 'playing' && newData.val() === 'finished' && now >= data.parent().child('startedAt').val() + 180000))) || (data.val() === 'playing' && newData.val() === 'finished' && data.parent().child('players').child(data.parent().child('guest').val()).child('uid').val() === auth.uid && !newData.parent().hasChild('guest')))",
+            ".validate": "newData.val() === 'waiting' || newData.val() === 'playing' || newData.val() === 'finished'"
+          },
+          "createdAt": {
+            ".validate": "newData.isNumber() && newData.val() > 0 && newData.val() <= now + 60000"
+          },
+          "startedAt": {
+            ".write": "auth != null && $code.matches(/^[A-HJ-NP-Z2-9]{6}$/) && data.parent().child('hostUid').val() === auth.uid && data.parent().child('phase').val() === 'waiting' && newData.parent().child('phase').val() === 'playing' && !data.exists() && newData.val() === now",
+            ".validate": "newData.isNumber() && newData.val() > 0 && newData.val() <= now + 60000"
+          },
+          "players": {
+            "$id": {
+              ".write": "auth != null && $code.matches(/^[A-HJ-NP-Z2-9]{6}$/) && ((!data.exists() && newData.child('uid').val() === auth.uid && newData.child('score').val() === 0 && root.child('formwheelBattles').child('quiz').child($code).child('phase').val() === 'waiting' && !root.child('formwheelBattles').child('quiz').child($code).hasChild('guest') && newData.parent().parent().child('guest').val() === $id) || (data.child('uid').val() === auth.uid && !newData.exists() && root.child('formwheelBattles').child('quiz').child($code).child('guest').val() === $id && !newData.parent().parent().hasChild('guest')))",
+              ".validate": "$id.matches(/^[A-Za-z0-9-]{1,64}$/) && newData.hasChildren(['uid','name','score']) && ($id === newData.parent().parent().child('host').val() || $id === newData.parent().parent().child('guest').val())",
+              "uid": {
+                ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 128"
+              },
+              "name": {
+                ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 14"
+              },
+              "score": {
+                ".write": "auth != null && $code.matches(/^[A-HJ-NP-Z2-9]{6}$/) && root.child('formwheelBattles').child('quiz').child($code).child('players').child($id).child('uid').val() === auth.uid && root.child('formwheelBattles').child('quiz').child($code).child('phase').val() === 'playing' && now <= root.child('formwheelBattles').child('quiz').child($code).child('startedAt').val() + 182000 && newData.val() >= data.val()",
+                ".validate": "newData.isNumber() && newData.val() % 1 === 0 && newData.val() >= 0 && newData.val() <= 9007199254740991"
+              },
+              "$other": {
+                ".validate": false
+              }
+            }
+          },
+          "$other": {
+            ".validate": false
+          }
+        }
       }
     },
     "formwheelMatchmaking": {
