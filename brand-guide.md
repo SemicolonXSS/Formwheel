@@ -66,3 +66,6 @@ Audience: curious browser players, casual creators, friends and learners. Priori
 
 ## POSITIONING 2.0 — Discovery First
 Offer intent-based routes instead of requiring visitors to know project names. The bilingual start pages provide six optional journeys and direct links; never force a sequence or collect personal preferences. Keep the full catalogue available. Check routes against actual files before updating; do not promise that experimental or online features are fully available. Compare aggregate start-page referrals and project opens only where existing measurement supports it. Keep hreflang links between equivalent translations, not between unrelated hub and introduction pages.
+
+## POSITIONING 2.5 — Highlights and choice
+Present Polyrhythm, Optical Chaos, LOOP and History as editorial examples of distinct experiences, not verified popularity leaders. Offer direct mood anchors and meaningful descriptions in Korean and English. Keep navigation optional and static; no new tracking, login, or changes to gameplay. Review the selection after actual aggregate feedback.
