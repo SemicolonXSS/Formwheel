@@ -49,7 +49,7 @@ body.life-neon-return #stage,body.life-neon-return .stats,body.life-neon-return 
 #lifeFx .life-crack{position:absolute;transform:translate(-50%,-50%);width:min(82vw,440px);height:min(82vw,440px);animation:lifeCrack .65s ease-out both}
 @keyframes lifeCrack{0%{opacity:.85;scale:.88}100%{opacity:0;scale:1.12}}
 @media(prefers-reduced-motion:reduce){#lifeFx{display:none}body.life-neon-out #stage,body.life-neon-out .stats,body.life-neon-out .controls{filter:none}}
-</style></head><body><div id="lifeFx" aria-hidden="true"></div><main><a href="./#projects">← Formwheel 허브</a><h1>🌀 Formwheel_Polyrhythm</h1><p>회전하는 아이콘이 주황 네모에 닿는 순간 누르세요!</p><div class="mode-select"><button id="randomMode" class="active" type="button" aria-pressed="true">🎲 랜덤 모드</button><button id="mapMode" type="button" aria-pressed="false">🗺️ 맵 모드</button><button id="editorToggle" type="button">🛠️ 맵 제작</button></div><section id="editor" hidden><h2>🛠️ 나만의 맵 제작</h2><div class="editrow"><label>맵 이름 <input id="editorName" type="text" maxlength="40" value="내 리듬 맵"></label><label>회전(초/바퀴) <input id="editorPeriod" type="number" min="1.8" max="8" step="0.1" value="3.5"></label></div><label>MP3 / 오디오 선택 <input id="editorFile" type="file" accept="audio/*,.mp3"></label><audio id="editorAudio" controls preload="metadata"></audio><div class="editrow"><button id="editorRecord" type="button">🔴 녹화 시작</button><button id="editorTap" type="button">🥁 타일 찍기 (Space)</button><button id="editorReverse" type="button">↺ 방향 전환 (Enter)</button><button id="editorUndo" type="button">↶ 마지막 삭제</button></div><div class="editrow"><button id="editorSave" type="button">💾 JSON 저장</button><label>JSON 불러오기 <input id="editorImport" type="file" accept=".json,application/json"></label></div><div id="editorStatus" role="status">빈 맵에서 리듬을 녹화하세요.</div><div id="editorNotes"></div><p class="editHint">오디오를 선택하고 녹화를 시작한 뒤 Space 또는 타일 찍기 버튼으로 박자를 기록하세요. Enter는 방향 전환 타일입니다. MP3는 기기에만 남으며 JSON에 포함되지 않습니다. 직접 제작했거나 사용 권한이 있는 음악을 사용하세요.</p></section><div id="mapPicker"><label for="mapSelect">시작할 맵 선택</label><select id="mapSelect"></select></div><div id="mapInfo">랜덤 모드 · 기존 방식</div><div class="offset-settings" style="margin:12px auto;padding:12px;background:#18223d;border:1px solid #53618b;border-radius:14px;max-width:420px"><label for="judgmentOffset">🎯 판정 오프셋 <output id="offsetValue" for="judgmentOffset">0 ms</output></label><input id="judgmentOffset" type="range" min="-200" max="200" step="5" value="0" style="width:100%;accent-color:#a99aff" aria-describedby="offsetHelp"><div style="display:flex;justify-content:space-between"><small>-200 ms</small><button type="button" id="resetOffset" style="min-height:30px;padding:5px 12px;font-size:12px">초기화</button><small>+200 ms</small></div><small id="offsetHelp">늦게 눌러도 맞았다면 + 방향, 일찍 눌러도 맞았다면 - 방향으로 조절하세요. 이 기기에 자동 저장됩니다.</small></div><details id="visualSettings" class="visual-settings"><summary>🎨 화면 테마 설정</summary><label for="visualTheme">디자인 스타일</label><select id="visualTheme" aria-label="게임 화면 디자인"><option value="glass">🧊 유리 (기본)</option><option value="neon">🌈 네온사인</option><option value="basic">◻️ 기본도형</option></select><label for="deathEffect">💥 데스 이펙트 (목숨 차감)</label><select id="deathEffect"><option value="auto">🎨 테마에 맞춤 (기본)</option><option value="glass">🧊 유리 파편</option><option value="neon">🌈 네온 소등</option><option value="off">🚫 끔</option></select><small>테마와 데스 이펙트는 이 기기에 자동 저장됩니다.</small></details><div class="stats"><span>점수 <strong id="score">0</strong></span><span>콤보 <strong id="combo">0</strong></span><span>최고 <strong id="best" data-fw-share-result="">0</strong></span><span>회전 <strong id="period">4.0초</strong></span><span>성공 <strong id="success">0 / 3</strong></span><span>목숨 <strong id="lives">❤️❤️❤️❤️❤️</strong></span></div><canvas id="stage" width="480" height="480" aria-label="원형 리듬 게임"></canvas><div id="feedback" role="status" aria-live="polite">시작 버튼을 누르세요</div><div class="controls"><button id="start">시작 / 재시작</button><button id="hit">HIT! (Space)</button><button id="pause" type="button" disabled aria-pressed="false">⏸ 일시정지 (Esc)</button></div><small>타일은 초반에 조금 더 촘촘하고 후반에는 간격이 넓어집니다 · 네모 최대 5개 · 총 20개 맵 · 64~176타일 · 음악과 타일 타이밍 동기화 · 판정 강화 · 맵: 파랑 ↺ 역방향 / 초록 ↻ 정방향 · 무지개 H는 궤도 끝까지 누르기 · 랜덤 방향 타일은 1.8초/바퀴부터 · MISS·헛발질·홀드 실패 시 모든 모드에서 목숨 -1 · 0개면 GAME OVER</small></main><script>
+body.playing .stats span,body.playing .mode-select button,body.playing .visual-settings,body.playing .offset-settings,body.playing #mapPicker select{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}body.playing .stats span{contain:paint}#stage{contain:paint}#lifeFx .life-shard{filter:none;will-change:transform,opacity}</style></head><body><div id="lifeFx" aria-hidden="true"></div><main><a href="./#projects">← Formwheel 허브</a><h1>🌀 Formwheel_Polyrhythm</h1><p>회전하는 아이콘이 주황 네모에 닿는 순간 누르세요!</p><div class="mode-select"><button id="randomMode" class="active" type="button" aria-pressed="true">🎲 랜덤 모드</button><button id="mapMode" type="button" aria-pressed="false">🗺️ 맵 모드</button><button id="editorToggle" type="button">🛠️ 맵 제작</button></div><section id="editor" hidden><h2>🛠️ 나만의 맵 제작</h2><div class="editrow"><label>맵 이름 <input id="editorName" type="text" maxlength="40" value="내 리듬 맵"></label><label>회전(초/바퀴) <input id="editorPeriod" type="number" min="1.8" max="8" step="0.1" value="3.5"></label></div><label>MP3 / 오디오 선택 <input id="editorFile" type="file" accept="audio/*,.mp3"></label><audio id="editorAudio" controls preload="metadata"></audio><div class="editrow"><button id="editorRecord" type="button">🔴 녹화 시작</button><button id="editorTap" type="button">🥁 타일 찍기 (Space)</button><button id="editorReverse" type="button">↺ 방향 전환 (Enter)</button><button id="editorUndo" type="button">↶ 마지막 삭제</button></div><div class="editrow"><button id="editorSave" type="button">💾 JSON 저장</button><label>JSON 불러오기 <input id="editorImport" type="file" accept=".json,application/json"></label></div><div id="editorStatus" role="status">빈 맵에서 리듬을 녹화하세요.</div><div id="editorNotes"></div><p class="editHint">오디오를 선택하고 녹화를 시작한 뒤 Space 또는 타일 찍기 버튼으로 박자를 기록하세요. Enter는 방향 전환 타일입니다. MP3는 기기에만 남으며 JSON에 포함되지 않습니다. 직접 제작했거나 사용 권한이 있는 음악을 사용하세요.</p></section><div id="mapPicker"><label for="mapSelect">시작할 맵 선택</label><select id="mapSelect"></select></div><div id="mapInfo">랜덤 모드 · 기존 방식</div><div class="offset-settings" style="margin:12px auto;padding:12px;background:#18223d;border:1px solid #53618b;border-radius:14px;max-width:420px"><label for="judgmentOffset">🎯 판정 오프셋 <output id="offsetValue" for="judgmentOffset">0 ms</output></label><input id="judgmentOffset" type="range" min="-200" max="200" step="5" value="0" style="width:100%;accent-color:#a99aff" aria-describedby="offsetHelp"><div style="display:flex;justify-content:space-between"><small>-200 ms</small><button type="button" id="resetOffset" style="min-height:30px;padding:5px 12px;font-size:12px">초기화</button><small>+200 ms</small></div><small id="offsetHelp">늦게 눌러도 맞았다면 + 방향, 일찍 눌러도 맞았다면 - 방향으로 조절하세요. 이 기기에 자동 저장됩니다.</small></div><details id="visualSettings" class="visual-settings"><summary>🎨 화면 테마 설정</summary><label for="visualTheme">디자인 스타일</label><select id="visualTheme" aria-label="게임 화면 디자인"><option value="glass">🧊 유리 (기본)</option><option value="neon">🌈 네온사인</option><option value="basic">◻️ 기본도형</option></select><label for="deathEffect">💥 데스 이펙트 (목숨 차감)</label><select id="deathEffect"><option value="auto">🎨 테마에 맞춤 (기본)</option><option value="glass">🧊 유리 파편</option><option value="neon">🌈 네온 소등</option><option value="off">🚫 끔</option></select><small>테마와 데스 이펙트는 이 기기에 자동 저장됩니다.</small></details><div class="stats"><span>점수 <strong id="score">0</strong></span><span>콤보 <strong id="combo">0</strong></span><span>최고 <strong id="best" data-fw-share-result="">0</strong></span><span>회전 <strong id="period">4.0초</strong></span><span>성공 <strong id="success">0 / 3</strong></span><span>목숨 <strong id="lives">❤️❤️❤️❤️❤️</strong></span></div><canvas id="stage" width="480" height="480" aria-label="원형 리듬 게임"></canvas><div id="feedback" role="status" aria-live="polite">시작 버튼을 누르세요</div><div class="controls"><button id="start">시작 / 재시작</button><button id="hit">HIT! (Space)</button><button id="pause" type="button" disabled aria-pressed="false">⏸ 일시정지 (Esc)</button></div><small>타일은 초반에 조금 더 촘촘하고 후반에는 간격이 넓어집니다 · 네모 최대 5개 · 총 20개 맵 · 64~176타일 · 음악과 타일 타이밍 동기화 · 판정 강화 · 맵: 파랑 ↺ 역방향 / 초록 ↻ 정방향 · 무지개 H는 궤도 끝까지 누르기 · 랜덤 방향 타일은 1.8초/바퀴부터 · MISS·헛발질·홀드 실패 시 모든 모드에서 목숨 -1 · 0개면 GAME OVER</small></main><script>
 'use strict';
 'use strict';
 const canvas=document.querySelector('#stage'),ctx=canvas.getContext('2d');
@@ -144,11 +144,12 @@ function setPaused(value){if(!running||paused===value)return;paused=value;cancel
 pauseButton.addEventListener("click",()=>{setPaused(!paused);pauseButton.blur()});
 let running=false,angle=-Math.PI/2,period=4,stage=0,score=0,combo=0,success=0,lives=5,last=0,raf=0,targets=[],nextId=0,progress=0;
 let glassBursts=[];const reducedMotion=window.matchMedia?.('(prefers-reduced-motion: reduce)');
-function burst(color){if(reducedMotion?.matches||visualTheme==='basic')return;glassBursts.push({start:performance.now(),angle,color});if(glassBursts.length>12)glassBursts.shift()}
+function burst(color){if(reducedMotion?.matches||visualTheme==='basic')return;glassBursts.push({start:performance.now(),angle,color});if(glassBursts.length>4)glassBursts.shift()}
 
 let best=0;try{best=Number(localStorage.getItem('fw-polyrhythm-best')||0)||0}catch(e){}bestEl.textContent=best;bestEl.setAttribute('data-fw-share-result',best>0?String(Math.floor(best)):'');
 function distance(a,b){return Math.abs(Math.atan2(Math.sin(a-b),Math.cos(a-b)))}
-function update(){scoreEl.textContent=score;comboEl.textContent=combo;periodEl.textContent=period.toFixed(1)+'초';successEl.textContent=(success%3)+' / 3';livesEl.textContent='❤️'.repeat(lives)+'🖤'.repeat(5-lives);bestEl.textContent=best;bestEl.setAttribute('data-fw-share-result',best>0?String(Math.floor(best)):'')}
+function setText(el,value){const s=String(value);if(el.textContent!==s)el.textContent=s;}
+function update(){setText(scoreEl,score);setText(comboEl,combo);setText(periodEl,period.toFixed(1)+'초');setText(successEl,(success%3)+' / 3');setText(livesEl,'❤️'.repeat(lives)+'🖤'.repeat(5-lives));setText(bestEl,best);const v=best>0?String(Math.floor(best)):'';if(bestEl.getAttribute('data-fw-share-result')!==v)bestEl.setAttribute('data-fw-share-result',v);}
 function mapTileType(index){if(maps[mapIndex].name==='별달거리')return 'normal';return index>0&&index%12===0?'forward':index>0&&index%8===0?'reverse':index>0&&index%9===4?'hold':'normal'}
 function alignTargets(){for(const t of targets)t.angle=angle+direction*(t.at-progress)}
 function arcDistance(from,to){return ((direction*(to-from))%TAU+TAU)%TAU}
@@ -234,7 +235,7 @@ function lifeLossEffect(){
  lifeFxTimer=setTimeout(()=>layer.replaceChildren(),900);
 }
 function lose(reason){if(!running)return;combo=0;lives=Math.max(0,lives-1);lifeLossEffect();feedback.textContent=reason+' · 목숨 -1';update();if(lives===0)endGame()}
-function start(){paused=false;if(audioContext?.state==="suspended")audioContext.resume().catch(()=>{});if(editing)editorStop();document.body.classList.add('playing');window.getSelection?.()?.removeAllRanges();if(mode==='map')try{initAudio()}catch(e){}cancelAnimationFrame(raf);running=true;syncPause();angle=-Math.PI/2;mapIndex=mode==='map'?selectedMap:0;stage=0;period=mode==='map'?stagePeriod():4;score=0;combo=0;success=0;lives=5;progress=0;direction=1;holdTarget=null;activeInput=null;reverseUntil=0;nextId=0;mapBeat=0;musicNote=0;last=performance.now();spawnTargets();showMode();feedback.textContent='READY · 타이밍을 맞추세요!';update();draw();raf=requestAnimationFrame(frame)}
+function start(){paused=false;if(audioContext?.state==="suspended")audioContext.resume().catch(()=>{});if(editing)editorStop();document.body.classList.add('playing');window.getSelection?.()?.removeAllRanges();try{initAudio();prepareHitSample()}catch(e){}cancelAnimationFrame(raf);running=true;syncPause();angle=-Math.PI/2;mapIndex=mode==='map'?selectedMap:0;stage=0;period=mode==='map'?stagePeriod():4;score=0;combo=0;success=0;lives=5;progress=0;direction=1;holdTarget=null;activeInput=null;reverseUntil=0;nextId=0;mapBeat=0;musicNote=0;last=performance.now();spawnTargets();showMode();feedback.textContent='READY · 타이밍을 맞추세요!';update();draw();raf=requestAnimationFrame(frame)}
 let audioContext=null,audioCompressor=null;
 const melodies=[
   [262,330,392,523,392,330,294,392],
@@ -318,25 +319,16 @@ function mapMusic(){
 }
 
 const drumLayers=[{from:190,to:62,level:0.85,duration:0.28,type:'sine'},{from:360,to:110,level:0.5,duration:0.13,type:'triangle'}];
+let hitSample=null;
+function prepareHitSample(){if(!audioContext)return;if(!hitSample){hitSample=audioContext.createBuffer(1,Math.ceil(audioContext.sampleRate*.29),audioContext.sampleRate);const data=hitSample.getChannelData(0);for(const layer of drumLayers){let phase=0;for(let i=0;i<data.length;i++){const t=i/audioContext.sampleRate;if(t>=layer.duration)break;const f=layer.from*Math.pow(layer.to/layer.from,Math.min(1,t/(layer.duration*.7)));phase+=TAU*f/audioContext.sampleRate;const wave=layer.type==='triangle'?2/Math.PI*Math.asin(Math.sin(phase)):Math.sin(phase);data[i]+=wave*layer.level*.65*Math.min(1,t/.005)*Math.exp(-8*t/layer.duration);}}}}
 function playDrum(){
   try{
     const AudioCtx=window.AudioContext||window.webkitAudioContext;
     if(!AudioCtx)return;
     if(!initAudio())return;
     const now=audioContext.currentTime;
-    // Layer a bass thump and a midrange attack so the hit is audible on phone speakers.
-    for(const layer of drumLayers){
-      const osc=audioContext.createOscillator(),gain=audioContext.createGain();
-      osc.type=layer.type;
-      osc.frequency.setValueAtTime(layer.from,now);
-      osc.frequency.exponentialRampToValueAtTime(layer.to,now+layer.duration*0.7);
-      gain.gain.setValueAtTime(0.0001,now);
-      gain.gain.exponentialRampToValueAtTime(layer.level,now+0.005);
-      gain.gain.exponentialRampToValueAtTime(0.0001,now+layer.duration);
-      osc.connect(gain);gain.connect(audioCompressor);
-      osc.onended=()=>{osc.disconnect();gain.disconnect()};
-      osc.start(now);osc.stop(now+layer.duration+0.01);
-    }
+    prepareHitSample();
+    const src=audioContext.createBufferSource();src.buffer=hitSample;src.connect(audioCompressor);src.onended=()=>src.disconnect();src.start(now);
   }catch(e){/* Audio unavailable: gameplay continues. */}
 }
 function changeDirection(kind){
@@ -376,11 +368,15 @@ function changeDirection(kind){
 function retireTarget(target){
   targets=targets.filter(t=>t!==target);
 }
+let bestSaveTimer=0;
+function saveBest(){clearTimeout(bestSaveTimer);bestSaveTimer=0;try{localStorage.setItem('fw-polyrhythm-best',String(best))}catch(e){}}
+function queueBestSave(){if(!bestSaveTimer)bestSaveTimer=setTimeout(saveBest,1500);}
+window.addEventListener('pagehide',()=>{if(bestSaveTimer)saveBest()});
 function award(points,message){
   combo++;score+=points;success++;
   if(score>best){
     best=score;
-    try{localStorage.setItem('fw-polyrhythm-best',String(best))}catch(e){}
+    queueBestSave();
   }
   feedback.textContent=message;
   burst(points>=100?'#b8a5ff':'#7ee5ff');
@@ -451,7 +447,7 @@ function frame(now){
   }
   if(expired.length&&running)afterTarget();
   // Limit costly canvas glow rendering while keeping gameplay timing on every frame.
-  if(now-lastDraw>=1000/40){draw();lastDraw=now}
+  if(now-lastDraw>=1000/60-1){draw();lastDraw=now}
   if(running)raf=requestAnimationFrame(frame);
 }
 let lastDraw=0;const holdRainbow=ctx.createLinearGradient(48,65,432,418);holdRainbow.addColorStop(0,'#ff83c6');holdRainbow.addColorStop(.28,'#a68cff');holdRainbow.addColorStop(.55,'#71e7ff');holdRainbow.addColorStop(.8,'#8af6cf');holdRainbow.addColorStop(1,'#ffd69c');
