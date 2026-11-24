@@ -867,7 +867,8 @@ function thumbnailURL(project){
   return generatedThumbnail(project);
 }
 
-function isRecent(project,now=Date.now()){const age=now-Date.parse(project.addedAt);return Number.isFinite(age)&&age>=0&&age<=14*86400000;}
+function isRecent(project,now=Date.now()){const age=now-Date.parse(project.addedAt);return Number.isFinite(age)&&age>=0&&age<14*86400000;}
+function maturityBand(score){return score==null?"pending":score>=85?"stable":score>=70?"developing":score>=50?"beta":"early";}
 const hubViewStorageKey = "formwheel-hub-view-v1";
 function saveHubView(){
   try { localStorage.setItem(hubViewStorageKey, JSON.stringify({
@@ -1067,7 +1068,7 @@ function render(){
 
       const newBadge =
         isRecent(project)
-          ? `<span class="newBadge">NEW</span>`
+          ? `<span class="newBadge" title="저장소 생성일 기준 최근 14일">NEW</span>`
           : "";
 
 
@@ -1130,7 +1131,7 @@ function render(){
           </div>
 
 
-          <div class="fw-maturity" title="표시된 수치는 2026-10-30 기준 제작자 추정치이며 실제 테스트 통과율이 아닙니다. 미평가 프로젝트는 평가 대기로 표시됩니다.">
+          <div class="fw-maturity" data-band="${maturityBand(projectMaturity[project.name])}" title="표시된 수치는 2026-10-30 기준 제작자 추정치이며 실제 테스트 통과율이 아닙니다. 미평가 프로젝트는 평가 대기로 표시됩니다.">
             <div class="fw-maturity-caption"><span>개발 상태 <small>(추정)</small></span><strong>${maturityLabel(projectMaturity[project.name])} · ${projectMaturity[project.name] == null ? '점수 없음' : projectMaturity[project.name] + '%'}</strong></div>
             <div class="fw-maturity-track" role="progressbar" aria-label="${escapeHTML(project.name)} 개발 진행률 추정" aria-valuemin="0" aria-valuemax="100" ${projectMaturity[project.name] == null ? 'aria-valuetext="평가 대기"' : `aria-valuenow="${projectMaturity[project.name]}"`}><div class="fw-maturity-fill" style="width:${projectMaturity[project.name] ?? 0}%"></div></div>
           </div>
