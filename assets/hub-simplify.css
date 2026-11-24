@@ -51,3 +51,11 @@ main .fw-hub-mini-panel>a{padding:4px 8px!important;font-size:12px!important;min
 .fw-tutorial-launch{right:12px!important;bottom:calc(80px + env(safe-area-inset-bottom,0px))!important;min-height:44px}
 #fw-tutorial{bottom:calc(132px + env(safe-area-inset-bottom,0px))!important}
 }
+
+/* 2.1: shared full-width disclosure area beneath the icon row. */
+#fw-positioning .fw-position-grid{position:relative;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px}
+#fw-positioning .fw-position-grid:has(>.fw-position-card[open]){padding-bottom:64px}
+#fw-positioning .fw-position-card[open]>div{position:absolute;left:0;right:0;bottom:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:7px;box-sizing:border-box;border:1px solid #8885;border-radius:12px;background:color-mix(in srgb,currentColor 5%,transparent);margin:0}
+#fw-positioning .fw-position-card[open]>div>a{min-height:46px;padding:5px 8px;border:1px solid #8885;border-radius:8px;background:transparent;color:inherit;font-size:13px;line-height:1.2;overflow-wrap:normal;word-break:normal;white-space:normal}
+#fw-positioning .fw-position-card[open]>summary{background:color-mix(in srgb,#ff8a00 13%,transparent);border-color:#ff8a00}
+#fw-positioning .fw-position-card:not([open])>div{display:none}
