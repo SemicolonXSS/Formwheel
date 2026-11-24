@@ -63,3 +63,6 @@ Audience: curious browser players, casual creators, friends and learners. Priori
 - Measurement: review existing aggregate traffic, project opens, return visits where available and share referrals weekly. Distinguish opens from actual play; avoid collecting new personal data. Record hypotheses before comparing periods; do not infer causation from raw changes.
 - New projects: identify target user, unique mechanic or value, primary pillar, optional onboarding, accessible controls, safe sharing, and compatibility tests. Do not publish unsupported claims.
 - Competitor map is a hypothesis, not measured market data; validate with actual user feedback.
+
+## POSITIONING 2.0 — Discovery First
+Offer intent-based routes instead of requiring visitors to know project names. The bilingual start pages provide six optional journeys and direct links; never force a sequence or collect personal preferences. Keep the full catalogue available. Check routes against actual files before updating; do not promise that experimental or online features are fully available. Compare aggregate start-page referrals and project opens only where existing measurement supports it. Keep hreflang links between equivalent translations, not between unrelated hub and introduction pages.

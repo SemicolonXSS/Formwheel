@@ -7,3 +7,5 @@
 .fw-position-card a,.fw-position nav a{display:inline-flex;align-items:center;min-height:44px;padding:4px 10px;margin:3px 2px;border-radius:9px;background:#f8fafc;color:#10121e;font-size:13px;font-weight:700;text-decoration:none;box-sizing:border-box}
 .fw-position a:focus-visible{outline:3px solid #ff8a00;outline-offset:3px}.fw-position nav{display:flex;flex-wrap:wrap;margin-top:10px}.fw-position nav a{border:1px solid #10121e}
 .fw-position-page{margin:0;background:#10121e;color:#f8fafc;font:16px/1.65 system-ui,sans-serif}.fw-position-page main{max-width:1050px;margin:auto;padding:18px}.fw-position-page h1{font-size:clamp(30px,6vw,52px);line-height:1.2}.fw-position-page a{color:#ffbd73}.fw-position-page .fw-position-card a,.fw-position-page .fw-position nav a{color:#10121e}.fw-position-page img{display:block;width:100%;max-width:720px;height:auto;border-radius:16px;margin:16px 0}.fw-position-page .fw-position{padding:0}
+
+.fw-position nav a.fw-position-primary{background:#ff8a00;color:#10121e;font-weight:850;border:1px solid #10121e}
