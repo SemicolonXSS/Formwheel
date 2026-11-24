@@ -16,7 +16,7 @@ const adapters={
  territory:{start:()=>{document.querySelector('[data-mode="online2"]')?.click();},name:null,create:"createRoom",join:"joinRoom",input:"roomCode",display:"roomDetail"},
  battle:{start:()=>{},name:null,create:"createBtn",join:"joinBtn",input:"joinPin",display:null}
 };
-const roomRoots={reflex:"reflexRooms",battle:"battle",territory:"territoryRooms",risk:"rooms",gcrown:"gcrown/rooms",time:"timeRooms",bomb:"bombRooms"};
+const roomRoots={reflex:"reflexRooms",battle:"battle",territory:"territoryRooms",risk:"rooms",gcrown:"gcrown/rooms",time:"timeRooms",bomb:"bombRooms/v2"};
 async function checkRoom(room){if(!/^[A-Za-z0-9]{4,6}$/.test(room))return false;const snap=await get(ref(db,roomRoots[game]+"/"+room));if(!snap.exists())return false;const d=snap.val();if(game==="risk")return d.phase==="lobby" && (d.players||[]).length===1;if(game==="time")return d.meta?.status==="waiting";if(game==="battle")return d.state?.phase==="waiting";if(game==="territory")return !d.started;if(game==="reflex")return d.status==="lobby";if(game==="gcrown")return !d.started;if(game==="bomb")return d.status==="waiting";return false;}
 const a=adapters[game];if(a){
 const box=document.createElement("div");box.style.cssText="position:fixed;bottom:16px;left:16px;right:16px;max-width:480px;margin:auto;z-index:99999;background:#101c36;color:white;padding:16px;border-radius:17px;box-shadow:0 15px 50px #0005;font:14px system-ui";const label=document.createElement("div");label.textContent="🎮 Formwheel 매칭 방에 연결 중…";box.append(label);const close=document.createElement("button");close.textContent="안내 닫기";close.style.cssText="float:right;margin-top:8px";close.onclick=()=>box.remove();box.append(close);document.body.append(box);

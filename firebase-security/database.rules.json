@@ -1375,7 +1375,112 @@
     },
     "bombRooms": {
       ".read": false,
-      ".write": false
+      ".write": false,
+      "v2": {
+        "$code": {
+          ".read": "auth != null && $code.matches(/^[A-HJ-NP-Z2-9]{6}$/)",
+          ".write": "auth != null && $code.matches(/^[A-HJ-NP-Z2-9]{6}$/) && ((!data.exists() && newData.child('hostId').val() === auth.uid && newData.child('status').val() === 'waiting' && newData.child('round').val() === 0 && newData.child('players').child(auth.uid).child('id').val() === auth.uid && newData.child('presence').child(auth.uid).val() === true && !newData.hasChild('event') && !newData.hasChild('passRequest')) || (data.child('hostId').val() === auth.uid && ((!newData.exists() && data.child('status').val() === 'waiting') || (newData.child('createdAt').val() === data.child('createdAt').val() && (newData.child('hostId').val() === auth.uid || data.child('players').child(newData.child('hostId').val()).exists())))))",
+          ".validate": "newData.hasChildren(['hostId','status','round','players','createdAt','startedAt','duration']) && newData.child('players').child(newData.child('hostId').val()).exists() && (newData.child('status').val() !== 'playing' || (newData.hasChildren(['bombHolder','event']) && newData.child('players').child(newData.child('bombHolder').val()).child('alive').val() === true && newData.child('startedAt').val() > 0 && newData.child('duration').val() >= 5000))",
+          "hostId": {
+            ".write": "auth != null && $code.matches(/^[A-HJ-NP-Z2-9]{6}$/) && newData.val() === auth.uid && data.parent().child('presence').child(data.val()).val() === false && data.parent().child('players').child(auth.uid).exists() && data.parent().child('presence').child(auth.uid).val() === true",
+            ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 128"
+          },
+          "status": {
+            ".validate": "newData.val() === 'waiting' || newData.val() === 'playing' || newData.val() === 'finished'"
+          },
+          "createdAt": {
+            ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= now + 60000"
+          },
+          "startedAt": {
+            ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= now + 60000"
+          },
+          "duration": {
+            ".validate": "newData.isNumber() && newData.val() % 1 === 0 && newData.val() >= 0 && newData.val() <= 30000"
+          },
+          "round": {
+            ".validate": "newData.isNumber() && newData.val() % 1 === 0 && newData.val() >= 0 && newData.val() <= 100000"
+          },
+          "bombHolder": {
+            ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 128"
+          },
+          "winnerId": {
+            ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 128"
+          },
+          "winner": {
+            ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 20"
+          },
+          "players": {
+            "$uid": {
+              ".write": "auth != null && $code.matches(/^[A-HJ-NP-Z2-9]{6}$/) && auth.uid === $uid && root.child('bombRooms/v2').child($code).child('status').val() === 'waiting' && root.child('bombRooms/v2').child($code).child('hostId').val() !== auth.uid && ((!data.exists() && newData.child('id').val() === auth.uid && newData.child('alive').val() === true && !newData.hasChild('outOrder')) || (data.exists() && !newData.exists()))",
+              ".validate": "newData.hasChildren(['id','name','alive','joinedAt']) && newData.child('id').val() === $uid",
+              "id": {
+                ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 128"
+              },
+              "name": {
+                ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 20"
+              },
+              "alive": {
+                ".validate": "newData.isBoolean()"
+              },
+              "joinedAt": {
+                ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= now + 60000"
+              },
+              "outOrder": {
+                ".validate": "newData.isNumber() && newData.val() % 1 === 0 && newData.val() >= 1 && newData.val() <= 100"
+              },
+              "$other": {
+                ".validate": false
+              }
+            }
+          },
+          "presence": {
+            "$uid": {
+              ".write": "auth != null && $code.matches(/^[A-HJ-NP-Z2-9]{6}$/) && auth.uid === $uid && ((!newData.exists() && data.exists()) || (newData.isBoolean() && newData.parent().parent().child('players').child($uid).exists()))",
+              ".validate": "newData.isBoolean()"
+            }
+          },
+          "event": {
+            ".validate": "newData.hasChildren(['seq','type'])",
+            "seq": {
+              ".validate": "newData.isNumber() && newData.val() % 1 === 0 && newData.val() >= 1 && newData.val() <= 9007199254740991"
+            },
+            "type": {
+              ".validate": "newData.isString() && newData.val().matches(/^(start|pass|explode|reset)$/)"
+            },
+            "from": {
+              ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 128"
+            },
+            "to": {
+              ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 128"
+            },
+            "name": {
+              ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 20"
+            },
+            "final": {
+              ".validate": "newData.isBoolean()"
+            },
+            "$other": {
+              ".validate": false
+            }
+          },
+          "passRequest": {
+            ".write": "auth != null && $code.matches(/^[A-HJ-NP-Z2-9]{6}$/) && !data.exists() && newData.child('uid').val() === auth.uid && data.parent().child('bombHolder').val() === auth.uid && data.parent().child('players').child(auth.uid).child('alive').val() === true && data.parent().child('status').val() === 'playing' && now < data.parent().child('startedAt').val() + data.parent().child('duration').val() && newData.child('seq').val() === data.parent().child('event').child('seq').val()",
+            ".validate": "newData.hasChildren(['uid','seq'])",
+            "uid": {
+              ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 128"
+            },
+            "seq": {
+              ".validate": "newData.isNumber() && newData.val() % 1 === 0 && newData.val() >= 1 && newData.val() <= 9007199254740991"
+            },
+            "$other": {
+              ".validate": false
+            }
+          },
+          "$other": {
+            ".validate": false
+          }
+        }
+      }
     },
     "chat": {
       ".read": false,

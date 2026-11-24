@@ -1,0 +1,47 @@
+import {readFile} from 'node:fs/promises';
+import {after,before,test} from 'node:test';
+import {initializeTestEnvironment,assertFails,assertSucceeds} from '@firebase/rules-unit-testing';
+import {get,ref,set,update,remove,onDisconnect,goOffline,goOnline} from 'firebase/database';
+import assert from 'node:assert/strict';
+let env;
+before(async()=>{env=await initializeTestEnvironment({projectId:'demo-formwheel',database:{host:'127.0.0.1',port:9000,rules:await readFile(new URL('../database.rules.json',import.meta.url),'utf8')}});});
+after(()=>env?.cleanup());
+test('Bomb seats, authorized passes, presence, reconnect and host recovery',async()=>{
+ const h=env.authenticatedContext('h').database(),g=env.authenticatedContext('g').database(),o=env.authenticatedContext('o').database();
+ const root='bombRooms/v2/ABC234',at=(db,s='')=>ref(db,root+s);
+ const p=id=>({id,name:id,alive:true,joinedAt:Date.now()});
+ const room={status:'waiting',hostId:'h',round:0,startedAt:0,duration:0,createdAt:Date.now(),players:{h:p('h')},presence:{h:true}};
+ await assertFails(set(at(o),room));
+ await assertSucceeds(set(at(h),room));
+ await assertFails(get(ref(g,'bombRooms/v2')));
+ await assertFails(get(at(env.unauthenticatedContext().database())));
+ await assertFails(set(at(g,'/players/o'),p('o')));
+ await assertSucceeds(update(at(g),{'players/g':p('g'),'presence/g':true}));
+ const start={status:'playing',round:1,bombHolder:'g',startedAt:Date.now(),duration:15000,event:{type:'start',seq:1,to:'g'}};
+ await assertFails(update(at(g),start));
+ await assertSucceeds(update(at(h),start));
+ await assertFails(set(at(g,'/bombHolder'),'h'));
+ await assertFails(set(at(o,'/passRequest'),{uid:'g',seq:1}));
+ await assertFails(set(at(g,'/passRequest'),{uid:'g',seq:2}));
+ await assertSucceeds(set(at(g,'/passRequest'),{uid:'g',seq:1}));
+ await assertFails(set(at(g,'/passRequest'),{uid:'g',seq:1}));
+ await assertSucceeds(update(at(h),{passRequest:null,bombHolder:'h',event:{type:'pass',seq:2,from:'g',to:'h'}}));
+ await assertSucceeds(onDisconnect(at(g,'/presence/g')).set(false));
+ goOffline(g);
+ for(let i=0;i<30;i++){
+  if((await get(at(h,'/presence/g'))).val()===false)break;
+  await new Promise(r=>setTimeout(r,20));
+ }
+ assert.equal((await get(at(h,'/presence/g'))).val(),false);
+ goOnline(g);
+ await assertSucceeds(set(at(g,'/presence/g'),true));
+ await assertSucceeds(set(at(h,'/presence/h'),false));
+ await assertFails(set(at(o,'/hostId'),'o'));
+ await assertSucceeds(set(at(g,'/hostId'),'g'));
+ await assertSucceeds(update(at(g),{status:'finished',bombHolder:null,'players/h/alive':false,winner:'g',winnerId:'g'}));
+ await assertSucceeds(update(at(g),{status:'waiting',startedAt:0,duration:0,winner:null,winnerId:null,'players/h/alive':true}));
+ await assertSucceeds(update(at(h),{'players/h':null,'presence/h':null}));
+ await assertFails(remove(at(o)));
+ await assertSucceeds(remove(at(g)));
+ await assertFails(set(ref(h,'bombRooms/ABC234'),room));
+});
