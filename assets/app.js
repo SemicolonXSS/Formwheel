@@ -1113,7 +1113,7 @@ function render(){
         "Scribble": "온라인 그림 릴레이 방 연결",
         "Vault": "온라인 금고 조회·저장",
         "Button": "온라인 방 만들기·참가",
-        "Vote": "공유 투표방과 투표 저장",
+        "Vote": "공유 투표방 · 새 Firebase 룰 적용 대기",
         "Marble": "온라인 구슬 대전",
         "SYNC": "같은 방 재경기 · 새 Firebase 룰 적용 대기"
       };

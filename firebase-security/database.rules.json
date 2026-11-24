@@ -1411,7 +1411,42 @@
     },
     "vote": {
       ".read": false,
-      ".write": false
+      ".write": false,
+      "v2": {
+        "$code": {
+          ".read": "auth != null && $code.matches(/^[1-9][0-9]{3}$/)",
+          ".write": "auth != null && $code.matches(/^[1-9][0-9]{3}$/) && !data.exists() && newData.child('host').val() === auth.uid && newData.child('status').val() === 'waiting' && !newData.hasChild('ballots')",
+          ".validate": "newData.hasChildren(['title','choices','status','createdAt','host'])",
+          "title": {
+            ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 80"
+          },
+          "choices": {
+            ".validate": "newData.hasChildren(['0','1'])",
+            "$choice": {
+              ".validate": "$choice.matches(/^[0-9]$/) && newData.isString() && newData.val().length > 0 && newData.val().length <= 50"
+            }
+          },
+          "createdAt": {
+            ".validate": "newData.isNumber() && newData.val() >= now - 300000 && newData.val() <= now + 60000"
+          },
+          "host": {
+            ".validate": "newData.val() === auth.uid"
+          },
+          "status": {
+            ".write": "auth != null && data.parent().child('host').val() === auth.uid && ((data.val() === 'waiting' && newData.val() === 'active') || (data.val() === 'active' && newData.val() === 'ended'))",
+            ".validate": "newData.val() === 'waiting' || newData.val() === 'active' || newData.val() === 'ended'"
+          },
+          "ballots": {
+            "$uid": {
+              ".write": "auth != null && auth.uid === $uid && !data.exists() && newData.exists() && data.parent().parent().child('status').val() === 'active'",
+              ".validate": "newData.isNumber() && newData.val() % 1 === 0 && newData.val() >= 0 && newData.val() < 10 && newData.parent().parent().child('choices').child(newData.val() + '').exists()"
+            }
+          },
+          "$other": {
+            ".validate": false
+          }
+        }
+      }
     },
     "wheelBattle": {
       ".read": false,

@@ -1,0 +1,30 @@
+import {readFile} from 'node:fs/promises';
+import {after,before,test} from 'node:test';
+import assert from 'node:assert/strict';
+import {initializeTestEnvironment,assertFails,assertSucceeds} from '@firebase/rules-unit-testing';
+import {get,ref,remove,set,serverTimestamp} from 'firebase/database';
+let env;
+before(async()=>{
+ env=await initializeTestEnvironment({projectId:'demo-formwheel',database:{host:'127.0.0.1',port:9000,rules:await readFile(new URL('../database.rules.json',import.meta.url),'utf8')}});
+});
+after(()=>env?.cleanup());
+test('Vote authorizes host transitions and exactly one valid ballot per signed-in UID',async()=>{
+ const host=env.authenticatedContext('host').database();
+ const guest=env.authenticatedContext('guest').database();
+ const root='vote/v2/1234';
+ await assertFails(get(ref(guest,'vote/v2')));
+ await assertSucceeds(set(ref(host,root),{title:'Lunch',choices:['A','B'],status:'waiting',createdAt:serverTimestamp(),host:'host'}));
+ await assertFails(set(ref(guest,root+'/status'),'active'));
+ const own=ref(guest,root+'/ballots/guest');
+ await assertFails(set(own,0));
+ await assertSucceeds(set(ref(host,root+'/status'),'active'));
+ await assertFails(set(ref(guest,root+'/ballots/host'),0));
+ await assertFails(set(own,2));
+ await assertSucceeds(set(own,0));
+ await assertFails(set(own,1));
+ await assertFails(remove(own));
+ await assertFails(set(ref(host,root+'/title'),'Changed'));
+ assert.equal((await get(ref(host,root+'/ballots/guest'))).val(),0);
+ await assertSucceeds(set(ref(host,root+'/status'),'ended'));
+ await assertFails(set(ref(host,root+'/ballots/host'),1));
+});
