@@ -631,7 +631,108 @@
       },
       "pvpRooms": {
         ".read": false,
-        ".write": false
+        ".write": false,
+        "v2": {
+          "$code": {
+            ".read": "auth != null && $code.matches(/^[A-HJ-NP-Z2-9]{6}$/)",
+            ".write": "auth != null && $code.matches(/^[A-HJ-NP-Z2-9]{6}$/) && newData.exists() && ((!data.exists() && newData.child('hostUid').val() === auth.uid && !newData.hasChild('guest') && newData.child('status').val() === 'waiting' && !newData.hasChild('state') && !newData.hasChild('guestInput') && newData.child('readyHost').val() === false && newData.child('readyGuest').val() === false) || (data.child('hostUid').val() === auth.uid && data.child('status').val() !== 'ended' && newData.child('hostUid').val() === auth.uid && newData.child('guest').child('uid').val() === data.child('guest').child('uid').val()))",
+            ".validate": "newData.hasChildren(['hostUid','createdAt','updatedAt','status','readyHost','readyGuest','hostBuild','map']) && (!data.exists() || newData.child('createdAt').val() === data.child('createdAt').val()) && (newData.child('status').val() !== 'playing' || newData.hasChildren(['guest','round']))",
+            "hostUid": {
+              ".validate": "newData.isString() && newData.val().length <= 128"
+            },
+            "hostBuild": {
+              ".validate": "newData.hasChildren(['weapon','skill','speedPoints'])",
+              "weapon": {
+                ".validate": "newData.isString() && newData.val().matches(/^(orb|wave|spark|cannon|swift|frost|burst|arc|heavy|needle)$/)"
+              },
+              "skill": {
+                ".validate": "newData.isString() && newData.val().matches(/^(dream|dash|shield|heal|blink|boost|slow|barrier)$/)"
+              },
+              "speedPoints": {
+                ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 10 && newData.val() % 1 === 0"
+              },
+              "$other": {
+                ".validate": false
+              }
+            },
+            "map": {
+              ".validate": "newData.isString() && newData.val().matches(/^(classic|maze|twin|open|cross)$/)"
+            },
+            "createdAt": {
+              ".validate": "newData.isNumber() && newData.val() > 0 && newData.val() <= now + 60000"
+            },
+            "updatedAt": {
+              ".validate": "newData.isNumber() && newData.val() > 0 && newData.val() <= now + 60000"
+            },
+            "round": {
+              ".validate": "newData.isNumber() && newData.val() % 1 === 0 && newData.val() > 0"
+            },
+            "readyHost": {
+              ".validate": "newData.isBoolean()"
+            },
+            "readyGuest": {
+              ".write": "auth != null && data.parent().child('guest').child('uid').val() === auth.uid && newData.val() === true && (data.parent().child('status').val() === 'waiting' || (data.parent().child('status').val() === 'playing' && data.parent().child('state').child('winner').exists()))",
+              ".validate": "newData.isBoolean()"
+            },
+            "status": {
+              ".write": "auth != null && data.parent().child('guest').child('uid').val() === auth.uid && newData.val() === 'ended'",
+              ".validate": "newData.val() === 'waiting' || newData.val() === 'playing' || newData.val() === 'ended'"
+            },
+            "guest": {
+              ".write": "auth != null && !data.exists() && newData.child('uid').val() === auth.uid && data.parent().child('hostUid').exists() && data.parent().child('hostUid').val() !== auth.uid && data.parent().child('status').val() === 'waiting' && data.parent().child('createdAt').val() >= now - 600000",
+              ".validate": "newData.hasChildren(['uid','build'])",
+              "uid": {
+                ".validate": "newData.isString() && newData.val().length <= 128"
+              },
+              "build": {
+                ".validate": "newData.hasChildren(['weapon','skill','speedPoints'])",
+                "weapon": {
+                  ".validate": "newData.isString() && newData.val().matches(/^(orb|wave|spark|cannon|swift|frost|burst|arc|heavy|needle)$/)"
+                },
+                "skill": {
+                  ".validate": "newData.isString() && newData.val().matches(/^(dream|dash|shield|heal|blink|boost|slow|barrier)$/)"
+                },
+                "speedPoints": {
+                  ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 10 && newData.val() % 1 === 0"
+                },
+                "$other": {
+                  ".validate": false
+                }
+              },
+              "$other": {
+                ".validate": false
+              }
+            },
+            "guestInput": {
+              ".write": "auth != null && data.parent().child('guest').child('uid').val() === auth.uid && data.parent().child('status').val() === 'playing' && newData.exists()",
+              ".validate": "newData.hasChildren(['dx','dy','fireSeq','special','at'])",
+              "dx": {
+                ".validate": "newData.val() === -1 || newData.val() === 0 || newData.val() === 1"
+              },
+              "dy": {
+                ".validate": "newData.val() === -1 || newData.val() === 0 || newData.val() === 1"
+              },
+              "fireSeq": {
+                ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() % 1 === 0"
+              },
+              "special": {
+                ".validate": "newData.isBoolean()"
+              },
+              "at": {
+                ".validate": "newData.isNumber() && newData.val() > 0 && newData.val() <= now + 60000"
+              },
+              "$other": {
+                ".validate": false
+              }
+            },
+            "state": {
+              ".validate": "newData.hasChildren(['players','seq','sentAt']) && newData.child('seq').isNumber() && newData.child('sentAt').isNumber()"
+            },
+            "$other": {
+              ".validate": false
+            }
+          }
+        }
       },
       "publicEventBadges": {
         "$uid": {

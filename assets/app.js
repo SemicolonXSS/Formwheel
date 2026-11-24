@@ -1090,7 +1090,7 @@ function render(){
       const constructionWarnings = {
         "Casino": "계정 지갑 거래와 온라인 코인 챌린지",
         "Clicker": "3분 온라인 배틀과 Rapid 서버 거래",
-        "PVP": "온라인 방 만들기·참가",
+        "PVP": "온라인 방 만들기·참가 · 새 Firebase 룰 적용 대기",
         "Battle": "온라인 방 만들기·참가와 퀴즈 목록 불러오기",
         "Party": "파티 만들기·초대 코드 참가 · 새 Firebase 룰 적용 대기",
         "Reflex": "온라인 방 만들기·참가",
