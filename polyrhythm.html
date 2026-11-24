@@ -61,18 +61,19 @@ function judgedProgress(){return progress+TAU*(judgmentOffsetMs/1000)/period}
 offsetSlider.addEventListener('input',()=>setJudgmentOffset(Number(offsetSlider.value)));
 document.querySelector('#resetOffset').addEventListener('click',()=>setJudgmentOffset(0));
 setJudgmentOffset(judgmentOffsetMs);
-const mapNames=['첫 박자','엇박자','트리플','피날레','네온 러시','스텝 체인','스위치백','별빛 궤도','더블 펄스','미러 비트','코멧 트레일','싱코페이션','터보 스핀','블루 리버스','크로스 리듬','스파크 스톰','하이퍼 루프','프리즘 댄스','카오스 서킷','이터널 오버드라이브'];
+const mapNames=['첫 박자','엇박자','트리플','피날레','네온 러시','스텝 체인','스위치백','별빛 궤도','더블 펄스','미러 비트','코멧 트레일','싱코페이션','터보 스핀','블루 리버스','크로스 리듬','스파크 스톰','하이퍼 루프','프리즘 댄스','카오스 서킷','이터널 오버드라이브','삼도 사물놀이'];
 const mapPatterns=[
  [1,1,0.75,1.25,0.75,1],[0.75,0.5,1,0.75,0.5,1.25],[0.5,0.5,0.75,0.5,1,0.5],[0.5,0.75,0.5,0.5,0.75,0.5],
  [0.75,0.75,0.5,1,0.5,0.75],[1,0.5,0.5,1,0.75,0.5],[0.5,1,0.5,0.75,0.75,0.5],[1.25,0.5,0.75,0.5,1,0.5],
  [0.5,0.5,1,0.5,0.5,1],[0.75,0.5,1.25,0.5,0.75,0.5],[1,0.75,0.5,0.5,0.75,1],[0.5,0.75,0.5,1.25,0.5,0.75],
  [0.5,0.5,0.5,0.75,0.5,1],[1,0.5,0.75,0.5,0.5,0.75],[0.75,0.5,0.75,0.5,1,0.5],[0.5,0.75,0.5,0.5,0.5,1],
- [0.5,0.5,0.75,0.5,0.5,0.75],[0.75,1,0.5,0.75,0.5,0.5],[0.5,0.5,0.5,0.5,0.75,0.5],[0.5,0.75,0.5,0.5,0.5,0.75]
+ [0.5,0.5,0.75,0.5,0.5,0.75],[0.75,1,0.5,0.75,0.5,0.5],[0.5,0.5,0.5,0.5,0.75,0.5],[0.5,0.75,0.5,0.5,0.5,0.75],
+ [1.25,0.5,0.75,1,0.5,0.5,1.25,0.75,0.5,1,0.75,0.5]
 ];
 const HOLD_ARC_LENGTH=1.5;
 const maps=mapNames.map((name,i)=>{
  const beats=[];let at=1.6;
- const count=i<4?64+i*16:80+Math.min(12,i)*8;
+ const count=name==='삼도 사물놀이'?96:i<4?64+i*16:80+Math.min(12,i)*8;
  const density=i<4?[0.96,0.94,0.95,0.96][i]:1.14+Math.min(i-4,15)*0.026;
  for(let j=0;j<count;j++){
   const isHold=j>0&&j%12!==0&&j%8!==0&&j%9===4;
@@ -202,12 +203,22 @@ function synthNote(frequency,duration=0.19,volume=0.11,type='triangle'){
   osc.onended=()=>{osc.disconnect();gain.disconnect()};
   osc.start(now);osc.stop(now+duration+0.01);
 }
+function samdoPercussion(index){
+  // Original synthesized percussion, inspired by the four samul instruments.
+  const phrase=['buk','janggu','kkwaeng','janggu','buk','kkwaeng','janggu','kkwaeng','buk','janggu','kkwaeng','jing'];
+  const voice=phrase[index%phrase.length];
+  if(voice==='buk'){synthNote(90,0.25,0.28,'sine');synthNote(145,0.09,0.12,'triangle')}
+  else if(voice==='janggu'){synthNote(215,0.10,0.19,'triangle');synthNote(510,0.065,0.07,'square')}
+  else if(voice==='kkwaeng'){synthNote(960,0.14,0.10,'triangle');synthNote(1733,0.10,0.065,'sine');synthNote(2491,0.07,0.035,'sine')}
+  else {synthNote(123,0.85,0.18,'sine');synthNote(347,0.65,0.07,'triangle');synthNote(579,0.45,0.045,'sine')}
+}
 function mapMusic(){
   if(mode!=='map'||!running)return;
   // Notes and targets share the same angular timeline: each note sounds at a tile's hit position.
   const beats=maps[mapIndex].beats,notes=melodies[mapIndex%melodies.length];
   while(musicNote<beats.length&&progress>=beats[musicNote]){
     const index=musicNote++;
+    if(maps[mapIndex].name==='삼도 사물놀이'){samdoPercussion(index);continue;}
     synthNote(notes[index%notes.length],0.23,0.23,mapIndex%4===3?'sawtooth':'triangle');
     if(index%2===0)synthNote(notes[index%notes.length]/2,0.28,0.13,'sine');
   }
