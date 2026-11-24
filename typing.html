@@ -107,7 +107,7 @@ function bestData(){try{const data=JSON.parse(localStorage.getItem(storageKey)||
 function showBest(){const v=bestData()[config()];const valid=v&&typeof v==='object'&&Number.isFinite(v.cpm)&&v.cpm>=0&&Number.isFinite(v.accuracy)&&v.accuracy>=0&&v.accuracy<=100;$('best').textContent=valid?'🏆 이 설정의 최고 기록: '+v.cpm+'타/분 · 정확도 '+v.accuracy+'%':'🏆 이 설정의 최고 기록은 아직 없어요.'}
 function populate(){const m=$('mode').value,standard=m==='general',custom=m==='custom';
  $('lang').parentElement.hidden=!standard;$('level').parentElement.hidden=!standard;
- $('selectionPanel').hidden=standard||custom;$('customPanel').hidden=!custom;
+ $('selectionPanel').hidden=false;$('snippet').parentElement.hidden=standard||custom;$('customPanel').hidden=!custom;
  const old=$('snippet').value;$('snippet').replaceChildren();
  if(exercises[m])exercises[m].forEach(([name],i)=>{const option=document.createElement('option');option.value=String(i);option.textContent=name;$('snippet').append(option)});
  if(exercises[m]&&Number(old)<exercises[m].length)$('snippet').value=old;
