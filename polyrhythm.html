@@ -142,6 +142,8 @@ function addTarget(){
       const delta=((at-t.at)%TAU+TAU)%TAU;
       return (t.kind==='hold'&&(delta<1.5+minGap||delta>TAU-minGap))||(kind==='hold'&&(delta<minGap||delta>TAU-1.5-minGap))||Math.min(delta,TAU-delta)<minGap;
     })))at+=0.2;
+    // If no safe location exists, retry this beat later instead of forcing an overlap.
+    if(conflictsWithHoldArc(at,kind)){mapBeat--;return}
     targets.push({id:++nextId,at,angle:angle+direction*(at-progress),kind});
     return;
   }
