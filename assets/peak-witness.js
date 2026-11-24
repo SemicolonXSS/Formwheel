@@ -20,7 +20,7 @@ css.textContent=`
 `;
 css.textContent+=`
 #fw-peak-awards.fw-peak-compact{box-sizing:border-box;width:min(92%,760px);max-width:760px;margin:18px auto 22px;padding:9px 12px;border-radius:11px;box-shadow:none}
-#fw-peak-awards.fw-peak-compact h3{font-size:12px;margin:0 0 3px}
+#fw-peak-awards.fw-peak-compact h2{font-size:12px;margin:0 0 3px}
 #fw-peak-awards.fw-peak-compact p{font-size:10px;line-height:1.4;margin:2px 0}
 #fw-peak-awards.fw-peak-compact .fw-peak-steps{gap:4px;margin-top:5px}
 #fw-peak-awards.fw-peak-compact .fw-peak-step{font-size:10px;padding:3px 6px}
