@@ -1088,7 +1088,7 @@ function render(){
 
       // Maintenance notices are advisory: never block otherwise working offline gameplay.
       const constructionWarnings = {
-        "Casino": "로그인 지갑 거래와 코인 챌린지",
+        "Casino": "계정 지갑 거래와 온라인 코인 챌린지",
         "Clicker": "3분 온라인 배틀과 Rapid 서버 거래",
         "PVP": "온라인 방 만들기·참가",
         "Battle": "온라인 방 만들기·참가와 퀴즈 목록 불러오기",
