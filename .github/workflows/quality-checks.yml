@@ -60,7 +60,7 @@ jobs:
         run: npm install --ignore-scripts --no-audit --no-fund
       - name: Exercise deployed-path ownership, blocking and request transitions
         working-directory: firebase-security
-        run: npx firebase emulators:exec --project demo-formwheel --only database "node --test --test-concurrency=1 tests/social-rules.test.mjs tests/match-pixel.test.mjs tests/music-recovery.test.mjs tests/party-recovery.test.mjs tests/sync-restart.test.mjs tests/vote-recovery.test.mjs tests/pvp-recovery.test.mjs tests/board-online.test.mjs"
+        run: npx firebase emulators:exec --project demo-formwheel --only database "node --test --test-concurrency=1 tests/social-rules.test.mjs tests/match-pixel.test.mjs tests/music-recovery.test.mjs tests/party-recovery.test.mjs tests/sync-restart.test.mjs tests/vote-recovery.test.mjs tests/pvp-recovery.test.mjs tests/board-online.test.mjs tests/reflex-online.test.mjs"
 
   browser-smoke:
     name: Desktop and touch UI regression

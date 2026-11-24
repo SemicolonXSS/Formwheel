@@ -1483,7 +1483,69 @@
     },
     "reflexRooms": {
       ".read": false,
-      ".write": false
+      ".write": false,
+      "$code": {
+        ".read": "auth != null && $code.matches(/^[1-9][0-9]{3}$/)",
+        ".write": "auth != null && $code.matches(/^[1-9][0-9]{3}$/) && ((!data.exists() && newData.child('host').val() === auth.uid && newData.child('status').val() === 'lobby' && newData.child('round').val() === 0 && newData.child('players').child(auth.uid).exists() && newData.child('presence').child(auth.uid).val() === true && !newData.hasChild('results') && !newData.hasChild('goAt')) || (data.child('host').val() === auth.uid && ((!newData.exists()) || (newData.child('createdAt').val() === data.child('createdAt').val() && (newData.child('host').val() === auth.uid || data.child('players').child(newData.child('host').val()).exists())))))",
+        ".validate": "newData.hasChildren(['version','status','host','round','players','createdAt']) && newData.child('players').child(newData.child('host').val()).exists() && (newData.child('status').val() === 'lobby' || (newData.hasChild('goAt') && newData.child('round').val() >= 1))",
+        "version": {
+          ".validate": "newData.val() === 1"
+        },
+        "status": {
+          ".validate": "newData.val() === 'lobby' || newData.val() === 'playing' || newData.val() === 'finished'"
+        },
+        "host": {
+          ".write": "auth != null && $code.matches(/^[1-9][0-9]{3}$/) && newData.val() === auth.uid && data.parent().child('presence').child(data.val()).val() === false && data.parent().child('players').child(auth.uid).exists() && data.parent().child('presence').child(auth.uid).val() === true",
+          ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 128"
+        },
+        "round": {
+          ".validate": "newData.isNumber() && newData.val() % 1 === 0 && newData.val() >= 0 && newData.val() <= 5"
+        },
+        "createdAt": {
+          ".validate": "newData.isNumber() && newData.val() > 0 && newData.val() <= now + 60000"
+        },
+        "goAt": {
+          ".validate": "newData.isNumber() && newData.val() >= newData.parent().child('createdAt').val() && newData.val() <= now + 60000"
+        },
+        "players": {
+          "$uid": {
+            ".write": "auth != null && $code.matches(/^[1-9][0-9]{3}$/) && auth.uid === $uid && root.child('reflexRooms').child($code).child('host').exists() && root.child('reflexRooms').child($code).child('host').val() !== auth.uid && ((!data.exists() && newData.exists() && root.child('reflexRooms').child($code).child('status').val() === 'lobby') || (data.exists() && !newData.exists()))",
+            ".validate": "newData.hasChild('name')",
+            "name": {
+              ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 12"
+            },
+            "$other": {
+              ".validate": false
+            }
+          }
+        },
+        "presence": {
+          "$uid": {
+            ".write": "auth != null && $code.matches(/^[1-9][0-9]{3}$/) && auth.uid === $uid && ((!newData.exists() && data.exists()) || (newData.isBoolean() && newData.parent().parent().child('players').child($uid).exists()))",
+            ".validate": "newData.isBoolean()"
+          }
+        },
+        "results": {
+          "$round": {
+            "$uid": {
+              ".write": "auth != null && $code.matches(/^[1-9][0-9]{3}$/) && auth.uid === $uid && !data.exists() && newData.exists() && root.child('reflexRooms').child($code).child('players').child($uid).exists() && root.child('reflexRooms').child($code).child('status').val() === 'playing' && (root.child('reflexRooms').child($code).child('round').val() + '') === $round && now <= root.child('reflexRooms').child($code).child('goAt').val() + 10000 && (newData.child('kind').val() === 'early' || (newData.child('kind').val() === 'hit' && now >= root.child('reflexRooms').child($code).child('goAt').val() - 250))",
+              ".validate": "$round.matches(/^[1-5]$/) && newData.hasChildren(['ms','kind']) && (newData.child('kind').val() === 'hit' || newData.child('ms').val() === 500)",
+              "kind": {
+                ".validate": "newData.val() === 'hit' || newData.val() === 'early' || newData.val() === 'timeout'"
+              },
+              "ms": {
+                ".validate": "newData.isNumber() && newData.val() % 1 === 0 && newData.val() >= 0 && newData.val() <= 2000"
+              },
+              "$other": {
+                ".validate": false
+              }
+            }
+          }
+        },
+        "$other": {
+          ".validate": false
+        }
+      }
     },
     "rooms": {
       ".read": false,
