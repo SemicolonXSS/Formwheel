@@ -247,6 +247,10 @@ function points(note,hit){
  $("score").textContent=run.score+"점";$("combo").textContent=run.combo+" 콤보";
  if(run.life===0)finish(false);
 }
+function stray(lane){
+ if(!run)return;
+ points({lane,state:"waiting"},null);
+}
 function press(lane,flick,owner,event){
  if(!run)return false;
  const t=inputTime(event), window=run.window;
@@ -354,8 +358,7 @@ addEventListener("keydown",event=>{
  const lane=keys.indexOf(event.code);
  if(lane<0||event.repeat||keyboard.has(lane))return;
  event.preventDefault();keyboard.add(lane);
- if(event.shiftKey)press(lane,true,event.code,event);
- else press(lane,false,event.code,event);
+ if(!press(lane,event.shiftKey,event.code,event))stray(lane);
 });
 addEventListener("keyup",event=>{
  const lane=keys.indexOf(event.code);
@@ -404,8 +407,9 @@ canvas.onpointerup=canvas.onpointercancel=canvas.onlostpointercapture=event=>{
  const pointer=pointers.get(event.pointerId);
  if(!pointer)return;
  pointers.delete(event.pointerId);
- if(event.type==="pointerup"&&!pointer.consumed&&pointer.y-event.clientY>=22){
-  press(pointer.lane,true,event.pointerId,event);
+ if(event.type==="pointerup"&&!pointer.consumed){
+  if(pointer.y-event.clientY>=22)pointer.consumed=press(pointer.lane,true,event.pointerId,event);
+  if(!pointer.consumed)stray(pointer.lane);
  }
  release(pointer.lane,event.pointerId,event,event.type!=="pointerup");
 };
