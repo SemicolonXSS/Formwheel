@@ -133,8 +133,8 @@ let mode='random',mapIndex=0,mapBeat=0,musicNote=0,direction=1,selectedMap=0;
 const mapInfo=document.querySelector('#mapInfo');
 const mapSelect=document.querySelector('#mapSelect');
 maps.forEach((m,i)=>mapSelect.add(new Option((i+1)+' · '+m.name+' ('+m.beats.length+'타일)',String(i))));
-function goodWindow(){if(mode==='map'&&maps[mapIndex].name==='별달거리')return 0.32;return (0.89+Math.min(stage,20)*0.004)*(mode==='map'?0.98:1)}
-function perfectWindow(){if(mode==='map'&&maps[mapIndex].name==='별달거리')return 0.16;return (0.40+Math.min(stage,20)*0.0015)*(mode==='map'?0.98:1)}
+function goodWindow(){if(mode==='map'&&maps[mapIndex].name==='별달거리')return 0.26;return (0.60+Math.min(stage,20)*0.003)*(mode==='map'?0.98:1)}
+function perfectWindow(){if(mode==='map'&&maps[mapIndex].name==='별달거리')return 0.12;return (0.24+Math.min(stage,20)*0.001)*(mode==='map'?0.98:1)}
 function stagePeriod(){if(mode==='map'&&maps[mapIndex].name==='별달거리')return 2.4;return Math.max(mode==='map'?2.25:1.8,(mode==='map'?3.8-Math.min(mapIndex,5)*0.17:4)-stage*(mode==='map'?0.045:0.12))}
 const HOLD_LENGTH=HOLD_ARC_LENGTH;
 let holdTarget=null,activeInput=null,reverseUntil=0,paused=false;
@@ -417,7 +417,7 @@ function hit(){
       feedback.textContent+=direction<0?' · ↺ 역방향!':' · ↻ 정방향!';
     }
     afterTarget();
-  }else if(remaining>goodWindow()&&remaining<=goodWindow()+0.5){
+  }else if(remaining>goodWindow()&&remaining<=goodWindow()+0.25){
     feedback.textContent='⏳ 조금만 더!';
   }else{
     lose('헛발질');
