@@ -1090,9 +1090,9 @@ function render(){
       const constructionWarnings = {
         "Casino": "계정 지갑 거래와 온라인 코인 챌린지",
         "Clicker": "3분 온라인 배틀과 Rapid 서버 거래",
-        "PVP": "온라인 방 만들기·참가 · 새 Firebase 룰 적용 대기",
+        "PVP": "온라인 방 만들기·참가",
         "Battle": "온라인 방 만들기·참가와 퀴즈 목록 불러오기",
-        "Party": "파티 만들기·초대 코드 참가 · 새 Firebase 룰 적용 대기",
+        "Party": "파티 만들기·초대 코드 참가",
         "Reflex": "온라인 방 만들기·참가",
         "Territory": "온라인 방 만들기·참가",
         "Risk": "온라인 방 만들기·참가",
@@ -1113,11 +1113,14 @@ function render(){
         "Scribble": "온라인 그림 릴레이 방 연결",
         "Vault": "온라인 금고 조회·저장",
         "Button": "온라인 방 만들기·참가",
-        "Vote": "공유 투표방 · 새 Firebase 룰 적용 대기",
+        "Vote": "공유 투표방",
         "Marble": "온라인 구슬 대전",
-        "SYNC": "같은 방 재경기 · 새 Firebase 룰 적용 대기"
+        "SYNC": "같은 방 재경기"
       };
       const constructionNotice = constructionWarnings[project.name] || "";
+      const noticeTitle = ["PVP", "Party", "Vote", "SYNC"].includes(project.name)
+        ? "⏳ Firebase 룰 적용 대기"
+        : "🚧 일부 기능 공사중";
 
       const newBadge =
         isRecent(project)
@@ -1132,7 +1135,6 @@ function render(){
         >
 
           ${newBadge}
-          ${constructionNotice ? `<div role="note" style="margin:8px 10px 0;padding:9px 11px;border-radius:10px;border:1px solid #dbbb72;background:#fff8e9;color:#684817;font-size:12px;line-height:1.55"><strong>🚧 일부 기능 공사중</strong><div>${escapeHTML(constructionNotice)} · 다른 기능은 이용할 수 있어요.</div></div>` : ""}
           ${pinnedGames.includes(project.name) ? '<span class="fw-pin-mark">📌 고정됨</span>' : ""}
 
           <div class="fw-card-thumbnail">
@@ -1188,6 +1190,7 @@ function render(){
             <div class="fw-maturity-caption"><span>개발 상태 <small>(추정)</small></span><strong>${maturityLabel(projectMaturity[project.name])} · ${projectMaturity[project.name] == null ? '점수 없음' : projectMaturity[project.name] + '%'}</strong></div>
             <div class="fw-maturity-track" role="progressbar" aria-label="${escapeHTML(project.name)} 개발 진행률 추정" aria-valuemin="0" aria-valuemax="100" ${projectMaturity[project.name] == null ? 'aria-valuetext="평가 대기"' : `aria-valuenow="${projectMaturity[project.name]}"`}><div class="fw-maturity-fill" style="width:${projectMaturity[project.name] ?? 0}%"></div></div>
           </div>
+          ${constructionNotice ? `<div role="note" style="margin:8px 10px 0;padding:9px 11px;border-radius:10px;border:1px solid #dbbb72;background:#fff8e9;color:#684817;font-size:12px;line-height:1.55"><strong>${noticeTitle}</strong><div>${escapeHTML(constructionNotice)}</div></div>` : ""}
           <div class="cardBottom">
 
             <a
