@@ -1,0 +1,39 @@
+/* Formwheel Brand System 1.0 — opt-in tokens, no global theme overrides. */
+:root {
+  --fw-brand-orange: #FF8A00;
+  --fw-brand-purple: #8B5CF6;
+  --fw-brand-space: #10121E;
+  --fw-brand-white: #F8FAFC;
+  --fw-brand-legacy-blue: #2867E8;
+  --fw-brand-ink: #10121E;
+  --fw-brand-font-body: Pretendard, "Noto Sans KR", system-ui, sans-serif;
+  --fw-brand-font-display: "Space Grotesk", var(--fw-brand-font-body);
+  --fw-brand-size-display: clamp(28px, 5vw, 48px);
+  --fw-brand-size-heading: 24px;
+  --fw-brand-size-body: 16px;
+  --fw-brand-size-caption: 13px;
+  --fw-brand-line-heading: 1.3;
+  --fw-brand-line-body: 1.65;
+  --fw-brand-space-1: 4px;
+  --fw-brand-space-2: 8px;
+  --fw-brand-space-3: 12px;
+  --fw-brand-space-4: 16px;
+  --fw-brand-space-6: 24px;
+  --fw-brand-radius: 16px;
+}
+.fw-brand-slogan {
+  font-family: var(--fw-brand-font-body);
+  line-height: var(--fw-brand-line-heading);
+}
+.fw-brand-accent {
+  display: inline-block;
+  width: 38px;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg,var(--fw-brand-orange),var(--fw-brand-purple));
+  vertical-align: middle;
+}
+.fw-brand-note {
+  font-family: var(--fw-brand-font-body);
+  line-height: var(--fw-brand-line-body);
+}
