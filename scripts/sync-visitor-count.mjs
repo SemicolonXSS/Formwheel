@@ -65,8 +65,27 @@ async function publishUniqueTotal() {
   console.log(JSON.stringify({ uniqueVisitors: actual, publishedCount: published ?? null, increased: tx.committed }));
 }
 
+async function retryTransient(label, operation) {
+  const maxAttempts = 3;
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      return await operation();
+    } catch (error) {
+      const reason = [error?.code, error?.message, error?.status].filter(Boolean).join(" ");
+      const retryable = /network|timeout|deadline|unavailable|disconnected|reset|econn|etimedout|eai_again|resource_exhausted|429|5\\d\\d/i.test(reason);
+      if (!retryable || attempt === maxAttempts) throw error;
+      const delayMs = 1000 * 2 ** (attempt - 1);
+      console.warn(`${label} transient failure (attempt ${attempt}/${maxAttempts}); retrying in ${delayMs}ms: ${reason}`);
+      await new Promise(resolve => setTimeout(resolve, delayMs));
+    }
+  }
+}
+
 try {
-  const results = await Promise.allSettled([publishLiveCount(), publishUniqueTotal()]);
+  const results = await Promise.allSettled([
+    retryTransient("Live visitor sync", publishLiveCount),
+    retryTransient("Unique visitor sync", publishUniqueTotal),
+  ]);
   for (const result of results) {
     if (result.status === "rejected") console.error(result.reason);
   }
