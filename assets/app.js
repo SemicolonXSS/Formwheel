@@ -1088,10 +1088,18 @@ function render(){
 
       // Maintenance notices are advisory: never block otherwise working offline gameplay.
       const constructionWarnings = {
-        "Casino": "지갑·카드 거래의 Firebase 저장 기능 점검 중",
-        "Clicker": "리더보드 점수 등록·Rapid 서버 지갑 점검 중",
-        "PVP": "온라인 방·매칭 권한 점검 중",
-        "Battle": "일부 온라인 대전 연결 권한 점검 중"
+        "Casino": "로그인 지갑 거래와 코인 챌린지",
+        "Clicker": "3분 온라인 배틀과 Rapid 서버 거래",
+        "PVP": "온라인 방 만들기·참가",
+        "Battle": "온라인 방 만들기·참가와 퀴즈 목록 불러오기",
+        "PIXEL WAR": "공용 캔버스 연결과 픽셀 저장",
+        "Party": "파티 만들기·초대 코드 참가",
+        "Reflex": "랜덤 대전에서 온라인 방 연결",
+        "Territory": "랜덤 대전에서 온라인 방 연결",
+        "Risk": "랜덤 대전에서 온라인 방 연결",
+        "GCrown": "랜덤 대전에서 온라인 방 연결",
+        "Time": "랜덤 대전에서 온라인 방 연결",
+        "Bomb": "랜덤 대전에서 온라인 방 연결"
       };
       const constructionNotice = constructionWarnings[project.name] || "";
 
