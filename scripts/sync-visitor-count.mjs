@@ -72,7 +72,7 @@ async function retryTransient(label, operation) {
       return await operation();
     } catch (error) {
       const reason = [error?.code, error?.message, error?.status].filter(Boolean).join(" ");
-      const retryable = /network|timeout|deadline|unavailable|disconnected|reset|econn|etimedout|eai_again|resource_exhausted|429|5\\d\\d/i.test(reason);
+      const retryable = /network|timeout|deadline|unavailable|disconnected|reset|econn|etimedout|eai_again|resource_exhausted|429|5\d\d/i.test(reason);
       if (!retryable || attempt === maxAttempts) throw error;
       const delayMs = 1000 * 2 ** (attempt - 1);
       console.warn(`${label} transient failure (attempt ${attempt}/${maxAttempts}); retrying in ${delayMs}ms: ${reason}`);
