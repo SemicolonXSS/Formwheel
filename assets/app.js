@@ -1112,7 +1112,12 @@ function render(){
         "Music": "공용 곡·온라인 점수 등록과 온라인 대전",
         "Wheel Battle": "온라인 방 만들기·참가",
         "Scribble": "온라인 그림 릴레이 방 연결",
-        "Vault": "온라인 금고 조회·저장"
+        "Vault": "온라인 금고 조회·저장",
+        "Button": "온라인 방 만들기·참가",
+        "Vote": "공유 투표방과 투표 저장",
+        "Marble": "온라인 구슬 대전",
+        "SYNC": "같은 온라인 방에서 재경기",
+        "Workshop": "같은 계정의 두 번째 작품 제출"
       };
       const constructionNotice = constructionWarnings[project.name] || "";
 
