@@ -73,12 +73,19 @@ const mapPatterns=[
 // Traditional Byeoldalgeori: two paired 16-subdivision phrases; see https://www.gugak.go.kr/ency/topic/view/1301
 const byeolJanggu=['D','','D','','G','T','G','','G','T','G','T','G','T','G','','G','T','G','','G','T','G','','G','T','G','T','G','T','G',''];
 const byeolKkwaeng=['K','','K','','k','j','K','','k','j','k','j','k','j','K','','k','j','K','','k','j','K','','k','j','k','j','k','j','K',''];
+// Expressive arrangement of the basic Byeoldalgeori phrase, not a transcription of a specific recording.
+const byeolTotal=192;
+function byeolTime(p){
+ const unit=TAU/8;
+ const phrasing=[0,0,-0.035,0,-0.065,0.10,-0.035,0,-0.06,0.09,-0.035,0.08,-0.06,0.07,-0.02,0];
+ return 1.6+(p+phrasing[p%16])*unit;
+}
 const HOLD_ARC_LENGTH=1.5;
 const maps=mapNames.map((name,i)=>{
  if(name==='별달거리'){
   const beats=[],unit=TAU/8;
   // One revolution = four quarter beats; playable targets follow primary beats.
-  for(let p=0;p<24*8;p++)if(byeolJanggu[p%32]||byeolKkwaeng[p%32])beats.push(1.6+p*unit);
+  for(let p=0;p<byeolTotal;p++)if(byeolJanggu[p%32])beats.push(byeolTime(p));
   return {name,beats};
  }
  const beats=[];let at=1.6;
@@ -217,9 +224,9 @@ function synthNote(frequency,duration=0.19,volume=0.11,type='triangle'){
   osc.onended=()=>{osc.disconnect();gain.disconnect()};
   osc.start(now);osc.stop(now+duration+0.01);
 }
-function byeolStrike(freq,decay,volume,metal=false){
+function byeolStrike(freq,decay,volume,metal=false,delay=0){
   if(!audioContext||audioContext.state!=='running')return;
-  const now=audioContext.currentTime;
+  const now=audioContext.currentTime+delay;
   const ratios=metal?[1,1.414,1.932,2.63,3.71,5.12]:[1,1.59,2.14];
   ratios.forEach((ratio,i)=>{
     const o=audioContext.createOscillator(),g=audioContext.createGain();
@@ -241,18 +248,21 @@ function byeolNoise(freq,decay,volume){
 }
 function byeolPercussion(index){
   const p=index%32,j=byeolJanggu[p],k=byeolKkwaeng[p];
-  if(j==='D'||j==='G')byeolStrike(225,0.19,j==='D'?0.36:0.25);
-  if(j==='D'||j==='T'){byeolStrike(590,0.085,0.30);byeolNoise(1900,0.055,0.26);}
-  if(k){byeolStrike(k==='j'?1480:1150,k==='j'?0.07:0.29,k==='K'?0.34:0.21,true);byeolNoise(4300,0.045,0.13);}
-  if(p%4===0){byeolStrike(76,0.32,p%8===0?0.48:0.34);byeolNoise(330,0.08,0.16);}
+  const accent=p===0||p===2||p===14||p===30?1.22:p%2===1?0.65:0.95;
+  const response=Math.floor(index/32)%2===1;
+  if(j==='D'||j==='G')byeolStrike(225,0.19,(j==='D'?0.36:0.25)*accent);
+  if(j==='D'||j==='T'){byeolStrike(590,0.085,0.30*accent);byeolNoise(1900,0.055,0.26*accent);}
+  if(k&&(k==='K'||response||p%4!==1)){byeolStrike(k==='j'?1480:1150,k==='j'?0.07:0.29,(k==='K'?0.34:0.16)*accent,true);byeolNoise(4300,0.045,0.10*accent);}
+  if(response&&(p===13||p===29)){byeolStrike(1480,0.045,0.12,true,0.085);}
+  if(p===5||p===21){byeolStrike(590,0.055,0.13,false,0.095);}
+  if([0,4,8,14,16,20,24,30].includes(p)){byeolStrike(76,0.32,p%16===0?0.48:0.29);byeolNoise(330,0.08,0.12);}
   if(p===0||p===16)byeolStrike(138,1.4,0.30,true);
 }
 function mapMusic(){
   if(mode!=='map'||!running)return;
   // Notes and targets share the same angular timeline: each note sounds at a tile's hit position.
   if(maps[mapIndex].name==='별달거리'){
-    const unit=TAU/8,total=24*8;
-    while(musicNote<total&&progress>=1.6+musicNote*unit)byeolPercussion(musicNote++);
+    while(musicNote<byeolTotal&&progress>=byeolTime(musicNote))byeolPercussion(musicNote++);
     return;
   }
   const beats=maps[mapIndex].beats,notes=melodies[mapIndex%melodies.length];
