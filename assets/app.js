@@ -1116,8 +1116,7 @@ function render(){
         "Button": "온라인 방 만들기·참가",
         "Vote": "공유 투표방과 투표 저장",
         "Marble": "온라인 구슬 대전",
-        "SYNC": "같은 온라인 방에서 재경기",
-        "Workshop": "같은 계정의 두 번째 작품 제출"
+        "SYNC": "같은 온라인 방에서 재경기"
       };
       const constructionNotice = constructionWarnings[project.name] || "";
 
