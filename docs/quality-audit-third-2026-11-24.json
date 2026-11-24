@@ -1,0 +1,3228 @@
+{
+  "date": "2026-11-24",
+  "total": 300,
+  "method": "Unique repo/file/rule/target occurrences; repeated modes and viewports deduplicated. AQS active tab selector normalized. Shared root causes can affect many elements; these are not 300 independent logic bugs. New app scope excludes both preceding batches. Landmark, region and heading best-practice repairs excluded from 300.",
+  "categories": {
+    "color-contrast": 199,
+    "aria-prohibited-attr": 4,
+    "label-content-name-mismatch": 25,
+    "aria-allowed-attr": 4,
+    "aria-required-children": 1,
+    "select-name": 5,
+    "label": 1,
+    "button-name": 20,
+    "nameable-group": 7,
+    "input-label-association": 31,
+    "keyboard-activation": 2,
+    "invalid-awards-recovery": 1
+  },
+  "repositories": [
+    {
+      "repo": "Formwheel_Wiki",
+      "baseline": "371a0c14bd85105aa7f33ee273226b2b0cb02113",
+      "findings": 20,
+      "fixedCommit": "8b6286d64831af8c30d735bd16fda4435be61649",
+      "tree": "36392ad0f9758cefcb9a3333753653e472355620",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_Wiki/pull/1"
+    },
+    {
+      "repo": "Formwheel_Mix",
+      "baseline": "1b5b991340c77c49a9d1962160035c534ced1de9",
+      "findings": 0
+    },
+    {
+      "repo": "Formwheel_Casino",
+      "baseline": "cb67c160afa571d8ed32167614dbad96652a2ea8",
+      "findings": 10,
+      "fixedCommit": "991391641cbb4f99646d956e3f7b4393ac1b8cc8",
+      "tree": "aaddb435c08815b0dd60b1491d9cc6b6393366f4",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_Casino/pull/1"
+    },
+    {
+      "repo": "Formwheel_Territory",
+      "baseline": "78c78fa364e0897b0bba0d95625be198cdab3a31",
+      "findings": 13,
+      "fixedCommit": "6b83a10e356ac7da7290ee820cb9094e3000255a",
+      "tree": "8671a272cc2ed52843a71ff242debd14c93d03ed",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_Territory/pull/1"
+    },
+    {
+      "repo": "Formwheel_Marble",
+      "baseline": "2626da6eac301e85894dd8c77255039f2976440e",
+      "findings": 13,
+      "fixedCommit": "23cb4f4c1852ebf36c8c56feb29b2f6ca000ed3f",
+      "tree": "033ea2d39f138680fd1dca2443eaa91afaa874c3",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_Marble/pull/1"
+    },
+    {
+      "repo": "Formwheel_Button",
+      "baseline": "9e29d03c1b9a45f5f59e814e634703c32c3d18c5",
+      "findings": 13,
+      "fixedCommit": "9c0552016ced96fa0d831378830f0343f8bb9d22",
+      "tree": "8bdab8f6916cfc473a0378bb1098633ad567d269",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_Button/pull/1"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "baseline": "249c9092b912bd011f4acb400eabb8e657593315",
+      "findings": 40,
+      "fixedCommit": "951ff41ff3365657ef3f4cbd21bc93f16325af50",
+      "tree": "e5b587fd9834796139252befba5f8ec05d9ba1b4",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_GCrown/pull/1"
+    },
+    {
+      "repo": "Formwheel_PVP",
+      "baseline": "3d98fc44c618a8ca021f79d9360db47c9a0b234d",
+      "findings": 0
+    },
+    {
+      "repo": "Formwheel_WheelB",
+      "baseline": "482a3051f3060df8fa79f93fbba7b824ef9674d5",
+      "findings": 0,
+      "fixedCommit": "90939afab764bf44e85ae6eaeb0eb100946e9f53",
+      "tree": "c1f6fc505eb1a7495a48a51d388b6f54e37f78a9",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_WheelB/pull/1"
+    },
+    {
+      "repo": "Formwheel_Spotlight",
+      "baseline": "377b372d963ec6f594ffb2a8bbb568e945dc6d4f",
+      "findings": 10,
+      "fixedCommit": "7c37caa8e165cfa799ca8eeae3783aeb4f532eb7",
+      "tree": "c46bee8065cdc94bff3207812081c4befb1eb0e2",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_Spotlight/pull/1"
+    },
+    {
+      "repo": "Formwheel_Battle",
+      "baseline": "db0f8b50dacfcd7df5ab711a46dae7a57317f028",
+      "findings": 1,
+      "fixedCommit": "2977a245e5492a0b150b0baae12ac8dc2246c298",
+      "tree": "f20f6f11ed91408122e0bea06dae3ebf87129eb4",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_Battle/pull/1"
+    },
+    {
+      "repo": "Formwheel_Scribble",
+      "baseline": "ad1d0887a656e2afba803c55205d2a03f2b458d2",
+      "findings": 3,
+      "fixedCommit": "eba412b02ab5550006e6caafe37f3d065d3c9f1d",
+      "tree": "45470f9b744719f3e7073272bcda451f7d557006",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_Scribble/pull/2"
+    },
+    {
+      "repo": "Formwheel_Risk",
+      "baseline": "1fd9d10ef9869c37bdc4426e10bfb6478d9abac1",
+      "findings": 2,
+      "fixedCommit": "735c950a34f59929523f64f386878ad4ccc252bc",
+      "tree": "409078afb19eb5dd3fcec2551c3b84c75755ba2e",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_Risk/pull/1"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "baseline": "9baf03f999f3771629c9ce0898578e166a2feee0",
+      "findings": 76,
+      "fixedCommit": "2ae9ea1895f2b6b214710079009b83d652458616",
+      "tree": "ffa5af5e6ea6057fdb2931aed35b7108ac21d626",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_AQS/pull/1"
+    },
+    {
+      "repo": "Formwheel_Spy",
+      "baseline": "e76c434ed1562c46d271f8a316740dce789a7f4d",
+      "findings": 12,
+      "fixedCommit": "cac4cab3eda8a5ce3df0367e69e530ade860c551",
+      "tree": "ebe707851dc2f382ca3cbd9726a0af6efcc7fa7f",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_Spy/pull/1"
+    },
+    {
+      "repo": "Formwheel_Glitch",
+      "baseline": "e31973187c41a4c8536ef0587ff8fdb52132322c",
+      "findings": 14,
+      "fixedCommit": "d4d36b73a2524cdd1548f6a5409720fdba4ef659",
+      "tree": "37118a530650ca78c017b3ce44f4bfbc65a8de50",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_Glitch/pull/1"
+    },
+    {
+      "repo": "Formwheel_Ruletory",
+      "baseline": "b50fcfd87e3b6deab210d38cb6e20d5db1ab66bf",
+      "findings": 1,
+      "fixedCommit": "8117fb20e1a84e7fd3ebd590e269e589307e1c94",
+      "tree": "1624423b89a5b384c82bc6ec62627c32a45b5ccc",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_Ruletory/pull/1"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "baseline": "c5361b89dce6f671b81f0c5db0c25890c6fdb357",
+      "findings": 45,
+      "fixedCommit": "cb98e134104e2bcd6ad96efef79947a2ad7b2390",
+      "tree": "2a47d85c2fa79c02bf356fe0127f810bd71f8983",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_Clicker/pull/1"
+    },
+    {
+      "repo": "Formwheel_Time",
+      "baseline": "7b37852a4fced9d947ca8be938fd77a21ea3e8d6",
+      "findings": 2,
+      "fixedCommit": "bbcca3b33660db70d8208173845c3dedb020184b",
+      "tree": "634a78a4695427da9f3d42a9225cbc46a16ff377",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_Time/pull/1"
+    },
+    {
+      "repo": "Formwheel_Fate",
+      "baseline": "03df2aaa9b8c84e4ae12c2dcc907c4f18a8f22eb",
+      "findings": 3,
+      "fixedCommit": "93330bdf434d11a613358c042002d0cca6c5ec8f",
+      "tree": "103ec82e6bff7a02814a8461198f7e3b1434e201",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_Fate/pull/1"
+    },
+    {
+      "repo": "Formwheel_Sync",
+      "baseline": "14dafd7b9092982663fc74db0acae8dd29d750ce",
+      "findings": 0
+    },
+    {
+      "repo": "Formwheel_DiceDuel",
+      "baseline": "bf63e45908193cd489359a0660d8517257c113b9",
+      "findings": 5,
+      "fixedCommit": "6f069c473ddb2463d6d11c485c6f28cfbe690ff3",
+      "tree": "1ca69b6b8aee94c77dfa5b0d6c5e284dd4d991ec",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_DiceDuel/pull/1"
+    },
+    {
+      "repo": "Formwheel_LEEHWMROF",
+      "baseline": "98627d74249c6edff95f922ca9be9699bf41d39f",
+      "findings": 2,
+      "fixedCommit": "76902a012757d32d112b1ebdf2dc67ef7f8235e4",
+      "tree": "fd1a98932c69aca708775d52630bd4af4903d2f6",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_LEEHWMROF/pull/1"
+    },
+    {
+      "repo": "Formwheel_Bomb",
+      "baseline": "676fa63726f1f6685f3ec243c48cb719c4e94bbc",
+      "findings": 6,
+      "fixedCommit": "ce4bdbe30ed6b78e6d3003d9434811281cb503f1",
+      "tree": "5f88cd0e4d094b3c12df35732a2f7bafa0818f35",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_Bomb/pull/1"
+    },
+    {
+      "repo": "Formwheel_Reflex",
+      "baseline": "f807717bc89e20cfd9bf2067e050e45e667bd710",
+      "findings": 9,
+      "fixedCommit": "7adc6d9170cd328687b878309088c58ed7647c88",
+      "tree": "1e638d3fe1d5e2f4e590090b156b16dc2cf5bc8d",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_Reflex/pull/1"
+    }
+  ],
+  "findings": [
+    {
+      "repo": "Formwheel_Wiki",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['#categories > h2']",
+      "state": "page:index.html",
+      "before": "<h2>카테고리</h2>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-001"
+    },
+    {
+      "repo": "Formwheel_Wiki",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['footer']",
+      "state": "page:index.html",
+      "before": "<footer class=\"footer\">© Formwheel · <a href=\"https://semicolonxss.github.io/Formwheel/\">Hub</a> · <a href=\"https://semicolonxss.github.io/Formwheel/privacy.html\">개인정보 안내</a></footer>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-002"
+    },
+    {
+      "repo": "Formwheel_Wiki",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['footer > a:nth-child(1)']",
+      "state": "page:index.html",
+      "before": "<a href=\"https://semicolonxss.github.io/Formwheel/\">Hub</a>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-003"
+    },
+    {
+      "repo": "Formwheel_Wiki",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['footer > a:nth-child(2)']",
+      "state": "page:index.html",
+      "before": "<a href=\"https://semicolonxss.github.io/Formwheel/privacy.html\">개인정보 안내</a>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-004"
+    },
+    {
+      "repo": "Formwheel_Wiki",
+      "file": "glossary.html",
+      "rule": "color-contrast",
+      "target": "['label > span:nth-child(3)']",
+      "state": "page:glossary.html",
+      "before": "<span style=\"font-size:12px;color:#98a2b5\">⌘ K</span>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-005"
+    },
+    {
+      "repo": "Formwheel_Wiki",
+      "file": "glossary.html",
+      "rule": "color-contrast",
+      "target": "['.active > small']",
+      "state": "page:glossary.html",
+      "before": "<small>134</small>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-006"
+    },
+    {
+      "repo": "Formwheel_Wiki",
+      "file": "glossary.html",
+      "rule": "color-contrast",
+      "target": "['button:nth-child(2) > small']",
+      "state": "page:glossary.html",
+      "before": "<small>16</small>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-007"
+    },
+    {
+      "repo": "Formwheel_Wiki",
+      "file": "glossary.html",
+      "rule": "color-contrast",
+      "target": "['button:nth-child(4) > small']",
+      "state": "page:glossary.html",
+      "before": "<small>15</small>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-008"
+    },
+    {
+      "repo": "Formwheel_Wiki",
+      "file": "glossary.html",
+      "rule": "color-contrast",
+      "target": "['button:nth-child(5) > small']",
+      "state": "page:glossary.html",
+      "before": "<small>16</small>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-009"
+    },
+    {
+      "repo": "Formwheel_Wiki",
+      "file": "glossary.html",
+      "rule": "color-contrast",
+      "target": "['button:nth-child(6) > small']",
+      "state": "page:glossary.html",
+      "before": "<small>18</small>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-010"
+    },
+    {
+      "repo": "Formwheel_Wiki",
+      "file": "glossary.html",
+      "rule": "color-contrast",
+      "target": "['button:nth-child(7) > small']",
+      "state": "page:glossary.html",
+      "before": "<small>15</small>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-011"
+    },
+    {
+      "repo": "Formwheel_Wiki",
+      "file": "glossary.html",
+      "rule": "color-contrast",
+      "target": "['button:nth-child(8) > small']",
+      "state": "page:glossary.html",
+      "before": "<small>19</small>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-012"
+    },
+    {
+      "repo": "Formwheel_Wiki",
+      "file": "glossary.html",
+      "rule": "color-contrast",
+      "target": "['button:nth-child(9) > small']",
+      "state": "page:glossary.html",
+      "before": "<small>13</small>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-013"
+    },
+    {
+      "repo": "Formwheel_Wiki",
+      "file": "glossary.html",
+      "rule": "color-contrast",
+      "target": "['button:nth-child(10) > small']",
+      "state": "page:glossary.html",
+      "before": "<small>18</small>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-014"
+    },
+    {
+      "repo": "Formwheel_Wiki",
+      "file": "glossary.html",
+      "rule": "color-contrast",
+      "target": "['#result']",
+      "state": "page:glossary.html",
+      "before": "<small id=\"result\" aria-live=\"polite\">134개 표시</small>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-015"
+    },
+    {
+      "repo": "Formwheel_Wiki",
+      "file": "glossary.html",
+      "rule": "color-contrast",
+      "target": "['.good > strong']",
+      "state": "page:glossary.html",
+      "before": "<strong>✓ 권장</strong>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-016"
+    },
+    {
+      "repo": "Formwheel_Wiki",
+      "file": "glossary.html",
+      "rule": "color-contrast",
+      "target": "['.bad > strong']",
+      "state": "page:glossary.html",
+      "before": "<strong>✕ 비권장</strong>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-017"
+    },
+    {
+      "repo": "Formwheel_Wiki",
+      "file": "glossary.html",
+      "rule": "color-contrast",
+      "target": "['footer']",
+      "state": "page:glossary.html",
+      "before": "<footer>© Formwheel · Official Glossary v1.2.0 · <a href=\"./\">Wiki로 돌아가기</a></footer>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-018"
+    },
+    {
+      "repo": "Formwheel_Wiki",
+      "file": "glossary.html",
+      "rule": "color-contrast",
+      "target": "['footer > a[href=\"./\"]']",
+      "state": "page:glossary.html",
+      "before": "<a href=\"./\">Wiki로 돌아가기</a>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-019"
+    },
+    {
+      "repo": "Formwheel_Casino",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['#coins']",
+      "state": "page:index.html",
+      "before": "<span class=\"coin\" id=\"coins\">100</span>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-020"
+    },
+    {
+      "repo": "Formwheel_Casino",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.eyebrow']",
+      "state": "page:index.html",
+      "before": "<div class=\"eyebrow\">FormWheel Games</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-021"
+    },
+    {
+      "repo": "Formwheel_Casino",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.notice']",
+      "state": "page:index.html",
+      "before": "<div class=\"notice\">※ 이 게임은 재미를 위한 가상 코인 게임이며 실제 금전 거래나 현금화 기능이 없습니다.</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-022"
+    },
+    {
+      "repo": "Formwheel_Territory",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['footer']",
+      "state": "page:index.html",
+      "before": "<footer>© Formwheel · Territory</footer>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-023"
+    },
+    {
+      "repo": "Formwheel_Marble",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.hero > p']",
+      "state": "page:index.html",
+      "before": "<p>구슬들이 맵을 달리고, 결승선에 가장 먼저 도착한 구슬이 우승합니다.</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-024"
+    },
+    {
+      "repo": "Formwheel_Marble",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.help']",
+      "state": "page:index.html",
+      "before": "<div class=\"help\">대괄호로 구분하세요. <b>[이름-숫자]</b>는 해당 구슬을 숫자만큼 생성하고, 숫자가 없으면 1개입니다.</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-025"
+    },
+    {
+      "repo": "Formwheel_Marble",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.help > b']",
+      "state": "page:index.html",
+      "before": "<b>[이름-숫자]</b>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-026"
+    },
+    {
+      "repo": "Formwheel_Marble",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['button[onclick=\"clearNames()\"]']",
+      "state": "page:index.html",
+      "before": "<button class=\"danger\" onclick=\"clearNames()\">지우기</button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-027"
+    },
+    {
+      "repo": "Formwheel_Marble",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['#mapInfo']",
+      "state": "page:index.html",
+      "before": "<div id=\"mapInfo\" class=\"mapInfo\">기본 맵 1 · 장애물 23개 · 결승선 2150px</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-028"
+    },
+    {
+      "repo": "Formwheel_Marble",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.stat:nth-child(1)']",
+      "state": "page:index.html",
+      "before": "<div class=\"stat\"><b id=\"count\">0 / 300</b>구슬</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-029"
+    },
+    {
+      "repo": "Formwheel_Button",
+      "file": "index.html",
+      "rule": "aria-prohibited-attr",
+      "target": "['#secol-main-content']",
+      "state": "page:index.html",
+      "before": "<span id=\"secol-main-content\" tabindex=\"-1\" style=\"position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)\" aria-label=\"본문 시작\"></span>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-030"
+    },
+    {
+      "repo": "Formwheel_Button",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['#home > .center.card > .sub']",
+      "state": "page:index.html",
+      "before": "<p class=\"sub\">버튼을 누를 것인가, 말 것인가.<br>문제는 쉬운데 타이밍이 이상하게 어렵습니다.</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-031"
+    },
+    {
+      "repo": "Formwheel_Button",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.mode-card.card:nth-child(1) > .sub']",
+      "state": "page:index.html",
+      "before": "<p class=\"sub\">혼자 12라운드. 기록과 정확도를 겨뤄보세요.</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-032"
+    },
+    {
+      "repo": "Formwheel_Button",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['button[onclick=\"openSetup(\\'solo\\')\"]']",
+      "state": "page:index.html",
+      "before": "<button type=\"button\" class=\"primary\" onclick=\"openSetup('solo')\">솔로 시작</button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-033"
+    },
+    {
+      "repo": "Formwheel_Button",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.mode-card.card:nth-child(2) > .sub']",
+      "state": "page:index.html",
+      "before": "<p class=\"sub\">방을 만들거나 코드를 입력해서 친구와 동시에 플레이.</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-034"
+    },
+    {
+      "repo": "Formwheel_Button",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.card:nth-child(4) > .sub']",
+      "state": "page:index.html",
+      "before": "<p class=\"sub\">5초 타이머 · 절반 이하 타이밍 · 누르지 않기 · 마지막 1초 · 거짓말 지시 · 움직이는 버튼 · 기억하기 · 가짜 타이머 · 평균 타이밍 · 정확히 한 명만 누르기 등</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-035"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.header-title']",
+      "state": "page:index.html",
+      "before": "<div class=\"header-title\">GCrown</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-036"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['#menuScreen > .hero > p']",
+      "state": "page:index.html",
+      "before": "<p>한 칸씩 움직이며 왕관을 차지하고 지켜라.</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-037"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['div[onclick=\"showSoloSetup()\"] > p']",
+      "state": "page:index.html",
+      "before": "<p>\n          AI 플레이어들과 왕관을 놓고 경쟁하세요.\n          점수 모드 또는 탈취 모드를 선택해 AI와 경쟁합니다.\n        </p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-038"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['div[onclick=\"showBattleSetup()\"] > p']",
+      "state": "page:index.html",
+      "before": "<p>\n          Firebase를 이용한 실시간 멀티플레이.\n          2~4명이 하나의 방에서 플레이합니다.\n        </p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-039"
+    },
+    {
+      "repo": "Formwheel_Spotlight",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.muted']",
+      "state": "page:index.html",
+      "before": "<span class=\"muted\">월요일 ~ 일요일 · 한국 시간</span>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-040"
+    },
+    {
+      "repo": "Formwheel_Spotlight",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(1) > .status']",
+      "state": "page:index.html",
+      "before": "<div class=\"status\">지난 Spotlight</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-041"
+    },
+    {
+      "repo": "Formwheel_Spotlight",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(3) > .status']",
+      "state": "page:index.html",
+      "before": "<div class=\"status\">곧 공개</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-042"
+    },
+    {
+      "repo": "Formwheel_Spotlight",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(4) > .status']",
+      "state": "page:index.html",
+      "before": "<div class=\"status\">곧 공개</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-043"
+    },
+    {
+      "repo": "Formwheel_Spotlight",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(5) > .status']",
+      "state": "page:index.html",
+      "before": "<div class=\"status\">곧 공개</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-044"
+    },
+    {
+      "repo": "Formwheel_Spotlight",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(6) > .status']",
+      "state": "page:index.html",
+      "before": "<div class=\"status\">곧 공개</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-045"
+    },
+    {
+      "repo": "Formwheel_Spotlight",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(7) > .status']",
+      "state": "page:index.html",
+      "before": "<div class=\"status\">곧 공개</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-046"
+    },
+    {
+      "repo": "Formwheel_Spotlight",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['footer']",
+      "state": "page:index.html",
+      "before": "<footer>© Formwheel · <a href=\"https://semicolonxss.github.io/Formwheel/\">Hub로 돌아가기</a></footer>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-047"
+    },
+    {
+      "repo": "Formwheel_Spotlight",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['footer > a']",
+      "state": "page:index.html",
+      "before": "<a href=\"https://semicolonxss.github.io/Formwheel/\">Hub로 돌아가기</a>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-048"
+    },
+    {
+      "repo": "Formwheel_Spotlight",
+      "file": "index.html",
+      "rule": "label-content-name-mismatch",
+      "target": "['#play']",
+      "state": "page:index.html",
+      "before": "<a class=\"primary\" id=\"play\" target=\"_blank\" href=\"https://semicolonxss.github.io/Formwheel_Marble/\" aria-label=\"Marble 플레이하기\">프로젝트 플레이 →</a>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-049"
+    },
+    {
+      "repo": "Formwheel_Scribble",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['#create']",
+      "state": "page:index.html",
+      "before": "<button id=\"create\">방 만들기</button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-050"
+    },
+    {
+      "repo": "Formwheel_Battle",
+      "file": "index.html",
+      "rule": "aria-prohibited-attr",
+      "target": "['#secol-main-content']",
+      "state": "page:index.html",
+      "before": "<span id=\"secol-main-content\" tabindex=\"-1\" style=\"position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)\" aria-label=\"본문 시작\"></span>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-051"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "aria-allowed-attr",
+      "target": "tab:quests",
+      "state": "page:index.html",
+      "before": "<button class=\"tab active\" data-tab=\"quests\" aria-selected=\"true\">📋 Quest</button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-052"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "aria-allowed-attr",
+      "target": "tab:achievements",
+      "state": "page:index.html",
+      "before": "<button class=\"tab\" data-tab=\"achievements\" aria-selected=\"false\">🏅 Achievement</button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-053"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "aria-allowed-attr",
+      "target": "tab:identity",
+      "state": "page:index.html",
+      "before": "<button class=\"tab\" data-tab=\"identity\" aria-selected=\"false\">🪐 Identity</button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-054"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "aria-allowed-attr",
+      "target": "tab:secrets",
+      "state": "page:index.html",
+      "before": "<button class=\"tab\" data-tab=\"secrets\" aria-selected=\"false\">🔮 Secret</button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-055"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "aria-required-children",
+      "target": "['.tabs']",
+      "state": "page:index.html",
+      "before": "<div class=\"tabs\" role=\"tablist\" aria-label=\"AQS 화면 선택\">",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-056"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['nav > div > .muted']",
+      "state": "page:index.html",
+      "before": "<div class=\"muted\" style=\"font-size:12px\">Achievement · Quest · Secret</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-057"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.stat:nth-child(1) > .muted']",
+      "state": "page:index.html",
+      "before": "<span class=\"muted\">🏅 업적</span>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-058"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.stat:nth-child(2) > .muted']",
+      "state": "page:index.html",
+      "before": "<span class=\"muted\">📋 오늘 미션</span>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-059"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.stat:nth-child(3) > .muted']",
+      "state": "page:index.html",
+      "before": "<span class=\"muted\">🔮 시크릿</span>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-060"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['section:nth-child(1) > .muted:nth-child(2)']",
+      "state": "page:index.html",
+      "before": "<p class=\"muted\">매일 자정(한국 시간)에 추천 프로젝트가 바뀝니다. 다른 날짜의 방문은 인정하지 않아요.</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-061"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.muted:nth-child(7)']",
+      "state": "page:index.html",
+      "before": "<p class=\"muted\">일일 보상은 AQS에 기록되며 하루 한 번만 받을 수 있어요. 게임에서 돌아오면 AQS를 다시 열어 진행 상태를 확인해 주세요.</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-062"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['section:nth-child(2) > .muted']",
+      "state": "page:index.html",
+      "before": "<p class=\"muted\">Spotlight 방문 +10 XP, 3일 연속 +15 XP, 미션 성공 +20 XP. 기록은 브라우저에서 AQS로 한 번만 반영됩니다.</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-063"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(1) > .muted']",
+      "state": "page:index.html",
+      "before": "<p class=\"muted\">오늘 추천 프로젝트를 방문하세요.</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-064"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(2) > .muted']",
+      "state": "page:index.html",
+      "before": "<p class=\"muted\">오늘의 출석을 기록해 보세요.</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-065"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(3) > .muted']",
+      "state": "page:index.html",
+      "before": "<p class=\"muted\">서로 다른 프로젝트 3개 방문</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-066"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(4) > .muted']",
+      "state": "page:index.html",
+      "before": "<p class=\"muted\">AQS에 숨어 있는 Secret 하나 발견</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-067"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(5) > .muted']",
+      "state": "page:index.html",
+      "before": "<p class=\"muted\">Secret 2개 발견하기</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-068"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(6) > .muted']",
+      "state": "page:index.html",
+      "before": "<p class=\"muted\">Orbit Identity 선택하기</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-069"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(7) > .muted']",
+      "state": "page:index.html",
+      "before": "<p class=\"muted\">Secret 4개 발견하기</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-070"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(8) > .muted']",
+      "state": "page:index.html",
+      "before": "<p class=\"muted\">서로 다른 프로젝트 5개 방문</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-071"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(9) > .muted']",
+      "state": "page:index.html",
+      "before": "<p class=\"muted\">Secret 하나 발견하기</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-072"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(10) > .muted']",
+      "state": "page:index.html",
+      "before": "<p class=\"muted\">다른 Formwheel 프로젝트 방문 기록 1개</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-073"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['footer']",
+      "state": "page:index.html",
+      "before": "<footer>Formwheel · AQS v1.0</footer>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-074"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "label-content-name-mismatch",
+      "target": "['.brand']",
+      "state": "page:index.html",
+      "before": "<a class=\"brand brand-link\" href=\"https://semicolonxss.github.io/Formwheel/\" aria-label=\"Formwheel Hub로 이동\"><img src=\"https://semicolonxss.github.io/Formwheel/assets/formwheel-favicon.svg\" alt=\"\" width=\"29\" height=\"29\">Formwheel <span style=\"color:#705cd6\">AQS</span></a>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-075"
+    },
+    {
+      "repo": "Formwheel_Spy",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.sub']",
+      "state": "page:index.html",
+      "before": "<div class=\"sub\">한 명의 Spy를 찾아내는 질문 추리 게임</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-076"
+    },
+    {
+      "repo": "Formwheel_Spy",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.card:nth-child(4) > .small']",
+      "state": "page:index.html",
+      "before": "<div class=\"small\">※ Firebase Realtime Database에 방 상태를 저장합니다. 새로고침하거나 게임 주소로 다시 들어와도 진행 상태를 복구할 수 있습니다.</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-077"
+    },
+    {
+      "repo": "Formwheel_Spy",
+      "file": "index.html",
+      "rule": "select-name",
+      "target": "['#difficulty']",
+      "state": "page:index.html",
+      "before": "<select id=\"difficulty\"><option value=\"easy\">쉬움 · 4질문 · 3분</option><option value=\"normal\" selected=\"\">보통 · 3질문 · 2분</option><option value=\"hard\">어려움 · 2질문 · 90초</option></select>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-078"
+    },
+    {
+      "repo": "Formwheel_Spy",
+      "file": "index.html",
+      "rule": "select-name",
+      "target": "['#category']",
+      "state": "page:index.html",
+      "before": "<select id=\"category\">",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-079"
+    },
+    {
+      "repo": "Formwheel_Spy",
+      "file": "index.html",
+      "rule": "select-name",
+      "target": "['#gameMode']",
+      "state": "page:index.html",
+      "before": "<select id=\"gameMode\"><option value=\"remote\" selected=\"\">🌐 원격 모드 · 질문 기능 사용</option><option value=\"offline\">👥 오프라인 모드 · 질문 기능 없음</option></select>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-080"
+    },
+    {
+      "repo": "Formwheel_Glitch",
+      "file": "chaos-sprint.html",
+      "rule": "label-content-name-mismatch",
+      "target": "['button[aria-label=\"1행 1열\"]']",
+      "state": "page:chaos-sprint.html",
+      "before": "<button type=\"button\" class=\"tile\" aria-label=\"1행 1열\" disabled=\"\">1</button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-081"
+    },
+    {
+      "repo": "Formwheel_Glitch",
+      "file": "chaos-sprint.html",
+      "rule": "label-content-name-mismatch",
+      "target": "['button[aria-label=\"1행 2열\"]']",
+      "state": "page:chaos-sprint.html",
+      "before": "<button type=\"button\" class=\"tile\" aria-label=\"1행 2열\" disabled=\"\">2</button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-082"
+    },
+    {
+      "repo": "Formwheel_Glitch",
+      "file": "chaos-sprint.html",
+      "rule": "label-content-name-mismatch",
+      "target": "['button[aria-label=\"1행 3열\"]']",
+      "state": "page:chaos-sprint.html",
+      "before": "<button type=\"button\" class=\"tile\" aria-label=\"1행 3열\" disabled=\"\">3</button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-083"
+    },
+    {
+      "repo": "Formwheel_Glitch",
+      "file": "chaos-sprint.html",
+      "rule": "label-content-name-mismatch",
+      "target": "['button[aria-label=\"2행 1열\"]']",
+      "state": "page:chaos-sprint.html",
+      "before": "<button type=\"button\" class=\"tile\" aria-label=\"2행 1열\" disabled=\"\">4</button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-084"
+    },
+    {
+      "repo": "Formwheel_Glitch",
+      "file": "chaos-sprint.html",
+      "rule": "label-content-name-mismatch",
+      "target": "['button[aria-label=\"2행 2열\"]']",
+      "state": "page:chaos-sprint.html",
+      "before": "<button type=\"button\" class=\"tile\" aria-label=\"2행 2열\" disabled=\"\">5</button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-085"
+    },
+    {
+      "repo": "Formwheel_Glitch",
+      "file": "chaos-sprint.html",
+      "rule": "label-content-name-mismatch",
+      "target": "['button[aria-label=\"2행 3열\"]']",
+      "state": "page:chaos-sprint.html",
+      "before": "<button type=\"button\" class=\"tile\" aria-label=\"2행 3열\" disabled=\"\">6</button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-086"
+    },
+    {
+      "repo": "Formwheel_Glitch",
+      "file": "chaos-sprint.html",
+      "rule": "label-content-name-mismatch",
+      "target": "['button[aria-label=\"3행 1열\"]']",
+      "state": "page:chaos-sprint.html",
+      "before": "<button type=\"button\" class=\"tile\" aria-label=\"3행 1열\" disabled=\"\">7</button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-087"
+    },
+    {
+      "repo": "Formwheel_Glitch",
+      "file": "chaos-sprint.html",
+      "rule": "label-content-name-mismatch",
+      "target": "['button[aria-label=\"3행 2열\"]']",
+      "state": "page:chaos-sprint.html",
+      "before": "<button type=\"button\" class=\"tile\" aria-label=\"3행 2열\" disabled=\"\">8</button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-088"
+    },
+    {
+      "repo": "Formwheel_Glitch",
+      "file": "chaos-sprint.html",
+      "rule": "label-content-name-mismatch",
+      "target": "['button[aria-label=\"3행 3열\"]']",
+      "state": "page:chaos-sprint.html",
+      "before": "<button type=\"button\" class=\"tile\" aria-label=\"3행 3열\" disabled=\"\">9</button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-089"
+    },
+    {
+      "repo": "Formwheel_Glitch",
+      "file": "index.html",
+      "rule": "aria-prohibited-attr",
+      "target": "['#secol-main-content']",
+      "state": "page:index.html",
+      "before": "<span id=\"secol-main-content\" tabindex=\"-1\" style=\"position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)\" aria-label=\"본문 시작\"></span>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-090"
+    },
+    {
+      "repo": "Formwheel_Glitch",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['#mode-survival']",
+      "state": "page:index.html",
+      "before": "<button id=\"mode-survival\" aria-pressed=\"true\" type=\"button\">👾 120초 생존</button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-091"
+    },
+    {
+      "repo": "Formwheel_Glitch",
+      "file": "index.html",
+      "rule": "label-content-name-mismatch",
+      "target": "['.mode-sprint-link']",
+      "state": "page:index.html",
+      "before": "<a href=\"./chaos-sprint.html\" class=\"mode-sprint-link\" aria-label=\"CHAOS SPRINT 60초 속도전 모드 열기\">⚡ SIGNAL HACK · 기억 퍼즐</a>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-092"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.hero > p']",
+      "state": "page:index.html",
+      "before": "<p>시즌 1 디자인 그대로, 접속하면 바로 시즌 2! 업그레이드 비용을 낮춰 더욱 수월하게 성장할 수 있어.</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-093"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.hero > .notice']",
+      "state": "page:index.html",
+      "before": "<div class=\"notice\">시즌 2 · 무제한 성장 · 점수 및 강화 레벨 상한 해제</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-094"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.score-label']",
+      "state": "page:index.html",
+      "before": "<div class=\"score-label\">현재 점수</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-095"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.click-info']",
+      "state": "page:index.html",
+      "before": "<div class=\"click-info\">클릭당 <strong id=\"clickPowerText\">+1</strong></div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-096"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['#clickPowerText']",
+      "state": "page:index.html",
+      "before": "<strong id=\"clickPowerText\">+1</strong>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-097"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['#season2Leaderboard > .notice']",
+      "state": "page:index.html",
+      "before": "<p class=\"notice\">🛡️ Anti-Cheat 베타: 합성 클릭과 비정상적으로 정밀한 반복 입력을 감지하고, 의심 세션의 순위 등록을 보류합니다. 정상적인 빠른 클릭만으로 차단하지 않습니다. 브라우저 측 감지 기능이며 서버에서 실제 플레이 기록을 아직 검증하지 않습니다.</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-098"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['#s2Status']",
+      "state": "page:index.html",
+      "before": "<div class=\"status\" id=\"s2Status\" aria-live=\"polite\">시즌 2 순위를 불러오는 중…</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-099"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.empty']",
+      "state": "page:index.html",
+      "before": "<div class=\"empty\">시즌 2 순위를 불러오는 중…</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-100"
+    },
+    {
+      "repo": "Formwheel_Time",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['#home > p']",
+      "state": "page:index.html",
+      "before": "<p class=\"muted\">시간을 관리하며 장애물을 피하고, 모래시계를 먹어 기록을 늘려보세요.</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-101"
+    },
+    {
+      "repo": "Formwheel_Time",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.card:nth-child(3) > p']",
+      "state": "page:index.html",
+      "before": "<p class=\"muted small\">생존 시간이 긴 기록이 위로 올라갑니다. 같은 닉네임은 더 좋은 기록만 저장됩니다.</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-102"
+    },
+    {
+      "repo": "Formwheel_Fate",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.footer']",
+      "state": "page:index.html",
+      "before": "<div class=\"footer\">FormWheel Fate · Firebase Realtime Database</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-103"
+    },
+    {
+      "repo": "Formwheel_DiceDuel",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.hero > p']",
+      "state": "page:index.html",
+      "before": "<p>10가지 속성 주사위로 최대 5라운드 대결!</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-104"
+    },
+    {
+      "repo": "Formwheel_LEEHWMROF",
+      "file": "mirror-hub.html",
+      "rule": "color-contrast",
+      "target": "['div:nth-child(3) > .muted']",
+      "state": "page:mirror-hub.html",
+      "before": "<p class=\"muted\">뭔가 이상한데…?</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-105"
+    },
+    {
+      "repo": "Formwheel_Bomb",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['#lobby > .small']",
+      "state": "page:index.html",
+      "before": "<p class=\"small\">방을 만들고 친구에게 방 코드를 알려주세요.</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-106"
+    },
+    {
+      "repo": "Formwheel_Bomb",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['#createBtn']",
+      "state": "page:index.html",
+      "before": "<button id=\"createBtn\" class=\"primary fw-tutorial-target\">방 만들기</button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-107"
+    },
+    {
+      "repo": "Formwheel_Bomb",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['#lobby > .info']",
+      "state": "page:index.html",
+      "before": "<div class=\"info\">폭탄 제한시간은 매 판 랜덤으로 <b>10~30초</b>입니다.<br>폭탄을 넘겨도 남은 시간은 그대로 이어집니다.<br>시간이 몇 초 남았는지는 보이지 않아요!</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-108"
+    },
+    {
+      "repo": "Formwheel_Bomb",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.info > b']",
+      "state": "page:index.html",
+      "before": "<b>10~30초</b>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-109"
+    },
+    {
+      "repo": "Formwheel_Reflex",
+      "file": "index.html",
+      "rule": "aria-prohibited-attr",
+      "target": "['#secol-main-content']",
+      "state": "page:index.html",
+      "before": "<span id=\"secol-main-content\" tabindex=\"-1\" style=\"position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)\" aria-label=\"본문 시작\"></span>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-110"
+    },
+    {
+      "repo": "Formwheel_Reflex",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.sub']",
+      "state": "page:index.html",
+      "before": "<p class=\"sub\">화면이 바뀌는 순간을 잡아라.<br>빠를수록 높은 점수를 얻습니다.</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-111"
+    },
+    {
+      "repo": "Formwheel_Reflex",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.rule:nth-child(1) > span']",
+      "state": "page:index.html",
+      "before": "<span>랜덤 순간에 시작</span>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-112"
+    },
+    {
+      "repo": "Formwheel_Reflex",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.rule:nth-child(2) > span']",
+      "state": "page:index.html",
+      "before": "<span>최대한 빠르게</span>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-113"
+    },
+    {
+      "repo": "Formwheel_Reflex",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.rule:nth-child(3) > span']",
+      "state": "page:index.html",
+      "before": "<span>최고 기록에 도전</span>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-114"
+    },
+    {
+      "repo": "Formwheel_Territory",
+      "file": "index.html",
+      "rule": "label-content-name-mismatch",
+      "target": "['button[aria-label=\"0번 칸, 파랑\"]']",
+      "state": "play:solo:classic",
+      "before": "<button type=\"button\" class=\"tile p0 legal base\" aria-label=\"0번 칸, 파랑\">1</button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-115"
+    },
+    {
+      "repo": "Formwheel_Territory",
+      "file": "index.html",
+      "rule": "label-content-name-mismatch",
+      "target": "['button[aria-label=\"1번 칸, 파랑\"]']",
+      "state": "play:solo:classic",
+      "before": "<button type=\"button\" class=\"tile p0 legal\" aria-label=\"1번 칸, 파랑\">1</button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-116"
+    },
+    {
+      "repo": "Formwheel_Territory",
+      "file": "index.html",
+      "rule": "label-content-name-mismatch",
+      "target": "['button[aria-label=\"7번 칸, 파랑\"]']",
+      "state": "play:solo:classic",
+      "before": "<button type=\"button\" class=\"tile p0 legal\" aria-label=\"7번 칸, 파랑\">1</button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-117"
+    },
+    {
+      "repo": "Formwheel_Territory",
+      "file": "index.html",
+      "rule": "label-content-name-mismatch",
+      "target": "['button[aria-label=\"41번 칸, 빨강\"]']",
+      "state": "play:solo:classic",
+      "before": "<button type=\"button\" class=\"tile p1\" aria-label=\"41번 칸, 빨강\">2</button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-118"
+    },
+    {
+      "repo": "Formwheel_Territory",
+      "file": "index.html",
+      "rule": "label-content-name-mismatch",
+      "target": "['button[aria-label=\"47번 칸, 빨강\"]']",
+      "state": "play:solo:classic",
+      "before": "<button type=\"button\" class=\"tile p1\" aria-label=\"47번 칸, 빨강\">2</button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-119"
+    },
+    {
+      "repo": "Formwheel_Territory",
+      "file": "index.html",
+      "rule": "label-content-name-mismatch",
+      "target": "['button[aria-label=\"48번 칸, 빨강\"]']",
+      "state": "play:solo:classic",
+      "before": "<button type=\"button\" class=\"tile p1 base\" aria-label=\"48번 칸, 빨강\">2</button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-120"
+    },
+    {
+      "repo": "Formwheel_Territory",
+      "file": "index.html",
+      "rule": "label-content-name-mismatch",
+      "target": "['button[aria-label=\"5번 칸, 노랑\"]']",
+      "state": "play:local4:classic",
+      "before": "<button type=\"button\" class=\"tile p3\" aria-label=\"5번 칸, 노랑\">4</button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-121"
+    },
+    {
+      "repo": "Formwheel_Territory",
+      "file": "index.html",
+      "rule": "label-content-name-mismatch",
+      "target": "['button[aria-label=\"6번 칸, 노랑\"]']",
+      "state": "play:local4:classic",
+      "before": "<button type=\"button\" class=\"tile p3 base\" aria-label=\"6번 칸, 노랑\">4</button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-122"
+    },
+    {
+      "repo": "Formwheel_Territory",
+      "file": "index.html",
+      "rule": "label-content-name-mismatch",
+      "target": "['button[aria-label=\"13번 칸, 노랑\"]']",
+      "state": "play:local4:classic",
+      "before": "<button type=\"button\" class=\"tile p3\" aria-label=\"13번 칸, 노랑\">4</button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-123"
+    },
+    {
+      "repo": "Formwheel_Territory",
+      "file": "index.html",
+      "rule": "label-content-name-mismatch",
+      "target": "['button[aria-label=\"35번 칸, 초록\"]']",
+      "state": "play:local4:classic",
+      "before": "<button type=\"button\" class=\"tile p2\" aria-label=\"35번 칸, 초록\">3</button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-124"
+    },
+    {
+      "repo": "Formwheel_Territory",
+      "file": "index.html",
+      "rule": "label-content-name-mismatch",
+      "target": "['button[aria-label=\"42번 칸, 초록\"]']",
+      "state": "play:local4:classic",
+      "before": "<button type=\"button\" class=\"tile p2 base\" aria-label=\"42번 칸, 초록\">3</button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-125"
+    },
+    {
+      "repo": "Formwheel_Territory",
+      "file": "index.html",
+      "rule": "label-content-name-mismatch",
+      "target": "['button[aria-label=\"43번 칸, 초록\"]']",
+      "state": "play:local4:classic",
+      "before": "<button type=\"button\" class=\"tile p2\" aria-label=\"43번 칸, 초록\">3</button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-126"
+    },
+    {
+      "repo": "Formwheel_Casino",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.controls > span']",
+      "state": "panel:roulette",
+      "before": "<span style=\"align-self:center;color:#aaa\">코인 베팅</span>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-127"
+    },
+    {
+      "repo": "Formwheel_Casino",
+      "file": "index.html",
+      "rule": "label",
+      "target": "['#bet']",
+      "state": "panel:roulette",
+      "before": "<input id=\"bet\" type=\"number\" min=\"1\" value=\"10\">",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-128"
+    },
+    {
+      "repo": "Formwheel_Casino",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.controls:nth-child(3) > span']",
+      "state": "panel:blackjack",
+      "before": "<span style=\"align-self:center;color:#aaa\">코인 베팅</span>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-129"
+    },
+    {
+      "repo": "Formwheel_Casino",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.controls:nth-child(2) > span']",
+      "state": "panel:jackpot",
+      "before": "<span style=\"align-self:center;color:#aaa\">코인 베팅</span>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-130"
+    },
+    {
+      "repo": "Formwheel_Casino",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['button[onclick=\"renderAuth(\\'signup\\')\"]']",
+      "state": "account",
+      "before": "<button onclick=\"renderAuth('signup')\">회원가입</button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-131"
+    },
+    {
+      "repo": "Formwheel_Button",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['button[onclick=\"startSolo()\"]']",
+      "state": "setup-solo",
+      "before": "<button class=\"primary\" onclick=\"startSolo()\">게임 시작</button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-132"
+    },
+    {
+      "repo": "Formwheel_Button",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['#setupStatus']",
+      "state": "setup-solo",
+      "before": "<div id=\"setupStatus\" class=\"status \">Firebase 인증 실패: Firebase: Error (auth/network-request-failed).</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-133"
+    },
+    {
+      "repo": "Formwheel_Button",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['button[onclick=\"createRoom()\"]']",
+      "state": "setup-multi",
+      "before": "<button class=\"primary\" onclick=\"createRoom()\">방 만들기</button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-134"
+    },
+    {
+      "repo": "Formwheel_Button",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['#multiSetup > .small']",
+      "state": "setup-multi",
+      "before": "<p class=\"small\">방을 만든 뒤 대기실의 ‘🔗 주소 복사’ 버튼으로 친구를 초대할 수 있어요.</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-135"
+    },
+    {
+      "repo": "Formwheel_Button",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['#roundLabel']",
+      "state": "play",
+      "before": "<div class=\"round\" id=\"roundLabel\">ROUND 1 / 12</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-136"
+    },
+    {
+      "repo": "Formwheel_Button",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['#gameHint']",
+      "state": "play",
+      "before": "<div class=\"small\" id=\"gameHint\">정확한 순간을 노리세요</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-137"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "button-name",
+      "target": "['.cell[data-x=\"0\"][data-y=\"0\"]']",
+      "state": "tutorial",
+      "before": "<button class=\"cell\" data-x=\"0\" data-y=\"0\"><div class=\"tile-name\"></div></button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-138"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "button-name",
+      "target": "['.cell[data-x=\"1\"][data-y=\"0\"]']",
+      "state": "tutorial",
+      "before": "<button class=\"cell\" data-x=\"1\" data-y=\"0\"><div class=\"tile-name\"></div></button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-139"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "button-name",
+      "target": "['.cell[data-x=\"2\"][data-y=\"0\"]']",
+      "state": "tutorial",
+      "before": "<button class=\"cell\" data-x=\"2\" data-y=\"0\"><div class=\"tile-name\"></div></button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-140"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "button-name",
+      "target": "['.cell[data-x=\"3\"][data-y=\"0\"]']",
+      "state": "tutorial",
+      "before": "<button class=\"cell\" data-x=\"3\" data-y=\"0\"><div class=\"tile-name\"></div></button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-141"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "button-name",
+      "target": "['.cell[data-x=\"0\"][data-y=\"1\"]']",
+      "state": "tutorial",
+      "before": "<button class=\"cell\" data-x=\"0\" data-y=\"1\"><div class=\"tile-name\"></div></button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-142"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "button-name",
+      "target": "['.cell[data-x=\"1\"][data-y=\"1\"]']",
+      "state": "tutorial",
+      "before": "<button class=\"cell\" data-x=\"1\" data-y=\"1\"><div class=\"tile-name\"></div></button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-143"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "button-name",
+      "target": "['.cell[data-x=\"2\"][data-y=\"1\"]']",
+      "state": "tutorial",
+      "before": "<button class=\"cell\" data-x=\"2\" data-y=\"1\"><div class=\"tile-name\"></div></button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-144"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "button-name",
+      "target": "['.cell[data-x=\"3\"][data-y=\"1\"]']",
+      "state": "tutorial",
+      "before": "<button class=\"cell\" data-x=\"3\" data-y=\"1\"><div class=\"tile-name\"></div></button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-145"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "button-name",
+      "target": "['.cell[data-x=\"4\"][data-y=\"1\"]']",
+      "state": "tutorial",
+      "before": "<button class=\"cell\" data-x=\"4\" data-y=\"1\"><div class=\"tile-name\"></div></button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-146"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "button-name",
+      "target": "['.cell[data-x=\"0\"][data-y=\"2\"]']",
+      "state": "tutorial",
+      "before": "<button class=\"cell\" data-x=\"0\" data-y=\"2\"><div class=\"tile-name\"></div></button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-147"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "button-name",
+      "target": "['.cell[data-x=\"3\"][data-y=\"2\"]']",
+      "state": "tutorial",
+      "before": "<button class=\"cell\" data-x=\"3\" data-y=\"2\"><div class=\"tile-name\"></div></button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-148"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "button-name",
+      "target": "['.cell[data-x=\"4\"][data-y=\"2\"]']",
+      "state": "tutorial",
+      "before": "<button class=\"cell\" data-x=\"4\" data-y=\"2\"><div class=\"tile-name\"></div></button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-149"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "button-name",
+      "target": "['.cell[data-x=\"0\"][data-y=\"3\"]']",
+      "state": "tutorial",
+      "before": "<button class=\"cell\" data-x=\"0\" data-y=\"3\"><div class=\"tile-name\"></div></button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-150"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "button-name",
+      "target": "['.cell[data-x=\"1\"][data-y=\"3\"]']",
+      "state": "tutorial",
+      "before": "<button class=\"cell\" data-x=\"1\" data-y=\"3\"><div class=\"tile-name\"></div></button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-151"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "button-name",
+      "target": "['.cell[data-x=\"2\"][data-y=\"3\"]']",
+      "state": "tutorial",
+      "before": "<button class=\"cell\" data-x=\"2\" data-y=\"3\"><div class=\"tile-name\"></div></button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-152"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "button-name",
+      "target": "['.cell[data-x=\"3\"][data-y=\"3\"]']",
+      "state": "tutorial",
+      "before": "<button class=\"cell\" data-x=\"3\" data-y=\"3\"><div class=\"tile-name\"></div></button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-153"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "button-name",
+      "target": "['.cell[data-x=\"4\"][data-y=\"3\"]']",
+      "state": "tutorial",
+      "before": "<button class=\"cell\" data-x=\"4\" data-y=\"3\"><div class=\"tile-name\"></div></button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-154"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "button-name",
+      "target": "['.cell[data-x=\"1\"][data-y=\"4\"]']",
+      "state": "tutorial",
+      "before": "<button class=\"cell\" data-x=\"1\" data-y=\"4\"><div class=\"tile-name\"></div></button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-155"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "button-name",
+      "target": "['.cell[data-x=\"2\"][data-y=\"4\"]']",
+      "state": "tutorial",
+      "before": "<button class=\"cell\" data-x=\"2\" data-y=\"4\"><div class=\"tile-name\"></div></button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-156"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "button-name",
+      "target": "['.cell[data-x=\"3\"][data-y=\"4\"]']",
+      "state": "tutorial",
+      "before": "<button class=\"cell\" data-x=\"3\" data-y=\"4\"><div class=\"tile-name\"></div></button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-157"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['#turnNumber']",
+      "state": "tutorial",
+      "before": "<div id=\"turnNumber\" class=\"turn-number\">TURN 1 / 120 · ACTION 0 / 30</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-158"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.action-box:nth-child(3) > .action-title']",
+      "state": "tutorial",
+      "before": "<div class=\"action-title\">\n            이동\n          </div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-159"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.action-box:nth-child(4) > .action-title']",
+      "state": "tutorial",
+      "before": "<div class=\"action-title\">\n            현재 상태\n          </div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-160"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['#battleSetupScreen > .hero > p']",
+      "state": "battle-setup",
+      "before": "<p>실시간 왕관 쟁탈전을 시작하세요.</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-161"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.section-title:nth-child(4) > .small']",
+      "state": "battle-setup",
+      "before": "<span class=\"small\">방장이 선택합니다</span>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-162"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['#battleScoreMode > span']",
+      "state": "battle-setup",
+      "before": "<span>왕관 보유자는 턴 종료마다 +1점, 최종 점수가 높은 플레이어가 승리.</span>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-163"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['#battleStealMode > span']",
+      "state": "battle-setup",
+      "before": "<span>게임 종료 순간 왕관을 가진 플레이어가 승리.</span>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-164"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.section-title:nth-child(7) > .small']",
+      "state": "battle-setup",
+      "before": "<span class=\"small\">방장이 선택합니다</span>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-165"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['#soloSetupScreen > .hero > p']",
+      "state": "solo-setup",
+      "before": "<p>AI와 왕관 쟁탈전을 시작하세요.</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-166"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['#soloScoreMode > span']",
+      "state": "solo-setup",
+      "before": "<span>왕관 보유자는 턴 종료마다 +1점. 모든 행동 후 점수가 높은 사람이 승리합니다.</span>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-167"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['#soloStealMode > span']",
+      "state": "solo-setup",
+      "before": "<span>모든 행동이 끝났을 때 마지막으로 왕관을 가진 사람이 승리합니다.</span>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-168"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['section:nth-child(1) > .muted']",
+      "state": "tab:achievements",
+      "before": "<p class=\"muted\">이 기기의 게임 업적을 AQS로 가져옵니다. 로그인 상태에서는 AQS 클라우드 계정 기록에도 저장되어 다른 기기의 AQS에서 조회할 수 있습니다. 다른 기기에서 게임별 로컬 기록 자체를 복원하는 기능은 아닙니다. 업적으로 XP가 중복 지급되지는 않습니다.</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-169"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.card > p:nth-child(2)']",
+      "state": "tab:identity",
+      "before": "<p class=\"muted\">나만의 네 글자 단어를 선택해 보세요. 언제든 무료로 변경할 수 있고 XP·업적은 그대로 유지됩니다.</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-170"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "label-content-name-mismatch",
+      "target": "['button[data-identity=\"NULL\"]']",
+      "state": "tab:identity",
+      "before": "<button type=\"button\" class=\"identity-card \" data-identity=\"NULL\" disabled=\"\" aria-label=\"잠긴 히든 Identity\" aria-pressed=\"false\"><b>????</b><small>🔒 잠긴 Identity</small></button>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-171"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['nav > div > div']",
+      "state": "tab:secrets",
+      "before": "<div class=\"muted\" style=\"font-size:12px\">Achievement · Quest · Secret</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-172"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.stat:nth-child(1) > span']",
+      "state": "tab:secrets",
+      "before": "<span class=\"muted\">🏅 업적</span>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-173"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.stat:nth-child(2) > span']",
+      "state": "tab:secrets",
+      "before": "<span class=\"muted\">📋 오늘 미션</span>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-174"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.stat:nth-child(3) > span']",
+      "state": "tab:secrets",
+      "before": "<span class=\"muted\">🔮 시크릿</span>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-175"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['section:nth-child(1) > .grid > article:nth-child(1) > .muted']",
+      "state": "tab:secrets",
+      "before": "<p class=\"muted\">아직 발견한 Secret이 없어요.</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-176"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['section:nth-child(1) > .grid > article:nth-child(2) > .muted']",
+      "state": "tab:secrets",
+      "before": "<p class=\"muted\">#001 · 로고의 비밀</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-177"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['section:nth-child(1) > .grid > article:nth-child(3) > .muted']",
+      "state": "tab:secrets",
+      "before": "<p class=\"muted\">#038 · 마지막 괄호</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-178"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['section:nth-child(3) > .muted']",
+      "state": "tab:secrets",
+      "before": "<p class=\"muted\">필요할 때만 단서를 펼쳐보세요.</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-179"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['section:nth-child(6) > .muted:nth-child(2)']",
+      "state": "tab:secrets",
+      "before": "<p class=\"muted\">첫 번째 수수께끼와 사라진 페이지를 모두 해결해 보세요.</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-180"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['section:nth-child(7) > .muted']",
+      "state": "tab:secrets",
+      "before": "<p class=\"muted\">기존 비밀을 조사하면 새로운 신호가 잠금 해제됩니다. 단계별 퍼즐 4개, 특별 업적 3개!</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-181"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['section:nth-child(7) > .grid > article:nth-child(1) > .muted']",
+      "state": "tab:secrets",
+      "before": "<p class=\"muted\">이전 단서를 먼저 찾으세요.</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-182"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['section:nth-child(7) > .grid > article:nth-child(2) > .muted']",
+      "state": "tab:secrets",
+      "before": "<p class=\"muted\">이전 단서를 먼저 찾으세요.</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-183"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['section:nth-child(7) > .grid > article:nth-child(3) > .muted']",
+      "state": "tab:secrets",
+      "before": "<p class=\"muted\">이전 단서를 먼저 찾으세요.</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-184"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['section:nth-child(7) > .grid > article:nth-child(4) > .muted']",
+      "state": "tab:secrets",
+      "before": "<p class=\"muted\">이전 단서를 먼저 찾으세요.</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-185"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['section:nth-child(8) > .muted']",
+      "state": "tab:secrets",
+      "before": "<p class=\"muted\">비밀 제작소에서 HTML 퍼즐을 만들 수 있어요.</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-186"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "color-contrast",
+      "target": "['.hero > p:nth-child(2)']",
+      "state": "season1",
+      "before": "<p>클릭하고 성장하고, Prestige로 더 멀리 가세요.</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-187"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "color-contrast",
+      "target": "['.hero > .notice']",
+      "state": "season1",
+      "before": "<div class=\"notice\">v1.02</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-188"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "color-contrast",
+      "target": "['.score-label']",
+      "state": "season1",
+      "before": "<div class=\"score-label\">현재 점수</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-189"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "color-contrast",
+      "target": "['.click-info']",
+      "state": "season1",
+      "before": "<div class=\"click-info\">클릭당 <strong id=\"clickPowerText\">+0.1</strong></div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-190"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "color-contrast",
+      "target": "['#clickPowerText']",
+      "state": "season1",
+      "before": "<strong id=\"clickPowerText\">+0.1</strong>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-191"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "color-contrast",
+      "target": "['#achievements > .item-desc']",
+      "state": "season1",
+      "before": "<div class=\"item-desc\" style=\"margin-bottom:12px\">달성 0 / 70개 · Prestige 후에도 유지</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-192"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "color-contrast",
+      "target": "['.achievement:nth-child(2) > .item-desc']",
+      "state": "season1",
+      "before": "<div class=\"item-desc\">한 번 클릭하기</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-193"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "color-contrast",
+      "target": "['.achievement:nth-child(3) > .item-desc']",
+      "state": "season1",
+      "before": "<div class=\"item-desc\">100번 클릭하기</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-194"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "color-contrast",
+      "target": "['.achievement:nth-child(4) > .item-desc']",
+      "state": "season1",
+      "before": "<div class=\"item-desc\">최고 점수 1,000점 달성</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-195"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "color-contrast",
+      "target": "['#missionTimer']",
+      "state": "season1",
+      "before": "<span id=\"missionTimer\" style=\"float:right;font-size:13px;color:#777b84\">다음 초기화 59:58</span>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-196"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "color-contrast",
+      "target": "['.mission:nth-child(1) > .mission-row > div > .item-desc']",
+      "state": "season1",
+      "before": "<div class=\"item-desc\">보상 25점</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-197"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "color-contrast",
+      "target": "['.mission:nth-child(2) > .mission-row > div > .item-desc']",
+      "state": "season1",
+      "before": "<div class=\"item-desc\">보상 100점</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-198"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "color-contrast",
+      "target": "['.mission:nth-child(3) > .mission-row > div > .item-desc']",
+      "state": "season1",
+      "before": "<div class=\"item-desc\">보상 250점</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-199"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "color-contrast",
+      "target": "['.mission:nth-child(4) > .mission-row > div > .item-desc']",
+      "state": "season1",
+      "before": "<div class=\"item-desc\">보상 500점</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-200"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "color-contrast",
+      "target": "['.theme-note']",
+      "state": "season1",
+      "before": "<p class=\"theme-note\">점수로 테마를 영구 구매하세요. 테마 가격은 Prestige 배수와 무관하고, 구매한 테마는 Prestige 후에도 유지됩니다. (이 브라우저에 저장)</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-201"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "color-contrast",
+      "target": "['div[data-theme-preview=\"classic\"] > .theme-copy > span']",
+      "state": "season1",
+      "before": "<span>익숙한 기본 디자인</span>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-202"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "color-contrast",
+      "target": "['div[data-theme-preview=\"classic\"] > .theme-copy > small']",
+      "state": "season1",
+      "before": "<small>영구 소장</small>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-203"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "color-contrast",
+      "target": "['div[data-theme-preview=\"ocean\"] > .theme-copy > span']",
+      "state": "season1",
+      "before": "<span>시원한 파란 바다</span>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-204"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "color-contrast",
+      "target": "['div[data-theme-preview=\"ocean\"] > .theme-copy > small']",
+      "state": "season1",
+      "before": "<small>5,000점</small>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-205"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "color-contrast",
+      "target": "['div[data-theme-preview=\"forest\"] > .theme-copy > span']",
+      "state": "season1",
+      "before": "<span>차분한 숲속 분위기</span>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-206"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "color-contrast",
+      "target": "['div[data-theme-preview=\"forest\"] > .theme-copy > small']",
+      "state": "season1",
+      "before": "<small>25,000점</small>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-207"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "color-contrast",
+      "target": "['div[data-theme-preview=\"sunset\"] > .theme-copy > span']",
+      "state": "season1",
+      "before": "<span>따뜻한 노을빛</span>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-208"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "color-contrast",
+      "target": "['div[data-theme-preview=\"sunset\"] > .theme-copy > small']",
+      "state": "season1",
+      "before": "<small>100,000점</small>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-209"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "color-contrast",
+      "target": "['div[data-theme-preview=\"neon\"] > .theme-copy > span']",
+      "state": "season1",
+      "before": "<span>빛나는 사이버 공간</span>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-210"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "color-contrast",
+      "target": "['div[data-theme-preview=\"neon\"] > .theme-copy > small']",
+      "state": "season1",
+      "before": "<small>500,000점</small>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-211"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "color-contrast",
+      "target": "['div[data-theme-preview=\"galaxy\"] > .theme-copy > span']",
+      "state": "season1",
+      "before": "<span>우주를 담은 클릭</span>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-212"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "color-contrast",
+      "target": "['div[data-theme-preview=\"galaxy\"] > .theme-copy > small']",
+      "state": "season1",
+      "before": "<small>2,000,000점</small>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-213"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "color-contrast",
+      "target": "['div[data-theme-preview=\"royal\"] > .theme-copy > span']",
+      "state": "season1",
+      "before": "<span>최고급 황금 테마</span>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-214"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "color-contrast",
+      "target": "['div[data-theme-preview=\"royal\"] > .theme-copy > small']",
+      "state": "season1",
+      "before": "<small>10,000,000점</small>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-215"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "color-contrast",
+      "target": "['.notice:nth-child(1)']",
+      "state": "season1",
+      "before": "<p class=\"notice\">이 랭킹은 이용자가 제출한 점수이며 서버에서 플레이 기록을 검증하지 않습니다.</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-216"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "color-contrast",
+      "target": "['#status']",
+      "state": "season1",
+      "before": "<div class=\"status\" id=\"status\">게임은 오프라인에서도 실행됩니다.</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-217"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "color-contrast",
+      "target": "['#leaderboardList > .empty']",
+      "state": "season1",
+      "before": "<div class=\"empty\">온라인 랭킹 연결 중...</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-218"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "color-contrast",
+      "target": "['#clickLeaderboardList > .empty']",
+      "state": "season1",
+      "before": "<div class=\"empty\">클릭 순위 연결 중...</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-219"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "color-contrast",
+      "target": "['#phaseLeaderboardList > .empty']",
+      "state": "season1",
+      "before": "<div class=\"empty\">페이즈 순위 연결 중...</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-220"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "color-contrast",
+      "target": "['.notice:nth-child(9)']",
+      "state": "season1",
+      "before": "<div class=\"notice\">점수 등록은 계정별 한국 시간 기준 하루 1회이며, 매일 00:00에 다시 등록할 수 있습니다. 이전 최고 점수보다 낮은 점수를 등록해도 최고 기록은 유지됩니다. 게임 기록은 브라우저에 자동 저장됩니다.</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-221"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(11) > .muted']",
+      "state": "catalog:achievements",
+      "before": "<p class=\"muted\">AQS Secret 모두 발견</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-222"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(12) > .muted']",
+      "state": "catalog:achievements",
+      "before": "<p class=\"muted\">Secret 한 개 발견</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-223"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(13) > .muted']",
+      "state": "catalog:achievements",
+      "before": "<p class=\"muted\">Secret 6개 발견</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-224"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(14) > .muted']",
+      "state": "catalog:achievements",
+      "before": "<p class=\"muted\">Secret 12개 발견</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-225"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(15) > .muted']",
+      "state": "catalog:achievements",
+      "before": "<p class=\"muted\">Secret 20개 발견</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-226"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(16) > .muted']",
+      "state": "catalog:achievements",
+      "before": "<p class=\"muted\">서로 다른 프로젝트 10개 방문</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-227"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(17) > .muted']",
+      "state": "catalog:achievements",
+      "before": "<p class=\"muted\">퀘스트 보상 누적 20회 수령</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-228"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(18) > .muted']",
+      "state": "catalog:achievements",
+      "before": "<p class=\"muted\">서로 다른 날짜에 7일 출석</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-229"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(19) > .muted']",
+      "state": "catalog:achievements",
+      "before": "<p class=\"muted\">서로 다른 날짜에 30일 출석</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-230"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(20) > .muted']",
+      "state": "catalog:achievements",
+      "before": "<p class=\"muted\">NULL Identity 해금</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-231"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(21) > .muted']",
+      "state": "catalog:achievements",
+      "before": "<p class=\"muted\">기본 Identity 네 종류 모두 선택</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-232"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(22) > .muted']",
+      "state": "catalog:achievements",
+      "before": "<p class=\"muted\">Reflex에서 달성한 시즌 1 업적</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-233"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(23) > .muted']",
+      "state": "catalog:achievements",
+      "before": "<p class=\"muted\">Reflex에서 달성한 시즌 1 업적</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-234"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(24) > .muted']",
+      "state": "catalog:achievements",
+      "before": "<p class=\"muted\">Reflex에서 달성한 시즌 1 업적</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-235"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(25) > .muted']",
+      "state": "catalog:achievements",
+      "before": "<p class=\"muted\">Reflex에서 달성한 시즌 1 업적</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-236"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(26) > .muted']",
+      "state": "catalog:achievements",
+      "before": "<p class=\"muted\">Button에서 달성한 시즌 1 업적</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-237"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(27) > .muted']",
+      "state": "catalog:achievements",
+      "before": "<p class=\"muted\">Button에서 달성한 시즌 1 업적</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-238"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(28) > .muted']",
+      "state": "catalog:achievements",
+      "before": "<p class=\"muted\">Button에서 달성한 시즌 1 업적</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-239"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(29) > .muted']",
+      "state": "catalog:achievements",
+      "before": "<p class=\"muted\">Button에서 달성한 시즌 1 업적</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-240"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(30) > .muted']",
+      "state": "catalog:achievements",
+      "before": "<p class=\"muted\">Marble에서 달성한 시즌 1 업적</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-241"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(31) > .muted']",
+      "state": "catalog:achievements",
+      "before": "<p class=\"muted\">Marble에서 달성한 시즌 1 업적</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-242"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(32) > .muted']",
+      "state": "catalog:achievements",
+      "before": "<p class=\"muted\">Marble에서 달성한 시즌 1 업적</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-243"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(33) > .muted']",
+      "state": "catalog:achievements",
+      "before": "<p class=\"muted\">Marble에서 달성한 시즌 1 업적</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-244"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(34) > .muted']",
+      "state": "catalog:achievements",
+      "before": "<p class=\"muted\">시즌 2의 잊힌 신호 발견</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-245"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(35) > .muted']",
+      "state": "catalog:achievements",
+      "before": "<p class=\"muted\">신호·빛·관문을 모두 수집</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-246"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(36) > .muted']",
+      "state": "catalog:achievements",
+      "before": "<p class=\"muted\">시즌 2의 최종 관문 해금</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-247"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['#hubFullCatalog > .grid > article:nth-child(1) > .muted']",
+      "state": "catalog:secrets",
+      "before": "<p class=\"muted\">#001 · Hub</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-248"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['#hubFullCatalog > .grid > article:nth-child(2) > .muted']",
+      "state": "catalog:secrets",
+      "before": "<p class=\"muted\">#002 · Hub</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-249"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['#hubFullCatalog > .grid > article:nth-child(3) > .muted']",
+      "state": "catalog:secrets",
+      "before": "<p class=\"muted\">#003 · Hub</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-250"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['#hubFullCatalog > .grid > article:nth-child(4) > .muted']",
+      "state": "catalog:secrets",
+      "before": "<p class=\"muted\">#004 · Wheel</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-251"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(37) > .muted']",
+      "state": "catalog:secrets",
+      "before": "<p class=\"muted\">#037 · Secret</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-252"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['article:nth-child(38) > .muted']",
+      "state": "catalog:secrets",
+      "before": "<p class=\"muted\">#038 · Secret</p>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-253"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "select-name",
+      "target": "['#hubTier']",
+      "state": "catalog:secrets",
+      "before": "<select id=\"hubTier\" class=\"secretInput\" style=\"width:auto\"><option selected=\"\">전체</option><option>일반</option><option>희귀</option><option>영웅</option><option>전설</option><option>신화</option></select>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-254"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "file": "index.html",
+      "rule": "select-name",
+      "target": "['#hubStatus']",
+      "state": "catalog:secrets",
+      "before": "<select id=\"hubStatus\" class=\"secretInput\" style=\"width:auto\"><option value=\"all\" selected=\"\">전체 상태</option><option value=\"yes\">발견함</option><option value=\"no\">미발견</option></select>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-255"
+    },
+    {
+      "repo": "Formwheel_Reflex",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['#roundText']",
+      "state": "solo-setup",
+      "before": "<span id=\"roundText\">ROUND 1 / 5</span>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-256"
+    },
+    {
+      "repo": "Formwheel_Reflex",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['#bestText']",
+      "state": "solo-setup",
+      "before": "<span id=\"bestText\">BEST —</span>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-257"
+    },
+    {
+      "repo": "Formwheel_Reflex",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['#stageSub']",
+      "state": "solo-setup",
+      "before": "<div class=\"small\" id=\"stageSub\">아래 시작 버튼을 누르면 시작합니다</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-258"
+    },
+    {
+      "repo": "Formwheel_Reflex",
+      "file": "index.html",
+      "rule": "color-contrast",
+      "target": "['.note']",
+      "state": "solo-setup",
+      "before": "<div class=\"note\">너무 빨리 누르면 실패합니다. 시작 버튼을 누른 뒤 화면의 신호가 바뀌면 반응하세요.</div>",
+      "verification": "axe: same scenario passes on desktop and mobile",
+      "id": "FW3-259"
+    },
+    {
+      "repo": "Formwheel_Wiki",
+      "file": "index.html",
+      "rule": "nameable-group",
+      "target": "#wiki-rendered-body",
+      "line": 19,
+      "before": "\"aria-label\" cannot be used on this element",
+      "verification": "html-validate aria-label-misuse: valid named group/image/region semantics",
+      "id": "FW3-260"
+    },
+    {
+      "repo": "Formwheel_Casino",
+      "file": "battle.html",
+      "rule": "input-label-association",
+      "target": "#nick",
+      "line": 1,
+      "before": "<input> element does not have a <label>",
+      "verification": "html-validate input-missing-label: 34 -> 0; 3 existing axe select-name findings excluded here",
+      "id": "FW3-261"
+    },
+    {
+      "repo": "Formwheel_Casino",
+      "file": "battle.html",
+      "rule": "input-label-association",
+      "target": "#codeInput",
+      "line": 1,
+      "before": "<input> element does not have a <label>",
+      "verification": "html-validate input-missing-label: 34 -> 0; 3 existing axe select-name findings excluded here",
+      "id": "FW3-262"
+    },
+    {
+      "repo": "Formwheel_Marble",
+      "file": "battle.html",
+      "rule": "input-label-association",
+      "target": "#nick",
+      "line": 1,
+      "before": "<input> element does not have a <label>",
+      "verification": "html-validate input-missing-label: 34 -> 0; 3 existing axe select-name findings excluded here",
+      "id": "FW3-263"
+    },
+    {
+      "repo": "Formwheel_Marble",
+      "file": "battle.html",
+      "rule": "input-label-association",
+      "target": "#codeInput",
+      "line": 1,
+      "before": "<input> element does not have a <label>",
+      "verification": "html-validate input-missing-label: 34 -> 0; 3 existing axe select-name findings excluded here",
+      "id": "FW3-264"
+    },
+    {
+      "repo": "Formwheel_Marble",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#names",
+      "line": 32,
+      "before": "<textarea> element does not have a <label>",
+      "verification": "html-validate input-missing-label: 34 -> 0; 3 existing axe select-name findings excluded here",
+      "id": "FW3-265"
+    },
+    {
+      "repo": "Formwheel_Marble",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#shareUrl",
+      "line": 74,
+      "before": "<input> element does not have a <label>",
+      "verification": "html-validate input-missing-label: 34 -> 0; 3 existing axe select-name findings excluded here",
+      "id": "FW3-266"
+    },
+    {
+      "repo": "Formwheel_Marble",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#finishRange",
+      "line": 151,
+      "before": "<input> element does not have a <label>",
+      "verification": "html-validate input-missing-label: 34 -> 0; 3 existing axe select-name findings excluded here",
+      "id": "FW3-267"
+    },
+    {
+      "repo": "Formwheel_Marble",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#mapTitle",
+      "line": 165,
+      "before": "<input> element does not have a <label>",
+      "verification": "html-validate input-missing-label: 34 -> 0; 3 existing axe select-name findings excluded here",
+      "id": "FW3-268"
+    },
+    {
+      "repo": "Formwheel_Marble",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#syntaxInput",
+      "line": 177,
+      "before": "<textarea> element does not have a <label>",
+      "verification": "html-validate input-missing-label: 34 -> 0; 3 existing axe select-name findings excluded here",
+      "id": "FW3-269"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#soloName",
+      "line": 82,
+      "before": "<input> element does not have a <label>",
+      "verification": "html-validate input-missing-label: 34 -> 0; 3 existing axe select-name findings excluded here",
+      "id": "FW3-270"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#battleName",
+      "line": 114,
+      "before": "<input> element does not have a <label>",
+      "verification": "html-validate input-missing-label: 34 -> 0; 3 existing axe select-name findings excluded here",
+      "id": "FW3-271"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#joinCode",
+      "line": 136,
+      "before": "<input> element does not have a <label>",
+      "verification": "html-validate input-missing-label: 34 -> 0; 3 existing axe select-name findings excluded here",
+      "id": "FW3-272"
+    },
+    {
+      "repo": "Formwheel_Scribble",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#code",
+      "line": 11,
+      "before": "<input> element does not have a <label>",
+      "verification": "html-validate input-missing-label: 34 -> 0; 3 existing axe select-name findings excluded here",
+      "id": "FW3-273"
+    },
+    {
+      "repo": "Formwheel_Scribble",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#answer",
+      "line": 13,
+      "before": "<textarea> element does not have a <label>",
+      "verification": "html-validate input-missing-label: 34 -> 0; 3 existing axe select-name findings excluded here",
+      "id": "FW3-274"
+    },
+    {
+      "repo": "Formwheel_Risk",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#nameInput",
+      "line": 25,
+      "before": "<input> element does not have a <label>",
+      "verification": "html-validate input-missing-label: 34 -> 0; 3 existing axe select-name findings excluded here",
+      "id": "FW3-275"
+    },
+    {
+      "repo": "Formwheel_Risk",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#roomInput",
+      "line": 31,
+      "before": "<input> element does not have a <label>",
+      "verification": "html-validate input-missing-label: 34 -> 0; 3 existing axe select-name findings excluded here",
+      "id": "FW3-276"
+    },
+    {
+      "repo": "Formwheel_Spy",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#hostName",
+      "line": 27,
+      "before": "<input> element does not have a <label>",
+      "verification": "html-validate input-missing-label: 34 -> 0; 3 existing axe select-name findings excluded here",
+      "id": "FW3-277"
+    },
+    {
+      "repo": "Formwheel_Spy",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#joinName",
+      "line": 32,
+      "before": "<input> element does not have a <label>",
+      "verification": "html-validate input-missing-label: 34 -> 0; 3 existing axe select-name findings excluded here",
+      "id": "FW3-278"
+    },
+    {
+      "repo": "Formwheel_Spy",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#roomInput",
+      "line": 32,
+      "before": "<input> element does not have a <label>",
+      "verification": "html-validate input-missing-label: 34 -> 0; 3 existing axe select-name findings excluded here",
+      "id": "FW3-279"
+    },
+    {
+      "repo": "Formwheel_Spy",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#questionTarget",
+      "line": 49,
+      "before": "<select> element does not have a <label>",
+      "verification": "html-validate input-missing-label: 34 -> 0; 3 existing axe select-name findings excluded here",
+      "id": "FW3-280"
+    },
+    {
+      "repo": "Formwheel_Spy",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#questionText",
+      "line": 49,
+      "before": "<input> element does not have a <label>",
+      "verification": "html-validate input-missing-label: 34 -> 0; 3 existing axe select-name findings excluded here",
+      "id": "FW3-281"
+    },
+    {
+      "repo": "Formwheel_Spy",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#answerText",
+      "line": 54,
+      "before": "<textarea> element does not have a <label>",
+      "verification": "html-validate input-missing-label: 34 -> 0; 3 existing axe select-name findings excluded here",
+      "id": "FW3-282"
+    },
+    {
+      "repo": "Formwheel_Spy",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#spyGuess",
+      "line": 56,
+      "before": "<input> element does not have a <label>",
+      "verification": "html-validate input-missing-label: 34 -> 0; 3 existing axe select-name findings excluded here",
+      "id": "FW3-283"
+    },
+    {
+      "repo": "Formwheel_Glitch",
+      "file": "chaos-sprint.html",
+      "rule": "nameable-group",
+      "target": "#grid",
+      "line": 37,
+      "before": "\"aria-label\" cannot be used on this element",
+      "verification": "html-validate aria-label-misuse: valid named group/image/region semantics",
+      "id": "FW3-284"
+    },
+    {
+      "repo": "Formwheel_Glitch",
+      "file": "index.html",
+      "rule": "nameable-group",
+      "target": "html > body > main > div:nth-child(12)",
+      "line": 9,
+      "before": "\"aria-label\" cannot be used on this element",
+      "verification": "html-validate aria-label-misuse: valid named group/image/region semantics",
+      "id": "FW3-285"
+    },
+    {
+      "repo": "Formwheel_Ruletory",
+      "file": "index.html",
+      "rule": "nameable-group",
+      "target": "#board",
+      "line": 2,
+      "before": "\"aria-label\" cannot be used on this element",
+      "verification": "html-validate aria-label-misuse: valid named group/image/region semantics",
+      "id": "FW3-286"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "battle.html",
+      "rule": "input-label-association",
+      "target": "#codeInput",
+      "line": 4,
+      "before": "<input> element does not have a <label>",
+      "verification": "html-validate input-missing-label: 34 -> 0; 3 existing axe select-name findings excluded here",
+      "id": "FW3-287"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "rule": "input-label-association",
+      "target": "#nickname",
+      "line": 79,
+      "before": "<input> element does not have a <label>",
+      "verification": "html-validate input-missing-label: 34 -> 0; 3 existing axe select-name findings excluded here",
+      "id": "FW3-288"
+    },
+    {
+      "repo": "Formwheel_Fate",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#nickname",
+      "line": 31,
+      "before": "<input> element does not have a <label>",
+      "verification": "html-validate input-missing-label: 34 -> 0; 3 existing axe select-name findings excluded here",
+      "id": "FW3-289"
+    },
+    {
+      "repo": "Formwheel_Fate",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#roomCode",
+      "line": 33,
+      "before": "<input> element does not have a <label>",
+      "verification": "html-validate input-missing-label: 34 -> 0; 3 existing axe select-name findings excluded here",
+      "id": "FW3-290"
+    },
+    {
+      "repo": "Formwheel_DiceDuel",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#nickname",
+      "line": 23,
+      "before": "<input> element does not have a <label>",
+      "verification": "html-validate input-missing-label: 34 -> 0; 3 existing axe select-name findings excluded here",
+      "id": "FW3-291"
+    },
+    {
+      "repo": "Formwheel_DiceDuel",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#roomInput",
+      "line": 25,
+      "before": "<input> element does not have a <label>",
+      "verification": "html-validate input-missing-label: 34 -> 0; 3 existing axe select-name findings excluded here",
+      "id": "FW3-292"
+    },
+    {
+      "repo": "Formwheel_DiceDuel",
+      "file": "index.html",
+      "rule": "nameable-group",
+      "target": "#dice1",
+      "line": 40,
+      "before": "\"aria-label\" cannot be used on this element",
+      "verification": "html-validate aria-label-misuse: valid named group/image/region semantics",
+      "id": "FW3-293"
+    },
+    {
+      "repo": "Formwheel_DiceDuel",
+      "file": "index.html",
+      "rule": "nameable-group",
+      "target": "#dice2",
+      "line": 41,
+      "before": "\"aria-label\" cannot be used on this element",
+      "verification": "html-validate aria-label-misuse: valid named group/image/region semantics",
+      "id": "FW3-294"
+    },
+    {
+      "repo": "Formwheel_LEEHWMROF",
+      "file": "mirror-hub.html",
+      "rule": "nameable-group",
+      "target": "html > body > div > header > span:nth-child(1)",
+      "line": 1,
+      "before": "\"aria-label\" cannot be used on this element",
+      "verification": "html-validate aria-label-misuse: valid named group/image/region semantics",
+      "id": "FW3-295"
+    },
+    {
+      "repo": "Formwheel_Bomb",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#name",
+      "line": 26,
+      "before": "<input> element does not have a <label>",
+      "verification": "html-validate input-missing-label: 34 -> 0; 3 existing axe select-name findings excluded here",
+      "id": "FW3-296"
+    },
+    {
+      "repo": "Formwheel_Bomb",
+      "file": "index.html",
+      "rule": "input-label-association",
+      "target": "#roomInput",
+      "line": 29,
+      "before": "<input> element does not have a <label>",
+      "verification": "html-validate input-missing-label: 34 -> 0; 3 existing axe select-name findings excluded here",
+      "id": "FW3-297"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "keyboard-activation",
+      "target": ".mode-card:solo",
+      "before": "Mouse-only div with onclick; absent tabindex and keyboard handling",
+      "verification": "Focus and Enter opens matching setup screen",
+      "id": "FW3-298"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "file": "index.html",
+      "rule": "keyboard-activation",
+      "target": ".mode-card:battle",
+      "before": "Mouse-only div with onclick; absent tabindex and keyboard handling",
+      "verification": "Focus and Space opens matching setup screen",
+      "id": "FW3-299"
+    },
+    {
+      "repo": "Formwheel_Button",
+      "file": "assets/app.js",
+      "rule": "invalid-awards-recovery",
+      "target": "buttonAwardUpdate",
+      "before": "null/boolean/number/string throws; arrays discard newly awarded properties on serialization",
+      "verification": "tests/awards.test.cjs fails against baseline; passes fixed production function, keeps existing gold award and tolerates denied read/write",
+      "id": "FW3-300"
+    }
+  ],
+  "validation": {
+    "browserStates": 68,
+    "viewports": [
+      1280,
+      390
+    ],
+    "axeViolationsAfter": 0,
+    "pageErrorsAfter": 0,
+    "appRegressionFiles": 11,
+    "syntaxAppBlocks": 30,
+    "missingInputNamesBefore": 34,
+    "missingInputNamesAfter": 0,
+    "remainingStaticAdvisories": 2,
+    "baselineCases": 65,
+    "baselineExtraChecks": "GCrown cards have no tabindex/key handler; Button award regression fails against baseline source",
+    "networkIsolation": "Only loopback assets, local canonical shared assets and cached public Firebase SDK scripts served; external HTTP/WebSocket blocked and service workers disabled."
+  }
+}

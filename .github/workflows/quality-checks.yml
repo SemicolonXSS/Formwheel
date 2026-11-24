@@ -97,3 +97,37 @@ jobs:
         env:
           FW_ECOSYSTEM_ROOT: ${{ github.workspace }}/ecosystem
         run: node tests/extended-regression.cjs
+
+  third-app-audit:
+    name: Additional app UI and game regressions
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install isolated browser runner
+        run: npm install --no-save --no-package-lock --ignore-scripts playwright@1 @axe-core/playwright@4
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Prepare pinned app sources and public SDK cache
+        run: python3 scripts/prepare-third-audit.py ecosystem-third
+      - name: Exercise app logic regressions
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import subprocess
+          for p in sorted(Path('ecosystem-third').glob('Formwheel_*/tests/*.cjs')):
+              if 'load-source' not in p.name:
+                  subprocess.run(['node', str(p.resolve())], cwd=p.parent.parent, check=True)
+          PY
+      - name: Check desktop app screens and keyboard interaction
+        env:
+          FW_ECOSYSTEM_ROOT: ${{ github.workspace }}/ecosystem-third
+        run: node tests/third-accessibility.cjs
+      - name: Check mobile app screens
+        env:
+          FW_ECOSYSTEM_ROOT: ${{ github.workspace }}/ecosystem-third
+          FW_VIEWPORT: '390'
+        run: node tests/third-accessibility.cjs
