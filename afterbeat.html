@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ko">
-<meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>AFTERBEAT · Formwheel</title>
 <link rel="icon" type="image/svg+xml" href="./assets/formwheel-favicon.svg">
@@ -33,15 +33,15 @@ button:disabled{opacity:.45;cursor:not-allowed}
 #status{padding:10px 12px;border-radius:10px;background:#181525;border:1px solid #ffffff1c}
 @media(max-width:640px){main{gap:10px}header{padding:12px}body.playing header{padding:8px}#stats{font-size:12px;padding:9px 7px;gap:5px}#stats span{white-space:normal}body.playing canvas{height:clamp(250px,calc(100dvh - 160px),700px)}}
 @media(prefers-reduced-motion:reduce){button,.stage{transition:none!important}}
-</style>
-<main>
+</style><style id="fw-ux-20261124">button:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid #ffae73;outline-offset:3px}button:disabled{cursor:not-allowed;opacity:.55}.controls button{min-height:44px}main>section{min-width:0}#stats span{overflow-wrap:anywhere}input[type=range]{max-width:100%}@media(max-width:640px){main{padding-bottom:max(12px,env(safe-area-inset-bottom))}.controls button{flex:1 1 auto}}</style>
+</head><body><main>
 <header>
 <a class="hub-link" href="./index.html" aria-label="Formwheel 메인 허브로 돌아가기">← Formwheel 허브</a>
 <h1>AFTERBEAT</h1>
 <p>탭 · 홀드 · 플릭<br><small>PC는 D F J K · 플릭은 Shift와 함께<br>터치는 해당 레인에서 위로 밀기</small></p>
 <label>곡<select id="track"></select></label>
 <label>난이도<select id="level"><option>EASY</option><option>NORMAL</option><option>HARD</option><option>EXPERT</option><option selected>OVERDRIVE</option><option>IMPOSSIBLE · LV38</option></select></label>
-<label>판정 보정 (늦게 누르면 +) <span><input id="offset" type="range" min="-150" max="150" value="0" step="5"> <span id="offsetValue">0 ms</span></span></label>
+<label>판정 보정 (늦게 누르면 +) <span><input id="offset" type="range" min="-150" max="150" value="0" step="5"> <output id="offsetValue" for="offset" style="display:inline;margin:0">0 ms</output></span></label>
 <div class="controls"><button id="start">시작</button><button id="tutorial">튜토리얼</button><button id="stop" disabled>중단</button></div>
 </header>
 <section>
@@ -499,4 +499,4 @@ addEventListener("resize",requestFrame);
 requestFrame();
 </script>
 
-</html>
+</body></html>
