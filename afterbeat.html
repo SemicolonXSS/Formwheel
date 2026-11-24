@@ -45,7 +45,7 @@ button:disabled{opacity:.45;cursor:not-allowed}
 <div class="controls"><button id="start">시작</button><button id="tutorial">튜토리얼</button><button id="stop" disabled>중단</button></div>
 </header>
 <section>
-<div id="stats"><span>라이프 <strong id="life">100</strong></span><span id="score">0점</span><span id="combo">0 콤보</span><span id="progress">0:00</span></div>
+<div id="stats"><span>라이프 <strong id="life">150</strong></span><span id="score">0점</span><span id="combo">0 콤보</span><span id="progress">0:00</span></div>
 <div class="stage"><canvas id="field" aria-label="4레인 리듬게임 플레이 영역"></canvas><div id="lesson" role="status" hidden></div></div>
 <output id="status" aria-live="polite">곡을 선택하고 시작하세요.</output>
 </section>
@@ -66,7 +66,7 @@ const tracks = [
 ];
 const scales=[[0,2,3,7,10],[0,3,5,7,12],[0,2,5,7,9],[0,1,5,7,8]];
 const keys=["KeyD","KeyF","KeyJ","KeyK"], labels=["D","F","J","K"];
-const maxLife=100;
+const maxLife=150;
 const inputGrace=.05;
 const windows=[.170,.135,.105,.082,.060,.045];
 const scenes=[
@@ -94,12 +94,24 @@ scenes.push(
  ["#ff9dcb","#a9caff","#693b94","repeating-linear-gradient(135deg,transparent 0 40px,#ed8fff66 41px 44px)"],
  ["#ff878e","#f9df9c","#8b294e","repeating-radial-gradient(circle at 50% 40%,transparent 0 20px,#ff8f9f66 21px 24px,transparent 25px 45px)"]
 );
-const lessons=["탭 · 노트가 판정선에 닿을 때 눌러요.","홀드 · 막대 끝이 판정선에 닿을 때까지 누르세요.","플릭 · 터치한 뒤 위로 밀어요. PC는 Shift와 레인 키를 함께 누르세요."];
-function practiceNotes(){
+const lessons=[
+ ["판정선","노트가 아래 판정선에 닿는 순간 D 키 또는 첫 번째 레인을 눌러요.",[[2,0,"tap"],[5,0,"tap"]]],
+ ["4레인 탭","D F J K 순서로 각 레인을 눌러요.",[[2,0,"tap"],[4,1,"tap"],[6,2,"tap"],[8,3,"tap"]]],
+ ["박자 연습","일정한 간격으로 연속 탭을 해요.",[[2,0,"tap"],[4,1,"tap"],[6,0,"tap"],[8,1,"tap"],[10,2,"tap"]]],
+ ["홀드 기본","막대 끝이 판정선에 닿을 때까지 유지하세요.",[[2,1,"hold",2],[7,2,"hold",2]]],
+ ["긴 홀드","긴 막대가 끝날 때까지 손을 떼지 마세요.",[[2,0,"hold",4],[9,3,"hold",4]]],
+ ["플릭 기본","터치 후 위로 밀기, PC는 Shift와 레인 키를 함께 누르세요.",[[2,1,"flick"],[5,2,"flick"],[8,3,"flick"]]],
+ ["동시 입력","두 레인의 노트를 동시에 눌러요.",[[2,0,"tap"],[2,3,"tap"],[6,1,"tap"],[6,2,"tap"]]],
+ ["홀드와 탭","한 레인을 유지하면서 다른 레인을 눌러요.",[[2,0,"hold",6],[4,2,"tap"],[6,3,"tap"],[10,1,"tap"]]],
+ ["혼합 패턴","탭과 플릭을 구분하고 빈 레인은 누르지 마세요.",[[2,0,"tap"],[4,2,"flick"],[6,1,"tap"],[8,3,"flick"],[10,2,"tap"]]],
+ ["최종 테스트","탭, 홀드, 플릭, 동시 입력을 모두 성공하세요.",[[2,0,"tap"],[4,1,"hold",4],[6,3,"tap"],[10,2,"flick"],[13,0,"tap"],[13,3,"tap"],[16,2,"hold",3]]]
+];
+function practiceNotes(index){
  const beat=60/tracks[0][1];
- return [[2,0,"tap"],[4,1,"tap"],[6,2,"tap"],[10,1,"hold",2],[13,2,"hold",2],
-  [18,1,"flick"],[20,2,"flick"],[23,3,"flick"]]
-  .map(([at,lane,kind,length=0])=>({t:at*beat,lane,kind,end:(at+length)*beat,state:"waiting",owner:null}));
+ return lessons[index][2].map(([at,lane,kind,length=0])=>({t:at*beat,lane,kind,end:(at+length)*beat,state:"waiting",owner:null}));
+}
+function lessonText(index,retry){
+ return `LV${index+1}/${lessons.length} · ${lessons[index][0]} · ${retry?"다시 도전! · ":""}${lessons[index][1]}`;
 }
 let colors;
 function setScene(index){
@@ -248,7 +260,7 @@ function points(note,hit){
  if(run.life===0)finish(false);
 }
 function stray(lane){
- if(!run)return;
+ if(!run||audio.currentTime<run.start)return;
  points({lane,state:"waiting"},null);
 }
 function press(lane,flick,owner,event){
@@ -295,10 +307,10 @@ function finish(completed){
  $("lesson").hidden=true;
  setScene(Number($("track").value));
  const {PERFECT:p,GOOD:g,MISS:m}=game.counts;
- if(game.practice&&completed){
-  $("status").textContent=m
-   ? `튜토리얼 완료 · ${p+g}/${game.notes.length} 성공 · 다시 연습할 수 있어요.`
-   : "튜토리얼 완료 · 탭, 홀드, 플릭을 모두 성공했어요!";
+ if(game.practice&&(completed||game.life===0)){
+  if(m){void startGame(true,game.lessonIndex,true);}
+  else if(game.lessonIndex+1<lessons.length){void startGame(true,game.lessonIndex+1);}
+  else $("status").textContent="튜토리얼 LV1~LV10 완료! 모든 구간을 성공했어요.";
   return;
  }
  $("status").textContent=game.life===0
@@ -307,7 +319,7 @@ function finish(completed){
   ? `정확도 ${((p+g*.65)/game.notes.length*100).toFixed(2)}% · 최고 ${game.best} 콤보 · PERFECT ${p} / GOOD ${g} / MISS ${m}`
   : "플레이를 중단했어요.";
 }
-async function startGame(practice=false){
+async function startGame(practice=false,lessonIndex=0,retry=false){
  if(starting||run)return;
  starting=true;
  const attempt=++startAttempt;
@@ -325,9 +337,9 @@ async function startGame(practice=false){
   if(audio.state!=="running")throw Error("Audio unavailable");
   const index=practice?0:Number($("track").value),level=$("level").selectedIndex;
   const [,bpm,,,bars]=tracks[index];
-  const notes=practice?practiceNotes():chart(index,level),bus=audio.createGain();
+  const notes=practice?practiceNotes(lessonIndex):chart(index,level),bus=audio.createGain();
   bus.gain.value=.55;bus.connect(audio.destination);
-  run={index,notes,bus,practice,duration:practice?Math.max(...notes.map(note=>note.end))+2:bars*4*60/bpm,lessonIndex:0,step:0,start:audio.currentTime+1.55,offset:Number($("offset").value)/1000,
+  run={index,notes,bus,practice,duration:practice?Math.max(...notes.map(note=>note.end))+2:bars*4*60/bpm,lessonIndex,step:0,start:audio.currentTime+1.55,offset:Number($("offset").value)/1000,
    window:practice ? .24 : windows[level],active:Array(4).fill(null),cursor:[0,0,0,0],firstVisible:0,
    lanes:keys.map((_,lane)=>notes.filter(note=>note.lane===lane)),
    score:0,combo:0,best:0,life:maxLife,counts:{PERFECT:0,GOOD:0,MISS:0}};
@@ -336,7 +348,7 @@ async function startGame(practice=false){
   starting=false;
   setScene(index);
   $("lesson").hidden=!practice;
-  if(practice)$("lesson").textContent=lessons[0];
+  if(practice)$("lesson").textContent=lessonText(lessonIndex,retry);
   feedbackUntil=0;effects.length=0;
   $("progress").textContent="0:00";
   $("life").textContent=maxLife;
@@ -478,11 +490,6 @@ function frame(){
   const elapsed=Math.max(0,Math.floor(t));
   const progress=Math.floor(elapsed/60)+":"+String(elapsed%60).padStart(2,"0");
   if($("progress").textContent!==progress)$("progress").textContent=progress;
-  if(run.practice){
-   const beat=t*tracks[0][1]/60;
-   const index=beat>=16?2:beat>=8?1:0;
-   if(index!==run.lessonIndex){run.lessonIndex=index;$("lesson").textContent=lessons[index];}
-  }
   if(t>run.duration+.25&&run.cursor.every((cursor,lane)=>cursor===run.lanes[lane].length))finish(true);
  }
  if(run)requestFrame();
