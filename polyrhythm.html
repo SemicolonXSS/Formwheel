@@ -61,7 +61,7 @@ function judgedProgress(){return progress+TAU*(judgmentOffsetMs/1000)/period}
 offsetSlider.addEventListener('input',()=>setJudgmentOffset(Number(offsetSlider.value)));
 document.querySelector('#resetOffset').addEventListener('click',()=>setJudgmentOffset(0));
 setJudgmentOffset(judgmentOffsetMs);
-const mapNames=['첫 박자','엇박자','트리플','피날레','네온 러시','스텝 체인','스위치백','별빛 궤도','더블 펄스','미러 비트','코멧 트레일','싱코페이션','터보 스핀','블루 리버스','크로스 리듬','스파크 스톰','하이퍼 루프','프리즘 댄스','카오스 서킷','이터널 오버드라이브','삼도 사물놀이'];
+const mapNames=['첫 박자','엇박자','트리플','피날레','네온 러시','스텝 체인','스위치백','별빛 궤도','더블 펄스','미러 비트','코멧 트레일','싱코페이션','터보 스핀','블루 리버스','크로스 리듬','스파크 스톰','하이퍼 루프','프리즘 댄스','카오스 서킷','이터널 오버드라이브','별달거리'];
 const mapPatterns=[
  [1,1,0.75,1.25,0.75,1],[0.75,0.5,1,0.75,0.5,1.25],[0.5,0.5,0.75,0.5,1,0.5],[0.5,0.75,0.5,0.5,0.75,0.5],
  [0.75,0.75,0.5,1,0.5,0.75],[1,0.5,0.5,1,0.75,0.5],[0.5,1,0.5,0.75,0.75,0.5],[1.25,0.5,0.75,0.5,1,0.5],
@@ -70,10 +70,19 @@ const mapPatterns=[
  [0.5,0.5,0.75,0.5,0.5,0.75],[0.75,1,0.5,0.75,0.5,0.5],[0.5,0.5,0.5,0.5,0.75,0.5],[0.5,0.75,0.5,0.5,0.5,0.75],
  [1.25,0.5,0.75,1,0.5,0.5,1.25,0.75,0.5,1,0.75,0.5]
 ];
+// Traditional Byeoldalgeori: two paired 16-subdivision phrases; see https://www.gugak.go.kr/ency/topic/view/1301
+const byeolJanggu=['D','','D','','G','T','G','','G','T','G','T','G','T','G','','G','T','G','','G','T','G','','G','T','G','T','G','T','G',''];
+const byeolKkwaeng=['K','','K','','k','j','K','','k','j','k','j','k','j','K','','k','j','K','','k','j','K','','k','j','k','j','k','j','K',''];
 const HOLD_ARC_LENGTH=1.5;
 const maps=mapNames.map((name,i)=>{
+ if(name==='별달거리'){
+  const beats=[],unit=TAU/8;
+  // One revolution = four quarter beats; playable targets follow primary beats.
+  for(let bar=0;bar<24;bar++)for(let q=0;q<4;q++)beats.push(1.6+(bar*8+q*2)*unit);
+  return {name,beats};
+ }
  const beats=[];let at=1.6;
- const count=name==='삼도 사물놀이'?96:i<4?64+i*16:80+Math.min(12,i)*8;
+ const count=name==='별달거리'?96:i<4?64+i*16:80+Math.min(12,i)*8;
  const density=i<4?[0.96,0.94,0.95,0.96][i]:1.14+Math.min(i-4,15)*0.026;
  for(let j=0;j<count;j++){
   const isHold=j>0&&j%12!==0&&j%8!==0&&j%9===4;
@@ -102,7 +111,7 @@ const mapSelect=document.querySelector('#mapSelect');
 maps.forEach((m,i)=>mapSelect.add(new Option((i+1)+' · '+m.name+' ('+m.beats.length+'타일)',String(i))));
 function goodWindow(){return (0.89+Math.min(stage,20)*0.004)*(mode==='map'?0.98:1)}
 function perfectWindow(){return (0.40+Math.min(stage,20)*0.0015)*(mode==='map'?0.98:1)}
-function stagePeriod(){return Math.max(mode==='map'?2.25:1.8,(mode==='map'?3.8-Math.min(mapIndex,5)*0.17:4)-stage*(mode==='map'?0.045:0.12))}
+function stagePeriod(){if(mode==='map'&&maps[mapIndex].name==='별달거리')return 1.8;return Math.max(mode==='map'?2.25:1.8,(mode==='map'?3.8-Math.min(mapIndex,5)*0.17:4)-stage*(mode==='map'?0.045:0.12))}
 const HOLD_LENGTH=HOLD_ARC_LENGTH;
 let holdTarget=null,activeInput=null,reverseUntil=0,pausedAt=0;
 let running=false,angle=-Math.PI/2,period=4,stage=0,score=0,combo=0,success=0,lives=5,last=0,raf=0,targets=[],nextId=0,progress=0;
@@ -112,7 +121,7 @@ function burst(color){if(reducedMotion?.matches||visualTheme==='basic')return;gl
 let best=0;try{best=Number(localStorage.getItem('fw-polyrhythm-best')||0)||0}catch(e){}bestEl.textContent=best;bestEl.setAttribute('data-fw-share-result',best>0?String(Math.floor(best)):'');
 function distance(a,b){return Math.abs(Math.atan2(Math.sin(a-b),Math.cos(a-b)))}
 function update(){scoreEl.textContent=score;comboEl.textContent=combo;periodEl.textContent=period.toFixed(1)+'초';successEl.textContent=(success%3)+' / 3';livesEl.textContent='❤️'.repeat(lives)+'🖤'.repeat(5-lives);bestEl.textContent=best;bestEl.setAttribute('data-fw-share-result',best>0?String(Math.floor(best)):'')}
-function mapTileType(index){return index>0&&index%12===0?'forward':index>0&&index%8===0?'reverse':index>0&&index%9===4?'hold':'normal'}
+function mapTileType(index){if(maps[mapIndex].name==='별달거리')return 'normal';return index>0&&index%12===0?'forward':index>0&&index%8===0?'reverse':index>0&&index%9===4?'hold':'normal'}
 function alignTargets(){for(const t of targets)t.angle=angle+direction*(t.at-progress)}
 function arcDistance(from,to){return ((direction*(to-from))%TAU+TAU)%TAU}
 function conflictsWithHoldArc(at,kind){
@@ -125,7 +134,7 @@ function conflictsWithHoldArc(at,kind){
   });
 }
 function overlaps(a,b){const aEnd=a.at+(a.kind==='hold'?HOLD_LENGTH:0),bEnd=b.at+(b.kind==='hold'?HOLD_LENGTH:0);if(a.at<=bEnd+0.55&&b.at<=aEnd+0.55)return true;const delta=((a.at-b.at)%TAU+TAU)%TAU;return (b.kind==='hold'&&(delta<1.95||delta>TAU-0.55))||(a.kind==='hold'&&(delta<0.55||delta>TAU-1.95))}
-function targetCount(){return mode==='map'?(mapIndex<4?4:Math.min(5,4+Math.floor(mapIndex/8))):(stage<5?3:Math.min(4,3+Math.floor((stage-5)/8)))}
+function targetCount(){if(mode==='map'&&maps[mapIndex].name==='별달거리')return 3;return mode==='map'?(mapIndex<4?4:Math.min(5,4+Math.floor(mapIndex/8))):(stage<5?3:Math.min(4,3+Math.floor((stage-5)/8)))}
 function addTarget(){
   if(mode==='map'){
     const beats=maps[mapIndex].beats;
@@ -133,6 +142,7 @@ function addTarget(){
     const index=mapBeat++;
     let at=beats[index];
     const kind=mapTileType(index);
+    if(maps[mapIndex].name==='별달거리'){targets.push({id:++nextId,at,angle:angle+direction*(at-progress),kind});return;}
     // A direction change can retime existing targets: keep new notes away from them.
     const minGap=0.7;
     // Also preserve a clear time window after a hold, not just an arc gap.
@@ -203,22 +213,38 @@ function synthNote(frequency,duration=0.19,volume=0.11,type='triangle'){
   osc.onended=()=>{osc.disconnect();gain.disconnect()};
   osc.start(now);osc.stop(now+duration+0.01);
 }
-function samdoPercussion(index){
-  // Original synthesized percussion, inspired by the four samul instruments.
-  const phrase=['buk','janggu','kkwaeng','janggu','buk','kkwaeng','janggu','kkwaeng','buk','janggu','kkwaeng','jing'];
-  const voice=phrase[index%phrase.length];
-  if(voice==='buk'){synthNote(90,0.25,0.28,'sine');synthNote(145,0.09,0.12,'triangle')}
-  else if(voice==='janggu'){synthNote(215,0.10,0.19,'triangle');synthNote(510,0.065,0.07,'square')}
-  else if(voice==='kkwaeng'){synthNote(960,0.14,0.10,'triangle');synthNote(1733,0.10,0.065,'sine');synthNote(2491,0.07,0.035,'sine')}
-  else {synthNote(123,0.85,0.18,'sine');synthNote(347,0.65,0.07,'triangle');synthNote(579,0.45,0.045,'sine')}
+function byeolStrike(freq,decay,volume,metal=false){
+  if(!audioContext||audioContext.state!=='running')return;
+  const now=audioContext.currentTime;
+  const ratios=metal?[1,1.47,2.13,2.79,4.05]:[1,1.59,2.14];
+  ratios.forEach((ratio,i)=>{
+    const o=audioContext.createOscillator(),g=audioContext.createGain();
+    o.frequency.setValueAtTime(freq*ratio,now);
+    if(!metal)o.frequency.exponentialRampToValueAtTime(freq*ratio*0.72,now+0.045);
+    g.gain.setValueAtTime(volume/(i+1),now);
+    g.gain.exponentialRampToValueAtTime(0.0001,now+decay/(1+i*0.24));
+    o.connect(g);g.connect(audioCompressor);o.onended=()=>{o.disconnect();g.disconnect()};o.start(now);o.stop(now+decay+0.01);
+  });
+}
+function byeolPercussion(index){
+  const p=index%32,j=byeolJanggu[p],k=byeolKkwaeng[p];
+  if(j==='D'||j==='G')byeolStrike(155,0.13,j==='D'?0.15:0.10);
+  if(j==='D'||j==='T')byeolStrike(410,0.065,0.09);
+  if(k)byeolStrike(k==='j'?1050:780,k==='j'?0.055:0.16,k==='K'?0.10:0.055,true);
+  if(p%2===0)byeolStrike(88,0.19,p%8===0?0.20:0.11);
+  if(p===0||p===8||p===16||p===24)byeolStrike(117,0.85,0.095,true);
 }
 function mapMusic(){
   if(mode!=='map'||!running)return;
   // Notes and targets share the same angular timeline: each note sounds at a tile's hit position.
+  if(maps[mapIndex].name==='별달거리'){
+    const unit=TAU/8,total=24*8;
+    while(musicNote<total&&progress>=1.6+musicNote*unit)byeolPercussion(musicNote++);
+    return;
+  }
   const beats=maps[mapIndex].beats,notes=melodies[mapIndex%melodies.length];
   while(musicNote<beats.length&&progress>=beats[musicNote]){
     const index=musicNote++;
-    if(maps[mapIndex].name==='삼도 사물놀이'){samdoPercussion(index);continue;}
     synthNote(notes[index%notes.length],0.23,0.23,mapIndex%4===3?'sawtooth':'triangle');
     if(index%2===0)synthNote(notes[index%notes.length]/2,0.28,0.13,'sine');
   }
@@ -311,7 +337,7 @@ function finishHold(completed){
 function hit(){
   if(!running||holdTarget)return;
   if(!targets.length)return;
-  playDrum();
+  if(mode!=='map'||maps[mapIndex].name!=='별달거리')playDrum();
   const judged=judgedProgress();
    const available=targets.filter(t=>t.at-judged>=-goodWindow());
   if(!available.length){lose('헛발질');return;}
