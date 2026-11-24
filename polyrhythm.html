@@ -240,15 +240,32 @@ function changeDirection(kind){
   if(nextDirection===direction)return;
   // Keep every existing tile at its current screen position; only the player orb reverses.
   // Recalculate its next encounter in the new direction, allowing a short reaction buffer.
-  const oldDirection=direction;
   direction=nextDirection;
   reverseUntil=0;
   period=stagePeriod();
   const minLead=TAU*0.42;
-  for(const t of targets){
+  // Rebuild the next encounter timeline and reserve complete hold arcs.
+  // Existing notes may move slightly to avoid becoming hidden inside a hold.
+  const ordered=[...targets].sort((a,b)=>{
+    const da=((direction*(a.angle-angle))%TAU+TAU)%TAU;
+    const db=((direction*(b.angle-angle))%TAU+TAU)%TAU;
+    return da-db;
+  });
+  const placed=[];
+  for(const t of ordered){
     const travel=((direction*(t.angle-angle))%TAU+TAU)%TAU;
-    const lead=travel<minLead?travel+TAU:travel;
-    t.at=progress+lead;
+    let lead=travel<minLead?travel+TAU:travel;
+    let nextAt=progress+lead;
+    let guard=0;
+    while(guard++<80&&placed.some(p=>{
+      const delta=((nextAt-p.at)%TAU+TAU)%TAU;
+      const gap=Math.min(delta,TAU-delta);
+      const timeOverlap=nextAt<=p.at+(p.kind==='hold'?HOLD_LENGTH:0)+0.55&&p.at<=nextAt+(t.kind==='hold'?HOLD_LENGTH:0)+0.55;
+      return gap<0.48||(p.kind==='hold'&&(delta<=HOLD_LENGTH+0.36||delta>=TAU-0.36))||(t.kind==='hold'&&(delta<=0.36||delta>=TAU-HOLD_LENGTH-0.36))||timeOverlap;
+    }))nextAt+=0.22;
+    t.at=nextAt;
+    t.angle=angle+direction*(nextAt-progress);
+    placed.push(t);
   }
   targets.sort((a,b)=>a.at-b.at);
 }
