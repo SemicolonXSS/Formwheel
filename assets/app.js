@@ -1115,7 +1115,7 @@ function render(){
         "Button": "온라인 방 만들기·참가",
         "Vote": "공유 투표방과 투표 저장",
         "Marble": "온라인 구슬 대전",
-        "SYNC": "같은 온라인 방에서 재경기"
+        "SYNC": "같은 방 재경기 · 새 Firebase 룰 적용 대기"
       };
       const constructionNotice = constructionWarnings[project.name] || "";
 
