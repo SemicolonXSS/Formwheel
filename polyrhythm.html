@@ -78,7 +78,7 @@ const maps=mapNames.map((name,i)=>{
  if(name==='별달거리'){
   const beats=[],unit=TAU/8;
   // One revolution = four quarter beats; playable targets follow primary beats.
-  for(let bar=0;bar<24;bar++)for(let q=0;q<4;q++)beats.push(1.6+(bar*8+q*2)*unit);
+  for(let p=0;p<24*8;p++)if(byeolJanggu[p%32]||byeolKkwaeng[p%32])beats.push(1.6+p*unit);
   return {name,beats};
  }
  const beats=[];let at=1.6;
@@ -109,9 +109,9 @@ let mode='random',mapIndex=0,mapBeat=0,musicNote=0,direction=1,selectedMap=0;
 const mapInfo=document.querySelector('#mapInfo');
 const mapSelect=document.querySelector('#mapSelect');
 maps.forEach((m,i)=>mapSelect.add(new Option((i+1)+' · '+m.name+' ('+m.beats.length+'타일)',String(i))));
-function goodWindow(){return (0.89+Math.min(stage,20)*0.004)*(mode==='map'?0.98:1)}
-function perfectWindow(){return (0.40+Math.min(stage,20)*0.0015)*(mode==='map'?0.98:1)}
-function stagePeriod(){if(mode==='map'&&maps[mapIndex].name==='별달거리')return 1.8;return Math.max(mode==='map'?2.25:1.8,(mode==='map'?3.8-Math.min(mapIndex,5)*0.17:4)-stage*(mode==='map'?0.045:0.12))}
+function goodWindow(){if(mode==='map'&&maps[mapIndex].name==='별달거리')return 0.32;return (0.89+Math.min(stage,20)*0.004)*(mode==='map'?0.98:1)}
+function perfectWindow(){if(mode==='map'&&maps[mapIndex].name==='별달거리')return 0.16;return (0.40+Math.min(stage,20)*0.0015)*(mode==='map'?0.98:1)}
+function stagePeriod(){if(mode==='map'&&maps[mapIndex].name==='별달거리')return 2.4;return Math.max(mode==='map'?2.25:1.8,(mode==='map'?3.8-Math.min(mapIndex,5)*0.17:4)-stage*(mode==='map'?0.045:0.12))}
 const HOLD_LENGTH=HOLD_ARC_LENGTH;
 let holdTarget=null,activeInput=null,reverseUntil=0,pausedAt=0;
 let running=false,angle=-Math.PI/2,period=4,stage=0,score=0,combo=0,success=0,lives=5,last=0,raf=0,targets=[],nextId=0,progress=0;
@@ -216,7 +216,7 @@ function synthNote(frequency,duration=0.19,volume=0.11,type='triangle'){
 function byeolStrike(freq,decay,volume,metal=false){
   if(!audioContext||audioContext.state!=='running')return;
   const now=audioContext.currentTime;
-  const ratios=metal?[1,1.47,2.13,2.79,4.05]:[1,1.59,2.14];
+  const ratios=metal?[1,1.414,1.932,2.63,3.71,5.12]:[1,1.59,2.14];
   ratios.forEach((ratio,i)=>{
     const o=audioContext.createOscillator(),g=audioContext.createGain();
     o.frequency.setValueAtTime(freq*ratio,now);
@@ -226,13 +226,22 @@ function byeolStrike(freq,decay,volume,metal=false){
     o.connect(g);g.connect(audioCompressor);o.onended=()=>{o.disconnect();g.disconnect()};o.start(now);o.stop(now+decay+0.01);
   });
 }
+let byeolNoiseBuffer=null;
+function byeolNoise(freq,decay,volume){
+ if(!audioContext||audioContext.state!=='running')return;
+ if(!byeolNoiseBuffer){byeolNoiseBuffer=audioContext.createBuffer(1,Math.ceil(audioContext.sampleRate*0.25),audioContext.sampleRate);const d=byeolNoiseBuffer.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1;}
+ const now=audioContext.currentTime,s=audioContext.createBufferSource(),f=audioContext.createBiquadFilter(),g=audioContext.createGain();
+ s.buffer=byeolNoiseBuffer;f.type='bandpass';f.frequency.value=freq;f.Q.value=0.7;
+ g.gain.setValueAtTime(volume,now);g.gain.exponentialRampToValueAtTime(0.0001,now+decay);
+ s.connect(f);f.connect(g);g.connect(audioCompressor);s.onended=()=>{s.disconnect();f.disconnect();g.disconnect()};s.start(now);s.stop(now+decay+0.01);
+}
 function byeolPercussion(index){
   const p=index%32,j=byeolJanggu[p],k=byeolKkwaeng[p];
-  if(j==='D'||j==='G')byeolStrike(155,0.13,j==='D'?0.15:0.10);
-  if(j==='D'||j==='T')byeolStrike(410,0.065,0.09);
-  if(k)byeolStrike(k==='j'?1050:780,k==='j'?0.055:0.16,k==='K'?0.10:0.055,true);
-  if(p%2===0)byeolStrike(88,0.19,p%8===0?0.20:0.11);
-  if(p===0||p===8||p===16||p===24)byeolStrike(117,0.85,0.095,true);
+  if(j==='D'||j==='G')byeolStrike(225,0.19,j==='D'?0.36:0.25);
+  if(j==='D'||j==='T'){byeolStrike(590,0.085,0.30);byeolNoise(1900,0.055,0.26);}
+  if(k){byeolStrike(k==='j'?1480:1150,k==='j'?0.07:0.29,k==='K'?0.34:0.21,true);byeolNoise(4300,0.045,0.13);}
+  if(p%4===0){byeolStrike(76,0.32,p%8===0?0.48:0.34);byeolNoise(330,0.08,0.16);}
+  if(p===0||p===16)byeolStrike(138,1.4,0.30,true);
 }
 function mapMusic(){
   if(mode!=='map'||!running)return;
