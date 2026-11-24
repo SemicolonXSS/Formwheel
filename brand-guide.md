@@ -43,3 +43,23 @@ OG images: 1200 × 630 PNG, keep copy and marks within a 60px safe margin; rende
 
 ## Implementation rules
 Read this guide before adding pages or brand components. Preserve game-specific themes (glass, neon, classic, etc.), user preferences, Firebase rules, authentication, gameplay and accessibility. Migrate existing pages incrementally only when tested. Brand colors are not mandatory for game content.
+
+## POSITIONING 1.0
+Promise: 자유로운 디지털 놀이터 — 게임하고, 만들고, 실험하고, 발견하세요.
+Audience: curious browser players, casual creators, friends and learners. Prioritize fast discovery, optional onboarding and user choice; never imply all online features work without accounts.
+- **PLAY:** Play original browser games (Polyrhythm, Afterbeat).
+- **CREATE:** Make music and your own content (LOOP, Maker).
+- **EXPERIMENT:** Try unusual mechanics and ideas (Optical Chaos, Beta Lab).
+- **CONNECT:** Explore ways to play together (Party, Board).
+- **LEARN:** Learn through interactive challenges (History, Code).
+- **DISCOVER:** Find new projects and daily challenges (Daily Challenge, Explore).
+
+### Differentiation and distribution
+- Lead with distinctive projects and mechanics, not catalogue size or unsupported competitor superiority.
+- Hub: six discovery paths, first-visit links, new project links and existing daily discovery. Preserve existing search and filters.
+- SEO: descriptive localized titles, unique descriptions, canonical links, sitemap, reciprocal language links between equivalent intro pages. Avoid keyword stuffing.
+- Share: consistent slogan, official link, existing user-initiated actions; never imply a manually entered score is verified. Preserve existing theme and result APIs.
+- Threads: alternate short gameplay discoveries, creator stories, experiments, collaborative experiences, learning and daily discoveries. Use official link https://semicolonxss.github.io/Formwheel/threads; no unsolicited outreach or fake testimonials.
+- Measurement: review existing aggregate traffic, project opens, return visits where available and share referrals weekly. Distinguish opens from actual play; avoid collecting new personal data. Record hypotheses before comparing periods; do not infer causation from raw changes.
+- New projects: identify target user, unique mechanic or value, primary pillar, optional onboarding, accessible controls, safe sharing, and compatibility tests. Do not publish unsupported claims.
+- Competitor map is a hypothesis, not measured market data; validate with actual user feedback.

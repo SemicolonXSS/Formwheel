@@ -4,7 +4,11 @@
 
 # 🎡 Formwheel
 
-### Make · Join · Play · Explore
+### Fun Has No Fixed Form.
+
+PLAY · CREATE · EXPERIMENT · CONNECT · LEARN · DISCOVER
+
+[브랜드 소개](https://semicolonxss.github.io/Formwheel/about.html) · [English](https://semicolonxss.github.io/Formwheel/about-en.html) · [Brand guide](./brand-guide.md)
 
 **게임부터 창작 도구까지, 심심할 때 바로!**
 

@@ -1,0 +1,9 @@
+/* Opt-in, scoped positioning components; no game theme overrides. */
+.fw-position{box-sizing:border-box;max-width:1050px;margin:16px auto;padding:16px;color:inherit;font-family:var(--fw-brand-font-body,system-ui,sans-serif)}
+.fw-position h2{margin:0 0 8px;font-size:clamp(20px,4vw,28px)}.fw-position p{line-height:1.6;margin:6px 0 12px}
+.fw-position-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,245px),1fr));gap:10px}
+.fw-position-card{min-width:0;padding:14px;border:1px solid currentColor;border-radius:var(--fw-brand-radius,16px);background:#10121e;color:#f8fafc}
+.fw-position-card h3{color:#ffad49;margin:0;font-size:15px;letter-spacing:.035em}.fw-position-card p{font-size:14px;color:#f8fafc}
+.fw-position-card a,.fw-position nav a{display:inline-flex;align-items:center;min-height:44px;padding:4px 10px;margin:3px 2px;border-radius:9px;background:#f8fafc;color:#10121e;font-size:13px;font-weight:700;text-decoration:none;box-sizing:border-box}
+.fw-position a:focus-visible{outline:3px solid #ff8a00;outline-offset:3px}.fw-position nav{display:flex;flex-wrap:wrap;margin-top:10px}.fw-position nav a{border:1px solid #10121e}
+.fw-position-page{margin:0;background:#10121e;color:#f8fafc;font:16px/1.65 system-ui,sans-serif}.fw-position-page main{max-width:1050px;margin:auto;padding:18px}.fw-position-page h1{font-size:clamp(30px,6vw,52px);line-height:1.2}.fw-position-page a{color:#ffbd73}.fw-position-page .fw-position-card a,.fw-position-page .fw-position nav a{color:#10121e}.fw-position-page img{display:block;width:100%;max-width:720px;height:auto;border-radius:16px;margin:16px 0}.fw-position-page .fw-position{padding:0}
