@@ -10,7 +10,7 @@ const isAqs=location.pathname.startsWith("/Formwheel_AQS");
 const css=document.createElement("style");
 css.textContent=`
 #fw-peak-awards{margin:12px auto;padding:14px;border:1px solid #c8b8f3;border-radius:16px;background:linear-gradient(125deg,#f6f1ff,#fff9e9);color:#302452;max-width:1020px;font:inherit}
-#fw-peak-awards h3{margin:0 0 6px;font-size:16px;color:#34205e}
+#fw-peak-awards h2{margin:0 0 6px;font-size:16px;color:#34205e}
 #fw-peak-awards p{margin:4px 0;font-size:12px;line-height:1.6}
 #fw-peak-awards .fw-peak-steps{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
 #fw-peak-awards .fw-peak-step{padding:5px 9px;border-radius:999px;border:1px solid #d9d0e7;font-size:11px;color:#51446a;background:white}
@@ -20,7 +20,7 @@ css.textContent=`
 `;
 css.textContent+=`
 #fw-peak-awards.fw-peak-compact{box-sizing:border-box;width:min(92%,760px);max-width:760px;margin:18px auto 22px;padding:9px 12px;border-radius:11px;box-shadow:none}
-#fw-peak-awards.fw-peak-compact h3{font-size:12px;margin:0 0 3px}
+#fw-peak-awards.fw-peak-compact h2{font-size:12px;margin:0 0 3px}
 #fw-peak-awards.fw-peak-compact p{font-size:10px;line-height:1.4;margin:2px 0}
 #fw-peak-awards.fw-peak-compact .fw-peak-steps{gap:4px;margin-top:5px}
 #fw-peak-awards.fw-peak-compact .fw-peak-step{font-size:10px;padding:3px 6px}
@@ -28,7 +28,7 @@ css.textContent+=`
 `;
 document.head.appendChild(css);
 const root=document.createElement("section");root.id="fw-peak-awards";root.setAttribute("aria-label","최고 동접 목격 배지");
-root.innerHTML='<h3>👑 PEAK WITNESS · 최고 동접 목격자</h3><p id="fw-peak-awards-status">배지 기록 확인 중…</p><div class="fw-peak-steps" id="fw-peak-awards-steps"></div><p>최고 동접 신기록 순간 접속한 사람에게 일반 배지, 5·10·20·50·100명 기록에는 특별 배지가 지급됩니다.</p>';
+root.innerHTML='<h2>👑 PEAK WITNESS · 최고 동접 목격자</h2><p id="fw-peak-awards-status">배지 기록 확인 중…</p><div class="fw-peak-steps" id="fw-peak-awards-steps"></div><p>최고 동접 신기록 순간 접속한 사람에게 일반 배지, 5·10·20·50·100명 기록에는 특별 배지가 지급됩니다.</p>';
 const mount=()=>{if(isAqs){const anchor=document.querySelector(".hero");if(anchor)anchor.insertAdjacentElement("afterend",root);else document.querySelector("main")?.prepend(root);return;}const footer=document.querySelector("footer");if(footer){footer.insertAdjacentElement("beforebegin",root)}else{(document.querySelector("main")||document.body).appendChild(root)}root.classList.add("fw-peak-compact");};
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",mount,{once:true});else mount();
 const status=root.querySelector("#fw-peak-awards-status"),steps=root.querySelector("#fw-peak-awards-steps");
