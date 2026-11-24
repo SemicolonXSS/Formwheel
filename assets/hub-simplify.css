@@ -84,3 +84,20 @@ main .fw-hub-fold-body>.fw-hub-mini-banner>a[href="./optical-chaos.html"]{color:
 #fw-dev-toggle{bottom:calc(124px + env(safe-area-inset-bottom,0px))!important}
 .fw-tutorial-launch{min-height:34px!important;padding:5px 9px!important;font-size:11px!important;border-radius:10px!important}
 }
+
+/* 2.4: two project cards per row on narrow portrait screens. */
+@media (max-width:700px) and (orientation:portrait){
+ main #cards.cards{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px}
+ main #cards>.fw-category-heading{grid-column:1/-1}
+ main #cards>.card{min-width:0;padding:7px;box-sizing:border-box}
+ main #cards .fw-card-thumbnail{margin-bottom:7px;border-radius:8px}
+ main #cards .fw-card-thumbnail img{width:100%;height:auto}
+ main #cards .fw-thumbnail-description{padding:5px 6px;font-size:11px;line-height:1.4;min-height:0}
+ main #cards .cardTop{gap:5px}
+ main #cards .cardTitle h3{white-space:normal;overflow-wrap:anywhere;line-height:1.3}
+ main #cards .icon{width:26px;height:26px;flex-basis:26px}
+ main #cards .fw-maturity-caption{flex-wrap:wrap;gap:3px}
+ main #cards .card [role="note"]{margin:5px 0 0!important;padding:5px!important;overflow-wrap:anywhere}
+ main #cards .cardBottom{margin-top:5px}
+ main #cards .openButton{min-height:44px;width:100%;box-sizing:border-box}
+}
