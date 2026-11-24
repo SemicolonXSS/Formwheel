@@ -115,10 +115,17 @@ $("fw-match-friend").onclick=async()=>{
  if(active)await stop();
  try{
   await ensureIdentity();
-  let code="",r;
-  for(let i=0;i<10;i++){code=String(Math.floor(100000+Math.random()*900000));r=ref(db,ROOT+"/friend/"+code);if(!(await get(r)).exists())break;}
-  if((await get(r)).exists())throw Error("코드 발급 실패");
-  await set(r,{owner:localId,ownerUid:ownUid(),status:"waiting",createdAt:Date.now(),updatedAt:Date.now()});
+  let code="";
+  for(let i=0;i<10;i++){
+   const candidate=String(100000+Math.floor(Math.random()*900000));
+   const result=await runTransaction(ref(db,ROOT+"/friend/"+candidate),current=>{
+    if(current!==null)return;
+    const now=Date.now();
+    return {owner:localId,ownerUid:ownUid(),status:"waiting",createdAt:now,updatedAt:now};
+   },{applyLocally:false});
+   if(result.committed){code=candidate;break;}
+  }
+  if(!code)throw Error("코드 발급 실패");
   // The room is expired through timestamp checks instead of disconnect deletion.
   watch("friend",code);
  }catch(e){say("코드 생성 실패: "+e.message)}

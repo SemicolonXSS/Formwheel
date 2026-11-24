@@ -84,7 +84,7 @@ function resetToLocal(){
  say(connection?"로컬 대전 모드입니다.":"오프라인 상태 · 로컬 대전은 계속 가능합니다.");
 }
 function readRoom(r){
- if(!r||!member(r)){say("이 방의 참가자가 아니에요.");return;}
+ if(!r||!member(r)){resetToLocal();say("이 방의 참가자가 아니에요.");return;}
  try{
   const actions=actionsOf(r);
   if(!bridge.load(r.game,r.size,actions,r.hostUid,r.guestUid)){
@@ -106,11 +106,12 @@ function listen(code){
  roomListener=onValue(roomRef(code),snap=>{
   if(roomCode!==code)return;
   const next=snap.val();
-  if(!next){say("방을 찾을 수 없어요.");return;}
+  if(!next){resetToLocal();say("방이 종료됐어요.");return;}
   room=next;readRoom(room);
  },err=>{if(roomCode===code)say(errorText(err));});
 }
 async function signIn(){
+ await auth.authStateReady();
  if(auth.currentUser){uid=auth.currentUser.uid;return uid;}
  try{
   const credentials=await signInAnonymously(auth);
@@ -181,13 +182,10 @@ async function submit(action){
  const code=roomCode,expected=latestMoveCount,who=uid;
  setBusy(true);say("수를 전송하고 있어요…");
  try{
-  const now=Date.now();
-  const tx=await runTransaction(roomRef(code),r=>{
-   if(!r||r.status!=="playing"||r.hostUid!==room.hostUid||r.guestUid!==room.guestUid)return;
-   const existing=r.actions||{};
-   if(Object.keys(existing).length!==expected||expected>=1200)return;
-   if((bridge.getTurn()===1?r.hostUid:r.guestUid)!==who)return;
-   return {...r,updatedAt:now,actions:{...existing,[String(expected)]:{...action,uid:who}}};
+  const target=ref(database,"boardRooms/"+code+"/actions/"+expected);
+  const tx=await runTransaction(target,existing=>{
+   if(existing!==null||roomCode!==code||uid!==who||!connection||corrupt||latestMoveCount!==expected)return;
+   return {...action,uid:who,sequence:expected};
   },{applyLocally:false});
   if(!tx.committed){
    say("수순이 먼저 바뀌었어요. 최신 판을 확인하고 다시 둬 주세요.");
@@ -208,7 +206,20 @@ function copyInvite(){
 window.FormwheelBoardOnline=Object.freeze({isOnline:()=>!!roomCode,canMove,submit});
 createBtn.addEventListener("click",createRoom);
 joinBtn.addEventListener("click",joinRoom);
-leaveBtn.addEventListener("click",resetToLocal);
+leaveBtn.addEventListener("click",async()=>{
+ if(busy||!roomCode)return;
+ const code=roomCode,who=uid;
+ if(connection&&room?.status==="waiting"&&room.hostUid===who){
+  setBusy(true);
+  try{
+   await runTransaction(roomRef(code),current=>{
+    if(current?.status==="waiting"&&current.hostUid===who)return null;
+   },{applyLocally:false});
+  }catch(err){say(errorText(err));return;}
+  finally{setBusy(false);}
+ }
+ if(roomCode===code)resetToLocal();
+});
 shareBtn.addEventListener("click",copyInvite);
 codeInput.addEventListener("input",()=>{codeInput.value=toCode(codeInput.value);});
 codeInput.addEventListener("keydown",e=>{if(e.key==="Enter")joinRoom();});

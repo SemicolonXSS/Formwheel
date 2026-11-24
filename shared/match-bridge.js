@@ -1,9 +1,10 @@
 import{initializeApp,getApps}from"https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+import{getAuth}from"https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 import{getDatabase,ref,get,onValue,runTransaction}from"https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
 const p=new URLSearchParams(location.search),code=p.get("fwMatch"),kind=p.get("fwKind"),side=p.get("fwSide");
 if(code&&["quick","friend"].includes(kind)&&["owner","guest"].includes(side)){
 const app=getApps()[0]||initializeApp({apiKey:"AIzaSyBreTSe1m0-xlbF4aupnU5isRZCihR25IE",authDomain:"formwheel.firebaseapp.com",databaseURL:"https://formwheel-default-rtdb.firebaseio.com",projectId:"formwheel",appId:"1:431583088241:web:74e0e34ea1e3e1170c55d0"});
-const db=getDatabase(app),path=ref(db,"formwheelV2/matchmaking/"+kind+"/"+code);
+const auth=getAuth(app),db=getDatabase(app),path=ref(db,"formwheelV2/matchmaking/"+kind+"/"+code);
 const game=location.pathname.match(/Formwheel_([^/]+)/)?.[1]?.toLowerCase();
 const $=id=>document.getElementById(id),pause=ms=>new Promise(r=>setTimeout(r,ms));
 const adapters={
@@ -99,12 +100,18 @@ async function join(room){
  observeGameStart(room);
  say("매칭된 게임방 "+room+"에 참가 요청을 보냈어요. 대기실 입장을 확인해 주세요.");
 }
-onValue(path,async snap=>{
+auth.authStateReady().then(()=>{
+ if(!auth.currentUser){say("Hub와 같은 Firebase 계정으로 로그인한 뒤 다시 매칭해 주세요.");return;}
+ onValue(path,async snap=>{
  const v=snap.val();if(!v){say("매칭 정보가 없어졌어요. Hub에서 다시 매칭해 주세요.");return}
+ if(v.status!=="matched"||v.game!==game||auth.currentUser?.uid!==(side==="owner"?v.ownerUid:v.guestUid)){
+  say("이 계정의 매칭 정보가 아니에요. Hub에서 다시 매칭해 주세요.");return;
+ }
  try{
  if(side==="owner"&&!initiated&&!creating){creating=true;initiated=true;await pause(900);await create();creating=false}
  if(side==="guest"&&v.gameRoom&&!joined&&!joining){joining=true;joined=true;await pause(900);await join(v.gameRoom);joining=false}
  if(side==="guest"&&!v.gameRoom)say("상대가 게임방을 만들고 있어요…");
  }catch(e){creating=false;joining=false;say("자동 참가에 실패했어요: "+e.message+" · 새 게임방을 무한 생성하지 않도록 중지했어요. Hub에서 다시 매칭하거나 게임방 코드를 확인해 주세요.");console.error("Formwheel match bridge",e)}
 },e=>say("Firebase 매칭 연결 오류: "+e.message));
+}).catch(e=>say("Firebase 로그인 확인 실패: "+e.message));
 }}
