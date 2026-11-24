@@ -59,3 +59,15 @@ main .fw-hub-mini-panel>a{padding:4px 8px!important;font-size:12px!important;min
 #fw-positioning .fw-position-card[open]>div>a{min-height:46px;padding:5px 8px;border:1px solid #8885;border-radius:8px;background:transparent;color:inherit;font-size:13px;line-height:1.2;overflow-wrap:normal;word-break:normal;white-space:normal}
 #fw-positioning .fw-position-card[open]>summary{background:color-mix(in srgb,#ff8a00 13%,transparent);border-color:#ff8a00}
 #fw-positioning .fw-position-card:not([open])>div{display:none}
+
+/* 2.2: full-width compact disclosure lists */
+#fw-positioning nav{position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
+#fw-positioning .fw-hub-brand-more[open]{display:contents}
+#fw-positioning .fw-hub-brand-more[open]>summary{grid-column:2;grid-row:1}
+#fw-positioning .fw-hub-brand-more[open]>div{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;padding:5px;border:1px solid #8884;border-radius:10px}
+#fw-positioning .fw-hub-brand-more a{min-height:38px;justify-content:center;text-align:center;background:transparent;color:inherit;border:1px solid #8884;font-size:12px;white-space:normal}
+main #fw-hub-shortcuts{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;margin:0!important;padding:4px!important}
+main #fw-hub-shortcuts>a{display:flex!important;justify-content:center;align-items:center;min-height:38px;margin:0!important;border-radius:8px!important;white-space:normal!important;font-size:12px!important;text-align:center}
+main .fw-hub-fold-body:has(>.fw-hub-mini-banner){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;padding:5px;border:1px solid #8884;border-radius:10px;margin-top:4px}
+main .fw-hub-fold-body>.fw-hub-mini-banner{display:contents!important}
+main .fw-hub-fold-body>.fw-hub-mini-banner>a{background:transparent!important;color:inherit!important;border:1px solid #8884!important;border-radius:8px!important;min-height:44px;padding:6px!important;font-size:11px!important;font-weight:650!important;line-height:1.4!important;overflow-wrap:anywhere}
