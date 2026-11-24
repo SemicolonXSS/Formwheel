@@ -9,8 +9,7 @@ const root = path.resolve(__dirname, '..');
 const html = fs.readFileSync(path.join(root, 'pixel-war.html'), 'utf8');
 const rules = JSON.parse(fs.readFileSync(path.join(root, 'firebase-security/database.rules.json'), 'utf8'));
 const playerRules = rules.rules.formwheelV2.pixelWar.v1.players['$uid'];
-const moveRule = playerRules.moves['$index']['.validate'];
-const writeRule = playerRules['.write'];
+const moveRules = playerRules.moves['$index'];
 
 test('PIXEL WAR inline JavaScript parses', () => {
   const match = html.match(/<script>\s*([\s\S]*?)<\/script>/);
@@ -41,20 +40,25 @@ test('Login restores first, and failed reads disable placement', () => {
 });
 
 test('Server rules enforce one move each 30 seconds and immutable history', () => {
-  assert.match(writeRule, /auth\.uid === \$uid/);
-  assert.match(writeRule, /now - data\.child\('lastAt'\)\.val\(\) >= 30000/);
-  assert.match(writeRule, /newData\.child\('lastAt'\)\.val\(\) === now/);
-  assert.match(writeRule, /newData\.child\('moves'\)\.numChildren\(\)/);
-  assert.match(moveRule, /data\.exists\(\) && newData\.child\('x'\)\.val\(\) === data\.child\('x'\)\.val\(\)/);
-  assert.match(moveRule, /data\.exists\(\) \|\| newData\.child\('at'\)\.val\(\) === now/);
+  assert.match(playerRules['.validate'], /now - data\.child\('lastAt'\)\.val\(\) >= 30000/);
+  assert.match(playerRules['.validate'], /newData\.child\('lastAt'\)\.val\(\) === now/);
+  assert.match(playerRules['.validate'], /data\.child\('count'\)\.val\(\) \+ 1/);
+  assert.equal(playerRules['.write'], undefined);
+  for (const field of ['count', 'lastAt']) {
+    assert.match(playerRules[field]['.write'], /auth\.uid === \$uid && newData\.exists\(\)/);
+  }
+  assert.match(moveRules['.write'], /auth\.uid === \$uid && newData\.exists\(\) && !data\.exists\(\)/);
+  assert.match(moveRules['.write'], /\$index === .*child\('count'\)/);
+  assert.equal(moveRules.at['.validate'], 'newData.val() === now');
 });
 
 test('Rules require bounded integer coordinates and palette indexes', () => {
-  for (const key of ['x','y','color']) {
-    assert.ok(moveRule.includes("newData.child('" + key + "').val() % 1 === 0"));
+  assert.match(moveRules['.validate'], /hasChildren\(\['x','y','color','at'\]\)/);
+  for (const [field, bound] of [['x', 400], ['y', 400], ['color', 32]]) {
+    assert.equal(moveRules[field]['.validate'],
+      'newData.isNumber() && newData.val() % 1 === 0 && newData.val() >= 0 && newData.val() < ' + bound);
   }
-  assert.match(moveRule, /newData\.child\('color'\)\.val\(\) < 32/);
-  assert.match(playerRules['.validate'], /newData\.numChildren\(\) === 3/);
+  assert.equal(moveRules['$other']['.validate'], false);
 });
 
 test('Tests never change production data', () => {
