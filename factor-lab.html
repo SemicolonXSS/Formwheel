@@ -15,7 +15,7 @@ function parse(raw){
  const unary=()=>{if(t[i]==='+'){i++;return unary()}if(t[i]==='-'){i++;return neg(unary())}return power()};
  const product=()=>{let a=unary();while(i<t.length){if(t[i]==='*'){i++;a=mul(a,unary())}else if(t[i]==='('||t[i]==='x'||/^\d+$/.test(t[i]||'')){a=mul(a,unary())}else break}return a};
  const expr=()=>{let a=product();while(t[i]==='+'||t[i]==='-'){let op=t[i++],b=product();a=add(a,op==='-'?neg(b):b)}return a};
- let result=expr();if(i!==t.length)throw Error('연산자나 괄호 위치를 확인해 주세요.');return trim(result);
+ let result=expr();if(i!==t.length)throw Error('연산자나 괄호 위치를 확인해 주세요.');if(result.some(v=>v>MAXCOEF||v<-MAXCOEF))throw Error('계수가 너무 커요.');return trim(result);
 }
 const abs=n=>n<0n?-n:n;
 const gcd=(a,b)=>{a=abs(a);b=abs(b);while(b){let r=a%b;a=b;b=r}return a};
