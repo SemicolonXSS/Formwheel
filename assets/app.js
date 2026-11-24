@@ -646,7 +646,7 @@ const projects = [
 
 
 window.FormwheelHubProjects = projects;
-/* Editorial development maturity estimates (2026-10-24).
+/* Editorial development maturity estimates (legacy: 2026-10-24; new entries: 2026-11-24 provisional catalogue/source review).
    Weighted judgment: core feature coverage 40%, reliability 30%, UX 20%,
    multiplayer/essential flows 10%. Not automated tests or release guarantees.
    Adjust conservatively where user-reported regressions remain unresolved. */
@@ -698,6 +698,35 @@ const projectMaturity = {
   Vault: 70,
   Risk: 67,
   EDU: 35,
+  // Provisional catalogue/source review, 2026-11-24; runtime not verified.
+  "LOOP": 72,
+  "Polyrhythm": 68,
+  "TIME CAPSULE": 74,
+  "FORK LAB": 70,
+  "IMPACT MAP": 60,
+  "PROJECT RUSH": 68,
+  "UNITE FINALE": 70,
+  "SECOL LAB": 62,
+  "PLAY PASSPORT": 65,
+  "명예의 전당": 65,
+  "AFTERBEAT": 70,
+  "Workshop": 60,
+  "Typing Lab": 77,
+  "CITY TYCOON": 72,
+  "RULETORY": 65,
+  "Duck": 72,
+  "Grid": 65,
+  "PIXEL WAR": 55,
+  "Atom": 75,
+  "Optical Chaos": 70,
+  "Formwheel SNS": 62,
+  "BETA LAB": 45,
+  "Rapid 2.0": 55,
+  "Game Festival": 68,
+  "Party": 60,
+  "Factor Lab": 72,
+  "Sudoku": 76,
+  "Calendar": 74,
 };
 const maturityLabel = score => score == null ? '평가 대기' : score >= 85 ? '안정화' : score >= 70 ? '개발 중' : score >= 50 ? '베타' : '초기 개발';
 
@@ -1131,7 +1160,7 @@ function render(){
           </div>
 
 
-          <div class="fw-maturity" data-band="${maturityBand(projectMaturity[project.name])}" title="표시된 수치는 2026-10-30 기준 제작자 추정치이며 실제 테스트 통과율이 아닙니다. 미평가 프로젝트는 평가 대기로 표시됩니다.">
+          <div class="fw-maturity" data-band="${maturityBand(projectMaturity[project.name])}" title="기존 점수는 10월 추정치, 신규 점수는 2026-11-24 목록 및 소스 확인 기반 잠정 추정치입니다. 실제 실행 테스트 통과율이 아닙니다.">
             <div class="fw-maturity-caption"><span>개발 상태 <small>(추정)</small></span><strong>${maturityLabel(projectMaturity[project.name])} · ${projectMaturity[project.name] == null ? '점수 없음' : projectMaturity[project.name] + '%'}</strong></div>
             <div class="fw-maturity-track" role="progressbar" aria-label="${escapeHTML(project.name)} 개발 진행률 추정" aria-valuemin="0" aria-valuemax="100" ${projectMaturity[project.name] == null ? 'aria-valuetext="평가 대기"' : `aria-valuenow="${projectMaturity[project.name]}"`}><div class="fw-maturity-fill" style="width:${projectMaturity[project.name] ?? 0}%"></div></div>
           </div>
