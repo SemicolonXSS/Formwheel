@@ -8,6 +8,8 @@ const ROOT="formwheelV2/matchmaking",GAMES=[
 const $=id=>document.getElementById(id),status=$("fw-match-status"),codeEl=$("fw-match-code");
 const token=()=>crypto.randomUUID?.()||Math.random().toString(36).slice(2)+Date.now();
 const FRIEND_TTL=10*60*1000;
+const playableGames=["reflex","territory"];
+const pickGame=()=>playableGames[Math.floor(Math.random()*playableGames.length)];
 // Use a unique ID for each page load, even when a tab inherits sessionStorage.
 const localId=token();
 let active=null,unsubscribe=null,heartbeat=null,queuePoll=null,authUser=null,matched=false,redirectStarted=false;
@@ -19,7 +21,7 @@ async function ensureIdentity(){
 const quickEligible=(item,now=Date.now())=>item?.status==="waiting"&&now-Number(item.updatedAt||item.createdAt)<90000&&item.owner!==localId&&item.ownerUid!==ownUid();
 const quickStatus=items=>{
  const waiting=Object.values(items||{}).filter(v=>v?.status==="waiting"&&Date.now()-Number(v.updatedAt||v.createdAt)<90000);
- return "Reflex 상대를 찾는 중이에요… 현재 유효한 공개 대기방 "+waiting.length+"개";
+ return "온라인 상대를 찾는 중이에요… 현재 유효한 공개 대기방 "+waiting.length+"개";
 };
 onAuthStateChanged(auth,u=>{authUser=u&&!u.isAnonymous?u:null});
 function say(t){status.textContent=t}
@@ -83,7 +85,7 @@ $("fw-match-quick").onclick=async()=>{
    const claim=await runTransaction(ref(db,ROOT+"/quick/"+key),v=>{
     if(v===null)return null; // Firebase may invoke a transaction before local cache arrives
     if(!quickEligible(v))return;
-    v.guestUid=ownUid();v.guest=localId;v.game="reflex";v.status="matched";return v;
+    v.guestUid=ownUid();v.guest=localId;v.game=pickGame();v.status="matched";return v;
    },{applyLocally:false});
    if(claim.committed&&claim.snapshot.val()?.guest===localId&&claim.snapshot.val()?.status==="matched"){watch("quick",key);return}
   }
@@ -105,7 +107,7 @@ $("fw-match-quick").onclick=async()=>{
      const claim=await runTransaction(ref(db,ROOT+"/quick/"+otherKey),v=>{
       if(v===null)return null;
       if(!quickEligible(v))return;
-      v.guestUid=ownUid();v.guest=localId;v.game="reflex";v.status="matched";return v;
+      v.guestUid=ownUid();v.guest=localId;v.game=pickGame();v.status="matched";return v;
      },{applyLocally:false});
      if(claim.committed&&claim.snapshot.val()?.guest===localId&&claim.snapshot.val()?.status==="matched"){const oldCode=active.code;watch("quick",otherKey);runTransaction(ref(db,ROOT+"/quick/"+oldCode),v=>v?.owner===localId&&v.status==="waiting"?null:undefined,{applyLocally:false}).catch(console.warn);return}
     }
@@ -142,7 +144,7 @@ $("fw-match-friend-join").onclick=async()=>{
   const result=await runTransaction(r,v=>{
    if(v===null)return null; // Retry after reading server state instead of aborting immediately
    if(v.status!=="waiting"||Date.now()-(v.updatedAt||v.createdAt)>FRIEND_TTL||v.owner===localId||v.ownerUid===ownUid())return;
-   v.guestUid=ownUid();v.guest=localId;v.game="reflex";v.status="matched";return v;
+   v.guestUid=ownUid();v.guest=localId;v.game=pickGame();v.status="matched";return v;
   },{applyLocally:false});
   if(!result.committed||result.snapshot.val()?.guest!==localId||result.snapshot.val()?.status!=="matched"){
    const latest=(await get(r)).val();
