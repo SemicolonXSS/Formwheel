@@ -11,7 +11,7 @@ before(async()=>{
 });
 after(()=>env.cleanup());
 const path=(uid,key)=>ref(env.authenticatedContext(uid).database(),'formwheelV2/'+key);
-for(const [kind,code] of [['quick','quick123'],['friend','123456']]){
+for(const [kind,code] of [['quick','quick1234567890'],['friend','123456']]){
   test(kind+' lobby can be created, joined once, and cancelled by its owner while waiting',async()=>{
     const key='matchmaking/'+kind+'/'+code;
     const room={owner:'tab-a',ownerUid:'alice',status:'waiting',createdAt:Date.now(),updatedAt:Date.now()};
@@ -22,8 +22,14 @@ for(const [kind,code] of [['quick','quick123'],['friend','123456']]){
     await assertSucceeds(set(path('alice',key),room));
     await assertSucceeds(update(path('alice',key),{updatedAt:Date.now()}));
     const claim={guest:'tab-b',guestUid:'bob',status:'matched',game:'reflex'};
+    await assertFails(update(path('bob',key),{...claim,gameRoom:'AB23',gameReadyAt:Date.now()}));
     await assertSucceeds(update(path('bob',key),claim));
     await assertFails(update(path('charlie',key),{...claim,guest:'tab-c',guestUid:'charlie'}));
+    const roomLink={gameRoom:'AB23',gameReadyAt:Date.now()};
+    await assertFails(update(path('bob',key),roomLink));
+    await assertFails(update(path('alice',key),{...roomLink,guestUid:'charlie'}));
+    await assertSucceeds(update(path('alice',key),roomLink));
+    await assertFails(update(path('alice',key),{...roomLink,gameRoom:'XY56'}));
   });
 }
 test('pixel placement is atomic, rate limited, and history is immutable',async()=>{
