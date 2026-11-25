@@ -402,7 +402,8 @@
     "isolation": "External HTTP and WebSockets aborted, service workers blocked; only loopback/canonical local assets and 35 cached public SDK files are served.",
     "preparedFixtures": "46 pinned app checkouts and 35 newly downloaded SDK files verified against tested cache bytes.",
     "interactionStates": 26,
-    "focusFollowup": "AI, Wheel, Secret creator and Tool fields retain a visible keyboard focus ring after the boundary style change."
+    "focusFollowup": "AI, Wheel, Secret creator and Tool fields retain a visible keyboard focus ring after the boundary style change.",
+    "ciFollowup": "Ubuntu 26.04/Chrome 159 reported two adjacent profile summary targets at 21px height. Raised profile summaries to at least 32px; excluded this correction from the additional issue count."
   },
   "findingFiles": [
     {

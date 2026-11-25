@@ -94,3 +94,5 @@ FW_ECOSYSTEM_ROOT="$PWD/ecosystem-expanded" node tests/floating-actions.cjs
 Node 22+, Python 3, Playwright 및 @axe-core/playwright와 Chromium이 필요합니다. CI는 1280px/390px 매트릭스로 같은 검사를 실행합니다. 이 Hub PR은 #29 브랜치 위에 쌓았으며 운영 배포는 수행하지 않았습니다.
 
 개별 수정 전 근거: [FW500-001–FW500-100](quality-audit-500-2026-11-24-part1.json) · [FW500-101–FW500-200](quality-audit-500-2026-11-24-part2.json) · [FW500-201–FW500-300](quality-audit-500-2026-11-24-part3.json) · [FW500-301–FW500-400](quality-audit-500-2026-11-24-part4.json) · [FW500-401–FW500-500](quality-audit-500-2026-11-24-part5.json) · [FW500-501–FW500-523](quality-audit-500-2026-11-24-part6.json)
+
+CI 후속 보완(추가 건수 제외): Ubuntu 26.04/Chrome 159에서 프로필의 두 접기 제목이 21px로 렌더링되어 조작 영역 검사에 실패했습니다. 제목의 최소 높이를 32px로 보장하도록 수정했습니다.
