@@ -1,0 +1,2006 @@
+{
+  "date": "2026-11-25",
+  "totalInAudit": 527,
+  "findings": [
+    {
+      "id": "FWED300-301",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 15,
+      "column": 4,
+      "target": "#board > :nth-child(354)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-302",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 15,
+      "column": 5,
+      "target": "#board > :nth-child(355)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-303",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 15,
+      "column": 6,
+      "target": "#board > :nth-child(356)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-304",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 15,
+      "column": 7,
+      "target": "#board > :nth-child(357)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-305",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 15,
+      "column": 8,
+      "target": "#board > :nth-child(358)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-306",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 15,
+      "column": 9,
+      "target": "#board > :nth-child(359)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-307",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 15,
+      "column": 10,
+      "target": "#board > :nth-child(360)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-308",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 15,
+      "column": 11,
+      "target": "#board > :nth-child(361)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-309",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 15,
+      "column": 12,
+      "target": "#board > :nth-child(362)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-310",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 15,
+      "column": 13,
+      "target": "#board > :nth-child(363)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-311",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 15,
+      "column": 14,
+      "target": "#board > :nth-child(364)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile trap editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-312",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 15,
+      "column": 15,
+      "target": "#board > :nth-child(365)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-313",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 15,
+      "column": 16,
+      "target": "#board > :nth-child(366)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-314",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 15,
+      "column": 17,
+      "target": "#board > :nth-child(367)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-315",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 15,
+      "column": 18,
+      "target": "#board > :nth-child(368)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-316",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 15,
+      "column": 19,
+      "target": "#board > :nth-child(369)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-317",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 15,
+      "column": 20,
+      "target": "#board > :nth-child(370)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-318",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 15,
+      "column": 21,
+      "target": "#board > :nth-child(371)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-319",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 15,
+      "column": 22,
+      "target": "#board > :nth-child(372)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-320",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 15,
+      "column": 23,
+      "target": "#board > :nth-child(373)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-321",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 15,
+      "column": 24,
+      "target": "#board > :nth-child(374)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-322",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 16,
+      "column": 2,
+      "target": "#board > :nth-child(377)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-323",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 16,
+      "column": 3,
+      "target": "#board > :nth-child(378)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-324",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 16,
+      "column": 4,
+      "target": "#board > :nth-child(379)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-325",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 16,
+      "column": 5,
+      "target": "#board > :nth-child(380)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-326",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 16,
+      "column": 6,
+      "target": "#board > :nth-child(381)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-327",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 16,
+      "column": 7,
+      "target": "#board > :nth-child(382)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-328",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 16,
+      "column": 8,
+      "target": "#board > :nth-child(383)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-329",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 16,
+      "column": 9,
+      "target": "#board > :nth-child(384)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-330",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 16,
+      "column": 10,
+      "target": "#board > :nth-child(385)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-331",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 16,
+      "column": 11,
+      "target": "#board > :nth-child(386)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-332",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 16,
+      "column": 12,
+      "target": "#board > :nth-child(387)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-333",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 16,
+      "column": 13,
+      "target": "#board > :nth-child(388)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-334",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 16,
+      "column": 14,
+      "target": "#board > :nth-child(389)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-335",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 16,
+      "column": 15,
+      "target": "#board > :nth-child(390)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-336",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 16,
+      "column": 16,
+      "target": "#board > :nth-child(391)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-337",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 16,
+      "column": 17,
+      "target": "#board > :nth-child(392)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-338",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 16,
+      "column": 18,
+      "target": "#board > :nth-child(393)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-339",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 16,
+      "column": 19,
+      "target": "#board > :nth-child(394)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-340",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 16,
+      "column": 20,
+      "target": "#board > :nth-child(395)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-341",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 16,
+      "column": 21,
+      "target": "#board > :nth-child(396)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile teleport editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-342",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 16,
+      "column": 22,
+      "target": "#board > :nth-child(397)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-343",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 16,
+      "column": 23,
+      "target": "#board > :nth-child(398)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-344",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 16,
+      "column": 24,
+      "target": "#board > :nth-child(399)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-345",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 17,
+      "column": 2,
+      "target": "#board > :nth-child(402)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-346",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 17,
+      "column": 3,
+      "target": "#board > :nth-child(403)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-347",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 17,
+      "column": 4,
+      "target": "#board > :nth-child(404)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-348",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 17,
+      "column": 5,
+      "target": "#board > :nth-child(405)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-349",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 17,
+      "column": 6,
+      "target": "#board > :nth-child(406)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-350",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 17,
+      "column": 7,
+      "target": "#board > :nth-child(407)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-351",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 17,
+      "column": 8,
+      "target": "#board > :nth-child(408)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-352",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 17,
+      "column": 9,
+      "target": "#board > :nth-child(409)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-353",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 17,
+      "column": 10,
+      "target": "#board > :nth-child(410)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-354",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 17,
+      "column": 11,
+      "target": "#board > :nth-child(411)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-355",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 17,
+      "column": 12,
+      "target": "#board > :nth-child(412)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-356",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 17,
+      "column": 13,
+      "target": "#board > :nth-child(413)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-357",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 17,
+      "column": 14,
+      "target": "#board > :nth-child(414)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-358",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 17,
+      "column": 15,
+      "target": "#board > :nth-child(415)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-359",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 17,
+      "column": 16,
+      "target": "#board > :nth-child(416)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-360",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 17,
+      "column": 17,
+      "target": "#board > :nth-child(417)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-361",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 17,
+      "column": 18,
+      "target": "#board > :nth-child(418)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-362",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 17,
+      "column": 19,
+      "target": "#board > :nth-child(419)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-363",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 17,
+      "column": 20,
+      "target": "#board > :nth-child(420)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-364",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 17,
+      "column": 21,
+      "target": "#board > :nth-child(421)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-365",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 17,
+      "column": 22,
+      "target": "#board > :nth-child(422)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-366",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 17,
+      "column": 23,
+      "target": "#board > :nth-child(423)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-367",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 17,
+      "column": 24,
+      "target": "#board > :nth-child(424)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile trap editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-368",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 18,
+      "column": 2,
+      "target": "#board > :nth-child(427)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-369",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 18,
+      "column": 3,
+      "target": "#board > :nth-child(428)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-370",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 18,
+      "column": 4,
+      "target": "#board > :nth-child(429)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-371",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 18,
+      "column": 5,
+      "target": "#board > :nth-child(430)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-372",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 18,
+      "column": 6,
+      "target": "#board > :nth-child(431)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-373",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 18,
+      "column": 7,
+      "target": "#board > :nth-child(432)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-374",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 18,
+      "column": 8,
+      "target": "#board > :nth-child(433)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-375",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 18,
+      "column": 9,
+      "target": "#board > :nth-child(434)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-376",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 18,
+      "column": 10,
+      "target": "#board > :nth-child(435)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-377",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 18,
+      "column": 11,
+      "target": "#board > :nth-child(436)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-378",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 18,
+      "column": 12,
+      "target": "#board > :nth-child(437)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-379",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 18,
+      "column": 13,
+      "target": "#board > :nth-child(438)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-380",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 18,
+      "column": 14,
+      "target": "#board > :nth-child(439)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-381",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 18,
+      "column": 15,
+      "target": "#board > :nth-child(440)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-382",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 18,
+      "column": 16,
+      "target": "#board > :nth-child(441)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-383",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 18,
+      "column": 17,
+      "target": "#board > :nth-child(442)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-384",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 18,
+      "column": 18,
+      "target": "#board > :nth-child(443)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-385",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 18,
+      "column": 19,
+      "target": "#board > :nth-child(444)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-386",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 18,
+      "column": 20,
+      "target": "#board > :nth-child(445)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-387",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 18,
+      "column": 21,
+      "target": "#board > :nth-child(446)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-388",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 18,
+      "column": 22,
+      "target": "#board > :nth-child(447)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-389",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 18,
+      "column": 23,
+      "target": "#board > :nth-child(448)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-390",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 18,
+      "column": 24,
+      "target": "#board > :nth-child(449)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-391",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 19,
+      "column": 2,
+      "target": "#board > :nth-child(452)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-392",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 19,
+      "column": 3,
+      "target": "#board > :nth-child(453)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-393",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 19,
+      "column": 4,
+      "target": "#board > :nth-child(454)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-394",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 19,
+      "column": 5,
+      "target": "#board > :nth-child(455)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-395",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 19,
+      "column": 6,
+      "target": "#board > :nth-child(456)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-396",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 19,
+      "column": 7,
+      "target": "#board > :nth-child(457)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-397",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 19,
+      "column": 8,
+      "target": "#board > :nth-child(458)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-398",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 19,
+      "column": 9,
+      "target": "#board > :nth-child(459)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-399",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 19,
+      "column": 10,
+      "target": "#board > :nth-child(460)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    },
+    {
+      "id": "FWED300-400",
+      "repo": "Formwheel_Maze",
+      "file": "index.html",
+      "rule": "editor-keyboard-operability",
+      "rootCause": "click-only-editor-tiles",
+      "state": "battle:25:editor",
+      "row": 19,
+      "column": 11,
+      "target": "#board > :nth-child(461)",
+      "before": {
+        "tag": "DIV",
+        "tabIndex": -1,
+        "role": null,
+        "label": null,
+        "hasClickHandler": true,
+        "html": "<div class=\"tile wall editable\"></div>"
+      },
+      "verification": "Native button with a coordinate/content name. All 527 corresponding start-state coordinates reached through real keyboard arrows in a 25x25 battle at 390px; target centers checked for occlusion."
+    }
+  ]
+}

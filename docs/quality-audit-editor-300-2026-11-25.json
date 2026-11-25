@@ -1,0 +1,87 @@
+{
+  "date": "2026-11-25",
+  "requestedMinimum": 300,
+  "total": 527,
+  "rootCauseCount": 1,
+  "categories": {
+    "editor-keyboard-operability": 527
+  },
+  "rootBaseline": "594b80bda2467df72ab6fd2471f4a0da565b8a89",
+  "repositories": [
+    {
+      "repo": "Formwheel_Maze",
+      "baseline": "6d9ecb7e1002236f59efba24b95629e53e432175",
+      "head": "154f8d4484199570ca679d961b10dd3abe9ba134",
+      "pr": "https://github.com/SemicolonXSS/Formwheel_Maze/pull/3"
+    }
+  ],
+  "method": {
+    "unit": "One actually editable production tile at the initial 25x25 local-battle editor state. This is one render/interaction root cause affecting 527 targets, not 527 independent implementation defects.",
+    "formula": "(25-2)^2 - player - exit = 527",
+    "excluded": "98 non-editable border/player/exit tiles; repeat sizes, modes, widths, support changes, tests and CI are not additional findings.",
+    "checkType": "Custom keyboard-operability evidence, not axe-reported violations. Baseline axe found no violations while native focus failed.",
+    "randomness": "Production maze generation remains random. The initial editable coordinate set is fixed; native reachability is checked independently of terrain content. Stored baseline and final sampled maps need not have identical walls.",
+    "priorOverlap": "No previous Formwheel_Maze editor keyboard-operability findings. Existing board ARIA and input-boundary findings are separate and not recounted."
+  },
+  "repair": {
+    "primary": "Create named native buttons only for valid editor tiles, with roving focus and keyboard activation.",
+    "uncountedSupport": [
+      "Arrow/Home/End navigation and complete focused-target reveal",
+      "At least 28px editor targets with contained scrolling",
+      "Focus handoff to status after committing an edit",
+      "Move the return-to-top button outside the board to prevent overlap"
+    ]
+  },
+  "findingFiles": [
+    "quality-audit-editor-300-2026-11-25-part1.json",
+    "quality-audit-editor-300-2026-11-25-part2.json",
+    "quality-audit-editor-300-2026-11-25-part3.json",
+    "quality-audit-editor-300-2026-11-25-part4.json",
+    "quality-audit-editor-300-2026-11-25-part5.json",
+    "quality-audit-editor-300-2026-11-25-part6.json"
+  ],
+  "validation": {
+    "runner": "Playwright 1.65.1, Chromium 159.0.8154.6, axe-core 4.14.0",
+    "viewports": [
+      320,
+      390,
+      1280
+    ],
+    "sizes": [
+      11,
+      17,
+      25,
+      31
+    ],
+    "modes": [
+      "solo",
+      "battle",
+      "defense"
+    ],
+    "layouts": 36,
+    "axeChecks": 36,
+    "axeViolationsAfter": 0,
+    "pageErrorsAfter": 0,
+    "nativeKeyboardTargetsTraversed": 527,
+    "editorLayouts": 24,
+    "minimumEditorTarget": 28,
+    "interactions": [
+      "Tab entry and a single tab stop",
+      "Arrow/Home/End focus navigation without moving the runner",
+      "527-point native keyboard traversal and hit tests",
+      "Space/Enter wall edits across successive turns",
+      "Runner ArrowDown movement after edit",
+      "Status focus handoff",
+      "Touch edit and new-game reset"
+    ],
+    "network": "Only local production assets. External HTTP and WebSockets blocked, service workers disabled, no account or database operations.",
+    "checks": "Maze 3 inline scripts, root syntax 154 blocks/files, catalog, 55-page skip navigation and 11 Node test files passed.",
+    "ci": "Dedicated root CI job checks out the exact Maze fix commit. New PR run pending at report creation.",
+    "verificationFile": "quality-audit-editor-300-2026-11-25-verification.json"
+  },
+  "limits": [
+    "The count covers the observed 25x25 initial editor targets, even though all four sizes are repaired.",
+    "No claim that all maze rules, bot tactics or generated layouts are fully verified.",
+    "Automated geometry, names and keyboard tests do not replace real-device or screen-reader usability review."
+  ]
+}
