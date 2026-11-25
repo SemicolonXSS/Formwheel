@@ -1110,17 +1110,6 @@ function render(){
         "Button": "온라인 방 만들기·참가",
         "Marble": "온라인 구슬 대전"
       };
-      const rulesPending = {
-        "Reflex": "온라인 방 만들기·참가",
-        "Territory": "온라인 방 만들기·참가",
-        "Bomb": "온라인 방 만들기·참가",
-        "Clicker": "3분 온라인 배틀",
-        "Casino": "온라인 코인 챌린지",
-        "Music": "2인 온라인 대전",
-        "Quiz": "2인 온라인 대전",
-        "Board": "온라인 대국 수순 저장"
-      };
-      const pendingNotice = rulesPending[project.name];
       const constructionNotice = constructionWarnings[project.name] || "";
 
       const newBadge =
@@ -1191,7 +1180,6 @@ function render(){
             <div class="fw-maturity-caption"><span>개발 상태 <small>(추정)</small></span><strong>${maturityLabel(projectMaturity[project.name])} · ${projectMaturity[project.name] == null ? '점수 없음' : projectMaturity[project.name] + '%'}</strong></div>
             <div class="fw-maturity-track" role="progressbar" aria-label="${escapeHTML(project.name)} 개발 진행률 추정" aria-valuemin="0" aria-valuemax="100" ${projectMaturity[project.name] == null ? 'aria-valuetext="평가 대기"' : `aria-valuenow="${projectMaturity[project.name]}"`}><div class="fw-maturity-fill" style="width:${projectMaturity[project.name] ?? 0}%"></div></div>
           </div>
-          ${pendingNotice ? `<div role="note" style="margin:8px 10px 0;padding:9px 11px;border-radius:10px;border:1px solid #9db3db;background:#eef4ff;color:#243966;font-size:12px;line-height:1.55"><strong>⏳ Firebase 룰 적용 대기</strong><div>${escapeHTML(pendingNotice)}</div></div>` : ""}
           ${constructionNotice ? `<div role="note" style="margin:8px 10px 0;padding:9px 11px;border-radius:10px;border:1px solid #dbbb72;background:#fff8e9;color:#684817;font-size:12px;line-height:1.55"><strong>🚧 일부 기능 공사중</strong><div>${escapeHTML(constructionNotice)}</div></div>` : ""}
           <div class="cardBottom">
 
