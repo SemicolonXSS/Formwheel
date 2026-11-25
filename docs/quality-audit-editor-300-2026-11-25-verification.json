@@ -1,0 +1,372 @@
+{
+  "date": "2026-11-25",
+  "baseline": {
+    "state": "battle:25:editor",
+    "viewport": 390,
+    "phase": "미로 조작자",
+    "firstTileReceivesFocus": false,
+    "axeViolations": []
+  },
+  "after": [
+    {
+      "width": 320,
+      "size": 11,
+      "mode": "solo",
+      "editableTargets": 0,
+      "minTarget": null,
+      "traversed": 0,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "width": 320,
+      "size": 11,
+      "mode": "battle",
+      "editableTargets": 79,
+      "minTarget": 28,
+      "traversed": 0,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "width": 320,
+      "size": 11,
+      "mode": "defense",
+      "editableTargets": 79,
+      "minTarget": 28,
+      "traversed": 0,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "width": 320,
+      "size": 17,
+      "mode": "solo",
+      "editableTargets": 0,
+      "minTarget": null,
+      "traversed": 0,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "width": 320,
+      "size": 17,
+      "mode": "defense",
+      "editableTargets": 223,
+      "minTarget": 28,
+      "traversed": 0,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "width": 320,
+      "size": 17,
+      "mode": "battle",
+      "editableTargets": 223,
+      "minTarget": 28,
+      "traversed": 0,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "width": 320,
+      "size": 25,
+      "mode": "solo",
+      "editableTargets": 0,
+      "minTarget": null,
+      "traversed": 0,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "width": 320,
+      "size": 25,
+      "mode": "battle",
+      "editableTargets": 527,
+      "minTarget": 28,
+      "traversed": 0,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "width": 320,
+      "size": 25,
+      "mode": "defense",
+      "editableTargets": 527,
+      "minTarget": 28,
+      "traversed": 0,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "width": 320,
+      "size": 31,
+      "mode": "solo",
+      "editableTargets": 0,
+      "minTarget": null,
+      "traversed": 0,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "width": 320,
+      "size": 31,
+      "mode": "battle",
+      "editableTargets": 839,
+      "minTarget": 28,
+      "traversed": 0,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "width": 320,
+      "size": 31,
+      "mode": "defense",
+      "editableTargets": 839,
+      "minTarget": 28,
+      "traversed": 0,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "width": 390,
+      "size": 11,
+      "mode": "solo",
+      "editableTargets": 0,
+      "minTarget": null,
+      "traversed": 0,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "width": 390,
+      "size": 11,
+      "mode": "battle",
+      "editableTargets": 79,
+      "minTarget": 29.265625,
+      "traversed": 0,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "width": 390,
+      "size": 11,
+      "mode": "defense",
+      "editableTargets": 79,
+      "minTarget": 29.265625,
+      "traversed": 0,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "width": 390,
+      "size": 17,
+      "mode": "solo",
+      "editableTargets": 0,
+      "minTarget": null,
+      "traversed": 0,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "width": 390,
+      "size": 17,
+      "mode": "defense",
+      "editableTargets": 223,
+      "minTarget": 28,
+      "traversed": 0,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "width": 390,
+      "size": 17,
+      "mode": "battle",
+      "editableTargets": 223,
+      "minTarget": 28,
+      "traversed": 0,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "width": 390,
+      "size": 25,
+      "mode": "solo",
+      "editableTargets": 0,
+      "minTarget": null,
+      "traversed": 0,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "width": 390,
+      "size": 25,
+      "mode": "defense",
+      "editableTargets": 527,
+      "minTarget": 28,
+      "traversed": 0,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "width": 390,
+      "size": 31,
+      "mode": "solo",
+      "editableTargets": 0,
+      "minTarget": null,
+      "traversed": 0,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "width": 390,
+      "size": 31,
+      "mode": "battle",
+      "editableTargets": 839,
+      "minTarget": 28,
+      "traversed": 0,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "width": 390,
+      "size": 25,
+      "mode": "battle",
+      "editableTargets": 527,
+      "minTarget": 28,
+      "traversed": 527,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "width": 1280,
+      "size": 11,
+      "mode": "solo",
+      "editableTargets": 0,
+      "minTarget": null,
+      "traversed": 0,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "width": 1280,
+      "size": 11,
+      "mode": "battle",
+      "editableTargets": 79,
+      "minTarget": 55.8125,
+      "traversed": 0,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "width": 1280,
+      "size": 11,
+      "mode": "defense",
+      "editableTargets": 79,
+      "minTarget": 55.8125,
+      "traversed": 0,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "width": 390,
+      "size": 31,
+      "mode": "defense",
+      "editableTargets": 839,
+      "minTarget": 28,
+      "traversed": 0,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "width": 1280,
+      "size": 17,
+      "mode": "solo",
+      "editableTargets": 0,
+      "minTarget": null,
+      "traversed": 0,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "width": 1280,
+      "size": 17,
+      "mode": "battle",
+      "editableTargets": 223,
+      "minTarget": 36.109375,
+      "traversed": 0,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "width": 1280,
+      "size": 17,
+      "mode": "defense",
+      "editableTargets": 223,
+      "minTarget": 36.109375,
+      "traversed": 0,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "width": 1280,
+      "size": 25,
+      "mode": "solo",
+      "editableTargets": 0,
+      "minTarget": null,
+      "traversed": 0,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "width": 1280,
+      "size": 25,
+      "mode": "battle",
+      "editableTargets": 527,
+      "minTarget": 28,
+      "traversed": 0,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "width": 1280,
+      "size": 25,
+      "mode": "defense",
+      "editableTargets": 527,
+      "minTarget": 28,
+      "traversed": 0,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "width": 1280,
+      "size": 31,
+      "mode": "solo",
+      "editableTargets": 0,
+      "minTarget": null,
+      "traversed": 0,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "width": 1280,
+      "size": 31,
+      "mode": "battle",
+      "editableTargets": 839,
+      "minTarget": 28,
+      "traversed": 0,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "width": 1280,
+      "size": 31,
+      "mode": "defense",
+      "editableTargets": 839,
+      "minTarget": 28,
+      "traversed": 0,
+      "violations": [],
+      "errors": []
+    }
+  ]
+}
