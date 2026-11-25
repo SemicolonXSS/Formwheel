@@ -196,7 +196,7 @@ function conflictsWithHoldArc(at,kind){
 }
 function overlaps(a,b){const aEnd=a.at+(isArc(a.kind)?HOLD_LENGTH:0),bEnd=b.at+(isArc(b.kind)?HOLD_LENGTH:0);if(a.at<=bEnd+0.55&&b.at<=aEnd+0.55)return true;const delta=((a.at-b.at)%TAU+TAU)%TAU;return (isArc(b.kind)&&(delta<1.95||delta>TAU-0.55))||(isArc(a.kind)&&(delta<0.55||delta>TAU-1.95))}
 function targetCount(){if(difficulty==='hard')return mode==='map'&&maps[mapIndex].name==='별달거리'?3:Math.min(7,5+Math.floor(stage/4));if(mode==='map'&&maps[mapIndex].name==='별달거리')return 3;return mode==='map'?(mapIndex<4?4:Math.min(5,4+Math.floor(mapIndex/8))):(stage<5?3:Math.min(4,3+Math.floor((stage-5)/8)))}
-function oppositeDirectionTile(kind){return kind==='reverse'||kind==='forward'?(direction===1?'reverse':'forward'):kind;}
+function oppositeDirectionTile(kind){return kind==='reverse'||kind==='forward'?'switch':kind;}
 function addTarget(){
   if(mode==='map'){
     const beats=maps[mapIndex].beats;
@@ -365,12 +365,11 @@ function playDrum(){
   }catch(e){/* Audio unavailable: gameplay continues. */}
 }
 function changeDirection(kind){
-  const nextDirection=kind==='reverse'?-1:1;
+  const nextDirection=-direction;
   if(nextDirection===direction)return;
   // Keep every existing tile at its current screen position; only the player orb reverses.
   // Recalculate its next encounter in the new direction, allowing a short reaction buffer.
   direction=nextDirection;
-  for(const t of targets)t.kind=oppositeDirectionTile(t.kind);
   reverseUntil=0;
   period=stagePeriod();
   const minLead=TAU*0.42;
@@ -457,9 +456,9 @@ function hit(){
     const perfect=Math.abs(remaining)<=perfectWindow();
     award(perfect?100:50,perfect?'✨ PERFECT +100':'👍 GOOD +50');
     retireTarget(chosen);
-    if(chosen.kind==='reverse'||chosen.kind==='forward'){
+    if(chosen.kind==='switch'){
       changeDirection(chosen.kind);
-      feedback.textContent+=direction<0?' · ↺ 역방향!':' · ↻ 정방향!';
+      feedback.textContent+=' · 🔄 방향 전환!';
     }
     afterTarget();
   }else if(remaining>goodWindow()&&remaining<=goodWindow()+0.25){
@@ -492,9 +491,9 @@ function frame(now){
     if(!target.wasVisible)continue;
     if(target.kind==='heart'){if(!target.rewarded)feedback.textContent='💗 HEART 놓침 · 목숨 유지';continue;}
     // Missing a visible direction tile still changes direction and costs a life.
-    const directionTile=target.kind==='reverse'||target.kind==='forward';
+    const directionTile=target.kind==='switch';
     if(directionTile)changeDirection(target.kind);
-    lose(directionTile?(direction<0?'↺ 역방향 전환 · MISS':'↻ 정방향 전환 · MISS'):'MISS');
+    lose(directionTile?'🔄 방향 전환 · MISS':'MISS');
   }
   if(expired.length&&running)afterTarget();
   // Limit costly canvas glow rendering while keeping gameplay timing on every frame.
@@ -517,7 +516,7 @@ ctx.strokeStyle=t.kind==='heart'?'#fb719d':visualTheme==='basic'?'#a58cff':visua
 ctx.beginPath();ctx.arc(cx,cy,r,startAngle,endAngle,direction<0);ctx.strokeStyle=visualTheme==='basic'?'#c6b7ff':'rgba(255,255,255,.65)';ctx.lineWidth=visualTheme==='basic'?1:3;ctx.stroke();
 if(holding){ctx.beginPath();ctx.arc(cx,cy,r,startAngle,startAngle+direction*HOLD_LENGTH*holdProgress,direction<0);ctx.strokeStyle='#e7fbff';ctx.lineWidth=11;ctx.shadowColor='#82eaff';ctx.shadowBlur=0;ctx.stroke();ctx.shadowBlur=0}
 const tip=endAngle;ctx.beginPath();ctx.arc(cx+Math.cos(tip)*r,cy+Math.sin(tip)*r,holding?11:8,0,TAU);ctx.fillStyle='#e8faff';ctx.shadowColor='#91ecff';ctx.shadowBlur=0;ctx.fill();ctx.restore();
-}ctx.save();ctx.translate(cx+Math.cos(t.angle)*r,cy+Math.sin(t.angle)*r);ctx.rotate(t.angle+Math.PI/2);ctx.fillStyle=t.kind==='heart'?'#ff8db4':t.kind==='hold'?(visualTheme==='neon'?'#ff35d4':'#b9a4ff'):t.kind==='reverse'?'#5ba8ff':t.kind==='forward'?'#65dfaa':visualTheme==='neon'?'#00f5ed':'#ffad3d';ctx.shadowColor=ctx.fillStyle;ctx.shadowBlur=0;ctx.fillRect(-19,-19,38,38);if(t.kind==='hold'){ctx.shadowBlur=0;ctx.strokeStyle='rgba(255,255,255,.8)';ctx.lineWidth=2;ctx.strokeRect(-16,-16,32,32);ctx.fillStyle='#101a36';ctx.font='bold 21px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(t===holdTarget?'✓':'H',0,1)}if(t.kind==='heart'){ctx.shadowBlur=0;ctx.fillStyle='#58132e';ctx.font='bold 13px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('♥ '+(t.taps||0)+'/5',0,1)}if(t.kind&&t.kind!=='normal'&&!isArc(t.kind)){ctx.shadowBlur=0;ctx.fillStyle='#08142a';ctx.font='bold 29px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(t.kind==='reverse'?'↺':'↻',0,1)}ctx.restore()}
+}ctx.save();ctx.translate(cx+Math.cos(t.angle)*r,cy+Math.sin(t.angle)*r);ctx.rotate(t.angle+Math.PI/2);ctx.fillStyle=t.kind==='heart'?'#ff8db4':t.kind==='hold'?(visualTheme==='neon'?'#ff35d4':'#b9a4ff'):t.kind==='switch'?'#5ba8ff':visualTheme==='neon'?'#00f5ed':'#ffad3d';ctx.shadowColor=ctx.fillStyle;ctx.shadowBlur=0;ctx.fillRect(-19,-19,38,38);if(t.kind==='hold'){ctx.shadowBlur=0;ctx.strokeStyle='rgba(255,255,255,.8)';ctx.lineWidth=2;ctx.strokeRect(-16,-16,32,32);ctx.fillStyle='#101a36';ctx.font='bold 21px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(t===holdTarget?'✓':'H',0,1)}if(t.kind==='heart'){ctx.shadowBlur=0;ctx.fillStyle='#58132e';ctx.font='bold 13px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('♥ '+(t.taps||0)+'/5',0,1)}if(t.kind&&t.kind!=='normal'&&!isArc(t.kind)){ctx.shadowBlur=0;ctx.fillStyle='#08142a';ctx.font='bold 29px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('↔',0,1)}ctx.restore()}
 ctx.beginPath();ctx.arc(cx+Math.cos(angle)*r,cy+Math.sin(angle)*r,15,0,TAU);ctx.fillStyle='#71d6ff';ctx.shadowColor=visualTheme==='neon'?'#00f5ed':'#71d6ff';ctx.shadowBlur=0;ctx.fill();ctx.shadowBlur=0;ctx.fillStyle='#f3f5ff';ctx.textAlign='center';ctx.font='bold 36px system-ui';ctx.fillText(countdownMs>0?String(Math.ceil(countdownMs/1000)):period.toFixed(1)+'s',cx,cy);ctx.font='16px system-ui';ctx.fillStyle='#aebbd7';ctx.fillText('성공 '+(success%3)+'/3 · 판정 '+Math.round(goodWindow()/0.78*100)+'%',cx,cy+29);
 if(combo>=5&&visualTheme!=='basic'){ctx.save();ctx.globalAlpha=.18+Math.min(combo,40)/150;ctx.strokeStyle=combo>=20?'#ffcb8e':'#b9a4ff';ctx.lineWidth=4;ctx.shadowBlur=0;ctx.shadowColor=ctx.strokeStyle;ctx.beginPath();ctx.arc(cx,cy,r+13,0,TAU);ctx.stroke();ctx.restore()}}
 document.querySelector('#mapSelect').addEventListener('change',e=>{if(running)return;selectedMap=Number(e.target.value);mapIndex=selectedMap;showMode()});document.querySelector('#randomMode').addEventListener('click',()=>selectMode('random'));document.querySelector('#mapMode').addEventListener('click',()=>selectMode('map'));document.querySelector('#start').addEventListener('click',e=>{start();e.currentTarget.blur()});function press(input){
@@ -581,7 +580,7 @@ const editorStatus=document.querySelector('#editorStatus'),editorNotes=document.
 let editing=false,editorEvents=[],editorDirection=1,editorAudioUrl=null,editorStarted=0;
 function editorRefresh(message){
   editorStatus.textContent=(message?message+' · ':'')+editorEvents.length+'개 타일 · '+(editorDirection<0?'역방향':'정방향');
-  editorNotes.textContent=editorEvents.slice(-12).map((e,i)=>((editorEvents.length-Math.min(12,editorEvents.length)+i)+1)+'. '+e.time.toFixed(3)+'초 · '+(e.kind==='reverse'?'↺ 역방향':e.kind==='forward'?'↻ 정방향':'터치')).join(' / ');
+  editorNotes.textContent=editorEvents.slice(-12).map((e,i)=>((editorEvents.length-Math.min(12,editorEvents.length)+i)+1)+'. '+e.time.toFixed(3)+'초 · '+(e.kind==='switch'||e.kind==='reverse'||e.kind==='forward'?'↔ 방향 전환':'터치')).join(' / ');
 }
 function editorStop(){if(!editing)return;editing=false;document.querySelector('#editorRecord').textContent='🔴 녹화 시작';editorAudio.pause();editorRefresh('녹화 종료')}
 document.querySelector('#editorToggle').addEventListener('click',()=>{if(running)return;editor.hidden=!editor.hidden;if(editor.hidden)editorStop()});
@@ -602,7 +601,7 @@ function editorStamp(switchDirection){
   if(!editing)return;
   const time=editorAudio.src?editorAudio.currentTime:(performance.now()-editorStarted)/1000;
   if(!Number.isFinite(time)||time<0)return;
-  const kind=switchDirection?(editorDirection===1?'reverse':'forward'):'normal';
+  const kind=switchDirection?'switch':'normal';
   if(switchDirection)editorDirection*=-1;
   if(editorEvents.length&&time-editorEvents[editorEvents.length-1].time<0.08){editorRefresh('타일 간격 최소 0.08초');return}
   editorEvents.push({time:Number(time.toFixed(3)),kind});
@@ -610,7 +609,7 @@ function editorStamp(switchDirection){
 }
 document.querySelector('#editorTap').addEventListener('pointerdown',e=>{if(e.button===0){e.preventDefault();editorStamp(false)}});
 document.querySelector('#editorReverse').addEventListener('pointerdown',e=>{if(e.button===0){e.preventDefault();editorStamp(true)}});
-document.querySelector('#editorUndo').addEventListener('click',()=>{if(editing)return;editorEvents.pop();editorDirection=editorEvents.reduce((d,e)=>e.kind==='reverse'?-1:e.kind==='forward'?1:d,1);editorRefresh('마지막 타일 삭제')});
+document.querySelector('#editorUndo').addEventListener('click',()=>{if(editing)return;editorEvents.pop();editorDirection=editorEvents.reduce((d,e)=>e.kind==='switch'||e.kind==='reverse'||e.kind==='forward'?-d:d,1);editorRefresh('마지막 타일 삭제')});
 document.addEventListener('keydown',e=>{
   if(!editing||e.repeat||e.altKey||e.ctrlKey||e.metaKey||e.target.closest?.('button,input,textarea,select'))return;
   if(e.code==='Space'||e.code==='Enter'){e.preventDefault();editorStamp(e.code==='Enter')}
@@ -627,9 +626,9 @@ document.querySelector('#editorImport').addEventListener('change',async e=>{
   const file=e.target.files[0];if(!file)return;
   try{
     const data=JSON.parse(await file.text());
-    if(data.format!=='formwheel-polyrhythm-map'||!Array.isArray(data.notes)||data.notes.length>10000||!data.notes.every(n=>Number.isFinite(n.time)&&n.time>=0&&['normal','reverse','forward'].includes(n.kind)))throw Error('지원하지 않는 맵 형식');
-    editorStop();editorEvents=data.notes.map(n=>({time:n.time,kind:n.kind})).sort((a,b)=>a.time-b.time);
-    editorDirection=editorEvents.reduce((d,n)=>n.kind==='reverse'?-1:n.kind==='forward'?1:d,1);
+    if(data.format!=='formwheel-polyrhythm-map'||!Array.isArray(data.notes)||data.notes.length>10000||!data.notes.every(n=>Number.isFinite(n.time)&&n.time>=0&&['normal','reverse','forward','switch'].includes(n.kind)))throw Error('지원하지 않는 맵 형식');
+    editorStop();editorEvents=data.notes.map(n=>({time:n.time,kind:oppositeDirectionTile(n.kind)})).sort((a,b)=>a.time-b.time);
+    editorDirection=editorEvents.reduce((d,n)=>n.kind==='switch'||n.kind==='reverse'||n.kind==='forward'?-d:d,1);
     document.querySelector('#editorName').value=String(data.name||'내 리듬 맵').slice(0,40);
     document.querySelector('#editorPeriod').value=Math.max(1.8,Math.min(8,Number(data.period)||3.5));
     editorRefresh('JSON 불러오기 완료');
