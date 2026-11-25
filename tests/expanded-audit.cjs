@@ -62,6 +62,7 @@ function inspect(){
    const a=await new AxeBuilder({page:p}).exclude('iframe').options({iframes:false,rules:{'target-size':{enabled:true}}}).withTags(['wcag2a','wcag2aa','wcag21a','wcag21aa','wcag22aa','best-practice']).analyze();
    const result={repo:j.repo,file:j.file,state:j.state,themeApplied:await p.locator('body').getAttribute('data-fw-global-theme'),errors,boundaries,violations:a.violations};results.push(result);
    if(boundaries.length||a.violations.length||errors.length)console.log('FAIL '+j.repo+' '+j.state+' '+boundaries.length+' boundaries; '+a.violations.map(v=>v.id+'='+v.nodes.length).join(',')+' '+errors.join(';'));
+   if(a.violations.length)console.log('DETAIL '+j.repo+' '+j.state+' '+JSON.stringify(a.violations.map(v=>({rule:v.id,nodes:v.nodes.map(n=>({target:n.target,html:n.html,checks:n.any.map(c=>c.data)}))}))));
    if(process.env.FW_SCREENSHOT_DIR&&['Formwheel','Formwheel_Tool','Formwheel_Balance'].includes(j.repo)&&['page:sudoku.html','page:board/index.html','tool:timer','theme:midnight'].includes(j.state))await p.screenshot({path:path.join(process.env.FW_SCREENSHOT_DIR,j.repo+'-'+j.state.replaceAll(/[^a-z0-9]/gi,'-')+'-'+(process.env.FW_VIEWPORT||1280)+'.png'),fullPage:true});
   }catch(e){results.push({repo:j.repo,file:j.file,state:j.state,error:e.message,errors});console.log('ERROR '+j.repo+' '+j.state+' '+e.message.slice(0,160));}
   finally{await c.close();if(process.env.FW_EXPANDED_REPORT)fs.writeFileSync(process.env.FW_EXPANDED_REPORT,JSON.stringify(results,null,2));}
