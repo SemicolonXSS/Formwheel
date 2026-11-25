@@ -101,3 +101,28 @@ main .fw-hub-fold-body>.fw-hub-mini-banner>a[href="./optical-chaos.html"]{color:
  main #cards .cardBottom{margin-top:5px}
  main #cards .openButton{min-height:44px;width:100%;box-sizing:border-box}
 }
+
+/* 2.5: paired theme-aware foreground/background for Hub controls. */
+main{--fw-hub-control-bg:var(--fw-theme-button-bg,var(--fw-theme-surface,#fff));--fw-hub-control-text:var(--fw-theme-button-text,var(--fw-theme-text,#202438));--fw-hub-control-border:var(--fw-theme-accent,#c9cedb)}
+main #fw-positioning .fw-position-card>summary,
+main #fw-positioning .fw-position-card[open]>div>a,
+main #fw-positioning .fw-hub-brand-more>summary,
+main #fw-positioning .fw-hub-brand-more a,
+main .fw-hub-fold>summary,
+main #fw-hub-shortcuts>a,
+main .fw-hub-fold-body>.fw-hub-mini-banner>a,
+main .fw-hub-fold-body>a.fw-hub-mini-direct,
+main #cards .openButton{
+ background:var(--fw-hub-control-bg)!important;
+ color:var(--fw-hub-control-text)!important;
+ border:1px solid var(--fw-hub-control-border)!important;
+}
+main #fw-positioning .fw-position-card[open]>summary,
+main .fw-hub-fold[open]>summary,
+main #fw-positioning .fw-hub-brand-more[open]>summary{box-shadow:inset 0 0 0 1px var(--fw-hub-control-border)}
+main .fw-hub-fold-body>.fw-hub-mini-banner>a *,
+main .fw-hub-fold-body>a.fw-hub-mini-direct *,
+main #fw-positioning .fw-position-card>summary .fw-compact-ko{color:inherit!important}
+main #fw-positioning .fw-position-card[open]>div,
+main #fw-positioning .fw-hub-brand-more[open]>div,
+main .fw-hub-fold-body:has(>.fw-hub-mini-banner){background:var(--fw-theme-surface,#f5f6fa);color:var(--fw-theme-text,#202438)}
