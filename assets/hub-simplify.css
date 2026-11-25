@@ -126,3 +126,15 @@ main #fw-positioning .fw-position-card>summary .fw-compact-ko{color:inherit!impo
 main #fw-positioning .fw-position-card[open]>div,
 main #fw-positioning .fw-hub-brand-more[open]>div,
 main .fw-hub-fold-body:has(>.fw-hub-mini-banner){background:var(--fw-theme-surface,#f5f6fa);color:var(--fw-theme-text,#202438)}
+
+/* 2.7: temporary neutral Hub controls, independent of theme palette. */
+body :is(#fw-positioning#fw-positioning,#fw-hub-shortcuts#fw-hub-shortcuts,#fw-rapid-quicklinks#fw-rapid-quicklinks) :is(a,summary,button),
+body :is(.fw-hub-fold.fw-hub-fold)>summary,
+body .fw-hub-fold-body.fw-hub-fold-body :is(a,button),
+body #cards#cards .openButton {
+ background:#fff!important;color:#202438!important;border:1px solid #c9cedb!important;text-shadow:none!important;
+}
+body :is(#fw-positioning#fw-positioning,#fw-hub-shortcuts#fw-hub-shortcuts,#fw-rapid-quicklinks#fw-rapid-quicklinks) :is(a,summary,button) :is(span,strong,small,p),
+body .fw-hub-fold-body.fw-hub-fold-body :is(a,button) :is(span,strong,small,p),
+body #cards#cards .openButton :is(span,strong,small){color:#202438!important;text-shadow:none!important}
+body #fw-positioning#fw-positioning .fw-position-card[open]>summary{border-color:#ff8a00!important;box-shadow:inset 0 0 0 1px #ff8a00}
