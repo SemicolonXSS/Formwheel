@@ -122,4 +122,18 @@ $('reset').onclick=()=>{if(!confirm('현재 언어의 저장된 코드를 초기
 $('download').onclick=()=>{save();const ext={html:'html',python:'py',c:'c',cpp:'cpp',java:'java',fw:'fw'}[language.value];const blob=new Blob([editor.value],{type:'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=language.value==='java'?'Main.java':'formwheel-code.'+ext;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)};
 renderList();renderProblem();load();
 })();
+</script><script>
+(function () {
+  const editor = document.getElementById('editor');
+  const heading = document.querySelector('header h1');
+  if (!editor || !heading) return;
+  editor.addEventListener('paste', function (event) {
+    if (event.clipboardData && event.clipboardData.getData('text/plain').trim() === 'WhatAreYouDoingHere') {
+      event.preventDefault();
+      heading.textContent = 'GetOutOfHere';
+      heading.style.color = '#ef4444';
+      document.title = 'GetOutOfHere';
+    }
+  });
+})();
 </script></body></html>
