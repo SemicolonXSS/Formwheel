@@ -116,15 +116,15 @@ const HOLD_ARC_LENGTH=1.5;
 const HEART_LENGTH=1.5, MAX_LIVES=5;
 let difficulty='easy';
 const dnaParam=new URLSearchParams(location.search).get('dna');
-const dnaFlags=/^[01]{4}$/.test(dnaParam||'')?dnaParam.split('').map(x=>x==='1'):[true,true,true,true];
+const dnaFlags=/^[01]{4,5}$/.test(dnaParam||'')?dnaParam.padEnd(5,'1').split('').map(x=>x==='1'):[true,true,true,true,true];
 let dnaRun=false;
-const dnaToggle=document.createElement('input');dnaToggle.type='checkbox';dnaToggle.checked=/^[01]{4}$/.test(dnaParam||'');
+const dnaToggle=document.createElement('input');dnaToggle.type='checkbox';dnaToggle.checked=/^[01]{4,5}$/.test(dnaParam||'');
 const dnaPanel=document.createElement('fieldset');dnaPanel.style.cssText='margin:12px 0;padding:12px;border:1px solid currentColor;border-radius:12px';
 const dnaLegend=document.createElement('legend');dnaLegend.textContent='🧬 FEATURE DNA · 비공식 기록';dnaPanel.append(dnaLegend);
 const dnaLabel=document.createElement('label');dnaLabel.append(dnaToggle,document.createTextNode(' 커스텀 랜덤 모드'));dnaPanel.append(dnaLabel);
-const dnaControls=['방향 전환','홀드 타일','하트 타일','자동 가속'].map((name,i)=>{const l=document.createElement('label');l.style.cssText='display:inline-flex;align-items:center;gap:5px;margin:8px';const b=document.createElement('input');b.type='checkbox';b.checked=dnaFlags[i];b.addEventListener('change',()=>{dnaFlags[i]=b.checked;dnaRefresh()});l.append(b,document.createTextNode(name));dnaPanel.append(l);return b});
+const dnaControls=['방향 전환','홀드 타일','하트 타일','자동 가속','기본 타일'].map((name,i)=>{const l=document.createElement('label');l.style.cssText='display:inline-flex;align-items:center;gap:5px;margin:8px';const b=document.createElement('input');b.type='checkbox';b.checked=dnaFlags[i];b.addEventListener('change',()=>{dnaFlags[i]=b.checked;dnaRefresh()});l.append(b,document.createTextNode(name));dnaPanel.append(l);return b});
 const dnaNote=document.createElement('p');dnaPanel.append(dnaNote);document.querySelector('.mode-select').after(dnaPanel);
-function dnaRefresh(){dnaToggle.disabled=running||mode!=='random';dnaControls.forEach(b=>b.disabled=running||mode!=='random'||!dnaToggle.checked);dnaNote.textContent=mode!=='random'?'랜덤 모드에서만 사용 가능':dnaToggle.checked?'DNA-'+dnaFlags.map(Number).join('')+' · 최고 기록 저장 안 함':'일반 모드 · 공식 기록 유지';}
+function dnaRefresh(){dnaToggle.disabled=running||mode!=='random';dnaControls.forEach(b=>b.disabled=running||mode!=='random'||!dnaToggle.checked);dnaNote.textContent=mode==='random'&&dnaToggle.checked&&!dnaFlags.some((v,i)=>i!==3&&v)?'타일을 최소 하나 켜 주세요.':mode!=='random'?'랜덤 모드에서만 사용 가능':dnaToggle.checked?'DNA-'+dnaFlags.map(Number).join('')+' · 최고 기록 저장 안 함':'일반 모드 · 공식 기록 유지';}
 dnaToggle.addEventListener('change',dnaRefresh);
 
 function isArc(k){return k==='hold'||k==='heart'}
@@ -220,7 +220,7 @@ function addTarget(){
     return;
   }
   let kind=difficulty==='easy'&&nextId>0&&nextId%13===5?'heart':stagePeriod()<=1.8?(nextId%11===0?'reverse':nextId%11===4?'forward':nextId%7===0?'hold':'normal'):(nextId%7===0?'hold':'normal');
-  if(dnaRun){kind=nextId>0&&nextId%13===5&&dnaFlags[2]?'heart':dnaFlags[0]&&nextId%11===0?'reverse':dnaFlags[0]&&nextId%11===4?'forward':dnaFlags[1]&&nextId%7===0?'hold':'normal';}
+  if(dnaRun){kind=nextId>0&&nextId%13===5&&dnaFlags[2]?'heart':dnaFlags[0]&&nextId%11===0?'reverse':dnaFlags[0]&&nextId%11===4?'forward':dnaFlags[1]&&nextId%7===0?'hold':'normal';if(kind==='normal'&&!dnaFlags[4]){const pool=[...(dnaFlags[0]?['reverse','forward']:[]),...(dnaFlags[1]?['hold']:[]),...(dnaFlags[2]?['heart']:[])];if(!pool.length)return;kind=pool[nextId%pool.length];}}
   let bestAt=progress+1.1,bestGap=-1;
   for(let i=0;i<32;i++){
     const at=progress+1.1+fwTargetRandom()*(Math.PI*(stage<5?1.1:stage<12?1.35:1.65));
@@ -264,7 +264,7 @@ function lifeLossEffect(){
  node.animate(effect==='neon'?[{opacity:.62},{opacity:0}]:[{opacity:.85,transform:'scale(.97)'},{opacity:0,transform:'scale(1.08)'}],{duration:380,easing:'ease-out'});
 }
 function lose(reason){if(!running)return;combo=0;lives=Math.max(0,lives-1);lifeLossEffect();feedback.textContent=reason+' · 목숨 -1';update();if(lives===0)endGame()}
-const fwSeedParam=new URLSearchParams(location.search).get('seed');const fwSeed=fwSeedParam!==null&&/^\d{1,10}$/.test(fwSeedParam)&&Number(fwSeedParam)<=4294967295?Number(fwSeedParam):null;let fwSeedState=0;if(fwSeed!==null){const el=document.getElementById('fwSeedInfo');if(el){el.hidden=false;el.textContent='SEED '+fwSeed+' · 랜덤 모드 난수 고정 (플레이 진행에 따라 배치가 달라질 수 있음)';}}function fwTargetRandom(){if(fwSeed===null)return Math.random();fwSeedState=(fwSeedState+0x6D2B79F5)>>>0;let t=fwSeedState;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return ((t^(t>>>14))>>>0)/4294967296;}function start(){dnaRun=mode==='random'&&dnaToggle.checked;lastAcceptedHit=-Infinity;clearLifeEffect();glassBursts.length=0;lifeFxLast=-Infinity;fwSeedState=fwSeed===null?0:fwSeed;paused=false;if(audioContext?.state==="suspended")audioContext.resume().catch(()=>{});if(editing)editorStop();document.body.classList.add('playing');window.getSelection?.()?.removeAllRanges();try{initAudio();prepareHitSample()}catch(e){}cancelAnimationFrame(raf);running=true;countdownMs=3000;countdownShown=3;syncPause();angle=-Math.PI/2;mapIndex=mode==='map'?selectedMap:0;stage=0;period=stagePeriod();score=0;combo=0;success=0;lives=5;progress=0;direction=1;holdTarget=null;activeInput=null;reverseUntil=0;nextId=0;mapBeat=0;musicNote=0;last=performance.now();spawnTargets();showMode();feedback.textContent='3 · 타일을 미리 확인하세요!';update();draw();raf=requestAnimationFrame(frame)}
+const fwSeedParam=new URLSearchParams(location.search).get('seed');const fwSeed=fwSeedParam!==null&&/^\d{1,10}$/.test(fwSeedParam)&&Number(fwSeedParam)<=4294967295?Number(fwSeedParam):null;let fwSeedState=0;if(fwSeed!==null){const el=document.getElementById('fwSeedInfo');if(el){el.hidden=false;el.textContent='SEED '+fwSeed+' · 랜덤 모드 난수 고정 (플레이 진행에 따라 배치가 달라질 수 있음)';}}function fwTargetRandom(){if(fwSeed===null)return Math.random();fwSeedState=(fwSeedState+0x6D2B79F5)>>>0;let t=fwSeedState;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return ((t^(t>>>14))>>>0)/4294967296;}function start(){if(mode==='random'&&dnaToggle.checked&&!dnaFlags.some((v,i)=>i!==3&&v)){feedback.textContent='타일을 최소 하나 켜 주세요.';return;}dnaRun=mode==='random'&&dnaToggle.checked;lastAcceptedHit=-Infinity;clearLifeEffect();glassBursts.length=0;lifeFxLast=-Infinity;fwSeedState=fwSeed===null?0:fwSeed;paused=false;if(audioContext?.state==="suspended")audioContext.resume().catch(()=>{});if(editing)editorStop();document.body.classList.add('playing');window.getSelection?.()?.removeAllRanges();try{initAudio();prepareHitSample()}catch(e){}cancelAnimationFrame(raf);running=true;countdownMs=3000;countdownShown=3;syncPause();angle=-Math.PI/2;mapIndex=mode==='map'?selectedMap:0;stage=0;period=stagePeriod();score=0;combo=0;success=0;lives=5;progress=0;direction=1;holdTarget=null;activeInput=null;reverseUntil=0;nextId=0;mapBeat=0;musicNote=0;last=performance.now();spawnTargets();showMode();feedback.textContent='3 · 타일을 미리 확인하세요!';update();draw();raf=requestAnimationFrame(frame)}
 let audioContext=null,audioCompressor=null;
 const melodies=[
   [262,330,392,523,392,330,294,392],
