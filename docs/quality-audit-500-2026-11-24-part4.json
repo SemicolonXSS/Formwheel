@@ -1,0 +1,2536 @@
+{
+  "date": "2026-11-24",
+  "totalInAudit": 523,
+  "findings": [
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(1) > button:nth-child(8)",
+      "id": "FW500-301",
+      "before": "<button type=\"button\" class=\"cell fixed\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"true\" tabindex=\"-1\" aria-label=\"1행 8열 8\">8</button>",
+      "evidence": {
+        "backgroundRGB": [
+          242,
+          239,
+          249
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Left",
+          "neighbor": "#board > div:nth-child(1) > button:nth-child(7)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(1) > button:nth-child(9)",
+      "id": "FW500-302",
+      "before": "<button type=\"button\" class=\"cell fixed\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"true\" tabindex=\"-1\" aria-label=\"1행 9열 4\">4</button>",
+      "evidence": {
+        "backgroundRGB": [
+          242,
+          239,
+          249
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Left",
+          "neighbor": "#board > div:nth-child(1) > button:nth-child(8)",
+          "fillRatio": 1,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(2) > button:nth-child(1)",
+      "id": "FW500-303",
+      "before": "<button type=\"button\" class=\"cell fixed\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"true\" tabindex=\"-1\" aria-label=\"2행 1열 1\">1</button>",
+      "evidence": {
+        "backgroundRGB": [
+          242,
+          239,
+          249
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(1) > button:nth-child(1)",
+          "fillRatio": 1,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(2) > button:nth-child(2)",
+      "id": "FW500-304",
+      "before": "<button type=\"button\" class=\"cell fixed\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"true\" tabindex=\"-1\" aria-label=\"2행 2열 4\">4</button>",
+      "evidence": {
+        "backgroundRGB": [
+          242,
+          239,
+          249
+        ],
+        "insufficientSharedEdges": 4,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(1) > button:nth-child(2)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(2) > button:nth-child(3)",
+      "id": "FW500-305",
+      "before": "<button type=\"button\" class=\"cell boxright fixed\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"true\" tabindex=\"-1\" aria-label=\"2행 3열 9\">9</button>",
+      "evidence": {
+        "backgroundRGB": [
+          242,
+          239,
+          249
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(1) > button:nth-child(3)",
+          "fillRatio": 1,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(2) > button:nth-child(4)",
+      "id": "FW500-306",
+      "before": "<button type=\"button\" class=\"cell\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"2행 4열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(1) > button:nth-child(4)",
+          "fillRatio": 1,
+          "edgeRatio": 1.742
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(2) > button:nth-child(5)",
+      "id": "FW500-307",
+      "before": "<button type=\"button\" class=\"cell\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"2행 5열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 4,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(1) > button:nth-child(5)",
+          "fillRatio": 1,
+          "edgeRatio": 1.742
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(2) > button:nth-child(6)",
+      "id": "FW500-308",
+      "before": "<button type=\"button\" class=\"cell boxright fixed\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"true\" tabindex=\"-1\" aria-label=\"2행 6열 8\">8</button>",
+      "evidence": {
+        "backgroundRGB": [
+          242,
+          239,
+          249
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(1) > button:nth-child(6)",
+          "fillRatio": 1,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(2) > button:nth-child(7)",
+      "id": "FW500-309",
+      "before": "<button type=\"button\" class=\"cell\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"2행 7열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(1) > button:nth-child(7)",
+          "fillRatio": 1,
+          "edgeRatio": 1.742
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(2) > button:nth-child(8)",
+      "id": "FW500-310",
+      "before": "<button type=\"button\" class=\"cell\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"2행 8열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 4,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(1) > button:nth-child(8)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(2) > button:nth-child(9)",
+      "id": "FW500-311",
+      "before": "<button type=\"button\" class=\"cell fixed\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"true\" tabindex=\"-1\" aria-label=\"2행 9열 2\">2</button>",
+      "evidence": {
+        "backgroundRGB": [
+          242,
+          239,
+          249
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(1) > button:nth-child(9)",
+          "fillRatio": 1,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(3) > button:nth-child(1)",
+      "id": "FW500-312",
+      "before": "<button type=\"button\" class=\"cell boxbottom fixed\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"true\" tabindex=\"-1\" aria-label=\"3행 1열 3\">3</button>",
+      "evidence": {
+        "backgroundRGB": [
+          242,
+          239,
+          249
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(2) > button:nth-child(1)",
+          "fillRatio": 1,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(3) > button:nth-child(2)",
+      "id": "FW500-313",
+      "before": "<button type=\"button\" class=\"cell boxbottom fixed\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"true\" tabindex=\"-1\" aria-label=\"3행 2열 8\">8</button>",
+      "evidence": {
+        "backgroundRGB": [
+          242,
+          239,
+          249
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(2) > button:nth-child(2)",
+          "fillRatio": 1,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(3) > button:nth-child(3)",
+      "id": "FW500-314",
+      "before": "<button type=\"button\" class=\"cell boxright boxbottom\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"3행 3열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(2) > button:nth-child(3)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(3) > button:nth-child(4)",
+      "id": "FW500-315",
+      "before": "<button type=\"button\" class=\"cell boxbottom\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"3행 4열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(2) > button:nth-child(4)",
+          "fillRatio": 1,
+          "edgeRatio": 1.742
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(3) > button:nth-child(5)",
+      "id": "FW500-316",
+      "before": "<button type=\"button\" class=\"cell boxbottom\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"3행 5열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(2) > button:nth-child(5)",
+          "fillRatio": 1,
+          "edgeRatio": 1.742
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(3) > button:nth-child(6)",
+      "id": "FW500-317",
+      "before": "<button type=\"button\" class=\"cell boxright boxbottom\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"3행 6열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(2) > button:nth-child(6)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(3) > button:nth-child(7)",
+      "id": "FW500-318",
+      "before": "<button type=\"button\" class=\"cell boxbottom fixed\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"true\" tabindex=\"-1\" aria-label=\"3행 7열 6\">6</button>",
+      "evidence": {
+        "backgroundRGB": [
+          242,
+          239,
+          249
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(2) > button:nth-child(7)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(3) > button:nth-child(8)",
+      "id": "FW500-319",
+      "before": "<button type=\"button\" class=\"cell boxbottom\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"3행 8열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(2) > button:nth-child(8)",
+          "fillRatio": 1,
+          "edgeRatio": 1.742
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(3) > button:nth-child(9)",
+      "id": "FW500-320",
+      "before": "<button type=\"button\" class=\"cell boxbottom\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"3행 9열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(2) > button:nth-child(9)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(4) > button:nth-child(1)",
+      "id": "FW500-321",
+      "before": "<button type=\"button\" class=\"cell\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"4행 1열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Right",
+          "neighbor": "#board > div:nth-child(4) > button:nth-child(2)",
+          "fillRatio": 1,
+          "edgeRatio": 1.742
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(4) > button:nth-child(2)",
+      "id": "FW500-322",
+      "before": "<button type=\"button\" class=\"cell\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"4행 2열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Left",
+          "neighbor": "#board > div:nth-child(4) > button:nth-child(1)",
+          "fillRatio": 1,
+          "edgeRatio": 1.742
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(4) > button:nth-child(3)",
+      "id": "FW500-323",
+      "before": "<button type=\"button\" class=\"cell boxright\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"4행 3열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Left",
+          "neighbor": "#board > div:nth-child(4) > button:nth-child(2)",
+          "fillRatio": 1,
+          "edgeRatio": 1.742
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(4) > button:nth-child(4)",
+      "id": "FW500-324",
+      "before": "<button type=\"button\" class=\"cell\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"4행 4열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Right",
+          "neighbor": "#board > div:nth-child(4) > button:nth-child(5)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(4) > button:nth-child(5)",
+      "id": "FW500-325",
+      "before": "<button type=\"button\" class=\"cell fixed\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"true\" tabindex=\"-1\" aria-label=\"4행 5열 8\">8</button>",
+      "evidence": {
+        "backgroundRGB": [
+          242,
+          239,
+          249
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Left",
+          "neighbor": "#board > div:nth-child(4) > button:nth-child(4)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(4) > button:nth-child(6)",
+      "id": "FW500-326",
+      "before": "<button type=\"button\" class=\"cell boxright fixed\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"true\" tabindex=\"-1\" aria-label=\"4행 6열 2\">2</button>",
+      "evidence": {
+        "backgroundRGB": [
+          242,
+          239,
+          249
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Left",
+          "neighbor": "#board > div:nth-child(4) > button:nth-child(5)",
+          "fillRatio": 1,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(4) > button:nth-child(7)",
+      "id": "FW500-327",
+      "before": "<button type=\"button\" class=\"cell fixed\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"true\" tabindex=\"-1\" aria-label=\"4행 7열 4\">4</button>",
+      "evidence": {
+        "backgroundRGB": [
+          242,
+          239,
+          249
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Right",
+          "neighbor": "#board > div:nth-child(4) > button:nth-child(8)",
+          "fillRatio": 1,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(4) > button:nth-child(8)",
+      "id": "FW500-328",
+      "before": "<button type=\"button\" class=\"cell fixed\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"true\" tabindex=\"-1\" aria-label=\"4행 8열 5\">5</button>",
+      "evidence": {
+        "backgroundRGB": [
+          242,
+          239,
+          249
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Left",
+          "neighbor": "#board > div:nth-child(4) > button:nth-child(7)",
+          "fillRatio": 1,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(4) > button:nth-child(9)",
+      "id": "FW500-329",
+      "before": "<button type=\"button\" class=\"cell\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"4행 9열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Left",
+          "neighbor": "#board > div:nth-child(4) > button:nth-child(8)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(5) > button:nth-child(1)",
+      "id": "FW500-330",
+      "before": "<button type=\"button\" class=\"cell\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"5행 1열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(4) > button:nth-child(1)",
+          "fillRatio": 1,
+          "edgeRatio": 1.742
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(5) > button:nth-child(2)",
+      "id": "FW500-331",
+      "before": "<button type=\"button\" class=\"cell\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"5행 2열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 4,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(4) > button:nth-child(2)",
+          "fillRatio": 1,
+          "edgeRatio": 1.742
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(5) > button:nth-child(3)",
+      "id": "FW500-332",
+      "before": "<button type=\"button\" class=\"cell boxright fixed\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"true\" tabindex=\"-1\" aria-label=\"5행 3열 7\">7</button>",
+      "evidence": {
+        "backgroundRGB": [
+          242,
+          239,
+          249
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(4) > button:nth-child(3)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(5) > button:nth-child(4)",
+      "id": "FW500-333",
+      "before": "<button type=\"button\" class=\"cell\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"5행 4열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(4) > button:nth-child(4)",
+          "fillRatio": 1,
+          "edgeRatio": 1.742
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(5) > button:nth-child(5)",
+      "id": "FW500-334",
+      "before": "<button type=\"button\" class=\"cell\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"5행 5열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 4,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(4) > button:nth-child(5)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(5) > button:nth-child(6)",
+      "id": "FW500-335",
+      "before": "<button type=\"button\" class=\"cell boxright\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"5행 6열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(4) > button:nth-child(6)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(5) > button:nth-child(7)",
+      "id": "FW500-336",
+      "before": "<button type=\"button\" class=\"cell\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"5행 7열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(4) > button:nth-child(7)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(5) > button:nth-child(8)",
+      "id": "FW500-337",
+      "before": "<button type=\"button\" class=\"cell\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"5행 8열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 4,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(4) > button:nth-child(8)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(5) > button:nth-child(9)",
+      "id": "FW500-338",
+      "before": "<button type=\"button\" class=\"cell fixed\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"true\" tabindex=\"-1\" aria-label=\"5행 9열 9\">9</button>",
+      "evidence": {
+        "backgroundRGB": [
+          242,
+          239,
+          249
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(4) > button:nth-child(9)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(6) > button:nth-child(1)",
+      "id": "FW500-339",
+      "before": "<button type=\"button\" class=\"cell boxbottom\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"6행 1열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(5) > button:nth-child(1)",
+          "fillRatio": 1,
+          "edgeRatio": 1.742
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(6) > button:nth-child(2)",
+      "id": "FW500-340",
+      "before": "<button type=\"button\" class=\"cell boxbottom fixed\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"true\" tabindex=\"-1\" aria-label=\"6행 2열 9\">9</button>",
+      "evidence": {
+        "backgroundRGB": [
+          242,
+          239,
+          249
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(5) > button:nth-child(2)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(6) > button:nth-child(3)",
+      "id": "FW500-341",
+      "before": "<button type=\"button\" class=\"cell boxright boxbottom\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"6행 3열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(5) > button:nth-child(3)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(6) > button:nth-child(4)",
+      "id": "FW500-342",
+      "before": "<button type=\"button\" class=\"cell boxbottom fixed\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"true\" tabindex=\"-1\" aria-label=\"6행 4열 4\">4</button>",
+      "evidence": {
+        "backgroundRGB": [
+          242,
+          239,
+          249
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(5) > button:nth-child(4)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(6) > button:nth-child(5)",
+      "id": "FW500-343",
+      "before": "<button type=\"button\" class=\"cell boxbottom fixed\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"true\" tabindex=\"-1\" aria-label=\"6행 5열 7\">7</button>",
+      "evidence": {
+        "backgroundRGB": [
+          242,
+          239,
+          249
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(5) > button:nth-child(5)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(6) > button:nth-child(6)",
+      "id": "FW500-344",
+      "before": "<button type=\"button\" class=\"cell boxright boxbottom fixed\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"true\" tabindex=\"-1\" aria-label=\"6행 6열 1\">1</button>",
+      "evidence": {
+        "backgroundRGB": [
+          242,
+          239,
+          249
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(5) > button:nth-child(6)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(6) > button:nth-child(7)",
+      "id": "FW500-345",
+      "before": "<button type=\"button\" class=\"cell boxbottom\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"6행 7열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(5) > button:nth-child(7)",
+          "fillRatio": 1,
+          "edgeRatio": 1.742
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(6) > button:nth-child(8)",
+      "id": "FW500-346",
+      "before": "<button type=\"button\" class=\"cell boxbottom fixed\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"true\" tabindex=\"-1\" aria-label=\"6행 8열 6\">6</button>",
+      "evidence": {
+        "backgroundRGB": [
+          242,
+          239,
+          249
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(5) > button:nth-child(8)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(6) > button:nth-child(9)",
+      "id": "FW500-347",
+      "before": "<button type=\"button\" class=\"cell boxbottom\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"6행 9열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(5) > button:nth-child(9)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(7) > button:nth-child(1)",
+      "id": "FW500-348",
+      "before": "<button type=\"button\" class=\"cell\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"7행 1열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Right",
+          "neighbor": "#board > div:nth-child(7) > button:nth-child(2)",
+          "fillRatio": 1,
+          "edgeRatio": 1.742
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(7) > button:nth-child(2)",
+      "id": "FW500-349",
+      "before": "<button type=\"button\" class=\"cell\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"7행 2열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Left",
+          "neighbor": "#board > div:nth-child(7) > button:nth-child(1)",
+          "fillRatio": 1,
+          "edgeRatio": 1.742
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(7) > button:nth-child(3)",
+      "id": "FW500-350",
+      "before": "<button type=\"button\" class=\"cell boxright\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"7행 3열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Left",
+          "neighbor": "#board > div:nth-child(7) > button:nth-child(2)",
+          "fillRatio": 1,
+          "edgeRatio": 1.742
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(7) > button:nth-child(4)",
+      "id": "FW500-351",
+      "before": "<button type=\"button\" class=\"cell fixed\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"true\" tabindex=\"-1\" aria-label=\"7행 4열 1\">1</button>",
+      "evidence": {
+        "backgroundRGB": [
+          242,
+          239,
+          249
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Right",
+          "neighbor": "#board > div:nth-child(7) > button:nth-child(5)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(7) > button:nth-child(5)",
+      "id": "FW500-352",
+      "before": "<button type=\"button\" class=\"cell\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"7행 5열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Left",
+          "neighbor": "#board > div:nth-child(7) > button:nth-child(4)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(7) > button:nth-child(6)",
+      "id": "FW500-353",
+      "before": "<button type=\"button\" class=\"cell boxright fixed\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"true\" tabindex=\"-1\" aria-label=\"7행 6열 3\">3</button>",
+      "evidence": {
+        "backgroundRGB": [
+          242,
+          239,
+          249
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Left",
+          "neighbor": "#board > div:nth-child(7) > button:nth-child(5)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(7) > button:nth-child(7)",
+      "id": "FW500-354",
+      "before": "<button type=\"button\" class=\"cell\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"7행 7열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Right",
+          "neighbor": "#board > div:nth-child(7) > button:nth-child(8)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(7) > button:nth-child(8)",
+      "id": "FW500-355",
+      "before": "<button type=\"button\" class=\"cell fixed\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"true\" tabindex=\"-1\" aria-label=\"7행 8열 4\">4</button>",
+      "evidence": {
+        "backgroundRGB": [
+          242,
+          239,
+          249
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Left",
+          "neighbor": "#board > div:nth-child(7) > button:nth-child(7)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(7) > button:nth-child(9)",
+      "id": "FW500-356",
+      "before": "<button type=\"button\" class=\"cell\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"7행 9열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Left",
+          "neighbor": "#board > div:nth-child(7) > button:nth-child(8)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(8) > button:nth-child(1)",
+      "id": "FW500-357",
+      "before": "<button type=\"button\" class=\"cell fixed\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"true\" tabindex=\"-1\" aria-label=\"8행 1열 2\">2</button>",
+      "evidence": {
+        "backgroundRGB": [
+          242,
+          239,
+          249
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(7) > button:nth-child(1)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(8) > button:nth-child(2)",
+      "id": "FW500-358",
+      "before": "<button type=\"button\" class=\"cell\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"8행 2열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 4,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(7) > button:nth-child(2)",
+          "fillRatio": 1,
+          "edgeRatio": 1.742
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(8) > button:nth-child(3)",
+      "id": "FW500-359",
+      "before": "<button type=\"button\" class=\"cell boxright fixed\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"true\" tabindex=\"-1\" aria-label=\"8행 3열 4\">4</button>",
+      "evidence": {
+        "backgroundRGB": [
+          242,
+          239,
+          249
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(7) > button:nth-child(3)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(8) > button:nth-child(4)",
+      "id": "FW500-360",
+      "before": "<button type=\"button\" class=\"cell fixed\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"true\" tabindex=\"-1\" aria-label=\"8행 4열 8\">8</button>",
+      "evidence": {
+        "backgroundRGB": [
+          242,
+          239,
+          249
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(7) > button:nth-child(4)",
+          "fillRatio": 1,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(8) > button:nth-child(5)",
+      "id": "FW500-361",
+      "before": "<button type=\"button\" class=\"cell fixed\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"true\" tabindex=\"-1\" aria-label=\"8행 5열 6\">6</button>",
+      "evidence": {
+        "backgroundRGB": [
+          242,
+          239,
+          249
+        ],
+        "insufficientSharedEdges": 4,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(7) > button:nth-child(5)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(8) > button:nth-child(6)",
+      "id": "FW500-362",
+      "before": "<button type=\"button\" class=\"cell boxright fixed\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"true\" tabindex=\"-1\" aria-label=\"8행 6열 7\">7</button>",
+      "evidence": {
+        "backgroundRGB": [
+          242,
+          239,
+          249
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(7) > button:nth-child(6)",
+          "fillRatio": 1,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(8) > button:nth-child(7)",
+      "id": "FW500-363",
+      "before": "<button type=\"button\" class=\"cell\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"8행 7열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(7) > button:nth-child(7)",
+          "fillRatio": 1,
+          "edgeRatio": 1.742
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(8) > button:nth-child(8)",
+      "id": "FW500-364",
+      "before": "<button type=\"button\" class=\"cell\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"8행 8열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 4,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(7) > button:nth-child(8)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(8) > button:nth-child(9)",
+      "id": "FW500-365",
+      "before": "<button type=\"button\" class=\"cell fixed\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"true\" tabindex=\"-1\" aria-label=\"8행 9열 5\">5</button>",
+      "evidence": {
+        "backgroundRGB": [
+          242,
+          239,
+          249
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(7) > button:nth-child(9)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(9) > button:nth-child(1)",
+      "id": "FW500-366",
+      "before": "<button type=\"button\" class=\"cell\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"9행 1열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(8) > button:nth-child(1)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(9) > button:nth-child(2)",
+      "id": "FW500-367",
+      "before": "<button type=\"button\" class=\"cell\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"9행 2열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(8) > button:nth-child(2)",
+          "fillRatio": 1,
+          "edgeRatio": 1.742
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(9) > button:nth-child(3)",
+      "id": "FW500-368",
+      "before": "<button type=\"button\" class=\"cell boxright fixed\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"true\" tabindex=\"-1\" aria-label=\"9행 3열 3\">3</button>",
+      "evidence": {
+        "backgroundRGB": [
+          242,
+          239,
+          249
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(8) > button:nth-child(3)",
+          "fillRatio": 1,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(9) > button:nth-child(4)",
+      "id": "FW500-369",
+      "before": "<button type=\"button\" class=\"cell\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"9행 4열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(8) > button:nth-child(4)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(9) > button:nth-child(5)",
+      "id": "FW500-370",
+      "before": "<button type=\"button\" class=\"cell\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"9행 5열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(8) > button:nth-child(5)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(9) > button:nth-child(6)",
+      "id": "FW500-371",
+      "before": "<button type=\"button\" class=\"cell boxright\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"9행 6열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(8) > button:nth-child(6)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(9) > button:nth-child(7)",
+      "id": "FW500-372",
+      "before": "<button type=\"button\" class=\"cell\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"9행 7열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(8) > button:nth-child(7)",
+          "fillRatio": 1,
+          "edgeRatio": 1.742
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(9) > button:nth-child(8)",
+      "id": "FW500-373",
+      "before": "<button type=\"button\" class=\"cell fixed\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"true\" tabindex=\"-1\" aria-label=\"9행 8열 2\">2</button>",
+      "evidence": {
+        "backgroundRGB": [
+          242,
+          239,
+          249
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(8) > button:nth-child(8)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(9) > button:nth-child(9)",
+      "id": "FW500-374",
+      "before": "<button type=\"button\" class=\"cell\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"9행 9열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > div:nth-child(8) > button:nth-child(9)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "threads-code.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#profile",
+      "id": "FW500-375",
+      "before": "<input id=\"profile\" placeholder=\"https://www.threads.net/@username\" maxlength=\"110\">",
+      "evidence": {
+        "fillContrast": 1.166,
+        "borderContrasts": [
+          2.909,
+          2.909,
+          2.909,
+          2.909
+        ],
+        "outsideRGB": [
+          27,
+          35,
+          64
+        ],
+        "insideRGB": [
+          14,
+          22,
+          42
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "threads-code.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#code",
+      "id": "FW500-376",
+      "before": "<input id=\"code\" aria-label=\"공유 코드\" type=\"password\" inputmode=\"numeric\" maxlength=\"4\" placeholder=\"확인 코드\">",
+      "evidence": {
+        "fillContrast": 1.166,
+        "borderContrasts": [
+          2.909,
+          2.909,
+          2.909,
+          2.909
+        ],
+        "outsideRGB": [
+          27,
+          35,
+          64
+        ],
+        "insideRGB": [
+          14,
+          22,
+          42
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "typing.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#mode",
+      "id": "FW500-377",
+      "before": "<select id=\"mode\"><option value=\"general\">일반 문장</option><option value=\"url\">URL 링크 입력</option><option value=\"python\">Python 코드</option><option value=\"html\">HTML 코드</option><option value=\"java\">Java 코드</option><option val",
+      "evidence": {
+        "fillContrast": 1.133,
+        "borderContrasts": [
+          2.163,
+          2.163,
+          2.163,
+          2.163
+        ],
+        "outsideRGB": [
+          32,
+          33,
+          60
+        ],
+        "insideRGB": [
+          21,
+          22,
+          46
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "typing.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#lang",
+      "id": "FW500-378",
+      "before": "<select id=\"lang\"><option value=\"ko\">한국어</option><option value=\"en\">English</option></select>",
+      "evidence": {
+        "fillContrast": 1.133,
+        "borderContrasts": [
+          2.163,
+          2.163,
+          2.163,
+          2.163
+        ],
+        "outsideRGB": [
+          32,
+          33,
+          60
+        ],
+        "insideRGB": [
+          21,
+          22,
+          46
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "typing.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#level",
+      "id": "FW500-379",
+      "before": "<select id=\"level\"><option value=\"easy\">쉬움</option><option value=\"normal\">보통</option><option value=\"hard\">어려움</option></select>",
+      "evidence": {
+        "fillContrast": 1.133,
+        "borderContrasts": [
+          2.163,
+          2.163,
+          2.163,
+          2.163
+        ],
+        "outsideRGB": [
+          32,
+          33,
+          60
+        ],
+        "insideRGB": [
+          21,
+          22,
+          46
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "typing.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#duration",
+      "id": "FW500-380",
+      "before": "<select id=\"duration\"><option value=\"30\">30초</option><option value=\"60\" selected=\"\">60초</option><option value=\"120\">120초</option><option value=\"0\">시간 제한 없음</option></select>",
+      "evidence": {
+        "fillContrast": 1.133,
+        "borderContrasts": [
+          2.163,
+          2.163,
+          2.163,
+          2.163
+        ],
+        "outsideRGB": [
+          32,
+          33,
+          60
+        ],
+        "insideRGB": [
+          21,
+          22,
+          46
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "typing.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#answer",
+      "id": "FW500-381",
+      "before": "<textarea id=\"answer\" autocomplete=\"off\" autocapitalize=\"off\" spellcheck=\"false\" maxlength=\"3000\" placeholder=\"위 문장을 그대로 입력하세요\"></textarea>",
+      "evidence": {
+        "fillContrast": 1.133,
+        "borderContrasts": [
+          2.163,
+          2.163,
+          2.163,
+          2.163
+        ],
+        "outsideRGB": [
+          32,
+          33,
+          60
+        ],
+        "insideRGB": [
+          21,
+          22,
+          46
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "workshop/gallery.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#search",
+      "id": "FW500-382",
+      "before": "<input id=\"search\" type=\"search\" placeholder=\"제목 또는 설명 검색\" aria-label=\"작품 검색\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.529,
+          1.529,
+          1.529,
+          1.529
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "workshop/gallery.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#category",
+      "id": "FW500-383",
+      "before": "<select id=\"category\" aria-label=\"작품 종류\"><option value=\"\">전체 종류</option><option>Maze</option><option>Music</option><option>Form</option><option>Check</option><option>기타</option></select>",
+      "evidence": {
+        "fillContrast": 1.15,
+        "borderContrasts": [
+          1.529,
+          1.529,
+          1.529,
+          1.529
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          239,
+          239,
+          239
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "workshop/gallery.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#sort",
+      "id": "FW500-384",
+      "before": "<select id=\"sort\" aria-label=\"정렬\"><option value=\"new\">최신순</option><option value=\"title\">이름순</option></select>",
+      "evidence": {
+        "fillContrast": 1.15,
+        "borderContrasts": [
+          1.529,
+          1.529,
+          1.529,
+          1.529
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          239,
+          239,
+          239
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "workshop/gallery.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#submission > label:nth-child(1) > input:nth-child(1)",
+      "id": "FW500-385",
+      "before": "<input name=\"title\" required=\"\" maxlength=\"60\" placeholder=\"작품의 이름\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.529,
+          1.529,
+          1.529,
+          1.529
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "workshop/gallery.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#submission > label:nth-child(2) > select:nth-child(1)",
+      "id": "FW500-386",
+      "before": "<select name=\"type\"><option>Maze</option><option>Music</option><option>Form</option><option>Check</option><option>기타</option></select>",
+      "evidence": {
+        "fillContrast": 1.15,
+        "borderContrasts": [
+          1.529,
+          1.529,
+          1.529,
+          1.529
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          239,
+          239,
+          239
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "workshop/gallery.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#submission > label:nth-child(3) > textarea:nth-child(1)",
+      "id": "FW500-387",
+      "before": "<textarea name=\"description\" maxlength=\"280\" required=\"\" placeholder=\"이 작품은 어떤 작품인가요?\"></textarea>",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.529,
+          1.529,
+          1.529,
+          1.529
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "workshop/gallery.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#submission > label:nth-child(4) > input:nth-child(1)",
+      "id": "FW500-388",
+      "before": "<input name=\"url\" type=\"url\" maxlength=\"600\" required=\"\" placeholder=\"https://...\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.529,
+          1.529,
+          1.529,
+          1.529
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "workshop/gallery.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#submission > label:nth-child(5) > input:nth-child(1)",
+      "id": "FW500-389",
+      "before": "<input name=\"author\" maxlength=\"32\" required=\"\" placeholder=\"공개될 이름 (실명 대신 닉네임 추천)\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.529,
+          1.529,
+          1.529,
+          1.529
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "workshop/index.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#workTitle",
+      "id": "FW500-390",
+      "before": "<input id=\"workTitle\" aria-label=\"작품 이름\" maxlength=\"60\" placeholder=\"작품 이름\" required=\"\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.515,
+          1.515,
+          1.515,
+          1.515
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "workshop/index.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#workType",
+      "id": "FW500-391",
+      "before": "<select id=\"workType\" aria-label=\"작품 종류\"><option>Maze</option><option>Music</option><option>Form</option><option>Check</option><option>기타</option></select>",
+      "evidence": {
+        "fillContrast": 1.15,
+        "borderContrasts": [
+          1.515,
+          1.515,
+          1.515,
+          1.515
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          239,
+          239,
+          239
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "workshop/index.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#workUrl",
+      "id": "FW500-392",
+      "before": "<input id=\"workUrl\" aria-label=\"작품 주소\" type=\"url\" maxlength=\"600\" placeholder=\"https://... 작품 URL\" required=\"\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.515,
+          1.515,
+          1.515,
+          1.515
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel_AI",
+      "file": "index.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#input",
+      "id": "FW500-393",
+      "before": "<input id=\"input\" maxlength=\"500\" placeholder=\"AI에게 말을 걸어보세요...\" autocomplete=\"off\" aria-label=\"입력 내용\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.388,
+          1.388,
+          1.388,
+          1.388
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel_Animation",
+      "file": "index.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#foScale",
+      "id": "FW500-394",
+      "before": "<input type=\"number\" id=\"foScale\" min=\"5\" max=\"500\" value=\"100\">",
+      "evidence": {
+        "fillContrast": 1.307,
+        "borderContrasts": [
+          2.362,
+          2.362,
+          2.362,
+          2.362
+        ],
+        "outsideRGB": [
+          16,
+          19,
+          35
+        ],
+        "insideRGB": [
+          36,
+          42,
+          68
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel_Animation",
+      "file": "index.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#foRotate",
+      "id": "FW500-395",
+      "before": "<input type=\"number\" id=\"foRotate\" min=\"-360\" max=\"360\" value=\"0\">",
+      "evidence": {
+        "fillContrast": 1.307,
+        "borderContrasts": [
+          2.362,
+          2.362,
+          2.362,
+          2.362
+        ],
+        "outsideRGB": [
+          16,
+          19,
+          35
+        ],
+        "insideRGB": [
+          36,
+          42,
+          68
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel_Animation",
+      "file": "index.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#fps",
+      "id": "FW500-396",
+      "before": "<input type=\"number\" id=\"fps\" value=\"8\" min=\"1\" max=\"24\">",
+      "evidence": {
+        "fillContrast": 1.063,
+        "borderContrasts": [
+          1.92,
+          1.92,
+          1.92,
+          1.92
+        ],
+        "outsideRGB": [
+          32,
+          38,
+          59
+        ],
+        "insideRGB": [
+          36,
+          42,
+          68
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel_Balance",
+      "file": "index.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#nickname",
+      "id": "FW500-397",
+      "before": "<input id=\"nickname\" maxlength=\"12\" placeholder=\"닉네임을 입력하세요 (최대 12자)\" aria-label=\"닉네임\">",
+      "evidence": {
+        "fillContrast": 1.036,
+        "borderContrasts": [
+          1.307,
+          1.307,
+          1.307,
+          1.307
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          250,
+          251,
+          252
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel_Bomb",
+      "file": "index.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#name",
+      "id": "FW500-398",
+      "before": "<input id=\"name\" maxlength=\"16\" placeholder=\"닉네임\" autocomplete=\"off\" aria-label=\"닉네임\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.358,
+          1.358,
+          1.358,
+          1.358
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel_Bomb",
+      "file": "index.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#roomInput",
+      "id": "FW500-399",
+      "before": "<input id=\"roomInput\" maxlength=\"6\" placeholder=\"방 코드\" autocomplete=\"off\" autocapitalize=\"characters\" aria-label=\"참가할 방 코드\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.358,
+          1.358,
+          1.358,
+          1.358
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel_Casino",
+      "file": "battle.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#nick",
+      "id": "FW500-400",
+      "before": "<input id=\"nick\" maxlength=\"14\" placeholder=\"닉네임\" aria-label=\"닉네임\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.505,
+          1.505,
+          1.505,
+          1.505
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    }
+  ]
+}

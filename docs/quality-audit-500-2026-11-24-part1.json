@@ -1,0 +1,2283 @@
+{
+  "date": "2026-11-24",
+  "totalInAudit": 523,
+  "findings": [
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(1) > .tag"
+      ],
+      "id": "FW500-001",
+      "before": "<span class=\"tag\">시작 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(2) > .tag"
+      ],
+      "id": "FW500-002",
+      "before": "<span class=\"tag\">시작 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(3) > .tag"
+      ],
+      "id": "FW500-003",
+      "before": "<span class=\"tag\">시작 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(4) > .tag"
+      ],
+      "id": "FW500-004",
+      "before": "<span class=\"tag\">시작 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(5) > .tag"
+      ],
+      "id": "FW500-005",
+      "before": "<span class=\"tag\">시작 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(6) > .tag"
+      ],
+      "id": "FW500-006",
+      "before": "<span class=\"tag\">시작 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(7) > .tag"
+      ],
+      "id": "FW500-007",
+      "before": "<span class=\"tag\">시작 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(8) > .tag"
+      ],
+      "id": "FW500-008",
+      "before": "<span class=\"tag\">시작 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(9) > .tag"
+      ],
+      "id": "FW500-009",
+      "before": "<span class=\"tag\">시작 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(10) > .tag"
+      ],
+      "id": "FW500-010",
+      "before": "<span class=\"tag\">시작 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(11) > .tag"
+      ],
+      "id": "FW500-011",
+      "before": "<span class=\"tag\">시작 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(12) > .tag"
+      ],
+      "id": "FW500-012",
+      "before": "<span class=\"tag\">시작 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(13) > .tag"
+      ],
+      "id": "FW500-013",
+      "before": "<span class=\"tag\">시작 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(14) > .tag"
+      ],
+      "id": "FW500-014",
+      "before": "<span class=\"tag\">시작 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(15) > .tag"
+      ],
+      "id": "FW500-015",
+      "before": "<span class=\"tag\">시작 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(16) > .tag"
+      ],
+      "id": "FW500-016",
+      "before": "<span class=\"tag\">시작 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(17) > .tag"
+      ],
+      "id": "FW500-017",
+      "before": "<span class=\"tag\">시작 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(18) > .tag"
+      ],
+      "id": "FW500-018",
+      "before": "<span class=\"tag\">시작 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(19) > .tag"
+      ],
+      "id": "FW500-019",
+      "before": "<span class=\"tag\">프로젝트 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(20) > .tag"
+      ],
+      "id": "FW500-020",
+      "before": "<span class=\"tag\">프로젝트 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(21) > .tag"
+      ],
+      "id": "FW500-021",
+      "before": "<span class=\"tag\">프로젝트 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(22) > .tag"
+      ],
+      "id": "FW500-022",
+      "before": "<span class=\"tag\">프로젝트 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(23) > .tag"
+      ],
+      "id": "FW500-023",
+      "before": "<span class=\"tag\">프로젝트 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(24) > .tag"
+      ],
+      "id": "FW500-024",
+      "before": "<span class=\"tag\">프로젝트 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(25) > .tag"
+      ],
+      "id": "FW500-025",
+      "before": "<span class=\"tag\">프로젝트 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(26) > .tag"
+      ],
+      "id": "FW500-026",
+      "before": "<span class=\"tag\">프로젝트 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(27) > .tag"
+      ],
+      "id": "FW500-027",
+      "before": "<span class=\"tag\">프로젝트 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(28) > .tag"
+      ],
+      "id": "FW500-028",
+      "before": "<span class=\"tag\">프로젝트 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(29) > .tag"
+      ],
+      "id": "FW500-029",
+      "before": "<span class=\"tag\">프로젝트 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(30) > .tag"
+      ],
+      "id": "FW500-030",
+      "before": "<span class=\"tag\">프로젝트 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(31) > .tag"
+      ],
+      "id": "FW500-031",
+      "before": "<span class=\"tag\">프로젝트 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(32) > .tag"
+      ],
+      "id": "FW500-032",
+      "before": "<span class=\"tag\">프로젝트 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(33) > .tag"
+      ],
+      "id": "FW500-033",
+      "before": "<span class=\"tag\">프로젝트 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(34) > .tag"
+      ],
+      "id": "FW500-034",
+      "before": "<span class=\"tag\">프로젝트 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(35) > .tag"
+      ],
+      "id": "FW500-035",
+      "before": "<span class=\"tag\">프로젝트 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(36) > .tag"
+      ],
+      "id": "FW500-036",
+      "before": "<span class=\"tag\">프로젝트 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(37) > .tag"
+      ],
+      "id": "FW500-037",
+      "before": "<span class=\"tag\">프로젝트 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(38) > .tag"
+      ],
+      "id": "FW500-038",
+      "before": "<span class=\"tag\">프로젝트 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(39) > .tag"
+      ],
+      "id": "FW500-039",
+      "before": "<span class=\"tag\">프로젝트 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(40) > .tag"
+      ],
+      "id": "FW500-040",
+      "before": "<span class=\"tag\">프로젝트 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(41) > .tag"
+      ],
+      "id": "FW500-041",
+      "before": "<span class=\"tag\">프로젝트 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(42) > .tag"
+      ],
+      "id": "FW500-042",
+      "before": "<span class=\"tag\">프로젝트 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(43) > .tag"
+      ],
+      "id": "FW500-043",
+      "before": "<span class=\"tag\">프로젝트 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(44) > .tag"
+      ],
+      "id": "FW500-044",
+      "before": "<span class=\"tag\">프로젝트 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(45) > .tag"
+      ],
+      "id": "FW500-045",
+      "before": "<span class=\"tag\">기념일 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(46) > .tag"
+      ],
+      "id": "FW500-046",
+      "before": "<span class=\"tag\">기념일 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(47) > .tag"
+      ],
+      "id": "FW500-047",
+      "before": "<span class=\"tag\">기념일 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(48) > .tag"
+      ],
+      "id": "FW500-048",
+      "before": "<span class=\"tag\">기념일 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(49) > .tag"
+      ],
+      "id": "FW500-049",
+      "before": "<span class=\"tag\">기념일 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(50) > .tag"
+      ],
+      "id": "FW500-050",
+      "before": "<span class=\"tag\">도전 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(51) > .tag"
+      ],
+      "id": "FW500-051",
+      "before": "<span class=\"tag\">도전 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(52) > .tag"
+      ],
+      "id": "FW500-052",
+      "before": "<span class=\"tag\">도전 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(53) > .tag"
+      ],
+      "id": "FW500-053",
+      "before": "<span class=\"tag\">도전 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(54) > .tag"
+      ],
+      "id": "FW500-054",
+      "before": "<span class=\"tag\">도전 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(55) > .tag"
+      ],
+      "id": "FW500-055",
+      "before": "<span class=\"tag\">도전 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(56) > .tag"
+      ],
+      "id": "FW500-056",
+      "before": "<span class=\"tag\">도전 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(57) > .tag"
+      ],
+      "id": "FW500-057",
+      "before": "<span class=\"tag\">도전 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(58) > .tag"
+      ],
+      "id": "FW500-058",
+      "before": "<span class=\"tag\">도전 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(59) > .tag"
+      ],
+      "id": "FW500-059",
+      "before": "<span class=\"tag\">도전 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(60) > .tag"
+      ],
+      "id": "FW500-060",
+      "before": "<span class=\"tag\">도전 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(61) > .tag"
+      ],
+      "id": "FW500-061",
+      "before": "<span class=\"tag\">도전 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(62) > .tag"
+      ],
+      "id": "FW500-062",
+      "before": "<span class=\"tag\">도전 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(63) > .tag"
+      ],
+      "id": "FW500-063",
+      "before": "<span class=\"tag\">도전 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(64) > .tag"
+      ],
+      "id": "FW500-064",
+      "before": "<span class=\"tag\">도전 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(65) > .tag"
+      ],
+      "id": "FW500-065",
+      "before": "<span class=\"tag\">도전 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(66) > .tag"
+      ],
+      "id": "FW500-066",
+      "before": "<span class=\"tag\">도전 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(67) > .tag"
+      ],
+      "id": "FW500-067",
+      "before": "<span class=\"tag\">도전 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(68) > .tag"
+      ],
+      "id": "FW500-068",
+      "before": "<span class=\"tag\">도전 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(69) > .tag"
+      ],
+      "id": "FW500-069",
+      "before": "<span class=\"tag\">도전 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(70) > .tag"
+      ],
+      "id": "FW500-070",
+      "before": "<span class=\"tag\">도전 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(71) > .tag"
+      ],
+      "id": "FW500-071",
+      "before": "<span class=\"tag\">도전 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(72) > .tag"
+      ],
+      "id": "FW500-072",
+      "before": "<span class=\"tag\">도전 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(73) > .tag"
+      ],
+      "id": "FW500-073",
+      "before": "<span class=\"tag\">도전 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(74) > .tag"
+      ],
+      "id": "FW500-074",
+      "before": "<span class=\"tag\">도전 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(75) > .tag"
+      ],
+      "id": "FW500-075",
+      "before": "<span class=\"tag\">도전 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(76) > .tag"
+      ],
+      "id": "FW500-076",
+      "before": "<span class=\"tag\">도전 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(77) > .tag"
+      ],
+      "id": "FW500-077",
+      "before": "<span class=\"tag\">도전 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(78) > .tag"
+      ],
+      "id": "FW500-078",
+      "before": "<span class=\"tag\">도전 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(79) > .tag"
+      ],
+      "id": "FW500-079",
+      "before": "<span class=\"tag\">도전 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(80) > .tag"
+      ],
+      "id": "FW500-080",
+      "before": "<span class=\"tag\">도전 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(81) > .tag"
+      ],
+      "id": "FW500-081",
+      "before": "<span class=\"tag\">도전 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "achievement.html",
+      "state": "page:achievement.html",
+      "rule": "color-contrast",
+      "target": [
+        "article:nth-child(82) > .tag"
+      ],
+      "id": "FW500-082",
+      "before": "<span class=\"tag\">도전 · 미획득</span>",
+      "evidence": [
+        {
+          "fgColor": "#6d70cf",
+          "bgColor": "#f3f4ff",
+          "contrastRatio": 3.94,
+          "fontSize": "8.3pt (11px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "pixel-war.html",
+      "state": "page:pixel-war.html",
+      "rule": "scrollable-region-focusable",
+      "target": [
+        "#viewport"
+      ],
+      "id": "FW500-083",
+      "before": "<div class=\"board\" id=\"viewport\"><canvas id=\"canvas\" width=\"100\" height=\"100\" style=\"width: 500px; height: 500px;\"></canvas></div>",
+      "evidence": [
+        null
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "profile.html",
+      "state": "page:profile.html",
+      "rule": "color-contrast",
+      "target": [
+        ".fw-badge.locked:nth-child(1) > div > strong"
+      ],
+      "id": "FW500-084",
+      "before": "<strong>첫 방문</strong>",
+      "evidence": [
+        {
+          "fgColor": "#757884",
+          "bgColor": "#f8f8fb",
+          "contrastRatio": 4.14,
+          "fontSize": "10.5pt (14px)",
+          "fontWeight": "bold",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "profile.html",
+      "state": "page:profile.html",
+      "rule": "color-contrast",
+      "target": [
+        ".fw-badge.locked:nth-child(1) > div > small"
+      ],
+      "id": "FW500-085",
+      "before": "<small>미획득 · 시작</small>",
+      "evidence": [
+        {
+          "fgColor": "#a0a6b3",
+          "bgColor": "#f8f8fb",
+          "contrastRatio": 2.3,
+          "fontSize": "10.0pt (13.3333px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "profile.html",
+      "state": "page:profile.html",
+      "rule": "color-contrast",
+      "target": [
+        ".fw-badge.locked:nth-child(2) > div > strong"
+      ],
+      "id": "FW500-086",
+      "before": "<strong>프로필 완성</strong>",
+      "evidence": [
+        {
+          "fgColor": "#757884",
+          "bgColor": "#f8f8fb",
+          "contrastRatio": 4.14,
+          "fontSize": "10.5pt (14px)",
+          "fontWeight": "bold",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "profile.html",
+      "state": "page:profile.html",
+      "rule": "color-contrast",
+      "target": [
+        ".fw-badge.locked:nth-child(2) > div > small"
+      ],
+      "id": "FW500-087",
+      "before": "<small>미획득 · 시작</small>",
+      "evidence": [
+        {
+          "fgColor": "#a0a6b3",
+          "bgColor": "#f8f8fb",
+          "contrastRatio": 2.3,
+          "fontSize": "10.0pt (13.3333px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "profile.html",
+      "state": "page:profile.html",
+      "rule": "color-contrast",
+      "target": [
+        ".fw-badge.locked:nth-child(3) > div > strong"
+      ],
+      "id": "FW500-088",
+      "before": "<strong>탐험 시작</strong>",
+      "evidence": [
+        {
+          "fgColor": "#757884",
+          "bgColor": "#f8f8fb",
+          "contrastRatio": 4.14,
+          "fontSize": "10.5pt (14px)",
+          "fontWeight": "bold",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "profile.html",
+      "state": "page:profile.html",
+      "rule": "color-contrast",
+      "target": [
+        ".fw-badge.locked:nth-child(3) > div > small"
+      ],
+      "id": "FW500-089",
+      "before": "<small>미획득 · 시작</small>",
+      "evidence": [
+        {
+          "fgColor": "#a0a6b3",
+          "bgColor": "#f8f8fb",
+          "contrastRatio": 2.3,
+          "fontSize": "10.0pt (13.3333px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "profile.html",
+      "state": "page:profile.html",
+      "rule": "color-contrast",
+      "target": [
+        ".fw-badge.locked:nth-child(4) > div > strong"
+      ],
+      "id": "FW500-090",
+      "before": "<strong>5개 프로젝트 탐험</strong>",
+      "evidence": [
+        {
+          "fgColor": "#757884",
+          "bgColor": "#f8f8fb",
+          "contrastRatio": 4.14,
+          "fontSize": "10.5pt (14px)",
+          "fontWeight": "bold",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "profile.html",
+      "state": "page:profile.html",
+      "rule": "color-contrast",
+      "target": [
+        ".fw-badge.locked:nth-child(4) > div > small"
+      ],
+      "id": "FW500-091",
+      "before": "<small>미획득 · 시작</small>",
+      "evidence": [
+        {
+          "fgColor": "#a0a6b3",
+          "bgColor": "#f8f8fb",
+          "contrastRatio": 2.3,
+          "fontSize": "10.0pt (13.3333px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "profile.html",
+      "state": "page:profile.html",
+      "rule": "color-contrast",
+      "target": [
+        ".fw-badge.locked:nth-child(5) > div > strong"
+      ],
+      "id": "FW500-092",
+      "before": "<strong>10개 프로젝트 탐험</strong>",
+      "evidence": [
+        {
+          "fgColor": "#757884",
+          "bgColor": "#f8f8fb",
+          "contrastRatio": 4.14,
+          "fontSize": "10.5pt (14px)",
+          "fontWeight": "bold",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "profile.html",
+      "state": "page:profile.html",
+      "rule": "color-contrast",
+      "target": [
+        ".fw-badge.locked:nth-child(5) > div > small"
+      ],
+      "id": "FW500-093",
+      "before": "<small>미획득 · 시작</small>",
+      "evidence": [
+        {
+          "fgColor": "#a0a6b3",
+          "bgColor": "#f8f8fb",
+          "contrastRatio": 2.3,
+          "fontSize": "10.0pt (13.3333px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "profile.html",
+      "state": "page:profile.html",
+      "rule": "color-contrast",
+      "target": [
+        ".fw-badge.locked:nth-child(6) > div > strong"
+      ],
+      "id": "FW500-094",
+      "before": "<strong>20개 프로젝트 탐험</strong>",
+      "evidence": [
+        {
+          "fgColor": "#757884",
+          "bgColor": "#f8f8fb",
+          "contrastRatio": 4.14,
+          "fontSize": "10.5pt (14px)",
+          "fontWeight": "bold",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "profile.html",
+      "state": "page:profile.html",
+      "rule": "color-contrast",
+      "target": [
+        ".fw-badge.locked:nth-child(6) > div > small"
+      ],
+      "id": "FW500-095",
+      "before": "<small>미획득 · 시작</small>",
+      "evidence": [
+        {
+          "fgColor": "#a0a6b3",
+          "bgColor": "#f8f8fb",
+          "contrastRatio": 2.3,
+          "fontSize": "10.0pt (13.3333px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel_AI",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "target-size",
+      "target": [
+        "#secol-share-link"
+      ],
+      "id": "FW500-096",
+      "before": "<button type=\"button\" id=\"secol-share-link\" aria-label=\"현재 프로젝트 링크 공유\">🔗 공유</button>",
+      "evidence": [
+        {
+          "messageKey": "partiallyObscured",
+          "minSize": 24,
+          "width": 71.5,
+          "height": 2
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel_Chat",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "target-size",
+      "target": [
+        "#secol-share-link"
+      ],
+      "id": "FW500-097",
+      "before": "<button type=\"button\" id=\"secol-share-link\" aria-label=\"현재 프로젝트 링크 공유\">🔗 공유</button>",
+      "evidence": [
+        {
+          "messageKey": "partiallyObscured",
+          "minSize": 24,
+          "width": 71.5,
+          "height": 2
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel_Check",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "target-size",
+      "target": [
+        "#secol-share-link"
+      ],
+      "id": "FW500-098",
+      "before": "<button type=\"button\" id=\"secol-share-link\" aria-label=\"현재 프로젝트 링크 공유\">🔗 공유</button>",
+      "evidence": [
+        {
+          "messageKey": "partiallyObscured",
+          "minSize": 24,
+          "width": 71.5,
+          "height": 2
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "file": "season1-02/index.html",
+      "state": "page:season1-02/index.html",
+      "rule": "target-size",
+      "target": [
+        "#secol-share-link"
+      ],
+      "id": "FW500-099",
+      "before": "<button type=\"button\" id=\"secol-share-link\" aria-label=\"현재 프로젝트 링크 공유\">🔗 공유</button>",
+      "evidence": [
+        {
+          "messageKey": "partiallyObscured",
+          "minSize": 24,
+          "width": 71.5,
+          "height": 2
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel_Form",
+      "file": "index.html",
+      "state": "page:index.html",
+      "rule": "target-size",
+      "target": [
+        "#secol-share-link"
+      ],
+      "id": "FW500-100",
+      "before": "<button type=\"button\" id=\"secol-share-link\" aria-label=\"현재 프로젝트 링크 공유\">🔗 공유</button>",
+      "evidence": [
+        {
+          "messageKey": "partiallyObscured",
+          "minSize": 24,
+          "width": 71.5,
+          "height": 2
+        }
+      ],
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    }
+  ]
+}

@@ -1,0 +1,446 @@
+{
+  "date": "2026-11-24",
+  "requested": 500,
+  "total": 523,
+  "previousAudit": "quality-audit-third-2026-11-24.json",
+  "integrationBase": "fd91f04aab37fd51c61a3ed0698049aa2029e633",
+  "method": "Unique repo/file/rule/target occurrences, excluding matching entries from all three preceding audits. Multiple elements can share a root cause. Repeated themes, screen modes and viewports do not add to the count. Boundary checks compare author-styled editable fields and active board cells to adjacent backgrounds at 3:1; native uncontrolled, disabled/readonly, shadow/gradient cases are excluded. These are 523 element/rule occurrences, not 523 independent logic defects.",
+  "categories": {
+    "color-contrast": 135,
+    "scrollable-region-focusable": 1,
+    "target-size": 7,
+    "input-boundary-contrast": 235,
+    "grid-boundary-contrast": 145
+  },
+  "repositories": [
+    {
+      "repo": "Formwheel",
+      "baseline": "fd91f04aab37fd51c61a3ed0698049aa2029e633",
+      "occurrences": 344,
+      "baseBranch": "codex/formwheel-third-300-fixes-20261124"
+    },
+    {
+      "repo": "Formwheel_AI",
+      "baseline": "2b3b0224939fa0c0ad7c7b0b7b58bfe434966fe9",
+      "occurrences": 4,
+      "baseBranch": "codex/formwheel-more-300-fixes-20261123",
+      "fixedCommit": "df977caa13f9925c54c2e8967338434c213ea96c",
+      "tree": "6fe04e8520f8ba43813aadc2860f649170546361",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_AI/pull/2"
+    },
+    {
+      "repo": "Formwheel_AQS",
+      "baseline": "2ae9ea1895f2b6b214710079009b83d652458616",
+      "occurrences": 0,
+      "baseBranch": "codex/formwheel-third-300-fixes-20261124"
+    },
+    {
+      "repo": "Formwheel_Animation",
+      "baseline": "5dc8c5a6978acda0d93f30b75dbcb962dc656cce",
+      "occurrences": 3,
+      "baseBranch": "codex/formwheel-more-300-fixes-20261123",
+      "fixedCommit": "1987c64535a01f95b554f42e7074d4605aefd44c",
+      "tree": "ec81f1a742cdcab13f0f2a551ae9935d7a0c90fc",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_Animation/pull/2"
+    },
+    {
+      "repo": "Formwheel_Balance",
+      "baseline": "adf826f3ace254ecf2d9b26131ebb2afe37478ce",
+      "occurrences": 3,
+      "baseBranch": "codex/formwheel-more-300-fixes-20261123"
+    },
+    {
+      "repo": "Formwheel_Battle",
+      "baseline": "2977a245e5492a0b150b0baae12ac8dc2246c298",
+      "occurrences": 2,
+      "baseBranch": "codex/formwheel-third-300-fixes-20261124"
+    },
+    {
+      "repo": "Formwheel_Bomb",
+      "baseline": "ce4bdbe30ed6b78e6d3003d9434811281cb503f1",
+      "occurrences": 5,
+      "baseBranch": "codex/formwheel-third-300-fixes-20261124"
+    },
+    {
+      "repo": "Formwheel_Button",
+      "baseline": "9c0552016ced96fa0d831378830f0343f8bb9d22",
+      "occurrences": 0,
+      "baseBranch": "codex/formwheel-third-300-fixes-20261124"
+    },
+    {
+      "repo": "Formwheel_Casino",
+      "baseline": "991391641cbb4f99646d956e3f7b4393ac1b8cc8",
+      "occurrences": 4,
+      "baseBranch": "codex/formwheel-third-300-fixes-20261124",
+      "fixedCommit": "85d98f83db06f3f156b85c5a2e97330e4f112438",
+      "tree": "4e711ec7df8cfdefbe4649276ca950703df6d742",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_Casino/pull/2"
+    },
+    {
+      "repo": "Formwheel_Chat",
+      "baseline": "de7f9ed235fe4649e1bb58159456f384315a8eb8",
+      "occurrences": 2,
+      "baseBranch": "codex/formwheel-more-300-fixes-20261123"
+    },
+    {
+      "repo": "Formwheel_Check",
+      "baseline": "58a6867cd0ee3f306a08fd4705a10073ada519ab",
+      "occurrences": 5,
+      "baseBranch": "codex/formwheel-more-300-fixes-20261123"
+    },
+    {
+      "repo": "Formwheel_Clicker",
+      "baseline": "cb98e134104e2bcd6ad96efef79947a2ad7b2390",
+      "occurrences": 8,
+      "baseBranch": "codex/formwheel-third-300-fixes-20261124",
+      "fixedCommit": "937ff1172b88c007dd4611da929474549bff7b59",
+      "tree": "a03f4879f38b22f36fd1cedc877d06034c2f1cf1",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_Clicker/pull/2"
+    },
+    {
+      "repo": "Formwheel_Cook",
+      "baseline": "3e2cbc0836a6a6c1bf2dd168a9e0170f9a5ad8dc",
+      "occurrences": 4,
+      "baseBranch": "codex/formwheel-more-300-fixes-20261123",
+      "fixedCommit": "7433707b778b00cd63e14e6af892b011d7ed69e1",
+      "tree": "4ac5353c98602ee05199980c495b79806c3d4bb8",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_Cook/pull/2"
+    },
+    {
+      "repo": "Formwheel_Decode",
+      "baseline": "48884356ef444951b520155a25794858d5e8e13a",
+      "occurrences": 6,
+      "baseBranch": "codex/formwheel-more-300-fixes-20261123"
+    },
+    {
+      "repo": "Formwheel_DiceDuel",
+      "baseline": "6f069c473ddb2463d6d11c485c6f28cfbe690ff3",
+      "occurrences": 2,
+      "baseBranch": "codex/formwheel-third-300-fixes-20261124"
+    },
+    {
+      "repo": "Formwheel_Edit",
+      "baseline": "c732bccae705de5d0716933b6a9f5927005c9f76",
+      "occurrences": 0,
+      "baseBranch": "codex/formwheel-more-300-fixes-20261123"
+    },
+    {
+      "repo": "Formwheel_Fate",
+      "baseline": "93330bdf434d11a613358c042002d0cca6c5ec8f",
+      "occurrences": 3,
+      "baseBranch": "codex/formwheel-third-300-fixes-20261124"
+    },
+    {
+      "repo": "Formwheel_Form",
+      "baseline": "7a412899a10c8808a06614222deb5e45eec4fbd8",
+      "occurrences": 8,
+      "baseBranch": "codex/formwheel-more-300-fixes-20261123"
+    },
+    {
+      "repo": "Formwheel_GCrown",
+      "baseline": "951ff41ff3365657ef3f4cbd21bc93f16325af50",
+      "occurrences": 1,
+      "baseBranch": "codex/formwheel-third-300-fixes-20261124"
+    },
+    {
+      "repo": "Formwheel_Glitch",
+      "baseline": "d4d36b73a2524cdd1548f6a5409720fdba4ef659",
+      "occurrences": 0,
+      "baseBranch": "codex/formwheel-third-300-fixes-20261124"
+    },
+    {
+      "repo": "Formwheel_LEEHWMROF",
+      "baseline": "76902a012757d32d112b1ebdf2dc67ef7f8235e4",
+      "occurrences": 1,
+      "baseBranch": "codex/formwheel-third-300-fixes-20261124",
+      "fixedCommit": "90ba398c20c5aebd897d2519bfe67763299f7415",
+      "tree": "d68cc670f9e1f1d5fb789d0124d568004a68dcb0",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_LEEHWMROF/pull/2"
+    },
+    {
+      "repo": "Formwheel_Marble",
+      "baseline": "23cb4f4c1852ebf36c8c56feb29b2f6ca000ed3f",
+      "occurrences": 4,
+      "baseBranch": "codex/formwheel-third-300-fixes-20261124",
+      "fixedCommit": "25d9e4686d022736b1f324589347709ae200fd30",
+      "tree": "4d5b0227f652533c80cdcc8ed273dcfe449a728e",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_Marble/pull/2"
+    },
+    {
+      "repo": "Formwheel_Maze",
+      "baseline": "402e81cca0bc12e4c46d055cbeeac645dc6625cc",
+      "occurrences": 2,
+      "baseBranch": "codex/formwheel-more-300-fixes-20261123",
+      "fixedCommit": "6d9ecb7e1002236f59efba24b95629e53e432175",
+      "tree": "094234f5427ba02bbff1c532790b6a655b16309d",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_Maze/pull/2"
+    },
+    {
+      "repo": "Formwheel_Mix",
+      "baseline": "1b5b991340c77c49a9d1962160035c534ced1de9",
+      "occurrences": 0,
+      "baseBranch": "main"
+    },
+    {
+      "repo": "Formwheel_Music",
+      "baseline": "0c860fc7bfb82b7d94d78f3a59c6c0c44f4e403f",
+      "occurrences": 7,
+      "baseBranch": "codex/formwheel-more-300-fixes-20261123",
+      "fixedCommit": "4f2c0fae01cde30ec5423ed9d41d7a89c54b02b5",
+      "tree": "dce38d0c61126c12f40bf312877af64c59b3ec30",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_Music/pull/2"
+    },
+    {
+      "repo": "Formwheel_Note",
+      "baseline": "5fd42de8950ba5d75119ca14ffca3fc1b46c3088",
+      "occurrences": 5,
+      "baseBranch": "codex/formwheel-more-300-fixes-20261123",
+      "fixedCommit": "95170a3085f089983807c840e3f2239491a3821c",
+      "tree": "c66f16dbadac167b9a673b4fbf3d38d1cefeeec0",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_Note/pull/2"
+    },
+    {
+      "repo": "Formwheel_PVP",
+      "baseline": "3d98fc44c618a8ca021f79d9360db47c9a0b234d",
+      "occurrences": 5,
+      "baseBranch": "main",
+      "fixedCommit": "f24430cbd566ac4ce73a595321cefb75478bd652",
+      "tree": "1e45456b9c17d6fdc9dc0c72681ad38da72b44df",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_PVP/pull/1"
+    },
+    {
+      "repo": "Formwheel_Paint",
+      "baseline": "7045e288d4cf087e7583950e3fa7d328ee71cb1a",
+      "occurrences": 3,
+      "baseBranch": "main",
+      "fixedCommit": "c7993587237d19b6ec7c7ef6b0f5d15663acba10",
+      "tree": "55b3fe3c5aca10f306ed588a4c4c98e0cc2a9e96",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_Paint/pull/2"
+    },
+    {
+      "repo": "Formwheel_Piano",
+      "baseline": "b574ef953d4bd688abf6553ecb82ab0e40c985aa",
+      "occurrences": 2,
+      "baseBranch": "codex/formwheel-more-300-fixes-20261123"
+    },
+    {
+      "repo": "Formwheel_Quiz",
+      "baseline": "1301c31bb556e4a418e758032decc30d2fed82e6",
+      "occurrences": 4,
+      "baseBranch": "codex/formwheel-more-300-fixes-20261123",
+      "fixedCommit": "9ea825d72209658e10cced3405e2f50e25648516",
+      "tree": "cf6ae02ad0dd5b43df092b2a72265acf20dd9431",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_Quiz/pull/2"
+    },
+    {
+      "repo": "Formwheel_Reflex",
+      "baseline": "7adc6d9170cd328687b878309088c58ed7647c88",
+      "occurrences": 1,
+      "baseBranch": "codex/formwheel-third-300-fixes-20261124"
+    },
+    {
+      "repo": "Formwheel_Risk",
+      "baseline": "735c950a34f59929523f64f386878ad4ccc252bc",
+      "occurrences": 5,
+      "baseBranch": "codex/formwheel-third-300-fixes-20261124"
+    },
+    {
+      "repo": "Formwheel_Ruletory",
+      "baseline": "8117fb20e1a84e7fd3ebd590e269e589307e1c94",
+      "occurrences": 0,
+      "baseBranch": "codex/formwheel-third-300-fixes-20261124"
+    },
+    {
+      "repo": "Formwheel_Scribble",
+      "baseline": "eba412b02ab5550006e6caafe37f3d065d3c9f1d",
+      "occurrences": 0,
+      "baseBranch": "codex/formwheel-third-300-fixes-20261124"
+    },
+    {
+      "repo": "Formwheel_Spotlight",
+      "baseline": "7c37caa8e165cfa799ca8eeae3783aeb4f532eb7",
+      "occurrences": 0,
+      "baseBranch": "codex/formwheel-third-300-fixes-20261124"
+    },
+    {
+      "repo": "Formwheel_Spy",
+      "baseline": "cac4cab3eda8a5ce3df0367e69e530ade860c551",
+      "occurrences": 6,
+      "baseBranch": "codex/formwheel-third-300-fixes-20261124"
+    },
+    {
+      "repo": "Formwheel_Story",
+      "baseline": "8f228f314f7f9b2a29f7c2c06f773c59ccb75139",
+      "occurrences": 0,
+      "baseBranch": "codex/formwheel-more-300-fixes-20261123"
+    },
+    {
+      "repo": "Formwheel_Sync",
+      "baseline": "14dafd7b9092982663fc74db0acae8dd29d750ce",
+      "occurrences": 3,
+      "baseBranch": "main"
+    },
+    {
+      "repo": "Formwheel_Territory",
+      "baseline": "6b83a10e356ac7da7290ee820cb9094e3000255a",
+      "occurrences": 3,
+      "baseBranch": "codex/formwheel-third-300-fixes-20261124",
+      "fixedCommit": "768cc97992a993f137acf778b2cef2a754050572",
+      "tree": "37ebdfd6a2268d62730848e84853b32b732786b7",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_Territory/pull/2"
+    },
+    {
+      "repo": "Formwheel_Time",
+      "baseline": "bbcca3b33660db70d8208173845c3dedb020184b",
+      "occurrences": 1,
+      "baseBranch": "codex/formwheel-third-300-fixes-20261124"
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "baseline": "e8c936367cfe14f65d15af236b596405a335db43",
+      "occurrences": 37,
+      "baseBranch": "codex/formwheel-more-300-fixes-20261123"
+    },
+    {
+      "repo": "Formwheel_Vault",
+      "baseline": "2f4904afad998d72bf9be500b22921dcfe87df67",
+      "occurrences": 4,
+      "baseBranch": "codex/formwheel-more-300-fixes-20261123"
+    },
+    {
+      "repo": "Formwheel_Vote",
+      "baseline": "143dcce2d2bef44640ae8a23f3c6cb3ca542930a",
+      "occurrences": 4,
+      "baseBranch": "codex/formwheel-more-300-fixes-20261123"
+    },
+    {
+      "repo": "Formwheel_Wheel",
+      "baseline": "b0e77df75b9024fa5ee312e2fb2f645ecaecb649",
+      "occurrences": 17,
+      "baseBranch": "codex/formwheel-more-300-fixes-20261123",
+      "fixedCommit": "42d6e910eb06a720696ccc4f9d759d4eae2e0d38",
+      "tree": "b9edc8e5e557b729478805518eff2008a238a625",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_Wheel/pull/2"
+    },
+    {
+      "repo": "Formwheel_WheelB",
+      "baseline": "90939afab764bf44e85ae6eaeb0eb100946e9f53",
+      "occurrences": 1,
+      "baseBranch": "codex/formwheel-third-300-fixes-20261124"
+    },
+    {
+      "repo": "Formwheel_Whiteboard",
+      "baseline": "7fe00996577de9ed126e535c7a8e079f2fdd3447",
+      "occurrences": 3,
+      "baseBranch": "codex/formwheel-more-300-fixes-20261123",
+      "fixedCommit": "b105d9e7373b03beb4028b7b86053a6571fa0011",
+      "tree": "0c81f4d413ba6b5e23bcb07ff13a0cf9c6ea42a8",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_Whiteboard/pull/2"
+    },
+    {
+      "repo": "Formwheel_Wiki",
+      "baseline": "8b6286d64831af8c30d735bd16fda4435be61649",
+      "occurrences": 1,
+      "baseBranch": "codex/formwheel-third-300-fixes-20261124",
+      "fixedCommit": "e863f2c0d613e92a557d3b8dc99c195a38ff8ed6",
+      "tree": "e7fb4d6a0c339b2ea62fd2ad75f602411b291e35",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_Wiki/pull/2"
+    }
+  ],
+  "themeRepositories": [
+    "Formwheel_AI",
+    "Formwheel_Balance",
+    "Formwheel_Battle",
+    "Formwheel_Bomb",
+    "Formwheel_Button",
+    "Formwheel_Casino",
+    "Formwheel_Chat",
+    "Formwheel_Check",
+    "Formwheel_Clicker",
+    "Formwheel_Cook",
+    "Formwheel_Decode",
+    "Formwheel_DiceDuel",
+    "Formwheel_Edit",
+    "Formwheel_Fate",
+    "Formwheel_Form",
+    "Formwheel_GCrown",
+    "Formwheel_Marble",
+    "Formwheel_Music",
+    "Formwheel_Piano",
+    "Formwheel_Quiz",
+    "Formwheel_Reflex",
+    "Formwheel_Risk",
+    "Formwheel_Spy",
+    "Formwheel_Time",
+    "Formwheel_Tool",
+    "Formwheel_Vault",
+    "Formwheel_Vote",
+    "Formwheel_Wheel",
+    "Formwheel_WheelB"
+  ],
+  "validation": {
+    "uiStatesPerViewport": 251,
+    "viewports": [
+      1280,
+      390
+    ],
+    "totalUIChecks": 502,
+    "axeViolationsAfter": 0,
+    "boundaryFindingsAfter": 0,
+    "pageErrorsAfter": 0,
+    "appRegressionFiles": 19,
+    "hubRegressionFiles": 11,
+    "desktopFollowup": "GCrown default and 3 themes rechecked after correcting the desktop header contrast; all 4 pass.",
+    "boundaryMethod": "Author-styled active editable fields: border or fill vs adjacent background >= 3:1. Active grid cells: each shared edge distinguished by adjacent fills or a border >= 3:1 against both fills. One occurrence per control, not per edge. Native inset/outset, readonly/disabled, gradient and shadow cases excluded.",
+    "redirectExclusions": [
+      "instagram/index.html",
+      "threads/index.html",
+      "x/index.html",
+      "youtube/index.html"
+    ],
+    "iframePolicy": "Sandboxed user-authored preview content excluded from axe; surrounding Secret creator UI and its fields are checked.",
+    "isolation": "External HTTP and WebSockets aborted, service workers blocked; only loopback/canonical local assets and 35 cached public SDK files are served.",
+    "preparedFixtures": "46 pinned app checkouts and 35 newly downloaded SDK files verified against tested cache bytes.",
+    "interactionStates": 26,
+    "focusFollowup": "AI, Wheel, Secret creator and Tool fields retain a visible keyboard focus ring after the boundary style change.",
+    "ciFollowup": "Ubuntu 26.04/Chrome 159 reported two adjacent profile summary targets at 21px height. Raised profile summaries to at least 32px; excluded this correction from the additional issue count."
+  },
+  "findingFiles": [
+    {
+      "file": "quality-audit-500-2026-11-24-part1.json",
+      "first": "FW500-001",
+      "last": "FW500-100",
+      "count": 100
+    },
+    {
+      "file": "quality-audit-500-2026-11-24-part2.json",
+      "first": "FW500-101",
+      "last": "FW500-200",
+      "count": 100
+    },
+    {
+      "file": "quality-audit-500-2026-11-24-part3.json",
+      "first": "FW500-201",
+      "last": "FW500-300",
+      "count": 100
+    },
+    {
+      "file": "quality-audit-500-2026-11-24-part4.json",
+      "first": "FW500-301",
+      "last": "FW500-400",
+      "count": 100
+    },
+    {
+      "file": "quality-audit-500-2026-11-24-part5.json",
+      "first": "FW500-401",
+      "last": "FW500-500",
+      "count": 100
+    },
+    {
+      "file": "quality-audit-500-2026-11-24-part6.json",
+      "first": "FW500-501",
+      "last": "FW500-523",
+      "count": 23
+    }
+  ]
+}

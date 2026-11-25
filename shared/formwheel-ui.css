@@ -1,3 +1,4 @@
+@import url("./formwheel-controls.css?v=20261124-500");
 /* Shared Formwheel controls. Layout and game-specific colors remain in each project. */
 :root{--fw-focus:#4059d5;--fw-border:#e1e4eb;--fw-radius:14px}
 button{border-radius:var(--fw-radius);font:inherit}

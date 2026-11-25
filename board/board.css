@@ -79,3 +79,6 @@ button:focus-visible,summary:focus-visible,select:focus-visible{outline:3px soli
 .online-notice{font-size:12px;line-height:1.5;color:#647089;margin:6px 0 0}
 .tabs button:disabled{opacity:.5;cursor:not-allowed}.tabs button[aria-pressed="true"]:disabled{opacity:1}
 @media(max-width:550px){.online-controls{gap:7px}.online-controls button{flex:1 1 auto}.online-controls input{flex:1;min-width:105px}.online-controls label{width:100%}.online-heading h2{font-size:16px}}
+
+/* Keep adjacent active squares distinguishable without changing board geometry. */
+#board button.square{border:1px solid #111318}
