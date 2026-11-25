@@ -1,0 +1,3986 @@
+{
+  "date": "2026-11-25",
+  "totalInAudit": 586,
+  "findings": [
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 6,
+      "column": 6,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"6행 6열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"6행 6열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-101"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 6,
+      "column": 7,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"6행 7열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"6행 7열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-102"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 6,
+      "column": 8,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"6행 8열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"6행 8열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-103"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 6,
+      "column": 9,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"6행 9열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"6행 9열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-104"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 6,
+      "column": 10,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"6행 10열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"6행 10열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-105"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 6,
+      "column": 11,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"6행 11열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"6행 11열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-106"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 6,
+      "column": 12,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"6행 12열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"6행 12열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-107"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 6,
+      "column": 13,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"6행 13열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"6행 13열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-108"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 6,
+      "column": 14,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"6행 14열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"6행 14열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-109"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 6,
+      "column": 15,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"6행 15열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"6행 15열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-110"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 6,
+      "column": 16,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"6행 16열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"6행 16열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-111"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 6,
+      "column": 17,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"6행 17열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"6행 17열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-112"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 6,
+      "column": 18,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"6행 18열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"6행 18열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-113"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 6,
+      "column": 19,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"6행 19열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell right-edge\" type=\"button\" aria-label=\"6행 19열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-114"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 7,
+      "column": 1,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"7행 1열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell left-edge\" type=\"button\" aria-label=\"7행 1열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-115"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 7,
+      "column": 2,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"7행 2열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"7행 2열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-116"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 7,
+      "column": 3,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"7행 3열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"7행 3열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-117"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 7,
+      "column": 4,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"7행 4열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"7행 4열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-118"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 7,
+      "column": 5,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"7행 5열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"7행 5열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-119"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 7,
+      "column": 6,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"7행 6열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"7행 6열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-120"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 7,
+      "column": 7,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"7행 7열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"7행 7열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-121"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 7,
+      "column": 8,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"7행 8열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"7행 8열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-122"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 7,
+      "column": 9,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"7행 9열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"7행 9열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-123"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 7,
+      "column": 10,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"7행 10열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"7행 10열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-124"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 7,
+      "column": 11,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"7행 11열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"7행 11열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-125"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 7,
+      "column": 12,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"7행 12열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"7행 12열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-126"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 7,
+      "column": 13,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"7행 13열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"7행 13열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-127"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 7,
+      "column": 14,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"7행 14열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"7행 14열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-128"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 7,
+      "column": 15,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"7행 15열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"7행 15열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-129"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 7,
+      "column": 16,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"7행 16열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"7행 16열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-130"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 7,
+      "column": 17,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"7행 17열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"7행 17열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-131"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 7,
+      "column": 18,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"7행 18열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"7행 18열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-132"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 7,
+      "column": 19,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"7행 19열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell right-edge\" type=\"button\" aria-label=\"7행 19열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-133"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 8,
+      "column": 1,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"8행 1열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell left-edge\" type=\"button\" aria-label=\"8행 1열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-134"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 8,
+      "column": 2,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"8행 2열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"8행 2열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-135"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 8,
+      "column": 3,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"8행 3열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"8행 3열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-136"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 8,
+      "column": 4,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"8행 4열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"8행 4열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-137"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 8,
+      "column": 5,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"8행 5열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"8행 5열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-138"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 8,
+      "column": 6,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"8행 6열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"8행 6열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-139"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 8,
+      "column": 7,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"8행 7열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"8행 7열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-140"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 8,
+      "column": 8,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"8행 8열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"8행 8열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-141"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 8,
+      "column": 9,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"8행 9열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"8행 9열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-142"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 8,
+      "column": 10,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"8행 10열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"8행 10열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-143"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 8,
+      "column": 11,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"8행 11열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"8행 11열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-144"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 8,
+      "column": 12,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"8행 12열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"8행 12열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-145"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 8,
+      "column": 13,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"8행 13열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"8행 13열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-146"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 8,
+      "column": 14,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"8행 14열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"8행 14열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-147"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 8,
+      "column": 15,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"8행 15열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"8행 15열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-148"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 8,
+      "column": 16,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"8행 16열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"8행 16열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-149"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 8,
+      "column": 17,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"8행 17열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"8행 17열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-150"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 8,
+      "column": 18,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"8행 18열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"8행 18열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-151"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 8,
+      "column": 19,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"8행 19열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell right-edge\" type=\"button\" aria-label=\"8행 19열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-152"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 9,
+      "column": 1,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"9행 1열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell left-edge\" type=\"button\" aria-label=\"9행 1열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-153"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 9,
+      "column": 2,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"9행 2열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"9행 2열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-154"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 9,
+      "column": 3,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"9행 3열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"9행 3열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-155"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 9,
+      "column": 4,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"9행 4열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"9행 4열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-156"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 9,
+      "column": 5,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"9행 5열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"9행 5열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-157"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 9,
+      "column": 6,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"9행 6열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"9행 6열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-158"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 9,
+      "column": 7,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"9행 7열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"9행 7열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-159"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 9,
+      "column": 8,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"9행 8열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"9행 8열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-160"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 9,
+      "column": 9,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"9행 9열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"9행 9열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-161"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 9,
+      "column": 10,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"9행 10열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"9행 10열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-162"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 9,
+      "column": 11,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"9행 11열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"9행 11열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-163"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 9,
+      "column": 12,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"9행 12열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"9행 12열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-164"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 9,
+      "column": 13,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"9행 13열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"9행 13열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-165"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 9,
+      "column": 14,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"9행 14열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"9행 14열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-166"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 9,
+      "column": 15,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"9행 15열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"9행 15열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-167"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 9,
+      "column": 16,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"9행 16열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"9행 16열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-168"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 9,
+      "column": 17,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"9행 17열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"9행 17열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-169"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 9,
+      "column": 18,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"9행 18열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"9행 18열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-170"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 9,
+      "column": 19,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"9행 19열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell right-edge\" type=\"button\" aria-label=\"9행 19열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-171"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 10,
+      "column": 1,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"10행 1열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell left-edge\" type=\"button\" aria-label=\"10행 1열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-172"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 10,
+      "column": 2,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"10행 2열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"10행 2열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-173"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 10,
+      "column": 3,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"10행 3열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"10행 3열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-174"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 10,
+      "column": 4,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"10행 4열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"10행 4열 빈 점\"><i class=\"star\"></i></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-175"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 10,
+      "column": 5,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"10행 5열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"10행 5열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-176"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 10,
+      "column": 6,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"10행 6열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"10행 6열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-177"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 10,
+      "column": 7,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"10행 7열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"10행 7열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-178"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 10,
+      "column": 8,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"10행 8열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"10행 8열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-179"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 10,
+      "column": 9,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"10행 9열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"10행 9열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-180"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 10,
+      "column": 10,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"10행 10열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"10행 10열 빈 점\"><i class=\"star\"></i></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-181"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 10,
+      "column": 11,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"10행 11열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"10행 11열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-182"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 10,
+      "column": 12,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"10행 12열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"10행 12열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-183"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 10,
+      "column": 13,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"10행 13열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"10행 13열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-184"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 10,
+      "column": 14,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"10행 14열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"10행 14열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-185"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 10,
+      "column": 15,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"10행 15열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"10행 15열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-186"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 10,
+      "column": 16,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"10행 16열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"10행 16열 빈 점\"><i class=\"star\"></i></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-187"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 10,
+      "column": 17,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"10행 17열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"10행 17열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-188"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 10,
+      "column": 18,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"10행 18열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"10행 18열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-189"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 10,
+      "column": 19,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"10행 19열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell right-edge\" type=\"button\" aria-label=\"10행 19열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-190"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 11,
+      "column": 1,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"11행 1열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell left-edge\" type=\"button\" aria-label=\"11행 1열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-191"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 11,
+      "column": 2,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"11행 2열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"11행 2열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-192"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 11,
+      "column": 3,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"11행 3열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"11행 3열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-193"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 11,
+      "column": 4,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"11행 4열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"11행 4열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-194"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 11,
+      "column": 5,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"11행 5열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"11행 5열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-195"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 11,
+      "column": 6,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"11행 6열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"11행 6열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-196"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 11,
+      "column": 7,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"11행 7열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"11행 7열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-197"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 11,
+      "column": 8,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"11행 8열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"11행 8열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-198"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 11,
+      "column": 9,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"11행 9열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"11행 9열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-199"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go",
+      "row": 11,
+      "column": 10,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"11행 10열 빈 점\"]"
+      ],
+      "before": "<button class=\"go-cell\" type=\"button\" aria-label=\"11행 10열 빈 점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 14.3,
+          "height": 14.3
+        },
+        {
+          "closestOffset": 4.6,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 14.3,
+      "contexts": [
+        {
+          "state": "go13",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 320
+        },
+        {
+          "state": "go19",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-200"
+    }
+  ]
+}

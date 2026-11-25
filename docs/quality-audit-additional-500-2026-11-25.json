@@ -1,0 +1,201 @@
+{
+  "date": "2026-11-25",
+  "repository": "SemicolonXSS/Formwheel",
+  "baselineCommit": "b8b24e774a1ccae4d6ab905f9263f89f37557718",
+  "requestedMinimum": 500,
+  "total": 586,
+  "rootCauseCount": 1,
+  "categories": {
+    "target-size": 586
+  },
+  "games": {
+    "go": 361,
+    "omok": 225
+  },
+  "method": {
+    "unit": "One unique game/row/column element with an axe target-size failure. This is one layout root cause affecting 586 targets, not 586 independent implementation bugs.",
+    "deduplication": "Same Go row/column across 13x13 and 19x19 sizes and repeated viewport checks counts once. Same game/point across widths counts once.",
+    "beforeObservations": 1341,
+    "uniqueOccurrences": 586,
+    "notCounted": [
+      "Already-published audit findings",
+      "Repeat viewport and Go-size observations",
+      "Added focus/scroll support, test and CI code",
+      "Unobserved or synthetic game states"
+    ]
+  },
+  "rootCause": {
+    "id": "dense-board-shrinks-to-container",
+    "description": "Go/Gomoku intersection grids inherited a shrink-to-container board width without a usable minimum per intersection.",
+    "files": [
+      "board/board.css",
+      "board/board.js",
+      "board/index.html"
+    ],
+    "repair": "Reserve 28px per intersection and keep overflow inside a named keyboard-focusable board region. Prevent the play-area grid item from widening the document; reveal complete keyboard-focused targets."
+  },
+  "baseline": [
+    {
+      "state": "go9",
+      "viewport": 320,
+      "cells": 81,
+      "minimumWidth": 30.21875,
+      "minimumHeight": 30.21875,
+      "axeFailures": {}
+    },
+    {
+      "state": "go13",
+      "viewport": 320,
+      "cells": 169,
+      "minimumWidth": 20.921875,
+      "minimumHeight": 20.921875,
+      "axeFailures": {
+        "target-size": 169
+      }
+    },
+    {
+      "state": "omok",
+      "viewport": 320,
+      "cells": 225,
+      "minimumWidth": 18.125,
+      "minimumHeight": 18.125,
+      "axeFailures": {
+        "target-size": 225
+      }
+    },
+    {
+      "state": "go19",
+      "viewport": 320,
+      "cells": 361,
+      "minimumWidth": 14.3125,
+      "minimumHeight": 14.3125,
+      "axeFailures": {
+        "target-size": 361
+      }
+    },
+    {
+      "state": "go9",
+      "viewport": 390,
+      "cells": 81,
+      "minimumWidth": 38,
+      "minimumHeight": 38,
+      "axeFailures": {}
+    },
+    {
+      "state": "go13",
+      "viewport": 390,
+      "cells": 169,
+      "minimumWidth": 26.296875,
+      "minimumHeight": 26.296875,
+      "axeFailures": {}
+    },
+    {
+      "state": "omok",
+      "viewport": 390,
+      "cells": 225,
+      "minimumWidth": 22.796875,
+      "minimumHeight": 22.796875,
+      "axeFailures": {
+        "target-size": 225
+      }
+    },
+    {
+      "state": "go19",
+      "viewport": 390,
+      "cells": 361,
+      "minimumWidth": 18,
+      "minimumHeight": 18,
+      "axeFailures": {
+        "target-size": 361
+      }
+    },
+    {
+      "state": "go9",
+      "viewport": 1280,
+      "cells": 81,
+      "minimumWidth": 64.875,
+      "minimumHeight": 64.875,
+      "axeFailures": {}
+    },
+    {
+      "state": "go13",
+      "viewport": 1280,
+      "cells": 169,
+      "minimumWidth": 44.921875,
+      "minimumHeight": 44.921875,
+      "axeFailures": {}
+    },
+    {
+      "state": "omok",
+      "viewport": 1280,
+      "cells": 225,
+      "minimumWidth": 38.921875,
+      "minimumHeight": 38.921875,
+      "axeFailures": {}
+    },
+    {
+      "state": "go19",
+      "viewport": 1280,
+      "cells": 361,
+      "minimumWidth": 30.734375,
+      "minimumHeight": 30.734375,
+      "axeFailures": {}
+    }
+  ],
+  "findingFiles": [
+    "quality-audit-additional-500-2026-11-25-part1.json",
+    "quality-audit-additional-500-2026-11-25-part2.json",
+    "quality-audit-additional-500-2026-11-25-part3.json",
+    "quality-audit-additional-500-2026-11-25-part4.json",
+    "quality-audit-additional-500-2026-11-25-part5.json",
+    "quality-audit-additional-500-2026-11-25-part6.json"
+  ],
+  "validation": {
+    "runner": "Playwright 1.65.1, bundled Chromium 159.0.8154.6, axe-core 4.14.0",
+    "viewports": [
+      320,
+      390,
+      768,
+      900,
+      1280
+    ],
+    "boardVariants": [
+      "chess",
+      "go9",
+      "go13",
+      "go19",
+      "omok",
+      "othello",
+      "checkers",
+      "ttt",
+      "connect4",
+      "territory"
+    ],
+    "layouts": 50,
+    "axeChecks": 50,
+    "axeViolationsAfter": 0,
+    "pageErrorsAfter": 0,
+    "denseLayouts": 20,
+    "minimumIntersectionWidth": 28,
+    "minimumIntersectionHeight": 28,
+    "nativeChecks": [
+      "Tab into first intersection",
+      "ArrowRight scrolling in overflowing board regions",
+      "Focus reveals complete first and last columns",
+      "Document width stays within viewport",
+      "Enter places a stone at the far corner",
+      "Touch/click places a stone at the first corner",
+      "Undo restores both corner targets",
+      "New game restores all intersections"
+    ],
+    "network": "Only local production assets. External HTTP/WebSocket blocked and service workers disabled. No account or database writes.",
+    "sourceChecks": "154 JavaScript blocks/files, catalog, 55-page skip navigation and 11 Node test files passed.",
+    "ci": "Dedicated Dense board touch and keyboard regression job added. New PR CI pending at report creation.",
+    "verificationFile": "quality-audit-additional-500-2026-11-25-verification.json"
+  },
+  "limits": [
+    "Only the described layouts and native edge interactions were exercised; this is not an audit of all board rules, AI, online rooms or game states.",
+    "Automated geometry and axe checks do not replace real-device or screen-reader usability testing.",
+    "All 586 targets were measured, but native placement was sampled at board edges rather than on every target."
+  ]
+}

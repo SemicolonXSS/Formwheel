@@ -239,7 +239,13 @@ function render(){
  if(game==="ttt"){renderTTT();return;}
  renderOthello();
 }
+// Reveal the complete keyboard target when a narrow board has been scrolled.
+boardEl.addEventListener("focusin",event=>{
+ const button=event.target.closest("button");
+ if(button?.matches(":focus-visible"))button.scrollIntoView({block:"nearest",inline:"nearest"});
+});
 function appendGrid(n,cell){
+ boardEl.style.setProperty("--board-points",String(n));
  boardEl.style.gridTemplateColumns="repeat("+n+",minmax(0,1fr))";
  boardEl.style.gridTemplateRows="repeat("+n+",minmax(0,1fr))";
  boardEl.replaceChildren();
