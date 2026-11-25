@@ -98,6 +98,11 @@ jobs:
           FW_ECOSYSTEM_ROOT: ${{ github.workspace }}/ecosystem
         run: node tests/extended-regression.cjs
 
+      - name: Prepare verified periodic-table data
+        run: python3 scripts/prepare-periodic-fixture.py
+      - name: Exercise periodic-table and grid accessibility across four widths
+        run: node tests/more-500-regression.cjs
+
   third-app-audit:
     name: Additional app UI and game regressions
     runs-on: ubuntu-latest

@@ -1,0 +1,1221 @@
+{
+  "date": "2026-11-25",
+  "totalInAudit": 1177,
+  "findings": [
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 116,
+      "fieldIndex": 9,
+      "text": "고체",
+      "target": [
+        "button[title=\"리버모륨 (Lv)\"] > .extra:nth-child(10)"
+      ],
+      "before": "<span class=\"extra\">고체</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#172036",
+          "contrastRatio": 1.71,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-1101"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 117,
+      "fieldIndex": 0,
+      "text": "117",
+      "target": [
+        ".unknown\\,-probably-metalloid > small"
+      ],
+      "before": "<small>117</small>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#172036",
+          "contrastRatio": 1.71,
+          "fontSize": "7.5pt (10px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "search",
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-1102"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 117,
+      "fieldIndex": 1,
+      "text": "Ts",
+      "target": [
+        ".unknown\\,-probably-metalloid > strong"
+      ],
+      "before": "<strong>Ts</strong>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#172036",
+          "contrastRatio": 1.71,
+          "fontSize": "14.3pt (19px)",
+          "fontWeight": "bold",
+          "messageKey": null,
+          "expectedContrastRatio": "3:1"
+        }
+      ],
+      "states": [
+        "search",
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-1103"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 117,
+      "fieldIndex": 2,
+      "text": "테네신",
+      "target": [
+        ".unknown\\,-probably-metalloid > span"
+      ],
+      "before": "<span>테네신</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#172036",
+          "contrastRatio": 1.71,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "search",
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-1104"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 117,
+      "fieldIndex": 3,
+      "text": "294.000 u",
+      "target": [
+        ".unknown\\,-probably-metalloid > .extra:nth-child(4)"
+      ],
+      "before": "<span class=\"extra\">294.000 u</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#172036",
+          "contrastRatio": 1.71,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-1105"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 117,
+      "fieldIndex": 4,
+      "text": "7주기",
+      "target": [
+        ".unknown\\,-probably-metalloid > .extra:nth-child(5)"
+      ],
+      "before": "<span class=\"extra\">7주기</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#172036",
+          "contrastRatio": 1.71,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-1106"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 117,
+      "fieldIndex": 5,
+      "text": "17족",
+      "target": [
+        ".unknown\\,-probably-metalloid > .extra:nth-child(6)"
+      ],
+      "before": "<span class=\"extra\">17족</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#172036",
+          "contrastRatio": 1.71,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-1107"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 117,
+      "fieldIndex": 6,
+      "text": "인공 합성",
+      "target": [
+        ".unknown\\,-probably-metalloid > .extra:nth-child(7)"
+      ],
+      "before": "<span class=\"extra\">인공 합성</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#172036",
+          "contrastRatio": 1.71,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-1108"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 117,
+      "fieldIndex": 7,
+      "text": "분류 불확실",
+      "target": [
+        ".unknown\\,-probably-metalloid > .extra:nth-child(8)"
+      ],
+      "before": "<span class=\"extra\">분류 불확실</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#172036",
+          "contrastRatio": 1.71,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-1109"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 117,
+      "fieldIndex": 8,
+      "text": "안정 동위원소 존재",
+      "target": [
+        ".unknown\\,-probably-metalloid > .extra:nth-child(9)"
+      ],
+      "before": "<span class=\"extra\">안정 동위원소 존재</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#172036",
+          "contrastRatio": 1.71,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-1110"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 117,
+      "fieldIndex": 9,
+      "text": "고체",
+      "target": [
+        ".unknown\\,-probably-metalloid > .extra:nth-child(10)"
+      ],
+      "before": "<span class=\"extra\">고체</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#172036",
+          "contrastRatio": 1.71,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-1111"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 118,
+      "fieldIndex": 0,
+      "text": "118",
+      "target": [
+        ".unknown\\,-predicted-to-be-noble-gas > small"
+      ],
+      "before": "<small>118</small>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#172036",
+          "contrastRatio": 1.71,
+          "fontSize": "7.5pt (10px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "search",
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-1112"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 118,
+      "fieldIndex": 4,
+      "text": "7주기",
+      "target": [
+        ".unknown\\,-predicted-to-be-noble-gas > .extra:nth-child(5)"
+      ],
+      "before": "<span class=\"extra\">7주기</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#172036",
+          "contrastRatio": 1.71,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-1113"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 118,
+      "fieldIndex": 5,
+      "text": "18족",
+      "target": [
+        ".unknown\\,-predicted-to-be-noble-gas > .extra:nth-child(6)"
+      ],
+      "before": "<span class=\"extra\">18족</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#172036",
+          "contrastRatio": 1.71,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-1114"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 118,
+      "fieldIndex": 9,
+      "text": "고체",
+      "target": [
+        ".unknown\\,-predicted-to-be-noble-gas > .extra:nth-child(10)"
+      ],
+      "before": "<span class=\"extra\">고체</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#172036",
+          "contrastRatio": 1.71,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-1115"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(1)",
+      "state": "board-names after one ArrowRight",
+      "before": "벽",
+      "after": "1행 1열 · 벽",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1116"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(2)",
+      "state": "board-names after one ArrowRight",
+      "before": "벽",
+      "after": "1행 2열 · 벽",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1117"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(3)",
+      "state": "board-names after one ArrowRight",
+      "before": "벽",
+      "after": "1행 3열 · 벽",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1118"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(4)",
+      "state": "board-names after one ArrowRight",
+      "before": "벽",
+      "after": "1행 4열 · 벽",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1119"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(5)",
+      "state": "board-names after one ArrowRight",
+      "before": "벽",
+      "after": "1행 5열 · 벽",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1120"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(6)",
+      "state": "board-names after one ArrowRight",
+      "before": "벽",
+      "after": "1행 6열 · 벽",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1121"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(7)",
+      "state": "board-names after one ArrowRight",
+      "before": "벽",
+      "after": "1행 7열 · 벽",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1122"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(8)",
+      "state": "board-names after one ArrowRight",
+      "before": "벽",
+      "after": "1행 8열 · 벽",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1123"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(9)",
+      "state": "board-names after one ArrowRight",
+      "before": "벽",
+      "after": "2행 1열 · 벽",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1124"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(10)",
+      "state": "board-names after one ArrowRight",
+      "before": "빈 칸",
+      "after": "2행 2열 · 빈 칸",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1125"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(11)",
+      "state": "board-names after one ArrowRight",
+      "before": "빈 칸",
+      "after": "2행 3열 · 현재 위치 · 빈 칸",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1126"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(12)",
+      "state": "board-names after one ArrowRight",
+      "before": "빈 칸",
+      "after": "2행 4열 · 빈 칸",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1127"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(14)",
+      "state": "board-names after one ArrowRight",
+      "before": "빈 칸",
+      "after": "2행 6열 · 빈 칸",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1128"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(15)",
+      "state": "board-names after one ArrowRight",
+      "before": "빈 칸",
+      "after": "2행 7열 · 빈 칸",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1129"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(16)",
+      "state": "board-names after one ArrowRight",
+      "before": "벽",
+      "after": "2행 8열 · 벽",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1130"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(17)",
+      "state": "board-names after one ArrowRight",
+      "before": "벽",
+      "after": "3행 1열 · 벽",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1131"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(18)",
+      "state": "board-names after one ArrowRight",
+      "before": "빈 칸",
+      "after": "3행 2열 · 빈 칸",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1132"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(19)",
+      "state": "board-names after one ArrowRight",
+      "before": "벽",
+      "after": "3행 3열 · 벽",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1133"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(20)",
+      "state": "board-names after one ArrowRight",
+      "before": "벽",
+      "after": "3행 4열 · 벽",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1134"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(21)",
+      "state": "board-names after one ArrowRight",
+      "before": "빈 칸",
+      "after": "3행 5열 · 빈 칸",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1135"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(22)",
+      "state": "board-names after one ArrowRight",
+      "before": "벽",
+      "after": "3행 6열 · 벽",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1136"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(23)",
+      "state": "board-names after one ArrowRight",
+      "before": "빈 칸",
+      "after": "3행 7열 · 빈 칸",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1137"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(24)",
+      "state": "board-names after one ArrowRight",
+      "before": "벽",
+      "after": "3행 8열 · 벽",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1138"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(25)",
+      "state": "board-names after one ArrowRight",
+      "before": "벽",
+      "after": "4행 1열 · 벽",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1139"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(26)",
+      "state": "board-names after one ArrowRight",
+      "before": "빈 칸",
+      "after": "4행 2열 · 빈 칸",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1140"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(27)",
+      "state": "board-names after one ArrowRight",
+      "before": "빈 칸",
+      "after": "4행 3열 · 빈 칸",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1141"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(29)",
+      "state": "board-names after one ArrowRight",
+      "before": "빈 칸",
+      "after": "4행 5열 · 빈 칸",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1142"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(30)",
+      "state": "board-names after one ArrowRight",
+      "before": "벽",
+      "after": "4행 6열 · 벽",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1143"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(31)",
+      "state": "board-names after one ArrowRight",
+      "before": "빈 칸",
+      "after": "4행 7열 · 빈 칸",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1144"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(32)",
+      "state": "board-names after one ArrowRight",
+      "before": "벽",
+      "after": "4행 8열 · 벽",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1145"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(33)",
+      "state": "board-names after one ArrowRight",
+      "before": "벽",
+      "after": "5행 1열 · 벽",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1146"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(34)",
+      "state": "board-names after one ArrowRight",
+      "before": "벽",
+      "after": "5행 2열 · 벽",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1147"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(35)",
+      "state": "board-names after one ArrowRight",
+      "before": "빈 칸",
+      "after": "5행 3열 · 빈 칸",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1148"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(36)",
+      "state": "board-names after one ArrowRight",
+      "before": "벽",
+      "after": "5행 4열 · 벽",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1149"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(37)",
+      "state": "board-names after one ArrowRight",
+      "before": "빈 칸",
+      "after": "5행 5열 · 빈 칸",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1150"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(39)",
+      "state": "board-names after one ArrowRight",
+      "before": "빈 칸",
+      "after": "5행 7열 · 빈 칸",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1151"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(40)",
+      "state": "board-names after one ArrowRight",
+      "before": "벽",
+      "after": "5행 8열 · 벽",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1152"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(41)",
+      "state": "board-names after one ArrowRight",
+      "before": "벽",
+      "after": "6행 1열 · 벽",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1153"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(42)",
+      "state": "board-names after one ArrowRight",
+      "before": "빈 칸",
+      "after": "6행 2열 · 빈 칸",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1154"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(43)",
+      "state": "board-names after one ArrowRight",
+      "before": "빈 칸",
+      "after": "6행 3열 · 빈 칸",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1155"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(45)",
+      "state": "board-names after one ArrowRight",
+      "before": "빈 칸",
+      "after": "6행 5열 · 빈 칸",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1156"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(46)",
+      "state": "board-names after one ArrowRight",
+      "before": "빈 칸",
+      "after": "6행 6열 · 빈 칸",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1157"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(47)",
+      "state": "board-names after one ArrowRight",
+      "before": "빈 칸",
+      "after": "6행 7열 · 빈 칸",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1158"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(48)",
+      "state": "board-names after one ArrowRight",
+      "before": "벽",
+      "after": "6행 8열 · 벽",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1159"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(49)",
+      "state": "board-names after one ArrowRight",
+      "before": "벽",
+      "after": "7행 1열 · 벽",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1160"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(50)",
+      "state": "board-names after one ArrowRight",
+      "before": "빈 칸",
+      "after": "7행 2열 · 빈 칸",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1161"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(51)",
+      "state": "board-names after one ArrowRight",
+      "before": "빈 칸",
+      "after": "7행 3열 · 빈 칸",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1162"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(52)",
+      "state": "board-names after one ArrowRight",
+      "before": "빈 칸",
+      "after": "7행 4열 · 빈 칸",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1163"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(54)",
+      "state": "board-names after one ArrowRight",
+      "before": "빈 칸",
+      "after": "7행 6열 · 빈 칸",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1164"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(55)",
+      "state": "board-names after one ArrowRight",
+      "before": "빈 칸",
+      "after": "7행 7열 · 빈 칸",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1165"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(56)",
+      "state": "board-names after one ArrowRight",
+      "before": "벽",
+      "after": "7행 8열 · 벽",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1166"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(57)",
+      "state": "board-names after one ArrowRight",
+      "before": "벽",
+      "after": "8행 1열 · 벽",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1167"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(58)",
+      "state": "board-names after one ArrowRight",
+      "before": "벽",
+      "after": "8행 2열 · 벽",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1168"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(59)",
+      "state": "board-names after one ArrowRight",
+      "before": "벽",
+      "after": "8행 3열 · 벽",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1169"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(60)",
+      "state": "board-names after one ArrowRight",
+      "before": "벽",
+      "after": "8행 4열 · 벽",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1170"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(61)",
+      "state": "board-names after one ArrowRight",
+      "before": "벽",
+      "after": "8행 5열 · 벽",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1171"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(62)",
+      "state": "board-names after one ArrowRight",
+      "before": "벽",
+      "after": "8행 6열 · 벽",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1172"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(63)",
+      "state": "board-names after one ArrowRight",
+      "before": "벽",
+      "after": "8행 7열 · 벽",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1173"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-label-context",
+      "rule": "grid-position-name",
+      "target": "#board > button:nth-child(64)",
+      "state": "board-names after one ArrowRight",
+      "before": "벽",
+      "after": "8행 8열 · 벽",
+      "verification": "Custom interaction check: 64 unique row/column names and exactly one aria-current location. Duplicate names alone are not an axe violation.",
+      "id": "FW500MORE-1174"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-selection-focus",
+      "rule": "rerender-keyboard-focus",
+      "state": "default",
+      "before": {
+        "tag": "BODY",
+        "inTable": false
+      },
+      "after": {
+        "tag": "BUTTON",
+        "inTable": true
+      },
+      "verification": "Native keyboard activation retains focus in the rebuilt interactive board; external controls keep their own focus. One flow counted, not every tile.",
+      "id": "FW500MORE-1175"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "grid.html",
+      "rootCause": "grid-movement-focus",
+      "rule": "rerender-keyboard-focus",
+      "state": "board-names",
+      "before": {
+        "tag": "BODY",
+        "inBoard": false
+      },
+      "after": {
+        "tag": "BUTTON",
+        "inBoard": true
+      },
+      "verification": "Native keyboard activation retains focus in the rebuilt interactive board; external controls keep their own focus. One flow counted, not every tile.",
+      "id": "FW500MORE-1176"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-offline-feedback",
+      "rule": "persistent-load-error",
+      "state": "external dataset request aborted, then search",
+      "before": {
+        "initial": "118개 원소 표시 · 전체 118개",
+        "afterSearch": "1개 원소 표시 · 전체 118개",
+        "tiles": 118
+      },
+      "after": {
+        "initial": "118개 원소 표시 · 전체 118개 · 기본 118개 원소 기호는 사용 가능하지만 상세 데이터 연결에 실패했습니다. 인터넷 연결을 확인하고 새로고침하세요.",
+        "afterSearch": "1개 원소 표시 · 전체 118개 · 기본 118개 원소 기호는 사용 가능하지만 상세 데이터 연결에 실패했습니다. 인터넷 연결을 확인하고 새로고침하세요.",
+        "tiles": 118
+      },
+      "verification": "Native offline check waits for the load failure; warning persists after changing filters. Fallback 118-element table remains usable.",
+      "id": "FW500MORE-1177"
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "date": "2026-11-25",
+  "repository": "SemicolonXSS/Formwheel",
+  "baselineCommit": "0788791bc4cffc92fd1adc6042aef585e273115f",
+  "total": 1177,
+  "rootCauseCount": 5,
+  "requestedMinimum": 500,
+  "method": {
+    "unit": "Unique affected element/rule occurrence or one independently reproduced interaction flow. This is not a count of independent implementation defects.",
+    "contrastDeduplication": "atom number + visible child field index; the same element across filter modes, widths and online/offline runs counts once.",
+    "gridCount": "59 ambiguous tile names (34 walls, 25 empty cells), excluding five already-unique item names. Custom contextual naming check, not an axe failure.",
+    "focusCount": "One Atom selection flow and one Grid movement flow, not 118 or 64 tiles.",
+    "errorCount": "One overwritten offline-data failure message.",
+    "excluded": "Prior audit findings, PR #30 follow-up disclosure target fixes, fixture/test/CI additions and favorites aria-pressed synchronization are not added to the count."
+  },
+  "categories": {
+    "color-contrast": 1115,
+    "grid-position-name": 59,
+    "rerender-keyboard-focus": 2,
+    "persistent-load-error": 1
+  },
+  "rootCauses": [
+    {
+      "id": "atom-filter-opacity",
+      "occurrences": 1115
+    },
+    {
+      "id": "grid-label-context",
+      "occurrences": 59
+    },
+    {
+      "id": "atom-selection-focus",
+      "occurrences": 1
+    },
+    {
+      "id": "grid-movement-focus",
+      "occurrences": 1
+    },
+    {
+      "id": "atom-offline-feedback",
+      "occurrences": 1
+    }
+  ],
+  "fixture": {
+    "source": "https://github.com/Bowserinator/Periodic-Table-JSON",
+    "commit": "a4859536499c2cb7ddf2666d8273e4ec98084d0a",
+    "url": "https://raw.githubusercontent.com/Bowserinator/Periodic-Table-JSON/a4859536499c2cb7ddf2666d8273e4ec98084d0a/PeriodicTableJSON.json",
+    "sha256": "e34d5ea4c20c3fd5c51cef52360d1527e4fbdcaebc141f3b74f4dabd3d910638",
+    "elementsInFixture": 119,
+    "elementsUsedByProduct": 118
+  },
+  "findingFiles": [
+    "quality-audit-more-500-2026-11-25-part1.json",
+    "quality-audit-more-500-2026-11-25-part2.json",
+    "quality-audit-more-500-2026-11-25-part3.json",
+    "quality-audit-more-500-2026-11-25-part4.json",
+    "quality-audit-more-500-2026-11-25-part5.json",
+    "quality-audit-more-500-2026-11-25-part6.json",
+    "quality-audit-more-500-2026-11-25-part7.json",
+    "quality-audit-more-500-2026-11-25-part8.json",
+    "quality-audit-more-500-2026-11-25-part9.json",
+    "quality-audit-more-500-2026-11-25-part10.json",
+    "quality-audit-more-500-2026-11-25-part11.json",
+    "quality-audit-more-500-2026-11-25-part12.json"
+  ],
+  "validation": {
+    "runner": "Playwright 1.65.1, bundled Chromium 159.0.8154.6, axe-core 4.14.0",
+    "viewports": [
+      320,
+      390,
+      1280,
+      1600
+    ],
+    "layouts": 12,
+    "axeChecks": 36,
+    "axeViolationsAfter": 0,
+    "pageErrorsAfter": 0,
+    "network": "Local assets plus pinned public dataset only; all other external HTTP and WebSockets blocked, service workers disabled. Offline mode aborts the dataset request.",
+    "sourceChecks": "154 script blocks/files, catalog, 55-page keyboard skip navigation, 11 Node test files, security core, localization/theme and combined Rules structural checks passed.",
+    "nativeInteractions": [
+      "Element selection with Enter",
+      "Search keeps its input focus",
+      "All ten display settings",
+      "Favorites on/off and reset synchronize aria-pressed",
+      "Offline warning survives filtering",
+      "Grid ArrowRight and Space retain player focus",
+      "Adjacent tile activation retains player focus",
+      "External reset keeps focus"
+    ],
+    "ci": "Added to the existing Desktop and touch UI regression job; new PR CI pending at report creation.",
+    "reportFile": "quality-audit-more-500-2026-11-25-verification.json",
+    "browserSmoke": "Existing desktop preferences, compact search, touch shortcut scrolling and blocked-storage browser regressions passed.",
+    "existingAccessibilitySweep": {
+      "pageViewportChecks": 56,
+      "result": "passed"
+    }
+  },
+  "limitations": [
+    "Only Atom/Grid states described here are newly covered; this does not assert the entire ecosystem is defect free.",
+    "Automated rules and native keyboard checks do not replace a screen-reader usability review.",
+    "Upstream periodic-table scientific data is not audited or changed."
+  ]
+}
