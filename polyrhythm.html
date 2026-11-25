@@ -115,6 +115,18 @@ function byeolTime(p){
 const HOLD_ARC_LENGTH=1.5;
 const HEART_LENGTH=1.5, MAX_LIVES=5;
 let difficulty='easy';
+const dnaParam=new URLSearchParams(location.search).get('dna');
+const dnaFlags=/^[01]{4}$/.test(dnaParam||'')?dnaParam.split('').map(x=>x==='1'):[true,true,true,true];
+let dnaRun=false;
+const dnaToggle=document.createElement('input');dnaToggle.type='checkbox';dnaToggle.checked=/^[01]{4}$/.test(dnaParam||'');
+const dnaPanel=document.createElement('fieldset');dnaPanel.style.cssText='margin:12px 0;padding:12px;border:1px solid currentColor;border-radius:12px';
+const dnaLegend=document.createElement('legend');dnaLegend.textContent='🧬 FEATURE DNA · 비공식 기록';dnaPanel.append(dnaLegend);
+const dnaLabel=document.createElement('label');dnaLabel.append(dnaToggle,document.createTextNode(' 커스텀 랜덤 모드'));dnaPanel.append(dnaLabel);
+const dnaControls=['방향 전환','홀드 타일','하트 타일','자동 가속'].map((name,i)=>{const l=document.createElement('label');l.style.cssText='display:inline-flex;align-items:center;gap:5px;margin:8px';const b=document.createElement('input');b.type='checkbox';b.checked=dnaFlags[i];b.addEventListener('change',()=>{dnaFlags[i]=b.checked;dnaRefresh()});l.append(b,document.createTextNode(name));dnaPanel.append(l);return b});
+const dnaNote=document.createElement('p');dnaPanel.append(dnaNote);document.querySelector('.mode-select').after(dnaPanel);
+function dnaRefresh(){dnaToggle.disabled=running||mode!=='random';dnaControls.forEach(b=>b.disabled=running||mode!=='random'||!dnaToggle.checked);dnaNote.textContent=mode!=='random'?'랜덤 모드에서만 사용 가능':dnaToggle.checked?'DNA-'+dnaFlags.map(Number).join('')+' · 최고 기록 저장 안 함':'일반 모드 · 공식 기록 유지';}
+dnaToggle.addEventListener('change',dnaRefresh);
+
 function isArc(k){return k==='hold'||k==='heart'}
 function mapKind(i,hard=false){return i>0&&i%12===0?'forward':i>0&&i%8===0?'reverse':!hard&&i>0&&i%17===6?'heart':i>0&&i%9===4?'hold':'normal'}
 const maps=mapNames.map((name,i)=>{
@@ -154,11 +166,11 @@ const mapSelect=document.querySelector('#mapSelect');
 maps.forEach((m,i)=>mapSelect.add(new Option((i+1)+' · '+m.name+' ('+m.beats.length+'타일)',String(i))));
 function goodWindow(){if(difficulty==='hard')return Math.max(.36,TAU*.065/period);if(mode==='map'&&maps[mapIndex].name==='별달거리')return 0.26;return (0.60+Math.min(stage,20)*0.003)*(mode==='map'?0.98:1)}
 function perfectWindow(){if(difficulty==='hard')return .15;if(mode==='map'&&maps[mapIndex].name==='별달거리')return 0.12;return (0.24+Math.min(stage,20)*0.001)*(mode==='map'?0.98:1)}
-function stagePeriod(){if(difficulty==='hard')return Math.max(1,2.5-stage*.1);if(mode==='map'&&maps[mapIndex].name==='별달거리')return 2.4;return Math.max(mode==='map'?2.25:1.8,(mode==='map'?3.8-Math.min(mapIndex,5)*0.17:4)-stage*(mode==='map'?0.045:0.12))}
+function stagePeriod(){if(dnaRun&&!dnaFlags[3])return difficulty==='hard'?2.5:4;if(difficulty==='hard')return Math.max(1,2.5-stage*.1);if(mode==='map'&&maps[mapIndex].name==='별달거리')return 2.4;return Math.max(mode==='map'?2.25:1.8,(mode==='map'?3.8-Math.min(mapIndex,5)*0.17:4)-stage*(mode==='map'?0.045:0.12))}
 const HOLD_LENGTH=HOLD_ARC_LENGTH;
 let holdTarget=null,activeInput=null,reverseUntil=0,paused=false;
 const pauseButton=document.querySelector("#pause");
-function syncPause(){for(const id of ['easyMode','hardMode'])document.getElementById(id).disabled=running;pauseButton.disabled=!running;pauseButton.setAttribute("aria-pressed",String(paused));pauseButton.textContent=paused?"▶ 계속하기 (Esc)":"⏸ 일시정지 (Esc)";document.querySelector("#hit").disabled=paused||countdownMs>0;}
+function syncPause(){dnaRefresh();for(const id of ['easyMode','hardMode'])document.getElementById(id).disabled=running;pauseButton.disabled=!running;pauseButton.setAttribute("aria-pressed",String(paused));pauseButton.textContent=paused?"▶ 계속하기 (Esc)":"⏸ 일시정지 (Esc)";document.querySelector("#hit").disabled=paused||countdownMs>0;}
 function setPaused(value){if(!running||paused===value)return;paused=value;cancelAnimationFrame(raf);if(paused){activeInput=null;audioContext?.suspend().catch(()=>{});feedback.textContent="⏸ 일시정지 · 점수와 목숨 유지";}else{audioContext?.resume().catch(()=>{});last=performance.now();feedback.textContent=countdownMs>0?Math.ceil(countdownMs/1000)+' · 타일을 미리 확인하세요!':holdTarget?"HOLD · 계속 누르세요!":"▶ 계속하기";raf=requestAnimationFrame(frame);}syncPause();draw();}
 pauseButton.addEventListener("click",()=>{setPaused(!paused);pauseButton.blur()});
 let countdownMs=0,countdownShown=0;
@@ -169,7 +181,7 @@ function burst(color){if(reducedMotion?.matches||visualTheme==='basic')return;gl
 let best=0;try{best=Number(localStorage.getItem('fw-polyrhythm-best')||0)||0}catch(e){}bestEl.textContent=best;bestEl.setAttribute('data-fw-share-result',best>0?String(Math.floor(best)):'');
 function distance(a,b){return Math.abs(Math.atan2(Math.sin(a-b),Math.cos(a-b)))}
 function setText(el,value){const s=String(value);if(el.textContent!==s)el.textContent=s;}
-function update(){setText(scoreEl,score);setText(comboEl,combo);setText(periodEl,period.toFixed(1)+'초');setText(successEl,(success%3)+' / 3');setText(livesEl,lives>8?'❤️ × '+lives:'❤️'.repeat(lives)+'🖤'.repeat(Math.max(0,5-lives)));setText(bestEl,best);const v=best>0?String(Math.floor(best)):'';if(bestEl.getAttribute('data-fw-share-result')!==v)bestEl.setAttribute('data-fw-share-result',v);}
+function update(){setText(scoreEl,score);setText(comboEl,combo);setText(periodEl,period.toFixed(1)+'초');setText(successEl,(success%3)+' / 3');setText(livesEl,lives>8?'❤️ × '+lives:'❤️'.repeat(lives)+'🖤'.repeat(Math.max(0,5-lives)));setText(bestEl,dnaRun?'비공식':best);const v=!dnaRun&&best>0?String(Math.floor(best)):'';if(bestEl.getAttribute('data-fw-share-result')!==v)bestEl.setAttribute('data-fw-share-result',v);}
 function mapTileType(index){if(maps[mapIndex].name==='별달거리')return 'normal';return mapKind(index,difficulty==='hard')}
 function alignTargets(){for(const t of targets)t.angle=angle+direction*(t.at-progress)}
 function arcDistance(from,to){return ((direction*(to-from))%TAU+TAU)%TAU}
@@ -207,7 +219,8 @@ function addTarget(){
     targets.push({id:++nextId,at,angle:angle+direction*(at-progress),kind});
     return;
   }
-  const kind=difficulty==='easy'&&nextId>0&&nextId%13===5?'heart':stagePeriod()<=1.8?(nextId%11===0?'reverse':nextId%11===4?'forward':nextId%7===0?'hold':'normal'):(nextId%7===0?'hold':'normal');
+  let kind=difficulty==='easy'&&nextId>0&&nextId%13===5?'heart':stagePeriod()<=1.8?(nextId%11===0?'reverse':nextId%11===4?'forward':nextId%7===0?'hold':'normal'):(nextId%7===0?'hold':'normal');
+  if(dnaRun){kind=nextId>0&&nextId%13===5&&dnaFlags[2]?'heart':dnaFlags[0]&&nextId%11===0?'reverse':dnaFlags[0]&&nextId%11===4?'forward':dnaFlags[1]&&nextId%7===0?'hold':'normal';}
   let bestAt=progress+1.1,bestGap=-1;
   for(let i=0;i<32;i++){
     const at=progress+1.1+fwTargetRandom()*(Math.PI*(stage<5?1.1:stage<12?1.35:1.65));
@@ -223,10 +236,10 @@ function addTarget(){
 }
 function fillTargets(){let tries=0;while(targets.length<targetCount()&&(mode==='random'||mapBeat<maps[mapIndex].beats.length)&&tries++<8){const before=targets.length;addTarget();if(targets.length===before)break}}
 function spawnTargets(){targets=[];fillTargets()}
-function showMode(){setText(mapInfo,mode==='random'?'랜덤 모드 · 기존 방식':('맵 '+(mapIndex+1)+' / '+maps.length+' · '+maps[mapIndex].name+' ♪ '+musicNames[mapIndex]+' · '+mapBeat+'/'+maps[mapIndex].beats.length+' 배치'))}
-function selectMode(next){if(running)return;mode=next;if(mode==='map'){mapIndex=selectedMap;mapBeat=0}document.querySelector('#mapPicker').classList.toggle('visible',mode==='map');document.querySelector('#randomMode').classList.toggle('active',mode==='random');document.querySelector('#mapMode').classList.toggle('active',mode==='map');document.querySelector('#randomMode').setAttribute('aria-pressed',String(mode==='random'));document.querySelector('#mapMode').setAttribute('aria-pressed',String(mode==='map'));showMode();draw()}
+function showMode(){setText(mapInfo,mode==='random'?(dnaRun?'🧬 DNA-'+dnaFlags.map(Number).join('')+' · 비공식 기록':'랜덤 모드 · 기존 방식'):('맵 '+(mapIndex+1)+' / '+maps.length+' · '+maps[mapIndex].name+' ♪ '+musicNames[mapIndex]+' · '+mapBeat+'/'+maps[mapIndex].beats.length+' 배치'))}
+function selectMode(next){if(running)return;mode=next;if(mode==='map'){mapIndex=selectedMap;mapBeat=0}document.querySelector('#mapPicker').classList.toggle('visible',mode==='map');document.querySelector('#randomMode').classList.toggle('active',mode==='random');document.querySelector('#mapMode').classList.toggle('active',mode==='map');document.querySelector('#randomMode').setAttribute('aria-pressed',String(mode==='random'));document.querySelector('#mapMode').setAttribute('aria-pressed',String(mode==='map'));dnaRefresh();showMode();draw()}
 function mapAdvance(){if(mode!=='map'||targets.length||mapBeat<maps[mapIndex].beats.length||!running)return;if(mapIndex===maps.length-1){document.body.classList.remove('playing');activeInput=null;running=false;paused=false;syncPause();cancelAnimationFrame(raf);feedback.textContent='🏆 모든 맵 클리어! 점수 '+score;return}mapIndex++;progress=0;angle=-Math.PI/2;direction=1;holdTarget=null;reverseUntil=0;mapBeat=0;musicNote=0;stage=0;period=stagePeriod();spawnTargets();showMode();feedback.textContent='🗺️ 다음 맵: '+maps[mapIndex].name;update()}
-function endGame(){document.body.classList.remove('playing');activeInput=null;holdTarget=null;running=false;paused=false;syncPause();cancelAnimationFrame(raf);feedback.textContent='💔 GAME OVER · 점수 '+score+' · 다시 시작할 수 있어요';update()}
+function endGame(){document.body.classList.remove('playing');activeInput=null;holdTarget=null;running=false;paused=false;syncPause();cancelAnimationFrame(raf);feedback.textContent=(dnaRun?'🧬 비공식 GAME OVER · 점수 ':'💔 GAME OVER · 점수 ')+score+' · 다시 시작할 수 있어요';update()}
 let lifeFxTimer=0;
 const deathEffectSelect=document.querySelector('#deathEffect');
 const deathEffectOptions=['auto','glass','neon','off'];
@@ -251,7 +264,7 @@ function lifeLossEffect(){
  node.animate(effect==='neon'?[{opacity:.62},{opacity:0}]:[{opacity:.85,transform:'scale(.97)'},{opacity:0,transform:'scale(1.08)'}],{duration:380,easing:'ease-out'});
 }
 function lose(reason){if(!running)return;combo=0;lives=Math.max(0,lives-1);lifeLossEffect();feedback.textContent=reason+' · 목숨 -1';update();if(lives===0)endGame()}
-const fwSeedParam=new URLSearchParams(location.search).get('seed');const fwSeed=fwSeedParam!==null&&/^\d{1,10}$/.test(fwSeedParam)&&Number(fwSeedParam)<=4294967295?Number(fwSeedParam):null;let fwSeedState=0;if(fwSeed!==null){const el=document.getElementById('fwSeedInfo');if(el){el.hidden=false;el.textContent='SEED '+fwSeed+' · 랜덤 모드 난수 고정 (플레이 진행에 따라 배치가 달라질 수 있음)';}}function fwTargetRandom(){if(fwSeed===null)return Math.random();fwSeedState=(fwSeedState+0x6D2B79F5)>>>0;let t=fwSeedState;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return ((t^(t>>>14))>>>0)/4294967296;}function start(){lastAcceptedHit=-Infinity;clearLifeEffect();glassBursts.length=0;lifeFxLast=-Infinity;fwSeedState=fwSeed===null?0:fwSeed;paused=false;if(audioContext?.state==="suspended")audioContext.resume().catch(()=>{});if(editing)editorStop();document.body.classList.add('playing');window.getSelection?.()?.removeAllRanges();try{initAudio();prepareHitSample()}catch(e){}cancelAnimationFrame(raf);running=true;countdownMs=3000;countdownShown=3;syncPause();angle=-Math.PI/2;mapIndex=mode==='map'?selectedMap:0;stage=0;period=stagePeriod();score=0;combo=0;success=0;lives=5;progress=0;direction=1;holdTarget=null;activeInput=null;reverseUntil=0;nextId=0;mapBeat=0;musicNote=0;last=performance.now();spawnTargets();showMode();feedback.textContent='3 · 타일을 미리 확인하세요!';update();draw();raf=requestAnimationFrame(frame)}
+const fwSeedParam=new URLSearchParams(location.search).get('seed');const fwSeed=fwSeedParam!==null&&/^\d{1,10}$/.test(fwSeedParam)&&Number(fwSeedParam)<=4294967295?Number(fwSeedParam):null;let fwSeedState=0;if(fwSeed!==null){const el=document.getElementById('fwSeedInfo');if(el){el.hidden=false;el.textContent='SEED '+fwSeed+' · 랜덤 모드 난수 고정 (플레이 진행에 따라 배치가 달라질 수 있음)';}}function fwTargetRandom(){if(fwSeed===null)return Math.random();fwSeedState=(fwSeedState+0x6D2B79F5)>>>0;let t=fwSeedState;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return ((t^(t>>>14))>>>0)/4294967296;}function start(){dnaRun=mode==='random'&&dnaToggle.checked;lastAcceptedHit=-Infinity;clearLifeEffect();glassBursts.length=0;lifeFxLast=-Infinity;fwSeedState=fwSeed===null?0:fwSeed;paused=false;if(audioContext?.state==="suspended")audioContext.resume().catch(()=>{});if(editing)editorStop();document.body.classList.add('playing');window.getSelection?.()?.removeAllRanges();try{initAudio();prepareHitSample()}catch(e){}cancelAnimationFrame(raf);running=true;countdownMs=3000;countdownShown=3;syncPause();angle=-Math.PI/2;mapIndex=mode==='map'?selectedMap:0;stage=0;period=stagePeriod();score=0;combo=0;success=0;lives=5;progress=0;direction=1;holdTarget=null;activeInput=null;reverseUntil=0;nextId=0;mapBeat=0;musicNote=0;last=performance.now();spawnTargets();showMode();feedback.textContent='3 · 타일을 미리 확인하세요!';update();draw();raf=requestAnimationFrame(frame)}
 let audioContext=null,audioCompressor=null;
 const melodies=[
   [262,330,392,523,392,330,294,392],
@@ -393,14 +406,14 @@ function queueBestSave(){if(!bestSaveTimer)bestSaveTimer=setTimeout(saveBest,150
 window.addEventListener('pagehide',()=>{if(bestSaveTimer)saveBest()});
 function award(points,message){
   combo++;score+=points;success++;
-  if(score>best){
+  if(!dnaRun&&score>best){
     best=score;
     queueBestSave();
   }
   feedback.textContent=message;
   burst(points>=100?'#b8a5ff':'#7ee5ff');
   if(success%3===0){
-    stage++;period=reverseUntil?1.8:stagePeriod();
+    if(!dnaRun||dnaFlags[3])stage++;period=reverseUntil?1.8:stagePeriod();
     feedback.textContent+=' · 🔄 '+period.toFixed(1)+'초/바퀴';
   }
 }
