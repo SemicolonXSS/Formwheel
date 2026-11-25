@@ -111,7 +111,7 @@ function byeolTime(p){
  return 1.6+(p+offset)*unit;
 }
 const HOLD_ARC_LENGTH=1.5;
-const HEART_LENGTH=1.2, MAX_LIVES=5;
+const HEART_LENGTH=1.5, MAX_LIVES=5;
 let difficulty='easy';
 function isArc(k){return k==='hold'||k==='heart'}
 function mapKind(i,hard=false){return i>0&&i%12===0?'forward':i>0&&i%8===0?'reverse':!hard&&i>0&&i%17===6?'heart':i>0&&i%9===4?'hold':'normal'}
