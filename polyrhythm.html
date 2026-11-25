@@ -635,7 +635,7 @@ document.querySelector('#editorImport').addEventListener('change',async e=>{
 });
 
 for(const k of ['easy','hard'])document.getElementById(k+'Mode').addEventListener('click',()=>{if(running)return;difficulty=k;for(const x of ['easy','hard']){const el=document.getElementById(x+'Mode');el.classList.toggle('active',x===k);el.setAttribute('aria-pressed',String(x===k))}period=stagePeriod();update();draw()});
-showMode();draw();
+dnaRefresh();showMode();draw();
 </script>
 <script defer src="https://semicolonxss.github.io/Formwheel/shared/share-card-v2.js?v=20261123"></script>
 <script defer src="https://semicolonxss.github.io/Formwheel/shared/game-discovery.js?v=20261124"></script>
