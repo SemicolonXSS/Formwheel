@@ -1,0 +1,3188 @@
+{
+  "date": "2026-11-25",
+  "totalInAudit": 586,
+  "findings": [
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 10,
+      "column": 5,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"10행 5열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"10행 5열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-501"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 10,
+      "column": 6,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"10행 6열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"10행 6열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-502"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 10,
+      "column": 7,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"10행 7열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"10행 7열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-503"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 10,
+      "column": 8,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"10행 8열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"10행 8열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-504"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 10,
+      "column": 9,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"10행 9열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"10행 9열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-505"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 10,
+      "column": 10,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"10행 10열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"10행 10열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-506"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 10,
+      "column": 11,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"10행 11열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"10행 11열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-507"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 10,
+      "column": 12,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"10행 12열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"10행 12열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-508"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 10,
+      "column": 13,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"10행 13열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"10행 13열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-509"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 10,
+      "column": 14,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"10행 14열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"10행 14열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-510"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 10,
+      "column": 15,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"10행 15열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell right-edge\" type=\"button\" aria-label=\"10행 15열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-511"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 11,
+      "column": 1,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"11행 1열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell left-edge\" type=\"button\" aria-label=\"11행 1열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-512"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 11,
+      "column": 2,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"11행 2열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"11행 2열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-513"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 11,
+      "column": 3,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"11행 3열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"11행 3열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-514"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 11,
+      "column": 4,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"11행 4열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"11행 4열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-515"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 11,
+      "column": 5,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"11행 5열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"11행 5열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-516"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 11,
+      "column": 6,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"11행 6열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"11행 6열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-517"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 11,
+      "column": 7,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"11행 7열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"11행 7열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-518"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 11,
+      "column": 8,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"11행 8열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"11행 8열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-519"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 11,
+      "column": 9,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"11행 9열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"11행 9열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-520"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 11,
+      "column": 10,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"11행 10열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"11행 10열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-521"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 11,
+      "column": 11,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"11행 11열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"11행 11열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-522"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 11,
+      "column": 12,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"11행 12열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"11행 12열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-523"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 11,
+      "column": 13,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"11행 13열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"11행 13열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-524"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 11,
+      "column": 14,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"11행 14열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"11행 14열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-525"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 11,
+      "column": 15,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"11행 15열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell right-edge\" type=\"button\" aria-label=\"11행 15열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-526"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 12,
+      "column": 1,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"12행 1열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell left-edge\" type=\"button\" aria-label=\"12행 1열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-527"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 12,
+      "column": 2,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"12행 2열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"12행 2열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-528"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 12,
+      "column": 3,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"12행 3열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"12행 3열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-529"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 12,
+      "column": 4,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"12행 4열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"12행 4열 빈 교차점\"><i class=\"star\"></i></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-530"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 12,
+      "column": 5,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"12행 5열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"12행 5열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-531"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 12,
+      "column": 6,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"12행 6열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"12행 6열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-532"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 12,
+      "column": 7,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"12행 7열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"12행 7열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-533"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 12,
+      "column": 8,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"12행 8열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"12행 8열 빈 교차점\"><i class=\"star\"></i></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-534"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 12,
+      "column": 9,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"12행 9열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"12행 9열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-535"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 12,
+      "column": 10,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"12행 10열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"12행 10열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-536"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 12,
+      "column": 11,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"12행 11열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"12행 11열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-537"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 12,
+      "column": 12,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"12행 12열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"12행 12열 빈 교차점\"><i class=\"star\"></i></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-538"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 12,
+      "column": 13,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"12행 13열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"12행 13열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-539"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 12,
+      "column": 14,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"12행 14열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"12행 14열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-540"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 12,
+      "column": 15,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"12행 15열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell right-edge\" type=\"button\" aria-label=\"12행 15열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-541"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 13,
+      "column": 1,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"13행 1열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell left-edge\" type=\"button\" aria-label=\"13행 1열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-542"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 13,
+      "column": 2,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"13행 2열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"13행 2열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-543"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 13,
+      "column": 3,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"13행 3열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"13행 3열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-544"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 13,
+      "column": 4,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"13행 4열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"13행 4열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-545"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 13,
+      "column": 5,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"13행 5열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"13행 5열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-546"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 13,
+      "column": 6,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"13행 6열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"13행 6열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-547"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 13,
+      "column": 7,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"13행 7열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"13행 7열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-548"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 13,
+      "column": 8,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"13행 8열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"13행 8열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-549"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 13,
+      "column": 9,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"13행 9열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"13행 9열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-550"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 13,
+      "column": 10,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"13행 10열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"13행 10열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-551"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 13,
+      "column": 11,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"13행 11열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"13행 11열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-552"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 13,
+      "column": 12,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"13행 12열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"13행 12열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-553"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 13,
+      "column": 13,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"13행 13열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"13행 13열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-554"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 13,
+      "column": 14,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"13행 14열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"13행 14열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-555"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 13,
+      "column": 15,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"13행 15열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell right-edge\" type=\"button\" aria-label=\"13행 15열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-556"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 14,
+      "column": 1,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"14행 1열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell left-edge\" type=\"button\" aria-label=\"14행 1열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-557"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 14,
+      "column": 2,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"14행 2열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"14행 2열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-558"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 14,
+      "column": 3,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"14행 3열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"14행 3열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-559"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 14,
+      "column": 4,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"14행 4열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"14행 4열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-560"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 14,
+      "column": 5,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"14행 5열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"14행 5열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-561"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 14,
+      "column": 6,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"14행 6열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"14행 6열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-562"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 14,
+      "column": 7,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"14행 7열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"14행 7열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-563"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 14,
+      "column": 8,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"14행 8열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"14행 8열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-564"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 14,
+      "column": 9,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"14행 9열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"14행 9열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-565"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 14,
+      "column": 10,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"14행 10열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"14행 10열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-566"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 14,
+      "column": 11,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"14행 11열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"14행 11열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-567"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 14,
+      "column": 12,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"14행 12열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"14행 12열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-568"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 14,
+      "column": 13,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"14행 13열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"14행 13열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-569"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 14,
+      "column": 14,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"14행 14열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell\" type=\"button\" aria-label=\"14행 14열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-570"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 14,
+      "column": 15,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"14행 15열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell right-edge\" type=\"button\" aria-label=\"14행 15열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-571"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 15,
+      "column": 1,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"15행 1열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell bottom-edge left-edge\" type=\"button\" aria-label=\"15행 1열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-572"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 15,
+      "column": 2,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"15행 2열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell bottom-edge\" type=\"button\" aria-label=\"15행 2열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-573"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 15,
+      "column": 3,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"15행 3열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell bottom-edge\" type=\"button\" aria-label=\"15행 3열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-574"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 15,
+      "column": 4,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"15행 4열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell bottom-edge\" type=\"button\" aria-label=\"15행 4열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-575"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 15,
+      "column": 5,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"15행 5열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell bottom-edge\" type=\"button\" aria-label=\"15행 5열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-576"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 15,
+      "column": 6,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"15행 6열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell bottom-edge\" type=\"button\" aria-label=\"15행 6열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-577"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 15,
+      "column": 7,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"15행 7열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell bottom-edge\" type=\"button\" aria-label=\"15행 7열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-578"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 15,
+      "column": 8,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"15행 8열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell bottom-edge\" type=\"button\" aria-label=\"15행 8열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-579"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 15,
+      "column": 9,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"15행 9열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell bottom-edge\" type=\"button\" aria-label=\"15행 9열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-580"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 15,
+      "column": 10,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"15행 10열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell bottom-edge\" type=\"button\" aria-label=\"15행 10열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-581"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 15,
+      "column": 11,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"15행 11열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell bottom-edge\" type=\"button\" aria-label=\"15행 11열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-582"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 15,
+      "column": 12,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"15행 12열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell bottom-edge\" type=\"button\" aria-label=\"15행 12열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-583"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 15,
+      "column": 13,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"15행 13열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell bottom-edge\" type=\"button\" aria-label=\"15행 13열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-584"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 15,
+      "column": 14,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"15행 14열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell bottom-edge\" type=\"button\" aria-label=\"15행 14열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-585"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "omok",
+      "row": 15,
+      "column": 15,
+      "rule": "target-size",
+      "rootCause": "dense-board-shrinks-to-container",
+      "target": [
+        "button[aria-label=\"15행 15열 빈 교차점\"]"
+      ],
+      "before": "<button class=\"omok-cell bottom-edge right-edge\" type=\"button\" aria-label=\"15행 15열 빈 교차점\"></button>",
+      "beforeChecks": [
+        {
+          "minSize": 24,
+          "width": 18.1,
+          "height": 18.1
+        },
+        {
+          "closestOffset": 12.2,
+          "minOffset": 24
+        }
+      ],
+      "minimumObservedWidth": 18.1,
+      "contexts": [
+        {
+          "state": "omok",
+          "viewport": 320
+        },
+        {
+          "state": "omok",
+          "viewport": 390
+        }
+      ],
+      "verification": "All dense-board cells are measured at >=28px in 20 layouts; zero axe failures. Native keyboard/touch edge placement, undo and reset covered per layout, not every cell individually.",
+      "id": "FW500ADD-586"
+    }
+  ]
+}

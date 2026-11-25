@@ -103,6 +103,22 @@ jobs:
       - name: Exercise periodic-table and grid accessibility across four widths
         run: node tests/more-500-regression.cjs
 
+  dense-board-regression:
+    name: Dense board touch and keyboard regression
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install isolated browser runner
+        run: npm install --no-save --no-package-lock --ignore-scripts playwright@1 @axe-core/playwright@4
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Check all board modes across five widths and dense-board edge interactions
+        run: node tests/board-density-regression.cjs
+
   third-app-audit:
     name: Additional app UI and game regressions
     runs-on: ubuntu-latest
