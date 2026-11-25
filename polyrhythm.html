@@ -58,7 +58,7 @@ body.life-neon-return #stage,body.life-neon-return .stats,body.life-neon-return 
 #lifeFx .life-crack{position:absolute;transform:translate(-50%,-50%);width:min(82vw,440px);height:min(82vw,440px);animation:lifeCrack .65s ease-out both}
 @keyframes lifeCrack{0%{opacity:.85;scale:.88}100%{opacity:0;scale:1.12}}
 @media(prefers-reduced-motion:reduce){#lifeFx{display:none}body.life-neon-out #stage,body.life-neon-out .stats,body.life-neon-out .controls{filter:none}}
-body.playing .stats span,body.playing .mode-select button,body.playing .visual-settings,body.playing .offset-settings,body.playing #mapPicker select{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}body.playing .stats span{contain:paint}#stage{contain:paint}#lifeFx .life-shard{filter:none;will-change:transform,opacity}</style><style id="fw-ux-20261124">select:focus-visible,input:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid #ffd166;outline-offset:3px}button:disabled{opacity:.55;cursor:not-allowed}.controls{flex-wrap:wrap}.controls button{max-width:100%}#hit{min-width:min(180px,100%)}#editor input,#editor audio{max-width:100%}#editorNotes{overflow-wrap:anywhere}@media(max-width:480px){main{padding-bottom:max(22px,env(safe-area-inset-bottom))}.controls button{flex:1 1 auto}}</style></head><body><div id="lifeFx" aria-hidden="true"></div><main><a href="./#projects">← Formwheel 허브</a><h1>🌀 Formwheel_Polyrhythm</h1><p>회전하는 아이콘이 주황 네모에 닿는 순간 누르세요!</p><p id="fwSeedInfo" hidden></p><div class="mode-select"><button id="randomMode" class="active" type="button" aria-pressed="true">🎲 랜덤 모드</button><button id="mapMode" type="button" aria-pressed="false">🗺️ 맵 모드</button><button id="editorToggle" type="button" aria-controls="editor">🛠️ 맵 제작</button></div><section id="editor" hidden><h2>🛠️ 나만의 맵 제작</h2><div class="editrow"><label>맵 이름 <input id="editorName" type="text" maxlength="40" value="내 리듬 맵"></label><label>회전(초/바퀴) <input id="editorPeriod" type="number" min="1.8" max="8" step="0.1" value="3.5"></label></div><label>MP3 / 오디오 선택 <input id="editorFile" type="file" accept="audio/*,.mp3"></label><audio id="editorAudio" controls preload="metadata"></audio><div class="editrow"><button id="editorRecord" type="button">🔴 녹화 시작</button><button id="editorTap" type="button">🥁 타일 찍기 (Space)</button><button id="editorReverse" type="button">↺ 방향 전환 (Enter)</button><button id="editorUndo" type="button">↶ 마지막 삭제</button></div><div class="editrow"><button id="editorSave" type="button">💾 JSON 저장</button><label>JSON 불러오기 <input id="editorImport" type="file" accept=".json,application/json"></label></div><div id="editorStatus" role="status">빈 맵에서 리듬을 녹화하세요.</div><div id="editorNotes" aria-label="기록된 타일"></div><p class="editHint">오디오를 선택하고 녹화를 시작한 뒤 Space 또는 타일 찍기 버튼으로 박자를 기록하세요. Enter는 방향 전환 타일입니다. MP3는 기기에만 남으며 JSON에 포함되지 않습니다. 직접 제작했거나 사용 권한이 있는 음악을 사용하세요.</p></section><div id="mapPicker"><label for="mapSelect">시작할 맵 선택</label><select id="mapSelect"></select></div><div id="mapInfo" role="status">랜덤 모드 · 기존 방식</div><div class="offset-settings" style="margin:12px auto;padding:12px;background:#18223d;border:1px solid #53618b;border-radius:14px;max-width:420px"><label for="judgmentOffset">🎯 판정 오프셋 <output id="offsetValue" for="judgmentOffset">0 ms</output></label><input id="judgmentOffset" type="range" min="-200" max="200" step="5" value="0" style="width:100%;accent-color:#a99aff" aria-describedby="offsetHelp"><div style="display:flex;justify-content:space-between"><small>-200 ms</small><button type="button" id="resetOffset" style="min-height:30px;padding:5px 12px;font-size:12px">초기화</button><small>+200 ms</small></div><small id="offsetHelp">늦게 눌러도 맞았다면 + 방향, 일찍 눌러도 맞았다면 - 방향으로 조절하세요. 이 기기에 자동 저장됩니다.</small></div><details id="visualSettings" class="visual-settings"><summary>🎨 화면 테마 설정</summary><label for="visualTheme">디자인 스타일</label><select id="visualTheme" aria-label="게임 화면 디자인"><option value="glass">🧊 유리 (기본)</option><option value="neon">🌈 네온사인</option><option value="basic">◻️ 기본도형</option></select><label for="trailMode">☄️ 트레일</label><select id="trailMode"><option value="soft">은은하게 (기본)</option><option value="long">길게</option><option value="off">끔</option></select><label for="deathEffect">💥 데스 이펙트 (목숨 차감)</label><select id="deathEffect"><option value="auto">🎨 테마에 맞춤 (기본)</option><option value="glass">🧊 유리 파편</option><option value="neon">🌈 네온 소등</option><option value="off">🚫 끔</option></select><small>테마와 데스 이펙트는 이 기기에 자동 저장됩니다.</small></details><div class="stats"><span>점수 <strong id="score">0</strong></span><span>콤보 <strong id="combo">0</strong></span><span>최고 <strong id="best" data-fw-share-result="">0</strong></span><span>회전 <strong id="period">4.0초</strong></span><span>성공 <strong id="success">0 / 3</strong></span><span>목숨 <strong id="lives">❤️❤️❤️❤️❤️</strong></span></div><canvas id="stage" width="480" height="480" aria-label="원형 리듬 게임"></canvas><div id="feedback" role="status" aria-live="polite">시작 버튼을 누르세요</div><div class="controls"><button id="start">시작 / 재시작</button><button id="hit">HIT! (Space)</button><button id="pause" type="button" disabled aria-pressed="false">⏸ 일시정지 (Esc)</button></div><small>타일은 초반에 조금 더 촘촘하고 후반에는 간격이 넓어집니다 · 네모 최대 5개 · 총 20개 맵 · 64~176타일 · 음악과 타일 타이밍 동기화 · 판정 강화 · 맵: 파랑 ↺ 역방향 / 초록 ↻ 정방향 · 무지개 H는 궤도 끝까지 누르기 · 랜덤 방향 타일은 1.8초/바퀴부터 · MISS·헛발질·홀드 실패 시 모든 모드에서 목숨 -1 · 0개면 GAME OVER</small></main><script>
+body.playing .stats span,body.playing .mode-select button,body.playing .visual-settings,body.playing .offset-settings,body.playing #mapPicker select{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}body.playing .stats span{contain:paint}#stage{contain:paint}#lifeFx .life-shard{filter:none;will-change:transform,opacity}</style><style id="fw-ux-20261124">select:focus-visible,input:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid #ffd166;outline-offset:3px}button:disabled{opacity:.55;cursor:not-allowed}.controls{flex-wrap:wrap}.controls button{max-width:100%}#hit{min-width:min(180px,100%)}#editor input,#editor audio{max-width:100%}#editorNotes{overflow-wrap:anywhere}@media(max-width:480px){main{padding-bottom:max(22px,env(safe-area-inset-bottom))}.controls button{flex:1 1 auto}}</style></head><body><div id="lifeFx" aria-hidden="true"></div><main><a href="./#projects">← Formwheel 허브</a><h1>🌀 Formwheel_Polyrhythm</h1><p>회전하는 아이콘이 주황 네모에 닿는 순간 누르세요!</p><p id="fwSeedInfo" hidden></p><div class="mode-select"><button id="randomMode" class="active" type="button" aria-pressed="true">🎲 랜덤 모드</button><button id="mapMode" type="button" aria-pressed="false">🗺️ 맵 모드</button><button id="editorToggle" type="button" aria-controls="editor">🛠️ 맵 제작</button></div><section id="editor" hidden><h2>🛠️ 나만의 맵 제작</h2><div class="editrow"><label>맵 이름 <input id="editorName" type="text" maxlength="40" value="내 리듬 맵"></label><label>회전(초/바퀴) <input id="editorPeriod" type="number" min="1.8" max="8" step="0.1" value="3.5"></label></div><label>MP3 / 오디오 선택 <input id="editorFile" type="file" accept="audio/*,.mp3"></label><audio id="editorAudio" controls preload="metadata"></audio><div class="editrow"><button id="editorRecord" type="button">🔴 녹화 시작</button><button id="editorTap" type="button">🥁 타일 찍기 (Space)</button><button id="editorReverse" type="button">↺ 방향 전환 (Enter)</button><button id="editorUndo" type="button">↶ 마지막 삭제</button></div><div class="editrow"><button id="editorSave" type="button">💾 JSON 저장</button><label>JSON 불러오기 <input id="editorImport" type="file" accept=".json,application/json"></label></div><div id="editorStatus" role="status">빈 맵에서 리듬을 녹화하세요.</div><div id="editorNotes" aria-label="기록된 타일"></div><p class="editHint">오디오를 선택하고 녹화를 시작한 뒤 Space 또는 타일 찍기 버튼으로 박자를 기록하세요. Enter는 방향 전환 타일입니다. MP3는 기기에만 남으며 JSON에 포함되지 않습니다. 직접 제작했거나 사용 권한이 있는 음악을 사용하세요.</p></section><div class="mode-select" aria-label="난이도"><button id="easyMode" class="active" aria-pressed="true">💗 EASY</button><button id="hardMode" aria-pressed="false">🔥 HARD</button></div><div id="mapPicker"><label for="mapSelect">시작할 맵 선택</label><select id="mapSelect"></select></div><div id="mapInfo" role="status">랜덤 모드 · 기존 방식</div><div class="offset-settings" style="margin:12px auto;padding:12px;background:#18223d;border:1px solid #53618b;border-radius:14px;max-width:420px"><label for="judgmentOffset">🎯 판정 오프셋 <output id="offsetValue" for="judgmentOffset">0 ms</output></label><input id="judgmentOffset" type="range" min="-200" max="200" step="5" value="0" style="width:100%;accent-color:#a99aff" aria-describedby="offsetHelp"><div style="display:flex;justify-content:space-between"><small>-200 ms</small><button type="button" id="resetOffset" style="min-height:30px;padding:5px 12px;font-size:12px">초기화</button><small>+200 ms</small></div><small id="offsetHelp">늦게 눌러도 맞았다면 + 방향, 일찍 눌러도 맞았다면 - 방향으로 조절하세요. 이 기기에 자동 저장됩니다.</small></div><details id="visualSettings" class="visual-settings"><summary>🎨 화면 테마 설정</summary><label for="visualTheme">디자인 스타일</label><select id="visualTheme" aria-label="게임 화면 디자인"><option value="glass">🧊 유리 (기본)</option><option value="neon">🌈 네온사인</option><option value="basic">◻️ 기본도형</option></select><label for="trailMode">☄️ 트레일</label><select id="trailMode"><option value="soft">은은하게 (기본)</option><option value="long">길게</option><option value="off">끔</option></select><label for="deathEffect">💥 데스 이펙트 (목숨 차감)</label><select id="deathEffect"><option value="auto">🎨 테마에 맞춤 (기본)</option><option value="glass">🧊 유리 파편</option><option value="neon">🌈 네온 소등</option><option value="off">🚫 끔</option></select><small>테마와 데스 이펙트는 이 기기에 자동 저장됩니다.</small></details><div class="stats"><span>점수 <strong id="score">0</strong></span><span>콤보 <strong id="combo">0</strong></span><span>최고 <strong id="best" data-fw-share-result="">0</strong></span><span>회전 <strong id="period">4.0초</strong></span><span>성공 <strong id="success">0 / 3</strong></span><span>목숨 <strong id="lives">❤️❤️❤️❤️❤️</strong></span></div><canvas id="stage" width="480" height="480" aria-label="원형 리듬 게임"></canvas><div id="feedback" role="status" aria-live="polite">시작 버튼을 누르세요</div><div class="controls"><button id="start">시작 / 재시작</button><button id="hit">HIT! (Space)</button><button id="pause" type="button" disabled aria-pressed="false">⏸ 일시정지 (Esc)</button></div><small>타일은 초반에 조금 더 촘촘하고 후반에는 간격이 넓어집니다 · 이지 최대 5개 / 하드 최대 7개 · 총 20개 맵 · 64~176타일 · 음악과 타일 타이밍 동기화 · 판정 강화 · 맵: 파랑 ↺ 역방향 / 초록 ↻ 정방향 · 무지개 H는 궤도 끝까지 누르기 · EASY 분홍 ♥ 궤도 안 5회 연타 (목숨 +1, 실패 무료) · 랜덤 방향 타일은 1.8초/바퀴부터 · MISS·헛발질·홀드 실패 시 모든 모드에서 목숨 -1 · 0개면 GAME OVER</small></main><script>
 'use strict';
 'use strict';
 const canvas=document.querySelector('#stage'),ctx=canvas.getContext('2d');
@@ -111,6 +111,9 @@ function byeolTime(p){
  return 1.6+(p+offset)*unit;
 }
 const HOLD_ARC_LENGTH=1.5;
+let difficulty='easy';
+function isArc(k){return k==='hold'||k==='heart'}
+function mapKind(i,hard=false){return i>0&&i%12===0?'forward':i>0&&i%8===0?'reverse':!hard&&i>0&&i%17===6?'heart':i>0&&i%9===4?'hold':'normal'}
 const maps=mapNames.map((name,i)=>{
  if(name==='별달거리'){
   const beats=[],unit=TAU/8;
@@ -122,8 +125,8 @@ const maps=mapNames.map((name,i)=>{
  const count=name==='별달거리'?96:i<4?64+i*16:80+Math.min(12,i)*8;
  const density=i<4?[0.96,0.94,0.95,0.96][i]:1.14+Math.min(i-4,15)*0.026;
  for(let j=0;j<count;j++){
-  const isHold=j>0&&j%12!==0&&j%8!==0&&j%9===4;
-  const prevHold=j>0&&(j-1)%12!==0&&(j-1)%8!==0&&(j-1)%9===4;
+  const isHold=isArc(mapKind(j));
+  const prevHold=j>0&&isArc(mapKind(j-1));
   // Reserve the full hold duration plus a reaction buffer before the next note.
   // A hold cannot be released and a normal tile hit at the same instant.
   if(j>0)at+=Math.max(mapPatterns[i][(j-1)%mapPatterns[i].length]*density,prevHold?HOLD_ARC_LENGTH+0.8:isHold?1.15:0.95);
@@ -131,7 +134,7 @@ const maps=mapNames.map((name,i)=>{
   let guard=0;
   while(guard++<24&&beats.some((old,k)=>{
     if(at-old>TAU+5)return false;
-    const oldHold=k>0&&k%12!==0&&k%8!==0&&k%9===4;
+    const oldHold=isArc(mapKind(k));
     const delta=((at-old)%TAU+TAU)%TAU;
     // Reject any pair of visible tiles sharing the same circular position.
     // Holds occupy an extended arc, including their rounded endpoints.
@@ -146,13 +149,13 @@ let mode='random',mapIndex=0,mapBeat=0,musicNote=0,direction=1,selectedMap=0;
 const mapInfo=document.querySelector('#mapInfo');
 const mapSelect=document.querySelector('#mapSelect');
 maps.forEach((m,i)=>mapSelect.add(new Option((i+1)+' · '+m.name+' ('+m.beats.length+'타일)',String(i))));
-function goodWindow(){if(mode==='map'&&maps[mapIndex].name==='별달거리')return 0.26;return (0.60+Math.min(stage,20)*0.003)*(mode==='map'?0.98:1)}
-function perfectWindow(){if(mode==='map'&&maps[mapIndex].name==='별달거리')return 0.12;return (0.24+Math.min(stage,20)*0.001)*(mode==='map'?0.98:1)}
-function stagePeriod(){if(mode==='map'&&maps[mapIndex].name==='별달거리')return 2.4;return Math.max(mode==='map'?2.25:1.8,(mode==='map'?3.8-Math.min(mapIndex,5)*0.17:4)-stage*(mode==='map'?0.045:0.12))}
+function goodWindow(){if(difficulty==='hard')return .30;if(mode==='map'&&maps[mapIndex].name==='별달거리')return 0.26;return (0.60+Math.min(stage,20)*0.003)*(mode==='map'?0.98:1)}
+function perfectWindow(){if(difficulty==='hard')return .12;if(mode==='map'&&maps[mapIndex].name==='별달거리')return 0.12;return (0.24+Math.min(stage,20)*0.001)*(mode==='map'?0.98:1)}
+function stagePeriod(){if(difficulty==='hard')return Math.max(1,2-stage*.1);if(mode==='map'&&maps[mapIndex].name==='별달거리')return 2.4;return Math.max(mode==='map'?2.25:1.8,(mode==='map'?3.8-Math.min(mapIndex,5)*0.17:4)-stage*(mode==='map'?0.045:0.12))}
 const HOLD_LENGTH=HOLD_ARC_LENGTH;
 let holdTarget=null,activeInput=null,reverseUntil=0,paused=false;
 const pauseButton=document.querySelector("#pause");
-function syncPause(){pauseButton.disabled=!running;pauseButton.setAttribute("aria-pressed",String(paused));pauseButton.textContent=paused?"▶ 계속하기 (Esc)":"⏸ 일시정지 (Esc)";document.querySelector("#hit").disabled=paused;}
+function syncPause(){for(const id of ['easyMode','hardMode'])document.getElementById(id).disabled=running;pauseButton.disabled=!running;pauseButton.setAttribute("aria-pressed",String(paused));pauseButton.textContent=paused?"▶ 계속하기 (Esc)":"⏸ 일시정지 (Esc)";document.querySelector("#hit").disabled=paused;}
 function setPaused(value){if(!running||paused===value)return;paused=value;cancelAnimationFrame(raf);if(paused){activeInput=null;audioContext?.suspend().catch(()=>{});feedback.textContent="⏸ 일시정지 · 점수와 목숨 유지";}else{audioContext?.resume().catch(()=>{});last=performance.now();feedback.textContent=holdTarget?"HOLD · 계속 누르세요!":"▶ 계속하기";raf=requestAnimationFrame(frame);}syncPause();draw();}
 pauseButton.addEventListener("click",()=>{setPaused(!paused);pauseButton.blur()});
 let running=false,angle=-Math.PI/2,period=4,stage=0,score=0,combo=0,success=0,lives=5,last=0,raf=0,targets=[],nextId=0,progress=0;
@@ -162,8 +165,8 @@ function burst(color){if(reducedMotion?.matches||visualTheme==='basic')return;gl
 let best=0;try{best=Number(localStorage.getItem('fw-polyrhythm-best')||0)||0}catch(e){}bestEl.textContent=best;bestEl.setAttribute('data-fw-share-result',best>0?String(Math.floor(best)):'');
 function distance(a,b){return Math.abs(Math.atan2(Math.sin(a-b),Math.cos(a-b)))}
 function setText(el,value){const s=String(value);if(el.textContent!==s)el.textContent=s;}
-function update(){setText(scoreEl,score);setText(comboEl,combo);setText(periodEl,period.toFixed(1)+'초');setText(successEl,(success%3)+' / 3');setText(livesEl,'❤️'.repeat(lives)+'🖤'.repeat(5-lives));setText(bestEl,best);const v=best>0?String(Math.floor(best)):'';if(bestEl.getAttribute('data-fw-share-result')!==v)bestEl.setAttribute('data-fw-share-result',v);}
-function mapTileType(index){if(maps[mapIndex].name==='별달거리')return 'normal';return index>0&&index%12===0?'forward':index>0&&index%8===0?'reverse':index>0&&index%9===4?'hold':'normal'}
+function update(){setText(scoreEl,score);setText(comboEl,combo);setText(periodEl,period.toFixed(1)+'초');setText(successEl,(success%3)+' / 3');setText(livesEl,lives>8?'❤️ × '+lives:'❤️'.repeat(lives)+'🖤'.repeat(Math.max(0,5-lives)));setText(bestEl,best);const v=best>0?String(Math.floor(best)):'';if(bestEl.getAttribute('data-fw-share-result')!==v)bestEl.setAttribute('data-fw-share-result',v);}
+function mapTileType(index){if(maps[mapIndex].name==='별달거리')return 'normal';return mapKind(index,difficulty==='hard')}
 function alignTargets(){for(const t of targets)t.angle=angle+direction*(t.at-progress)}
 function arcDistance(from,to){return ((direction*(to-from))%TAU+TAU)%TAU}
 function conflictsWithHoldArc(at,kind){
@@ -172,11 +175,11 @@ function conflictsWithHoldArc(at,kind){
     const dist=arcDistance(t.angle,candidateAngle);
     const reverseDist=arcDistance(candidateAngle,t.angle);
     const margin=0.30;
-    return (t.kind==='hold'&&dist<=HOLD_LENGTH+margin)||(kind==='hold'&&reverseDist<=HOLD_LENGTH+margin);
+    return (isArc(t.kind)&&dist<=HOLD_LENGTH+margin)||(isArc(kind)&&reverseDist<=HOLD_LENGTH+margin);
   });
 }
-function overlaps(a,b){const aEnd=a.at+(a.kind==='hold'?HOLD_LENGTH:0),bEnd=b.at+(b.kind==='hold'?HOLD_LENGTH:0);if(a.at<=bEnd+0.55&&b.at<=aEnd+0.55)return true;const delta=((a.at-b.at)%TAU+TAU)%TAU;return (b.kind==='hold'&&(delta<1.95||delta>TAU-0.55))||(a.kind==='hold'&&(delta<0.55||delta>TAU-1.95))}
-function targetCount(){if(mode==='map'&&maps[mapIndex].name==='별달거리')return 3;return mode==='map'?(mapIndex<4?4:Math.min(5,4+Math.floor(mapIndex/8))):(stage<5?3:Math.min(4,3+Math.floor((stage-5)/8)))}
+function overlaps(a,b){const aEnd=a.at+(isArc(a.kind)?HOLD_LENGTH:0),bEnd=b.at+(isArc(b.kind)?HOLD_LENGTH:0);if(a.at<=bEnd+0.55&&b.at<=aEnd+0.55)return true;const delta=((a.at-b.at)%TAU+TAU)%TAU;return (isArc(b.kind)&&(delta<1.95||delta>TAU-0.55))||(isArc(a.kind)&&(delta<0.55||delta>TAU-1.95))}
+function targetCount(){if(difficulty==='hard')return mode==='map'&&maps[mapIndex].name==='별달거리'?3:Math.min(7,5+Math.floor(stage/4));if(mode==='map'&&maps[mapIndex].name==='별달거리')return 3;return mode==='map'?(mapIndex<4?4:Math.min(5,4+Math.floor(mapIndex/8))):(stage<5?3:Math.min(4,3+Math.floor((stage-5)/8)))}
 function addTarget(){
   if(mode==='map'){
     const beats=maps[mapIndex].beats;
@@ -189,24 +192,24 @@ function addTarget(){
     const minGap=0.7;
     // Also preserve a clear time window after a hold, not just an arc gap.
     const previous=targets.filter(t=>t.at<=at).sort((a,b)=>b.at-a.at)[0];
-    if(previous&&previous.kind==='hold')at=Math.max(at,previous.at+HOLD_LENGTH+0.8);
+    if(previous&&isArc(previous.kind))at=Math.max(at,previous.at+HOLD_LENGTH+0.8);
     let guard=0;
     while(guard++<100&&(conflictsWithHoldArc(at,kind)||targets.some(t=>{
       const delta=((at-t.at)%TAU+TAU)%TAU;
-      return (t.kind==='hold'&&(delta<1.5+minGap||delta>TAU-minGap))||(kind==='hold'&&(delta<minGap||delta>TAU-1.5-minGap))||Math.min(delta,TAU-delta)<minGap;
+      return (isArc(t.kind)&&(delta<1.5+minGap||delta>TAU-minGap))||(isArc(kind)&&(delta<minGap||delta>TAU-1.5-minGap))||Math.min(delta,TAU-delta)<minGap;
     })))at+=0.2;
     // If no safe location exists, retry this beat later instead of forcing an overlap.
     if(conflictsWithHoldArc(at,kind)){mapBeat--;return}
     targets.push({id:++nextId,at,angle:angle+direction*(at-progress),kind});
     return;
   }
-  const kind=stagePeriod()<=1.8?(nextId%11===0?'reverse':nextId%11===4?'forward':nextId%7===0?'hold':'normal'):(nextId%7===0?'hold':'normal');
+  const kind=difficulty==='easy'&&nextId>0&&nextId%13===5?'heart':stagePeriod()<=1.8?(nextId%11===0?'reverse':nextId%11===4?'forward':nextId%7===0?'hold':'normal'):(nextId%7===0?'hold':'normal');
   let bestAt=progress+1.1,bestGap=-1;
   for(let i=0;i<80;i++){
     const at=progress+1.1+fwTargetRandom()*(Math.PI*(stage<5?1.1:stage<12?1.35:1.65));
     const candidate={at,kind};
-    if(conflictsWithHoldArc(at,kind)||targets.some(t=>(kind==='hold'||t.kind==='hold')&&overlaps(candidate,t)))continue;
-    if(targets.some(t=>distance(t.at,at)<(stage<5?0.62:stage<12?0.9:1.15)))continue;
+    if(conflictsWithHoldArc(at,kind)||targets.some(t=>(isArc(kind)||isArc(t.kind))&&overlaps(candidate,t)))continue;
+    if(targets.some(t=>distance(t.at,at)<(difficulty==='hard'?.48:stage<5?.62:stage<12?.9:1.15)))continue;
     const gap=targets.length?Math.min(...targets.map(t=>Math.abs(at-t.at))):TAU;
     if(gap>bestGap){bestGap=gap;bestAt=at}
   }
@@ -228,27 +231,22 @@ try{const saved=localStorage.getItem('fw-polyrhythm-death-effect');if(deathEffec
 deathEffectSelect.value=deathEffect;
 function clearLifeEffect(){clearTimeout(lifeFxTimer);document.querySelector('#lifeFx').replaceChildren();document.body.classList.remove('life-neon-out','life-neon-return');}
 deathEffectSelect.addEventListener('change',()=>{if(!deathEffectOptions.includes(deathEffectSelect.value))return;deathEffect=deathEffectSelect.value;clearLifeEffect();try{localStorage.setItem('fw-polyrhythm-death-effect',deathEffect)}catch(e){}});
+let lifeFxLast=-Infinity;
 function lifeLossEffect(){
  const effect=deathEffect==='auto'?visualTheme:deathEffect;
  if(reducedMotion?.matches||effect==='basic'||effect==='off')return;
- const layer=document.querySelector('#lifeFx');
- clearTimeout(lifeFxTimer);layer.replaceChildren();
- document.body.classList.remove('life-neon-out','life-neon-return');
+ const now=performance.now();if(now-lifeFxLast<220)return;lifeFxLast=now;
+ const layer=document.querySelector('#lifeFx');clearTimeout(lifeFxTimer);layer.replaceChildren();
  if(effect==='neon'){
-   document.body.classList.add('life-neon-out');
-   lifeFxTimer=setTimeout(()=>{document.body.classList.replace('life-neon-out','life-neon-return');lifeFxTimer=setTimeout(()=>document.body.classList.remove('life-neon-return'),600)},260);
-   return;
- }
+ const shade=document.createElement('div');shade.style.cssText='position:absolute;inset:0;background:#050716;pointer-events:none';layer.append(shade);shade.animate([{opacity:.68},{opacity:0}],{duration:430,easing:'ease-out'});
+ }else{
  const rect=canvas.getBoundingClientRect(),x=rect.left+rect.width/2,y=rect.top+rect.height/2;
- const crack=document.createElementNS('http://www.w3.org/2000/svg','svg');
- crack.setAttribute('viewBox','0 0 400 400');crack.setAttribute('class','life-crack');crack.style.left=x+'px';crack.style.top=y+'px';
- for(let i=0;i<12;i++){const a=i*Math.PI/6+.16*Math.random(),r=125+Math.random()*70;const p=document.createElementNS(crack.namespaceURI,'path');p.setAttribute('d','M200 200 L'+(200+Math.cos(a)*65)+' '+(200+Math.sin(a)*65)+' L'+(200+Math.cos(a+.12)*r)+' '+(200+Math.sin(a+.12)*r));p.setAttribute('stroke','#d5f4ff');p.setAttribute('stroke-width','2');p.setAttribute('fill','none');crack.append(p)}
- layer.append(crack);
- for(let i=0;i<28;i++){const s=document.createElement('i'),a=i*Math.PI*2/28+Math.random()*.2,d=85+Math.random()*Math.min(180,rect.width*.45);s.className='life-shard';s.style.left=x+'px';s.style.top=y+'px';for(const [k,v] of Object.entries({w:12+Math.random()*30+'px',h:18+Math.random()*38+'px',dx:Math.cos(a)*d+'px',dy:Math.sin(a)*d+'px',r:Math.random()*360+'deg'}))s.style.setProperty('--'+k,v);layer.append(s)}
- lifeFxTimer=setTimeout(()=>layer.replaceChildren(),900);
+ for(let i=0;i<8;i++){const shard=document.createElement('i'),a=i*TAU/8,d=rect.width*.32;shard.style.cssText='position:absolute;left:'+x+'px;top:'+y+'px;width:22px;height:36px;background:#c5eaff;clip-path:polygon(0 0,100% 28%,30% 100%);pointer-events:none';layer.append(shard);shard.animate([{transform:'translate(-50%,-50%) rotate('+a+'rad)',opacity:.85},{transform:'translate('+Math.cos(a)*d+'px,'+Math.sin(a)*d+'px) rotate('+(a+2)+'rad)',opacity:0}],{duration:450,easing:'ease-out'});}
+ }
+ lifeFxTimer=setTimeout(()=>layer.replaceChildren(),460);
 }
 function lose(reason){if(!running)return;combo=0;lives=Math.max(0,lives-1);lifeLossEffect();feedback.textContent=reason+' · 목숨 -1';update();if(lives===0)endGame()}
-const fwSeedParam=new URLSearchParams(location.search).get('seed');const fwSeed=fwSeedParam!==null&&/^\d{1,10}$/.test(fwSeedParam)&&Number(fwSeedParam)<=4294967295?Number(fwSeedParam):null;let fwSeedState=0;if(fwSeed!==null){const el=document.getElementById('fwSeedInfo');if(el){el.hidden=false;el.textContent='SEED '+fwSeed+' · 랜덤 모드 난수 고정 (플레이 진행에 따라 배치가 달라질 수 있음)';}}function fwTargetRandom(){if(fwSeed===null)return Math.random();fwSeedState=(fwSeedState+0x6D2B79F5)>>>0;let t=fwSeedState;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return ((t^(t>>>14))>>>0)/4294967296;}function start(){fwSeedState=fwSeed===null?0:fwSeed;paused=false;if(audioContext?.state==="suspended")audioContext.resume().catch(()=>{});if(editing)editorStop();document.body.classList.add('playing');window.getSelection?.()?.removeAllRanges();try{initAudio();prepareHitSample()}catch(e){}cancelAnimationFrame(raf);running=true;syncPause();angle=-Math.PI/2;mapIndex=mode==='map'?selectedMap:0;stage=0;period=mode==='map'?stagePeriod():4;score=0;combo=0;success=0;lives=5;progress=0;direction=1;holdTarget=null;activeInput=null;reverseUntil=0;nextId=0;mapBeat=0;musicNote=0;last=performance.now();spawnTargets();showMode();feedback.textContent='READY · 타이밍을 맞추세요!';update();draw();raf=requestAnimationFrame(frame)}
+const fwSeedParam=new URLSearchParams(location.search).get('seed');const fwSeed=fwSeedParam!==null&&/^\d{1,10}$/.test(fwSeedParam)&&Number(fwSeedParam)<=4294967295?Number(fwSeedParam):null;let fwSeedState=0;if(fwSeed!==null){const el=document.getElementById('fwSeedInfo');if(el){el.hidden=false;el.textContent='SEED '+fwSeed+' · 랜덤 모드 난수 고정 (플레이 진행에 따라 배치가 달라질 수 있음)';}}function fwTargetRandom(){if(fwSeed===null)return Math.random();fwSeedState=(fwSeedState+0x6D2B79F5)>>>0;let t=fwSeedState;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return ((t^(t>>>14))>>>0)/4294967296;}function start(){clearLifeEffect();lifeFxLast=-Infinity;fwSeedState=fwSeed===null?0:fwSeed;paused=false;if(audioContext?.state==="suspended")audioContext.resume().catch(()=>{});if(editing)editorStop();document.body.classList.add('playing');window.getSelection?.()?.removeAllRanges();try{initAudio();prepareHitSample()}catch(e){}cancelAnimationFrame(raf);running=true;syncPause();angle=-Math.PI/2;mapIndex=mode==='map'?selectedMap:0;stage=0;period=stagePeriod();score=0;combo=0;success=0;lives=5;progress=0;direction=1;holdTarget=null;activeInput=null;reverseUntil=0;nextId=0;mapBeat=0;musicNote=0;last=performance.now();spawnTargets();showMode();feedback.textContent='READY · 타이밍을 맞추세요!';update();draw();raf=requestAnimationFrame(frame)}
 let audioContext=null,audioCompressor=null;
 const melodies=[
   [262,330,392,523,392,330,294,392],
@@ -369,8 +367,8 @@ function changeDirection(kind){
     while(guard++<80&&placed.some(p=>{
       const delta=((nextAt-p.at)%TAU+TAU)%TAU;
       const gap=Math.min(delta,TAU-delta);
-      const timeOverlap=nextAt<=p.at+(p.kind==='hold'?HOLD_LENGTH:0)+0.55&&p.at<=nextAt+(t.kind==='hold'?HOLD_LENGTH:0)+0.55;
-      return gap<0.48||(p.kind==='hold'&&(delta<=HOLD_LENGTH+0.36||delta>=TAU-0.36))||(t.kind==='hold'&&(delta<=0.36||delta>=TAU-HOLD_LENGTH-0.36))||timeOverlap;
+      const timeOverlap=nextAt<=p.at+(isArc(p.kind)?HOLD_LENGTH:0)+0.55&&p.at<=nextAt+(isArc(t.kind)?HOLD_LENGTH:0)+0.55;
+      return gap<0.48||(isArc(p.kind)&&(delta<=HOLD_LENGTH+0.36||delta>=TAU-0.36))||(isArc(t.kind)&&(delta<=0.36||delta>=TAU-HOLD_LENGTH-0.36))||timeOverlap;
     }))nextAt+=0.22;
     t.at=nextAt;
     t.angle=angle+direction*(nextAt-progress);
@@ -415,7 +413,10 @@ function hit(){
   if(!targets.length)return;
   if(mode!=='map'||maps[mapIndex].name!=='별달거리')playDrum();
   const judged=judgedProgress();
-   const available=targets.filter(t=>t.at-judged>=-goodWindow());
+  const heart=targets.find(t=>t.kind==='heart'&&progress>=t.at&&progress<=t.at+HOLD_LENGTH);
+  if(heart){heart.taps=Math.min(5,(heart.taps||0)+1);if(heart.taps===5&&!heart.rewarded){heart.rewarded=true;lives++;feedback.textContent='💗 HEART 성공 · 목숨 +1';update()}else if(!heart.rewarded)feedback.textContent='💗 HEART '+heart.taps+'/5';return;}
+  if(targets.some(t=>t.kind==='heart'&&progress>=t.at-goodWindow()&&progress<t.at)){feedback.textContent='💗 하트 궤도 시작부터 연타!';return;}
+   const available=targets.filter(t=>t.kind!=='heart'&&t.at-judged>=-goodWindow());
   if(!available.length){lose('헛발질');return;}
   const chosen=available.reduce((nearest,target)=>
     Math.abs(target.at-judged)<Math.abs(nearest.at-judged)?target:nearest);
@@ -449,10 +450,11 @@ function frame(now){
   mapMusic();
   if(holdTarget&&progress>=holdTarget.at+HOLD_LENGTH)finishHold(true);
   if(!running){draw();return;}
-  const expired=targets.filter(t=>t!==holdTarget&&judgedProgress()>t.at+goodWindow());
+  const expired=targets.filter(t=>t!==holdTarget&&(t.kind==='heart'?progress>t.at+HOLD_LENGTH:judgedProgress()>t.at+goodWindow()));
   for(const target of expired){
     if(!running)break;
     retireTarget(target);
+    if(target.kind==='heart'){if(!target.rewarded)feedback.textContent='💗 HEART 놓침 · 목숨 유지';continue;}
     // Missing a visible direction tile still changes direction and costs a life.
     const directionTile=target.kind==='reverse'||target.kind==='forward';
     if(directionTile)changeDirection(target.kind);
@@ -468,18 +470,18 @@ function draw(){ctx.clearRect(0,0,480,480);const cx=240,cy=240,r=172;
 const now=performance.now();glassBursts=glassBursts.filter(b=>now-b.start<580);for(const b of glassBursts){const t=(now-b.start)/580;ctx.beginPath();ctx.arc(cx+Math.cos(b.angle)*r,cy+Math.sin(b.angle)*r,12+58*t,0,TAU);ctx.strokeStyle=b.color;ctx.globalAlpha=(1-t)*.7;ctx.lineWidth=4*(1-t)+.5;ctx.stroke();ctx.globalAlpha=1;}
 ctx.beginPath();ctx.arc(cx,cy,r,0,TAU);ctx.strokeStyle=visualTheme==='neon'?'#00f5ed':visualTheme==='basic'?'#69738b':'#536182';ctx.lineWidth=visualTheme==='neon'?7:5;ctx.shadowColor=visualTheme==='neon'?'#00f5ed':'transparent';ctx.shadowBlur=visualTheme==='neon'?10:0;ctx.stroke();ctx.shadowBlur=0;for(let i=0;i<12;i++){const a=i*TAU/12;ctx.beginPath();ctx.arc(cx+Math.cos(a)*r,cy+Math.sin(a)*r,2.5,0,TAU);ctx.fillStyle='#7583a5';ctx.fill()}
 if(running&&trailMode!=="off"){ctx.save();ctx.lineCap="round";ctx.shadowBlur=0;const length=Math.min(progress,TAU*(trailMode==="long"?.33:.17)/period);const count=trailMode==="long"?14:8;for(let j=count;j>0;j--){const f=j/count;ctx.globalAlpha=(1-f*.92)*.65;ctx.strokeStyle=visualTheme==="neon"?(j>count/2?"#ff35d4":"#00f5ed"):visualTheme==="basic"?"#71d6ff":(j>count/2?"#b29bff":"#91eaff");ctx.lineWidth=3+19*(1-f);ctx.beginPath();ctx.arc(cx,cy,r,angle-direction*length*j/count,angle-direction*length*(j-1)/count,direction<0);ctx.stroke()}ctx.restore()}
-for(const t of targets){if(t!==holdTarget&&(t.at-progress>=TAU-goodWindow()||t.at-progress< -goodWindow()))continue;if(t.kind==='hold'){
+for(const t of targets){if(t!==holdTarget&&(t.at-progress>=TAU-goodWindow()||t.at-progress< -(t.kind==='heart'?HOLD_LENGTH:goodWindow())))continue;if(isArc(t.kind)){
 const startAngle=t.angle,endAngle=startAngle+direction*HOLD_LENGTH,holding=t===holdTarget;
 const holdProgress=holding?Math.max(0,Math.min(1,(progress-t.at)/HOLD_LENGTH)):0;
 ctx.save();ctx.lineCap='round';
 ctx.beginPath();ctx.arc(cx,cy,r,startAngle,endAngle,direction<0);
 ctx.strokeStyle=visualTheme==='basic'?'#303b56':visualTheme==='neon'?'rgba(255,39,191,.2)':'rgba(145,137,242,.18)';ctx.lineWidth=visualTheme==='basic'?30:39;ctx.stroke();
 const rainbow=holdRainbow;
-ctx.strokeStyle=visualTheme==='basic'?'#a58cff':visualTheme==='neon'?'#ff35d4':rainbow;ctx.lineWidth=visualTheme==='basic'?22:27;ctx.shadowColor=visualTheme==='neon'?'#ff35d4':holding?'#9deaff':'#b29bff';ctx.shadowBlur=visualTheme==='basic'?0:visualTheme==='neon'?18:holding?13:7;ctx.stroke();ctx.shadowBlur=0;
+ctx.strokeStyle=t.kind==='heart'?'#fb719d':visualTheme==='basic'?'#a58cff':visualTheme==='neon'?'#ff35d4':rainbow;ctx.lineWidth=visualTheme==='basic'?22:27;ctx.shadowColor=visualTheme==='neon'?'#ff35d4':holding?'#9deaff':'#b29bff';ctx.shadowBlur=visualTheme==='basic'?0:visualTheme==='neon'?18:holding?13:7;ctx.stroke();ctx.shadowBlur=0;
 ctx.beginPath();ctx.arc(cx,cy,r,startAngle,endAngle,direction<0);ctx.strokeStyle=visualTheme==='basic'?'#c6b7ff':'rgba(255,255,255,.65)';ctx.lineWidth=visualTheme==='basic'?1:3;ctx.stroke();
 if(holding){ctx.beginPath();ctx.arc(cx,cy,r,startAngle,startAngle+direction*HOLD_LENGTH*holdProgress,direction<0);ctx.strokeStyle='#e7fbff';ctx.lineWidth=11;ctx.shadowColor='#82eaff';ctx.shadowBlur=10;ctx.stroke();ctx.shadowBlur=0}
 const tip=endAngle;ctx.beginPath();ctx.arc(cx+Math.cos(tip)*r,cy+Math.sin(tip)*r,holding?11:8,0,TAU);ctx.fillStyle='#e8faff';ctx.shadowColor='#91ecff';ctx.shadowBlur=14;ctx.fill();ctx.restore();
-}ctx.save();ctx.translate(cx+Math.cos(t.angle)*r,cy+Math.sin(t.angle)*r);ctx.rotate(t.angle+Math.PI/2);ctx.fillStyle=t.kind==='hold'?(visualTheme==='neon'?'#ff35d4':'#b9a4ff'):t.kind==='reverse'?'#5ba8ff':t.kind==='forward'?'#65dfaa':visualTheme==='neon'?'#00f5ed':'#ffad3d';ctx.shadowColor=ctx.fillStyle;ctx.shadowBlur=visualTheme==='basic'?0:visualTheme==='neon'?14:7;ctx.fillRect(-19,-19,38,38);if(t.kind==='hold'){ctx.shadowBlur=0;ctx.strokeStyle='rgba(255,255,255,.8)';ctx.lineWidth=2;ctx.strokeRect(-16,-16,32,32);ctx.fillStyle='#101a36';ctx.font='bold 21px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(t===holdTarget?'✓':'H',0,1)}if(t.kind&&t.kind!=='normal'&&t.kind!=='hold'){ctx.shadowBlur=0;ctx.fillStyle='#08142a';ctx.font='bold 29px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(t.kind==='reverse'?'↺':'↻',0,1)}ctx.restore()}
+}ctx.save();ctx.translate(cx+Math.cos(t.angle)*r,cy+Math.sin(t.angle)*r);ctx.rotate(t.angle+Math.PI/2);ctx.fillStyle=t.kind==='heart'?'#ff8db4':t.kind==='hold'?(visualTheme==='neon'?'#ff35d4':'#b9a4ff'):t.kind==='reverse'?'#5ba8ff':t.kind==='forward'?'#65dfaa':visualTheme==='neon'?'#00f5ed':'#ffad3d';ctx.shadowColor=ctx.fillStyle;ctx.shadowBlur=visualTheme==='basic'?0:visualTheme==='neon'?14:7;ctx.fillRect(-19,-19,38,38);if(t.kind==='hold'){ctx.shadowBlur=0;ctx.strokeStyle='rgba(255,255,255,.8)';ctx.lineWidth=2;ctx.strokeRect(-16,-16,32,32);ctx.fillStyle='#101a36';ctx.font='bold 21px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(t===holdTarget?'✓':'H',0,1)}if(t.kind==='heart'){ctx.shadowBlur=0;ctx.fillStyle='#58132e';ctx.font='bold 13px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('♥ '+(t.taps||0)+'/5',0,1)}if(t.kind&&t.kind!=='normal'&&!isArc(t.kind)){ctx.shadowBlur=0;ctx.fillStyle='#08142a';ctx.font='bold 29px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(t.kind==='reverse'?'↺':'↻',0,1)}ctx.restore()}
 ctx.beginPath();ctx.arc(cx+Math.cos(angle)*r,cy+Math.sin(angle)*r,15,0,TAU);ctx.fillStyle='#71d6ff';ctx.shadowColor=visualTheme==='neon'?'#00f5ed':'#71d6ff';ctx.shadowBlur=visualTheme==='basic'?0:visualTheme==='neon'?24:9;ctx.fill();ctx.shadowBlur=0;ctx.fillStyle='#f3f5ff';ctx.textAlign='center';ctx.font='bold 36px system-ui';ctx.fillText(period.toFixed(1)+'s',cx,cy);ctx.font='16px system-ui';ctx.fillStyle='#aebbd7';ctx.fillText('성공 '+(success%3)+'/3 · 판정 '+Math.round(goodWindow()/0.78*100)+'%',cx,cy+29);
 if(combo>=5&&visualTheme!=='basic'){ctx.save();ctx.globalAlpha=.18+Math.min(combo,40)/150;ctx.strokeStyle=combo>=20?'#ffcb8e':'#b9a4ff';ctx.lineWidth=4;ctx.shadowBlur=8;ctx.shadowColor=ctx.strokeStyle;ctx.beginPath();ctx.arc(cx,cy,r+13,0,TAU);ctx.stroke();ctx.restore()}}
 document.querySelector('#mapSelect').addEventListener('change',e=>{if(running)return;selectedMap=Number(e.target.value);mapIndex=selectedMap;showMode()});document.querySelector('#randomMode').addEventListener('click',()=>selectMode('random'));document.querySelector('#mapMode').addEventListener('click',()=>selectMode('map'));document.querySelector('#start').addEventListener('click',e=>{start();e.currentTarget.blur()});function press(input){
@@ -599,6 +601,7 @@ document.querySelector('#editorImport').addEventListener('change',async e=>{
   e.target.value='';
 });
 
+for(const k of ['easy','hard'])document.getElementById(k+'Mode').addEventListener('click',()=>{if(running)return;difficulty=k;for(const x of ['easy','hard']){const el=document.getElementById(x+'Mode');el.classList.toggle('active',x===k);el.setAttribute('aria-pressed',String(x===k))}period=stagePeriod();update();draw()});
 showMode();draw();
 </script>
 <script defer src="https://semicolonxss.github.io/Formwheel/shared/share-card-v2.js?v=20261123"></script>
