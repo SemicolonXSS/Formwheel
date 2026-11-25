@@ -1,0 +1,243 @@
+{
+  "date": "2026-11-25",
+  "after": [
+    {
+      "label": "atom-default-320-true",
+      "violations": [],
+      "errors": []
+    },
+    {
+      "label": "atom-search-320-true",
+      "violations": [],
+      "errors": []
+    },
+    {
+      "label": "atom-all-fields-320-true",
+      "violations": [],
+      "errors": []
+    },
+    {
+      "label": "atom-favorites-320-true",
+      "violations": [],
+      "errors": []
+    },
+    {
+      "label": "atom-default-320-false",
+      "violations": [],
+      "errors": []
+    },
+    {
+      "label": "atom-search-320-false",
+      "violations": [],
+      "errors": []
+    },
+    {
+      "label": "atom-all-fields-320-false",
+      "violations": [],
+      "errors": []
+    },
+    {
+      "label": "atom-favorites-320-false",
+      "violations": [],
+      "errors": []
+    },
+    {
+      "label": "grid-320",
+      "violations": [],
+      "errors": []
+    },
+    {
+      "label": "atom-default-390-true",
+      "violations": [],
+      "errors": []
+    },
+    {
+      "label": "atom-search-390-true",
+      "violations": [],
+      "errors": []
+    },
+    {
+      "label": "atom-all-fields-390-true",
+      "violations": [],
+      "errors": []
+    },
+    {
+      "label": "atom-favorites-390-true",
+      "violations": [],
+      "errors": []
+    },
+    {
+      "label": "atom-default-390-false",
+      "violations": [],
+      "errors": []
+    },
+    {
+      "label": "atom-search-390-false",
+      "violations": [],
+      "errors": []
+    },
+    {
+      "label": "atom-all-fields-390-false",
+      "violations": [],
+      "errors": []
+    },
+    {
+      "label": "atom-favorites-390-false",
+      "violations": [],
+      "errors": []
+    },
+    {
+      "label": "grid-390",
+      "violations": [],
+      "errors": []
+    },
+    {
+      "label": "atom-default-1280-true",
+      "violations": [],
+      "errors": []
+    },
+    {
+      "label": "atom-search-1280-true",
+      "violations": [],
+      "errors": []
+    },
+    {
+      "label": "atom-all-fields-1280-true",
+      "violations": [],
+      "errors": []
+    },
+    {
+      "label": "atom-favorites-1280-true",
+      "violations": [],
+      "errors": []
+    },
+    {
+      "label": "atom-default-1280-false",
+      "violations": [],
+      "errors": []
+    },
+    {
+      "label": "atom-search-1280-false",
+      "violations": [],
+      "errors": []
+    },
+    {
+      "label": "atom-all-fields-1280-false",
+      "violations": [],
+      "errors": []
+    },
+    {
+      "label": "atom-favorites-1280-false",
+      "violations": [],
+      "errors": []
+    },
+    {
+      "label": "grid-1280",
+      "violations": [],
+      "errors": []
+    },
+    {
+      "label": "atom-default-1600-true",
+      "violations": [],
+      "errors": []
+    },
+    {
+      "label": "atom-search-1600-true",
+      "violations": [],
+      "errors": []
+    },
+    {
+      "label": "atom-all-fields-1600-true",
+      "violations": [],
+      "errors": []
+    },
+    {
+      "label": "atom-favorites-1600-true",
+      "violations": [],
+      "errors": []
+    },
+    {
+      "label": "atom-default-1600-false",
+      "violations": [],
+      "errors": []
+    },
+    {
+      "label": "atom-search-1600-false",
+      "violations": [],
+      "errors": []
+    },
+    {
+      "label": "atom-all-fields-1600-false",
+      "violations": [],
+      "errors": []
+    },
+    {
+      "label": "atom-favorites-1600-false",
+      "violations": [],
+      "errors": []
+    },
+    {
+      "label": "grid-1600",
+      "violations": [],
+      "errors": []
+    }
+  ],
+  "baselineChecks": [
+    {
+      "file": "atom.html",
+      "state": "search",
+      "axeFailures": {
+        "color-contrast": 316
+      },
+      "focus": null
+    },
+    {
+      "file": "atom.html",
+      "state": "default",
+      "axeFailures": {},
+      "focus": {
+        "tag": "BODY",
+        "inTable": false
+      }
+    },
+    {
+      "file": "atom.html",
+      "state": "all-fields-favorites",
+      "axeFailures": {
+        "color-contrast": 1115
+      },
+      "focus": null
+    },
+    {
+      "file": "atom.html",
+      "state": "all-fields-search",
+      "axeFailures": {
+        "color-contrast": 1107
+      },
+      "focus": null
+    },
+    {
+      "file": "grid.html",
+      "state": "board-names",
+      "axeFailures": {},
+      "focus": {
+        "tag": "BODY",
+        "inBoard": false
+      }
+    }
+  ],
+  "offlineFeedback": [
+    {
+      "baseline": true,
+      "initial": "118개 원소 표시 · 전체 118개",
+      "afterSearch": "1개 원소 표시 · 전체 118개",
+      "tiles": 118
+    },
+    {
+      "baseline": false,
+      "initial": "118개 원소 표시 · 전체 118개 · 기본 118개 원소 기호는 사용 가능하지만 상세 데이터 연결에 실패했습니다. 인터넷 연결을 확인하고 새로고침하세요.",
+      "afterSearch": "1개 원소 표시 · 전체 118개 · 기본 118개 원소 기호는 사용 가능하지만 상세 데이터 연결에 실패했습니다. 인터넷 연결을 확인하고 새로고침하세요.",
+      "tiles": 118
+    }
+  ]
+}

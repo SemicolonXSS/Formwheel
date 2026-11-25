@@ -1,0 +1,3035 @@
+{
+  "date": "2026-11-25",
+  "totalInAudit": 1177,
+  "findings": [
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 24,
+      "fieldIndex": 6,
+      "text": "자연계 존재",
+      "target": [
+        "button[title=\"크로뮴 (Cr)\"] > .extra:nth-child(7)"
+      ],
+      "before": "<span class=\"extra\">자연계 존재</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0201"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 24,
+      "fieldIndex": 7,
+      "text": "금속",
+      "target": [
+        "button[title=\"크로뮴 (Cr)\"] > .extra:nth-child(8)"
+      ],
+      "before": "<span class=\"extra\">금속</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0202"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 24,
+      "fieldIndex": 8,
+      "text": "안정 동위원소 존재",
+      "target": [
+        "button[title=\"크로뮴 (Cr)\"] > .extra:nth-child(9)"
+      ],
+      "before": "<span class=\"extra\">안정 동위원소 존재</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0203"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 24,
+      "fieldIndex": 9,
+      "text": "고체",
+      "target": [
+        "button[title=\"크로뮴 (Cr)\"] > .extra:nth-child(10)"
+      ],
+      "before": "<span class=\"extra\">고체</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0204"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 25,
+      "fieldIndex": 0,
+      "text": "25",
+      "target": [
+        "button[title=\"망가니즈 (Mn)\"] > small"
+      ],
+      "before": "<small>25</small>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "7.5pt (10px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "search",
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0205"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 25,
+      "fieldIndex": 1,
+      "text": "Mn",
+      "target": [
+        "button[title=\"망가니즈 (Mn)\"] > strong"
+      ],
+      "before": "<strong>Mn</strong>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "14.3pt (19px)",
+          "fontWeight": "bold",
+          "messageKey": null,
+          "expectedContrastRatio": "3:1"
+        }
+      ],
+      "states": [
+        "search",
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0206"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 25,
+      "fieldIndex": 2,
+      "text": "망가니즈",
+      "target": [
+        "button[title=\"망가니즈 (Mn)\"] > span"
+      ],
+      "before": "<span>망가니즈</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "search",
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0207"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 25,
+      "fieldIndex": 3,
+      "text": "54.938 u",
+      "target": [
+        "button[title=\"망가니즈 (Mn)\"] > .extra:nth-child(4)"
+      ],
+      "before": "<span class=\"extra\">54.938 u</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0208"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 25,
+      "fieldIndex": 4,
+      "text": "4주기",
+      "target": [
+        "button[title=\"망가니즈 (Mn)\"] > .extra:nth-child(5)"
+      ],
+      "before": "<span class=\"extra\">4주기</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0209"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 25,
+      "fieldIndex": 5,
+      "text": "7족",
+      "target": [
+        "button[title=\"망가니즈 (Mn)\"] > .extra:nth-child(6)"
+      ],
+      "before": "<span class=\"extra\">7족</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0210"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 25,
+      "fieldIndex": 6,
+      "text": "자연계 존재",
+      "target": [
+        "button[title=\"망가니즈 (Mn)\"] > .extra:nth-child(7)"
+      ],
+      "before": "<span class=\"extra\">자연계 존재</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0211"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 25,
+      "fieldIndex": 7,
+      "text": "금속",
+      "target": [
+        "button[title=\"망가니즈 (Mn)\"] > .extra:nth-child(8)"
+      ],
+      "before": "<span class=\"extra\">금속</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0212"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 25,
+      "fieldIndex": 8,
+      "text": "안정 동위원소 존재",
+      "target": [
+        "button[title=\"망가니즈 (Mn)\"] > .extra:nth-child(9)"
+      ],
+      "before": "<span class=\"extra\">안정 동위원소 존재</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0213"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 25,
+      "fieldIndex": 9,
+      "text": "고체",
+      "target": [
+        "button[title=\"망가니즈 (Mn)\"] > .extra:nth-child(10)"
+      ],
+      "before": "<span class=\"extra\">고체</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0214"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 26,
+      "fieldIndex": 0,
+      "text": "26",
+      "target": [
+        "button[title=\"철 (Fe)\"] > small"
+      ],
+      "before": "<small>26</small>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "7.5pt (10px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "search",
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0215"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 26,
+      "fieldIndex": 1,
+      "text": "Fe",
+      "target": [
+        "button[title=\"철 (Fe)\"] > strong"
+      ],
+      "before": "<strong>Fe</strong>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "14.3pt (19px)",
+          "fontWeight": "bold",
+          "messageKey": null,
+          "expectedContrastRatio": "3:1"
+        }
+      ],
+      "states": [
+        "search",
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0216"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 26,
+      "fieldIndex": 3,
+      "text": "55.845 u",
+      "target": [
+        "button[title=\"철 (Fe)\"] > .extra:nth-child(4)"
+      ],
+      "before": "<span class=\"extra\">55.845 u</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0217"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 26,
+      "fieldIndex": 4,
+      "text": "4주기",
+      "target": [
+        "button[title=\"철 (Fe)\"] > .extra:nth-child(5)"
+      ],
+      "before": "<span class=\"extra\">4주기</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0218"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 26,
+      "fieldIndex": 5,
+      "text": "8족",
+      "target": [
+        "button[title=\"철 (Fe)\"] > .extra:nth-child(6)"
+      ],
+      "before": "<span class=\"extra\">8족</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0219"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 26,
+      "fieldIndex": 6,
+      "text": "자연계 존재",
+      "target": [
+        "button[title=\"철 (Fe)\"] > .extra:nth-child(7)"
+      ],
+      "before": "<span class=\"extra\">자연계 존재</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0220"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 26,
+      "fieldIndex": 7,
+      "text": "금속",
+      "target": [
+        "button[title=\"철 (Fe)\"] > .extra:nth-child(8)"
+      ],
+      "before": "<span class=\"extra\">금속</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0221"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 26,
+      "fieldIndex": 8,
+      "text": "안정 동위원소 존재",
+      "target": [
+        "button[title=\"철 (Fe)\"] > .extra:nth-child(9)"
+      ],
+      "before": "<span class=\"extra\">안정 동위원소 존재</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0222"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 26,
+      "fieldIndex": 9,
+      "text": "고체",
+      "target": [
+        "button[title=\"철 (Fe)\"] > .extra:nth-child(10)"
+      ],
+      "before": "<span class=\"extra\">고체</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0223"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 27,
+      "fieldIndex": 0,
+      "text": "27",
+      "target": [
+        "button[title=\"코발트 (Co)\"] > small"
+      ],
+      "before": "<small>27</small>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "7.5pt (10px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "search",
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0224"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 27,
+      "fieldIndex": 1,
+      "text": "Co",
+      "target": [
+        "button[title=\"코발트 (Co)\"] > strong"
+      ],
+      "before": "<strong>Co</strong>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "14.3pt (19px)",
+          "fontWeight": "bold",
+          "messageKey": null,
+          "expectedContrastRatio": "3:1"
+        }
+      ],
+      "states": [
+        "search",
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0225"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 27,
+      "fieldIndex": 2,
+      "text": "코발트",
+      "target": [
+        "button[title=\"코발트 (Co)\"] > span"
+      ],
+      "before": "<span>코발트</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "search",
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0226"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 27,
+      "fieldIndex": 3,
+      "text": "58.933 u",
+      "target": [
+        "button[title=\"코발트 (Co)\"] > .extra:nth-child(4)"
+      ],
+      "before": "<span class=\"extra\">58.933 u</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0227"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 27,
+      "fieldIndex": 4,
+      "text": "4주기",
+      "target": [
+        "button[title=\"코발트 (Co)\"] > .extra:nth-child(5)"
+      ],
+      "before": "<span class=\"extra\">4주기</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0228"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 27,
+      "fieldIndex": 5,
+      "text": "9족",
+      "target": [
+        "button[title=\"코발트 (Co)\"] > .extra:nth-child(6)"
+      ],
+      "before": "<span class=\"extra\">9족</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0229"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 27,
+      "fieldIndex": 6,
+      "text": "자연계 존재",
+      "target": [
+        "button[title=\"코발트 (Co)\"] > .extra:nth-child(7)"
+      ],
+      "before": "<span class=\"extra\">자연계 존재</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0230"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 27,
+      "fieldIndex": 7,
+      "text": "금속",
+      "target": [
+        "button[title=\"코발트 (Co)\"] > .extra:nth-child(8)"
+      ],
+      "before": "<span class=\"extra\">금속</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0231"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 27,
+      "fieldIndex": 8,
+      "text": "안정 동위원소 존재",
+      "target": [
+        "button[title=\"코발트 (Co)\"] > .extra:nth-child(9)"
+      ],
+      "before": "<span class=\"extra\">안정 동위원소 존재</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0232"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 27,
+      "fieldIndex": 9,
+      "text": "고체",
+      "target": [
+        "button[title=\"코발트 (Co)\"] > .extra:nth-child(10)"
+      ],
+      "before": "<span class=\"extra\">고체</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0233"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 28,
+      "fieldIndex": 0,
+      "text": "28",
+      "target": [
+        "button[title=\"니켈 (Ni)\"] > small"
+      ],
+      "before": "<small>28</small>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "7.5pt (10px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "search",
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0234"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 28,
+      "fieldIndex": 1,
+      "text": "Ni",
+      "target": [
+        "button[title=\"니켈 (Ni)\"] > strong"
+      ],
+      "before": "<strong>Ni</strong>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "14.3pt (19px)",
+          "fontWeight": "bold",
+          "messageKey": null,
+          "expectedContrastRatio": "3:1"
+        }
+      ],
+      "states": [
+        "search",
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0235"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 28,
+      "fieldIndex": 2,
+      "text": "니켈",
+      "target": [
+        "button[title=\"니켈 (Ni)\"] > span"
+      ],
+      "before": "<span>니켈</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "search",
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0236"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 28,
+      "fieldIndex": 3,
+      "text": "58.693 u",
+      "target": [
+        "button[title=\"니켈 (Ni)\"] > .extra:nth-child(4)"
+      ],
+      "before": "<span class=\"extra\">58.693 u</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0237"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 28,
+      "fieldIndex": 4,
+      "text": "4주기",
+      "target": [
+        "button[title=\"니켈 (Ni)\"] > .extra:nth-child(5)"
+      ],
+      "before": "<span class=\"extra\">4주기</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0238"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 28,
+      "fieldIndex": 5,
+      "text": "10족",
+      "target": [
+        "button[title=\"니켈 (Ni)\"] > .extra:nth-child(6)"
+      ],
+      "before": "<span class=\"extra\">10족</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0239"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 28,
+      "fieldIndex": 6,
+      "text": "자연계 존재",
+      "target": [
+        "button[title=\"니켈 (Ni)\"] > .extra:nth-child(7)"
+      ],
+      "before": "<span class=\"extra\">자연계 존재</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0240"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 28,
+      "fieldIndex": 7,
+      "text": "금속",
+      "target": [
+        "button[title=\"니켈 (Ni)\"] > .extra:nth-child(8)"
+      ],
+      "before": "<span class=\"extra\">금속</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0241"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 28,
+      "fieldIndex": 8,
+      "text": "안정 동위원소 존재",
+      "target": [
+        "button[title=\"니켈 (Ni)\"] > .extra:nth-child(9)"
+      ],
+      "before": "<span class=\"extra\">안정 동위원소 존재</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0242"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 28,
+      "fieldIndex": 9,
+      "text": "고체",
+      "target": [
+        "button[title=\"니켈 (Ni)\"] > .extra:nth-child(10)"
+      ],
+      "before": "<span class=\"extra\">고체</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0243"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 29,
+      "fieldIndex": 0,
+      "text": "29",
+      "target": [
+        "button[title=\"구리 (Cu)\"] > small"
+      ],
+      "before": "<small>29</small>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "7.5pt (10px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "search",
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0244"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 29,
+      "fieldIndex": 1,
+      "text": "Cu",
+      "target": [
+        "button[title=\"구리 (Cu)\"] > strong"
+      ],
+      "before": "<strong>Cu</strong>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "14.3pt (19px)",
+          "fontWeight": "bold",
+          "messageKey": null,
+          "expectedContrastRatio": "3:1"
+        }
+      ],
+      "states": [
+        "search",
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0245"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 29,
+      "fieldIndex": 2,
+      "text": "구리",
+      "target": [
+        "button[title=\"구리 (Cu)\"] > span"
+      ],
+      "before": "<span>구리</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "search",
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0246"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 29,
+      "fieldIndex": 3,
+      "text": "63.546 u",
+      "target": [
+        "button[title=\"구리 (Cu)\"] > .extra:nth-child(4)"
+      ],
+      "before": "<span class=\"extra\">63.546 u</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0247"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 29,
+      "fieldIndex": 4,
+      "text": "4주기",
+      "target": [
+        "button[title=\"구리 (Cu)\"] > .extra:nth-child(5)"
+      ],
+      "before": "<span class=\"extra\">4주기</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0248"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 29,
+      "fieldIndex": 5,
+      "text": "11족",
+      "target": [
+        "button[title=\"구리 (Cu)\"] > .extra:nth-child(6)"
+      ],
+      "before": "<span class=\"extra\">11족</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0249"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 29,
+      "fieldIndex": 6,
+      "text": "자연계 존재",
+      "target": [
+        "button[title=\"구리 (Cu)\"] > .extra:nth-child(7)"
+      ],
+      "before": "<span class=\"extra\">자연계 존재</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0250"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 29,
+      "fieldIndex": 7,
+      "text": "금속",
+      "target": [
+        "button[title=\"구리 (Cu)\"] > .extra:nth-child(8)"
+      ],
+      "before": "<span class=\"extra\">금속</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0251"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 29,
+      "fieldIndex": 8,
+      "text": "안정 동위원소 존재",
+      "target": [
+        "button[title=\"구리 (Cu)\"] > .extra:nth-child(9)"
+      ],
+      "before": "<span class=\"extra\">안정 동위원소 존재</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0252"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 29,
+      "fieldIndex": 9,
+      "text": "고체",
+      "target": [
+        "button[title=\"구리 (Cu)\"] > .extra:nth-child(10)"
+      ],
+      "before": "<span class=\"extra\">고체</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0253"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 30,
+      "fieldIndex": 0,
+      "text": "30",
+      "target": [
+        "button[title=\"아연 (Zn)\"] > small"
+      ],
+      "before": "<small>30</small>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "7.5pt (10px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "search",
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0254"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 30,
+      "fieldIndex": 1,
+      "text": "Zn",
+      "target": [
+        "button[title=\"아연 (Zn)\"] > strong"
+      ],
+      "before": "<strong>Zn</strong>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "14.3pt (19px)",
+          "fontWeight": "bold",
+          "messageKey": null,
+          "expectedContrastRatio": "3:1"
+        }
+      ],
+      "states": [
+        "search",
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0255"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 30,
+      "fieldIndex": 2,
+      "text": "아연",
+      "target": [
+        "button[title=\"아연 (Zn)\"] > span"
+      ],
+      "before": "<span>아연</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "search",
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0256"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 30,
+      "fieldIndex": 3,
+      "text": "65.382 u",
+      "target": [
+        "button[title=\"아연 (Zn)\"] > .extra:nth-child(4)"
+      ],
+      "before": "<span class=\"extra\">65.382 u</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0257"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 30,
+      "fieldIndex": 4,
+      "text": "4주기",
+      "target": [
+        "button[title=\"아연 (Zn)\"] > .extra:nth-child(5)"
+      ],
+      "before": "<span class=\"extra\">4주기</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0258"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 30,
+      "fieldIndex": 5,
+      "text": "12족",
+      "target": [
+        "button[title=\"아연 (Zn)\"] > .extra:nth-child(6)"
+      ],
+      "before": "<span class=\"extra\">12족</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0259"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 30,
+      "fieldIndex": 6,
+      "text": "자연계 존재",
+      "target": [
+        "button[title=\"아연 (Zn)\"] > .extra:nth-child(7)"
+      ],
+      "before": "<span class=\"extra\">자연계 존재</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0260"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 30,
+      "fieldIndex": 7,
+      "text": "금속",
+      "target": [
+        "button[title=\"아연 (Zn)\"] > .extra:nth-child(8)"
+      ],
+      "before": "<span class=\"extra\">금속</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0261"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 30,
+      "fieldIndex": 8,
+      "text": "안정 동위원소 존재",
+      "target": [
+        "button[title=\"아연 (Zn)\"] > .extra:nth-child(9)"
+      ],
+      "before": "<span class=\"extra\">안정 동위원소 존재</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0262"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 30,
+      "fieldIndex": 9,
+      "text": "고체",
+      "target": [
+        "button[title=\"아연 (Zn)\"] > .extra:nth-child(10)"
+      ],
+      "before": "<span class=\"extra\">고체</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1b2841",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0263"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 31,
+      "fieldIndex": 0,
+      "text": "31",
+      "target": [
+        "button[title=\"갈륨 (Ga)\"] > small"
+      ],
+      "before": "<small>31</small>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1e293c",
+          "contrastRatio": 1.54,
+          "fontSize": "7.5pt (10px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "search",
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0264"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 31,
+      "fieldIndex": 1,
+      "text": "Ga",
+      "target": [
+        "button[title=\"갈륨 (Ga)\"] > strong"
+      ],
+      "before": "<strong>Ga</strong>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1e293c",
+          "contrastRatio": 1.54,
+          "fontSize": "14.3pt (19px)",
+          "fontWeight": "bold",
+          "messageKey": null,
+          "expectedContrastRatio": "3:1"
+        }
+      ],
+      "states": [
+        "search",
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0265"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 31,
+      "fieldIndex": 2,
+      "text": "갈륨",
+      "target": [
+        "button[title=\"갈륨 (Ga)\"] > span"
+      ],
+      "before": "<span>갈륨</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1e293c",
+          "contrastRatio": 1.54,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "search",
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0266"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 31,
+      "fieldIndex": 3,
+      "text": "69.723 u",
+      "target": [
+        "button[title=\"갈륨 (Ga)\"] > .extra:nth-child(4)"
+      ],
+      "before": "<span class=\"extra\">69.723 u</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1e293c",
+          "contrastRatio": 1.54,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0267"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 31,
+      "fieldIndex": 4,
+      "text": "4주기",
+      "target": [
+        "button[title=\"갈륨 (Ga)\"] > .extra:nth-child(5)"
+      ],
+      "before": "<span class=\"extra\">4주기</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1e293c",
+          "contrastRatio": 1.54,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0268"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 31,
+      "fieldIndex": 5,
+      "text": "13족",
+      "target": [
+        "button[title=\"갈륨 (Ga)\"] > .extra:nth-child(6)"
+      ],
+      "before": "<span class=\"extra\">13족</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1e293c",
+          "contrastRatio": 1.54,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0269"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 31,
+      "fieldIndex": 6,
+      "text": "자연계 존재",
+      "target": [
+        "button[title=\"갈륨 (Ga)\"] > .extra:nth-child(7)"
+      ],
+      "before": "<span class=\"extra\">자연계 존재</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1e293c",
+          "contrastRatio": 1.54,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0270"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 31,
+      "fieldIndex": 7,
+      "text": "금속",
+      "target": [
+        "button[title=\"갈륨 (Ga)\"] > .extra:nth-child(8)"
+      ],
+      "before": "<span class=\"extra\">금속</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1e293c",
+          "contrastRatio": 1.54,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0271"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 31,
+      "fieldIndex": 8,
+      "text": "안정 동위원소 존재",
+      "target": [
+        "button[title=\"갈륨 (Ga)\"] > .extra:nth-child(9)"
+      ],
+      "before": "<span class=\"extra\">안정 동위원소 존재</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1e293c",
+          "contrastRatio": 1.54,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0272"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 31,
+      "fieldIndex": 9,
+      "text": "고체",
+      "target": [
+        "button[title=\"갈륨 (Ga)\"] > .extra:nth-child(10)"
+      ],
+      "before": "<span class=\"extra\">고체</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#1e293c",
+          "contrastRatio": 1.54,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0273"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 32,
+      "fieldIndex": 0,
+      "text": "32",
+      "target": [
+        "button[title=\"저마늄 (Ge)\"] > small"
+      ],
+      "before": "<small>32</small>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#19293f",
+          "contrastRatio": 1.55,
+          "fontSize": "7.5pt (10px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "search",
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0274"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 32,
+      "fieldIndex": 1,
+      "text": "Ge",
+      "target": [
+        "button[title=\"저마늄 (Ge)\"] > strong"
+      ],
+      "before": "<strong>Ge</strong>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#19293f",
+          "contrastRatio": 1.55,
+          "fontSize": "14.3pt (19px)",
+          "fontWeight": "bold",
+          "messageKey": null,
+          "expectedContrastRatio": "3:1"
+        }
+      ],
+      "states": [
+        "search",
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0275"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 32,
+      "fieldIndex": 2,
+      "text": "저마늄",
+      "target": [
+        "button[title=\"저마늄 (Ge)\"] > span"
+      ],
+      "before": "<span>저마늄</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#19293f",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "search",
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0276"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 32,
+      "fieldIndex": 3,
+      "text": "72.631 u",
+      "target": [
+        "button[title=\"저마늄 (Ge)\"] > .extra:nth-child(4)"
+      ],
+      "before": "<span class=\"extra\">72.631 u</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#19293f",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0277"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 32,
+      "fieldIndex": 4,
+      "text": "4주기",
+      "target": [
+        "button[title=\"저마늄 (Ge)\"] > .extra:nth-child(5)"
+      ],
+      "before": "<span class=\"extra\">4주기</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#19293f",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0278"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 32,
+      "fieldIndex": 5,
+      "text": "14족",
+      "target": [
+        "button[title=\"저마늄 (Ge)\"] > .extra:nth-child(6)"
+      ],
+      "before": "<span class=\"extra\">14족</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#19293f",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0279"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 32,
+      "fieldIndex": 6,
+      "text": "자연계 존재",
+      "target": [
+        "button[title=\"저마늄 (Ge)\"] > .extra:nth-child(7)"
+      ],
+      "before": "<span class=\"extra\">자연계 존재</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#19293f",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0280"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 32,
+      "fieldIndex": 7,
+      "text": "준금속",
+      "target": [
+        "button[title=\"저마늄 (Ge)\"] > .extra:nth-child(8)"
+      ],
+      "before": "<span class=\"extra\">준금속</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#19293f",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0281"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 32,
+      "fieldIndex": 8,
+      "text": "안정 동위원소 존재",
+      "target": [
+        "button[title=\"저마늄 (Ge)\"] > .extra:nth-child(9)"
+      ],
+      "before": "<span class=\"extra\">안정 동위원소 존재</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#19293f",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0282"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 32,
+      "fieldIndex": 9,
+      "text": "고체",
+      "target": [
+        "button[title=\"저마늄 (Ge)\"] > .extra:nth-child(10)"
+      ],
+      "before": "<span class=\"extra\">고체</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#19293f",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0283"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 33,
+      "fieldIndex": 0,
+      "text": "33",
+      "target": [
+        "button[title=\"비소 (As)\"] > small"
+      ],
+      "before": "<small>33</small>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#19293f",
+          "contrastRatio": 1.55,
+          "fontSize": "7.5pt (10px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "search",
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0284"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 33,
+      "fieldIndex": 1,
+      "text": "As",
+      "target": [
+        "button[title=\"비소 (As)\"] > strong"
+      ],
+      "before": "<strong>As</strong>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#19293f",
+          "contrastRatio": 1.55,
+          "fontSize": "14.3pt (19px)",
+          "fontWeight": "bold",
+          "messageKey": null,
+          "expectedContrastRatio": "3:1"
+        }
+      ],
+      "states": [
+        "search",
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0285"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 33,
+      "fieldIndex": 2,
+      "text": "비소",
+      "target": [
+        "button[title=\"비소 (As)\"] > span"
+      ],
+      "before": "<span>비소</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#19293f",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "search",
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0286"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 33,
+      "fieldIndex": 3,
+      "text": "74.922 u",
+      "target": [
+        "button[title=\"비소 (As)\"] > .extra:nth-child(4)"
+      ],
+      "before": "<span class=\"extra\">74.922 u</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#19293f",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0287"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 33,
+      "fieldIndex": 4,
+      "text": "4주기",
+      "target": [
+        "button[title=\"비소 (As)\"] > .extra:nth-child(5)"
+      ],
+      "before": "<span class=\"extra\">4주기</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#19293f",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0288"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 33,
+      "fieldIndex": 5,
+      "text": "15족",
+      "target": [
+        "button[title=\"비소 (As)\"] > .extra:nth-child(6)"
+      ],
+      "before": "<span class=\"extra\">15족</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#19293f",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0289"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 33,
+      "fieldIndex": 6,
+      "text": "자연계 존재",
+      "target": [
+        "button[title=\"비소 (As)\"] > .extra:nth-child(7)"
+      ],
+      "before": "<span class=\"extra\">자연계 존재</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#19293f",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0290"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 33,
+      "fieldIndex": 7,
+      "text": "준금속",
+      "target": [
+        "button[title=\"비소 (As)\"] > .extra:nth-child(8)"
+      ],
+      "before": "<span class=\"extra\">준금속</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#19293f",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0291"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 33,
+      "fieldIndex": 8,
+      "text": "안정 동위원소 존재",
+      "target": [
+        "button[title=\"비소 (As)\"] > .extra:nth-child(9)"
+      ],
+      "before": "<span class=\"extra\">안정 동위원소 존재</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#19293f",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0292"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 33,
+      "fieldIndex": 9,
+      "text": "고체",
+      "target": [
+        "button[title=\"비소 (As)\"] > .extra:nth-child(10)"
+      ],
+      "before": "<span class=\"extra\">고체</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#19293f",
+          "contrastRatio": 1.55,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0293"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 34,
+      "fieldIndex": 0,
+      "text": "34",
+      "target": [
+        "button[title=\"셀레늄 (Se)\"] > small"
+      ],
+      "before": "<small>34</small>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#172036",
+          "contrastRatio": 1.71,
+          "fontSize": "7.5pt (10px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "search",
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0294"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 34,
+      "fieldIndex": 1,
+      "text": "Se",
+      "target": [
+        "button[title=\"셀레늄 (Se)\"] > strong"
+      ],
+      "before": "<strong>Se</strong>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#172036",
+          "contrastRatio": 1.71,
+          "fontSize": "14.3pt (19px)",
+          "fontWeight": "bold",
+          "messageKey": null,
+          "expectedContrastRatio": "3:1"
+        }
+      ],
+      "states": [
+        "search",
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0295"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 34,
+      "fieldIndex": 2,
+      "text": "셀레늄",
+      "target": [
+        "button[title=\"셀레늄 (Se)\"] > span"
+      ],
+      "before": "<span>셀레늄</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#172036",
+          "contrastRatio": 1.71,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "search",
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0296"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 34,
+      "fieldIndex": 3,
+      "text": "78.972 u",
+      "target": [
+        "button[title=\"셀레늄 (Se)\"] > .extra:nth-child(4)"
+      ],
+      "before": "<span class=\"extra\">78.972 u</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#172036",
+          "contrastRatio": 1.71,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0297"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 34,
+      "fieldIndex": 4,
+      "text": "4주기",
+      "target": [
+        "button[title=\"셀레늄 (Se)\"] > .extra:nth-child(5)"
+      ],
+      "before": "<span class=\"extra\">4주기</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#172036",
+          "contrastRatio": 1.71,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0298"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 34,
+      "fieldIndex": 5,
+      "text": "16족",
+      "target": [
+        "button[title=\"셀레늄 (Se)\"] > .extra:nth-child(6)"
+      ],
+      "before": "<span class=\"extra\">16족</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#172036",
+          "contrastRatio": 1.71,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0299"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "atom.html",
+      "rootCause": "atom-filter-opacity",
+      "rule": "color-contrast",
+      "atomNumber": 34,
+      "fieldIndex": 6,
+      "text": "자연계 존재",
+      "target": [
+        "button[title=\"셀레늄 (Se)\"] > .extra:nth-child(7)"
+      ],
+      "before": "<span class=\"extra\">자연계 존재</span>",
+      "evidence": [
+        {
+          "fgColor": "#3d4659",
+          "bgColor": "#172036",
+          "contrastRatio": 1.71,
+          "fontSize": "6.8pt (9px)",
+          "fontWeight": "normal",
+          "messageKey": null,
+          "expectedContrastRatio": "4.5:1"
+        }
+      ],
+      "states": [
+        "all-fields-favorites",
+        "all-fields-search"
+      ],
+      "verification": "Same production filter states have zero axe violations after repair; all 118 elements remain enabled.",
+      "id": "FW500MORE-0300"
+    }
+  ]
+}
