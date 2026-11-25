@@ -1221,6 +1221,13 @@ document.getElementById('fw21-logout').onclick=async()=>{if(!confirm('Formwheelì
 <div id="fw-secret-square" style="display:flex;justify-content:center;padding:12px 0 calc(90px + env(safe-area-inset-bottom, 0px))">
   <a href="https://semicolonxss.github.io/IWannaGetTheFlag/" aria-label="IWannaGetTheFlag" style="display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;font-size:16px;text-decoration:none;background:transparent;border:0">â¬œ</a>
 </div>
+<script id="fw-time-travel-egg">
+document.addEventListener('input', function (event) {
+  if (event.target.id === 'search' && event.target.value.trim() === '20260901' && !event.isComposing) {
+    window.location.assign('./time-travel.html');
+  }
+});
+</script>
 </body>
 </html>
 
