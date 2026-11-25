@@ -196,13 +196,14 @@ function conflictsWithHoldArc(at,kind){
 }
 function overlaps(a,b){const aEnd=a.at+(isArc(a.kind)?HOLD_LENGTH:0),bEnd=b.at+(isArc(b.kind)?HOLD_LENGTH:0);if(a.at<=bEnd+0.55&&b.at<=aEnd+0.55)return true;const delta=((a.at-b.at)%TAU+TAU)%TAU;return (isArc(b.kind)&&(delta<1.95||delta>TAU-0.55))||(isArc(a.kind)&&(delta<0.55||delta>TAU-1.95))}
 function targetCount(){if(difficulty==='hard')return mode==='map'&&maps[mapIndex].name==='별달거리'?3:Math.min(7,5+Math.floor(stage/4));if(mode==='map'&&maps[mapIndex].name==='별달거리')return 3;return mode==='map'?(mapIndex<4?4:Math.min(5,4+Math.floor(mapIndex/8))):(stage<5?3:Math.min(4,3+Math.floor((stage-5)/8)))}
+function oppositeDirectionTile(kind){return kind==='reverse'||kind==='forward'?(direction===1?'reverse':'forward'):kind;}
 function addTarget(){
   if(mode==='map'){
     const beats=maps[mapIndex].beats;
     if(mapBeat>=beats.length)return;
     const index=mapBeat++;
     let at=beats[index];
-    const kind=mapTileType(index);
+    const kind=oppositeDirectionTile(mapTileType(index));
     if(maps[mapIndex].name==='별달거리'){targets.push({id:++nextId,at,angle:angle+direction*(at-progress),kind});return;}
     // A direction change can retime existing targets: keep new notes away from them.
     const minGap=0.7;
@@ -221,6 +222,7 @@ function addTarget(){
   }
   let kind=difficulty==='easy'&&nextId>0&&nextId%13===5?'heart':stagePeriod()<=1.8?(nextId%11===0?'reverse':nextId%11===4?'forward':nextId%7===0?'hold':'normal'):(nextId%7===0?'hold':'normal');
   if(dnaRun){kind=nextId>0&&nextId%13===5&&dnaFlags[2]?'heart':dnaFlags[0]&&nextId%11===0?'reverse':dnaFlags[0]&&nextId%11===4?'forward':dnaFlags[1]&&nextId%7===0?'hold':'normal';if(kind==='normal'&&!dnaFlags[4]){const pool=[...(dnaFlags[0]?['reverse','forward']:[]),...(dnaFlags[1]?['hold']:[]),...(dnaFlags[2]?['heart']:[])];if(!pool.length)return;kind=pool[nextId%pool.length];}}
+  kind=oppositeDirectionTile(kind);
   let bestAt=progress+1.1,bestGap=-1;
   for(let i=0;i<32;i++){
     const at=progress+1.1+fwTargetRandom()*(Math.PI*(stage<5?1.1:stage<12?1.35:1.65));
@@ -368,6 +370,7 @@ function changeDirection(kind){
   // Keep every existing tile at its current screen position; only the player orb reverses.
   // Recalculate its next encounter in the new direction, allowing a short reaction buffer.
   direction=nextDirection;
+  for(const t of targets)t.kind=oppositeDirectionTile(t.kind);
   reverseUntil=0;
   period=stagePeriod();
   const minLead=TAU*0.42;
