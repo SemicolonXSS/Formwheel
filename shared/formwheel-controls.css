@@ -1,0 +1,9 @@
+/* Visible boundaries for editable fields, including dynamically generated controls. */
+:where(input:not([type="hidden"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]):not([type="file"]):not([type="image"]),textarea,select):not(:disabled):not([readonly]){
+  box-sizing:border-box;
+  border-style:solid!important;
+  border-width:1px!important;
+  border-color:var(--fw-field-border,#65758c)!important;
+}
+
+:where(input:not([type="hidden"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]):not([type="file"]):not([type="image"]),textarea,select):not(:disabled):not([readonly]):focus-visible{outline:3px solid #4059d5!important;outline-offset:3px!important}

@@ -131,3 +131,33 @@ jobs:
           FW_ECOSYSTEM_ROOT: ${{ github.workspace }}/ecosystem-third
           FW_VIEWPORT: '390'
         run: node tests/third-accessibility.cjs
+
+  expanded-app-audit:
+    name: Expanded UI audit (${{ matrix.viewport }}px)
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        viewport: ['1280', '390']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install isolated browser runner
+        run: npm install --no-save --no-package-lock --ignore-scripts playwright@1 @axe-core/playwright@4
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Prepare pinned ecosystem and public SDK cache
+        run: python3 scripts/prepare-expanded-audit.py ecosystem-expanded
+      - name: Check WCAG rules, editable fields and board edges
+        env:
+          FW_ECOSYSTEM_ROOT: ${{ github.workspace }}/ecosystem-expanded
+          FW_VIEWPORT: ${{ matrix.viewport }}
+        run: node tests/expanded-audit.cjs
+      - name: Exercise sharing, tutorial layout, scrolling and keyboard focus
+        if: matrix.viewport == '1280'
+        env:
+          FW_ECOSYSTEM_ROOT: ${{ github.workspace }}/ecosystem-expanded
+        run: node tests/floating-actions.cjs

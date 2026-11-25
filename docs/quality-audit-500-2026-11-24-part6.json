@@ -1,0 +1,673 @@
+{
+  "date": "2026-11-24",
+  "totalInAudit": 523,
+  "findings": [
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:unit",
+      "rule": "input-boundary-contrast",
+      "target": "#unitFrom",
+      "id": "FW500-501",
+      "before": "<select id=\"unitFrom\"><option value=\"m\">m</option><option value=\"cm\">cm</option><option value=\"mm\">mm</option><option value=\"km\">km</option><option value=\"ft\">ft</option></select>",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.24,
+          1.24,
+          1.24,
+          1.24
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:unit",
+      "rule": "input-boundary-contrast",
+      "target": "#unitTo",
+      "id": "FW500-502",
+      "before": "<select id=\"unitTo\" aria-label=\"변환할 단위\"><option value=\"m\">m</option><option value=\"cm\">cm</option><option value=\"mm\">mm</option><option value=\"km\">km</option><option value=\"ft\">ft</option></select>",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.24,
+          1.24,
+          1.24,
+          1.24
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:date",
+      "rule": "input-boundary-contrast",
+      "target": "#dateA",
+      "id": "FW500-503",
+      "before": "<input id=\"dateA\" type=\"date\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.24,
+          1.24,
+          1.24,
+          1.24
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:date",
+      "rule": "input-boundary-contrast",
+      "target": "#dateB",
+      "id": "FW500-504",
+      "before": "<input id=\"dateB\" type=\"date\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.24,
+          1.24,
+          1.24,
+          1.24
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:dday",
+      "rule": "input-boundary-contrast",
+      "target": "#ddayDate",
+      "id": "FW500-505",
+      "before": "<input id=\"ddayDate\" type=\"date\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.24,
+          1.24,
+          1.24,
+          1.24
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:factor",
+      "rule": "input-boundary-contrast",
+      "target": "#fwFactorExpr",
+      "id": "FW500-506",
+      "before": "<input id=\"fwFactorExpr\" value=\"x²+5x+6\" placeholder=\"예: 2x²+7x+3\" autocomplete=\"off\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.24,
+          1.24,
+          1.24,
+          1.24
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:math",
+      "rule": "input-boundary-contrast",
+      "target": "#mathType",
+      "id": "FW500-507",
+      "before": "<select id=\"mathType\" aria-label=\"계산 종류\"><option value=\"circle\">원</option><option value=\"avg\">평균</option><option value=\"pyth\">피타고라스</option></select>",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.24,
+          1.24,
+          1.24,
+          1.24
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:math",
+      "rule": "input-boundary-contrast",
+      "target": "#mx",
+      "id": "FW500-508",
+      "before": "<input id=\"mx\" type=\"number\" value=\"5\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.24,
+          1.24,
+          1.24,
+          1.24
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:ratio",
+      "rule": "input-boundary-contrast",
+      "target": "#ra",
+      "id": "FW500-509",
+      "before": "<input id=\"ra\" type=\"number\" value=\"2\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.24,
+          1.24,
+          1.24,
+          1.24
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:ratio",
+      "rule": "input-boundary-contrast",
+      "target": "#rb",
+      "id": "FW500-510",
+      "before": "<input id=\"rb\" type=\"number\" value=\"3\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.24,
+          1.24,
+          1.24,
+          1.24
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:ratio",
+      "rule": "input-boundary-contrast",
+      "target": "#rc",
+      "id": "FW500-511",
+      "before": "<input id=\"rc\" type=\"number\" value=\"10\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.24,
+          1.24,
+          1.24,
+          1.24
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:text",
+      "rule": "input-boundary-contrast",
+      "target": "#textInput",
+      "id": "FW500-512",
+      "before": "<textarea id=\"textInput\" rows=\"9\" placeholder=\"텍스트를 입력하세요\" aria-label=\"분석할 텍스트\"></textarea>",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.24,
+          1.24,
+          1.24,
+          1.24
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:seats",
+      "rule": "input-boundary-contrast",
+      "target": "#seatRows",
+      "id": "FW500-513",
+      "before": "<input id=\"seatRows\" type=\"number\" min=\"1\" max=\"20\" value=\"4\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.24,
+          1.24,
+          1.24,
+          1.24
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:seats",
+      "rule": "input-boundary-contrast",
+      "target": "#seatCols",
+      "id": "FW500-514",
+      "before": "<input id=\"seatCols\" type=\"number\" min=\"1\" max=\"20\" value=\"5\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.24,
+          1.24,
+          1.24,
+          1.24
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:seats",
+      "rule": "input-boundary-contrast",
+      "target": "#seatNames",
+      "id": "FW500-515",
+      "before": "<textarea id=\"seatNames\" rows=\"7\" placeholder=\"한 줄에 한 명씩 입력\n민수\n지우\n서연\n현우\n유진\"></textarea>",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.24,
+          1.24,
+          1.24,
+          1.24
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:seats",
+      "rule": "input-boundary-contrast",
+      "target": "#seatPattern",
+      "id": "FW500-516",
+      "before": "<select id=\"seatPattern\"><option value=\"any\">자유 배치</option><option value=\"MMFF\">남남여여 반복</option><option value=\"MFFM\">남여여남 반복</option></select>",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.24,
+          1.24,
+          1.24,
+          1.24
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:voice",
+      "rule": "input-boundary-contrast",
+      "target": "#voiceEffect",
+      "id": "FW500-517",
+      "before": "<select id=\"voiceEffect\">\n      <option value=\"normal\">원본</option>\n      <option value=\"robot\">로봇</option>\n      <option value=\"megaphone\">메가폰</option>\n      <option value=\"deep\">저음</option>\n      <option value=\"high\">고음",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.24,
+          1.24,
+          1.24,
+          1.24
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:qr",
+      "rule": "input-boundary-contrast",
+      "target": "#qrText",
+      "id": "FW500-518",
+      "before": "<textarea id=\"qrText\" rows=\"4\" placeholder=\"https://example.com 또는 원하는 텍스트\" aria-label=\"QR 코드에 담을 내용\"></textarea>",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.24,
+          1.24,
+          1.24,
+          1.24
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:json",
+      "rule": "input-boundary-contrast",
+      "target": "#jsonInput",
+      "id": "FW500-519",
+      "before": "<textarea id=\"jsonInput\" rows=\"10\" placeholder=\"{&quot;name&quot;:&quot;FormWheel&quot;,&quot;tools&quot;:[&quot;계산기&quot;,&quot;타이머&quot;]}\" aria-label=\"JSON 입력\"></textarea>",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.24,
+          1.24,
+          1.24,
+          1.24
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:tts",
+      "rule": "input-boundary-contrast",
+      "target": "#ttsText",
+      "id": "FW500-520",
+      "before": "<textarea id=\"ttsText\" rows=\"7\" placeholder=\"읽어줄 문장을 입력하세요.\" aria-label=\"읽어 줄 문장\"></textarea>",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.24,
+          1.24,
+          1.24,
+          1.24
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:tts",
+      "rule": "input-boundary-contrast",
+      "target": "#ttsVoice",
+      "id": "FW500-521",
+      "before": "<select id=\"ttsVoice\"></select>",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.24,
+          1.24,
+          1.24,
+          1.24
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:image",
+      "rule": "input-boundary-contrast",
+      "target": "#imageWidth",
+      "id": "FW500-522",
+      "before": "<input id=\"imageWidth\" type=\"number\" min=\"1\">",
+      "evidence": {
+        "fillContrast": 1.053,
+        "borderContrasts": [
+          1.177,
+          1.177,
+          1.177,
+          1.177
+        ],
+        "outsideRGB": [
+          248,
+          249,
+          251
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel_Tool",
+      "file": "index.html",
+      "state": "tool:image",
+      "rule": "input-boundary-contrast",
+      "target": "#imageHeight",
+      "id": "FW500-523",
+      "before": "<input id=\"imageHeight\" type=\"number\" min=\"1\">",
+      "evidence": {
+        "fillContrast": 1.053,
+        "borderContrasts": [
+          1.177,
+          1.177,
+          1.177,
+          1.177
+        ],
+        "outsideRGB": [
+          248,
+          249,
+          251
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    }
+  ]
+}

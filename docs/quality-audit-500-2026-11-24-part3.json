@@ -1,0 +1,2801 @@
+{
+  "date": "2026-11-24",
+  "totalInAudit": 523,
+  "findings": [
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > button:nth-child(51)",
+      "id": "FW500-201",
+      "before": "<button class=\"square light occupied\" type=\"button\" aria-label=\"c2 P\"><span class=\"piece-white\">♙</span></button>",
+      "evidence": {
+        "backgroundRGB": [
+          240,
+          217,
+          181
+        ],
+        "insufficientSharedEdges": 4,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > button:nth-child(43)",
+          "fillRatio": 2.295,
+          "edgeRatio": 0
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > button:nth-child(52)",
+      "id": "FW500-202",
+      "before": "<button class=\"square dark occupied\" type=\"button\" aria-label=\"d2 P\"><span class=\"piece-white\">♙</span></button>",
+      "evidence": {
+        "backgroundRGB": [
+          181,
+          136,
+          99
+        ],
+        "insufficientSharedEdges": 4,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > button:nth-child(44)",
+          "fillRatio": 2.295,
+          "edgeRatio": 0
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > button:nth-child(53)",
+      "id": "FW500-203",
+      "before": "<button class=\"square light occupied\" type=\"button\" aria-label=\"e2 P\"><span class=\"piece-white\">♙</span></button>",
+      "evidence": {
+        "backgroundRGB": [
+          240,
+          217,
+          181
+        ],
+        "insufficientSharedEdges": 4,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > button:nth-child(45)",
+          "fillRatio": 2.295,
+          "edgeRatio": 0
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > button:nth-child(54)",
+      "id": "FW500-204",
+      "before": "<button class=\"square dark occupied\" type=\"button\" aria-label=\"f2 P\"><span class=\"piece-white\">♙</span></button>",
+      "evidence": {
+        "backgroundRGB": [
+          181,
+          136,
+          99
+        ],
+        "insufficientSharedEdges": 4,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > button:nth-child(46)",
+          "fillRatio": 2.295,
+          "edgeRatio": 0
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > button:nth-child(55)",
+      "id": "FW500-205",
+      "before": "<button class=\"square light occupied\" type=\"button\" aria-label=\"g2 P\"><span class=\"piece-white\">♙</span></button>",
+      "evidence": {
+        "backgroundRGB": [
+          240,
+          217,
+          181
+        ],
+        "insufficientSharedEdges": 4,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > button:nth-child(47)",
+          "fillRatio": 2.295,
+          "edgeRatio": 0
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > button:nth-child(56)",
+      "id": "FW500-206",
+      "before": "<button class=\"square dark occupied\" type=\"button\" aria-label=\"h2 P\"><span class=\"piece-white\">♙</span></button>",
+      "evidence": {
+        "backgroundRGB": [
+          181,
+          136,
+          99
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > button:nth-child(48)",
+          "fillRatio": 2.295,
+          "edgeRatio": 0
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > button:nth-child(57)",
+      "id": "FW500-207",
+      "before": "<button class=\"square dark occupied\" type=\"button\" aria-label=\"a1 R\"><span class=\"piece-white\">♖</span></button>",
+      "evidence": {
+        "backgroundRGB": [
+          181,
+          136,
+          99
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > button:nth-child(49)",
+          "fillRatio": 2.295,
+          "edgeRatio": 0
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > button:nth-child(58)",
+      "id": "FW500-208",
+      "before": "<button class=\"square light occupied\" type=\"button\" aria-label=\"b1 N\"><span class=\"piece-white\">♘</span></button>",
+      "evidence": {
+        "backgroundRGB": [
+          240,
+          217,
+          181
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > button:nth-child(50)",
+          "fillRatio": 2.295,
+          "edgeRatio": 0
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > button:nth-child(59)",
+      "id": "FW500-209",
+      "before": "<button class=\"square dark occupied\" type=\"button\" aria-label=\"c1 B\"><span class=\"piece-white\">♗</span></button>",
+      "evidence": {
+        "backgroundRGB": [
+          181,
+          136,
+          99
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > button:nth-child(51)",
+          "fillRatio": 2.295,
+          "edgeRatio": 0
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > button:nth-child(60)",
+      "id": "FW500-210",
+      "before": "<button class=\"square light occupied\" type=\"button\" aria-label=\"d1 Q\"><span class=\"piece-white\">♕</span></button>",
+      "evidence": {
+        "backgroundRGB": [
+          240,
+          217,
+          181
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > button:nth-child(52)",
+          "fillRatio": 2.295,
+          "edgeRatio": 0
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > button:nth-child(61)",
+      "id": "FW500-211",
+      "before": "<button class=\"square dark occupied\" type=\"button\" aria-label=\"e1 K\"><span class=\"piece-white\">♔</span></button>",
+      "evidence": {
+        "backgroundRGB": [
+          181,
+          136,
+          99
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > button:nth-child(53)",
+          "fillRatio": 2.295,
+          "edgeRatio": 0
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > button:nth-child(62)",
+      "id": "FW500-212",
+      "before": "<button class=\"square light occupied\" type=\"button\" aria-label=\"f1 B\"><span class=\"piece-white\">♗</span></button>",
+      "evidence": {
+        "backgroundRGB": [
+          240,
+          217,
+          181
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > button:nth-child(54)",
+          "fillRatio": 2.295,
+          "edgeRatio": 0
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > button:nth-child(63)",
+      "id": "FW500-213",
+      "before": "<button class=\"square dark occupied\" type=\"button\" aria-label=\"g1 N\"><span class=\"piece-white\">♘</span></button>",
+      "evidence": {
+        "backgroundRGB": [
+          181,
+          136,
+          99
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > button:nth-child(55)",
+          "fillRatio": 2.295,
+          "edgeRatio": 0
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > button:nth-child(64)",
+      "id": "FW500-214",
+      "before": "<button class=\"square light occupied\" type=\"button\" aria-label=\"h1 R\"><span class=\"piece-white\">♖</span></button>",
+      "evidence": {
+        "backgroundRGB": [
+          240,
+          217,
+          181
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Top",
+          "neighbor": "#board > button:nth-child(56)",
+          "fillRatio": 2.295,
+          "edgeRatio": 0
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "code.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#problemSearch",
+      "id": "FW500-215",
+      "before": "<input id=\"problemSearch\" type=\"search\" placeholder=\"문제 번호·이름 검색\" aria-label=\"문제 검색\" style=\"width:100%;padding:10px;border-radius:9px;background:#0a0e1c;color:white;border:1px solid #495474\">",
+      "evidence": {
+        "fillContrast": 1.101,
+        "borderContrasts": [
+          2.331,
+          2.331,
+          2.331,
+          2.331
+        ],
+        "outsideRGB": [
+          18,
+          25,
+          45
+        ],
+        "insideRGB": [
+          10,
+          14,
+          28
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "code.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#language",
+      "id": "FW500-216",
+      "before": "<select id=\"language\"><option value=\"html\">HTML + CSS + JavaScript</option><option value=\"python\">Python</option><option value=\"fw\">FW Language 0.6</option><option value=\"c\">C</option><option value=\"cpp\">C++</option><opt",
+      "evidence": {
+        "fillContrast": 1.415,
+        "borderContrasts": [
+          2.524,
+          2.524,
+          2.524,
+          2.524
+        ],
+        "outsideRGB": [
+          12,
+          16,
+          32
+        ],
+        "insideRGB": [
+          37,
+          46,
+          75
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "code.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#editor",
+      "id": "FW500-217",
+      "before": "<textarea class=\"editor\" id=\"editor\" spellcheck=\"false\" aria-label=\"코드 편집기\"></textarea>",
+      "evidence": {
+        "fillContrast": 1.017,
+        "borderContrasts": [
+          2.446,
+          2.446,
+          2.446,
+          2.446
+        ],
+        "outsideRGB": [
+          12,
+          16,
+          32
+        ],
+        "insideRGB": [
+          10,
+          14,
+          28
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "event-calendar.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#region",
+      "id": "FW500-218",
+      "before": "<select id=\"region\"><option value=\"all\">🌍 All regions</option><option value=\"KR\">🇰🇷 Korea</option><option value=\"US\">🇺🇸 United States</option><option value=\"FR\">🇫🇷 France</option><option value=\"IE\">🇮🇪 Ireland</option><op",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.516,
+          1.516,
+          1.516,
+          1.516
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "event-calendar.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#type",
+      "id": "FW500-219",
+      "before": "<select id=\"type\"><option value=\"all\">All</option><option value=\"global\">Global</option><option value=\"local\">Regional</option></select>",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.516,
+          1.516,
+          1.516,
+          1.516
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "factor-lab.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#expr",
+      "id": "FW500-220",
+      "before": "<input id=\"expr\" value=\"x²+5x+6\" placeholder=\"예: (x+2)(x+3) 또는 x^4-16\" autocomplete=\"off\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          2.2,
+          2.2,
+          2.2,
+          2.2
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "festival.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#course",
+      "id": "FW500-221",
+      "before": "<select id=\"course\"><option value=\"arcade\">⚡ 아케이드 러시</option><option value=\"brain\">🧠 두뇌 챌린지</option><option value=\"party\">🎲 랜덤 파티</option></select>",
+      "evidence": {
+        "fillContrast": 1.15,
+        "borderContrasts": [
+          2.407,
+          2.407,
+          2.407,
+          2.407
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          239,
+          239,
+          239
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "feedback.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#project",
+      "id": "FW500-222",
+      "before": "<select id=\"project\" required=\"\"><option value=\"Hub\">Hub</option><option value=\"Cook/Clicker/Wheel/Quiz/Casino/Marble/Music Battle feedback (plz)\">Cook · Clicker · Wheel · Quiz · Casino · Marble · Music Battle</option><o",
+      "evidence": {
+        "fillContrast": 1.15,
+        "borderContrasts": [
+          1.496,
+          1.496,
+          1.496,
+          1.496
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          239,
+          239,
+          239
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "feedback.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#subject",
+      "id": "FW500-223",
+      "before": "<input id=\"subject\" maxlength=\"80\" autocomplete=\"off\" required=\"\" placeholder=\"어떤 점을 개선하면 좋을까요?\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.496,
+          1.496,
+          1.496,
+          1.496
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "feedback.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#body",
+      "id": "FW500-224",
+      "before": "<textarea id=\"body\" minlength=\"5\" maxlength=\"2000\" aria-describedby=\"feedback-privacy\" required=\"\" placeholder=\"개선 아이디어나 재현 방법을 자세히 알려주세요. 개인정보는 넣지 마세요.\"></textarea>",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.496,
+          1.496,
+          1.496,
+          1.496
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "glitch-detector.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#log",
+      "id": "FW500-225",
+      "before": "<textarea id=\"log\" maxlength=\"30000\" placeholder=\"예: FirebaseError: permission_denied\"></textarea>",
+      "evidence": {
+        "fillContrast": 1.107,
+        "borderContrasts": [
+          2.681,
+          2.681,
+          2.681,
+          2.681
+        ],
+        "outsideRGB": [
+          21,
+          30,
+          53
+        ],
+        "insideRGB": [
+          12,
+          20,
+          40
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "impact-map.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#search",
+      "id": "FW500-226",
+      "before": "<input id=\"search\" placeholder=\"파일명 검색…\" autocomplete=\"off\">",
+      "evidence": {
+        "fillContrast": 1.112,
+        "borderContrasts": [
+          2.849,
+          2.849,
+          2.849,
+          2.849
+        ],
+        "outsideRGB": [
+          28,
+          29,
+          49
+        ],
+        "insideRGB": [
+          17,
+          19,
+          35
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "id-center.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#privacy-records",
+      "id": "FW500-227",
+      "before": "<select id=\"privacy-records\"><option value=\"public\">전체 공개</option><option value=\"friends\">친구만</option><option value=\"private\">나만</option></select>",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.525,
+          1.525,
+          1.525,
+          1.525
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "id-center.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#privacy-achievements",
+      "id": "FW500-228",
+      "before": "<select id=\"privacy-achievements\"><option value=\"public\">전체 공개</option><option value=\"friends\">친구만</option><option value=\"private\">나만</option></select>",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.525,
+          1.525,
+          1.525,
+          1.525
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "id-center.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#privacy-online",
+      "id": "FW500-229",
+      "before": "<select id=\"privacy-online\"><option value=\"public\">전체 공개</option><option value=\"friends\">친구만</option><option value=\"private\">나만</option></select>",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.525,
+          1.525,
+          1.525,
+          1.525
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "id-center.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#privacy-activity",
+      "id": "FW500-230",
+      "before": "<select id=\"privacy-activity\"><option value=\"public\">전체 공개</option><option value=\"friends\">친구만</option><option value=\"private\">나만</option></select>",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.525,
+          1.525,
+          1.525,
+          1.525
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "id-center.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#privacy-friends",
+      "id": "FW500-231",
+      "before": "<select id=\"privacy-friends\"><option value=\"public\">전체 공개</option><option value=\"friends\">친구만</option><option value=\"private\">나만</option></select>",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.525,
+          1.525,
+          1.525,
+          1.525
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "id-center.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#privacy-search",
+      "id": "FW500-232",
+      "before": "<select id=\"privacy-search\"><option value=\"all\">닉네임·ID 검색</option><option value=\"id\">정확한 ID 검색</option><option value=\"off\">검색 허용 안 함</option></select>",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.525,
+          1.525,
+          1.525,
+          1.525
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "id-center.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#privacy-invites",
+      "id": "FW500-233",
+      "before": "<select id=\"privacy-invites\"><option value=\"friends\">친구 초대 허용</option><option value=\"off\">초대 받지 않음</option></select>",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.525,
+          1.525,
+          1.525,
+          1.525
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "id-center.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#invite-game",
+      "id": "FW500-234",
+      "before": "<select id=\"invite-game\"><option>Spy</option><option>Battle</option><option>GCrown</option><option>Dice Duel</option><option>Risk</option></select>",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.525,
+          1.525,
+          1.525,
+          1.525
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "id-center.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#invite-minutes",
+      "id": "FW500-235",
+      "before": "<select id=\"invite-minutes\"><option>5</option><option selected=\"\">10</option><option>15</option><option>30</option></select>",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.525,
+          1.525,
+          1.525,
+          1.525
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "id-center.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#claim-handle",
+      "id": "FW500-236",
+      "before": "<input id=\"claim-handle\" placeholder=\"영문 소문자·숫자·_ (3~20자)\" aria-label=\"고유 ID\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.525,
+          1.525,
+          1.525,
+          1.525
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "id-center.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#friend-query",
+      "id": "FW500-237",
+      "before": "<input id=\"friend-query\" placeholder=\"@friend_id\" aria-label=\"친구의 공개 ID\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.525,
+          1.525,
+          1.525,
+          1.525
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "maker/index.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#title",
+      "id": "FW500-238",
+      "before": "<input id=\"title\" class=\"input\" maxlength=\"50\" value=\"나의 첫 게임\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.488,
+          1.488,
+          1.488,
+          1.488
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "maker/index.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#genre",
+      "id": "FW500-239",
+      "before": "<select id=\"genre\" class=\"input\"><option value=\"maze\">🧩 미로</option><option value=\"pvp\">⚔️ PVP</option><option value=\"platform\">🏃 플랫폼</option><option value=\"puzzle\">🧠 퍼즐</option></select>",
+      "evidence": {
+        "fillContrast": 1.15,
+        "borderContrasts": [
+          1.488,
+          1.488,
+          1.488,
+          1.488
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          239,
+          239,
+          239
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "maker/index.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#condition",
+      "id": "FW500-240",
+      "before": "<select id=\"condition\" class=\"input\"><option value=\"star\">⭐ 별 전부 수집</option><option value=\"switch\">🟪 스위치 밟기</option><option value=\"steps\">👣 이동 횟수 도달</option></select>",
+      "evidence": {
+        "fillContrast": 1.15,
+        "borderContrasts": [
+          1.488,
+          1.488,
+          1.488,
+          1.488
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          239,
+          239,
+          239
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "maker/index.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#threshold",
+      "id": "FW500-241",
+      "before": "<input id=\"threshold\" type=\"number\" min=\"1\" max=\"200\" value=\"10\" class=\"input\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.488,
+          1.488,
+          1.488,
+          1.488
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "maker/index.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#action",
+      "id": "FW500-242",
+      "before": "<select id=\"action\" class=\"input\"><option value=\"door\">🚪 모든 문 열기</option><option value=\"finish\">🏆 즉시 승리</option><option value=\"hazard\">🛡️ 함정 비활성화</option></select>",
+      "evidence": {
+        "fillContrast": 1.15,
+        "borderContrasts": [
+          1.488,
+          1.488,
+          1.488,
+          1.488
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          239,
+          239,
+          239
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#projects > details:nth-child(3) > div:nth-child(3) > select:nth-child(1)",
+      "id": "FW500-243",
+      "before": "<select aria-label=\"적용할 테마\" style=\"padding: 9px; border: 1px solid rgb(187, 195, 215); border-radius: 8px; background: white; color: rgb(32, 38, 56);\"><option value=\"classic\">기본 테마 (설정 해제)</option></select>",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.765,
+          1.765,
+          1.765,
+          1.765
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#search",
+      "id": "FW500-244",
+      "before": "<input id=\"search\" class=\"searchBox\" type=\"search\" aria-label=\"프로젝트 이름 검색\" title=\"단축키 / : 프로젝트 검색으로 이동\" placeholder=\"🔎 이름 · 기능 · 키워드 검색...\" autocomplete=\"off\" data-fw-original-placeholder=\"🔎 이름 · 기능 · 키워드 검색...\">",
+      "evidence": {
+        "fillContrast": 1.061,
+        "borderContrasts": [
+          1.223,
+          1.223,
+          1.223,
+          1.223
+        ],
+        "outsideRGB": [
+          247,
+          248,
+          252
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#modeFilter",
+      "id": "FW500-245",
+      "before": "<select id=\"modeFilter\" aria-label=\"플레이 인원\"><option value=\"all\">전체 인원</option><option value=\"solo\">1인 가능</option><option value=\"multi\">다인 가능</option><option value=\"both\">1인·다인 모두</option></select>",
+      "evidence": {
+        "fillContrast": 1.061,
+        "borderContrasts": [
+          1.223,
+          1.223,
+          1.223,
+          1.223
+        ],
+        "outsideRGB": [
+          247,
+          248,
+          252
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#connectionFilter",
+      "id": "FW500-246",
+      "before": "<select id=\"connectionFilter\" aria-label=\"인터넷 연결 조건\"><option value=\"all\">전체 연결</option><option value=\"online\">온라인</option><option value=\"offline\">오프라인</option></select>",
+      "evidence": {
+        "fillContrast": 1.061,
+        "borderContrasts": [
+          1.223,
+          1.223,
+          1.223,
+          1.223
+        ],
+        "outsideRGB": [
+          247,
+          248,
+          252
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#difficultyFilter",
+      "id": "FW500-247",
+      "before": "<select id=\"difficultyFilter\" aria-label=\"프로젝트 난이도\"><option value=\"all\">전체 난이도</option><option value=\"쉬움\">쉬움</option><option value=\"보통\">보통</option><option value=\"어려움\">어려움</option></select>",
+      "evidence": {
+        "fillContrast": 1.061,
+        "borderContrasts": [
+          1.223,
+          1.223,
+          1.223,
+          1.223
+        ],
+        "outsideRGB": [
+          247,
+          248,
+          252
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "index.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#sort",
+      "id": "FW500-248",
+      "before": "<select id=\"sort\" class=\"sortSelect\" aria-label=\"프로젝트 정렬 기준\">\n\n<option value=\"creator\" selected=\"\">제작자 추천 순</option>\n<option value=\"maturity\">개발 상태 순 (제작자 분류)</option>\n<option value=\"popular\">\n내가 자주 연 순 (이 기기)\n</option>\n",
+      "evidence": {
+        "fillContrast": 1.061,
+        "borderContrasts": [
+          1.223,
+          1.223,
+          1.223,
+          1.223
+        ],
+        "outsideRGB": [
+          247,
+          248,
+          252
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "party.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#name",
+      "id": "FW500-249",
+      "before": "<input id=\"name\" maxlength=\"12\" placeholder=\"닉네임\" autocomplete=\"nickname\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          2.253,
+          2.253,
+          2.253,
+          2.253
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "party.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#code",
+      "id": "FW500-250",
+      "before": "<input id=\"code\" maxlength=\"6\" placeholder=\"6자리\" style=\"width:120px;text-transform:uppercase\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          2.253,
+          2.253,
+          2.253,
+          2.253
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "playtest.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#find10-age",
+      "id": "FW500-251",
+      "before": "<select id=\"find10-age\"><option value=\"\">응답하지 않음</option><option>10대 미만</option><option>10대</option><option>20대</option><option>30대</option><option>40대</option><option>50대</option><option>60대 이상</option></select>",
+      "evidence": {
+        "fillContrast": 1.072,
+        "borderContrasts": [
+          1.41,
+          1.41,
+          1.41,
+          1.41
+        ],
+        "outsideRGB": [
+          247,
+          246,
+          255
+        ],
+        "insideRGB": [
+          239,
+          239,
+          239
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "playtest.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#find10-device",
+      "id": "FW500-252",
+      "before": "<select id=\"find10-device\"><option value=\"\">응답하지 않음</option><option>휴대폰</option><option>노트북</option><option>데스크톱 컴퓨터</option><option>기타</option></select>",
+      "evidence": {
+        "fillContrast": 1.072,
+        "borderContrasts": [
+          1.41,
+          1.41,
+          1.41,
+          1.41
+        ],
+        "outsideRGB": [
+          247,
+          246,
+          255
+        ],
+        "insideRGB": [
+          239,
+          239,
+          239
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "playtest.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#find10-notes",
+      "id": "FW500-253",
+      "before": "<textarea id=\"find10-notes\" maxlength=\"200\" rows=\"1\" placeholder=\"테스트 환경이나 참고사항 (개인정보 제외)\"></textarea>",
+      "evidence": {
+        "fillContrast": 1.072,
+        "borderContrasts": [
+          1.41,
+          1.41,
+          1.41,
+          1.41
+        ],
+        "outsideRGB": [
+          247,
+          246,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "playtest.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#nickname",
+      "id": "FW500-254",
+      "before": "<input id=\"nickname\" maxlength=\"24\" required=\"\" placeholder=\"닉네임\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.512,
+          1.512,
+          1.512,
+          1.512
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "playtest.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#apply-age",
+      "id": "FW500-255",
+      "before": "<select id=\"apply-age\"><option value=\"\">응답하지 않음</option><option>10대 미만</option><option>10대</option><option>20대</option><option>30대</option><option>40대</option><option>50대</option><option>60대 이상</option></select>",
+      "evidence": {
+        "fillContrast": 1.15,
+        "borderContrasts": [
+          1.512,
+          1.512,
+          1.512,
+          1.512
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          239,
+          239,
+          239
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "playtest.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#apply-device",
+      "id": "FW500-256",
+      "before": "<select id=\"apply-device\"><option value=\"\">응답하지 않음</option><option>휴대폰</option><option>노트북</option><option>데스크톱 컴퓨터</option><option>기타</option></select>",
+      "evidence": {
+        "fillContrast": 1.15,
+        "borderContrasts": [
+          1.512,
+          1.512,
+          1.512,
+          1.512
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          239,
+          239,
+          239
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "playtest.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#field",
+      "id": "FW500-257",
+      "before": "<select id=\"field\"><option>게임 플레이</option><option>모바일·UI</option><option>버그 찾기</option><option>접근성·튜토리얼</option></select>",
+      "evidence": {
+        "fillContrast": 1.15,
+        "borderContrasts": [
+          1.512,
+          1.512,
+          1.512,
+          1.512
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          239,
+          239,
+          239
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "playtest.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#reason",
+      "id": "FW500-258",
+      "before": "<textarea id=\"reason\" maxlength=\"300\" rows=\"2\"></textarea>",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.512,
+          1.512,
+          1.512,
+          1.512
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "playtest.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#apply-notes",
+      "id": "FW500-259",
+      "before": "<textarea id=\"apply-notes\" maxlength=\"300\" rows=\"1\" placeholder=\"테스트 환경, 참고사항 등 (실명·연락처 제외)\"></textarea>",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.512,
+          1.512,
+          1.512,
+          1.512
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "promotion.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#game",
+      "id": "FW500-260",
+      "before": "<select id=\"game\">\n<option value=\"\">Formwheel 전체 허브</option>\n<option value=\"polyrhythm.html\">Polyrhythm</option>\n<option value=\"afterbeat.html\">Afterbeat</option>\n<option value=\"reflex.html\">Reflex</option>\n<option value",
+      "evidence": {
+        "fillContrast": 1.142,
+        "borderContrasts": [
+          2.997,
+          2.997,
+          2.997,
+          2.997
+        ],
+        "outsideRGB": [
+          32,
+          26,
+          56
+        ],
+        "insideRGB": [
+          17,
+          14,
+          33
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "promotion.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#score",
+      "id": "FW500-261",
+      "before": "<input id=\"score\" maxlength=\"24\" placeholder=\"예: 16750 또는 LV 7\" autocomplete=\"off\">",
+      "evidence": {
+        "fillContrast": 1.142,
+        "borderContrasts": [
+          2.997,
+          2.997,
+          2.997,
+          2.997
+        ],
+        "outsideRGB": [
+          32,
+          26,
+          56
+        ],
+        "insideRGB": [
+          17,
+          14,
+          33
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "promotion.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#message",
+      "id": "FW500-262",
+      "before": "<input id=\"message\" maxlength=\"75\" placeholder=\"이 기록 넘을 수 있어?\">",
+      "evidence": {
+        "fillContrast": 1.142,
+        "borderContrasts": [
+          2.997,
+          2.997,
+          2.997,
+          2.997
+        ],
+        "outsideRGB": [
+          32,
+          26,
+          56
+        ],
+        "insideRGB": [
+          17,
+          14,
+          33
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "profile.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#fw-profile-nickname",
+      "id": "FW500-263",
+      "before": "<input id=\"fw-profile-nickname\" maxlength=\"16\" placeholder=\"2~16자\" autocomplete=\"nickname\" required=\"\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.337,
+          1.337,
+          1.337,
+          1.337
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "profile.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#fw-profile-icon",
+      "id": "FW500-264",
+      "before": "<select id=\"fw-profile-icon\"><option>🎡</option><option>🎮</option><option>🦊</option><option>🐱</option><option>🚀</option><option>🌟</option><option>🎲</option><option>👑</option></select>",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.337,
+          1.337,
+          1.337,
+          1.337
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "profile.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#claim-handle",
+      "id": "FW500-265",
+      "before": "<input id=\"claim-handle\" aria-label=\"등록할 공개 ID\" placeholder=\"고유 ID (영문·숫자·_)\">",
+      "evidence": {
+        "fillContrast": 1.042,
+        "borderContrasts": [
+          1.306,
+          1.306,
+          1.306,
+          1.306
+        ],
+        "outsideRGB": [
+          249,
+          250,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "profile.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#friend-query",
+      "id": "FW500-266",
+      "before": "<input id=\"friend-query\" aria-label=\"친구 고유 ID 검색\" placeholder=\"@friend_id\">",
+      "evidence": {
+        "fillContrast": 1.042,
+        "borderContrasts": [
+          1.306,
+          1.306,
+          1.306,
+          1.306
+        ],
+        "outsideRGB": [
+          249,
+          250,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "profile.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#invite-game",
+      "id": "FW500-267",
+      "before": "<select id=\"invite-game\"><option>Spy</option><option>Battle</option><option>GCrown</option><option>Dice Duel</option><option>Risk</option></select>",
+      "evidence": {
+        "fillContrast": 1.15,
+        "borderContrasts": [
+          1.362,
+          1.362,
+          1.362,
+          1.362
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          239,
+          239,
+          239
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "profile.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#invite-minutes",
+      "id": "FW500-268",
+      "before": "<select id=\"invite-minutes\"><option value=\"5\">5분</option><option value=\"10\" selected=\"\">10분</option><option value=\"15\">15분</option><option value=\"30\">30분</option></select>",
+      "evidence": {
+        "fillContrast": 1.15,
+        "borderContrasts": [
+          1.362,
+          1.362,
+          1.362,
+          1.362
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          239,
+          239,
+          239
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "rapid-shop/refund-admin-demo.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#reason",
+      "id": "FW500-269",
+      "before": "<textarea id=\"reason\" rows=\"3\" placeholder=\"예: 구매 설명이 모호하여 50% 보상\"></textarea>",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.651,
+          1.651,
+          1.651,
+          1.651
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "secret/creator.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#title",
+      "id": "FW500-270",
+      "before": "<input id=\"title\" maxlength=\"60\" placeholder=\"사라진 문장\" required=\"\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.472,
+          1.472,
+          1.472,
+          1.472
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "secret/creator.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#author",
+      "id": "FW500-271",
+      "before": "<input id=\"author\" maxlength=\"32\" placeholder=\"익명의 탐험가\" required=\"\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.472,
+          1.472,
+          1.472,
+          1.472
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "secret/creator.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#answer",
+      "id": "FW500-272",
+      "before": "<input id=\"answer\" maxlength=\"80\" placeholder=\"정답은 공개되지 않아요\" required=\"\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.472,
+          1.472,
+          1.472,
+          1.472
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "secret/creator.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#description",
+      "id": "FW500-273",
+      "before": "<input id=\"description\" maxlength=\"240\" placeholder=\"이 퍼즐의 목표를 간략하게 설명해 줘\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.472,
+          1.472,
+          1.472,
+          1.472
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "secret/creator.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#source",
+      "id": "FW500-274",
+      "before": "<textarea id=\"source\" spellcheck=\"false\" maxlength=\"30000\" aria-label=\"HTML 퍼즐 코드\">&lt;!doctype html&gt;\n&lt;html lang=\"ko\"&gt;\n&lt;head&gt;&lt;meta charset=\"utf-8\"&gt;&lt;/head&gt;\n&lt;body style=\"font-family:system-ui;",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.472,
+          1.472,
+          1.472,
+          1.472
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "secret/index.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#search",
+      "id": "FW500-275",
+      "before": "<input id=\"search\" aria-label=\"비밀 검색\" placeholder=\"비밀 이름 · 프로젝트 검색\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.472,
+          1.472,
+          1.472,
+          1.472
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "secret/index.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#filter",
+      "id": "FW500-276",
+      "before": "<select id=\"filter\" aria-label=\"등급 필터\"><option>전체</option><option>일반</option><option>희귀</option><option>영웅</option><option>전설</option><option>신화</option></select>",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.472,
+          1.472,
+          1.472,
+          1.472
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "secret/index.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#status",
+      "id": "FW500-277",
+      "before": "<select id=\"status\" aria-label=\"발견 여부 필터\"><option value=\"all\">전체 상태</option><option value=\"yes\">발견함</option><option value=\"no\">미발견</option></select>",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.472,
+          1.472,
+          1.472,
+          1.472
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "secret/index.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#secret-code",
+      "id": "FW500-278",
+      "before": "<input id=\"secret-code\" type=\"text\" maxlength=\"40\" autocomplete=\"off\" spellcheck=\"false\" required=\"\" placeholder=\"발견한 코드\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.472,
+          1.472,
+          1.472,
+          1.472
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "secret/index.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#answer",
+      "id": "FW500-279",
+      "before": "<input id=\"answer\" type=\"number\" inputmode=\"numeric\" required=\"\" placeholder=\"정답\">",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.472,
+          1.472,
+          1.472,
+          1.472
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "settings-2.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#appearance > label:nth-child(1) > select:nth-child(1)",
+      "id": "FW500-280",
+      "before": "<select><option value=\"off\">끄기</option><option value=\"low\">낮음</option><option value=\"normal\">보통</option><option value=\"high\">높음</option></select>",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.746,
+          1.746,
+          1.746,
+          1.746
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "settings-2.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#appearance > label:nth-child(3) > select:nth-child(1)",
+      "id": "FW500-281",
+      "before": "<select><option value=\"spacious\">넓게</option><option value=\"normal\">기본</option><option value=\"compact\">촘촘하게</option></select>",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.746,
+          1.746,
+          1.746,
+          1.746
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "settings-2.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#appearance > label:nth-child(4) > select:nth-child(1)",
+      "id": "FW500-282",
+      "before": "<select><option value=\"small\">작게</option><option value=\"normal\">기본</option><option value=\"large\">크게</option></select>",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.746,
+          1.746,
+          1.746,
+          1.746
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "settings-2.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#convenience > label:nth-child(1) > select:nth-child(1)",
+      "id": "FW500-283",
+      "before": "<select><option value=\"hub\">Hub</option><option value=\"recent\">최근 플레이</option><option value=\"favorites\">즐겨찾기</option></select>",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.746,
+          1.746,
+          1.746,
+          1.746
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "settings-2.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#advanced > label:nth-child(1) > select:nth-child(1)",
+      "id": "FW500-284",
+      "before": "<select><option value=\"auto\">자동</option><option value=\"saving\">절전</option><option value=\"balanced\">균형</option><option value=\"high\">고성능</option></select>",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.746,
+          1.746,
+          1.746,
+          1.746
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sns.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#nickname",
+      "id": "FW500-285",
+      "before": "<input id=\"nickname\" maxlength=\"24\" placeholder=\"닉네임 (최대 24자)\" autocomplete=\"nickname\">",
+      "evidence": {
+        "fillContrast": 1.074,
+        "borderContrasts": [
+          1.782,
+          1.782,
+          1.782,
+          1.782
+        ],
+        "outsideRGB": [
+          23,
+          26,
+          48
+        ],
+        "insideRGB": [
+          16,
+          19,
+          37
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sns.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#message",
+      "id": "FW500-286",
+      "before": "<textarea id=\"message\" maxlength=\"500\" placeholder=\"오늘은 어떤 이야기를 나눌까요? (최대 500자)\"></textarea>",
+      "evidence": {
+        "fillContrast": 1.074,
+        "borderContrasts": [
+          1.782,
+          1.782,
+          1.782,
+          1.782
+        ],
+        "outsideRGB": [
+          23,
+          26,
+          48
+        ],
+        "insideRGB": [
+          16,
+          19,
+          37
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sports/index.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#opponent",
+      "id": "FW500-287",
+      "before": "<select id=\"opponent\"><option value=\"cpu\">CPU 대전</option><option value=\"local\">로컬 2인 대전</option></select>",
+      "evidence": {
+        "fillContrast": 1.32,
+        "borderContrasts": [
+          2.924,
+          2.924,
+          2.924,
+          2.924
+        ],
+        "outsideRGB": [
+          25,
+          43,
+          70
+        ],
+        "insideRGB": [
+          38,
+          62,
+          98
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sports/index.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#difficulty",
+      "id": "FW500-288",
+      "before": "<select id=\"difficulty\"><option value=\"easy\">쉬움</option><option value=\"normal\" selected=\"\">보통</option><option value=\"hard\">어려움</option></select>",
+      "evidence": {
+        "fillContrast": 1.32,
+        "borderContrasts": [
+          2.924,
+          2.924,
+          2.924,
+          2.924
+        ],
+        "outsideRGB": [
+          25,
+          43,
+          70
+        ],
+        "insideRGB": [
+          38,
+          62,
+          98
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sports/index.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#duration",
+      "id": "FW500-289",
+      "before": "<select id=\"duration\"><option value=\"60\">60초</option><option value=\"120\">120초</option><option value=\"180\">180초</option></select>",
+      "evidence": {
+        "fillContrast": 1.32,
+        "borderContrasts": [
+          2.924,
+          2.924,
+          2.924,
+          2.924
+        ],
+        "outsideRGB": [
+          25,
+          43,
+          70
+        ],
+        "insideRGB": [
+          38,
+          62,
+          98
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "text-sorter.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#source",
+      "id": "FW500-290",
+      "before": "<textarea id=\"source\" placeholder=\"바나나\n사과\n딸기\n포도\">바나나\n사과\n딸기\n포도\n키위\n수박</textarea>",
+      "evidence": {
+        "fillContrast": 1,
+        "borderContrasts": [
+          1.532,
+          1.532,
+          1.532,
+          1.532
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "text-sorter.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#sort",
+      "id": "FW500-291",
+      "before": "<select id=\"sort\"><option value=\"ko\">가나다순 / ABC순</option><option value=\"len\">글자 수 순</option><option value=\"num\">숫자 순</option><option value=\"input\">입력 순서</option><option value=\"shuffle\">무작위 섞기</option></select>",
+      "evidence": {
+        "fillContrast": 1.15,
+        "borderContrasts": [
+          1.532,
+          1.532,
+          1.532,
+          1.532
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          239,
+          239,
+          239
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "text-sorter.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#direction",
+      "id": "FW500-292",
+      "before": "<select id=\"direction\"><option value=\"asc\">오름차순 / 짧은 순</option><option value=\"desc\">내림차순 / 긴 순</option></select>",
+      "evidence": {
+        "fillContrast": 1.15,
+        "borderContrasts": [
+          1.532,
+          1.532,
+          1.532,
+          1.532
+        ],
+        "outsideRGB": [
+          255,
+          255,
+          255
+        ],
+        "insideRGB": [
+          239,
+          239,
+          239
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "input-boundary-contrast",
+      "target": "#difficulty",
+      "id": "FW500-293",
+      "before": "<select id=\"difficulty\"><option value=\"beginner\">입문</option><option value=\"easy\">쉬움</option><option value=\"normal\" selected=\"\">보통</option><option value=\"hard\">어려움</option><option value=\"expert\">전문가</option></select>",
+      "evidence": {
+        "fillContrast": 1.097,
+        "borderContrasts": [
+          1.388,
+          1.388,
+          1.388,
+          1.388
+        ],
+        "outsideRGB": [
+          245,
+          243,
+          255
+        ],
+        "insideRGB": [
+          255,
+          255,
+          255
+        ]
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(1) > button:nth-child(1)",
+      "id": "FW500-294",
+      "before": "<button type=\"button\" class=\"cell fixed\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"true\" tabindex=\"0\" aria-label=\"1행 1열 7\">7</button>",
+      "evidence": {
+        "backgroundRGB": [
+          242,
+          239,
+          249
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Right",
+          "neighbor": "#board > div:nth-child(1) > button:nth-child(2)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(1) > button:nth-child(2)",
+      "id": "FW500-295",
+      "before": "<button type=\"button\" class=\"cell\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"1행 2열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Left",
+          "neighbor": "#board > div:nth-child(1) > button:nth-child(1)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(1) > button:nth-child(3)",
+      "id": "FW500-296",
+      "before": "<button type=\"button\" class=\"cell boxright fixed\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"true\" tabindex=\"-1\" aria-label=\"1행 3열 5\">5</button>",
+      "evidence": {
+        "backgroundRGB": [
+          242,
+          239,
+          249
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Left",
+          "neighbor": "#board > div:nth-child(1) > button:nth-child(2)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(1) > button:nth-child(4)",
+      "id": "FW500-297",
+      "before": "<button type=\"button\" class=\"cell\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"1행 4열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Right",
+          "neighbor": "#board > div:nth-child(1) > button:nth-child(5)",
+          "fillRatio": 1,
+          "edgeRatio": 1.742
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(1) > button:nth-child(5)",
+      "id": "FW500-298",
+      "before": "<button type=\"button\" class=\"cell\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"1행 5열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 3,
+        "example": {
+          "side": "Left",
+          "neighbor": "#board > div:nth-child(1) > button:nth-child(4)",
+          "fillRatio": 1,
+          "edgeRatio": 1.742
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(1) > button:nth-child(6)",
+      "id": "FW500-299",
+      "before": "<button type=\"button\" class=\"cell boxright fixed\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"true\" tabindex=\"-1\" aria-label=\"1행 6열 9\">9</button>",
+      "evidence": {
+        "backgroundRGB": [
+          242,
+          239,
+          249
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Left",
+          "neighbor": "#board > div:nth-child(1) > button:nth-child(5)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    },
+    {
+      "repo": "Formwheel",
+      "file": "sudoku.html",
+      "state": "page",
+      "rule": "grid-boundary-contrast",
+      "target": "#board > div:nth-child(1) > button:nth-child(7)",
+      "id": "FW500-300",
+      "before": "<button type=\"button\" class=\"cell\" role=\"gridcell\" aria-selected=\"false\" aria-readonly=\"false\" tabindex=\"-1\" aria-label=\"1행 7열 빈 칸\"></button>",
+      "evidence": {
+        "backgroundRGB": [
+          255,
+          255,
+          255
+        ],
+        "insufficientSharedEdges": 2,
+        "example": {
+          "side": "Right",
+          "neighbor": "#board > div:nth-child(1) > button:nth-child(8)",
+          "fillRatio": 1.136,
+          "edgeRatio": 1.533
+        }
+      },
+      "verification": "Same page/state passes after repair; repeated themes/viewports counted once."
+    }
+  ]
+}
