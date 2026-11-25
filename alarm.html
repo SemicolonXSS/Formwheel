@@ -1,0 +1,35 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Formwheel ALARM</title><style>
+*{box-sizing:border-box}body{font:16px system-ui;background:#151827;color:#fff;margin:0}main{max-width:540px;margin:auto;padding:24px}section{background:#24293d;padding:20px;border-radius:20px;margin:16px 0}button,input,select{font:inherit;padding:12px;border-radius:10px;border:1px solid #667085;background:#30364b;color:white;margin:4px}button{cursor:pointer}button:focus-visible{outline:3px solid orange}h1{color:#ffad54}#board{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}#board button{min-height:48px;margin:0}#status{min-height:2em}a{color:#ffad54}small{color:#cbd5e1}label{display:block;margin:8px 0}</style><main><a href="./">Formwheel HUB</a><h1>⏰ ALARM</h1><p>Wake up. Play. Start.</p><section><label>알람 시간 <input id="time" type="time" value="07:00"></label><label>미션 <select id="mode"></select></label><label>난이도 <select id="difficulty"><option value="1">EASY</option><option value="2" selected>NORMAL</option><option value="3">HARD</option></select></label><div id="days"></div><button id="arm">알람 설정</button><button id="test">미션 체험</button><button id="cancel">예약 취소</button><p id="status" role="status"></p><small>페이지가 열린 상태에서만 작동합니다. 잠금 화면 및 백그라운드 알람은 보장되지 않습니다. 중요한 알람은 기기 기본 앱을 사용하세요.</small></section><section id="game" hidden><h2 id="name"></h2><p id="prompt" aria-live="polite"></p><div id="board"></div><button id="snooze">5분 뒤 다시 알림</button><button id="stop">즉시 종료</button></section></main><script>
+'use strict';
+const $=id=>document.getElementById(id), names=['REFLEX','MAZE','POLYRHYTHM','OPTICAL CHAOS','MEMORY','SUDOKU','CLICKER','AFTERBEAT','WAKE HUNT','BRAIN BOOT','PERFECT STOP'], rnd=n=>Math.floor(Math.random()*n);
+let ctx, sound, tick, active=false, next=0, last='', mission, score, target, cleanup=()=>{}, armed=false, snoozed=0;
+$('mode').add(new Option('RANDOM','random'));names.forEach((n,i)=>$('mode').add(new Option(n,i)));
+['일','월','화','수','목','금','토'].forEach((d,i)=>{let l=document.createElement('label');l.style.display='inline-block';let c=document.createElement('input');c.type='checkbox';c.value=i;c.checked=true;l.append(c,d);$('days').append(l)});
+const checks=()=>Array.from($('days').querySelectorAll('input'));
+try{let s=JSON.parse(localStorage.getItem('fw-alarm')||'null');if(s){$('time').value=s.time;$('mode').value=s.mode;$('difficulty').value=s.difficulty;checks().forEach(c=>c.checked=s.days.includes(+c.value))}}catch{}
+function save(){try{localStorage.setItem('fw-alarm',JSON.stringify({time:$('time').value,mode:$('mode').value,difficulty:$('difficulty').value,days:checks().filter(c=>c.checked).map(c=>+c.value)}))}catch{}}
+document.querySelectorAll('input,select').forEach(e=>e.addEventListener('change',save));
+async function audio(){try{ctx ||= new (window.AudioContext||window.webkitAudioContext)();await ctx.resume()}catch{}}
+function beep(){if(!ctx||ctx.state!=='running')return;let o=ctx.createOscillator(),g=ctx.createGain();o.frequency.value=660;g.gain.setValueAtTime(.07,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+.22);o.connect(g).connect(ctx.destination);o.start();o.stop(ctx.currentTime+.23)}
+function finish(msg){active=false;clearInterval(sound);cleanup();$('game').hidden=true;$('status').textContent=msg}
+function button(label,fn){let b=document.createElement('button');b.textContent=label;b.onclick=fn;$('board').append(b);return b}
+function win(){if(!active)return;score++;if(score>=target)finish('미션 완료! 좋은 하루 보내세요.');else round()}
+function round(){cleanup();cleanup=()=>{};$('board').replaceChildren();$('prompt').textContent=score+' / '+target+' · ';const p=t=>$('prompt').append(t);
+if(mission===0){p('GO가 나오면 누르세요');let ready=false,b=button('WAIT',()=>{if(ready)win()});let t=setTimeout(()=>{ready=true;b.textContent='GO!';b.style.background='#167b55'},700+rnd(1500));cleanup=()=>clearTimeout(t)}
+else if(mission===1){p('화살표를 눌러 출구까지 이동');let pos=0;const walls=new Set([1,5,9,13,7,11]);let cells=[];for(let i=0;i<16;i++)cells.push(button('',()=>{}));function draw(){cells.forEach((b,i)=>{b.textContent=i===pos?'●':i===15?'🚪':walls.has(i)?'■':'·';b.disabled=true})}draw();[['↑',-4],['↓',4],['←',-1],['→',1]].forEach(([l,d])=>button(l,()=>{let n=pos+d;if(n<0||n>15||walls.has(n)||(d===1&&pos%4===3)||(d===-1&&pos%4===0))return;pos=n;draw();if(pos===15)win()}))}
+else if(mission===2||mission===7||mission===10){p('움직이는 표시가 목표 칸에 있을 때 STOP');let i=0,goal=2+rnd(5),cells=[];for(let j=0;j<8;j++){let b=button(j===goal?'◎':'·',()=>{});b.disabled=true;cells.push(b)}let t=setInterval(()=>{cells.forEach((b,j)=>b.style.background=j===i?'#e88a25':'#30364b');i=(i+1)%8},mission===10?130:230);button('STOP',()=>{if((i+7)%8===goal)win()});cleanup=()=>clearInterval(t)}
+else if(mission===3){let a=1+rnd(15),b=1+rnd(15),ans=a+b;p(a+' + '+b+' = ?');let opts=[ans,ans+1,ans+3,ans-1];opts.sort(()=>Math.random()-.5).forEach(n=>button(n,()=>{if(n===ans)win()}))}
+else if(mission===4){let seq=Array.from({length:3},()=>1+rnd(4)),i=0;p('기억: '+seq.join(' '));let t=setTimeout(()=>{if(!active)return;$('prompt').textContent='순서대로 입력';for(let n=1;n<=4;n++)button(n,()=>{if(n===seq[i]){if(++i===seq.length)win()}else i=0})},1500);cleanup=()=>clearTimeout(t)}
+else if(mission===5){let missing=1+rnd(4);p('1~4가 한 번씩 등장하도록 빈칸 채우기');let row=[1,2,3,4];row[missing-1]='?';p(' '+row.join(' | '));for(let n=1;n<=4;n++)button(n,()=>{if(n===missing)win()})}
+else if(mission===6){p('버튼 누르기');button('CLICK',win)}
+else if(mission===8){p('빛나는 타일 선택');let goal=rnd(16);for(let i=0;i<16;i++){let b=button(i===goal?'★':'·',()=>{if(i===goal)win()});if(i===goal)b.style.background='#d97706'}}
+else{let colors=['빨강','파랑','초록','노랑'],hex=['#a52c38','#245bc5','#167b55','#8a6900'],goal=rnd(4);p('배경색 '+colors[goal]+' 선택');for(let i=0;i<4;i++){let b=button(colors[(i+1+rnd(3))%4],()=>{if(i===goal)win()});b.style.background=hex[i]}}
+}
+function start(test=false){if(active)return;active=true;let m=$('mode').value;mission=m==='random'?(Math.random()<.15?8+rnd(3):rnd(8)):+m;score=0;let d=+$('difficulty').value;target=[d+1,1,5*d,d+1,d, d,15*d,5*d,5*d,d+3,d+1][mission];$('name').textContent=names[mission];$('game').hidden=false;round();if(!test){beep();sound=setInterval(beep,1800)}}
+$('arm').onclick=async()=>{await audio();if(!$('time').value||!checks().some(c=>c.checked)){ $('status').textContent='시간과 요일을 선택하세요';return}save();armed=true;$('status').textContent='알람 예약됨 · 페이지를 열어 두세요'};
+$('test').onclick=async()=>{await audio();start(true)};
+$('cancel').onclick=()=>{armed=false;snoozed=0;finish('예약 취소')};
+$('stop').onclick=()=>finish('알람 종료');
+$('snooze').onclick=()=>{snoozed=Date.now()+300000;finish('5분 뒤 다시 알림')};
+setInterval(()=>{let d=new Date(),hm=String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'),key=d.toDateString()+hm;if(snoozed&&Date.now()>=snoozed){snoozed=0;start()}if(armed&&hm===$('time').value&&checks().some(c=>c.checked&&+c.value===d.getDay())&&last!==key){last=key;start()}},500);
+</script></html>
