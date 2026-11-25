@@ -221,7 +221,11 @@ function addTarget(){
     return;
   }
   let kind=difficulty==='easy'&&nextId>0&&nextId%13===5?'heart':stagePeriod()<=1.8?(nextId%11===0?'reverse':nextId%11===4?'forward':nextId%7===0?'hold':'normal'):(nextId%7===0?'hold':'normal');
-  if(dnaRun){kind=nextId>0&&nextId%13===5&&dnaFlags[2]?'heart':dnaFlags[0]&&nextId%11===0?'reverse':dnaFlags[0]&&nextId%11===4?'forward':dnaFlags[1]&&nextId%7===0?'hold':'normal';if(kind==='normal'&&!dnaFlags[4]){const pool=[...(dnaFlags[0]?['reverse','forward']:[]),...(dnaFlags[1]?['hold']:[]),...(dnaFlags[2]?['heart']:[])];if(!pool.length)return;kind=pool[nextId%pool.length];}}
+  if(dnaRun){
+    const pool=[...(dnaFlags[0]?['switch']:[]),...(dnaFlags[1]?['hold']:[]),...(dnaFlags[2]?['heart']:[]),...(dnaFlags[4]?['normal']:[])];
+    if(!pool.length)return;
+    if(!dnaFlags[4]||!pool.includes(oppositeDirectionTile(kind)))kind=pool[nextId%pool.length];
+  }
   kind=oppositeDirectionTile(kind);
   let bestAt=progress+1.1,bestGap=-1;
   for(let i=0;i<32;i++){
@@ -232,6 +236,7 @@ function addTarget(){
     let gap=TAU;for(const t of targets)gap=Math.min(gap,Math.abs(at-t.at));
     if(gap>bestGap){bestGap=gap;bestAt=at}
   }
+  if(bestGap<0&&dnaRun&&!targets.length){bestAt=progress+1.1;bestGap=TAU;}
   if(bestGap<0||conflictsWithHoldArc(bestAt,kind))return;
   targets.push({id:++nextId,at:bestAt,angle:angle+direction*(bestAt-progress),kind});
   targets.sort((a,b)=>a.at-b.at);
@@ -496,6 +501,7 @@ function frame(now){
     lose(directionTile?'🔄 방향 전환 · MISS':'MISS');
   }
   if(expired.length&&running)afterTarget();
+  if(dnaRun&&running&&!targets.length)fillTargets();
   // Limit costly canvas glow rendering while keeping gameplay timing on every frame.
   if(now-lastDraw>=1000/60-1){draw();lastDraw=now}
   if(running)raf=requestAnimationFrame(frame);
