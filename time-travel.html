@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>FormWheel</title>
+
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,
+  "Noto Sans KR",Arial,sans-serif;
+  background:#f7f8fc;
+  color:#15171c;
+}
+a{text-decoration:none;color:inherit}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:10;
+  height:68px;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid #e8e9ee;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 20px;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:21px;
+  font-weight:800;
+  letter-spacing:-1px;
+}
+
+.logo .form{color:#2867e8}
+.logo .wheel{color:#666}
+.logoIcon{
+  width:28px;
+  height:28px;
+  border:4px solid #2867e8;
+  border-radius:50%;
+  position:relative;
+  display:inline-block;
+}
+.logoIcon:before,
+.logoIcon:after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:#2867e8;
+  transform:translate(-50%,-50%);
+}
+.logoIcon:after{
+  width:12px;
+  height:4px;
+  border-radius:4px;
+  transform:translate(-50%,-50%) rotate(45deg);
+  transform-origin:center;
+}
+
+nav{
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+nav a{
+  padding:9px 12px;
+  border-radius:10px;
+  font-size:14px;
+  font-weight:700;
+  color:#555;
+}
+
+nav a:hover{
+  background:#f0f2f7;
+  color:#111;
+}
+
+.construction{
+  font-size:10px;
+  color:#999;
+  margin-left:3px;
+}
+
+main{
+  max-width:1000px;
+  margin:0 auto;
+  padding:70px 20px 80px;
+}
+
+.hero{
+  text-align:center;
+  padding:30px 0 55px;
+}
+
+.badge{
+  display:inline-block;
+  padding:7px 12px;
+  border-radius:999px;
+  background:#eaf1ff;
+  color:#2867e8;
+  font-size:12px;
+  font-weight:800;
+  margin-bottom:18px;
+}
+
+h1{
+  margin:0;
+  font-size:clamp(38px,9vw,70px);
+  line-height:1.05;
+  letter-spacing:-3px;
+}
+
+.heroTitle{
+  margin-top:22px;
+  font-size:clamp(25px,6vw,42px);
+  font-weight:800;
+  line-height:1.3;
+  letter-spacing:-1.8px;
+}
+
+.heroText{
+  margin:18px auto 0;
+  max-width:600px;
+  color:#666;
+  line-height:1.7;
+  font-size:15px;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
+
+.card{
+  background:#fff;
+  border:1px solid #e7e8ed;
+  border-radius:22px;
+  padding:30px;
+  box-shadow:0 10px 30px rgba(0,0,0,.04);
+  transition:.2s;
+}
+
+.card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 15px 35px rgba(0,0,0,.08);
+}
+
+.icon{
+  font-size:38px;
+  margin-bottom:18px;
+}
+
+.card h2{
+  margin:0 0 10px;
+  font-size:25px;
+  letter-spacing:-1px;
+}
+
+.card p{
+  margin:0 0 24px;
+  color:#70737b;
+  line-height:1.6;
+  font-size:14px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:44px;
+  padding:0 18px;
+  border-radius:12px;
+  background:#15171c;
+  color:#fff;
+  font-weight:700;
+  font-size:14px;
+}
+
+.btn.blue{
+  background:#2867e8;
+}
+
+.btn.disabled{
+  background:#eceef3;
+  color:#999;
+  cursor:default;
+}
+
+.notice{
+  margin-top:18px;
+  padding:16px 18px;
+  background:#fff;
+  border:1px solid #e7e8ed;
+  border-radius:15px;
+  color:#777;
+  font-size:13px;
+  text-align:center;
+}
+
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
+
+.back{
+  display:inline-block;
+  margin-bottom:24px;
+  color:#666;
+  font-size:14px;
+  font-weight:700;
+}
+
+.formBox{
+  background:#fff;
+  border:1px solid #e7e8ed;
+  border-radius:22px;
+  padding:35px;
+  text-align:center;
+}
+
+.formBox h2{
+  margin:0 0 12px;
+  font-size:28px;
+}
+
+.formBox p{
+  color:#777;
+  line-height:1.7;
+}
+
+.wheelBox{
+  background:#fff;
+  border:1px solid #e7e8ed;
+  border-radius:22px;
+  padding:35px;
+  text-align:center;
+}
+
+.wheelBox h2{
+  margin:0 0 12px;
+  font-size:28px;
+}
+
+footer{
+  text-align:center;
+  padding:30px 20px;
+  color:#aaa;
+  font-size:12px;
+}
+
+@media(max-width:650px){
+  header{
+    padding:0 14px;
+  }
+
+  .logo{
+    font-size:18px;
+  }
+
+  .logoIcon{
+    width:24px;
+    height:24px;
+    border-width:3px;
+  }
+
+  nav a{
+    padding:8px 7px;
+    font-size:12px;
+  }
+
+  main{
+    padding:45px 16px 60px;
+  }
+
+  .hero{
+    padding:20px 0 40px;
+  }
+
+  .cards{
+    grid-template-columns:1fr;
+  }
+
+  .card{
+    padding:25px;
+  }
+
+  .formBox,
+  .wheelBox{
+    padding:25px 20px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="#" class="logo" onclick="showPage('home');return false;">
+    <span class="form">Form</span>
+    <span class="logoIcon"></span>
+    <span class="wheel">Wheel</span>
+  </a>
+
+  <nav>
+    <a href="#" onclick="showPage('home');return false;">Home</a>
+    <a href="#" onclick="showPage('form');return false;">
+      Form<span class="construction">제작중</span>
+    </a>
+    <a href="https://semicolonxss.github.io/FormWheel_Wheel/"
+       target="_blank"
+       rel="noopener">
+      Wheel
+    </a>
+  </nav>
+</header>
+
+
+<main>
+
+  <!-- HOME -->
+  <section id="home" class="page active">
+
+    <div class="hero">
+      <div class="badge">FORMWHEEL</div>
+
+      <h1>FormWheel</h1>
+
+      <div class="heroTitle">
+        설문에서 추첨까지,<br>
+        하나의 Wheel
+      </div>
+
+      <p class="heroText">
+        Form에서 설문을 만들고,<br>
+        모인 응답을 Wheel에서 추첨하세요.
+      </p>
+    </div>
+
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="icon">📝</div>
+
+        <h2>Form</h2>
+
+        <p>
+          설문을 만들고 공유 링크를 통해
+          다른 사람의 응답을 받아보세요.
+        </p>
+
+        <a href="#" class="btn disabled"
+           onclick="showPage('form');return false;">
+          Form 제작중
+        </a>
+      </div>
+
+
+      <div class="card">
+        <div class="icon">🎡</div>
+
+        <h2>Wheel</h2>
+
+        <p>
+          설문 응답을 이용해서
+          간편하게 랜덤 추첨을 진행하세요.
+        </p>
+
+        <a
+          href="https://semicolonxss.github.io/FormWheel_Wheel/"
+          target="_blank"
+          rel="noopener"
+          class="btn blue">
+          Wheel로 이동 →
+        </a>
+      </div>
+
+    </div>
+
+
+    <div class="notice">
+      🎡 Wheel은 GitHub FormWheel 최신 릴리즈로 이동합니다.
+    </div>
+
+  </section>
+
+
+  <!-- FORM -->
+  <section id="form" class="page">
+
+    <a href="#" class="back"
+       onclick="showPage('home');return false;">
+      ← Home
+    </a>
+
+    <div class="formBox">
+
+      <div class="icon">📝</div>
+
+      <h2>Form</h2>
+
+      <p>
+        여기는 Form 페이지 자리입니다.
+        <br><br>
+        다음 단계에서 설문 제작 기능을 연결할 예정입니다.
+      </p>
+
+      <a href="#" class="btn disabled">
+        제작중
+      </a>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer>
+  FormWheel
+<br><a href="./index.html" style="display:inline-block;margin-top:16px;text-decoration:underline">현재로 돌아가기 →</a>
+</footer>
+
+
+<script>
+function showPage(page){
+  document.querySelectorAll('.page').forEach(function(el){
+    el.classList.remove('active');
+  });
+
+  var target=document.getElementById(page);
+
+  if(target){
+    target.classList.add('active');
+  }
+
+  window.scrollTo({
+    top:0,
+    behavior:'smooth'
+  });
+}
+</script>
+
+</body>
+</html>
