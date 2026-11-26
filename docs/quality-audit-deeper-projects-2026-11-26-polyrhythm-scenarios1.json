@@ -1,0 +1,2106 @@
+{
+  "project": "polyrhythm",
+  "scenarioCount": 150,
+  "scenarios": [
+    {
+      "id": "rejected-turn--1-1ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-1ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-1ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-2ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-2ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-2ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-3ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-3ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-3ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-4ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-4ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-4ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-5ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-5ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-5ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-6ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-6ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-6ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-7ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-7ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-7ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-8ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-8ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-8ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-9ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-9ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-9ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-10ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-10ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-10ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-11ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-11ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-11ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-12ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-12ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-12ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-13ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-13ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-13ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-14ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-14ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-14ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-15ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-15ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-15ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-16ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-16ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-16ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-17ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-17ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-17ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-18ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-18ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-18ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-19ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-19ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-19ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-20ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-20ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-20ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-21ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-21ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-21ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-22ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-22ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-22ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-23ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-23ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-23ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-24ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-24ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-24ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-25ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-25ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-25ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-26ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-26ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-26ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-27ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-27ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-27ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-28ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-28ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-28ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-29ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-29ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-29ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-30ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-30ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-30ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-31ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-31ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-31ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-32ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-32ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-32ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-33ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-33ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-33ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-34ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-34ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-34ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-35ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-35ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-35ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-36ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-36ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-36ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-37ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-37ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-37ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-38ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-38ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-38ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-39ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-39ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-39ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-40ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-40ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-40ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-41ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-41ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-41ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-42ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-42ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-42ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-43ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-43ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-43ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-44ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-44ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-44ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-45ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-45ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-45ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-46ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-46ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-46ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-47ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-47ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-47ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-48ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-48ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-48ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-49ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-49ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-49ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-50ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-50ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-50ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-51ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-51ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-51ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-52ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-52ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-52ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-53ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-53ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-53ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-54ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-54ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-54ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-55ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-55ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-55ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-56ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-56ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-56ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-57ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-57ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-57ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-58ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-58ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-58ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-59ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-59ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-59ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-60ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-60ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-60ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-61ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-61ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-61ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-62ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-62ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-62ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-63ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-63ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-63ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-64ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-64ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-64ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-65ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-65ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-65ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-66ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-66ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-66ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-67ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-67ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-67ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-68ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-68ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-68ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-69ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-69ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-69ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-70ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-70ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-70ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-71ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-71ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-71ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-72ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-72ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-72ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-73ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-73ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-73ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-74ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-74ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-74ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn--1-75ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn--1-75ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn--1-75ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-1ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-1ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-1ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-2ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-2ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-2ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-3ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-3ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-3ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-4ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-4ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-4ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-5ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-5ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-5ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-6ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-6ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-6ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-7ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-7ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-7ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-8ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-8ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-8ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-9ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-9ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-9ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-10ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-10ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-10ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-11ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-11ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-11ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-12ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-12ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-12ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-13ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-13ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-13ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-14ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-14ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-14ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-15ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-15ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-15ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-16ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-16ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-16ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-17ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-17ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-17ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-18ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-18ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-18ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-19ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-19ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-19ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-20ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-20ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-20ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-21ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-21ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-21ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-22ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-22ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-22ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-23ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-23ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-23ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-24ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-24ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-24ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-25ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-25ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-25ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-26ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-26ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-26ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-27ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-27ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-27ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-28ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-28ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-28ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-29ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-29ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-29ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-30ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-30ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-30ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-31ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-31ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-31ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-32ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-32ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-32ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-33ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-33ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-33ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-34ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-34ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-34ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-35ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-35ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-35ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-36ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-36ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-36ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-37ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-37ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-37ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-38ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-38ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-38ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-39ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-39ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-39ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-40ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-40ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-40ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-41ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-41ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-41ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-42ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-42ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-42ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-43ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-43ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-43ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-44ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-44ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-44ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-45ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-45ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-45ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-46ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-46ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-46ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-47ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-47ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-47ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-48ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-48ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-48ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-49ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-49ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-49ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-50ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-50ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-50ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-51ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-51ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-51ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-52ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-52ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-52ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-53ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-53ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-53ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-54ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-54ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-54ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-55ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-55ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-55ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-56ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-56ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-56ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-57ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-57ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-57ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-58ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-58ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-58ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-59ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-59ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-59ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-60ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-60ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-60ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-61ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-61ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-61ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-62ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-62ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-62ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-63ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-63ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-63ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-64ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-64ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-64ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-65ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-65ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-65ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-66ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-66ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-66ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-67ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-67ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-67ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-68ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-68ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-68ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-69ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-69ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-69ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-70ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-70ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-70ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-71ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-71ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-71ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-72ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-72ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-72ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-73ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-73ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-73ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-74ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-74ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-74ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    },
+    {
+      "id": "rejected-turn-1-75ms",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "rejected-turn-1-75ms",
+        "type": "rejected-stamp-state",
+        "pass": false
+      },
+      "after": {
+        "id": "rejected-turn-1-75ms",
+        "type": "rejected-stamp-state",
+        "pass": true
+      }
+    }
+  ]
+}

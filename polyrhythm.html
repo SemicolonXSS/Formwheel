@@ -109,7 +109,7 @@ function selectMode(next){if(running)return;mode=next;if(mode==='map'){mapIndex=
 function mapAdvance(){if(mode!=='map'||targets.length||mapBeat<maps[mapIndex].beats.length||!running||[...musicCues.values()].some(cue=>!cue.played))return;if(mapIndex===maps.length-1){document.body.classList.remove('playing');running=false;cancelAnimationFrame(raf);feedback.textContent='🏆 모든 맵 클리어! 점수 '+score;return}mapIndex++;progress=0;angle=-Math.PI/2;direction=1;holdTarget=null;reverseUntil=0;mapBeat=0;musicCues.clear();stage=0;period=stagePeriod();spawnTargets();showMode();feedback.textContent='🗺️ 다음 맵: '+maps[mapIndex].name;update()}
 function endGame(){document.body.classList.remove('playing');running=false;cancelAnimationFrame(raf);feedback.textContent='💔 GAME OVER · 점수 '+score+' · 다시 시작할 수 있어요';update()}
 function lose(reason){if(!running)return;combo=0;lives=Math.max(0,lives-1);feedback.textContent=reason+' · 목숨 -1';update();if(lives===0)endGame()}
-function start(){document.body.classList.add('playing');window.getSelection?.()?.removeAllRanges();if(mode==='map')try{initAudio()}catch(e){}cancelAnimationFrame(raf);running=true;angle=-Math.PI/2;mapIndex=mode==='map'?selectedMap:0;stage=0;period=mode==='map'?stagePeriod():4;score=0;combo=0;success=0;lives=5;progress=0;direction=1;holdTarget=null;activeInput=null;reverseUntil=0;nextId=0;mapBeat=0;musicCues.clear();last=performance.now();spawnTargets();showMode();feedback.textContent='READY · 타이밍을 맞추세요!';update();draw();raf=requestAnimationFrame(frame)}
+function start(){editorStop();document.body.classList.add('playing');window.getSelection?.()?.removeAllRanges();if(mode==='map')try{initAudio()}catch(e){}cancelAnimationFrame(raf);running=true;angle=-Math.PI/2;mapIndex=mode==='map'?selectedMap:0;stage=0;period=mode==='map'?stagePeriod():4;score=0;combo=0;success=0;lives=5;progress=0;direction=1;holdTarget=null;activeInput=null;reverseUntil=0;nextId=0;mapBeat=0;musicCues.clear();last=performance.now();spawnTargets();showMode();feedback.textContent='READY · 타이밍을 맞추세요!';update();draw();raf=requestAnimationFrame(frame)}
 let audioContext=null,audioCompressor=null;
 const melodies=[
   [262,330,392,523,392,330,294,392],
@@ -261,7 +261,7 @@ function frame(now){
   progress+=step;angle+=step*direction;
   mapMusic();
   mapAdvance();
-  if(holdTarget&&progress>=holdTarget.at+HOLD_LENGTH)finishHold(true);
+  if(holdTarget&&judgedProgress()>=holdTarget.at+HOLD_LENGTH)finishHold(true);
   if(!running){draw();return;}
   const expired=targets.filter(t=>t!==holdTarget&&judgedProgress()>t.at+goodWindow());
   for(const target of expired){
@@ -287,7 +287,7 @@ document.querySelector('#mapSelect').addEventListener('change',e=>{if(running)re
 function release(input,cancelled=false){
   if(activeInput===null||activeInput!==input)return;
   activeInput=null;
-  if(holdTarget)finishHold(!cancelled&&progress>=holdTarget.at+HOLD_LENGTH-0.16);
+  if(holdTarget)finishHold(!cancelled&&judgedProgress()>=holdTarget.at+HOLD_LENGTH-0.16);
 }
 const hitButton=document.querySelector('#hit');
 for(const el of [hitButton,canvas]){
@@ -335,41 +335,50 @@ document.addEventListener('selectionchange',()=>{if(running&&window.getSelection
 
 const editor=document.querySelector('#editor'),editorAudio=document.querySelector('#editorAudio');
 const editorStatus=document.querySelector('#editorStatus'),editorNotes=document.querySelector('#editorNotes');
-let editing=false,editorEvents=[],editorDirection=1,editorAudioUrl=null,editorStarted=0;
+let editing=false,editorEvents=[],editorDirection=1,editorAudioUrl=null,editorStarted=0,editorSession=0,editorStarting=false;
 function editorRefresh(message){
   editorStatus.textContent=(message?message+' · ':'')+editorEvents.length+'개 타일 · '+(editorDirection<0?'역방향':'정방향');
   editorNotes.textContent=editorEvents.slice(-12).map((e,i)=>((editorEvents.length-Math.min(12,editorEvents.length)+i)+1)+'. '+e.time.toFixed(3)+'초 · '+(e.kind==='reverse'?'↺ 역방향':e.kind==='forward'?'↻ 정방향':'터치')).join(' / ');
 }
-function editorStop(){if(!editing)return;editing=false;document.querySelector('#editorRecord').textContent='🔴 녹화 시작';editorAudio.pause();editorRefresh('녹화 종료')}
+function editorStop(){const wasRecording=editing||editorStarting;editorSession++;editing=false;editorStarting=false;document.querySelector('#editorRecord').textContent='🔴 녹화 시작';editorAudio.pause();if(wasRecording)editorRefresh('녹화 종료')}
 document.querySelector('#editorToggle').addEventListener('click',()=>{if(running)return;editor.hidden=!editor.hidden;if(editor.hidden)editorStop()});
 document.querySelector('#editorFile').addEventListener('change',e=>{
   editorStop();if(editorAudioUrl)URL.revokeObjectURL(editorAudioUrl);
   const file=e.target.files[0];editorAudioUrl=file?URL.createObjectURL(file):null;
-  editorAudio.src=editorAudioUrl||'';editorRefresh(file?'오디오 선택: '+file.name:'오디오 없음');
+  if(editorAudioUrl)editorAudio.src=editorAudioUrl;else{editorAudio.removeAttribute('src');editorAudio.load()}editorRefresh(file?'오디오 선택: '+file.name:'오디오 없음');
 });
 document.querySelector('#editorRecord').addEventListener('click',async()=>{
-  if(editing){editorStop();return}
+  if(editing||editorStarting){editorStop();return}
   if(running){editorRefresh('게임을 종료한 뒤 제작하세요');return}
-  editorEvents=[];editorDirection=1;editorAudio.currentTime=0;
-  if(editorAudio.src){try{await editorAudio.play()}catch(e){editorRefresh('오디오 재생이 차단됨: 파일을 확인하세요');return}}
-  editorStarted=performance.now();editing=true;
-  document.querySelector('#editorRecord').textContent='⏹ 녹화 종료';editorRefresh('녹화 중');
+  const session=++editorSession;editorStarting=true;
+  document.querySelector('#editorRecord').textContent='⏹ 녹화 준비 취소';
+  try{
+    editorAudio.currentTime=0;
+    if(editorAudio.getAttribute('src'))await editorAudio.play();
+    if(session!==editorSession||editor.hidden||running)return;
+    editorEvents=[];editorDirection=1;editorStarted=performance.now();editing=true;
+    document.querySelector('#editorRecord').textContent='⏹ 녹화 종료';editorRefresh('녹화 중');
+  }catch(e){if(session===editorSession)editorRefresh('오디오 재생이 차단됨: 파일을 확인하세요')}
+  finally{if(session===editorSession){editorStarting=false;if(!editing)document.querySelector('#editorRecord').textContent='🔴 녹화 시작'}}
 });
 function editorStamp(switchDirection){
   if(!editing)return;
-  const time=editorAudio.src?editorAudio.currentTime:(performance.now()-editorStarted)/1000;
+  const time=editorAudio.getAttribute('src')?editorAudio.currentTime:(performance.now()-editorStarted)/1000;
   if(!Number.isFinite(time)||time<0)return;
   const kind=switchDirection?(editorDirection===1?'reverse':'forward'):'normal';
-  if(switchDirection)editorDirection*=-1;
   if(editorEvents.length&&time-editorEvents[editorEvents.length-1].time<0.08){editorRefresh('타일 간격 최소 0.08초');return}
+  if(switchDirection)editorDirection*=-1;
   editorEvents.push({time:Number(time.toFixed(3)),kind});
   editorRefresh('기록 중');
 }
-document.querySelector('#editorTap').addEventListener('pointerdown',e=>{if(e.button===0){e.preventDefault();editorStamp(false)}});
-document.querySelector('#editorReverse').addEventListener('pointerdown',e=>{if(e.button===0){e.preventDefault();editorStamp(true)}});
+for(const [id,reverse] of [['editorTap',false],['editorReverse',true]]){
+  const button=document.getElementById(id);
+  button.addEventListener('pointerdown',e=>{if(e.button===0){e.preventDefault();editorStamp(reverse)}});
+  button.addEventListener('click',e=>{if(e.detail===0)editorStamp(reverse)});
+}
 document.querySelector('#editorUndo').addEventListener('click',()=>{editorEvents.pop();editorDirection=editorEvents.reduce((d,e)=>e.kind==='reverse'?-1:e.kind==='forward'?1:d,1);editorRefresh('마지막 타일 삭제')});
 document.addEventListener('keydown',e=>{
-  if(!editing||e.repeat||e.altKey||e.ctrlKey||e.metaKey||e.target.closest?.('input,textarea,select'))return;
+  if(!editing||e.repeat||e.altKey||e.ctrlKey||e.metaKey||e.target.closest?.('input,textarea,select,button,a,audio,[contenteditable]'))return;
   if(e.code==='Space'||e.code==='Enter'){e.preventDefault();editorStamp(e.code==='Enter')}
 },true);
 editorAudio.addEventListener('ended',editorStop);
