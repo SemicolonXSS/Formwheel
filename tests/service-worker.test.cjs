@@ -4,10 +4,19 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const {test} = require('node:test');
-function harness(network, {cacheUnavailable = false} = {}) {
+function harness(network, {cacheUnavailable = false, unavailableAssets = []} = {}) {
   const handlers = {}, saved = new Map();
   const key = request => typeof request === 'string' ? new URL(request, 'https://semicolonxss.github.io').href : request.url;
-  const cache = {match: async r => saved.get(key(r)), put: async (r, response) => saved.set(key(r), response), addAll: async () => {}};
+  async function add(route) {
+    if (unavailableAssets.includes(route)) throw Error('asset unavailable');
+    saved.set(key(route), new Response(route));
+  }
+  const cache = {
+    match: async r => saved.get(key(r))?.clone(),
+    put: async (r, response) => saved.set(key(r), response),
+    add,
+    addAll: async routes => Promise.all(routes.map(add))
+  };
   vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../sw.js'), 'utf8'), {
     self: {location: {origin: 'https://semicolonxss.github.io'}, addEventListener: (name, fn) => handlers[name] = fn, skipWaiting() {}, clients: {claim() {}}},
     caches: {open: async () => {if (cacheUnavailable) throw Error('storage unavailable'); return cache}, match: cache.match, keys: async () => []},
@@ -21,7 +30,12 @@ function harness(network, {cacheUnavailable = false} = {}) {
     await Promise.all(pending);
     return result;
   }
-  return {request, saved};
+  function install() {
+    return new Promise((resolve, reject) => {
+      handlers.install({waitUntil(pending) {pending.then(resolve, reject)}});
+    });
+  }
+  return {request, saved, install};
 }
 test('versioned assets update online and use exact cached version offline', async () => {
   let online = true, body = 'v1';
@@ -61,4 +75,22 @@ test('offline guidance survives unavailable storage', async () => {
   const response = await h.request('/Formwheel/profile.html', 'navigate');
   assert.equal(response.status, 503);
   assert.match(await response.text(), /인터넷 연결/);
+});
+test('fresh install caches game assets even if an optional game is unavailable', async () => {
+  const h = harness(async () => {throw Error('offline')}, {unavailableAssets: ['/Formwheel/afterbeat.html']});
+  await h.install();
+  const game = await h.request('/Formwheel/polyrhythm.html', 'navigate');
+  const script = await h.request('/Formwheel/shared/game-discovery.js?v=20261126');
+  assert.equal(await game.text(), '/Formwheel/polyrhythm.html');
+  assert.equal(await script.text(), '/Formwheel/shared/game-discovery.js');
+});
+test('the installed chooser is a normal hub landing page and a 503 for uncached routes', async () => {
+  const h = harness(async () => {throw Error('offline')});
+  await h.install();
+  const hub = await h.request('/Formwheel/?utm_source=threads', 'navigate');
+  const uncached = await h.request('/Formwheel/missing/', 'navigate');
+  assert.equal(hub.status, 200);
+  assert.equal(await hub.text(), '/Formwheel/offline.html');
+  assert.equal(uncached.status, 503);
+  assert.equal(await uncached.text(), '/Formwheel/offline.html');
 });

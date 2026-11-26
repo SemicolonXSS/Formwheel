@@ -1,4 +1,4 @@
-const CACHE = "formwheel-hub-v9-game-pack-20261126";
+const CACHE = "formwheel-hub-v10-game-pack-20261126";
 const APP_SHELL = [
   "/Formwheel/",
   "/Formwheel/index.html",
@@ -26,15 +26,21 @@ const OFFLINE_GAMES = [
   "/Formwheel/loop.html",
   "/Formwheel/grid.html"
 ];
+const OFFLINE_GAME_ASSETS = [
+  "/Formwheel/shared/game-discovery.js",
+  "/Formwheel/shared/share-card-v2.js",
+  "/Formwheel/assets/formwheel-apple-touch-icon.svg"
+];
 self.addEventListener("install", event => {
-  event.waitUntil(caches.open(CACHE).then(async cache => {
+  event.waitUntil((async () => {
+    const cache = await caches.open(CACHE);
     // Keep the essential offline shell reliable even when one game cannot be downloaded.
     await cache.addAll(APP_SHELL);
-    await Promise.all(OFFLINE_GAMES.map(path =>
+    await Promise.all([...OFFLINE_GAMES, ...OFFLINE_GAME_ASSETS].map(path =>
       cache.add(path).catch(error => console.warn("[Formwheel offline] Could not cache", path, error))
     ));
-  }));
-  self.skipWaiting();
+    await self.skipWaiting();
+  })());
 });
 self.addEventListener("activate", event => {
   event.waitUntil(caches.keys().then(keys => Promise.all(
@@ -59,8 +65,9 @@ self.addEventListener("fetch", event => {
         }
         return response;
       } catch (error) {
+        const precached = APP_SHELL.includes(url.pathname) || OFFLINE_GAME_ASSETS.includes(url.pathname);
         const cached = cache && (await cache.match(request) ||
-          (APP_SHELL.includes(url.pathname) ? await cache.match(url.pathname) : undefined));
+          (precached ? await cache.match(url.pathname) : undefined));
         if (cached) return cached;
         throw error;
       }
@@ -89,7 +96,10 @@ self.addEventListener("fetch", event => {
         if (home) return home;
       }
       const offline = await match('/Formwheel/offline.html');
-      if (offline) return offline;
+      if (offline) return new Response(offline.body, {
+        status: 503,
+        headers: {"Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store"}
+      });
       return new Response('<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>연결 확인 | Formwheel</title><h1>인터넷 연결을 확인해 주세요</h1><p>이 페이지는 아직 기기에 저장되지 않았어요. 연결 후 다시 시도해 주세요.</p><button onclick="location.reload()">다시 시도</button> <a href="/Formwheel/">허브로 이동</a></html>', {
         status: 503,
         headers: {"Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store"}

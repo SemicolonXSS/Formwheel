@@ -7,7 +7,7 @@
 <div class="top"><a href="./index.html">← Formwheel Hub</a><strong>🎨 MULTIPLAYER</strong></div><h1>PIXEL WAR</h1><p>함께 그리는 끝없는 픽셀 캔버스. 30초마다 한 칸씩!</p>
 <div class="panel"><div class="stats"><span>크기 <b id="size">100×100</b></span><span>칠해진 칸 <b id="count">0</b></span><span>누적 배치 <b id="placements">0</b></span><span>다음 배치 <b id="cooldown">준비 중</b></span></div><p id="status" role="status">연결 중…</p>
 <div class="tools"><button id="minus">− 축소</button><button id="plus">+ 확대</button><button id="place" disabled>선택한 칸 색칠</button><span id="coord">칸을 선택하세요</span></div>
-<div id="palette" aria-label="색상 선택"></div><div class="board" id="viewport"><canvas id="canvas" width="100" height="100"></canvas></div><p><small>캔버스를 터치하거나 클릭해 위치를 선택한 뒤 색칠 버튼을 누르세요. 확대/축소는 버튼으로 조절할 수 있어요.</small></p></div>
+<div id="palette" aria-label="색상 선택"></div><div class="board" id="viewport" role="region" aria-label="픽셀 캔버스 영역" tabindex="0"><canvas id="canvas" width="100" height="100"></canvas></div><p><small>캔버스를 터치하거나 클릭해 위치를 선택한 뒤 색칠 버튼을 누르세요. 확대/축소는 버튼으로 조절할 수 있어요.</small></p></div>
 </main>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>

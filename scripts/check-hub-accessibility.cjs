@@ -25,7 +25,6 @@ const pages = [
   "grid.html",
   "hall-of-fame.html",
   "id-center.html",
-  "index.html",
   "maker/index.html",
   "more.html",
   "null.html",
@@ -56,8 +55,11 @@ const pages = [
   "workshop/gallery.html",
   "workshop/index.html"
 ];
-assert.equal(pages.length, 50, 'Expected exactly 50 checked pages');
-assert.equal(new Set(pages).size, 50, 'Duplicate page in checklist');
+assert.equal(new Set(pages).size, pages.length, 'Duplicate page in checklist');
+const hub = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
+assert.equal((hub.match(/<main(?:\s|>)/gi) || []).length, 1, 'Hub must have one main landmark');
+const hubMarkup = hub.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '');
+assert.doesNotMatch(hubMarkup, /본문으로 (?:바로\s*가기|돌아가기)|Skip to (?:main )?content|<a\b[^>]*(?:fw-skip-link|skip-to-content|skip-link)/i, 'Hub must omit the skip link');
 for (const page of pages) {
   const html = fs.readFileSync(path.join(__dirname, '..', page), 'utf8');
   const prefix = page + ': ';
@@ -72,4 +74,4 @@ for (const page of pages) {
   const mainStart = html.indexOf(main[0]);
   assert(bodyStart >= 0 && bodyStart < skipStart && skipStart < mainStart, prefix + 'skip link must precede main inside body');
 }
-console.log('PASS: 50 pages have keyboard skip navigation and focusable main landmarks (100 page-level improvements).');
+console.log(`PASS: ${pages.length} pages have keyboard skip navigation and all checked pages have a main landmark.`);
