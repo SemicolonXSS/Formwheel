@@ -118,6 +118,8 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Check all board modes across five widths and dense-board edge interactions
         run: node tests/board-density-regression.cjs
+      - name: Check contrast and complete visibility of keyboard focus on wooden boards
+        run: node tests/board-focus-regression.cjs
 
   maze-editor-regression:
     name: Maze editor keyboard and touch regression

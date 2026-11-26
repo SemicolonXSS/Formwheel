@@ -86,3 +86,6 @@ button:focus-visible,summary:focus-visible,select:focus-visible{outline:3px soli
 
 /* Keep adjacent active squares distinguishable without changing board geometry. */
 #board button.square{border:1px solid #111318}
+
+/* A complete, high-contrast keyboard ring on both wooden intersection boards. */
+#board:is(.go-board,.omok-board) button:focus-visible{outline:3px solid #101828;outline-offset:-3px;z-index:4}

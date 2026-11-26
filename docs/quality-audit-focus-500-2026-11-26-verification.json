@@ -1,0 +1,205 @@
+{
+  "date": "2026-11-26",
+  "after": [
+    {
+      "game": "go9",
+      "width": 320,
+      "fullNativeTraversal": false,
+      "checkedTargets": 3,
+      "violations": [],
+      "errors": [],
+      "minimumContrast": 8.366517398046161,
+      "minimumTarget": 30.21875
+    },
+    {
+      "game": "go13",
+      "width": 320,
+      "fullNativeTraversal": false,
+      "checkedTargets": 3,
+      "violations": [],
+      "errors": [],
+      "minimumContrast": 8.366517398046161,
+      "minimumTarget": 28
+    },
+    {
+      "game": "go19",
+      "width": 320,
+      "fullNativeTraversal": false,
+      "checkedTargets": 3,
+      "violations": [],
+      "errors": [],
+      "minimumContrast": 8.366517398046161,
+      "minimumTarget": 28
+    },
+    {
+      "game": "omok",
+      "width": 320,
+      "fullNativeTraversal": false,
+      "checkedTargets": 3,
+      "violations": [],
+      "errors": [],
+      "minimumContrast": 8.674184137352253,
+      "minimumTarget": 28
+    },
+    {
+      "game": "go9",
+      "width": 390,
+      "fullNativeTraversal": false,
+      "checkedTargets": 3,
+      "violations": [],
+      "errors": [],
+      "minimumContrast": 8.366517398046161,
+      "minimumTarget": 38
+    },
+    {
+      "game": "go13",
+      "width": 390,
+      "fullNativeTraversal": false,
+      "checkedTargets": 3,
+      "violations": [],
+      "errors": [],
+      "minimumContrast": 8.366517398046161,
+      "minimumTarget": 28
+    },
+    {
+      "game": "go19",
+      "width": 390,
+      "fullNativeTraversal": true,
+      "checkedTargets": 361,
+      "violations": [],
+      "errors": [],
+      "minimumContrast": 8.366517398046161,
+      "minimumTarget": 28
+    },
+    {
+      "game": "omok",
+      "width": 390,
+      "fullNativeTraversal": true,
+      "checkedTargets": 225,
+      "violations": [],
+      "errors": [],
+      "minimumContrast": 8.674184137352253,
+      "minimumTarget": 28
+    },
+    {
+      "game": "go9",
+      "width": 768,
+      "fullNativeTraversal": false,
+      "checkedTargets": 3,
+      "violations": [],
+      "errors": [],
+      "minimumContrast": 8.366517398046161,
+      "minimumTarget": 64.875
+    },
+    {
+      "game": "go13",
+      "width": 768,
+      "fullNativeTraversal": false,
+      "checkedTargets": 3,
+      "violations": [],
+      "errors": [],
+      "minimumContrast": 8.366517398046161,
+      "minimumTarget": 44.921875
+    },
+    {
+      "game": "go19",
+      "width": 768,
+      "fullNativeTraversal": false,
+      "checkedTargets": 3,
+      "violations": [],
+      "errors": [],
+      "minimumContrast": 8.366517398046161,
+      "minimumTarget": 30.734375
+    },
+    {
+      "game": "omok",
+      "width": 768,
+      "fullNativeTraversal": false,
+      "checkedTargets": 3,
+      "violations": [],
+      "errors": [],
+      "minimumContrast": 8.674184137352253,
+      "minimumTarget": 38.921875
+    },
+    {
+      "game": "go9",
+      "width": 900,
+      "fullNativeTraversal": false,
+      "checkedTargets": 3,
+      "violations": [],
+      "errors": [],
+      "minimumContrast": 8.366517398046161,
+      "minimumTarget": 53.328125
+    },
+    {
+      "game": "go13",
+      "width": 900,
+      "fullNativeTraversal": false,
+      "checkedTargets": 3,
+      "violations": [],
+      "errors": [],
+      "minimumContrast": 8.366517398046161,
+      "minimumTarget": 36.921875
+    },
+    {
+      "game": "go19",
+      "width": 900,
+      "fullNativeTraversal": false,
+      "checkedTargets": 3,
+      "violations": [],
+      "errors": [],
+      "minimumContrast": 8.366517398046161,
+      "minimumTarget": 28
+    },
+    {
+      "game": "omok",
+      "width": 900,
+      "fullNativeTraversal": false,
+      "checkedTargets": 3,
+      "violations": [],
+      "errors": [],
+      "minimumContrast": 8.674184137352253,
+      "minimumTarget": 32
+    },
+    {
+      "game": "go9",
+      "width": 1280,
+      "fullNativeTraversal": false,
+      "checkedTargets": 3,
+      "violations": [],
+      "errors": [],
+      "minimumContrast": 8.366517398046161,
+      "minimumTarget": 64.875
+    },
+    {
+      "game": "go13",
+      "width": 1280,
+      "fullNativeTraversal": false,
+      "checkedTargets": 3,
+      "violations": [],
+      "errors": [],
+      "minimumContrast": 8.366517398046161,
+      "minimumTarget": 44.921875
+    },
+    {
+      "game": "go19",
+      "width": 1280,
+      "fullNativeTraversal": false,
+      "checkedTargets": 3,
+      "violations": [],
+      "errors": [],
+      "minimumContrast": 8.366517398046161,
+      "minimumTarget": 30.734375
+    },
+    {
+      "game": "omok",
+      "width": 1280,
+      "fullNativeTraversal": false,
+      "checkedTargets": 3,
+      "violations": [],
+      "errors": [],
+      "minimumContrast": 8.674184137352253,
+      "minimumTarget": 38.921875
+    }
+  ]
+}
