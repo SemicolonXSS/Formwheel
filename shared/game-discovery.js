@@ -13,7 +13,7 @@ const games=[
 {name:'RULETORY',url:'https://semicolonxss.github.io/Formwheel_Ruletory/',tag:'전략'}
 ];
 const kstDay=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
-const daily=games[(Number(kstDay.replace(/\\D/g,''))+3)%games.length];
+const daily=games[(Number(kstDay.replace(/\D/g,''))+3)%games.length];
 const style=document.createElement('style');style.textContent=`
 #fw-discovery{max-width:1050px;margin:22px auto;padding:20px;border-radius:22px;background:linear-gradient(135deg,#291b50,#16152c);border:1px solid #7552b0;color:#faf7ff;font:15px/1.55 system-ui,sans-serif;box-sizing:border-box}
 #fw-discovery *{box-sizing:border-box}#fw-discovery h2{color:white;margin:0 0 8px;font-size:22px}#fw-discovery p{color:#d8ccec;margin:5px 0 12px}

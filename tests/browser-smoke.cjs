@@ -56,5 +56,21 @@ const server=http.createServer((req,res)=>{
   assert.match(await denied.page.locator('#fw21-status').textContent(),/저장하지 못/);
   assert.deepEqual(denied.errors,[]);await denied.context.close();
   console.log('PASS browser: blocked storage keeps Hub controls working and reports save failure');
+  const sudoku=await browser.newPage();
+  await sudoku.goto(new URL('sudoku.html',url).href);
+  const board=sudoku.getByRole('grid',{name:'스도쿠 게임판'});
+  assert.equal(await board.getByRole('row').count(),9);
+  assert.equal(await board.getByRole('gridcell').count(),81);
+  assert.equal(await board.locator('[tabindex="0"]').count(),1);
+  await board.getByRole('gridcell').first().focus();
+  await sudoku.keyboard.press('ArrowRight');
+  assert.equal(await sudoku.locator(':focus').getAttribute('aria-selected'),'true');
+  assert.match(await sudoku.locator(':focus').getAttribute('aria-label'),/^1행 2열 /);
+  await sudoku.keyboard.press('ArrowDown');
+  assert.match(await sudoku.locator(':focus').getAttribute('aria-label'),/^2행 2열 /);
+  await sudoku.reload();
+  assert.match(await board.locator('[tabindex="0"]').getAttribute('aria-label'),/^2행 2열 /);
+  await sudoku.close();
+  console.log('PASS browser: Sudoku grid exposes rows, moves focus and restores the selection');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;}).finally(()=>server.close());
