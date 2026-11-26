@@ -1,0 +1,3306 @@
+{
+  "project": "clicker",
+  "scenarioCount": 150,
+  "scenarios": [
+    {
+      "id": "auto-L5-E34-split317",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L5-E34-split317",
+        "level": 5,
+        "earnedExponent": 34,
+        "splitMs": 317,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L5-E34-split317",
+        "level": 5,
+        "earnedExponent": 34,
+        "splitMs": 317,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L5-E34-split433",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L5-E34-split433",
+        "level": 5,
+        "earnedExponent": 34,
+        "splitMs": 433,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L5-E34-split433",
+        "level": 5,
+        "earnedExponent": 34,
+        "splitMs": 433,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L5-E34-split557",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L5-E34-split557",
+        "level": 5,
+        "earnedExponent": 34,
+        "splitMs": 557,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L5-E34-split557",
+        "level": 5,
+        "earnedExponent": 34,
+        "splitMs": 557,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L5-E34-split691",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L5-E34-split691",
+        "level": 5,
+        "earnedExponent": 34,
+        "splitMs": 691,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L5-E34-split691",
+        "level": 5,
+        "earnedExponent": 34,
+        "splitMs": 691,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L5-E34-split823",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L5-E34-split823",
+        "level": 5,
+        "earnedExponent": 34,
+        "splitMs": 823,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L5-E34-split823",
+        "level": 5,
+        "earnedExponent": 34,
+        "splitMs": 823,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L5-E34-split947",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L5-E34-split947",
+        "level": 5,
+        "earnedExponent": 34,
+        "splitMs": 947,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L5-E34-split947",
+        "level": 5,
+        "earnedExponent": 34,
+        "splitMs": 947,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L5-E70-split17",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L5-E70-split17",
+        "level": 5,
+        "earnedExponent": 70,
+        "splitMs": 17,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L5-E70-split17",
+        "level": 5,
+        "earnedExponent": 70,
+        "splitMs": 17,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L5-E70-split53",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L5-E70-split53",
+        "level": 5,
+        "earnedExponent": 70,
+        "splitMs": 53,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L5-E70-split53",
+        "level": 5,
+        "earnedExponent": 70,
+        "splitMs": 53,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L5-E70-split89",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L5-E70-split89",
+        "level": 5,
+        "earnedExponent": 70,
+        "splitMs": 89,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L5-E70-split89",
+        "level": 5,
+        "earnedExponent": 70,
+        "splitMs": 89,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L5-E70-split127",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L5-E70-split127",
+        "level": 5,
+        "earnedExponent": 70,
+        "splitMs": 127,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L5-E70-split127",
+        "level": 5,
+        "earnedExponent": 70,
+        "splitMs": 127,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L5-E70-split173",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L5-E70-split173",
+        "level": 5,
+        "earnedExponent": 70,
+        "splitMs": 173,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L5-E70-split173",
+        "level": 5,
+        "earnedExponent": 70,
+        "splitMs": 173,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L5-E70-split239",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L5-E70-split239",
+        "level": 5,
+        "earnedExponent": 70,
+        "splitMs": 239,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L5-E70-split239",
+        "level": 5,
+        "earnedExponent": 70,
+        "splitMs": 239,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L5-E70-split317",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L5-E70-split317",
+        "level": 5,
+        "earnedExponent": 70,
+        "splitMs": 317,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L5-E70-split317",
+        "level": 5,
+        "earnedExponent": 70,
+        "splitMs": 317,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L5-E70-split433",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L5-E70-split433",
+        "level": 5,
+        "earnedExponent": 70,
+        "splitMs": 433,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L5-E70-split433",
+        "level": 5,
+        "earnedExponent": 70,
+        "splitMs": 433,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L5-E70-split557",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L5-E70-split557",
+        "level": 5,
+        "earnedExponent": 70,
+        "splitMs": 557,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L5-E70-split557",
+        "level": 5,
+        "earnedExponent": 70,
+        "splitMs": 557,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L5-E70-split691",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L5-E70-split691",
+        "level": 5,
+        "earnedExponent": 70,
+        "splitMs": 691,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L5-E70-split691",
+        "level": 5,
+        "earnedExponent": 70,
+        "splitMs": 691,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L5-E70-split823",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L5-E70-split823",
+        "level": 5,
+        "earnedExponent": 70,
+        "splitMs": 823,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L5-E70-split823",
+        "level": 5,
+        "earnedExponent": 70,
+        "splitMs": 823,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L5-E70-split947",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L5-E70-split947",
+        "level": 5,
+        "earnedExponent": 70,
+        "splitMs": 947,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L5-E70-split947",
+        "level": 5,
+        "earnedExponent": 70,
+        "splitMs": 947,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L5-E100-split17",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L5-E100-split17",
+        "level": 5,
+        "earnedExponent": 100,
+        "splitMs": 17,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L5-E100-split17",
+        "level": 5,
+        "earnedExponent": 100,
+        "splitMs": 17,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L5-E100-split53",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L5-E100-split53",
+        "level": 5,
+        "earnedExponent": 100,
+        "splitMs": 53,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L5-E100-split53",
+        "level": 5,
+        "earnedExponent": 100,
+        "splitMs": 53,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L5-E100-split89",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L5-E100-split89",
+        "level": 5,
+        "earnedExponent": 100,
+        "splitMs": 89,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L5-E100-split89",
+        "level": 5,
+        "earnedExponent": 100,
+        "splitMs": 89,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L5-E100-split127",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L5-E100-split127",
+        "level": 5,
+        "earnedExponent": 100,
+        "splitMs": 127,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L5-E100-split127",
+        "level": 5,
+        "earnedExponent": 100,
+        "splitMs": 127,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L5-E100-split173",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L5-E100-split173",
+        "level": 5,
+        "earnedExponent": 100,
+        "splitMs": 173,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L5-E100-split173",
+        "level": 5,
+        "earnedExponent": 100,
+        "splitMs": 173,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L5-E100-split239",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L5-E100-split239",
+        "level": 5,
+        "earnedExponent": 100,
+        "splitMs": 239,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L5-E100-split239",
+        "level": 5,
+        "earnedExponent": 100,
+        "splitMs": 239,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L5-E100-split317",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L5-E100-split317",
+        "level": 5,
+        "earnedExponent": 100,
+        "splitMs": 317,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L5-E100-split317",
+        "level": 5,
+        "earnedExponent": 100,
+        "splitMs": 317,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L5-E100-split433",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L5-E100-split433",
+        "level": 5,
+        "earnedExponent": 100,
+        "splitMs": 433,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L5-E100-split433",
+        "level": 5,
+        "earnedExponent": 100,
+        "splitMs": 433,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L5-E100-split557",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L5-E100-split557",
+        "level": 5,
+        "earnedExponent": 100,
+        "splitMs": 557,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L5-E100-split557",
+        "level": 5,
+        "earnedExponent": 100,
+        "splitMs": 557,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L5-E100-split691",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L5-E100-split691",
+        "level": 5,
+        "earnedExponent": 100,
+        "splitMs": 691,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L5-E100-split691",
+        "level": 5,
+        "earnedExponent": 100,
+        "splitMs": 691,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L5-E100-split823",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L5-E100-split823",
+        "level": 5,
+        "earnedExponent": 100,
+        "splitMs": 823,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L5-E100-split823",
+        "level": 5,
+        "earnedExponent": 100,
+        "splitMs": 823,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L5-E100-split947",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L5-E100-split947",
+        "level": 5,
+        "earnedExponent": 100,
+        "splitMs": 947,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L5-E100-split947",
+        "level": 5,
+        "earnedExponent": 100,
+        "splitMs": 947,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E0-split17",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E0-split17",
+        "level": 9,
+        "earnedExponent": 0,
+        "splitMs": 17,
+        "whole": "4",
+        "split": "3",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E0-split17",
+        "level": 9,
+        "earnedExponent": 0,
+        "splitMs": 17,
+        "whole": "4",
+        "split": "4",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E0-split53",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E0-split53",
+        "level": 9,
+        "earnedExponent": 0,
+        "splitMs": 53,
+        "whole": "4",
+        "split": "3",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E0-split53",
+        "level": 9,
+        "earnedExponent": 0,
+        "splitMs": 53,
+        "whole": "4",
+        "split": "4",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E0-split89",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E0-split89",
+        "level": 9,
+        "earnedExponent": 0,
+        "splitMs": 89,
+        "whole": "4",
+        "split": "3",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E0-split89",
+        "level": 9,
+        "earnedExponent": 0,
+        "splitMs": 89,
+        "whole": "4",
+        "split": "4",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E0-split127",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E0-split127",
+        "level": 9,
+        "earnedExponent": 0,
+        "splitMs": 127,
+        "whole": "4",
+        "split": "3",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E0-split127",
+        "level": 9,
+        "earnedExponent": 0,
+        "splitMs": 127,
+        "whole": "4",
+        "split": "4",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E0-split173",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E0-split173",
+        "level": 9,
+        "earnedExponent": 0,
+        "splitMs": 173,
+        "whole": "4",
+        "split": "3",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E0-split173",
+        "level": 9,
+        "earnedExponent": 0,
+        "splitMs": 173,
+        "whole": "4",
+        "split": "4",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E0-split239",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E0-split239",
+        "level": 9,
+        "earnedExponent": 0,
+        "splitMs": 239,
+        "whole": "4",
+        "split": "3",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E0-split239",
+        "level": 9,
+        "earnedExponent": 0,
+        "splitMs": 239,
+        "whole": "4",
+        "split": "4",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E0-split317",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E0-split317",
+        "level": 9,
+        "earnedExponent": 0,
+        "splitMs": 317,
+        "whole": "4",
+        "split": "3",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E0-split317",
+        "level": 9,
+        "earnedExponent": 0,
+        "splitMs": 317,
+        "whole": "4",
+        "split": "4",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E0-split433",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E0-split433",
+        "level": 9,
+        "earnedExponent": 0,
+        "splitMs": 433,
+        "whole": "4",
+        "split": "3",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E0-split433",
+        "level": 9,
+        "earnedExponent": 0,
+        "splitMs": 433,
+        "whole": "4",
+        "split": "4",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E0-split557",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E0-split557",
+        "level": 9,
+        "earnedExponent": 0,
+        "splitMs": 557,
+        "whole": "4",
+        "split": "3",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E0-split557",
+        "level": 9,
+        "earnedExponent": 0,
+        "splitMs": 557,
+        "whole": "4",
+        "split": "4",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E0-split691",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E0-split691",
+        "level": 9,
+        "earnedExponent": 0,
+        "splitMs": 691,
+        "whole": "4",
+        "split": "3",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E0-split691",
+        "level": 9,
+        "earnedExponent": 0,
+        "splitMs": 691,
+        "whole": "4",
+        "split": "4",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E0-split823",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E0-split823",
+        "level": 9,
+        "earnedExponent": 0,
+        "splitMs": 823,
+        "whole": "4",
+        "split": "3",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E0-split823",
+        "level": 9,
+        "earnedExponent": 0,
+        "splitMs": 823,
+        "whole": "4",
+        "split": "4",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E0-split947",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E0-split947",
+        "level": 9,
+        "earnedExponent": 0,
+        "splitMs": 947,
+        "whole": "4",
+        "split": "3",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E0-split947",
+        "level": 9,
+        "earnedExponent": 0,
+        "splitMs": 947,
+        "whole": "4",
+        "split": "4",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E20-split17",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E20-split17",
+        "level": 9,
+        "earnedExponent": 20,
+        "splitMs": 17,
+        "whole": "4",
+        "split": "3",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E20-split17",
+        "level": 9,
+        "earnedExponent": 20,
+        "splitMs": 17,
+        "whole": "4",
+        "split": "4",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E20-split53",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E20-split53",
+        "level": 9,
+        "earnedExponent": 20,
+        "splitMs": 53,
+        "whole": "4",
+        "split": "3",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E20-split53",
+        "level": 9,
+        "earnedExponent": 20,
+        "splitMs": 53,
+        "whole": "4",
+        "split": "4",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E20-split89",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E20-split89",
+        "level": 9,
+        "earnedExponent": 20,
+        "splitMs": 89,
+        "whole": "4",
+        "split": "3",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E20-split89",
+        "level": 9,
+        "earnedExponent": 20,
+        "splitMs": 89,
+        "whole": "4",
+        "split": "4",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E20-split127",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E20-split127",
+        "level": 9,
+        "earnedExponent": 20,
+        "splitMs": 127,
+        "whole": "4",
+        "split": "3",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E20-split127",
+        "level": 9,
+        "earnedExponent": 20,
+        "splitMs": 127,
+        "whole": "4",
+        "split": "4",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E20-split173",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E20-split173",
+        "level": 9,
+        "earnedExponent": 20,
+        "splitMs": 173,
+        "whole": "4",
+        "split": "3",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E20-split173",
+        "level": 9,
+        "earnedExponent": 20,
+        "splitMs": 173,
+        "whole": "4",
+        "split": "4",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E20-split239",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E20-split239",
+        "level": 9,
+        "earnedExponent": 20,
+        "splitMs": 239,
+        "whole": "4",
+        "split": "3",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E20-split239",
+        "level": 9,
+        "earnedExponent": 20,
+        "splitMs": 239,
+        "whole": "4",
+        "split": "4",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E20-split317",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E20-split317",
+        "level": 9,
+        "earnedExponent": 20,
+        "splitMs": 317,
+        "whole": "4",
+        "split": "3",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E20-split317",
+        "level": 9,
+        "earnedExponent": 20,
+        "splitMs": 317,
+        "whole": "4",
+        "split": "4",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E20-split433",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E20-split433",
+        "level": 9,
+        "earnedExponent": 20,
+        "splitMs": 433,
+        "whole": "4",
+        "split": "3",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E20-split433",
+        "level": 9,
+        "earnedExponent": 20,
+        "splitMs": 433,
+        "whole": "4",
+        "split": "4",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E20-split557",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E20-split557",
+        "level": 9,
+        "earnedExponent": 20,
+        "splitMs": 557,
+        "whole": "4",
+        "split": "3",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E20-split557",
+        "level": 9,
+        "earnedExponent": 20,
+        "splitMs": 557,
+        "whole": "4",
+        "split": "4",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E20-split691",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E20-split691",
+        "level": 9,
+        "earnedExponent": 20,
+        "splitMs": 691,
+        "whole": "4",
+        "split": "3",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E20-split691",
+        "level": 9,
+        "earnedExponent": 20,
+        "splitMs": 691,
+        "whole": "4",
+        "split": "4",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E20-split823",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E20-split823",
+        "level": 9,
+        "earnedExponent": 20,
+        "splitMs": 823,
+        "whole": "4",
+        "split": "3",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E20-split823",
+        "level": 9,
+        "earnedExponent": 20,
+        "splitMs": 823,
+        "whole": "4",
+        "split": "4",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E20-split947",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E20-split947",
+        "level": 9,
+        "earnedExponent": 20,
+        "splitMs": 947,
+        "whole": "4",
+        "split": "3",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E20-split947",
+        "level": 9,
+        "earnedExponent": 20,
+        "splitMs": 947,
+        "whole": "4",
+        "split": "4",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E34-split17",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E34-split17",
+        "level": 9,
+        "earnedExponent": 34,
+        "splitMs": 17,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L9-E34-split17",
+        "level": 9,
+        "earnedExponent": 34,
+        "splitMs": 17,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E34-split53",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E34-split53",
+        "level": 9,
+        "earnedExponent": 34,
+        "splitMs": 53,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L9-E34-split53",
+        "level": 9,
+        "earnedExponent": 34,
+        "splitMs": 53,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E34-split89",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E34-split89",
+        "level": 9,
+        "earnedExponent": 34,
+        "splitMs": 89,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L9-E34-split89",
+        "level": 9,
+        "earnedExponent": 34,
+        "splitMs": 89,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E34-split127",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E34-split127",
+        "level": 9,
+        "earnedExponent": 34,
+        "splitMs": 127,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L9-E34-split127",
+        "level": 9,
+        "earnedExponent": 34,
+        "splitMs": 127,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E34-split173",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E34-split173",
+        "level": 9,
+        "earnedExponent": 34,
+        "splitMs": 173,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L9-E34-split173",
+        "level": 9,
+        "earnedExponent": 34,
+        "splitMs": 173,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E34-split239",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E34-split239",
+        "level": 9,
+        "earnedExponent": 34,
+        "splitMs": 239,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L9-E34-split239",
+        "level": 9,
+        "earnedExponent": 34,
+        "splitMs": 239,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E34-split317",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E34-split317",
+        "level": 9,
+        "earnedExponent": 34,
+        "splitMs": 317,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E34-split317",
+        "level": 9,
+        "earnedExponent": 34,
+        "splitMs": 317,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E34-split433",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E34-split433",
+        "level": 9,
+        "earnedExponent": 34,
+        "splitMs": 433,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E34-split433",
+        "level": 9,
+        "earnedExponent": 34,
+        "splitMs": 433,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E34-split557",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E34-split557",
+        "level": 9,
+        "earnedExponent": 34,
+        "splitMs": 557,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E34-split557",
+        "level": 9,
+        "earnedExponent": 34,
+        "splitMs": 557,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E34-split691",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E34-split691",
+        "level": 9,
+        "earnedExponent": 34,
+        "splitMs": 691,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E34-split691",
+        "level": 9,
+        "earnedExponent": 34,
+        "splitMs": 691,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E34-split823",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E34-split823",
+        "level": 9,
+        "earnedExponent": 34,
+        "splitMs": 823,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L9-E34-split823",
+        "level": 9,
+        "earnedExponent": 34,
+        "splitMs": 823,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E34-split947",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E34-split947",
+        "level": 9,
+        "earnedExponent": 34,
+        "splitMs": 947,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L9-E34-split947",
+        "level": 9,
+        "earnedExponent": 34,
+        "splitMs": 947,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E70-split17",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E70-split17",
+        "level": 9,
+        "earnedExponent": 70,
+        "splitMs": 17,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L9-E70-split17",
+        "level": 9,
+        "earnedExponent": 70,
+        "splitMs": 17,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E70-split53",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E70-split53",
+        "level": 9,
+        "earnedExponent": 70,
+        "splitMs": 53,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L9-E70-split53",
+        "level": 9,
+        "earnedExponent": 70,
+        "splitMs": 53,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E70-split89",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E70-split89",
+        "level": 9,
+        "earnedExponent": 70,
+        "splitMs": 89,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L9-E70-split89",
+        "level": 9,
+        "earnedExponent": 70,
+        "splitMs": 89,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E70-split127",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E70-split127",
+        "level": 9,
+        "earnedExponent": 70,
+        "splitMs": 127,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L9-E70-split127",
+        "level": 9,
+        "earnedExponent": 70,
+        "splitMs": 127,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E70-split173",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E70-split173",
+        "level": 9,
+        "earnedExponent": 70,
+        "splitMs": 173,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L9-E70-split173",
+        "level": 9,
+        "earnedExponent": 70,
+        "splitMs": 173,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E70-split239",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E70-split239",
+        "level": 9,
+        "earnedExponent": 70,
+        "splitMs": 239,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L9-E70-split239",
+        "level": 9,
+        "earnedExponent": 70,
+        "splitMs": 239,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E70-split317",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E70-split317",
+        "level": 9,
+        "earnedExponent": 70,
+        "splitMs": 317,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E70-split317",
+        "level": 9,
+        "earnedExponent": 70,
+        "splitMs": 317,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E70-split433",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E70-split433",
+        "level": 9,
+        "earnedExponent": 70,
+        "splitMs": 433,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E70-split433",
+        "level": 9,
+        "earnedExponent": 70,
+        "splitMs": 433,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E70-split557",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E70-split557",
+        "level": 9,
+        "earnedExponent": 70,
+        "splitMs": 557,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E70-split557",
+        "level": 9,
+        "earnedExponent": 70,
+        "splitMs": 557,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E70-split691",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E70-split691",
+        "level": 9,
+        "earnedExponent": 70,
+        "splitMs": 691,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E70-split691",
+        "level": 9,
+        "earnedExponent": 70,
+        "splitMs": 691,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E70-split823",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E70-split823",
+        "level": 9,
+        "earnedExponent": 70,
+        "splitMs": 823,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L9-E70-split823",
+        "level": 9,
+        "earnedExponent": 70,
+        "splitMs": 823,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E70-split947",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E70-split947",
+        "level": 9,
+        "earnedExponent": 70,
+        "splitMs": 947,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L9-E70-split947",
+        "level": 9,
+        "earnedExponent": 70,
+        "splitMs": 947,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E100-split17",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E100-split17",
+        "level": 9,
+        "earnedExponent": 100,
+        "splitMs": 17,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L9-E100-split17",
+        "level": 9,
+        "earnedExponent": 100,
+        "splitMs": 17,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E100-split53",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E100-split53",
+        "level": 9,
+        "earnedExponent": 100,
+        "splitMs": 53,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L9-E100-split53",
+        "level": 9,
+        "earnedExponent": 100,
+        "splitMs": 53,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E100-split89",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E100-split89",
+        "level": 9,
+        "earnedExponent": 100,
+        "splitMs": 89,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L9-E100-split89",
+        "level": 9,
+        "earnedExponent": 100,
+        "splitMs": 89,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E100-split127",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E100-split127",
+        "level": 9,
+        "earnedExponent": 100,
+        "splitMs": 127,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L9-E100-split127",
+        "level": 9,
+        "earnedExponent": 100,
+        "splitMs": 127,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E100-split173",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E100-split173",
+        "level": 9,
+        "earnedExponent": 100,
+        "splitMs": 173,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L9-E100-split173",
+        "level": 9,
+        "earnedExponent": 100,
+        "splitMs": 173,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E100-split239",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E100-split239",
+        "level": 9,
+        "earnedExponent": 100,
+        "splitMs": 239,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L9-E100-split239",
+        "level": 9,
+        "earnedExponent": 100,
+        "splitMs": 239,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E100-split317",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E100-split317",
+        "level": 9,
+        "earnedExponent": 100,
+        "splitMs": 317,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E100-split317",
+        "level": 9,
+        "earnedExponent": 100,
+        "splitMs": 317,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E100-split433",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E100-split433",
+        "level": 9,
+        "earnedExponent": 100,
+        "splitMs": 433,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E100-split433",
+        "level": 9,
+        "earnedExponent": 100,
+        "splitMs": 433,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E100-split557",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E100-split557",
+        "level": 9,
+        "earnedExponent": 100,
+        "splitMs": 557,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E100-split557",
+        "level": 9,
+        "earnedExponent": 100,
+        "splitMs": 557,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E100-split691",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E100-split691",
+        "level": 9,
+        "earnedExponent": 100,
+        "splitMs": 691,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L9-E100-split691",
+        "level": 9,
+        "earnedExponent": 100,
+        "splitMs": 691,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E100-split823",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E100-split823",
+        "level": 9,
+        "earnedExponent": 100,
+        "splitMs": 823,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L9-E100-split823",
+        "level": 9,
+        "earnedExponent": 100,
+        "splitMs": 823,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L9-E100-split947",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L9-E100-split947",
+        "level": 9,
+        "earnedExponent": 100,
+        "splitMs": 947,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L9-E100-split947",
+        "level": 9,
+        "earnedExponent": 100,
+        "splitMs": 947,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E0-split17",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E0-split17",
+        "level": 20,
+        "earnedExponent": 0,
+        "splitMs": 17,
+        "whole": "16",
+        "split": "15",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E0-split17",
+        "level": 20,
+        "earnedExponent": 0,
+        "splitMs": 17,
+        "whole": "16",
+        "split": "16",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E0-split53",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E0-split53",
+        "level": 20,
+        "earnedExponent": 0,
+        "splitMs": 53,
+        "whole": "16",
+        "split": "15",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E0-split53",
+        "level": 20,
+        "earnedExponent": 0,
+        "splitMs": 53,
+        "whole": "16",
+        "split": "16",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E0-split89",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E0-split89",
+        "level": 20,
+        "earnedExponent": 0,
+        "splitMs": 89,
+        "whole": "16",
+        "split": "15",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E0-split89",
+        "level": 20,
+        "earnedExponent": 0,
+        "splitMs": 89,
+        "whole": "16",
+        "split": "16",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E0-split127",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E0-split127",
+        "level": 20,
+        "earnedExponent": 0,
+        "splitMs": 127,
+        "whole": "16",
+        "split": "15",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E0-split127",
+        "level": 20,
+        "earnedExponent": 0,
+        "splitMs": 127,
+        "whole": "16",
+        "split": "16",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E0-split173",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E0-split173",
+        "level": 20,
+        "earnedExponent": 0,
+        "splitMs": 173,
+        "whole": "16",
+        "split": "15",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E0-split173",
+        "level": 20,
+        "earnedExponent": 0,
+        "splitMs": 173,
+        "whole": "16",
+        "split": "16",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E0-split239",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E0-split239",
+        "level": 20,
+        "earnedExponent": 0,
+        "splitMs": 239,
+        "whole": "16",
+        "split": "15",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E0-split239",
+        "level": 20,
+        "earnedExponent": 0,
+        "splitMs": 239,
+        "whole": "16",
+        "split": "16",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E0-split317",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E0-split317",
+        "level": 20,
+        "earnedExponent": 0,
+        "splitMs": 317,
+        "whole": "16",
+        "split": "15",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E0-split317",
+        "level": 20,
+        "earnedExponent": 0,
+        "splitMs": 317,
+        "whole": "16",
+        "split": "16",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E0-split433",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E0-split433",
+        "level": 20,
+        "earnedExponent": 0,
+        "splitMs": 433,
+        "whole": "16",
+        "split": "15",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E0-split433",
+        "level": 20,
+        "earnedExponent": 0,
+        "splitMs": 433,
+        "whole": "16",
+        "split": "16",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E0-split557",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E0-split557",
+        "level": 20,
+        "earnedExponent": 0,
+        "splitMs": 557,
+        "whole": "16",
+        "split": "15",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E0-split557",
+        "level": 20,
+        "earnedExponent": 0,
+        "splitMs": 557,
+        "whole": "16",
+        "split": "16",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E0-split691",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E0-split691",
+        "level": 20,
+        "earnedExponent": 0,
+        "splitMs": 691,
+        "whole": "16",
+        "split": "15",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E0-split691",
+        "level": 20,
+        "earnedExponent": 0,
+        "splitMs": 691,
+        "whole": "16",
+        "split": "16",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E0-split823",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E0-split823",
+        "level": 20,
+        "earnedExponent": 0,
+        "splitMs": 823,
+        "whole": "16",
+        "split": "15",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E0-split823",
+        "level": 20,
+        "earnedExponent": 0,
+        "splitMs": 823,
+        "whole": "16",
+        "split": "16",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E0-split947",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E0-split947",
+        "level": 20,
+        "earnedExponent": 0,
+        "splitMs": 947,
+        "whole": "16",
+        "split": "15",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E0-split947",
+        "level": 20,
+        "earnedExponent": 0,
+        "splitMs": 947,
+        "whole": "16",
+        "split": "16",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E20-split17",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E20-split17",
+        "level": 20,
+        "earnedExponent": 20,
+        "splitMs": 17,
+        "whole": "16",
+        "split": "15",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E20-split17",
+        "level": 20,
+        "earnedExponent": 20,
+        "splitMs": 17,
+        "whole": "16",
+        "split": "16",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E20-split53",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E20-split53",
+        "level": 20,
+        "earnedExponent": 20,
+        "splitMs": 53,
+        "whole": "16",
+        "split": "15",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E20-split53",
+        "level": 20,
+        "earnedExponent": 20,
+        "splitMs": 53,
+        "whole": "16",
+        "split": "16",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E20-split89",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E20-split89",
+        "level": 20,
+        "earnedExponent": 20,
+        "splitMs": 89,
+        "whole": "16",
+        "split": "15",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E20-split89",
+        "level": 20,
+        "earnedExponent": 20,
+        "splitMs": 89,
+        "whole": "16",
+        "split": "16",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E20-split127",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E20-split127",
+        "level": 20,
+        "earnedExponent": 20,
+        "splitMs": 127,
+        "whole": "16",
+        "split": "15",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E20-split127",
+        "level": 20,
+        "earnedExponent": 20,
+        "splitMs": 127,
+        "whole": "16",
+        "split": "16",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E20-split173",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E20-split173",
+        "level": 20,
+        "earnedExponent": 20,
+        "splitMs": 173,
+        "whole": "16",
+        "split": "15",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E20-split173",
+        "level": 20,
+        "earnedExponent": 20,
+        "splitMs": 173,
+        "whole": "16",
+        "split": "16",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E20-split239",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E20-split239",
+        "level": 20,
+        "earnedExponent": 20,
+        "splitMs": 239,
+        "whole": "16",
+        "split": "15",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E20-split239",
+        "level": 20,
+        "earnedExponent": 20,
+        "splitMs": 239,
+        "whole": "16",
+        "split": "16",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E20-split317",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E20-split317",
+        "level": 20,
+        "earnedExponent": 20,
+        "splitMs": 317,
+        "whole": "16",
+        "split": "15",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E20-split317",
+        "level": 20,
+        "earnedExponent": 20,
+        "splitMs": 317,
+        "whole": "16",
+        "split": "16",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E20-split433",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E20-split433",
+        "level": 20,
+        "earnedExponent": 20,
+        "splitMs": 433,
+        "whole": "16",
+        "split": "15",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E20-split433",
+        "level": 20,
+        "earnedExponent": 20,
+        "splitMs": 433,
+        "whole": "16",
+        "split": "16",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E20-split557",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E20-split557",
+        "level": 20,
+        "earnedExponent": 20,
+        "splitMs": 557,
+        "whole": "16",
+        "split": "15",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E20-split557",
+        "level": 20,
+        "earnedExponent": 20,
+        "splitMs": 557,
+        "whole": "16",
+        "split": "16",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E20-split691",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E20-split691",
+        "level": 20,
+        "earnedExponent": 20,
+        "splitMs": 691,
+        "whole": "16",
+        "split": "15",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E20-split691",
+        "level": 20,
+        "earnedExponent": 20,
+        "splitMs": 691,
+        "whole": "16",
+        "split": "16",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E20-split823",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E20-split823",
+        "level": 20,
+        "earnedExponent": 20,
+        "splitMs": 823,
+        "whole": "16",
+        "split": "15",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E20-split823",
+        "level": 20,
+        "earnedExponent": 20,
+        "splitMs": 823,
+        "whole": "16",
+        "split": "16",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E20-split947",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E20-split947",
+        "level": 20,
+        "earnedExponent": 20,
+        "splitMs": 947,
+        "whole": "16",
+        "split": "15",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E20-split947",
+        "level": 20,
+        "earnedExponent": 20,
+        "splitMs": 947,
+        "whole": "16",
+        "split": "16",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E34-split17",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E34-split17",
+        "level": 20,
+        "earnedExponent": 34,
+        "splitMs": 17,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L20-E34-split17",
+        "level": 20,
+        "earnedExponent": 34,
+        "splitMs": 17,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E34-split53",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E34-split53",
+        "level": 20,
+        "earnedExponent": 34,
+        "splitMs": 53,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L20-E34-split53",
+        "level": 20,
+        "earnedExponent": 34,
+        "splitMs": 53,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E34-split89",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E34-split89",
+        "level": 20,
+        "earnedExponent": 34,
+        "splitMs": 89,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E34-split89",
+        "level": 20,
+        "earnedExponent": 34,
+        "splitMs": 89,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E34-split127",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E34-split127",
+        "level": 20,
+        "earnedExponent": 34,
+        "splitMs": 127,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E34-split127",
+        "level": 20,
+        "earnedExponent": 34,
+        "splitMs": 127,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E34-split173",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E34-split173",
+        "level": 20,
+        "earnedExponent": 34,
+        "splitMs": 173,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E34-split173",
+        "level": 20,
+        "earnedExponent": 34,
+        "splitMs": 173,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E34-split239",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E34-split239",
+        "level": 20,
+        "earnedExponent": 34,
+        "splitMs": 239,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E34-split239",
+        "level": 20,
+        "earnedExponent": 34,
+        "splitMs": 239,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E34-split317",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E34-split317",
+        "level": 20,
+        "earnedExponent": 34,
+        "splitMs": 317,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E34-split317",
+        "level": 20,
+        "earnedExponent": 34,
+        "splitMs": 317,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E34-split433",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E34-split433",
+        "level": 20,
+        "earnedExponent": 34,
+        "splitMs": 433,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E34-split433",
+        "level": 20,
+        "earnedExponent": 34,
+        "splitMs": 433,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E34-split557",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E34-split557",
+        "level": 20,
+        "earnedExponent": 34,
+        "splitMs": 557,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E34-split557",
+        "level": 20,
+        "earnedExponent": 34,
+        "splitMs": 557,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E34-split691",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E34-split691",
+        "level": 20,
+        "earnedExponent": 34,
+        "splitMs": 691,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E34-split691",
+        "level": 20,
+        "earnedExponent": 34,
+        "splitMs": 691,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E34-split823",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E34-split823",
+        "level": 20,
+        "earnedExponent": 34,
+        "splitMs": 823,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E34-split823",
+        "level": 20,
+        "earnedExponent": 34,
+        "splitMs": 823,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E34-split947",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E34-split947",
+        "level": 20,
+        "earnedExponent": 34,
+        "splitMs": 947,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L20-E34-split947",
+        "level": 20,
+        "earnedExponent": 34,
+        "splitMs": 947,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E70-split17",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E70-split17",
+        "level": 20,
+        "earnedExponent": 70,
+        "splitMs": 17,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L20-E70-split17",
+        "level": 20,
+        "earnedExponent": 70,
+        "splitMs": 17,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E70-split53",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E70-split53",
+        "level": 20,
+        "earnedExponent": 70,
+        "splitMs": 53,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L20-E70-split53",
+        "level": 20,
+        "earnedExponent": 70,
+        "splitMs": 53,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E70-split89",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E70-split89",
+        "level": 20,
+        "earnedExponent": 70,
+        "splitMs": 89,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E70-split89",
+        "level": 20,
+        "earnedExponent": 70,
+        "splitMs": 89,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E70-split127",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E70-split127",
+        "level": 20,
+        "earnedExponent": 70,
+        "splitMs": 127,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E70-split127",
+        "level": 20,
+        "earnedExponent": 70,
+        "splitMs": 127,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E70-split173",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E70-split173",
+        "level": 20,
+        "earnedExponent": 70,
+        "splitMs": 173,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E70-split173",
+        "level": 20,
+        "earnedExponent": 70,
+        "splitMs": 173,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E70-split239",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E70-split239",
+        "level": 20,
+        "earnedExponent": 70,
+        "splitMs": 239,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E70-split239",
+        "level": 20,
+        "earnedExponent": 70,
+        "splitMs": 239,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E70-split317",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E70-split317",
+        "level": 20,
+        "earnedExponent": 70,
+        "splitMs": 317,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E70-split317",
+        "level": 20,
+        "earnedExponent": 70,
+        "splitMs": 317,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E70-split433",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E70-split433",
+        "level": 20,
+        "earnedExponent": 70,
+        "splitMs": 433,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E70-split433",
+        "level": 20,
+        "earnedExponent": 70,
+        "splitMs": 433,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E70-split557",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E70-split557",
+        "level": 20,
+        "earnedExponent": 70,
+        "splitMs": 557,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E70-split557",
+        "level": 20,
+        "earnedExponent": 70,
+        "splitMs": 557,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E70-split691",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E70-split691",
+        "level": 20,
+        "earnedExponent": 70,
+        "splitMs": 691,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E70-split691",
+        "level": 20,
+        "earnedExponent": 70,
+        "splitMs": 691,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E70-split823",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E70-split823",
+        "level": 20,
+        "earnedExponent": 70,
+        "splitMs": 823,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E70-split823",
+        "level": 20,
+        "earnedExponent": 70,
+        "splitMs": 823,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E70-split947",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E70-split947",
+        "level": 20,
+        "earnedExponent": 70,
+        "splitMs": 947,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L20-E70-split947",
+        "level": 20,
+        "earnedExponent": 70,
+        "splitMs": 947,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E100-split17",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E100-split17",
+        "level": 20,
+        "earnedExponent": 100,
+        "splitMs": 17,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L20-E100-split17",
+        "level": 20,
+        "earnedExponent": 100,
+        "splitMs": 17,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E100-split53",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E100-split53",
+        "level": 20,
+        "earnedExponent": 100,
+        "splitMs": 53,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L20-E100-split53",
+        "level": 20,
+        "earnedExponent": 100,
+        "splitMs": 53,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E100-split89",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E100-split89",
+        "level": 20,
+        "earnedExponent": 100,
+        "splitMs": 89,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E100-split89",
+        "level": 20,
+        "earnedExponent": 100,
+        "splitMs": 89,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E100-split127",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E100-split127",
+        "level": 20,
+        "earnedExponent": 100,
+        "splitMs": 127,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E100-split127",
+        "level": 20,
+        "earnedExponent": 100,
+        "splitMs": 127,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E100-split173",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E100-split173",
+        "level": 20,
+        "earnedExponent": 100,
+        "splitMs": 173,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E100-split173",
+        "level": 20,
+        "earnedExponent": 100,
+        "splitMs": 173,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E100-split239",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E100-split239",
+        "level": 20,
+        "earnedExponent": 100,
+        "splitMs": 239,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E100-split239",
+        "level": 20,
+        "earnedExponent": 100,
+        "splitMs": 239,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E100-split317",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E100-split317",
+        "level": 20,
+        "earnedExponent": 100,
+        "splitMs": 317,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E100-split317",
+        "level": 20,
+        "earnedExponent": 100,
+        "splitMs": 317,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E100-split433",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E100-split433",
+        "level": 20,
+        "earnedExponent": 100,
+        "splitMs": 433,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E100-split433",
+        "level": 20,
+        "earnedExponent": 100,
+        "splitMs": 433,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E100-split557",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E100-split557",
+        "level": 20,
+        "earnedExponent": 100,
+        "splitMs": 557,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E100-split557",
+        "level": 20,
+        "earnedExponent": 100,
+        "splitMs": 557,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E100-split691",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E100-split691",
+        "level": 20,
+        "earnedExponent": 100,
+        "splitMs": 691,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E100-split691",
+        "level": 20,
+        "earnedExponent": 100,
+        "splitMs": 691,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E100-split823",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E100-split823",
+        "level": 20,
+        "earnedExponent": 100,
+        "splitMs": 823,
+        "whole": "1",
+        "split": "2",
+        "pass": false
+      },
+      "after": {
+        "id": "auto-L20-E100-split823",
+        "level": 20,
+        "earnedExponent": 100,
+        "splitMs": 823,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    },
+    {
+      "id": "auto-L20-E100-split947",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "auto-L20-E100-split947",
+        "level": 20,
+        "earnedExponent": 100,
+        "splitMs": 947,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      },
+      "after": {
+        "id": "auto-L20-E100-split947",
+        "level": 20,
+        "earnedExponent": 100,
+        "splitMs": 947,
+        "whole": "1",
+        "split": "1",
+        "pass": true
+      }
+    }
+  ]
+}

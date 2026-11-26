@@ -1,0 +1,3006 @@
+{
+  "project": "pvp",
+  "scenarioCount": 150,
+  "scenarios": [
+    {
+      "id": "enclosed-player-open-edges-AI-10-5",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-10-5",
+        "x": 10,
+        "y": 5,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-10-5",
+        "x": 10,
+        "y": 5,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-11-5",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-11-5",
+        "x": 11,
+        "y": 5,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-11-5",
+        "x": 11,
+        "y": 5,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-12-5",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-12-5",
+        "x": 12,
+        "y": 5,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-12-5",
+        "x": 12,
+        "y": 5,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-13-5",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-13-5",
+        "x": 13,
+        "y": 5,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-13-5",
+        "x": 13,
+        "y": 5,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-14-5",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-14-5",
+        "x": 14,
+        "y": 5,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-14-5",
+        "x": 14,
+        "y": 5,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-15-5",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-15-5",
+        "x": 15,
+        "y": 5,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-15-5",
+        "x": 15,
+        "y": 5,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-16-5",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-16-5",
+        "x": 16,
+        "y": 5,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-16-5",
+        "x": 16,
+        "y": 5,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-17-5",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-17-5",
+        "x": 17,
+        "y": 5,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-17-5",
+        "x": 17,
+        "y": 5,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-18-5",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-18-5",
+        "x": 18,
+        "y": 5,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-18-5",
+        "x": 18,
+        "y": 5,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-19-5",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-19-5",
+        "x": 19,
+        "y": 5,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-19-5",
+        "x": 19,
+        "y": 5,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-20-5",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-20-5",
+        "x": 20,
+        "y": 5,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-20-5",
+        "x": 20,
+        "y": 5,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-21-5",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-21-5",
+        "x": 21,
+        "y": 5,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-21-5",
+        "x": 21,
+        "y": 5,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-22-5",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-22-5",
+        "x": 22,
+        "y": 5,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-22-5",
+        "x": 22,
+        "y": 5,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-23-5",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-23-5",
+        "x": 23,
+        "y": 5,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-23-5",
+        "x": 23,
+        "y": 5,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-24-5",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-24-5",
+        "x": 24,
+        "y": 5,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-24-5",
+        "x": 24,
+        "y": 5,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-25-5",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-25-5",
+        "x": 25,
+        "y": 5,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-25-5",
+        "x": 25,
+        "y": 5,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-26-5",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-26-5",
+        "x": 26,
+        "y": 5,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-26-5",
+        "x": 26,
+        "y": 5,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-27-5",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-27-5",
+        "x": 27,
+        "y": 5,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-27-5",
+        "x": 27,
+        "y": 5,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-0-6",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-0-6",
+        "x": 0,
+        "y": 6,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-0-6",
+        "x": 0,
+        "y": 6,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-1-6",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-1-6",
+        "x": 1,
+        "y": 6,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-1-6",
+        "x": 1,
+        "y": 6,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-2-6",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-2-6",
+        "x": 2,
+        "y": 6,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-2-6",
+        "x": 2,
+        "y": 6,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-3-6",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-3-6",
+        "x": 3,
+        "y": 6,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-3-6",
+        "x": 3,
+        "y": 6,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-4-6",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-4-6",
+        "x": 4,
+        "y": 6,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-4-6",
+        "x": 4,
+        "y": 6,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-5-6",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-5-6",
+        "x": 5,
+        "y": 6,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-5-6",
+        "x": 5,
+        "y": 6,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-6-6",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-6-6",
+        "x": 6,
+        "y": 6,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-6-6",
+        "x": 6,
+        "y": 6,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-7-6",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-7-6",
+        "x": 7,
+        "y": 6,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-7-6",
+        "x": 7,
+        "y": 6,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-8-6",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-8-6",
+        "x": 8,
+        "y": 6,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-8-6",
+        "x": 8,
+        "y": 6,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-9-6",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-9-6",
+        "x": 9,
+        "y": 6,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-9-6",
+        "x": 9,
+        "y": 6,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-10-6",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-10-6",
+        "x": 10,
+        "y": 6,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-10-6",
+        "x": 10,
+        "y": 6,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-11-6",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-11-6",
+        "x": 11,
+        "y": 6,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-11-6",
+        "x": 11,
+        "y": 6,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-12-6",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-12-6",
+        "x": 12,
+        "y": 6,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-12-6",
+        "x": 12,
+        "y": 6,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-13-6",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-13-6",
+        "x": 13,
+        "y": 6,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-13-6",
+        "x": 13,
+        "y": 6,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-14-6",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-14-6",
+        "x": 14,
+        "y": 6,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-14-6",
+        "x": 14,
+        "y": 6,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-15-6",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-15-6",
+        "x": 15,
+        "y": 6,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-15-6",
+        "x": 15,
+        "y": 6,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-16-6",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-16-6",
+        "x": 16,
+        "y": 6,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-16-6",
+        "x": 16,
+        "y": 6,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-17-6",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-17-6",
+        "x": 17,
+        "y": 6,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-17-6",
+        "x": 17,
+        "y": 6,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-18-6",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-18-6",
+        "x": 18,
+        "y": 6,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-18-6",
+        "x": 18,
+        "y": 6,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-19-6",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-19-6",
+        "x": 19,
+        "y": 6,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-19-6",
+        "x": 19,
+        "y": 6,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-20-6",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-20-6",
+        "x": 20,
+        "y": 6,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-20-6",
+        "x": 20,
+        "y": 6,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-21-6",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-21-6",
+        "x": 21,
+        "y": 6,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-21-6",
+        "x": 21,
+        "y": 6,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-22-6",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-22-6",
+        "x": 22,
+        "y": 6,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-22-6",
+        "x": 22,
+        "y": 6,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-23-6",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-23-6",
+        "x": 23,
+        "y": 6,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-23-6",
+        "x": 23,
+        "y": 6,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-24-6",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-24-6",
+        "x": 24,
+        "y": 6,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-24-6",
+        "x": 24,
+        "y": 6,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-25-6",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-25-6",
+        "x": 25,
+        "y": 6,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-25-6",
+        "x": 25,
+        "y": 6,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-26-6",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-26-6",
+        "x": 26,
+        "y": 6,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-26-6",
+        "x": 26,
+        "y": 6,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-27-6",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-27-6",
+        "x": 27,
+        "y": 6,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-27-6",
+        "x": 27,
+        "y": 6,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-0-7",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-0-7",
+        "x": 0,
+        "y": 7,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-0-7",
+        "x": 0,
+        "y": 7,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-1-7",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-1-7",
+        "x": 1,
+        "y": 7,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-1-7",
+        "x": 1,
+        "y": 7,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-2-7",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-2-7",
+        "x": 2,
+        "y": 7,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-2-7",
+        "x": 2,
+        "y": 7,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-3-7",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-3-7",
+        "x": 3,
+        "y": 7,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-3-7",
+        "x": 3,
+        "y": 7,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-4-7",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-4-7",
+        "x": 4,
+        "y": 7,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-4-7",
+        "x": 4,
+        "y": 7,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-5-7",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-5-7",
+        "x": 5,
+        "y": 7,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-5-7",
+        "x": 5,
+        "y": 7,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-6-7",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-6-7",
+        "x": 6,
+        "y": 7,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-6-7",
+        "x": 6,
+        "y": 7,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-7-7",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-7-7",
+        "x": 7,
+        "y": 7,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-7-7",
+        "x": 7,
+        "y": 7,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-8-7",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-8-7",
+        "x": 8,
+        "y": 7,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-8-7",
+        "x": 8,
+        "y": 7,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-9-7",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-9-7",
+        "x": 9,
+        "y": 7,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-9-7",
+        "x": 9,
+        "y": 7,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-10-7",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-10-7",
+        "x": 10,
+        "y": 7,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-10-7",
+        "x": 10,
+        "y": 7,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-11-7",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-11-7",
+        "x": 11,
+        "y": 7,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-11-7",
+        "x": 11,
+        "y": 7,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-12-7",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-12-7",
+        "x": 12,
+        "y": 7,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-12-7",
+        "x": 12,
+        "y": 7,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-13-7",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-13-7",
+        "x": 13,
+        "y": 7,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-13-7",
+        "x": 13,
+        "y": 7,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-14-7",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-14-7",
+        "x": 14,
+        "y": 7,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-14-7",
+        "x": 14,
+        "y": 7,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-15-7",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-15-7",
+        "x": 15,
+        "y": 7,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-15-7",
+        "x": 15,
+        "y": 7,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-16-7",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-16-7",
+        "x": 16,
+        "y": 7,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-16-7",
+        "x": 16,
+        "y": 7,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-17-7",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-17-7",
+        "x": 17,
+        "y": 7,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-17-7",
+        "x": 17,
+        "y": 7,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-18-7",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-18-7",
+        "x": 18,
+        "y": 7,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-18-7",
+        "x": 18,
+        "y": 7,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-19-7",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-19-7",
+        "x": 19,
+        "y": 7,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-19-7",
+        "x": 19,
+        "y": 7,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-20-7",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-20-7",
+        "x": 20,
+        "y": 7,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-20-7",
+        "x": 20,
+        "y": 7,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-21-7",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-21-7",
+        "x": 21,
+        "y": 7,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-21-7",
+        "x": 21,
+        "y": 7,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-22-7",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-22-7",
+        "x": 22,
+        "y": 7,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-22-7",
+        "x": 22,
+        "y": 7,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-23-7",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-23-7",
+        "x": 23,
+        "y": 7,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-23-7",
+        "x": 23,
+        "y": 7,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-24-7",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-24-7",
+        "x": 24,
+        "y": 7,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-24-7",
+        "x": 24,
+        "y": 7,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-25-7",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-25-7",
+        "x": 25,
+        "y": 7,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-25-7",
+        "x": 25,
+        "y": 7,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-26-7",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-26-7",
+        "x": 26,
+        "y": 7,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-26-7",
+        "x": 26,
+        "y": 7,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-27-7",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-27-7",
+        "x": 27,
+        "y": 7,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-27-7",
+        "x": 27,
+        "y": 7,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-0-8",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-0-8",
+        "x": 0,
+        "y": 8,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-0-8",
+        "x": 0,
+        "y": 8,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-1-8",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-1-8",
+        "x": 1,
+        "y": 8,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-1-8",
+        "x": 1,
+        "y": 8,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-2-8",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-2-8",
+        "x": 2,
+        "y": 8,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-2-8",
+        "x": 2,
+        "y": 8,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-3-8",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-3-8",
+        "x": 3,
+        "y": 8,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-3-8",
+        "x": 3,
+        "y": 8,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-4-8",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-4-8",
+        "x": 4,
+        "y": 8,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-4-8",
+        "x": 4,
+        "y": 8,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-5-8",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-5-8",
+        "x": 5,
+        "y": 8,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-5-8",
+        "x": 5,
+        "y": 8,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-6-8",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-6-8",
+        "x": 6,
+        "y": 8,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-6-8",
+        "x": 6,
+        "y": 8,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-7-8",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-7-8",
+        "x": 7,
+        "y": 8,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-7-8",
+        "x": 7,
+        "y": 8,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-8-8",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-8-8",
+        "x": 8,
+        "y": 8,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-8-8",
+        "x": 8,
+        "y": 8,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-9-8",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-9-8",
+        "x": 9,
+        "y": 8,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-9-8",
+        "x": 9,
+        "y": 8,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-10-8",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-10-8",
+        "x": 10,
+        "y": 8,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-10-8",
+        "x": 10,
+        "y": 8,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-11-8",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-11-8",
+        "x": 11,
+        "y": 8,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-11-8",
+        "x": 11,
+        "y": 8,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-12-8",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-12-8",
+        "x": 12,
+        "y": 8,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-12-8",
+        "x": 12,
+        "y": 8,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-13-8",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-13-8",
+        "x": 13,
+        "y": 8,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-13-8",
+        "x": 13,
+        "y": 8,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-15-8",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-15-8",
+        "x": 15,
+        "y": 8,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-15-8",
+        "x": 15,
+        "y": 8,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-16-8",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-16-8",
+        "x": 16,
+        "y": 8,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-16-8",
+        "x": 16,
+        "y": 8,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-17-8",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-17-8",
+        "x": 17,
+        "y": 8,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-17-8",
+        "x": 17,
+        "y": 8,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-18-8",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-18-8",
+        "x": 18,
+        "y": 8,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-18-8",
+        "x": 18,
+        "y": 8,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-19-8",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-19-8",
+        "x": 19,
+        "y": 8,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-19-8",
+        "x": 19,
+        "y": 8,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-20-8",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-20-8",
+        "x": 20,
+        "y": 8,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-20-8",
+        "x": 20,
+        "y": 8,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-21-8",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-21-8",
+        "x": 21,
+        "y": 8,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-21-8",
+        "x": 21,
+        "y": 8,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-22-8",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-22-8",
+        "x": 22,
+        "y": 8,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-22-8",
+        "x": 22,
+        "y": 8,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-23-8",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-23-8",
+        "x": 23,
+        "y": 8,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-23-8",
+        "x": 23,
+        "y": 8,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-24-8",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-24-8",
+        "x": 24,
+        "y": 8,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-24-8",
+        "x": 24,
+        "y": 8,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-25-8",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-25-8",
+        "x": 25,
+        "y": 8,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-25-8",
+        "x": 25,
+        "y": 8,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-26-8",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-26-8",
+        "x": 26,
+        "y": 8,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-26-8",
+        "x": 26,
+        "y": 8,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-27-8",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-27-8",
+        "x": 27,
+        "y": 8,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-27-8",
+        "x": 27,
+        "y": 8,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-0-9",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-0-9",
+        "x": 0,
+        "y": 9,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-0-9",
+        "x": 0,
+        "y": 9,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-1-9",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-1-9",
+        "x": 1,
+        "y": 9,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-1-9",
+        "x": 1,
+        "y": 9,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-2-9",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-2-9",
+        "x": 2,
+        "y": 9,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-2-9",
+        "x": 2,
+        "y": 9,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-3-9",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-3-9",
+        "x": 3,
+        "y": 9,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-3-9",
+        "x": 3,
+        "y": 9,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-4-9",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-4-9",
+        "x": 4,
+        "y": 9,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-4-9",
+        "x": 4,
+        "y": 9,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-5-9",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-5-9",
+        "x": 5,
+        "y": 9,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-5-9",
+        "x": 5,
+        "y": 9,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-6-9",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-6-9",
+        "x": 6,
+        "y": 9,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-6-9",
+        "x": 6,
+        "y": 9,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-7-9",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-7-9",
+        "x": 7,
+        "y": 9,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-7-9",
+        "x": 7,
+        "y": 9,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-8-9",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-8-9",
+        "x": 8,
+        "y": 9,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-8-9",
+        "x": 8,
+        "y": 9,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-9-9",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-9-9",
+        "x": 9,
+        "y": 9,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-9-9",
+        "x": 9,
+        "y": 9,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-10-9",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-10-9",
+        "x": 10,
+        "y": 9,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-10-9",
+        "x": 10,
+        "y": 9,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-11-9",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-11-9",
+        "x": 11,
+        "y": 9,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-11-9",
+        "x": 11,
+        "y": 9,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-12-9",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-12-9",
+        "x": 12,
+        "y": 9,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-12-9",
+        "x": 12,
+        "y": 9,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-16-9",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-16-9",
+        "x": 16,
+        "y": 9,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-16-9",
+        "x": 16,
+        "y": 9,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-17-9",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-17-9",
+        "x": 17,
+        "y": 9,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-17-9",
+        "x": 17,
+        "y": 9,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-18-9",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-18-9",
+        "x": 18,
+        "y": 9,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-18-9",
+        "x": 18,
+        "y": 9,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-19-9",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-19-9",
+        "x": 19,
+        "y": 9,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-19-9",
+        "x": 19,
+        "y": 9,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-20-9",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-20-9",
+        "x": 20,
+        "y": 9,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-20-9",
+        "x": 20,
+        "y": 9,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-21-9",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-21-9",
+        "x": 21,
+        "y": 9,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-21-9",
+        "x": 21,
+        "y": 9,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-22-9",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-22-9",
+        "x": 22,
+        "y": 9,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-22-9",
+        "x": 22,
+        "y": 9,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-23-9",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-23-9",
+        "x": 23,
+        "y": 9,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-23-9",
+        "x": 23,
+        "y": 9,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-24-9",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-24-9",
+        "x": 24,
+        "y": 9,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-24-9",
+        "x": 24,
+        "y": 9,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-25-9",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-25-9",
+        "x": 25,
+        "y": 9,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-25-9",
+        "x": 25,
+        "y": 9,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-26-9",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-26-9",
+        "x": 26,
+        "y": 9,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-26-9",
+        "x": 26,
+        "y": 9,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-27-9",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-27-9",
+        "x": 27,
+        "y": 9,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-27-9",
+        "x": 27,
+        "y": 9,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-0-10",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-0-10",
+        "x": 0,
+        "y": 10,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-0-10",
+        "x": 0,
+        "y": 10,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-1-10",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-1-10",
+        "x": 1,
+        "y": 10,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-1-10",
+        "x": 1,
+        "y": 10,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-2-10",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-2-10",
+        "x": 2,
+        "y": 10,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-2-10",
+        "x": 2,
+        "y": 10,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-3-10",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-3-10",
+        "x": 3,
+        "y": 10,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-3-10",
+        "x": 3,
+        "y": 10,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-4-10",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-4-10",
+        "x": 4,
+        "y": 10,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-4-10",
+        "x": 4,
+        "y": 10,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-5-10",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-5-10",
+        "x": 5,
+        "y": 10,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-5-10",
+        "x": 5,
+        "y": 10,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-6-10",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-6-10",
+        "x": 6,
+        "y": 10,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-6-10",
+        "x": 6,
+        "y": 10,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-7-10",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-7-10",
+        "x": 7,
+        "y": 10,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-7-10",
+        "x": 7,
+        "y": 10,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-8-10",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-8-10",
+        "x": 8,
+        "y": 10,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-8-10",
+        "x": 8,
+        "y": 10,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-9-10",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-9-10",
+        "x": 9,
+        "y": 10,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-9-10",
+        "x": 9,
+        "y": 10,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-10-10",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-10-10",
+        "x": 10,
+        "y": 10,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-10-10",
+        "x": 10,
+        "y": 10,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-11-10",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-11-10",
+        "x": 11,
+        "y": 10,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-11-10",
+        "x": 11,
+        "y": 10,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-12-10",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-12-10",
+        "x": 12,
+        "y": 10,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-12-10",
+        "x": 12,
+        "y": 10,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-13-10",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-13-10",
+        "x": 13,
+        "y": 10,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-13-10",
+        "x": 13,
+        "y": 10,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-15-10",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-15-10",
+        "x": 15,
+        "y": 10,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-15-10",
+        "x": 15,
+        "y": 10,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-16-10",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-16-10",
+        "x": 16,
+        "y": 10,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-16-10",
+        "x": 16,
+        "y": 10,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-17-10",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-17-10",
+        "x": 17,
+        "y": 10,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-17-10",
+        "x": 17,
+        "y": 10,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-18-10",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-18-10",
+        "x": 18,
+        "y": 10,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-18-10",
+        "x": 18,
+        "y": 10,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-19-10",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-19-10",
+        "x": 19,
+        "y": 10,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-19-10",
+        "x": 19,
+        "y": 10,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-20-10",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-20-10",
+        "x": 20,
+        "y": 10,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-20-10",
+        "x": 20,
+        "y": 10,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-21-10",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-21-10",
+        "x": 21,
+        "y": 10,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-21-10",
+        "x": 21,
+        "y": 10,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-22-10",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-22-10",
+        "x": 22,
+        "y": 10,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-22-10",
+        "x": 22,
+        "y": 10,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-23-10",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-23-10",
+        "x": 23,
+        "y": 10,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-23-10",
+        "x": 23,
+        "y": 10,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    },
+    {
+      "id": "enclosed-player-open-edges-AI-24-10",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "enclosed-player-open-edges-AI-24-10",
+        "x": 24,
+        "y": 10,
+        "bounded": false,
+        "visited": 1025,
+        "pass": false
+      },
+      "after": {
+        "id": "enclosed-player-open-edges-AI-24-10",
+        "x": 24,
+        "y": 10,
+        "bounded": true,
+        "visited": 499,
+        "pass": true
+      }
+    }
+  ]
+}

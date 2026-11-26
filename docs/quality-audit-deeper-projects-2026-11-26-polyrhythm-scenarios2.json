@@ -1,0 +1,2106 @@
+{
+  "project": "polyrhythm",
+  "scenarioCount": 150,
+  "scenarios": [
+    {
+      "id": "offset-hold-m0-n4",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m0-n4",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m0-n4",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m0-n13",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m0-n13",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m0-n13",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m0-n22",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m0-n22",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m0-n22",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m0-n31",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m0-n31",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m0-n31",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m0-n49",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m0-n49",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m0-n49",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m0-n58",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m0-n58",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m0-n58",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m1-n4",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m1-n4",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m1-n4",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m1-n13",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m1-n13",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m1-n13",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m1-n22",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m1-n22",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m1-n22",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m1-n31",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m1-n31",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m1-n31",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m1-n49",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m1-n49",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m1-n49",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m1-n58",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m1-n58",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m1-n58",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m1-n67",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m1-n67",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m1-n67",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m1-n76",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m1-n76",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m1-n76",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m2-n4",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m2-n4",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m2-n4",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m2-n13",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m2-n13",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m2-n13",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m2-n22",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m2-n22",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m2-n22",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m2-n31",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m2-n31",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m2-n31",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m2-n49",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m2-n49",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m2-n49",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m2-n58",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m2-n58",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m2-n58",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m2-n67",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m2-n67",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m2-n67",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m2-n76",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m2-n76",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m2-n76",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m2-n85",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m2-n85",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m2-n85",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m2-n94",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m2-n94",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m2-n94",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m3-n4",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m3-n4",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m3-n4",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m3-n13",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m3-n13",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m3-n13",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m3-n22",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m3-n22",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m3-n22",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m3-n31",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m3-n31",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m3-n31",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m3-n49",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m3-n49",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m3-n49",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m3-n58",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m3-n58",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m3-n58",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m3-n67",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m3-n67",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m3-n67",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m3-n76",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m3-n76",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m3-n76",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m3-n85",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m3-n85",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m3-n85",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m3-n94",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m3-n94",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m3-n94",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m3-n103",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m3-n103",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m3-n103",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m4-n4",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m4-n4",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m4-n4",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m4-n13",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m4-n13",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m4-n13",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m4-n22",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m4-n22",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m4-n22",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m4-n31",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m4-n31",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m4-n31",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m4-n49",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m4-n49",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m4-n49",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m4-n58",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m4-n58",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m4-n58",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m4-n67",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m4-n67",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m4-n67",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m4-n76",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m4-n76",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m4-n76",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m4-n85",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m4-n85",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m4-n85",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m4-n94",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m4-n94",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m4-n94",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m4-n103",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m4-n103",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m4-n103",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m5-n4",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m5-n4",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m5-n4",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m5-n13",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m5-n13",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m5-n13",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m5-n22",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m5-n22",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m5-n22",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m5-n31",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m5-n31",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m5-n31",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m5-n49",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m5-n49",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m5-n49",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m5-n58",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m5-n58",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m5-n58",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m5-n67",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m5-n67",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m5-n67",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m5-n76",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m5-n76",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m5-n76",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m5-n85",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m5-n85",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m5-n85",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m5-n94",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m5-n94",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m5-n94",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m5-n103",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m5-n103",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m5-n103",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m6-n4",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m6-n4",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m6-n4",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m6-n13",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m6-n13",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m6-n13",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m6-n22",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m6-n22",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m6-n22",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m6-n31",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m6-n31",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m6-n31",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m6-n49",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m6-n49",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m6-n49",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m6-n58",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m6-n58",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m6-n58",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m6-n67",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m6-n67",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m6-n67",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m6-n76",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m6-n76",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m6-n76",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m6-n85",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m6-n85",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m6-n85",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m6-n94",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m6-n94",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m6-n94",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m6-n103",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m6-n103",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m6-n103",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m6-n121",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m6-n121",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m6-n121",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m7-n4",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m7-n4",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m7-n4",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m7-n13",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m7-n13",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m7-n13",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m7-n22",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m7-n22",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m7-n22",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m7-n31",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m7-n31",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m7-n31",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m7-n49",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m7-n49",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m7-n49",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m7-n58",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m7-n58",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m7-n58",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m7-n67",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m7-n67",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m7-n67",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m7-n76",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m7-n76",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m7-n76",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m7-n85",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m7-n85",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m7-n85",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m7-n94",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m7-n94",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m7-n94",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m7-n103",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m7-n103",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m7-n103",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m7-n121",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m7-n121",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m7-n121",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m7-n130",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m7-n130",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m7-n130",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m8-n4",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m8-n4",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m8-n4",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m8-n13",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m8-n13",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m8-n13",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m8-n22",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m8-n22",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m8-n22",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m8-n31",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m8-n31",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m8-n31",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m8-n49",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m8-n49",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m8-n49",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m8-n58",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m8-n58",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m8-n58",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m8-n67",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m8-n67",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m8-n67",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m8-n76",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m8-n76",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m8-n76",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m8-n85",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m8-n85",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m8-n85",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m8-n94",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m8-n94",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m8-n94",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m8-n103",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m8-n103",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m8-n103",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m8-n121",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m8-n121",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m8-n121",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m8-n130",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m8-n130",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m8-n130",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m8-n139",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m8-n139",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m8-n139",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m9-n4",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m9-n4",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m9-n4",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m9-n13",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m9-n13",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m9-n13",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m9-n22",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m9-n22",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m9-n22",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m9-n31",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m9-n31",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m9-n31",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m9-n49",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m9-n49",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m9-n49",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m9-n58",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m9-n58",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m9-n58",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m9-n67",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m9-n67",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m9-n67",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m9-n76",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m9-n76",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m9-n76",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m9-n85",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m9-n85",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m9-n85",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m9-n94",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m9-n94",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m9-n94",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m9-n103",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m9-n103",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m9-n103",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m9-n121",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m9-n121",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m9-n121",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m9-n130",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m9-n130",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m9-n130",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m9-n139",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m9-n139",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m9-n139",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m9-n148",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m9-n148",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m9-n148",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m10-n4",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m10-n4",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m10-n4",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m10-n13",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m10-n13",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m10-n13",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m10-n22",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m10-n22",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m10-n22",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m10-n31",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m10-n31",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m10-n31",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m10-n49",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m10-n49",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m10-n49",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m10-n58",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m10-n58",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m10-n58",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m10-n67",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m10-n67",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m10-n67",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m10-n76",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m10-n76",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m10-n76",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m10-n85",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m10-n85",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m10-n85",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m10-n94",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m10-n94",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m10-n94",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m10-n103",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m10-n103",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m10-n103",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m10-n121",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m10-n121",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m10-n121",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m10-n130",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m10-n130",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m10-n130",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m10-n139",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m10-n139",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m10-n139",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m10-n148",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m10-n148",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m10-n148",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m10-n157",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m10-n157",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m10-n157",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m11-n4",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m11-n4",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m11-n4",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m11-n13",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m11-n13",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m11-n13",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m11-n22",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m11-n22",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m11-n22",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m11-n31",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m11-n31",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m11-n31",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m11-n49",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m11-n49",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m11-n49",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m11-n58",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m11-n58",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m11-n58",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m11-n67",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m11-n67",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m11-n67",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m11-n76",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m11-n76",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m11-n76",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m11-n85",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m11-n85",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m11-n85",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m11-n94",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m11-n94",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m11-n94",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m11-n103",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m11-n103",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m11-n103",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m11-n121",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m11-n121",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m11-n121",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m11-n130",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m11-n130",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m11-n130",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m11-n139",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m11-n139",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m11-n139",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m11-n148",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m11-n148",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m11-n148",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m11-n157",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m11-n157",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m11-n157",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m11-n166",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m11-n166",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m11-n166",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m12-n4",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m12-n4",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m12-n4",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m12-n13",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m12-n13",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m12-n13",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m12-n22",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m12-n22",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m12-n22",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m12-n31",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m12-n31",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m12-n31",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m12-n49",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m12-n49",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m12-n49",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    },
+    {
+      "id": "offset-hold-m12-n58",
+      "unit": "parameterized regression scenario, not a source modification",
+      "before": {
+        "id": "offset-hold-m12-n58",
+        "type": "hold-offset-release",
+        "pass": false
+      },
+      "after": {
+        "id": "offset-hold-m12-n58",
+        "type": "hold-offset-release",
+        "pass": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "date": "2026-11-26",
+  "scenarioTotal": 900,
+  "defectCount": 11,
+  "projects": {
+    "polyrhythm": {
+      "scenarios": 300,
+      "beforeFailed": 300,
+      "afterFailed": 0,
+      "beforeEdges": {
+        "keyboardTap": false,
+        "pointerOnce": true,
+        "preserved": false,
+        "cancelled": false,
+        "exclusive": false,
+        "emptyAudio": false
+      },
+      "afterEdges": {
+        "keyboardTap": true,
+        "pointerOnce": true,
+        "preserved": true,
+        "cancelled": true,
+        "exclusive": true,
+        "emptyAudio": true
+      }
+    },
+    "clicker": {
+      "scenarios": 300,
+      "beforeFailed": 231,
+      "afterFailed": 0,
+      "beforeEdges": {
+        "visibility": false,
+        "persisted": false,
+        "upgradeBoundary": false,
+        "focused": false,
+        "trapped": false,
+        "fits": false,
+        "keyboardConfirmed": false,
+        "restored": false
+      },
+      "afterEdges": {
+        "visibility": true,
+        "persisted": true,
+        "upgradeBoundary": true,
+        "focused": true,
+        "trapped": true,
+        "fits": true,
+        "keyboardConfirmed": true,
+        "restored": true
+      }
+    },
+    "pvp": {
+      "scenarios": 300,
+      "beforeFailed": 300,
+      "afterFailed": 0,
+      "beforeEdges": {
+        "bounds": false,
+        "uniqueStarts": false,
+        "isolatedLoad": false,
+        "isolatedUndo": false
+      },
+      "afterEdges": {
+        "bounds": true,
+        "uniqueStarts": true,
+        "isolatedLoad": true,
+        "isolatedUndo": true
+      }
+    }
+  },
+  "previousRegressions": {
+    "selectedCases": 450,
+    "polyrhythmNotes": 2880,
+    "pvpNativeKeyboardCells": 504,
+    "pvpLayoutsAndAxeChecks": 10,
+    "pvpAILevelAndWidthChecks": 6,
+    "result": "pass"
+  },
+  "sourceChecks": {
+    "rootScriptBlocksOrFiles": 154,
+    "catalogProjects": 75,
+    "sitemapURLs": 40,
+    "skipNavigationPages": 55,
+    "rootNodeTestFiles": 11,
+    "clickerScriptBlocksOrFiles": 16,
+    "clickerLeaderboardTestFiles": 1,
+    "result": "pass"
+  },
+  "browser": "Playwright 1.65.1 bundled Chromium 159.0.8154.6",
+  "testIsolation": "Temporary local HTTP server and browser storage; all remote HTTP/WebSockets and service workers blocked."
+}

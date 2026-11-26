@@ -1,0 +1,144 @@
+{
+  "date": "2026-11-26",
+  "requestedAdditionalLocationsPerProject": 300,
+  "fixedDefectCount": 11,
+  "countsByProject": {
+    "polyrhythm": 5,
+    "clicker": 2,
+    "pvp": 4,
+    "casino": 0
+  },
+  "requestedLocationQuotaFulfilled": false,
+  "regressionScenariosPerCompletedProject": 300,
+  "regressionScenarioTotal": 900,
+  "counting": "The 900 parameterized scenarios are test coverage. They are not 900 independent defects, edited source locations, or newly discovered physical UI elements. The 11 listed defects are counted once each. Recording lifecycle and automatic accounting manifestations are grouped under shared causes.",
+  "baselines": {
+    "Formwheel": {
+      "head": "1764139b0213111755e37f141ad537e9028bee39",
+      "branch": "codex/formwheel-deeper-regressions-20261126",
+      "files": [
+        "polyrhythm.html"
+      ]
+    },
+    "Formwheel_Clicker": {
+      "head": "f699da7996208056d11a7797397887d3b6acc63e",
+      "branch": "codex/formwheel-deeper-regressions-20261126",
+      "files": [
+        "assets/season2-main.js"
+      ]
+    },
+    "Formwheel_PVP": {
+      "head": "fa5868a6544a2f23682cf2e8f283731dcb5109c7",
+      "branch": "codex/formwheel-deeper-regressions-20261126",
+      "files": [
+        "studio.html"
+      ]
+    }
+  },
+  "appChanges": {
+    "clicker": {
+      "commit": "b843fcd433d91d4d32572b57f31063cae1f838a6",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_Clicker/pull/4"
+    },
+    "pvp": {
+      "commit": "31f979c447a2e95a8793a38ba80617f9cc4f6b92",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_PVP/pull/4"
+    }
+  },
+  "defects": [
+    {
+      "id": "poly-rejected-direction",
+      "project": "polyrhythm",
+      "cause": "Rejected close-together direction stamps changed the recording direction without adding a note.",
+      "fix": "Validate the minimum gap before changing direction."
+    },
+    {
+      "id": "poly-hold-offset",
+      "project": "polyrhythm",
+      "cause": "Hold completion and release ignored the judgment offset already applied to hold start.",
+      "fix": "Use judged progress for both automatic completion and release."
+    },
+    {
+      "id": "poly-editor-keyboard",
+      "project": "polyrhythm",
+      "cause": "Pointer-only editor buttons and the global Enter handler made a keyboard tap record a reversal.",
+      "fix": "Handle native keyboard click activation while retaining immediate pointer-down stamping; leave focused controls to their native keys."
+    },
+    {
+      "id": "poly-record-lifecycle",
+      "project": "polyrhythm",
+      "cause": "Recording cleared existing notes before audio success, could resume after its editor was closed, and could overlap game play.",
+      "fix": "Commit a new recording only after successful audio preparation; invalidate pending sessions on close, cancellation, file change and game start."
+    },
+    {
+      "id": "poly-cleared-audio",
+      "project": "polyrhythm",
+      "cause": "Clearing an audio file assigned an empty src that resolved to the page URL and was treated as selected audio.",
+      "fix": "Remove the src attribute and reset the media element."
+    },
+    {
+      "id": "clicker-auto-accounting",
+      "project": "clicker",
+      "cause": "Partial timer intervals were truncated, visibility transitions discarded visible time, and upgrades could apply a new rate to earlier time.",
+      "fix": "Accumulate displayed effective per-second income over visible milliseconds, settle before transitions/upgrades, and persist the sub-point remainder."
+    },
+    {
+      "id": "clicker-confirmation-input",
+      "project": "clicker",
+      "cause": "Confirmation required a new pointer press and provided no modal focus path or viewport recovery.",
+      "fix": "Support trusted keyboard confirmation with modal focus management, restored background inert states and resize clamping."
+    },
+    {
+      "id": "pvp-outside-grid",
+      "project": "pvp",
+      "cause": "Horizontal out-of-grid coordinates were walkable, allowing unbounded AI search on open-edge maps.",
+      "fix": "Treat all coordinates outside the 28x18 model as solid for movement and shots."
+    },
+    {
+      "id": "pvp-duplicate-starts",
+      "project": "pvp",
+      "cause": "Studio validation accepted multiple A/B start tiles, making the chosen spawn ambiguous.",
+      "fix": "Require exactly one A and one B."
+    },
+    {
+      "id": "pvp-collection-recovery",
+      "project": "pvp",
+      "cause": "A malformed collection type caused loading to discard all valid saved collections.",
+      "fix": "Validate collection container types independently before filtering their entries."
+    },
+    {
+      "id": "pvp-document-undo",
+      "project": "pvp",
+      "cause": "Opening a saved map retained undo history from a different edited grid.",
+      "fix": "Clear the previous document history before opening a saved grid."
+    }
+  ],
+  "scenarioFiles": [
+    "quality-audit-deeper-projects-2026-11-26-polyrhythm-scenarios1.json",
+    "quality-audit-deeper-projects-2026-11-26-polyrhythm-scenarios2.json",
+    "quality-audit-deeper-projects-2026-11-26-clicker-scenarios1.json",
+    "quality-audit-deeper-projects-2026-11-26-clicker-scenarios2.json",
+    "quality-audit-deeper-projects-2026-11-26-pvp-scenarios1.json",
+    "quality-audit-deeper-projects-2026-11-26-pvp-scenarios2.json"
+  ],
+  "verificationFile": "quality-audit-deeper-projects-2026-11-26-verification.json",
+  "test": "tests/deeper-projects-regression.cjs",
+  "casino": {
+    "modified": false,
+    "scope": "Non-gambling privacy/security common screens only",
+    "result": "No independent screen in that eligible scope was found; no gambling, wallet, account access or minigame functionality was changed."
+  },
+  "previousRootCI": {
+    "pullRequest": 36,
+    "commit": "1764139b0213111755e37f141ad537e9028bee39",
+    "run": 45766916766,
+    "conclusion": "success"
+  },
+  "newCI": "not-started-at-report-creation",
+  "limitations": [
+    "Polyrhythm hold and rejected-stamp matrices use deterministic model state; native keyboard/pointer and recording lifecycle checks are separate.",
+    "Clicker uses five existing auto levels, five isolated cumulative-earning profiles and twelve timer phase splits. Existing two-second update cap remains; this is not offline earning. Click grant and upgrade price behavior is unchanged.",
+    "PVP uses an intentionally constructed open-edge grid with an enclosed player and 300 AI start positions. A test-only 1,024-visit guard prevents the baseline infinite search from hanging the browser. Production has no guard or test export.",
+    "No production backend writes, deployment, merging, real-device audio-latency or screen-reader certification."
+  ]
+}
