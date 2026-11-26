@@ -1,0 +1,105 @@
+{
+  "date": "2026-11-26",
+  "after": [
+    {
+      "state": "editor",
+      "width": 320,
+      "targets": 504,
+      "traversed": 0,
+      "painted": 0,
+      "touchPan": {
+        "scrollLeft": 183,
+        "unchangedGrid": true
+      },
+      "violations": [],
+      "errors": []
+    },
+    {
+      "state": "editor",
+      "width": 390,
+      "targets": 504,
+      "traversed": 504,
+      "painted": 504,
+      "touchPan": {
+        "scrollLeft": 253,
+        "unchangedGrid": true
+      },
+      "violations": [],
+      "errors": []
+    },
+    {
+      "state": "editor",
+      "width": 900,
+      "targets": 504,
+      "traversed": 0,
+      "painted": 0,
+      "touchPan": null,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "state": "editor",
+      "width": 1280,
+      "targets": 504,
+      "traversed": 0,
+      "painted": 0,
+      "touchPan": null,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "state": "AI",
+      "width": 390,
+      "level": 1,
+      "advancedMilliseconds": 2500,
+      "canvasChanged": true,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "state": "AI",
+      "width": 390,
+      "level": 5,
+      "advancedMilliseconds": 2500,
+      "canvasChanged": true,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "state": "AI",
+      "width": 390,
+      "level": 10,
+      "advancedMilliseconds": 2500,
+      "canvasChanged": true,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "state": "AI",
+      "width": 1280,
+      "level": 1,
+      "advancedMilliseconds": 2500,
+      "canvasChanged": true,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "state": "AI",
+      "width": 1280,
+      "level": 5,
+      "advancedMilliseconds": 2500,
+      "canvasChanged": true,
+      "violations": [],
+      "errors": []
+    },
+    {
+      "state": "AI",
+      "width": 1280,
+      "level": 10,
+      "advancedMilliseconds": 2500,
+      "canvasChanged": true,
+      "violations": [],
+      "errors": []
+    }
+  ]
+}

@@ -146,6 +146,31 @@ jobs:
           FW_ECOSYSTEM_ROOT: ${{ github.workspace }}/ecosystem-editor
         run: node tests/maze-editor-regression.cjs
 
+  pvp-studio-regression:
+    name: Studio map keyboard and AI regression
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check out repaired studio subject
+        uses: actions/checkout@v4
+        with:
+          repository: SemicolonXSS/Formwheel_PVP
+          ref: 243122fc16efce84dd809f6715545731b2bb40f2
+          path: ecosystem-studio/Formwheel_PVP
+          persist-credentials: false
+      - name: Install isolated browser runner
+        run: npm install --no-save --no-package-lock --ignore-scripts playwright@1 @axe-core/playwright@4
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Exercise every map position, pointer and touch editing, and AI rendering
+        env:
+          FW_ECOSYSTEM_ROOT: ${{ github.workspace }}/ecosystem-studio
+        run: node tests/pvp-map-editor-regression.cjs
+
   third-app-audit:
     name: Additional app UI and game regressions
     runs-on: ubuntu-latest
