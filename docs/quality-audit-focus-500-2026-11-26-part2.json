@@ -1,0 +1,3156 @@
+{
+  "date": "2026-11-26",
+  "totalInAudit": 586,
+  "findings": [
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 4,
+      "column": 19,
+      "target": "#board > button:nth-child(76)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "4행 19열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-076"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 5,
+      "column": 1,
+      "target": "#board > button:nth-child(77)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "5행 1열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-077"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 5,
+      "column": 2,
+      "target": "#board > button:nth-child(78)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "5행 2열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-078"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 5,
+      "column": 3,
+      "target": "#board > button:nth-child(79)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "5행 3열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-079"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 5,
+      "column": 4,
+      "target": "#board > button:nth-child(80)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "5행 4열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-080"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 5,
+      "column": 5,
+      "target": "#board > button:nth-child(81)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "5행 5열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-081"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 5,
+      "column": 6,
+      "target": "#board > button:nth-child(82)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "5행 6열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-082"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 5,
+      "column": 7,
+      "target": "#board > button:nth-child(83)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "5행 7열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-083"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 5,
+      "column": 8,
+      "target": "#board > button:nth-child(84)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "5행 8열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-084"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 5,
+      "column": 9,
+      "target": "#board > button:nth-child(85)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "5행 9열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-085"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 5,
+      "column": 10,
+      "target": "#board > button:nth-child(86)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "5행 10열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-086"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 5,
+      "column": 11,
+      "target": "#board > button:nth-child(87)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "5행 11열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-087"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 5,
+      "column": 12,
+      "target": "#board > button:nth-child(88)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "5행 12열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-088"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 5,
+      "column": 13,
+      "target": "#board > button:nth-child(89)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "5행 13열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-089"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 5,
+      "column": 14,
+      "target": "#board > button:nth-child(90)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "5행 14열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-090"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 5,
+      "column": 15,
+      "target": "#board > button:nth-child(91)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "5행 15열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-091"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 5,
+      "column": 16,
+      "target": "#board > button:nth-child(92)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "5행 16열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-092"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 5,
+      "column": 17,
+      "target": "#board > button:nth-child(93)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "5행 17열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-093"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 5,
+      "column": 18,
+      "target": "#board > button:nth-child(94)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "5행 18열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-094"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 5,
+      "column": 19,
+      "target": "#board > button:nth-child(95)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "5행 19열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-095"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 6,
+      "column": 1,
+      "target": "#board > button:nth-child(96)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "6행 1열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-096"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 6,
+      "column": 2,
+      "target": "#board > button:nth-child(97)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "6행 2열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-097"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 6,
+      "column": 3,
+      "target": "#board > button:nth-child(98)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "6행 3열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-098"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 6,
+      "column": 4,
+      "target": "#board > button:nth-child(99)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "6행 4열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-099"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 6,
+      "column": 5,
+      "target": "#board > button:nth-child(100)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "6행 5열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-100"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 6,
+      "column": 6,
+      "target": "#board > button:nth-child(101)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "6행 6열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-101"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 6,
+      "column": 7,
+      "target": "#board > button:nth-child(102)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "6행 7열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-102"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 6,
+      "column": 8,
+      "target": "#board > button:nth-child(103)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "6행 8열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-103"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 6,
+      "column": 9,
+      "target": "#board > button:nth-child(104)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "6행 9열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-104"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 6,
+      "column": 10,
+      "target": "#board > button:nth-child(105)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "6행 10열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-105"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 6,
+      "column": 11,
+      "target": "#board > button:nth-child(106)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "6행 11열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-106"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 6,
+      "column": 12,
+      "target": "#board > button:nth-child(107)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "6행 12열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-107"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 6,
+      "column": 13,
+      "target": "#board > button:nth-child(108)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "6행 13열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-108"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 6,
+      "column": 14,
+      "target": "#board > button:nth-child(109)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "6행 14열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-109"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 6,
+      "column": 15,
+      "target": "#board > button:nth-child(110)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "6행 15열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-110"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 6,
+      "column": 16,
+      "target": "#board > button:nth-child(111)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "6행 16열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-111"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 6,
+      "column": 17,
+      "target": "#board > button:nth-child(112)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "6행 17열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-112"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 6,
+      "column": 18,
+      "target": "#board > button:nth-child(113)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "6행 18열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-113"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 6,
+      "column": 19,
+      "target": "#board > button:nth-child(114)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "6행 19열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-114"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 7,
+      "column": 1,
+      "target": "#board > button:nth-child(115)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "7행 1열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-115"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 7,
+      "column": 2,
+      "target": "#board > button:nth-child(116)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "7행 2열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-116"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 7,
+      "column": 3,
+      "target": "#board > button:nth-child(117)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "7행 3열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-117"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 7,
+      "column": 4,
+      "target": "#board > button:nth-child(118)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "7행 4열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-118"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 7,
+      "column": 5,
+      "target": "#board > button:nth-child(119)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "7행 5열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-119"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 7,
+      "column": 6,
+      "target": "#board > button:nth-child(120)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "7행 6열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-120"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 7,
+      "column": 7,
+      "target": "#board > button:nth-child(121)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "7행 7열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-121"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 7,
+      "column": 8,
+      "target": "#board > button:nth-child(122)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "7행 8열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-122"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 7,
+      "column": 9,
+      "target": "#board > button:nth-child(123)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "7행 9열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-123"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 7,
+      "column": 10,
+      "target": "#board > button:nth-child(124)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "7행 10열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-124"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 7,
+      "column": 11,
+      "target": "#board > button:nth-child(125)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "7행 11열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-125"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 7,
+      "column": 12,
+      "target": "#board > button:nth-child(126)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "7행 12열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-126"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 7,
+      "column": 13,
+      "target": "#board > button:nth-child(127)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "7행 13열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-127"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 7,
+      "column": 14,
+      "target": "#board > button:nth-child(128)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "7행 14열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-128"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 7,
+      "column": 15,
+      "target": "#board > button:nth-child(129)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "7행 15열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-129"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 7,
+      "column": 16,
+      "target": "#board > button:nth-child(130)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "7행 16열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-130"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 7,
+      "column": 17,
+      "target": "#board > button:nth-child(131)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "7행 17열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-131"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 7,
+      "column": 18,
+      "target": "#board > button:nth-child(132)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "7행 18열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-132"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 7,
+      "column": 19,
+      "target": "#board > button:nth-child(133)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "7행 19열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-133"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 8,
+      "column": 1,
+      "target": "#board > button:nth-child(134)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "8행 1열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-134"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 8,
+      "column": 2,
+      "target": "#board > button:nth-child(135)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "8행 2열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-135"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 8,
+      "column": 3,
+      "target": "#board > button:nth-child(136)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "8행 3열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-136"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 8,
+      "column": 4,
+      "target": "#board > button:nth-child(137)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "8행 4열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-137"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 8,
+      "column": 5,
+      "target": "#board > button:nth-child(138)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "8행 5열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-138"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 8,
+      "column": 6,
+      "target": "#board > button:nth-child(139)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "8행 6열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-139"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 8,
+      "column": 7,
+      "target": "#board > button:nth-child(140)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "8행 7열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-140"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 8,
+      "column": 8,
+      "target": "#board > button:nth-child(141)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "8행 8열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-141"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 8,
+      "column": 9,
+      "target": "#board > button:nth-child(142)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "8행 9열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-142"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 8,
+      "column": 10,
+      "target": "#board > button:nth-child(143)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "8행 10열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-143"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 8,
+      "column": 11,
+      "target": "#board > button:nth-child(144)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "8행 11열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-144"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 8,
+      "column": 12,
+      "target": "#board > button:nth-child(145)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "8행 12열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-145"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 8,
+      "column": 13,
+      "target": "#board > button:nth-child(146)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "8행 13열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-146"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 8,
+      "column": 14,
+      "target": "#board > button:nth-child(147)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "8행 14열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-147"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 8,
+      "column": 15,
+      "target": "#board > button:nth-child(148)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "8행 15열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-148"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 8,
+      "column": 16,
+      "target": "#board > button:nth-child(149)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "8행 16열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-149"
+    },
+    {
+      "repo": "Formwheel",
+      "file": "board/index.html",
+      "game": "go19",
+      "row": 8,
+      "column": 17,
+      "target": "#board > button:nth-child(150)",
+      "rule": "focus-indicator-contrast",
+      "rootCause": "low-contrast-outset-wooden-board-focus",
+      "label": "8행 17열 빈 점",
+      "before": {
+        "outlineColor": [
+          100,
+          134,
+          249
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 1.566551429142267,
+        "outlineWidth": 3,
+        "outlineOffset": 2
+      },
+      "after": {
+        "outlineColor": [
+          16,
+          24,
+          40
+        ],
+        "background": [
+          212,
+          172,
+          104
+        ],
+        "contrast": 8.366517398046161,
+        "outlineWidth": 3,
+        "outlineOffset": -3
+      },
+      "id": "FWFOCUS500-150"
+    }
+  ]
+}

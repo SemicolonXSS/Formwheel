@@ -1,0 +1,88 @@
+{
+  "date": "2026-11-26",
+  "repository": "SemicolonXSS/Formwheel",
+  "baselineCommit": "e29b30c280f1ec9ce6b75d3724e71f242cc904b6",
+  "requestedMinimum": 500,
+  "total": 586,
+  "rootCauseCount": 1,
+  "categories": {
+    "focus-indicator-contrast": 586
+  },
+  "games": {
+    "go19": 361,
+    "omok": 225
+  },
+  "method": {
+    "unit": "One distinct game/row/column target with an observed keyboard-focus indicator contrast defect. This is one CSS root cause affecting 586 targets, not 586 independent implementation defects.",
+    "sameCoordinatesAsEarlierAudit": true,
+    "previousAuditRelationship": "These are separate focus defects at existing board coordinates. Previously fixed target-size problems are not re-counted; this is not a claim of 586 new physical coordinates.",
+    "deduplication": "Repeated sizes, viewports and sampled focus checks are counted once per game/coordinate/rule.",
+    "customCheck": "Rendered author-provided outline versus the actual opaque wooden board fill, using WCAG relative luminance and a 3:1 non-text contrast threshold. This is not an axe-reported finding.",
+    "exclusions": "Go 9/13 subsets, duplicate viewport checks, 50 passing forest/echo exploratory theme states, tests and CI changes are not additional findings."
+  },
+  "repair": {
+    "file": "board/board.css",
+    "description": "Scope an opaque dark focus ring to Go/Gomoku buttons, place it inside the target and keep it above neighboring content.",
+    "outlineColor": "#101828",
+    "width": 3,
+    "offset": -3,
+    "otherBoardTypes": "Existing indicators retained."
+  },
+  "before": {
+    "nativeTabTargets": 586,
+    "contrastByGame": {
+      "go19": 1.566551429142267,
+      "omok": 1.62415912266981
+    },
+    "outlineColor": [
+      100,
+      134,
+      249
+    ],
+    "outlineOffset": 2
+  },
+  "findingFiles": [
+    "quality-audit-focus-500-2026-11-26-part1.json",
+    "quality-audit-focus-500-2026-11-26-part2.json",
+    "quality-audit-focus-500-2026-11-26-part3.json",
+    "quality-audit-focus-500-2026-11-26-part4.json",
+    "quality-audit-focus-500-2026-11-26-part5.json",
+    "quality-audit-focus-500-2026-11-26-part6.json",
+    "quality-audit-focus-500-2026-11-26-part7.json",
+    "quality-audit-focus-500-2026-11-26-part8.json"
+  ],
+  "validation": {
+    "runner": "Playwright 1.65.1, Chromium 159.0.8154.6, axe-core 4.14.0",
+    "viewports": [
+      320,
+      390,
+      768,
+      900,
+      1280
+    ],
+    "variants": [
+      "go9",
+      "go13",
+      "go19",
+      "omok"
+    ],
+    "layouts": 20,
+    "axeChecks": 20,
+    "focusedTargetMeasurements": 640,
+    "fullNativeTabTraversalTargets": 586,
+    "additionalSampleMeasurements": 54,
+    "axeViolationsAfter": 0,
+    "pageErrorsAfter": 0,
+    "minimumContrast": 8.366517398046161,
+    "minimumTarget": 28,
+    "checks": "Actual focus-visible state, complete inset outline geometry, native Tab sequence, unchanged empty boards and viewport width. Existing source/catalog/55-page skip navigation and 11 Node test files passed.",
+    "network": "Local production assets only; external HTTP/WebSockets blocked and service workers disabled. No account or database writes.",
+    "ci": "Added to the existing Dense board touch and keyboard regression job. New PR CI pending at report creation.",
+    "verificationFile": "quality-audit-focus-500-2026-11-26-verification.json"
+  },
+  "limits": [
+    "The detector intentionally handles only the current opaque, solid board fills and fails on unsupported patterned/translucent fills.",
+    "Initial empty boards and the described focus states were checked; this does not cover all games or all gameplay states.",
+    "Computed contrast and geometry plus visual review do not replace real-device or screen-reader usability testing."
+  ]
+}
