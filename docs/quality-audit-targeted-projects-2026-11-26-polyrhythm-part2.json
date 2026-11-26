@@ -1,0 +1,2182 @@
+{
+  "date": "2026-11-26",
+  "project": "polyrhythm",
+  "count": 75,
+  "findings": [
+    {
+      "id": "poly-runtime-cue-m02-n038",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 1,
+      "note": 37,
+      "before": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 37,
+        "kind": "normal",
+        "targetAt": 92.98318530717953,
+        "cueAt": 82.1,
+        "difference": 10.88318530717953
+      },
+      "after": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 37,
+        "kind": "normal",
+        "targetAt": 92.98318530717953,
+        "cueAt": 92.98318530717953,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m02-n039",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 1,
+      "note": 38,
+      "before": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 38,
+        "kind": "normal",
+        "targetAt": 93.73318530717953,
+        "cueAt": 83.05,
+        "difference": 10.683185307179528
+      },
+      "after": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 38,
+        "kind": "normal",
+        "targetAt": 93.73318530717953,
+        "cueAt": 93.73318530717953,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m02-n043",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 1,
+      "note": 42,
+      "before": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 42,
+        "kind": "normal",
+        "targetAt": 95.27500000000003,
+        "cueAt": 92.675,
+        "difference": 2.600000000000037
+      },
+      "after": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 42,
+        "kind": "normal",
+        "targetAt": 95.27500000000003,
+        "cueAt": 95.27500000000003,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m02-n044",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 1,
+      "note": 43,
+      "before": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 43,
+        "kind": "normal",
+        "targetAt": 96.02500000000003,
+        "cueAt": 93.625,
+        "difference": 2.400000000000034
+      },
+      "after": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 43,
+        "kind": "normal",
+        "targetAt": 96.02500000000003,
+        "cueAt": 96.02500000000003,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m02-n046",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 1,
+      "note": 45,
+      "before": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 45,
+        "kind": "normal",
+        "targetAt": 96.92500000000003,
+        "cueAt": 95.525,
+        "difference": 1.40000000000002
+      },
+      "after": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 45,
+        "kind": "normal",
+        "targetAt": 96.92500000000003,
+        "cueAt": 96.92500000000003,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m02-n047",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 1,
+      "note": 46,
+      "before": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 46,
+        "kind": "normal",
+        "targetAt": 97.67500000000001,
+        "cueAt": 96.475,
+        "difference": 1.200000000000017
+      },
+      "after": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 46,
+        "kind": "normal",
+        "targetAt": 97.67500000000001,
+        "cueAt": 97.67500000000001,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m02-n048",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 1,
+      "note": 47,
+      "before": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 47,
+        "kind": "normal",
+        "targetAt": 98.42500000000001,
+        "cueAt": 97.425,
+        "difference": 1.0000000000000142
+      },
+      "after": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 47,
+        "kind": "normal",
+        "targetAt": 98.42500000000001,
+        "cueAt": 98.42500000000001,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m02-n049",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 1,
+      "note": 48,
+      "before": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 48,
+        "kind": "forward",
+        "targetAt": 105.60000000000002,
+        "cueAt": 104.2,
+        "difference": 1.40000000000002
+      },
+      "after": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 48,
+        "kind": "forward",
+        "targetAt": 105.60000000000002,
+        "cueAt": 105.60000000000002,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m02-n051",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 1,
+      "note": 50,
+      "before": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 50,
+        "kind": "normal",
+        "targetAt": 108.73318530717964,
+        "cueAt": 108.35,
+        "difference": 0.3831853071796445
+      },
+      "after": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 50,
+        "kind": "normal",
+        "targetAt": 108.73318530717964,
+        "cueAt": 108.73318530717964,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m02-n050",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 1,
+      "note": 49,
+      "before": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 49,
+        "kind": "hold",
+        "targetAt": 111.03318530717962,
+        "cueAt": 106.05,
+        "difference": 4.983185307179625
+      },
+      "after": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 49,
+        "kind": "hold",
+        "targetAt": 111.03318530717962,
+        "cueAt": 111.03318530717962,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m02-n053",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 1,
+      "note": 52,
+      "before": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 52,
+        "kind": "normal",
+        "targetAt": 113.33318530717962,
+        "cueAt": 111.3,
+        "difference": 2.0331853071796218
+      },
+      "after": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 52,
+        "kind": "normal",
+        "targetAt": 113.33318530717962,
+        "cueAt": 113.33318530717962,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m02-n052",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 1,
+      "note": 51,
+      "before": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 51,
+        "kind": "normal",
+        "targetAt": 114.26637061435922,
+        "cueAt": 109.3,
+        "difference": 4.966370614359221
+      },
+      "after": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 51,
+        "kind": "normal",
+        "targetAt": 114.26637061435922,
+        "cueAt": 114.26637061435922,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m02-n059",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 1,
+      "note": 58,
+      "before": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 58,
+        "kind": "hold",
+        "targetAt": 124.74137061435916,
+        "cueAt": 128.275,
+        "difference": 3.5336293856408503
+      },
+      "after": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 58,
+        "kind": "hold",
+        "targetAt": 124.74137061435916,
+        "cueAt": 124.74137061435916,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m02-n058",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 1,
+      "note": 57,
+      "before": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 57,
+        "kind": "normal",
+        "targetAt": 125.55818530717957,
+        "cueAt": 121.175,
+        "difference": 4.383185307179573
+      },
+      "after": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 57,
+        "kind": "normal",
+        "targetAt": 125.55818530717957,
+        "cueAt": 125.55818530717957,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m02-n060",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 1,
+      "note": 59,
+      "before": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 59,
+        "kind": "normal",
+        "targetAt": 128.72455592153872,
+        "cueAt": 130.575,
+        "difference": 1.8504440784612655
+      },
+      "after": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 59,
+        "kind": "normal",
+        "targetAt": 128.72455592153872,
+        "cueAt": 128.72455592153872,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m02-n061",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 1,
+      "note": 60,
+      "before": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 60,
+        "kind": "forward",
+        "targetAt": 133.3499999999999,
+        "cueAt": 131.75,
+        "difference": 1.599999999999909
+      },
+      "after": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 60,
+        "kind": "forward",
+        "targetAt": 133.3499999999999,
+        "cueAt": 133.3499999999999,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m02-n063",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 1,
+      "note": 62,
+      "before": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 62,
+        "kind": "normal",
+        "targetAt": 137.13318530717953,
+        "cueAt": 133.65,
+        "difference": 3.483185307179525
+      },
+      "after": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 62,
+        "kind": "normal",
+        "targetAt": 137.13318530717953,
+        "cueAt": 137.13318530717953,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m02-n062",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 1,
+      "note": 61,
+      "before": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 61,
+        "kind": "normal",
+        "targetAt": 138.8831853071795,
+        "cueAt": 132.7,
+        "difference": 6.183185307179514
+      },
+      "after": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 61,
+        "kind": "normal",
+        "targetAt": 138.8831853071795,
+        "cueAt": 138.8831853071795,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m02-n067",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 1,
+      "note": 66,
+      "before": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 66,
+        "kind": "normal",
+        "targetAt": 143.80818530717963,
+        "cueAt": 142.575,
+        "difference": 1.2331853071796388
+      },
+      "after": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 66,
+        "kind": "normal",
+        "targetAt": 143.80818530717963,
+        "cueAt": 143.80818530717963,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m02-n066",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 1,
+      "note": 65,
+      "before": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 65,
+        "kind": "normal",
+        "targetAt": 144.58318530717963,
+        "cueAt": 141.4,
+        "difference": 3.1831853071796274
+      },
+      "after": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 65,
+        "kind": "normal",
+        "targetAt": 144.58318530717963,
+        "cueAt": 144.58318530717963,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m02-n064",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 1,
+      "note": 63,
+      "before": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 63,
+        "kind": "normal",
+        "targetAt": 145.31681469282057,
+        "cueAt": 137.4,
+        "difference": 7.916814692820566
+      },
+      "after": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 63,
+        "kind": "normal",
+        "targetAt": 145.31681469282057,
+        "cueAt": 145.31681469282057,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m02-n068",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 1,
+      "note": 67,
+      "before": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 67,
+        "kind": "hold",
+        "targetAt": 152.47499999999985,
+        "cueAt": 149.675,
+        "difference": 2.799999999999841
+      },
+      "after": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 67,
+        "kind": "hold",
+        "targetAt": 152.47499999999985,
+        "cueAt": 152.47499999999985,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m02-n069",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 1,
+      "note": 68,
+      "before": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 68,
+        "kind": "normal",
+        "targetAt": 154.77499999999984,
+        "cueAt": 151.975,
+        "difference": 2.799999999999841
+      },
+      "after": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 68,
+        "kind": "normal",
+        "targetAt": 154.77499999999984,
+        "cueAt": 154.77499999999984,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m02-n070",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 1,
+      "note": 69,
+      "before": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 69,
+        "kind": "normal",
+        "targetAt": 155.57499999999982,
+        "cueAt": 152.925,
+        "difference": 2.6499999999998067
+      },
+      "after": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 69,
+        "kind": "normal",
+        "targetAt": 155.57499999999982,
+        "cueAt": 155.57499999999982,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m02-n071",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 1,
+      "note": 70,
+      "before": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 70,
+        "kind": "normal",
+        "targetAt": 156.37499999999977,
+        "cueAt": 153.875,
+        "difference": 2.4999999999997726
+      },
+      "after": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 70,
+        "kind": "normal",
+        "targetAt": 156.37499999999977,
+        "cueAt": 156.37499999999977,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m02-n072",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 1,
+      "note": 71,
+      "before": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 71,
+        "kind": "normal",
+        "targetAt": 157.22499999999985,
+        "cueAt": 154.825,
+        "difference": 2.3999999999998636
+      },
+      "after": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 71,
+        "kind": "normal",
+        "targetAt": 157.22499999999985,
+        "cueAt": 157.22499999999985,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m02-n073",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 1,
+      "note": 72,
+      "before": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 72,
+        "kind": "forward",
+        "targetAt": 164.39999999999984,
+        "cueAt": 161.6,
+        "difference": 2.799999999999841
+      },
+      "after": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 72,
+        "kind": "forward",
+        "targetAt": 164.39999999999984,
+        "cueAt": 164.39999999999984,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m02-n076",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 1,
+      "note": 75,
+      "before": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 75,
+        "kind": "normal",
+        "targetAt": 168.4331853071794,
+        "cueAt": 164.45,
+        "difference": 3.9831853071794114
+      },
+      "after": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 75,
+        "kind": "normal",
+        "targetAt": 168.4331853071794,
+        "cueAt": 168.4331853071794,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m02-n075",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 1,
+      "note": 74,
+      "before": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 74,
+        "kind": "normal",
+        "targetAt": 169.1831853071794,
+        "cueAt": 163.5,
+        "difference": 5.6831853071794
+      },
+      "after": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 74,
+        "kind": "normal",
+        "targetAt": 169.1831853071794,
+        "cueAt": 169.1831853071794,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m02-n074",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 1,
+      "note": 73,
+      "before": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 73,
+        "kind": "normal",
+        "targetAt": 169.9331853071794,
+        "cueAt": 162.55,
+        "difference": 7.383185307179389
+      },
+      "after": {
+        "map": 1,
+        "name": "엇박자",
+        "note": 73,
+        "kind": "normal",
+        "targetAt": 169.9331853071794,
+        "cueAt": 169.9331853071794,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n006",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 5,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 5,
+        "kind": "normal",
+        "targetAt": 14.19999999999999,
+        "cueAt": 11.4,
+        "difference": 2.79999999999999
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 5,
+        "kind": "normal",
+        "targetAt": 14.19999999999999,
+        "cueAt": 14.19999999999999,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n007",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 6,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 6,
+        "kind": "normal",
+        "targetAt": 14.899999999999997,
+        "cueAt": 14.1,
+        "difference": 0.7999999999999972
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 6,
+        "kind": "normal",
+        "targetAt": 14.899999999999997,
+        "cueAt": 14.899999999999997,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n008",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 7,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 7,
+        "kind": "normal",
+        "targetAt": 15.649999999999999,
+        "cueAt": 15.05,
+        "difference": 0.5999999999999979
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 7,
+        "kind": "normal",
+        "targetAt": 15.649999999999999,
+        "cueAt": 15.649999999999999,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n009",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 8,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 8,
+        "kind": "reverse",
+        "targetAt": 16.4,
+        "cueAt": 16,
+        "difference": 0.3999999999999986
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 8,
+        "kind": "reverse",
+        "targetAt": 16.4,
+        "cueAt": 16.4,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n012",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 11,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 11,
+        "kind": "normal",
+        "targetAt": 19.88318530717958,
+        "cueAt": 19.2,
+        "difference": 0.6831853071795813
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 11,
+        "kind": "normal",
+        "targetAt": 19.88318530717958,
+        "cueAt": 19.88318530717958,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n011",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 10,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 10,
+        "kind": "normal",
+        "targetAt": 20.833185307179583,
+        "cueAt": 18.25,
+        "difference": 2.5831853071795834
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 10,
+        "kind": "normal",
+        "targetAt": 20.833185307179583,
+        "cueAt": 20.833185307179583,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n010",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 9,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 9,
+        "kind": "normal",
+        "targetAt": 21.933185307179585,
+        "cueAt": 16.95,
+        "difference": 4.9831853071795855
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 9,
+        "kind": "normal",
+        "targetAt": 21.933185307179585,
+        "cueAt": 21.933185307179585,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n016",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 15,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 15,
+        "kind": "normal",
+        "targetAt": 27.16637061435916,
+        "cueAt": 29.8,
+        "difference": 2.633629385640841
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 15,
+        "kind": "normal",
+        "targetAt": 27.16637061435916,
+        "cueAt": 27.16637061435916,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n014",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 13,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 13,
+        "kind": "hold",
+        "targetAt": 29.416370614359188,
+        "cueAt": 26.55,
+        "difference": 2.8663706143591874
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 13,
+        "kind": "hold",
+        "targetAt": 29.416370614359188,
+        "cueAt": 29.416370614359188,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n015",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 14,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 14,
+        "kind": "normal",
+        "targetAt": 31.51637061435917,
+        "cueAt": 28.85,
+        "difference": 2.6663706143591703
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 14,
+        "kind": "normal",
+        "targetAt": 31.51637061435917,
+        "cueAt": 31.51637061435917,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n017",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 16,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 16,
+        "kind": "reverse",
+        "targetAt": 32.316370614359194,
+        "cueAt": 31.1,
+        "difference": 1.2163706143591924
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 16,
+        "kind": "reverse",
+        "targetAt": 32.316370614359194,
+        "cueAt": 32.316370614359194,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n020",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 19,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 19,
+        "kind": "normal",
+        "targetAt": 37.14911184307754,
+        "cueAt": 38.85,
+        "difference": 1.7008881569224599
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 19,
+        "kind": "normal",
+        "targetAt": 37.14911184307754,
+        "cueAt": 37.14911184307754,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n018",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 17,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 17,
+        "kind": "normal",
+        "targetAt": 37.86592653589796,
+        "cueAt": 32.05,
+        "difference": 5.815926535897965
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 17,
+        "kind": "normal",
+        "targetAt": 37.86592653589796,
+        "cueAt": 37.86592653589796,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n019",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 18,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 18,
+        "kind": "normal",
+        "targetAt": 40.34911184307756,
+        "cueAt": 36.85,
+        "difference": 3.499111843077557
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 18,
+        "kind": "normal",
+        "targetAt": 40.34911184307756,
+        "cueAt": 40.34911184307756,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n021",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 20,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 20,
+        "kind": "normal",
+        "targetAt": 41.20000000000002,
+        "cueAt": 39.8,
+        "difference": 1.40000000000002
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 20,
+        "kind": "normal",
+        "targetAt": 41.20000000000002,
+        "cueAt": 41.20000000000002,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n022",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 21,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 21,
+        "kind": "normal",
+        "targetAt": 41.95000000000002,
+        "cueAt": 40.75,
+        "difference": 1.200000000000017
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 21,
+        "kind": "normal",
+        "targetAt": 41.95000000000002,
+        "cueAt": 41.95000000000002,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n023",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 22,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 22,
+        "kind": "hold",
+        "targetAt": 49.000000000000014,
+        "cueAt": 48.2,
+        "difference": 0.8000000000000114
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 22,
+        "kind": "hold",
+        "targetAt": 49.000000000000014,
+        "cueAt": 49.000000000000014,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n024",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 23,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 23,
+        "kind": "normal",
+        "targetAt": 51.30000000000001,
+        "cueAt": 50.5,
+        "difference": 0.8000000000000114
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 23,
+        "kind": "normal",
+        "targetAt": 51.30000000000001,
+        "cueAt": 51.30000000000001,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n025",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 24,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 24,
+        "kind": "forward",
+        "targetAt": 52.05000000000001,
+        "cueAt": 51.45,
+        "difference": 0.6000000000000085
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 24,
+        "kind": "forward",
+        "targetAt": 52.05000000000001,
+        "cueAt": 52.05000000000001,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n028",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 27,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 27,
+        "kind": "normal",
+        "targetAt": 56.01637061435919,
+        "cueAt": 60.25,
+        "difference": 4.2336293856408105
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 27,
+        "kind": "normal",
+        "targetAt": 56.01637061435919,
+        "cueAt": 56.01637061435919,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n027",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 26,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 26,
+        "kind": "normal",
+        "targetAt": 56.833185307179605,
+        "cueAt": 53.35,
+        "difference": 3.4831853071796033
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 26,
+        "kind": "normal",
+        "targetAt": 56.833185307179605,
+        "cueAt": 56.833185307179605,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n026",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 25,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 25,
+        "kind": "normal",
+        "targetAt": 57.583185307179605,
+        "cueAt": 52.4,
+        "difference": 5.183185307179606
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 25,
+        "kind": "normal",
+        "targetAt": 57.583185307179605,
+        "cueAt": 57.583185307179605,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n036",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 35,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 35,
+        "kind": "normal",
+        "targetAt": 75.9331853071796,
+        "cueAt": 75.35,
+        "difference": 0.5831853071796047
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 35,
+        "kind": "normal",
+        "targetAt": 75.9331853071796,
+        "cueAt": 75.9331853071796,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n035",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 34,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 34,
+        "kind": "normal",
+        "targetAt": 76.88318530717959,
+        "cueAt": 74.4,
+        "difference": 2.483185307179582
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 34,
+        "kind": "normal",
+        "targetAt": 76.88318530717959,
+        "cueAt": 76.88318530717959,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n034",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 33,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 33,
+        "kind": "normal",
+        "targetAt": 77.83318530717958,
+        "cueAt": 73.45,
+        "difference": 4.383185307179573
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 33,
+        "kind": "normal",
+        "targetAt": 77.83318530717958,
+        "cueAt": 77.83318530717958,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n037",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 36,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 36,
+        "kind": "forward",
+        "targetAt": 84.85000000000004,
+        "cueAt": 82.25,
+        "difference": 2.600000000000037
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 36,
+        "kind": "forward",
+        "targetAt": 84.85000000000004,
+        "cueAt": 84.85000000000004,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n039",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 38,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 38,
+        "kind": "normal",
+        "targetAt": 88.74999999999996,
+        "cueAt": 84.15,
+        "difference": 4.599999999999952
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 38,
+        "kind": "normal",
+        "targetAt": 88.74999999999996,
+        "cueAt": 88.74999999999996,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n040",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 39,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 39,
+        "kind": "normal",
+        "targetAt": 89.49999999999994,
+        "cueAt": 85.1,
+        "difference": 4.399999999999949
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 39,
+        "kind": "normal",
+        "targetAt": 89.49999999999994,
+        "cueAt": 89.49999999999994,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n043",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 42,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 42,
+        "kind": "normal",
+        "targetAt": 90.35000000000004,
+        "cueAt": 87.95,
+        "difference": 2.400000000000034
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 42,
+        "kind": "normal",
+        "targetAt": 90.35000000000004,
+        "cueAt": 90.35000000000004,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n038",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 37,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 37,
+        "kind": "normal",
+        "targetAt": 94.28318530717954,
+        "cueAt": 83.2,
+        "difference": 11.083185307179534
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 37,
+        "kind": "normal",
+        "targetAt": 94.28318530717954,
+        "cueAt": 94.28318530717954,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n044",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 43,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 43,
+        "kind": "normal",
+        "targetAt": 95.05,
+        "cueAt": 94.85,
+        "difference": 0.20000000000000284
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 43,
+        "kind": "normal",
+        "targetAt": 95.05,
+        "cueAt": 95.05,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n050",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 49,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 49,
+        "kind": "hold",
+        "targetAt": 105.14955592153868,
+        "cueAt": 108.1,
+        "difference": 2.9504440784613166
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 49,
+        "kind": "hold",
+        "targetAt": 105.14955592153868,
+        "cueAt": 105.14955592153868,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n052",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 51,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 51,
+        "kind": "normal",
+        "targetAt": 106.69955592153875,
+        "cueAt": 111.35,
+        "difference": 4.650444078461248
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 51,
+        "kind": "normal",
+        "targetAt": 106.69955592153875,
+        "cueAt": 106.69955592153875,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n051",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 50,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 50,
+        "kind": "normal",
+        "targetAt": 107.64955592153873,
+        "cueAt": 110.4,
+        "difference": 2.750444078461271
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 50,
+        "kind": "normal",
+        "targetAt": 107.64955592153873,
+        "cueAt": 107.64955592153873,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n053",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 52,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 52,
+        "kind": "normal",
+        "targetAt": 114.70000000000003,
+        "cueAt": 112.3,
+        "difference": 2.400000000000034
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 52,
+        "kind": "normal",
+        "targetAt": 114.70000000000003,
+        "cueAt": 114.70000000000003,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n054",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 53,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 53,
+        "kind": "normal",
+        "targetAt": 115.45000000000003,
+        "cueAt": 113.25,
+        "difference": 2.2000000000000313
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 53,
+        "kind": "normal",
+        "targetAt": 115.45000000000003,
+        "cueAt": 115.45000000000003,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n055",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 54,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 54,
+        "kind": "normal",
+        "targetAt": 122.55000000000004,
+        "cueAt": 120.15,
+        "difference": 2.400000000000034
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 54,
+        "kind": "normal",
+        "targetAt": 122.55000000000004,
+        "cueAt": 122.55000000000004,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n056",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 55,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 55,
+        "kind": "normal",
+        "targetAt": 123.30000000000003,
+        "cueAt": 121.1,
+        "difference": 2.2000000000000313
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 55,
+        "kind": "normal",
+        "targetAt": 123.30000000000003,
+        "cueAt": 123.30000000000003,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n057",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 56,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 56,
+        "kind": "reverse",
+        "targetAt": 124.05000000000003,
+        "cueAt": 122.05,
+        "difference": 2.0000000000000284
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 56,
+        "kind": "reverse",
+        "targetAt": 124.05000000000003,
+        "cueAt": 124.05000000000003,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n059",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 58,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 58,
+        "kind": "hold",
+        "targetAt": 128.76637061435935,
+        "cueAt": 130.1,
+        "difference": 1.3336293856406485
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 58,
+        "kind": "hold",
+        "targetAt": 128.76637061435935,
+        "cueAt": 128.76637061435935,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n058",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 57,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 57,
+        "kind": "normal",
+        "targetAt": 129.5831853071796,
+        "cueAt": 123,
+        "difference": 6.583185307179605
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 57,
+        "kind": "normal",
+        "targetAt": 129.5831853071796,
+        "cueAt": 129.5831853071796,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n060",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 59,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 59,
+        "kind": "normal",
+        "targetAt": 132.7495559215389,
+        "cueAt": 132.4,
+        "difference": 0.3495559215388937
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 59,
+        "kind": "normal",
+        "targetAt": 132.7495559215389,
+        "cueAt": 132.7495559215389,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n061",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 60,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 60,
+        "kind": "forward",
+        "targetAt": 133.54999999999998,
+        "cueAt": 133.35,
+        "difference": 0.19999999999998863
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 60,
+        "kind": "forward",
+        "targetAt": 133.54999999999998,
+        "cueAt": 133.54999999999998,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n064",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 63,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 63,
+        "kind": "normal",
+        "targetAt": 137.31637061435913,
+        "cueAt": 142.15,
+        "difference": 4.833629385640876
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 63,
+        "kind": "normal",
+        "targetAt": 137.31637061435913,
+        "cueAt": 137.31637061435913,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    },
+    {
+      "id": "poly-runtime-cue-m03-n063",
+      "project": "Formwheel",
+      "file": "polyrhythm.html",
+      "rule": "runtime-target-cue-alignment",
+      "rootCause": "poly-immutable-chart-cues",
+      "unit": "built-in chart note, map and note indexes are zero-based",
+      "map": 2,
+      "note": 62,
+      "before": {
+        "map": 2,
+        "name": "트리플",
+        "note": 62,
+        "kind": "normal",
+        "targetAt": 138.13318530717956,
+        "cueAt": 135.25,
+        "difference": 2.8831853071795592
+      },
+      "after": {
+        "map": 2,
+        "name": "트리플",
+        "note": 62,
+        "kind": "normal",
+        "targetAt": 138.13318530717956,
+        "cueAt": 138.13318530717956,
+        "difference": 0
+      },
+      "status": "fixed-model-dispatch-verified"
+    }
+  ]
+}

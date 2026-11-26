@@ -159,7 +159,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: SemicolonXSS/Formwheel_PVP
-          ref: 243122fc16efce84dd809f6715545731b2bb40f2
+          ref: fa5868a6544a2f23682cf2e8f283731dcb5109c7
           path: ecosystem-studio/Formwheel_PVP
           persist-credentials: false
       - name: Install isolated browser runner
@@ -170,6 +170,44 @@ jobs:
         env:
           FW_ECOSYSTEM_ROOT: ${{ github.workspace }}/ecosystem-studio
         run: node tests/pvp-map-editor-regression.cjs
+
+  targeted-project-regression:
+    name: Polyrhythm, Clicker and PVP selected-case regression
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check out effective-gain Clicker subject
+        uses: actions/checkout@v4
+        with:
+          repository: SemicolonXSS/Formwheel_Clicker
+          ref: f699da7996208056d11a7797397887d3b6acc63e
+          path: ecosystem-targeted/Formwheel_Clicker
+          persist-credentials: false
+      - name: Check out contrasting PVP subject
+        uses: actions/checkout@v4
+        with:
+          repository: SemicolonXSS/Formwheel_PVP
+          ref: fa5868a6544a2f23682cf2e8f283731dcb5109c7
+          path: ecosystem-targeted/Formwheel_PVP
+          persist-credentials: false
+      - name: Install isolated browser runner
+        run: npm install --no-save --no-package-lock --ignore-scripts playwright@1 @axe-core/playwright@4
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Exercise runtime music cues, effective gains and terrain boundaries
+        env:
+          FW_ECOSYSTEM_ROOT: ${{ github.workspace }}/ecosystem-targeted
+          FW_TARGETED_REPORT: targeted-projects-results.json
+        run: node tests/targeted-projects-regression.cjs
+      - name: Preserve verification measurements
+        uses: actions/upload-artifact@v4
+        with:
+          name: targeted-projects-results
+          path: targeted-projects-results.json
 
   third-app-audit:
     name: Additional app UI and game regressions
