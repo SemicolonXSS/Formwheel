@@ -1,4 +1,4 @@
-const CACHE = "formwheel-hub-v8-offline-recovery-20261030";
+const CACHE = "formwheel-hub-v9-game-pack-20261126";
 const APP_SHELL = [
   "/Formwheel/",
   "/Formwheel/index.html",
@@ -16,8 +16,24 @@ const APP_SHELL = [
   "/Formwheel/assets/profile.js",
   "/Formwheel/assets/formwheel-favicon.svg"
 ];
+// Fully local, single-file game pages. Optional online features may remain unavailable.
+const OFFLINE_GAMES = [
+  "/Formwheel/polyrhythm.html",
+  "/Formwheel/afterbeat.html",
+  "/Formwheel/optical-chaos.html",
+  "/Formwheel/sudoku.html",
+  "/Formwheel/holdem.html",
+  "/Formwheel/loop.html",
+  "/Formwheel/grid.html"
+];
 self.addEventListener("install", event => {
-  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(APP_SHELL)));
+  event.waitUntil(caches.open(CACHE).then(async cache => {
+    // Keep the essential offline shell reliable even when one game cannot be downloaded.
+    await cache.addAll(APP_SHELL);
+    await Promise.all(OFFLINE_GAMES.map(path =>
+      cache.add(path).catch(error => console.warn("[Formwheel offline] Could not cache", path, error))
+    ));
+  }));
   self.skipWaiting();
 });
 self.addEventListener("activate", event => {
@@ -61,6 +77,11 @@ self.addEventListener("fetch", event => {
     }).catch(async () => {
       const cache = await caches.open(CACHE).catch(() => null);
       const match = async key => cache ? cache.match(key).catch(() => undefined) : undefined;
+      // Show the offline game chooser automatically when opening the hub without a connection.
+      if (url.pathname === "/Formwheel/" || url.pathname === "/Formwheel/index.html") {
+        const offlineHome = await match("/Formwheel/offline.html");
+        if (offlineHome) return offlineHome;
+      }
       const cached = await match(request) || await match(url.pathname);
       if (cached) return cached;
       if (url.pathname === "/Formwheel/" || url.pathname === "/Formwheel/index.html") {
