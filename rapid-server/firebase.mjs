@@ -3,9 +3,21 @@ import {getAuth} from 'firebase-admin/auth';
 import {getDatabase} from 'firebase-admin/database';
 import {apply, WalletError} from './wallet.mjs';
 
-const credential=JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT || '{}');
-if (credential.project_id !== 'formwheel') throw new Error('A Formwheel Firebase service account is required');
-const app=initializeApp({credential:cert(credential),databaseURL:'https://formwheel-default-rtdb.firebaseio.com'});
+let credential;
+try {
+  credential=JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT || '{}');
+} catch {
+  throw new Error('FIREBASE_SERVICE_ACCOUNT must contain a valid service account JSON object. Secret value omitted.');
+}
+if (!credential || typeof credential !== 'object' || credential.project_id !== 'formwheel' || typeof credential.client_email !== 'string' || typeof credential.private_key !== 'string') {
+  throw new Error('A complete Formwheel Firebase service account JSON object is required. Secret value omitted.');
+}
+let app;
+try {
+  app=initializeApp({credential:cert(credential),databaseURL:'https://formwheel-default-rtdb.firebaseio.com'});
+} catch {
+  throw new Error('Firebase Admin initialization failed. Check the service account configuration. Secret value omitted.');
+}
 export const auth=getAuth(app);
 export function walletRef(uid){
   if(typeof uid !== 'string'||!uid||uid.length>128||/[.#$\[\]/\x00-\x1f\x7f]/.test(uid))throw new WalletError('올바르지 않은 계정이에요.');
