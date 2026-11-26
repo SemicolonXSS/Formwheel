@@ -1,0 +1,114 @@
+{
+  "date": "2026-11-26",
+  "requestedMinimum": 500,
+  "total": 505,
+  "logicalEditingPositions": 504,
+  "runtimeFlows": 1,
+  "rootCauseCount": 2,
+  "rootBaseline": "f7872ed722b9a1d1523e7c6d4fa61c392dd6d936",
+  "repositories": [
+    {
+      "repo": "SemicolonXSS/Formwheel_PVP",
+      "baseline": "f24430cbd566ac4ce73a595321cefb75478bd652",
+      "head": "243122fc16efce84dd809f6715545731b2bb40f2",
+      "pr": "https://github.com/SemicolonXSS/Formwheel_PVP/pull/2"
+    }
+  ],
+  "categories": {
+    "map-cell-keyboard-editability": 504,
+    "studio-ai-render-loop": 1
+  },
+  "method": {
+    "unit": "504 distinct logical positions in the actual 28x18 map model plus one independently reproduced AI runtime failure. Two root causes, not 505 independent implementation defects.",
+    "originalDOM": "The baseline editor was one unfocusable canvas, not 504 DOM controls. Position count comes from the exported production map, not invented records or arbitrary canvas pixels.",
+    "beforeEvidence": "Native pointer sample changes a corner, native keyboard probe leaves the map unchanged, and the visible editor canvas cannot receive focus. The shared missing keyboard path applies to all 504 logical positions.",
+    "afterEvidence": "Every logical position is actually traversed and painted with native keyboard input. The native export is compared with the expected full matrix after restoring unique start positions.",
+    "deduplication": "Each coordinate counts once; viewports, tools, repeated input methods and AI levels are not additional findings. Support changes are excluded.",
+    "axe": "These are custom keyboard/runtime findings. Zero after-fix axe violations are validation, not the source of the 505 count."
+  },
+  "before": {
+    "editor": {
+      "canvas": {
+        "tag": "CANVAS",
+        "tabIndex": -1,
+        "role": null,
+        "label": "타일을 클릭하거나 드래그하여 맵 편집"
+      },
+      "receivesFocus": false,
+      "logicalRows": 18,
+      "logicalColumns": 28,
+      "pointerCornerEditWorks": true,
+      "keyboardProbeChangedMap": false
+    },
+    "play": {
+      "error": "Assignment to constant variable."
+    }
+  },
+  "findingFiles": [
+    "quality-audit-map-500-2026-11-26-part1.json",
+    "quality-audit-map-500-2026-11-26-part2.json",
+    "quality-audit-map-500-2026-11-26-part3.json",
+    "quality-audit-map-500-2026-11-26-part4.json",
+    "quality-audit-map-500-2026-11-26-part5.json",
+    "quality-audit-map-500-2026-11-26-part6.json"
+  ],
+  "validation": {
+    "runner": "Playwright 1.65.1, Chromium 159.0.8154.6, axe-core 4.14.0",
+    "editorViewports": [
+      320,
+      390,
+      900,
+      1280
+    ],
+    "nativePositionsTraversedAndPainted": 504,
+    "actualExportVerified": true,
+    "studioLayouts": 10,
+    "axeChecks": 10,
+    "axeViolationsAfter": 0,
+    "pageErrorsAfter": 0,
+    "AI": {
+      "levels": [
+        1,
+        5,
+        10
+      ],
+      "viewports": [
+        390,
+        1280
+      ],
+      "millisecondsPerSample": 2500,
+      "samples": 6,
+      "renderingChanged": true
+    },
+    "checks": [
+      "504 named native grid cells and one Tab entry",
+      "Arrow/Home/End navigation with clamped edges",
+      "Space/Enter edits and retained focus",
+      "Mouse click and drag grouped into one undo",
+      "Touch tap and native touch panning without painting",
+      "Unique starts, export, save and reopen",
+      "At least 28px targets and contained document width"
+    ],
+    "touchPanning": [
+      {
+        "width": 320,
+        "scrollLeft": 183,
+        "unchangedGrid": true
+      },
+      {
+        "width": 390,
+        "scrollLeft": 253,
+        "unchangedGrid": true
+      }
+    ],
+    "source": "Studio inline script, root 154 script blocks/files, catalog, 55-page skip navigation and 11 Node test files passed.",
+    "network": "Local production source only; external HTTP/WebSockets blocked and service workers disabled. Tests write only isolated local storage and temporary downloads.",
+    "ci": "New central job pins the exact PVP fix commit. New PR CI pending at report creation.",
+    "verificationFile": "quality-audit-map-500-2026-11-26-verification.json"
+  },
+  "limits": [
+    "Logical editing positions are distinct from DOM node counts and independent code defects.",
+    "AI samples cover 2.5 seconds at three levels, not all custom maps, tactics or long-running sessions.",
+    "Automated keyboard, rendering and axe checks do not replace real-device or screen-reader usability review."
+  ]
+}

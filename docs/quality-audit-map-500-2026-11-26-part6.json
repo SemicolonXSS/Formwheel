@@ -1,0 +1,93 @@
+{
+  "date": "2026-11-26",
+  "totalInAudit": 505,
+  "findings": [
+    {
+      "repo": "Formwheel_PVP",
+      "file": "studio.html",
+      "state": "map editor",
+      "rule": "map-cell-keyboard-editability",
+      "rootCause": "canvas-editor-has-no-keyboard-input",
+      "unit": "logical-map-position",
+      "row": 18,
+      "column": 25,
+      "beforeValue": 1,
+      "beforeComponent": "#map canvas (not focusable)",
+      "afterTarget": "#map [data-index=\"500\"]",
+      "verification": "This position was reached with native arrows and painted with Space; tile value asserted. Exported JSON checked across all 504 coordinates after restoring A/B starts.",
+      "id": "FWSTUDIO500-501"
+    },
+    {
+      "repo": "Formwheel_PVP",
+      "file": "studio.html",
+      "state": "map editor",
+      "rule": "map-cell-keyboard-editability",
+      "rootCause": "canvas-editor-has-no-keyboard-input",
+      "unit": "logical-map-position",
+      "row": 18,
+      "column": 26,
+      "beforeValue": 1,
+      "beforeComponent": "#map canvas (not focusable)",
+      "afterTarget": "#map [data-index=\"501\"]",
+      "verification": "This position was reached with native arrows and painted with Space; tile value asserted. Exported JSON checked across all 504 coordinates after restoring A/B starts.",
+      "id": "FWSTUDIO500-502"
+    },
+    {
+      "repo": "Formwheel_PVP",
+      "file": "studio.html",
+      "state": "map editor",
+      "rule": "map-cell-keyboard-editability",
+      "rootCause": "canvas-editor-has-no-keyboard-input",
+      "unit": "logical-map-position",
+      "row": 18,
+      "column": 27,
+      "beforeValue": 1,
+      "beforeComponent": "#map canvas (not focusable)",
+      "afterTarget": "#map [data-index=\"502\"]",
+      "verification": "This position was reached with native arrows and painted with Space; tile value asserted. Exported JSON checked across all 504 coordinates after restoring A/B starts.",
+      "id": "FWSTUDIO500-503"
+    },
+    {
+      "repo": "Formwheel_PVP",
+      "file": "studio.html",
+      "state": "map editor",
+      "rule": "map-cell-keyboard-editability",
+      "rootCause": "canvas-editor-has-no-keyboard-input",
+      "unit": "logical-map-position",
+      "row": 18,
+      "column": 28,
+      "beforeValue": 1,
+      "beforeComponent": "#map canvas (not focusable)",
+      "afterTarget": "#map [data-index=\"503\"]",
+      "verification": "This position was reached with native arrows and painted with Space; tile value asserted. Exported JSON checked across all 504 coordinates after restoring A/B starts.",
+      "id": "FWSTUDIO500-504"
+    },
+    {
+      "repo": "Formwheel_PVP",
+      "file": "studio.html",
+      "state": "enter AI play",
+      "rule": "studio-ai-render-loop",
+      "rootCause": "reassigned-constant-search-goal",
+      "unit": "one-runtime-flow",
+      "before": {
+        "error": "Assignment to constant variable.",
+        "stack": "TypeError: Assignment to constant variable.\n    at aiStep (studio.html:96:143)\n    at tick (studio.html:131:418)"
+      },
+      "after": {
+        "pageErrors": 0,
+        "renderingAdvances": true,
+        "levelsSampled": [
+          1,
+          5,
+          10
+        ],
+        "viewports": [
+          390,
+          1280
+        ]
+      },
+      "verification": "Native play entry and reset, then 2500ms clock advancement: no page error and changed arena image in all six samples.",
+      "id": "FWSTUDIO500-505"
+    }
+  ]
+}
