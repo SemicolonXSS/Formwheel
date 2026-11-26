@@ -1,0 +1,3913 @@
+{
+  "date": "2026-11-26",
+  "project": "pvp",
+  "count": 75,
+  "findings": [
+    {
+      "id": "pvp-cell-boundary-000",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 0,
+      "before": {
+        "index": 0,
+        "row": 1,
+        "column": 1,
+        "label": "1행 1열 · 벽",
+        "background": [
+          103,
+          117,
+          141
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 1,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 28,
+            "edgeRatio": 1.130535954432708
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-001",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 1,
+      "before": {
+        "index": 1,
+        "row": 1,
+        "column": 2,
+        "label": "1행 2열 · 벽",
+        "background": [
+          103,
+          117,
+          141
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 0,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 2,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 29,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-002",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 2,
+      "before": {
+        "index": 2,
+        "row": 1,
+        "column": 3,
+        "label": "1행 3열 · 벽",
+        "background": [
+          103,
+          117,
+          141
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 1,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 3,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 30,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-003",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 3,
+      "before": {
+        "index": 3,
+        "row": 1,
+        "column": 4,
+        "label": "1행 4열 · 벽",
+        "background": [
+          103,
+          117,
+          141
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 2,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 4,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 31,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-004",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 4,
+      "before": {
+        "index": 4,
+        "row": 1,
+        "column": 5,
+        "label": "1행 5열 · 벽",
+        "background": [
+          103,
+          117,
+          141
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 3,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 5,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 32,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-005",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 5,
+      "before": {
+        "index": 5,
+        "row": 1,
+        "column": 6,
+        "label": "1행 6열 · 벽",
+        "background": [
+          103,
+          117,
+          141
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 4,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 6,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 33,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-006",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 6,
+      "before": {
+        "index": 6,
+        "row": 1,
+        "column": 7,
+        "label": "1행 7열 · 벽",
+        "background": [
+          103,
+          117,
+          141
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 5,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 7,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 34,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-007",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 7,
+      "before": {
+        "index": 7,
+        "row": 1,
+        "column": 8,
+        "label": "1행 8열 · 벽",
+        "background": [
+          103,
+          117,
+          141
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 6,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 8,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 35,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-008",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 8,
+      "before": {
+        "index": 8,
+        "row": 1,
+        "column": 9,
+        "label": "1행 9열 · 벽",
+        "background": [
+          103,
+          117,
+          141
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 7,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 9,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 36,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-009",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 9,
+      "before": {
+        "index": 9,
+        "row": 1,
+        "column": 10,
+        "label": "1행 10열 · 벽",
+        "background": [
+          103,
+          117,
+          141
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 8,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 10,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 37,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-010",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 10,
+      "before": {
+        "index": 10,
+        "row": 1,
+        "column": 11,
+        "label": "1행 11열 · 벽",
+        "background": [
+          103,
+          117,
+          141
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 9,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 11,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 38,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-011",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 11,
+      "before": {
+        "index": 11,
+        "row": 1,
+        "column": 12,
+        "label": "1행 12열 · 벽",
+        "background": [
+          103,
+          117,
+          141
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 10,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 12,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 39,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-012",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 12,
+      "before": {
+        "index": 12,
+        "row": 1,
+        "column": 13,
+        "label": "1행 13열 · 벽",
+        "background": [
+          103,
+          117,
+          141
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 11,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 13,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 40,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-013",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 13,
+      "before": {
+        "index": 13,
+        "row": 1,
+        "column": 14,
+        "label": "1행 14열 · 벽",
+        "background": [
+          103,
+          117,
+          141
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 12,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 14,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 41,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-014",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 14,
+      "before": {
+        "index": 14,
+        "row": 1,
+        "column": 15,
+        "label": "1행 15열 · 벽",
+        "background": [
+          103,
+          117,
+          141
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 13,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 15,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 42,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-015",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 15,
+      "before": {
+        "index": 15,
+        "row": 1,
+        "column": 16,
+        "label": "1행 16열 · 벽",
+        "background": [
+          103,
+          117,
+          141
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 14,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 16,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 43,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-016",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 16,
+      "before": {
+        "index": 16,
+        "row": 1,
+        "column": 17,
+        "label": "1행 17열 · 벽",
+        "background": [
+          103,
+          117,
+          141
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 15,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 17,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 44,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-017",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 17,
+      "before": {
+        "index": 17,
+        "row": 1,
+        "column": 18,
+        "label": "1행 18열 · 벽",
+        "background": [
+          103,
+          117,
+          141
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 16,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 18,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 45,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-018",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 18,
+      "before": {
+        "index": 18,
+        "row": 1,
+        "column": 19,
+        "label": "1행 19열 · 벽",
+        "background": [
+          103,
+          117,
+          141
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 17,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 19,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 46,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-019",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 19,
+      "before": {
+        "index": 19,
+        "row": 1,
+        "column": 20,
+        "label": "1행 20열 · 벽",
+        "background": [
+          103,
+          117,
+          141
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 18,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 20,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 47,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-020",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 20,
+      "before": {
+        "index": 20,
+        "row": 1,
+        "column": 21,
+        "label": "1행 21열 · 벽",
+        "background": [
+          103,
+          117,
+          141
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 19,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 21,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 48,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-021",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 21,
+      "before": {
+        "index": 21,
+        "row": 1,
+        "column": 22,
+        "label": "1행 22열 · 벽",
+        "background": [
+          103,
+          117,
+          141
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 20,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 22,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 49,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-022",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 22,
+      "before": {
+        "index": 22,
+        "row": 1,
+        "column": 23,
+        "label": "1행 23열 · 벽",
+        "background": [
+          103,
+          117,
+          141
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 21,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 23,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 50,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-023",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 23,
+      "before": {
+        "index": 23,
+        "row": 1,
+        "column": 24,
+        "label": "1행 24열 · 벽",
+        "background": [
+          103,
+          117,
+          141
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 22,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 24,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 51,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-024",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 24,
+      "before": {
+        "index": 24,
+        "row": 1,
+        "column": 25,
+        "label": "1행 25열 · 벽",
+        "background": [
+          103,
+          117,
+          141
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 23,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 25,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 52,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-025",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 25,
+      "before": {
+        "index": 25,
+        "row": 1,
+        "column": 26,
+        "label": "1행 26열 · 벽",
+        "background": [
+          103,
+          117,
+          141
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 24,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 26,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 53,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-026",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 26,
+      "before": {
+        "index": 26,
+        "row": 1,
+        "column": 27,
+        "label": "1행 27열 · 벽",
+        "background": [
+          103,
+          117,
+          141
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 25,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 27,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 54,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-027",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 27,
+      "before": {
+        "index": 27,
+        "row": 1,
+        "column": 28,
+        "label": "1행 28열 · 벽",
+        "background": [
+          103,
+          117,
+          141
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 26,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 55,
+            "edgeRatio": 1.130535954432708
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-028",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 28,
+      "before": {
+        "index": 28,
+        "row": 2,
+        "column": 1,
+        "label": "2행 1열 · 벽",
+        "background": [
+          103,
+          117,
+          141
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 29,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 0,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 56,
+            "edgeRatio": 1.130535954432708
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-029",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 29,
+      "before": {
+        "index": 29,
+        "row": 2,
+        "column": 2,
+        "label": "2행 2열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 28,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 30,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 1,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 57,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-030",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 30,
+      "before": {
+        "index": 30,
+        "row": 2,
+        "column": 3,
+        "label": "2행 3열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 29,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 31,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 2,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-031",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 31,
+      "before": {
+        "index": 31,
+        "row": 2,
+        "column": 4,
+        "label": "2행 4열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 30,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 32,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 3,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 59,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-032",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 32,
+      "before": {
+        "index": 32,
+        "row": 2,
+        "column": 5,
+        "label": "2행 5열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 31,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 33,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 4,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 60,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-033",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 33,
+      "before": {
+        "index": 33,
+        "row": 2,
+        "column": 6,
+        "label": "2행 6열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 32,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 34,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 5,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 61,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-034",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 34,
+      "before": {
+        "index": 34,
+        "row": 2,
+        "column": 7,
+        "label": "2행 7열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 33,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 35,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 6,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 62,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-035",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 35,
+      "before": {
+        "index": 35,
+        "row": 2,
+        "column": 8,
+        "label": "2행 8열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 34,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 36,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 7,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 63,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-036",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 36,
+      "before": {
+        "index": 36,
+        "row": 2,
+        "column": 9,
+        "label": "2행 9열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 35,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 37,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 8,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 64,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-037",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 37,
+      "before": {
+        "index": 37,
+        "row": 2,
+        "column": 10,
+        "label": "2행 10열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 36,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 38,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 9,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 65,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-038",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 38,
+      "before": {
+        "index": 38,
+        "row": 2,
+        "column": 11,
+        "label": "2행 11열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 37,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 39,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 10,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 66,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-039",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 39,
+      "before": {
+        "index": 39,
+        "row": 2,
+        "column": 12,
+        "label": "2행 12열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 38,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 40,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 11,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 67,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-040",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 40,
+      "before": {
+        "index": 40,
+        "row": 2,
+        "column": 13,
+        "label": "2행 13열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 39,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 41,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 12,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 68,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-041",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 41,
+      "before": {
+        "index": 41,
+        "row": 2,
+        "column": 14,
+        "label": "2행 14열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 40,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 42,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 13,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 69,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-042",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 42,
+      "before": {
+        "index": 42,
+        "row": 2,
+        "column": 15,
+        "label": "2행 15열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 41,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 43,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 14,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 70,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-043",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 43,
+      "before": {
+        "index": 43,
+        "row": 2,
+        "column": 16,
+        "label": "2행 16열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 42,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 44,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 15,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 71,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-044",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 44,
+      "before": {
+        "index": 44,
+        "row": 2,
+        "column": 17,
+        "label": "2행 17열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 43,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 45,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 16,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 72,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-045",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 45,
+      "before": {
+        "index": 45,
+        "row": 2,
+        "column": 18,
+        "label": "2행 18열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 44,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 46,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 17,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 73,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-046",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 46,
+      "before": {
+        "index": 46,
+        "row": 2,
+        "column": 19,
+        "label": "2행 19열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 45,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 47,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 18,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 74,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-047",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 47,
+      "before": {
+        "index": 47,
+        "row": 2,
+        "column": 20,
+        "label": "2행 20열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 46,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 48,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 19,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 75,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-048",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 48,
+      "before": {
+        "index": 48,
+        "row": 2,
+        "column": 21,
+        "label": "2행 21열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 47,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 49,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 20,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 76,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-049",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 49,
+      "before": {
+        "index": 49,
+        "row": 2,
+        "column": 22,
+        "label": "2행 22열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 48,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 50,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 21,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 77,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-050",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 50,
+      "before": {
+        "index": 50,
+        "row": 2,
+        "column": 23,
+        "label": "2행 23열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 49,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 51,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 22,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 78,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-051",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 51,
+      "before": {
+        "index": 51,
+        "row": 2,
+        "column": 24,
+        "label": "2행 24열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 50,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 52,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 23,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 79,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-052",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 52,
+      "before": {
+        "index": 52,
+        "row": 2,
+        "column": 25,
+        "label": "2행 25열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 51,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 53,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 24,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 80,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-053",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 53,
+      "before": {
+        "index": 53,
+        "row": 2,
+        "column": 26,
+        "label": "2행 26열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 52,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 54,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 25,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 81,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-054",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 54,
+      "before": {
+        "index": 54,
+        "row": 2,
+        "column": 27,
+        "label": "2행 27열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 53,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 55,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 26,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 82,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-055",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 55,
+      "before": {
+        "index": 55,
+        "row": 2,
+        "column": 28,
+        "label": "2행 28열 · 벽",
+        "background": [
+          103,
+          117,
+          141
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 54,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 27,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 83,
+            "edgeRatio": 1.130535954432708
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-056",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 56,
+      "before": {
+        "index": 56,
+        "row": 3,
+        "column": 1,
+        "label": "3행 1열 · 벽",
+        "background": [
+          103,
+          117,
+          141
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 57,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 28,
+            "edgeRatio": 1.130535954432708
+          },
+          {
+            "neighbor": 84,
+            "edgeRatio": 1.130535954432708
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-057",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 57,
+      "before": {
+        "index": 57,
+        "row": 3,
+        "column": 2,
+        "label": "3행 2열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 56,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 29,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 85,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-059",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 59,
+      "before": {
+        "index": 59,
+        "row": 3,
+        "column": 4,
+        "label": "3행 4열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 60,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 31,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 87,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-060",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 60,
+      "before": {
+        "index": 60,
+        "row": 3,
+        "column": 5,
+        "label": "3행 5열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 59,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 61,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 32,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 88,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-061",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 61,
+      "before": {
+        "index": 61,
+        "row": 3,
+        "column": 6,
+        "label": "3행 6열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 60,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 62,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 33,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 89,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-062",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 62,
+      "before": {
+        "index": 62,
+        "row": 3,
+        "column": 7,
+        "label": "3행 7열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 61,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 63,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 34,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 90,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-063",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 63,
+      "before": {
+        "index": 63,
+        "row": 3,
+        "column": 8,
+        "label": "3행 8열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 62,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 64,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 35,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 91,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-064",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 64,
+      "before": {
+        "index": 64,
+        "row": 3,
+        "column": 9,
+        "label": "3행 9열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 63,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 65,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 36,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 92,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-065",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 65,
+      "before": {
+        "index": 65,
+        "row": 3,
+        "column": 10,
+        "label": "3행 10열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 64,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 66,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 37,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 93,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-066",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 66,
+      "before": {
+        "index": 66,
+        "row": 3,
+        "column": 11,
+        "label": "3행 11열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 65,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 67,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 38,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 94,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-067",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 67,
+      "before": {
+        "index": 67,
+        "row": 3,
+        "column": 12,
+        "label": "3행 12열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 66,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 68,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 39,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 95,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-068",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 68,
+      "before": {
+        "index": 68,
+        "row": 3,
+        "column": 13,
+        "label": "3행 13열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 67,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 69,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 40,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 96,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-069",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 69,
+      "before": {
+        "index": 69,
+        "row": 3,
+        "column": 14,
+        "label": "3행 14열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 68,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 70,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 41,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 97,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-070",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 70,
+      "before": {
+        "index": 70,
+        "row": 3,
+        "column": 15,
+        "label": "3행 15열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 69,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 71,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 42,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 98,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-071",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 71,
+      "before": {
+        "index": 71,
+        "row": 3,
+        "column": 16,
+        "label": "3행 16열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 70,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 72,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 43,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 99,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-072",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 72,
+      "before": {
+        "index": 72,
+        "row": 3,
+        "column": 17,
+        "label": "3행 17열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 71,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 73,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 44,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 100,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-073",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 73,
+      "before": {
+        "index": 73,
+        "row": 3,
+        "column": 18,
+        "label": "3행 18열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 72,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 74,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 45,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 101,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-074",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 74,
+      "before": {
+        "index": 74,
+        "row": 3,
+        "column": 19,
+        "label": "3행 19열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 73,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 75,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 46,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 102,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    },
+    {
+      "id": "pvp-cell-boundary-075",
+      "project": "Formwheel_PVP",
+      "file": "studio.html",
+      "rule": "adjacent-map-cell-boundary-contrast",
+      "rootCause": "pvp-translucent-cell-borders",
+      "unit": "existing default map grid cell; index is zero-based",
+      "index": 75,
+      "before": {
+        "index": 75,
+        "row": 3,
+        "column": 20,
+        "label": "3행 20열 · 바닥",
+        "background": [
+          36,
+          53,
+          85
+        ],
+        "border": [
+          255,
+          255,
+          255,
+          0.063
+        ],
+        "failures": [
+          {
+            "neighbor": 74,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 76,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 47,
+            "edgeRatio": 1.2098007835458677
+          },
+          {
+            "neighbor": 103,
+            "edgeRatio": 1.2098007835458677
+          }
+        ]
+      },
+      "after": {
+        "failures": [],
+        "threshold": 3,
+        "widths": [
+          390,
+          900,
+          1280
+        ]
+      },
+      "status": "fixed-computed-boundary-verified"
+    }
+  ]
+}

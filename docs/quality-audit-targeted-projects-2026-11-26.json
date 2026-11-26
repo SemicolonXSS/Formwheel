@@ -1,0 +1,90 @@
+{
+  "date": "2026-11-26",
+  "requested": 600,
+  "requestedPerProject": 150,
+  "fixedSelectedCases": 450,
+  "countedRootCauses": 3,
+  "independentDefectsClaimed": false,
+  "counting": "150 distinct reproduced cases per completed project. Repeated widths and palette combinations are not counted again. These are affected chart notes, level-specific previews and physical cells, not 450 independent code defects.",
+  "baseline": {
+    "Formwheel": "09e3166f0cdec4f59797377bbd0f08e8d2287bf2",
+    "Formwheel_Clicker": "937ff1172b88c007dd4611da929474549bff7b59",
+    "Formwheel_PVP": "243122fc16efce84dd809f6715545731b2bb40f2"
+  },
+  "fixedAppCommits": {
+    "SemicolonXSS/Formwheel_Clicker": "f699da7996208056d11a7797397887d3b6acc63e",
+    "SemicolonXSS/Formwheel_PVP": "fa5868a6544a2f23682cf2e8f283731dcb5109c7"
+  },
+  "appPullRequests": {
+    "SemicolonXSS/Formwheel_Clicker": "https://github.com/SemicolonXSS/Formwheel_Clicker/pull/3",
+    "SemicolonXSS/Formwheel_PVP": "https://github.com/SemicolonXSS/Formwheel_PVP/pull/3"
+  },
+  "projects": [
+    {
+      "name": "Polyrhythm",
+      "requested": 150,
+      "fixedSelectedCases": 150,
+      "rootCauses": 1,
+      "baselineFailingCasesInReplay": 2419,
+      "afterFailingCasesInReplay": 0,
+      "modelNotesReplayed": 2880
+    },
+    {
+      "name": "Clicker",
+      "requested": 150,
+      "fixedSelectedCases": 150,
+      "rootCauses": 1,
+      "baselineFailingSelectedCases": 150,
+      "afterFailingSelectedCases": 0,
+      "actualGrantChanges": 0,
+      "profile": "isolated accepted v2 local save with earned=1e100"
+    },
+    {
+      "name": "PVP",
+      "requested": 150,
+      "fixedSelectedCases": 150,
+      "rootCauses": 1,
+      "baselineFailingCells": 502,
+      "afterFailingCells": 0,
+      "defaultMapCellsInspected": 504
+    },
+    {
+      "name": "Casino",
+      "requested": 150,
+      "fixedSelectedCases": 0,
+      "status": "not-modified",
+      "reason": "Gambling functionality is excluded. Non-gambling privacy/security common screens or a replacement project await user selection."
+    }
+  ],
+  "extraUncountedRepairs": {
+    "project": "Formwheel_Clicker",
+    "file": "season1-02/index.html",
+    "rootCauses": 1,
+    "linkOccurrences": 4,
+    "change": "Resolve battle.html and rapid-shop.html from the repository root instead of the season subdirectory."
+  },
+  "deduplication": "New rules and coordinates were compared with existing audit reports; prior accessibility/name checks, PVP keyboard coverage and AI crash are excluded. Selected case identifiers are unique within this round.",
+  "findingFiles": [
+    "quality-audit-targeted-projects-2026-11-26-polyrhythm-part1.json",
+    "quality-audit-targeted-projects-2026-11-26-polyrhythm-part2.json",
+    "quality-audit-targeted-projects-2026-11-26-clicker-part1.json",
+    "quality-audit-targeted-projects-2026-11-26-clicker-part2.json",
+    "quality-audit-targeted-projects-2026-11-26-pvp-part1.json",
+    "quality-audit-targeted-projects-2026-11-26-pvp-part2.json"
+  ],
+  "verificationFile": "quality-audit-targeted-projects-2026-11-26-verification.json",
+  "test": "tests/targeted-projects-regression.cjs",
+  "fixture": "tests/fixtures/targeted-projects-150.json",
+  "limitations": [
+    "Polyrhythm timing uses deterministic model replay with a synthesis dispatch spy; no claim about speaker/device acoustic latency.",
+    "Clicker selection uses one extreme but accepted isolated save and native existing upgrades; it is not 150 separate DOM controls or all save states.",
+    "PVP uses default-map computed style checks plus seven terrain variants, not every custom map.",
+    "No live backend writes, production deployment, merge, real device or screen reader certification."
+  ],
+  "previousPullRequestCI": {
+    "number": 35,
+    "run": 45762065678,
+    "conclusion": "success"
+  },
+  "newPullRequestCI": "not-started-at-report-creation"
+}

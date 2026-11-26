@@ -49,7 +49,8 @@ const maps=mapNames.map((name,i)=>{
 }
  return {name,beats};
 });
-let mode='random',mapIndex=0,mapBeat=0,musicNote=0,direction=1,selectedMap=0;
+let mode='random',mapIndex=0,mapBeat=0,direction=1,selectedMap=0;
+const musicCues=new Map();
 const mapInfo=document.querySelector('#mapInfo');
 const mapSelect=document.querySelector('#mapSelect');
 maps.forEach((m,i)=>mapSelect.add(new Option((i+1)+' · '+m.name+' ('+m.beats.length+'타일)',String(i))));
@@ -83,7 +84,8 @@ function addTarget(){
       const delta=((at-t.at)%TAU+TAU)%TAU;
       return (t.kind==='hold'&&(delta<1.5+minGap||delta>TAU-minGap))||(kind==='hold'&&(delta<minGap||delta>TAU-1.5-minGap))||Math.min(delta,TAU-delta)<minGap;
     }))at+=0.2;
-    targets.push({id:++nextId,at,angle:angle+direction*(at-progress),kind});
+    const target={id:++nextId,at,angle:angle+direction*(at-progress),kind,musicIndex:index};
+    targets.push(target);musicCues.set(target.id,{index,at,played:false});
     return;
   }
   const kind=stagePeriod()<=1.8?(nextId%11===0?'reverse':nextId%11===4?'forward':nextId%7===0?'hold':'normal'):(nextId%7===0?'hold':'normal');
@@ -104,10 +106,10 @@ function fillTargets(){let tries=0;while(targets.length<targetCount()&&(mode==='
 function spawnTargets(){targets=[];fillTargets()}
 function showMode(){mapInfo.textContent=mode==='random'?'랜덤 모드 · 기존 방식':('맵 '+(mapIndex+1)+' / '+maps.length+' · '+maps[mapIndex].name+' ♪ '+musicNames[mapIndex]+' · '+mapBeat+'/'+maps[mapIndex].beats.length+' 배치')}
 function selectMode(next){if(running)return;mode=next;if(mode==='map'){mapIndex=selectedMap;mapBeat=0}document.querySelector('#mapPicker').classList.toggle('visible',mode==='map');document.querySelector('#randomMode').classList.toggle('active',mode==='random');document.querySelector('#mapMode').classList.toggle('active',mode==='map');document.querySelector('#randomMode').setAttribute('aria-pressed',String(mode==='random'));document.querySelector('#mapMode').setAttribute('aria-pressed',String(mode==='map'));showMode();draw()}
-function mapAdvance(){if(mode!=='map'||targets.length||mapBeat<maps[mapIndex].beats.length||!running)return;if(mapIndex===maps.length-1){document.body.classList.remove('playing');running=false;cancelAnimationFrame(raf);feedback.textContent='🏆 모든 맵 클리어! 점수 '+score;return}mapIndex++;progress=0;angle=-Math.PI/2;direction=1;holdTarget=null;reverseUntil=0;mapBeat=0;musicNote=0;stage=0;period=stagePeriod();spawnTargets();showMode();feedback.textContent='🗺️ 다음 맵: '+maps[mapIndex].name;update()}
+function mapAdvance(){if(mode!=='map'||targets.length||mapBeat<maps[mapIndex].beats.length||!running||[...musicCues.values()].some(cue=>!cue.played))return;if(mapIndex===maps.length-1){document.body.classList.remove('playing');running=false;cancelAnimationFrame(raf);feedback.textContent='🏆 모든 맵 클리어! 점수 '+score;return}mapIndex++;progress=0;angle=-Math.PI/2;direction=1;holdTarget=null;reverseUntil=0;mapBeat=0;musicCues.clear();stage=0;period=stagePeriod();spawnTargets();showMode();feedback.textContent='🗺️ 다음 맵: '+maps[mapIndex].name;update()}
 function endGame(){document.body.classList.remove('playing');running=false;cancelAnimationFrame(raf);feedback.textContent='💔 GAME OVER · 점수 '+score+' · 다시 시작할 수 있어요';update()}
 function lose(reason){if(!running)return;combo=0;lives=Math.max(0,lives-1);feedback.textContent=reason+' · 목숨 -1';update();if(lives===0)endGame()}
-function start(){document.body.classList.add('playing');window.getSelection?.()?.removeAllRanges();if(mode==='map')try{initAudio()}catch(e){}cancelAnimationFrame(raf);running=true;angle=-Math.PI/2;mapIndex=mode==='map'?selectedMap:0;stage=0;period=mode==='map'?stagePeriod():4;score=0;combo=0;success=0;lives=5;progress=0;direction=1;holdTarget=null;activeInput=null;reverseUntil=0;nextId=0;mapBeat=0;musicNote=0;last=performance.now();spawnTargets();showMode();feedback.textContent='READY · 타이밍을 맞추세요!';update();draw();raf=requestAnimationFrame(frame)}
+function start(){document.body.classList.add('playing');window.getSelection?.()?.removeAllRanges();if(mode==='map')try{initAudio()}catch(e){}cancelAnimationFrame(raf);running=true;angle=-Math.PI/2;mapIndex=mode==='map'?selectedMap:0;stage=0;period=mode==='map'?stagePeriod():4;score=0;combo=0;success=0;lives=5;progress=0;direction=1;holdTarget=null;activeInput=null;reverseUntil=0;nextId=0;mapBeat=0;musicCues.clear();last=performance.now();spawnTargets();showMode();feedback.textContent='READY · 타이밍을 맞추세요!';update();draw();raf=requestAnimationFrame(frame)}
 let audioContext=null,audioCompressor=null;
 const melodies=[
   [262,330,392,523,392,330,294,392],
@@ -143,10 +145,12 @@ function synthNote(frequency,duration=0.19,volume=0.11,type='triangle'){
 }
 function mapMusic(){
   if(mode!=='map'||!running)return;
-  // Notes and targets share the same angular timeline: each note sounds at a tile's hit position.
-  const beats=maps[mapIndex].beats,notes=melodies[mapIndex%melodies.length];
-  while(musicNote<beats.length&&progress>=beats[musicNote]){
-    const index=musicNote++;
+  const notes=melodies[mapIndex%melodies.length];
+  // Runtime encounters can move after spacing guards and direction changes.
+  // Keep early-hit cues until their scheduled encounter instead of dropping them.
+  for(const cue of musicCues.values()){
+    if(cue.played||progress<cue.at)continue;
+    cue.played=true;const index=cue.index;
     synthNote(notes[index%notes.length],0.23,0.23,mapIndex%4===3?'sawtooth':'triangle');
     if(index%2===0)synthNote(notes[index%notes.length]/2,0.28,0.13,'sine');
   }
@@ -188,6 +192,7 @@ function changeDirection(kind){
     const travel=((direction*(t.angle-angle))%TAU+TAU)%TAU;
     const lead=travel<minLead?travel+TAU:travel;
     t.at=progress+lead;
+    const cue=musicCues.get(t.id);if(cue){cue.at=t.at;cue.played=false;}
   }
   targets.sort((a,b)=>a.at-b.at);
 }
@@ -255,6 +260,7 @@ function frame(now){
   const step=TAU*dt/period;
   progress+=step;angle+=step*direction;
   mapMusic();
+  mapAdvance();
   if(holdTarget&&progress>=holdTarget.at+HOLD_LENGTH)finishHold(true);
   if(!running){draw();return;}
   const expired=targets.filter(t=>t!==holdTarget&&judgedProgress()>t.at+goodWindow());

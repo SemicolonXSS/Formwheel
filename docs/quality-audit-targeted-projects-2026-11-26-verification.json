@@ -1,0 +1,791 @@
+{
+  "polyrhythm": {
+    "selected": 150,
+    "replayedNotes": 2880,
+    "remainingTimingMismatches": 0,
+    "edgeChecks": {
+      "kept": true,
+      "sounded": true,
+      "retimed": true,
+      "waited": true,
+      "advanced": true,
+      "reset": true
+    },
+    "nativeViewports": [
+      390,
+      1280
+    ]
+  },
+  "pvp": {
+    "selected": 150,
+    "cellsInspected": 504,
+    "paletteVariants": 7,
+    "remainingBoundaryFailures": 0,
+    "viewports": [
+      390,
+      900,
+      1280
+    ]
+  },
+  "clicker": {
+    "selected": 150,
+    "profiles": "accepted local save, earned=1e100, automatic gain disabled for click-delta measurements",
+    "nativeLevels": [
+      {
+        "level": 1,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 2,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 3,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 4,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 5,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 6,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 7,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 8,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 9,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 10,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 11,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 12,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 13,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 14,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 15,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 16,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 17,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 18,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 19,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 20,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 21,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 22,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 23,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 24,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 25,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 26,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 27,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 28,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 29,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 30,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 31,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 32,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 33,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 34,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 35,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 36,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 37,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 38,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 39,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 40,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 41,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 42,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 43,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 44,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 45,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 46,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 47,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 48,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 49,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 50,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 51,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 52,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 53,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 54,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 55,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 56,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 57,
+        "display": "+1",
+        "actualGain": "1"
+      },
+      {
+        "level": 58,
+        "display": "+2",
+        "actualGain": "2"
+      },
+      {
+        "level": 59,
+        "display": "+5",
+        "actualGain": "5"
+      },
+      {
+        "level": 60,
+        "display": "+11",
+        "actualGain": "11"
+      },
+      {
+        "level": 61,
+        "display": "+23",
+        "actualGain": "23"
+      },
+      {
+        "level": 62,
+        "display": "+46",
+        "actualGain": "46"
+      },
+      {
+        "level": 63,
+        "display": "+92",
+        "actualGain": "92"
+      },
+      {
+        "level": 64,
+        "display": "+184",
+        "actualGain": "184"
+      },
+      {
+        "level": 65,
+        "display": "+368",
+        "actualGain": "368"
+      },
+      {
+        "level": 66,
+        "display": "+737",
+        "actualGain": "737"
+      },
+      {
+        "level": 67,
+        "display": "+1,475",
+        "actualGain": "1475"
+      },
+      {
+        "level": 68,
+        "display": "+2,951",
+        "actualGain": "2951"
+      },
+      {
+        "level": 69,
+        "display": "+5,902",
+        "actualGain": "5902"
+      },
+      {
+        "level": 70,
+        "display": "+11,805",
+        "actualGain": "11805"
+      },
+      {
+        "level": 71,
+        "display": "+23,611",
+        "actualGain": "23611"
+      },
+      {
+        "level": 72,
+        "display": "+47,223",
+        "actualGain": "47223"
+      },
+      {
+        "level": 73,
+        "display": "+94,447",
+        "actualGain": "94447"
+      },
+      {
+        "level": 74,
+        "display": "+188,894",
+        "actualGain": "188894"
+      },
+      {
+        "level": 75,
+        "display": "+377,789",
+        "actualGain": "377789"
+      },
+      {
+        "level": 76,
+        "display": "+755,578",
+        "actualGain": "755578"
+      },
+      {
+        "level": 77,
+        "display": "+1,511,157",
+        "actualGain": "1511157"
+      },
+      {
+        "level": 78,
+        "display": "+3,022,314",
+        "actualGain": "3022314"
+      },
+      {
+        "level": 79,
+        "display": "+6,044,629",
+        "actualGain": "6044629"
+      },
+      {
+        "level": 80,
+        "display": "+12,089,258",
+        "actualGain": "12089258"
+      },
+      {
+        "level": 81,
+        "display": "+24,178,516",
+        "actualGain": "24178516"
+      },
+      {
+        "level": 82,
+        "display": "+48,357,032",
+        "actualGain": "48357032"
+      },
+      {
+        "level": 83,
+        "display": "+96,714,065",
+        "actualGain": "96714065"
+      },
+      {
+        "level": 84,
+        "display": "+193,428,131",
+        "actualGain": "193428131"
+      },
+      {
+        "level": 85,
+        "display": "+386,856,262",
+        "actualGain": "386856262"
+      },
+      {
+        "level": 86,
+        "display": "+773,712,524",
+        "actualGain": "773712524"
+      },
+      {
+        "level": 87,
+        "display": "+1,547,425,049",
+        "actualGain": "1547425049"
+      },
+      {
+        "level": 88,
+        "display": "+3,094,850,098",
+        "actualGain": "3094850098"
+      },
+      {
+        "level": 89,
+        "display": "+6,189,700,196",
+        "actualGain": "6189700196"
+      },
+      {
+        "level": 90,
+        "display": "+12,379,400,392",
+        "actualGain": "12379400392"
+      },
+      {
+        "level": 91,
+        "display": "+24,758,800,785",
+        "actualGain": "24758800785"
+      },
+      {
+        "level": 92,
+        "display": "+49,517,601,571",
+        "actualGain": "49517601571"
+      },
+      {
+        "level": 93,
+        "display": "+99,035,203,142",
+        "actualGain": "99035203142"
+      },
+      {
+        "level": 94,
+        "display": "+198,070,406,285",
+        "actualGain": "198070406285"
+      },
+      {
+        "level": 95,
+        "display": "+396,140,812,571",
+        "actualGain": "396140812571"
+      },
+      {
+        "level": 96,
+        "display": "+792,281,625,142",
+        "actualGain": "792281625142"
+      },
+      {
+        "level": 97,
+        "display": "+1,584,563,250,285",
+        "actualGain": "1584563250285"
+      },
+      {
+        "level": 98,
+        "display": "+3,169,126,500,570",
+        "actualGain": "3169126500570"
+      },
+      {
+        "level": 99,
+        "display": "+6,338,253,001,141",
+        "actualGain": "6338253001141"
+      },
+      {
+        "level": 100,
+        "display": "+12,676,506,002,282",
+        "actualGain": "12676506002282"
+      },
+      {
+        "level": 101,
+        "display": "+25,353,012,004,564",
+        "actualGain": "25353012004564"
+      },
+      {
+        "level": 102,
+        "display": "+50,706,024,009,129",
+        "actualGain": "50706024009129"
+      },
+      {
+        "level": 103,
+        "display": "+101,412,048,018,258",
+        "actualGain": "101412048018258"
+      },
+      {
+        "level": 104,
+        "display": "+202,824,096,036,516",
+        "actualGain": "202824096036516"
+      },
+      {
+        "level": 105,
+        "display": "+405,648,192,073,033",
+        "actualGain": "405648192073033"
+      },
+      {
+        "level": 106,
+        "display": "+811,296,384,146,066",
+        "actualGain": "811296384146066"
+      },
+      {
+        "level": 107,
+        "display": "+1.62e15",
+        "actualGain": "1622592768292133"
+      },
+      {
+        "level": 108,
+        "display": "+3.24e15",
+        "actualGain": "3245185536584267"
+      },
+      {
+        "level": 109,
+        "display": "+6.49e15",
+        "actualGain": "6490371073168534"
+      },
+      {
+        "level": 110,
+        "display": "+1.29e16",
+        "actualGain": "12980742146337069"
+      },
+      {
+        "level": 111,
+        "display": "+2.59e16",
+        "actualGain": "25961484292674138"
+      },
+      {
+        "level": 112,
+        "display": "+5.19e16",
+        "actualGain": "51922968585348276"
+      },
+      {
+        "level": 113,
+        "display": "+1.03e17",
+        "actualGain": "103845937170696552"
+      },
+      {
+        "level": 114,
+        "display": "+2.07e17",
+        "actualGain": "207691874341393105"
+      },
+      {
+        "level": 115,
+        "display": "+4.15e17",
+        "actualGain": "415383748682786210"
+      },
+      {
+        "level": 116,
+        "display": "+8.30e17",
+        "actualGain": "830767497365572420"
+      },
+      {
+        "level": 117,
+        "display": "+1.66e18",
+        "actualGain": "1661534994731144841"
+      },
+      {
+        "level": 118,
+        "display": "+3.32e18",
+        "actualGain": "3323069989462289682"
+      },
+      {
+        "level": 119,
+        "display": "+6.64e18",
+        "actualGain": "6646139978924579364"
+      },
+      {
+        "level": 120,
+        "display": "+1.32e19",
+        "actualGain": "13292279957849158729"
+      },
+      {
+        "level": 121,
+        "display": "+2.65e19",
+        "actualGain": "26584559915698317458"
+      },
+      {
+        "level": 122,
+        "display": "+5.31e19",
+        "actualGain": "53169119831396634916"
+      },
+      {
+        "level": 123,
+        "display": "+1.06e20",
+        "actualGain": "106338239662793269832"
+      },
+      {
+        "level": 124,
+        "display": "+2.12e20",
+        "actualGain": "212676479325586539664"
+      },
+      {
+        "level": 125,
+        "display": "+4.25e20",
+        "actualGain": "425352958651173079329"
+      },
+      {
+        "level": 126,
+        "display": "+8.50e20",
+        "actualGain": "850705917302346158658"
+      },
+      {
+        "level": 127,
+        "display": "+1.70e21",
+        "actualGain": "1701411834604692317316"
+      },
+      {
+        "level": 128,
+        "display": "+3.40e21",
+        "actualGain": "3402823669209384634633"
+      },
+      {
+        "level": 129,
+        "display": "+6.80e21",
+        "actualGain": "6805647338418769269267"
+      },
+      {
+        "level": 130,
+        "display": "+1.36e22",
+        "actualGain": "13611294676837538538534"
+      },
+      {
+        "level": 131,
+        "display": "+2.72e22",
+        "actualGain": "27222589353675077077069"
+      },
+      {
+        "level": 132,
+        "display": "+5.44e22",
+        "actualGain": "54445178707350154154139"
+      },
+      {
+        "level": 133,
+        "display": "+1.08e23",
+        "actualGain": "108890357414700308308279"
+      },
+      {
+        "level": 134,
+        "display": "+2.17e23",
+        "actualGain": "217780714829400616616559"
+      },
+      {
+        "level": 135,
+        "display": "+4.35e23",
+        "actualGain": "435561429658801233233119"
+      },
+      {
+        "level": 136,
+        "display": "+8.71e23",
+        "actualGain": "871122859317602466466238"
+      },
+      {
+        "level": 137,
+        "display": "+1.74e24",
+        "actualGain": "1742245718635204932932477"
+      },
+      {
+        "level": 138,
+        "display": "+3.48e24",
+        "actualGain": "3484491437270409865864955"
+      },
+      {
+        "level": 139,
+        "display": "+6.96e24",
+        "actualGain": "6968982874540819731729911"
+      },
+      {
+        "level": 140,
+        "display": "+1.39e25",
+        "actualGain": "13937965749081639463459823"
+      },
+      {
+        "level": 141,
+        "display": "+2.78e25",
+        "actualGain": "27875931498163278926919647"
+      },
+      {
+        "level": 142,
+        "display": "+5.57e25",
+        "actualGain": "55751862996326557853839295"
+      },
+      {
+        "level": 143,
+        "display": "+1.11e26",
+        "actualGain": "111503725992653115707678591"
+      },
+      {
+        "level": 144,
+        "display": "+2.23e26",
+        "actualGain": "223007451985306231415357182"
+      },
+      {
+        "level": 145,
+        "display": "+4.46e26",
+        "actualGain": "446014903970612462830714365"
+      },
+      {
+        "level": 146,
+        "display": "+8.92e26",
+        "actualGain": "892029807941224925661428730"
+      },
+      {
+        "level": 147,
+        "display": "+1.78e27",
+        "actualGain": "1784059615882449851322857461"
+      },
+      {
+        "level": 148,
+        "display": "+3.56e27",
+        "actualGain": "3568119231764899702645714923"
+      },
+      {
+        "level": 149,
+        "display": "+7.13e27",
+        "actualGain": "7136238463529799405291429847"
+      },
+      {
+        "level": 150,
+        "display": "+1.42e28",
+        "actualGain": "14272476927059598810582859694"
+      }
+    ],
+    "remainingPreviewMismatches": 0,
+    "viewports": [
+      390,
+      1280
+    ]
+  }
+}

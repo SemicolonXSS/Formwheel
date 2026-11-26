@@ -1,0 +1,1882 @@
+{
+  "date": "2026-11-26",
+  "project": "clicker",
+  "count": 75,
+  "findings": [
+    {
+      "id": "clicker-gain-preview-level-076",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 76,
+        "display": "+7.55e22",
+        "actualGain": "755578",
+        "expected": "+755,578",
+        "mismatch": true
+      },
+      "after": {
+        "level": 76,
+        "display": "+755,578",
+        "actualGain": "755578",
+        "expected": "+755,578",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "755578",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-077",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 77,
+        "display": "+1.51e23",
+        "actualGain": "1511157",
+        "expected": "+1,511,157",
+        "mismatch": true
+      },
+      "after": {
+        "level": 77,
+        "display": "+1,511,157",
+        "actualGain": "1511157",
+        "expected": "+1,511,157",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "1511157",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-078",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 78,
+        "display": "+3.02e23",
+        "actualGain": "3022314",
+        "expected": "+3,022,314",
+        "mismatch": true
+      },
+      "after": {
+        "level": 78,
+        "display": "+3,022,314",
+        "actualGain": "3022314",
+        "expected": "+3,022,314",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "3022314",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-079",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 79,
+        "display": "+6.04e23",
+        "actualGain": "6044629",
+        "expected": "+6,044,629",
+        "mismatch": true
+      },
+      "after": {
+        "level": 79,
+        "display": "+6,044,629",
+        "actualGain": "6044629",
+        "expected": "+6,044,629",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "6044629",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-080",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 80,
+        "display": "+1.20e24",
+        "actualGain": "12089258",
+        "expected": "+12,089,258",
+        "mismatch": true
+      },
+      "after": {
+        "level": 80,
+        "display": "+12,089,258",
+        "actualGain": "12089258",
+        "expected": "+12,089,258",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "12089258",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-081",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 81,
+        "display": "+2.41e24",
+        "actualGain": "24178516",
+        "expected": "+24,178,516",
+        "mismatch": true
+      },
+      "after": {
+        "level": 81,
+        "display": "+24,178,516",
+        "actualGain": "24178516",
+        "expected": "+24,178,516",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "24178516",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-082",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 82,
+        "display": "+4.83e24",
+        "actualGain": "48357032",
+        "expected": "+48,357,032",
+        "mismatch": true
+      },
+      "after": {
+        "level": 82,
+        "display": "+48,357,032",
+        "actualGain": "48357032",
+        "expected": "+48,357,032",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "48357032",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-083",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 83,
+        "display": "+9.67e24",
+        "actualGain": "96714065",
+        "expected": "+96,714,065",
+        "mismatch": true
+      },
+      "after": {
+        "level": 83,
+        "display": "+96,714,065",
+        "actualGain": "96714065",
+        "expected": "+96,714,065",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "96714065",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-084",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 84,
+        "display": "+1.93e25",
+        "actualGain": "193428131",
+        "expected": "+193,428,131",
+        "mismatch": true
+      },
+      "after": {
+        "level": 84,
+        "display": "+193,428,131",
+        "actualGain": "193428131",
+        "expected": "+193,428,131",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "193428131",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-085",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 85,
+        "display": "+3.86e25",
+        "actualGain": "386856262",
+        "expected": "+386,856,262",
+        "mismatch": true
+      },
+      "after": {
+        "level": 85,
+        "display": "+386,856,262",
+        "actualGain": "386856262",
+        "expected": "+386,856,262",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "386856262",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-086",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 86,
+        "display": "+7.73e25",
+        "actualGain": "773712524",
+        "expected": "+773,712,524",
+        "mismatch": true
+      },
+      "after": {
+        "level": 86,
+        "display": "+773,712,524",
+        "actualGain": "773712524",
+        "expected": "+773,712,524",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "773712524",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-087",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 87,
+        "display": "+1.54e26",
+        "actualGain": "1547425049",
+        "expected": "+1,547,425,049",
+        "mismatch": true
+      },
+      "after": {
+        "level": 87,
+        "display": "+1,547,425,049",
+        "actualGain": "1547425049",
+        "expected": "+1,547,425,049",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "1547425049",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-088",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 88,
+        "display": "+3.09e26",
+        "actualGain": "3094850098",
+        "expected": "+3,094,850,098",
+        "mismatch": true
+      },
+      "after": {
+        "level": 88,
+        "display": "+3,094,850,098",
+        "actualGain": "3094850098",
+        "expected": "+3,094,850,098",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "3094850098",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-089",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 89,
+        "display": "+6.18e26",
+        "actualGain": "6189700196",
+        "expected": "+6,189,700,196",
+        "mismatch": true
+      },
+      "after": {
+        "level": 89,
+        "display": "+6,189,700,196",
+        "actualGain": "6189700196",
+        "expected": "+6,189,700,196",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "6189700196",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-090",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 90,
+        "display": "+1.23e27",
+        "actualGain": "12379400392",
+        "expected": "+12,379,400,392",
+        "mismatch": true
+      },
+      "after": {
+        "level": 90,
+        "display": "+12,379,400,392",
+        "actualGain": "12379400392",
+        "expected": "+12,379,400,392",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "12379400392",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-091",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 91,
+        "display": "+2.47e27",
+        "actualGain": "24758800785",
+        "expected": "+24,758,800,785",
+        "mismatch": true
+      },
+      "after": {
+        "level": 91,
+        "display": "+24,758,800,785",
+        "actualGain": "24758800785",
+        "expected": "+24,758,800,785",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "24758800785",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-092",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 92,
+        "display": "+4.95e27",
+        "actualGain": "49517601571",
+        "expected": "+49,517,601,571",
+        "mismatch": true
+      },
+      "after": {
+        "level": 92,
+        "display": "+49,517,601,571",
+        "actualGain": "49517601571",
+        "expected": "+49,517,601,571",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "49517601571",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-093",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 93,
+        "display": "+9.90e27",
+        "actualGain": "99035203142",
+        "expected": "+99,035,203,142",
+        "mismatch": true
+      },
+      "after": {
+        "level": 93,
+        "display": "+99,035,203,142",
+        "actualGain": "99035203142",
+        "expected": "+99,035,203,142",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "99035203142",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-094",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 94,
+        "display": "+1.98e28",
+        "actualGain": "198070406285",
+        "expected": "+198,070,406,285",
+        "mismatch": true
+      },
+      "after": {
+        "level": 94,
+        "display": "+198,070,406,285",
+        "actualGain": "198070406285",
+        "expected": "+198,070,406,285",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "198070406285",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-095",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 95,
+        "display": "+3.96e28",
+        "actualGain": "396140812571",
+        "expected": "+396,140,812,571",
+        "mismatch": true
+      },
+      "after": {
+        "level": 95,
+        "display": "+396,140,812,571",
+        "actualGain": "396140812571",
+        "expected": "+396,140,812,571",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "396140812571",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-096",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 96,
+        "display": "+7.92e28",
+        "actualGain": "792281625142",
+        "expected": "+792,281,625,142",
+        "mismatch": true
+      },
+      "after": {
+        "level": 96,
+        "display": "+792,281,625,142",
+        "actualGain": "792281625142",
+        "expected": "+792,281,625,142",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "792281625142",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-097",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 97,
+        "display": "+1.58e29",
+        "actualGain": "1584563250285",
+        "expected": "+1,584,563,250,285",
+        "mismatch": true
+      },
+      "after": {
+        "level": 97,
+        "display": "+1,584,563,250,285",
+        "actualGain": "1584563250285",
+        "expected": "+1,584,563,250,285",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "1584563250285",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-098",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 98,
+        "display": "+3.16e29",
+        "actualGain": "3169126500570",
+        "expected": "+3,169,126,500,570",
+        "mismatch": true
+      },
+      "after": {
+        "level": 98,
+        "display": "+3,169,126,500,570",
+        "actualGain": "3169126500570",
+        "expected": "+3,169,126,500,570",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "3169126500570",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-099",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 99,
+        "display": "+6.33e29",
+        "actualGain": "6338253001141",
+        "expected": "+6,338,253,001,141",
+        "mismatch": true
+      },
+      "after": {
+        "level": 99,
+        "display": "+6,338,253,001,141",
+        "actualGain": "6338253001141",
+        "expected": "+6,338,253,001,141",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "6338253001141",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-100",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 100,
+        "display": "+1.26e30",
+        "actualGain": "12676506002282",
+        "expected": "+12,676,506,002,282",
+        "mismatch": true
+      },
+      "after": {
+        "level": 100,
+        "display": "+12,676,506,002,282",
+        "actualGain": "12676506002282",
+        "expected": "+12,676,506,002,282",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "12676506002282",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-101",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 101,
+        "display": "+2.53e30",
+        "actualGain": "25353012004564",
+        "expected": "+25,353,012,004,564",
+        "mismatch": true
+      },
+      "after": {
+        "level": 101,
+        "display": "+25,353,012,004,564",
+        "actualGain": "25353012004564",
+        "expected": "+25,353,012,004,564",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "25353012004564",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-102",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 102,
+        "display": "+5.07e30",
+        "actualGain": "50706024009129",
+        "expected": "+50,706,024,009,129",
+        "mismatch": true
+      },
+      "after": {
+        "level": 102,
+        "display": "+50,706,024,009,129",
+        "actualGain": "50706024009129",
+        "expected": "+50,706,024,009,129",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "50706024009129",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-103",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 103,
+        "display": "+1.01e31",
+        "actualGain": "101412048018258",
+        "expected": "+101,412,048,018,258",
+        "mismatch": true
+      },
+      "after": {
+        "level": 103,
+        "display": "+101,412,048,018,258",
+        "actualGain": "101412048018258",
+        "expected": "+101,412,048,018,258",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "101412048018258",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-104",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 104,
+        "display": "+2.02e31",
+        "actualGain": "202824096036516",
+        "expected": "+202,824,096,036,516",
+        "mismatch": true
+      },
+      "after": {
+        "level": 104,
+        "display": "+202,824,096,036,516",
+        "actualGain": "202824096036516",
+        "expected": "+202,824,096,036,516",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "202824096036516",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-105",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 105,
+        "display": "+4.05e31",
+        "actualGain": "405648192073033",
+        "expected": "+405,648,192,073,033",
+        "mismatch": true
+      },
+      "after": {
+        "level": 105,
+        "display": "+405,648,192,073,033",
+        "actualGain": "405648192073033",
+        "expected": "+405,648,192,073,033",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "405648192073033",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-106",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 106,
+        "display": "+8.11e31",
+        "actualGain": "811296384146066",
+        "expected": "+811,296,384,146,066",
+        "mismatch": true
+      },
+      "after": {
+        "level": 106,
+        "display": "+811,296,384,146,066",
+        "actualGain": "811296384146066",
+        "expected": "+811,296,384,146,066",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "811296384146066",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-107",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 107,
+        "display": "+1.62e32",
+        "actualGain": "1622592768292133",
+        "expected": "+1.62e15",
+        "mismatch": true
+      },
+      "after": {
+        "level": 107,
+        "display": "+1.62e15",
+        "actualGain": "1622592768292133",
+        "expected": "+1.62e15",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "1622592768292133",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-108",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 108,
+        "display": "+3.24e32",
+        "actualGain": "3245185536584267",
+        "expected": "+3.24e15",
+        "mismatch": true
+      },
+      "after": {
+        "level": 108,
+        "display": "+3.24e15",
+        "actualGain": "3245185536584267",
+        "expected": "+3.24e15",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "3245185536584267",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-109",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 109,
+        "display": "+6.49e32",
+        "actualGain": "6490371073168534",
+        "expected": "+6.49e15",
+        "mismatch": true
+      },
+      "after": {
+        "level": 109,
+        "display": "+6.49e15",
+        "actualGain": "6490371073168534",
+        "expected": "+6.49e15",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "6490371073168534",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-110",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 110,
+        "display": "+1.29e33",
+        "actualGain": "12980742146337069",
+        "expected": "+1.29e16",
+        "mismatch": true
+      },
+      "after": {
+        "level": 110,
+        "display": "+1.29e16",
+        "actualGain": "12980742146337069",
+        "expected": "+1.29e16",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "12980742146337069",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-111",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 111,
+        "display": "+2.59e33",
+        "actualGain": "25961484292674138",
+        "expected": "+2.59e16",
+        "mismatch": true
+      },
+      "after": {
+        "level": 111,
+        "display": "+2.59e16",
+        "actualGain": "25961484292674138",
+        "expected": "+2.59e16",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "25961484292674138",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-112",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 112,
+        "display": "+5.19e33",
+        "actualGain": "51922968585348276",
+        "expected": "+5.19e16",
+        "mismatch": true
+      },
+      "after": {
+        "level": 112,
+        "display": "+5.19e16",
+        "actualGain": "51922968585348276",
+        "expected": "+5.19e16",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "51922968585348276",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-113",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 113,
+        "display": "+1.03e34",
+        "actualGain": "103845937170696552",
+        "expected": "+1.03e17",
+        "mismatch": true
+      },
+      "after": {
+        "level": 113,
+        "display": "+1.03e17",
+        "actualGain": "103845937170696552",
+        "expected": "+1.03e17",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "103845937170696552",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-114",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 114,
+        "display": "+2.07e34",
+        "actualGain": "207691874341393105",
+        "expected": "+2.07e17",
+        "mismatch": true
+      },
+      "after": {
+        "level": 114,
+        "display": "+2.07e17",
+        "actualGain": "207691874341393105",
+        "expected": "+2.07e17",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "207691874341393105",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-115",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 115,
+        "display": "+4.15e34",
+        "actualGain": "415383748682786210",
+        "expected": "+4.15e17",
+        "mismatch": true
+      },
+      "after": {
+        "level": 115,
+        "display": "+4.15e17",
+        "actualGain": "415383748682786210",
+        "expected": "+4.15e17",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "415383748682786210",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-116",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 116,
+        "display": "+8.30e34",
+        "actualGain": "830767497365572420",
+        "expected": "+8.30e17",
+        "mismatch": true
+      },
+      "after": {
+        "level": 116,
+        "display": "+8.30e17",
+        "actualGain": "830767497365572420",
+        "expected": "+8.30e17",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "830767497365572420",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-117",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 117,
+        "display": "+1.66e35",
+        "actualGain": "1661534994731144841",
+        "expected": "+1.66e18",
+        "mismatch": true
+      },
+      "after": {
+        "level": 117,
+        "display": "+1.66e18",
+        "actualGain": "1661534994731144841",
+        "expected": "+1.66e18",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "1661534994731144841",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-118",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 118,
+        "display": "+3.32e35",
+        "actualGain": "3323069989462289682",
+        "expected": "+3.32e18",
+        "mismatch": true
+      },
+      "after": {
+        "level": 118,
+        "display": "+3.32e18",
+        "actualGain": "3323069989462289682",
+        "expected": "+3.32e18",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "3323069989462289682",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-119",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 119,
+        "display": "+6.64e35",
+        "actualGain": "6646139978924579364",
+        "expected": "+6.64e18",
+        "mismatch": true
+      },
+      "after": {
+        "level": 119,
+        "display": "+6.64e18",
+        "actualGain": "6646139978924579364",
+        "expected": "+6.64e18",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "6646139978924579364",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-120",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 120,
+        "display": "+1.32e36",
+        "actualGain": "13292279957849158729",
+        "expected": "+1.32e19",
+        "mismatch": true
+      },
+      "after": {
+        "level": 120,
+        "display": "+1.32e19",
+        "actualGain": "13292279957849158729",
+        "expected": "+1.32e19",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "13292279957849158729",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-121",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 121,
+        "display": "+2.65e36",
+        "actualGain": "26584559915698317458",
+        "expected": "+2.65e19",
+        "mismatch": true
+      },
+      "after": {
+        "level": 121,
+        "display": "+2.65e19",
+        "actualGain": "26584559915698317458",
+        "expected": "+2.65e19",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "26584559915698317458",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-122",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 122,
+        "display": "+5.31e36",
+        "actualGain": "53169119831396634916",
+        "expected": "+5.31e19",
+        "mismatch": true
+      },
+      "after": {
+        "level": 122,
+        "display": "+5.31e19",
+        "actualGain": "53169119831396634916",
+        "expected": "+5.31e19",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "53169119831396634916",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-123",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 123,
+        "display": "+1.06e37",
+        "actualGain": "106338239662793269832",
+        "expected": "+1.06e20",
+        "mismatch": true
+      },
+      "after": {
+        "level": 123,
+        "display": "+1.06e20",
+        "actualGain": "106338239662793269832",
+        "expected": "+1.06e20",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "106338239662793269832",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-124",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 124,
+        "display": "+2.12e37",
+        "actualGain": "212676479325586539664",
+        "expected": "+2.12e20",
+        "mismatch": true
+      },
+      "after": {
+        "level": 124,
+        "display": "+2.12e20",
+        "actualGain": "212676479325586539664",
+        "expected": "+2.12e20",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "212676479325586539664",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-125",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 125,
+        "display": "+4.25e37",
+        "actualGain": "425352958651173079329",
+        "expected": "+4.25e20",
+        "mismatch": true
+      },
+      "after": {
+        "level": 125,
+        "display": "+4.25e20",
+        "actualGain": "425352958651173079329",
+        "expected": "+4.25e20",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "425352958651173079329",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-126",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 126,
+        "display": "+8.50e37",
+        "actualGain": "850705917302346158658",
+        "expected": "+8.50e20",
+        "mismatch": true
+      },
+      "after": {
+        "level": 126,
+        "display": "+8.50e20",
+        "actualGain": "850705917302346158658",
+        "expected": "+8.50e20",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "850705917302346158658",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-127",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 127,
+        "display": "+1.70e38",
+        "actualGain": "1701411834604692317316",
+        "expected": "+1.70e21",
+        "mismatch": true
+      },
+      "after": {
+        "level": 127,
+        "display": "+1.70e21",
+        "actualGain": "1701411834604692317316",
+        "expected": "+1.70e21",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "1701411834604692317316",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-128",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 128,
+        "display": "+3.40e38",
+        "actualGain": "3402823669209384634633",
+        "expected": "+3.40e21",
+        "mismatch": true
+      },
+      "after": {
+        "level": 128,
+        "display": "+3.40e21",
+        "actualGain": "3402823669209384634633",
+        "expected": "+3.40e21",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "3402823669209384634633",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-129",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 129,
+        "display": "+6.80e38",
+        "actualGain": "6805647338418769269267",
+        "expected": "+6.80e21",
+        "mismatch": true
+      },
+      "after": {
+        "level": 129,
+        "display": "+6.80e21",
+        "actualGain": "6805647338418769269267",
+        "expected": "+6.80e21",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "6805647338418769269267",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-130",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 130,
+        "display": "+1.36e39",
+        "actualGain": "13611294676837538538534",
+        "expected": "+1.36e22",
+        "mismatch": true
+      },
+      "after": {
+        "level": 130,
+        "display": "+1.36e22",
+        "actualGain": "13611294676837538538534",
+        "expected": "+1.36e22",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "13611294676837538538534",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-131",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 131,
+        "display": "+2.72e39",
+        "actualGain": "27222589353675077077069",
+        "expected": "+2.72e22",
+        "mismatch": true
+      },
+      "after": {
+        "level": 131,
+        "display": "+2.72e22",
+        "actualGain": "27222589353675077077069",
+        "expected": "+2.72e22",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "27222589353675077077069",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-132",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 132,
+        "display": "+5.44e39",
+        "actualGain": "54445178707350154154139",
+        "expected": "+5.44e22",
+        "mismatch": true
+      },
+      "after": {
+        "level": 132,
+        "display": "+5.44e22",
+        "actualGain": "54445178707350154154139",
+        "expected": "+5.44e22",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "54445178707350154154139",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-133",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 133,
+        "display": "+1.08e40",
+        "actualGain": "108890357414700308308279",
+        "expected": "+1.08e23",
+        "mismatch": true
+      },
+      "after": {
+        "level": 133,
+        "display": "+1.08e23",
+        "actualGain": "108890357414700308308279",
+        "expected": "+1.08e23",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "108890357414700308308279",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-134",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 134,
+        "display": "+2.17e40",
+        "actualGain": "217780714829400616616559",
+        "expected": "+2.17e23",
+        "mismatch": true
+      },
+      "after": {
+        "level": 134,
+        "display": "+2.17e23",
+        "actualGain": "217780714829400616616559",
+        "expected": "+2.17e23",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "217780714829400616616559",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-135",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 135,
+        "display": "+4.35e40",
+        "actualGain": "435561429658801233233119",
+        "expected": "+4.35e23",
+        "mismatch": true
+      },
+      "after": {
+        "level": 135,
+        "display": "+4.35e23",
+        "actualGain": "435561429658801233233119",
+        "expected": "+4.35e23",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "435561429658801233233119",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-136",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 136,
+        "display": "+8.71e40",
+        "actualGain": "871122859317602466466238",
+        "expected": "+8.71e23",
+        "mismatch": true
+      },
+      "after": {
+        "level": 136,
+        "display": "+8.71e23",
+        "actualGain": "871122859317602466466238",
+        "expected": "+8.71e23",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "871122859317602466466238",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-137",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 137,
+        "display": "+1.74e41",
+        "actualGain": "1742245718635204932932477",
+        "expected": "+1.74e24",
+        "mismatch": true
+      },
+      "after": {
+        "level": 137,
+        "display": "+1.74e24",
+        "actualGain": "1742245718635204932932477",
+        "expected": "+1.74e24",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "1742245718635204932932477",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-138",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 138,
+        "display": "+3.48e41",
+        "actualGain": "3484491437270409865864955",
+        "expected": "+3.48e24",
+        "mismatch": true
+      },
+      "after": {
+        "level": 138,
+        "display": "+3.48e24",
+        "actualGain": "3484491437270409865864955",
+        "expected": "+3.48e24",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "3484491437270409865864955",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-139",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 139,
+        "display": "+6.96e41",
+        "actualGain": "6968982874540819731729911",
+        "expected": "+6.96e24",
+        "mismatch": true
+      },
+      "after": {
+        "level": 139,
+        "display": "+6.96e24",
+        "actualGain": "6968982874540819731729911",
+        "expected": "+6.96e24",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "6968982874540819731729911",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-140",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 140,
+        "display": "+1.39e42",
+        "actualGain": "13937965749081639463459823",
+        "expected": "+1.39e25",
+        "mismatch": true
+      },
+      "after": {
+        "level": 140,
+        "display": "+1.39e25",
+        "actualGain": "13937965749081639463459823",
+        "expected": "+1.39e25",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "13937965749081639463459823",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-141",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 141,
+        "display": "+2.78e42",
+        "actualGain": "27875931498163278926919647",
+        "expected": "+2.78e25",
+        "mismatch": true
+      },
+      "after": {
+        "level": 141,
+        "display": "+2.78e25",
+        "actualGain": "27875931498163278926919647",
+        "expected": "+2.78e25",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "27875931498163278926919647",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-142",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 142,
+        "display": "+5.57e42",
+        "actualGain": "55751862996326557853839295",
+        "expected": "+5.57e25",
+        "mismatch": true
+      },
+      "after": {
+        "level": 142,
+        "display": "+5.57e25",
+        "actualGain": "55751862996326557853839295",
+        "expected": "+5.57e25",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "55751862996326557853839295",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-143",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 143,
+        "display": "+1.11e43",
+        "actualGain": "111503725992653115707678591",
+        "expected": "+1.11e26",
+        "mismatch": true
+      },
+      "after": {
+        "level": 143,
+        "display": "+1.11e26",
+        "actualGain": "111503725992653115707678591",
+        "expected": "+1.11e26",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "111503725992653115707678591",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-144",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 144,
+        "display": "+2.23e43",
+        "actualGain": "223007451985306231415357182",
+        "expected": "+2.23e26",
+        "mismatch": true
+      },
+      "after": {
+        "level": 144,
+        "display": "+2.23e26",
+        "actualGain": "223007451985306231415357182",
+        "expected": "+2.23e26",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "223007451985306231415357182",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-145",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 145,
+        "display": "+4.46e43",
+        "actualGain": "446014903970612462830714365",
+        "expected": "+4.46e26",
+        "mismatch": true
+      },
+      "after": {
+        "level": 145,
+        "display": "+4.46e26",
+        "actualGain": "446014903970612462830714365",
+        "expected": "+4.46e26",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "446014903970612462830714365",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-146",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 146,
+        "display": "+8.92e43",
+        "actualGain": "892029807941224925661428730",
+        "expected": "+8.92e26",
+        "mismatch": true
+      },
+      "after": {
+        "level": 146,
+        "display": "+8.92e26",
+        "actualGain": "892029807941224925661428730",
+        "expected": "+8.92e26",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "892029807941224925661428730",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-147",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 147,
+        "display": "+1.78e44",
+        "actualGain": "1784059615882449851322857461",
+        "expected": "+1.78e27",
+        "mismatch": true
+      },
+      "after": {
+        "level": 147,
+        "display": "+1.78e27",
+        "actualGain": "1784059615882449851322857461",
+        "expected": "+1.78e27",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "1784059615882449851322857461",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-148",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 148,
+        "display": "+3.56e44",
+        "actualGain": "3568119231764899702645714923",
+        "expected": "+3.56e27",
+        "mismatch": true
+      },
+      "after": {
+        "level": 148,
+        "display": "+3.56e27",
+        "actualGain": "3568119231764899702645714923",
+        "expected": "+3.56e27",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "3568119231764899702645714923",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-149",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 149,
+        "display": "+7.13e44",
+        "actualGain": "7136238463529799405291429847",
+        "expected": "+7.13e27",
+        "mismatch": true
+      },
+      "after": {
+        "level": 149,
+        "display": "+7.13e27",
+        "actualGain": "7136238463529799405291429847",
+        "expected": "+7.13e27",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "7136238463529799405291429847",
+      "status": "fixed-native-click-verified"
+    },
+    {
+      "id": "clicker-gain-preview-level-150",
+      "project": "Formwheel_Clicker",
+      "file": "assets/season2-main.js",
+      "rule": "gain-preview-equals-actual-grant",
+      "rootCause": "clicker-raw-gain-preview",
+      "unit": "existing upgrade level in one isolated accepted save profile",
+      "profile": "earned=1e100, clickLevel advanced 1..150, autoLevel=0",
+      "before": {
+        "level": 150,
+        "display": "+1.42e45",
+        "actualGain": "14272476927059598810582859694",
+        "expected": "+1.42e28",
+        "mismatch": true
+      },
+      "after": {
+        "level": 150,
+        "display": "+1.42e28",
+        "actualGain": "14272476927059598810582859694",
+        "expected": "+1.42e28",
+        "mismatch": false
+      },
+      "unchangedActualGrant": "14272476927059598810582859694",
+      "status": "fixed-native-click-verified"
+    }
+  ]
+}
