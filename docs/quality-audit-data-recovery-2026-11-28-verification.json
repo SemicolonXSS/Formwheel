@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-28",
+  "groupedDefects": 12,
+  "regressionScenarios": 308,
+  "baselineFailed": 307,
+  "afterFailed": 0,
+  "byProject": {
+    "polyrhythm": {
+      "scenarios": 9,
+      "passed": 9
+    },
+    "clicker": {
+      "scenarios": 15,
+      "passed": 15
+    },
+    "pvp": {
+      "scenarios": 284,
+      "passed": 284
+    }
+  },
+  "healthCoverage": "All 274 valid built-in weapon/skill/speed combinations; full and half HP, plus host/guest display with offline SDK stubs.",
+  "recoveryAxe": "pass",
+  "previousSuites": {
+    "deeperScenarios": 900,
+    "selectedCases": 450,
+    "rhythmModelNotes": 2880,
+    "nativePvpMapPositions": 504,
+    "pvpLayoutsAndAxe": 10,
+    "aiLevelAndWidthChecks": 6,
+    "result": "pass"
+  },
+  "sourceChecks": {
+    "rootScriptBlocksOrFiles": 154,
+    "catalogProjects": 75,
+    "sitemapURLs": 40,
+    "skipNavigationPages": 55,
+    "rootNodeTestFiles": 11,
+    "clickerBlocksOrFiles": 16,
+    "clickerLeaderboardTestFiles": 1,
+    "result": "pass"
+  },
+  "browser": "Playwright 1.65.1 bundled Chromium 159.0.8154.6",
+  "isolation": "External HTTP/WebSocket and service workers blocked; remote SDKs replaced only in test responses with queued-read and write-rejecting stubs; local browser storage and downloads only."
+}
