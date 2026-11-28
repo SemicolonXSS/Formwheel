@@ -335,12 +335,12 @@ document.addEventListener('selectionchange',()=>{if(running&&window.getSelection
 
 const editor=document.querySelector('#editor'),editorAudio=document.querySelector('#editorAudio');
 const editorStatus=document.querySelector('#editorStatus'),editorNotes=document.querySelector('#editorNotes');
-let editing=false,editorEvents=[],editorDirection=1,editorAudioUrl=null,editorStarted=0,editorSession=0,editorStarting=false;
+let editing=false,editorEvents=[],editorDirection=1,editorAudioUrl=null,editorStarted=0,editorSession=0,editorStarting=false,editorImportSession=0;
 function editorRefresh(message){
   editorStatus.textContent=(message?message+' · ':'')+editorEvents.length+'개 타일 · '+(editorDirection<0?'역방향':'정방향');
   editorNotes.textContent=editorEvents.slice(-12).map((e,i)=>((editorEvents.length-Math.min(12,editorEvents.length)+i)+1)+'. '+e.time.toFixed(3)+'초 · '+(e.kind==='reverse'?'↺ 역방향':e.kind==='forward'?'↻ 정방향':'터치')).join(' / ');
 }
-function editorStop(){const wasRecording=editing||editorStarting;editorSession++;editing=false;editorStarting=false;document.querySelector('#editorRecord').textContent='🔴 녹화 시작';editorAudio.pause();if(wasRecording)editorRefresh('녹화 종료')}
+function editorStop(){const wasRecording=editing||editorStarting;editorSession++;editorImportSession++;editing=false;editorStarting=false;document.querySelector('#editorRecord').textContent='🔴 녹화 시작';editorAudio.pause();if(wasRecording)editorRefresh('녹화 종료')}
 document.querySelector('#editorToggle').addEventListener('click',()=>{if(running)return;editor.hidden=!editor.hidden;if(editor.hidden)editorStop()});
 document.querySelector('#editorFile').addEventListener('change',e=>{
   editorStop();if(editorAudioUrl)URL.revokeObjectURL(editorAudioUrl);
@@ -350,7 +350,7 @@ document.querySelector('#editorFile').addEventListener('change',e=>{
 document.querySelector('#editorRecord').addEventListener('click',async()=>{
   if(editing||editorStarting){editorStop();return}
   if(running){editorRefresh('게임을 종료한 뒤 제작하세요');return}
-  const session=++editorSession;editorStarting=true;
+  const session=++editorSession;editorImportSession++;editorStarting=true;
   document.querySelector('#editorRecord').textContent='⏹ 녹화 준비 취소';
   try{
     editorAudio.currentTime=0;
@@ -368,7 +368,7 @@ function editorStamp(switchDirection){
   const kind=switchDirection?(editorDirection===1?'reverse':'forward'):'normal';
   if(editorEvents.length&&time-editorEvents[editorEvents.length-1].time<0.08){editorRefresh('타일 간격 최소 0.08초');return}
   if(switchDirection)editorDirection*=-1;
-  editorEvents.push({time:Number(time.toFixed(3)),kind});
+  editorImportSession++;editorEvents.push({time:Number(time.toFixed(3)),kind});
   editorRefresh('기록 중');
 }
 for(const [id,reverse] of [['editorTap',false],['editorReverse',true]]){
@@ -376,31 +376,36 @@ for(const [id,reverse] of [['editorTap',false],['editorReverse',true]]){
   button.addEventListener('pointerdown',e=>{if(e.button===0){e.preventDefault();editorStamp(reverse)}});
   button.addEventListener('click',e=>{if(e.detail===0)editorStamp(reverse)});
 }
-document.querySelector('#editorUndo').addEventListener('click',()=>{editorEvents.pop();editorDirection=editorEvents.reduce((d,e)=>e.kind==='reverse'?-1:e.kind==='forward'?1:d,1);editorRefresh('마지막 타일 삭제')});
+document.querySelector('#editorUndo').addEventListener('click',()=>{editorImportSession++;editorEvents.pop();editorDirection=editorEvents.reduce((d,e)=>e.kind==='reverse'?-1:e.kind==='forward'?1:d,1);editorRefresh('마지막 타일 삭제')});
 document.addEventListener('keydown',e=>{
   if(!editing||e.repeat||e.altKey||e.ctrlKey||e.metaKey||e.target.closest?.('input,textarea,select,button,a,audio,[contenteditable]'))return;
   if(e.code==='Space'||e.code==='Enter'){e.preventDefault();editorStamp(e.code==='Enter')}
 },true);
 editorAudio.addEventListener('ended',editorStop);
+function editorPeriodValue(value){if(value===''||value==null)return 3.5;const n=Number(value);return Number.isFinite(n)?Math.round(Math.max(1.8,Math.min(8,n))*10)/10:3.5}
+for(const id of ['editorName','editorPeriod'])document.getElementById(id).addEventListener('input',()=>editorImportSession++);
 document.querySelector('#editorSave').addEventListener('click',()=>{
   editorStop();
   if(!editorEvents.length){editorRefresh('먼저 타일을 기록하세요');return}
-  const data={format:'formwheel-polyrhythm-map',version:1,name:document.querySelector('#editorName').value.trim()||'내 리듬 맵',period:Number(document.querySelector('#editorPeriod').value)||3.5,notes:editorEvents};
+  const period=editorPeriodValue(document.querySelector('#editorPeriod').value);document.querySelector('#editorPeriod').value=String(period);
+  const data={format:'formwheel-polyrhythm-map',version:1,name:document.querySelector('#editorName').value.trim().slice(0,40)||'내 리듬 맵',period,notes:editorEvents};
   const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
   const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='polyrhythm-custom-map.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);editorRefresh('맵 JSON 저장 완료');
 });
 document.querySelector('#editorImport').addEventListener('change',async e=>{
-  const file=e.target.files[0];if(!file)return;
+  const file=e.target.files[0];if(!file)return;let session=++editorImportSession;
   try{
-    const data=JSON.parse(await file.text());
-    if(data.format!=='formwheel-polyrhythm-map'||!Array.isArray(data.notes)||data.notes.length>10000||!data.notes.every(n=>Number.isFinite(n.time)&&n.time>=0&&['normal','reverse','forward'].includes(n.kind)))throw Error('지원하지 않는 맵 형식');
-    editorStop();editorEvents=data.notes.map(n=>({time:n.time,kind:n.kind})).sort((a,b)=>a.time-b.time);
+    if(file.size>2000000)throw Error('2MB 이하 JSON 파일을 선택하세요');
+    const text=await file.text();if(session!==editorImportSession)return;
+    const data=JSON.parse(text);
+    if(!data||data.format!=='formwheel-polyrhythm-map'||data.version!==1||!Array.isArray(data.notes)||data.notes.length>10000||!data.notes.every(n=>n&&Number.isFinite(n.time)&&n.time>=0&&['normal','reverse','forward'].includes(n.kind)))throw Error('지원하지 않는 맵 형식');
+    editorStop();session=editorImportSession;editorEvents=data.notes.map(n=>({time:n.time,kind:n.kind})).sort((a,b)=>a.time-b.time);
     editorDirection=editorEvents.reduce((d,n)=>n.kind==='reverse'?-1:n.kind==='forward'?1:d,1);
     document.querySelector('#editorName').value=String(data.name||'내 리듬 맵').slice(0,40);
-    document.querySelector('#editorPeriod').value=Math.max(1.8,Math.min(8,Number(data.period)||3.5));
+    document.querySelector('#editorPeriod').value=editorPeriodValue(data.period);
     editorRefresh('JSON 불러오기 완료');
-  }catch(err){editorRefresh('불러오기 실패: '+err.message)}
-  e.target.value='';
+  }catch(err){if(session===editorImportSession)editorRefresh('불러오기 실패: '+err.message)}
+  finally{if(session===editorImportSession)e.target.value='';}
 });
 
 showMode();draw();

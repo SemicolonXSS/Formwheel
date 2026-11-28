@@ -1,0 +1,147 @@
+{
+  "date": "2026-11-28",
+  "requestedAdditionalFixes": 300,
+  "fixedGroupedDefects": 12,
+  "byProject": {
+    "polyrhythm": 3,
+    "clicker": 4,
+    "pvp": 5
+  },
+  "requestedFixQuotaFulfilled": false,
+  "regressionScenarios": 308,
+  "counting": "Twelve grouped functional defects are counted once each. The 308 test scenarios, including 274 existing loadout combinations, are not 308 independent bugs or edited source locations. Related symptoms in save recovery and custom catalog ingestion are grouped.",
+  "defects": [
+    {
+      "id": "poly-period-roundtrip",
+      "project": "polyrhythm",
+      "problem": "Export accepted periods outside the UI range or step, so save/import changed the chart period.",
+      "repair": "Normalize the visible period and serialized value with one finite 1.8..8.0 / 0.1-step function."
+    },
+    {
+      "id": "poly-import-contract",
+      "project": "polyrhythm",
+      "problem": "Import parsed unbounded files and accepted unsupported schema versions.",
+      "repair": "Reject files above 2MB before reading and require the documented version-1 structure, preserving the current map on rejection."
+    },
+    {
+      "id": "poly-import-order",
+      "project": "polyrhythm",
+      "problem": "An older file read or failure could replace a newer map/status, including after closing or editing the editor.",
+      "repair": "Invalidate pending import sessions when a newer import or editor action takes precedence."
+    },
+    {
+      "id": "clicker-save-recovery",
+      "project": "clicker",
+      "problem": "Unreadable, damaged or unsupported saves could be overwritten by fallback state; unreasonable saved exponents could abort rendering.",
+      "repair": "Preserve originals, validate before calculation, allow temporary play on inaccessible storage, and provide explicit verified backup/reset with cross-tab protection and later backup download."
+    },
+    {
+      "id": "clicker-stale-own-rank",
+      "project": "clicker",
+      "problem": "An empty or failed read left a previous personal rank visible.",
+      "repair": "Clear the previous personal rank before rendering or refreshing."
+    },
+    {
+      "id": "clicker-invalid-ranking-score",
+      "project": "clicker",
+      "problem": "A 101-digit score greater than the documented 1e100 maximum passed the length check.",
+      "repair": "Enforce both the fixed-width representation and maximum before sorting/rendering."
+    },
+    {
+      "id": "clicker-refresh-order",
+      "project": "clicker",
+      "problem": "An older successful or failed refresh could overwrite newer leaderboard data.",
+      "repair": "Publish results only from the latest refresh generation."
+    },
+    {
+      "id": "pvp-custom-catalog",
+      "project": "pvp",
+      "problem": "Play and Studio used different custom-data contracts; malformed collections, stale registries and shared-map conflicts produced lost options, ambiguous imports or misleading success.",
+      "repair": "Share validators, load collections independently, bound/deduplicate catalogs, retain active round definitions, remove stale entries and copy conflicting imported IDs without overwriting prior maps."
+    },
+    {
+      "id": "pvp-health-denominators",
+      "project": "pvp",
+      "problem": "Both health bars used fixed 205/175 denominators instead of each combatant maximum.",
+      "repair": "Publish actual solo/online loadout maxima and render each side against its own maximum."
+    },
+    {
+      "id": "pvp-hidden-studio-arena",
+      "project": "pvp",
+      "problem": "The test arena and held input remained active after leaving its tab.",
+      "repair": "Stop the test and clear input on exit; require a visible test tab for tick processing."
+    },
+    {
+      "id": "pvp-projectile-final-step",
+      "project": "pvp",
+      "problem": "A projectile moved and collided for the whole frame even when only a shorter lifetime remained.",
+      "repair": "Limit its final travel to its remaining lifetime and ignore expired projectiles."
+    },
+    {
+      "id": "pvp-ai-melee-shield",
+      "project": "pvp",
+      "problem": "AI melee damage ignored shields although ranged damage respected them.",
+      "repair": "Apply the same active-shield damage rule to melee attacks."
+    }
+  ],
+  "scenarioFiles": [
+    "quality-audit-data-recovery-2026-11-28-scenarios1.json",
+    "quality-audit-data-recovery-2026-11-28-scenarios2.json",
+    "quality-audit-data-recovery-2026-11-28-scenarios3.json",
+    "quality-audit-data-recovery-2026-11-28-scenarios4.json"
+  ],
+  "verificationFile": "quality-audit-data-recovery-2026-11-28-verification.json",
+  "test": "tests/data-recovery-regression.cjs",
+  "baselines": {
+    "Formwheel": {
+      "head": "a672c14ee32ab605353479a3a8c816fa4ebf9800",
+      "branch": "codex/formwheel-data-recovery-20261128",
+      "files": [
+        "polyrhythm.html"
+      ]
+    },
+    "Formwheel_Clicker": {
+      "head": "b843fcd433d91d4d32572b57f31063cae1f838a6",
+      "branch": "codex/formwheel-data-recovery-20261128",
+      "files": [
+        "assets/season2-main.js",
+        "assets/season2-leaderboard.js",
+        "index.html"
+      ]
+    },
+    "Formwheel_PVP": {
+      "head": "31f979c447a2e95a8793a38ba80617f9cc4f6b92",
+      "branch": "codex/formwheel-data-recovery-20261128",
+      "files": [
+        "index.html",
+        "studio.html",
+        "pvp-v2.js",
+        "online.js"
+      ]
+    }
+  },
+  "appChanges": {
+    "clicker": {
+      "commit": "d1dc4ba00bbc8a65905067f3138b6d73819deda9",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_Clicker/pull/5"
+    },
+    "pvp": {
+      "commit": "deee667efcda95bd95aaefe4966e8aa4966ede51",
+      "pullRequest": "https://github.com/SemicolonXSS/Formwheel_PVP/pull/6"
+    }
+  },
+  "previousRootCI": {
+    "pullRequest": 38,
+    "commit": "a672c14ee32ab605353479a3a8c816fa4ebf9800",
+    "run": 45821183108,
+    "conclusion": "success"
+  },
+  "newCI": "not-started-at-report-creation",
+  "notModified": "Casino",
+  "limitations": [
+    "The 274 health scenarios use the real engine and DOM observer with animation disabled; they are not 274 played matches. Online display uses rejecting SDK stubs, not live rooms.",
+    "File read races and leaderboard responses use controlled promises to reproduce completion order; new recovery actions also use native button clicks and a subsequent isolated browser session.",
+    "Save exponent validation follows the existing 10,000-digit persisted-number representation. Rejected originals are not truncated or silently reset.",
+    "No live backend writes, merge, deployment, real-device audio-latency or screen-reader certification."
+  ]
+}

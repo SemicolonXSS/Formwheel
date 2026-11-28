@@ -1,0 +1,2329 @@
+{
+  "scenarioCount": 68,
+  "scenarios": [
+    {
+      "id": "pvp-health-arc-dash-speed3",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-arc-dash-speed3",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-arc-dash-speed3",
+          "maximum": 100,
+          "full": [
+            "48.7805%",
+            "48.7805%"
+          ],
+          "half": [
+            "24.3902%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-arc-dash-speed3",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-arc-dash-speed3",
+          "maximum": 100,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-arc-heal-speed0",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-arc-heal-speed0",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-arc-heal-speed0",
+          "maximum": 130,
+          "full": [
+            "63.4146%",
+            "48.7805%"
+          ],
+          "half": [
+            "31.7073%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-arc-heal-speed0",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-arc-heal-speed0",
+          "maximum": 130,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-arc-heal-speed1",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-arc-heal-speed1",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-arc-heal-speed1",
+          "maximum": 115,
+          "full": [
+            "56.0976%",
+            "48.7805%"
+          ],
+          "half": [
+            "28.0488%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-arc-heal-speed1",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-arc-heal-speed1",
+          "maximum": 115,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-arc-heal-speed2",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-arc-heal-speed2",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-arc-heal-speed2",
+          "maximum": 100,
+          "full": [
+            "48.7805%",
+            "48.7805%"
+          ],
+          "half": [
+            "24.3902%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-arc-heal-speed2",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-arc-heal-speed2",
+          "maximum": 100,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-arc-blink-speed0",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-arc-blink-speed0",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-arc-blink-speed0",
+          "maximum": 130,
+          "full": [
+            "63.4146%",
+            "48.7805%"
+          ],
+          "half": [
+            "31.7073%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-arc-blink-speed0",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-arc-blink-speed0",
+          "maximum": 130,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-arc-blink-speed1",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-arc-blink-speed1",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-arc-blink-speed1",
+          "maximum": 115,
+          "full": [
+            "56.0976%",
+            "48.7805%"
+          ],
+          "half": [
+            "28.0488%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-arc-blink-speed1",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-arc-blink-speed1",
+          "maximum": 115,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-arc-blink-speed2",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-arc-blink-speed2",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-arc-blink-speed2",
+          "maximum": 100,
+          "full": [
+            "48.7805%",
+            "48.7805%"
+          ],
+          "half": [
+            "24.3902%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-arc-blink-speed2",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-arc-blink-speed2",
+          "maximum": 100,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-arc-boost-speed0",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-arc-boost-speed0",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-arc-boost-speed0",
+          "maximum": 130,
+          "full": [
+            "63.4146%",
+            "48.7805%"
+          ],
+          "half": [
+            "31.7073%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-arc-boost-speed0",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-arc-boost-speed0",
+          "maximum": 130,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-arc-boost-speed1",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-arc-boost-speed1",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-arc-boost-speed1",
+          "maximum": 115,
+          "full": [
+            "56.0976%",
+            "48.7805%"
+          ],
+          "half": [
+            "28.0488%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-arc-boost-speed1",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-arc-boost-speed1",
+          "maximum": 115,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-arc-boost-speed2",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-arc-boost-speed2",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-arc-boost-speed2",
+          "maximum": 100,
+          "full": [
+            "48.7805%",
+            "48.7805%"
+          ],
+          "half": [
+            "24.3902%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-arc-boost-speed2",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-arc-boost-speed2",
+          "maximum": 100,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-arc-slow-speed0",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-arc-slow-speed0",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-arc-slow-speed0",
+          "maximum": 145,
+          "full": [
+            "70.7317%",
+            "48.7805%"
+          ],
+          "half": [
+            "35.3659%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-arc-slow-speed0",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-arc-slow-speed0",
+          "maximum": 145,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-arc-slow-speed1",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-arc-slow-speed1",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-arc-slow-speed1",
+          "maximum": 130,
+          "full": [
+            "63.4146%",
+            "48.7805%"
+          ],
+          "half": [
+            "31.7073%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-arc-slow-speed1",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-arc-slow-speed1",
+          "maximum": 130,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-arc-slow-speed2",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-arc-slow-speed2",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-arc-slow-speed2",
+          "maximum": 115,
+          "full": [
+            "56.0976%",
+            "48.7805%"
+          ],
+          "half": [
+            "28.0488%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-arc-slow-speed2",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-arc-slow-speed2",
+          "maximum": 115,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-arc-slow-speed3",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-arc-slow-speed3",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-arc-slow-speed3",
+          "maximum": 100,
+          "full": [
+            "48.7805%",
+            "48.7805%"
+          ],
+          "half": [
+            "24.3902%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-arc-slow-speed3",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-arc-slow-speed3",
+          "maximum": 100,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-arc-barrier-speed0",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-arc-barrier-speed0",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-arc-barrier-speed0",
+          "maximum": 115,
+          "full": [
+            "56.0976%",
+            "48.7805%"
+          ],
+          "half": [
+            "28.0488%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-arc-barrier-speed0",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-arc-barrier-speed0",
+          "maximum": 115,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-arc-barrier-speed1",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-arc-barrier-speed1",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-arc-barrier-speed1",
+          "maximum": 100,
+          "full": [
+            "48.7805%",
+            "48.7805%"
+          ],
+          "half": [
+            "24.3902%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-arc-barrier-speed1",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-arc-barrier-speed1",
+          "maximum": 100,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-heavy-dream-speed0",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-heavy-dream-speed0",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-heavy-dream-speed0",
+          "maximum": 115,
+          "full": [
+            "56.0976%",
+            "48.7805%"
+          ],
+          "half": [
+            "28.0488%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-heavy-dream-speed0",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-heavy-dream-speed0",
+          "maximum": 115,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-heavy-dream-speed1",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-heavy-dream-speed1",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-heavy-dream-speed1",
+          "maximum": 100,
+          "full": [
+            "48.7805%",
+            "48.7805%"
+          ],
+          "half": [
+            "24.3902%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-heavy-dream-speed1",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-heavy-dream-speed1",
+          "maximum": 100,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-heavy-shield-speed0",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-heavy-shield-speed0",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-heavy-shield-speed0",
+          "maximum": 115,
+          "full": [
+            "56.0976%",
+            "48.7805%"
+          ],
+          "half": [
+            "28.0488%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-heavy-shield-speed0",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-heavy-shield-speed0",
+          "maximum": 115,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-heavy-shield-speed1",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-heavy-shield-speed1",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-heavy-shield-speed1",
+          "maximum": 100,
+          "full": [
+            "48.7805%",
+            "48.7805%"
+          ],
+          "half": [
+            "24.3902%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-heavy-shield-speed1",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-heavy-shield-speed1",
+          "maximum": 100,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-heavy-dash-speed0",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-heavy-dash-speed0",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-heavy-dash-speed0",
+          "maximum": 130,
+          "full": [
+            "63.4146%",
+            "48.7805%"
+          ],
+          "half": [
+            "31.7073%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-heavy-dash-speed0",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-heavy-dash-speed0",
+          "maximum": 130,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-heavy-dash-speed1",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-heavy-dash-speed1",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-heavy-dash-speed1",
+          "maximum": 115,
+          "full": [
+            "56.0976%",
+            "48.7805%"
+          ],
+          "half": [
+            "28.0488%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-heavy-dash-speed1",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-heavy-dash-speed1",
+          "maximum": 115,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-heavy-dash-speed2",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-heavy-dash-speed2",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-heavy-dash-speed2",
+          "maximum": 100,
+          "full": [
+            "48.7805%",
+            "48.7805%"
+          ],
+          "half": [
+            "24.3902%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-heavy-dash-speed2",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-heavy-dash-speed2",
+          "maximum": 100,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-heavy-heal-speed0",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-heavy-heal-speed0",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-heavy-heal-speed0",
+          "maximum": 115,
+          "full": [
+            "56.0976%",
+            "48.7805%"
+          ],
+          "half": [
+            "28.0488%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-heavy-heal-speed0",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-heavy-heal-speed0",
+          "maximum": 115,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-heavy-heal-speed1",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-heavy-heal-speed1",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-heavy-heal-speed1",
+          "maximum": 100,
+          "full": [
+            "48.7805%",
+            "48.7805%"
+          ],
+          "half": [
+            "24.3902%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-heavy-heal-speed1",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-heavy-heal-speed1",
+          "maximum": 100,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-heavy-blink-speed0",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-heavy-blink-speed0",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-heavy-blink-speed0",
+          "maximum": 115,
+          "full": [
+            "56.0976%",
+            "48.7805%"
+          ],
+          "half": [
+            "28.0488%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-heavy-blink-speed0",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-heavy-blink-speed0",
+          "maximum": 115,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-heavy-blink-speed1",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-heavy-blink-speed1",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-heavy-blink-speed1",
+          "maximum": 100,
+          "full": [
+            "48.7805%",
+            "48.7805%"
+          ],
+          "half": [
+            "24.3902%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-heavy-blink-speed1",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-heavy-blink-speed1",
+          "maximum": 100,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-heavy-boost-speed0",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-heavy-boost-speed0",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-heavy-boost-speed0",
+          "maximum": 115,
+          "full": [
+            "56.0976%",
+            "48.7805%"
+          ],
+          "half": [
+            "28.0488%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-heavy-boost-speed0",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-heavy-boost-speed0",
+          "maximum": 115,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-heavy-boost-speed1",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-heavy-boost-speed1",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-heavy-boost-speed1",
+          "maximum": 100,
+          "full": [
+            "48.7805%",
+            "48.7805%"
+          ],
+          "half": [
+            "24.3902%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-heavy-boost-speed1",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-heavy-boost-speed1",
+          "maximum": 100,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-heavy-slow-speed0",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-heavy-slow-speed0",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-heavy-slow-speed0",
+          "maximum": 130,
+          "full": [
+            "63.4146%",
+            "48.7805%"
+          ],
+          "half": [
+            "31.7073%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-heavy-slow-speed0",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-heavy-slow-speed0",
+          "maximum": 130,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-heavy-slow-speed1",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-heavy-slow-speed1",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-heavy-slow-speed1",
+          "maximum": 115,
+          "full": [
+            "56.0976%",
+            "48.7805%"
+          ],
+          "half": [
+            "28.0488%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-heavy-slow-speed1",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-heavy-slow-speed1",
+          "maximum": 115,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-heavy-slow-speed2",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-heavy-slow-speed2",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-heavy-slow-speed2",
+          "maximum": 100,
+          "full": [
+            "48.7805%",
+            "48.7805%"
+          ],
+          "half": [
+            "24.3902%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-heavy-slow-speed2",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-heavy-slow-speed2",
+          "maximum": 100,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-heavy-barrier-speed0",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-heavy-barrier-speed0",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-heavy-barrier-speed0",
+          "maximum": 100,
+          "full": [
+            "48.7805%",
+            "48.7805%"
+          ],
+          "half": [
+            "24.3902%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-heavy-barrier-speed0",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-heavy-barrier-speed0",
+          "maximum": 100,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-needle-dream-speed0",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-needle-dream-speed0",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-needle-dream-speed0",
+          "maximum": 130,
+          "full": [
+            "63.4146%",
+            "48.7805%"
+          ],
+          "half": [
+            "31.7073%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-needle-dream-speed0",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-needle-dream-speed0",
+          "maximum": 130,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-needle-dream-speed1",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-needle-dream-speed1",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-needle-dream-speed1",
+          "maximum": 115,
+          "full": [
+            "56.0976%",
+            "48.7805%"
+          ],
+          "half": [
+            "28.0488%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-needle-dream-speed1",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-needle-dream-speed1",
+          "maximum": 115,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-needle-dream-speed2",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-needle-dream-speed2",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-needle-dream-speed2",
+          "maximum": 100,
+          "full": [
+            "48.7805%",
+            "48.7805%"
+          ],
+          "half": [
+            "24.3902%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-needle-dream-speed2",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-needle-dream-speed2",
+          "maximum": 100,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-needle-shield-speed0",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-needle-shield-speed0",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-needle-shield-speed0",
+          "maximum": 130,
+          "full": [
+            "63.4146%",
+            "48.7805%"
+          ],
+          "half": [
+            "31.7073%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-needle-shield-speed0",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-needle-shield-speed0",
+          "maximum": 130,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-needle-shield-speed1",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-needle-shield-speed1",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-needle-shield-speed1",
+          "maximum": 115,
+          "full": [
+            "56.0976%",
+            "48.7805%"
+          ],
+          "half": [
+            "28.0488%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-needle-shield-speed1",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-needle-shield-speed1",
+          "maximum": 115,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-needle-shield-speed2",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-needle-shield-speed2",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-needle-shield-speed2",
+          "maximum": 100,
+          "full": [
+            "48.7805%",
+            "48.7805%"
+          ],
+          "half": [
+            "24.3902%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-needle-shield-speed2",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-needle-shield-speed2",
+          "maximum": 100,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-needle-dash-speed0",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-needle-dash-speed0",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-needle-dash-speed0",
+          "maximum": 145,
+          "full": [
+            "70.7317%",
+            "48.7805%"
+          ],
+          "half": [
+            "35.3659%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-needle-dash-speed0",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-needle-dash-speed0",
+          "maximum": 145,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-needle-dash-speed1",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-needle-dash-speed1",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-needle-dash-speed1",
+          "maximum": 130,
+          "full": [
+            "63.4146%",
+            "48.7805%"
+          ],
+          "half": [
+            "31.7073%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-needle-dash-speed1",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-needle-dash-speed1",
+          "maximum": 130,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-needle-dash-speed2",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-needle-dash-speed2",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-needle-dash-speed2",
+          "maximum": 115,
+          "full": [
+            "56.0976%",
+            "48.7805%"
+          ],
+          "half": [
+            "28.0488%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-needle-dash-speed2",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-needle-dash-speed2",
+          "maximum": 115,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-needle-dash-speed3",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-needle-dash-speed3",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-needle-dash-speed3",
+          "maximum": 100,
+          "full": [
+            "48.7805%",
+            "48.7805%"
+          ],
+          "half": [
+            "24.3902%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-needle-dash-speed3",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-needle-dash-speed3",
+          "maximum": 100,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-needle-heal-speed0",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-needle-heal-speed0",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-needle-heal-speed0",
+          "maximum": 130,
+          "full": [
+            "63.4146%",
+            "48.7805%"
+          ],
+          "half": [
+            "31.7073%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-needle-heal-speed0",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-needle-heal-speed0",
+          "maximum": 130,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-needle-heal-speed1",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-needle-heal-speed1",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-needle-heal-speed1",
+          "maximum": 115,
+          "full": [
+            "56.0976%",
+            "48.7805%"
+          ],
+          "half": [
+            "28.0488%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-needle-heal-speed1",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-needle-heal-speed1",
+          "maximum": 115,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-needle-heal-speed2",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-needle-heal-speed2",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-needle-heal-speed2",
+          "maximum": 100,
+          "full": [
+            "48.7805%",
+            "48.7805%"
+          ],
+          "half": [
+            "24.3902%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-needle-heal-speed2",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-needle-heal-speed2",
+          "maximum": 100,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-needle-blink-speed0",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-needle-blink-speed0",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-needle-blink-speed0",
+          "maximum": 130,
+          "full": [
+            "63.4146%",
+            "48.7805%"
+          ],
+          "half": [
+            "31.7073%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-needle-blink-speed0",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-needle-blink-speed0",
+          "maximum": 130,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-needle-blink-speed1",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-needle-blink-speed1",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-needle-blink-speed1",
+          "maximum": 115,
+          "full": [
+            "56.0976%",
+            "48.7805%"
+          ],
+          "half": [
+            "28.0488%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-needle-blink-speed1",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-needle-blink-speed1",
+          "maximum": 115,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-needle-blink-speed2",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-needle-blink-speed2",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-needle-blink-speed2",
+          "maximum": 100,
+          "full": [
+            "48.7805%",
+            "48.7805%"
+          ],
+          "half": [
+            "24.3902%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-needle-blink-speed2",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-needle-blink-speed2",
+          "maximum": 100,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-needle-boost-speed0",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-needle-boost-speed0",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-needle-boost-speed0",
+          "maximum": 130,
+          "full": [
+            "63.4146%",
+            "48.7805%"
+          ],
+          "half": [
+            "31.7073%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-needle-boost-speed0",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-needle-boost-speed0",
+          "maximum": 130,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-needle-boost-speed1",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-needle-boost-speed1",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-needle-boost-speed1",
+          "maximum": 115,
+          "full": [
+            "56.0976%",
+            "48.7805%"
+          ],
+          "half": [
+            "28.0488%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-needle-boost-speed1",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-needle-boost-speed1",
+          "maximum": 115,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-needle-boost-speed2",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-needle-boost-speed2",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-needle-boost-speed2",
+          "maximum": 100,
+          "full": [
+            "48.7805%",
+            "48.7805%"
+          ],
+          "half": [
+            "24.3902%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-needle-boost-speed2",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-needle-boost-speed2",
+          "maximum": 100,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-needle-slow-speed0",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-needle-slow-speed0",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-needle-slow-speed0",
+          "maximum": 145,
+          "full": [
+            "70.7317%",
+            "48.7805%"
+          ],
+          "half": [
+            "35.3659%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-needle-slow-speed0",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-needle-slow-speed0",
+          "maximum": 145,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-needle-slow-speed1",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-needle-slow-speed1",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-needle-slow-speed1",
+          "maximum": 130,
+          "full": [
+            "63.4146%",
+            "48.7805%"
+          ],
+          "half": [
+            "31.7073%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-needle-slow-speed1",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-needle-slow-speed1",
+          "maximum": 130,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-needle-slow-speed2",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-needle-slow-speed2",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-needle-slow-speed2",
+          "maximum": 115,
+          "full": [
+            "56.0976%",
+            "48.7805%"
+          ],
+          "half": [
+            "28.0488%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-needle-slow-speed2",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-needle-slow-speed2",
+          "maximum": 115,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-needle-slow-speed3",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-needle-slow-speed3",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-needle-slow-speed3",
+          "maximum": 100,
+          "full": [
+            "48.7805%",
+            "48.7805%"
+          ],
+          "half": [
+            "24.3902%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-needle-slow-speed3",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-needle-slow-speed3",
+          "maximum": 100,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-needle-barrier-speed0",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-needle-barrier-speed0",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-needle-barrier-speed0",
+          "maximum": 115,
+          "full": [
+            "56.0976%",
+            "48.7805%"
+          ],
+          "half": [
+            "28.0488%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-needle-barrier-speed0",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-needle-barrier-speed0",
+          "maximum": 115,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-needle-barrier-speed1",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-needle-barrier-speed1",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-needle-barrier-speed1",
+          "maximum": 100,
+          "full": [
+            "48.7805%",
+            "48.7805%"
+          ],
+          "half": [
+            "24.3902%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-needle-barrier-speed1",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-needle-barrier-speed1",
+          "maximum": 100,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-main-online",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-main-online",
+        "pass": false
+      },
+      "after": {
+        "id": "pvp-main-online",
+        "pass": true
+      }
+    },
+    {
+      "id": "pvp-main-isolated",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-main-isolated",
+        "pass": false
+      },
+      "after": {
+        "id": "pvp-main-isolated",
+        "pass": true
+      }
+    },
+    {
+      "id": "pvp-main-weaponSchema",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-main-weaponSchema",
+        "pass": false
+      },
+      "after": {
+        "id": "pvp-main-weaponSchema",
+        "pass": true
+      }
+    },
+    {
+      "id": "pvp-main-staleRegistry",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-main-staleRegistry",
+        "pass": false
+      },
+      "after": {
+        "id": "pvp-main-staleRegistry",
+        "pass": true
+      }
+    },
+    {
+      "id": "pvp-main-uniqueImport",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-main-uniqueImport",
+        "pass": false
+      },
+      "after": {
+        "id": "pvp-main-uniqueImport",
+        "pass": true
+      }
+    },
+    {
+      "id": "pvp-main-collisionCopy",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-main-collisionCopy",
+        "pass": false
+      },
+      "after": {
+        "id": "pvp-main-collisionCopy",
+        "pass": true
+      }
+    },
+    {
+      "id": "pvp-main-capacity",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-main-capacity",
+        "pass": false
+      },
+      "after": {
+        "id": "pvp-main-capacity",
+        "pass": true
+      }
+    },
+    {
+      "id": "pvp-studio-hidden",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-studio-hidden",
+        "pass": false
+      },
+      "after": {
+        "id": "pvp-studio-hidden",
+        "pass": true
+      }
+    },
+    {
+      "id": "pvp-studio-expiry",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-studio-expiry",
+        "pass": false
+      },
+      "after": {
+        "id": "pvp-studio-expiry",
+        "pass": true
+      }
+    },
+    {
+      "id": "pvp-studio-shield",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-studio-shield",
+        "pass": false
+      },
+      "after": {
+        "id": "pvp-studio-shield",
+        "pass": true
+      }
+    }
+  ]
+}

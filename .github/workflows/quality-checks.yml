@@ -159,7 +159,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: SemicolonXSS/Formwheel_PVP
-          ref: 31f979c447a2e95a8793a38ba80617f9cc4f6b92
+          ref: deee667efcda95bd95aaefe4966e8aa4966ede51
           path: ecosystem-studio/Formwheel_PVP
           persist-credentials: false
       - name: Install isolated browser runner
@@ -184,14 +184,14 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: SemicolonXSS/Formwheel_Clicker
-          ref: b843fcd433d91d4d32572b57f31063cae1f838a6
+          ref: d1dc4ba00bbc8a65905067f3138b6d73819deda9
           path: ecosystem-targeted/Formwheel_Clicker
           persist-credentials: false
       - name: Check out contrasting PVP subject
         uses: actions/checkout@v4
         with:
           repository: SemicolonXSS/Formwheel_PVP
-          ref: 31f979c447a2e95a8793a38ba80617f9cc4f6b92
+          ref: deee667efcda95bd95aaefe4966e8aa4966ede51
           path: ecosystem-targeted/Formwheel_PVP
           persist-credentials: false
       - name: Install isolated browser runner
@@ -208,6 +208,11 @@ jobs:
           FW_ECOSYSTEM_ROOT: ${{ github.workspace }}/ecosystem-targeted
           FW_DEEP_REPORT: deeper-projects-results.json
         run: node tests/deeper-projects-regression.cjs
+      - name: Exercise save recovery, import races, health displays and studio limits
+        env:
+          FW_ECOSYSTEM_ROOT: ${{ github.workspace }}/ecosystem-targeted
+          FW_RECOVERY_REPORT: data-recovery-results.json
+        run: node tests/data-recovery-regression.cjs
       - name: Preserve verification measurements
         uses: actions/upload-artifact@v4
         with:
@@ -215,6 +220,7 @@ jobs:
           path: |
             targeted-projects-results.json
             deeper-projects-results.json
+            data-recovery-results.json
 
   third-app-audit:
     name: Additional app UI and game regressions

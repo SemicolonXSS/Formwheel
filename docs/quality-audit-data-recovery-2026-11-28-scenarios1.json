@@ -1,0 +1,2508 @@
+{
+  "scenarioCount": 80,
+  "scenarios": [
+    {
+      "id": "poly-export-period-1",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "poly-export-period-1",
+        "pass": false,
+        "details": {
+          "actual": 1,
+          "expected": 1.8
+        }
+      },
+      "after": {
+        "id": "poly-export-period-1",
+        "pass": true,
+        "details": {
+          "actual": 1.8,
+          "expected": 1.8
+        }
+      }
+    },
+    {
+      "id": "poly-export-period-9",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "poly-export-period-9",
+        "pass": false,
+        "details": {
+          "actual": 9,
+          "expected": 8
+        }
+      },
+      "after": {
+        "id": "poly-export-period-9",
+        "pass": true,
+        "details": {
+          "actual": 8,
+          "expected": 8
+        }
+      }
+    },
+    {
+      "id": "poly-export-period-3.56",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "poly-export-period-3.56",
+        "pass": false,
+        "details": {
+          "actual": 3.56,
+          "expected": 3.6
+        }
+      },
+      "after": {
+        "id": "poly-export-period-3.56",
+        "pass": true,
+        "details": {
+          "actual": 3.6,
+          "expected": 3.6
+        }
+      }
+    },
+    {
+      "id": "poly-export-period-empty",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "poly-export-period-empty",
+        "pass": true,
+        "details": {
+          "actual": 3.5,
+          "expected": 3.5
+        }
+      },
+      "after": {
+        "id": "poly-export-period-empty",
+        "pass": true,
+        "details": {
+          "actual": 3.5,
+          "expected": 3.5
+        }
+      }
+    },
+    {
+      "id": "poly-import-unsupported",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "poly-import-unsupported",
+        "pass": false
+      },
+      "after": {
+        "id": "poly-import-unsupported",
+        "pass": true
+      }
+    },
+    {
+      "id": "poly-import-size",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "poly-import-size",
+        "pass": false
+      },
+      "after": {
+        "id": "poly-import-size",
+        "pass": true
+      }
+    },
+    {
+      "id": "poly-import-latest",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "poly-import-latest",
+        "pass": false
+      },
+      "after": {
+        "id": "poly-import-latest",
+        "pass": true
+      }
+    },
+    {
+      "id": "poly-import-staleError",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "poly-import-staleError",
+        "pass": false
+      },
+      "after": {
+        "id": "poly-import-staleError",
+        "pass": true
+      }
+    },
+    {
+      "id": "poly-import-closed",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "poly-import-closed",
+        "pass": false
+      },
+      "after": {
+        "id": "poly-import-closed",
+        "pass": true
+      }
+    },
+    {
+      "id": "clicker-preserve-malformed",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "clicker-preserve-malformed",
+        "pass": false,
+        "details": {
+          "kept": false,
+          "paused": false,
+          "recovery": false,
+          "errors": []
+        }
+      },
+      "after": {
+        "id": "clicker-preserve-malformed",
+        "pass": true,
+        "details": {
+          "kept": true,
+          "paused": true,
+          "recovery": true,
+          "errors": []
+        }
+      }
+    },
+    {
+      "id": "clicker-explicit-backup-reset",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "clicker-explicit-backup-reset",
+        "pass": false
+      },
+      "after": {
+        "id": "clicker-explicit-backup-reset",
+        "pass": true,
+        "details": {
+          "primary": true,
+          "backup": true,
+          "enabled": true
+        }
+      }
+    },
+    {
+      "id": "clicker-backup-available-next-session",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "clicker-backup-available-next-session",
+        "pass": false
+      },
+      "after": {
+        "id": "clicker-backup-available-next-session",
+        "pass": true
+      }
+    },
+    {
+      "id": "clicker-backup-download-exact",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "clicker-backup-download-exact",
+        "pass": false
+      },
+      "after": {
+        "id": "clicker-backup-download-exact",
+        "pass": true
+      }
+    },
+    {
+      "id": "clicker-preserve-balance",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "clicker-preserve-balance",
+        "pass": false,
+        "details": {
+          "kept": false,
+          "paused": false,
+          "recovery": false,
+          "errors": []
+        }
+      },
+      "after": {
+        "id": "clicker-preserve-balance",
+        "pass": true,
+        "details": {
+          "kept": true,
+          "paused": true,
+          "recovery": true,
+          "errors": []
+        }
+      }
+    },
+    {
+      "id": "clicker-preserve-level",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "clicker-preserve-level",
+        "pass": false,
+        "details": {
+          "kept": true,
+          "paused": false,
+          "recovery": false,
+          "errors": [
+            "Maximum BigInt size exceeded"
+          ]
+        }
+      },
+      "after": {
+        "id": "clicker-preserve-level",
+        "pass": true,
+        "details": {
+          "kept": true,
+          "paused": true,
+          "recovery": true,
+          "errors": []
+        }
+      }
+    },
+    {
+      "id": "clicker-preserve-version",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "clicker-preserve-version",
+        "pass": false,
+        "details": {
+          "kept": false,
+          "paused": false,
+          "recovery": false,
+          "errors": []
+        }
+      },
+      "after": {
+        "id": "clicker-preserve-version",
+        "pass": true,
+        "details": {
+          "kept": true,
+          "paused": true,
+          "recovery": true,
+          "errors": []
+        }
+      }
+    },
+    {
+      "id": "clicker-backup-failure-keeps-original",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "clicker-backup-failure-keeps-original",
+        "pass": false
+      },
+      "after": {
+        "id": "clicker-backup-failure-keeps-original",
+        "pass": true
+      }
+    },
+    {
+      "id": "clicker-reset-preserves-newer-tab-save",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "clicker-reset-preserves-newer-tab-save",
+        "pass": false
+      },
+      "after": {
+        "id": "clicker-reset-preserves-newer-tab-save",
+        "pass": true
+      }
+    },
+    {
+      "id": "clicker-unreadable-storage-temporary-play",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "clicker-unreadable-storage-temporary-play",
+        "pass": false
+      },
+      "after": {
+        "id": "clicker-unreadable-storage-temporary-play",
+        "pass": true
+      }
+    },
+    {
+      "id": "clicker-leaderboard-emptyRank",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "clicker-leaderboard-emptyRank",
+        "pass": false
+      },
+      "after": {
+        "id": "clicker-leaderboard-emptyRank",
+        "pass": true
+      }
+    },
+    {
+      "id": "clicker-leaderboard-bounded",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "clicker-leaderboard-bounded",
+        "pass": false
+      },
+      "after": {
+        "id": "clicker-leaderboard-bounded",
+        "pass": true
+      }
+    },
+    {
+      "id": "clicker-leaderboard-order",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "clicker-leaderboard-order",
+        "pass": false
+      },
+      "after": {
+        "id": "clicker-leaderboard-order",
+        "pass": true
+      }
+    },
+    {
+      "id": "clicker-leaderboard-staleError",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "clicker-leaderboard-staleError",
+        "pass": false
+      },
+      "after": {
+        "id": "clicker-leaderboard-staleError",
+        "pass": true
+      }
+    },
+    {
+      "id": "clicker-leaderboard-errorRank",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "clicker-leaderboard-errorRank",
+        "pass": false
+      },
+      "after": {
+        "id": "clicker-leaderboard-errorRank",
+        "pass": true
+      }
+    },
+    {
+      "id": "pvp-health-orb-dream-speed0",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-orb-dream-speed0",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-orb-dream-speed0",
+          "maximum": 145,
+          "full": [
+            "70.7317%",
+            "48.7805%"
+          ],
+          "half": [
+            "35.3659%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-orb-dream-speed0",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-orb-dream-speed0",
+          "maximum": 145,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-orb-dream-speed1",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-orb-dream-speed1",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-orb-dream-speed1",
+          "maximum": 130,
+          "full": [
+            "63.4146%",
+            "48.7805%"
+          ],
+          "half": [
+            "31.7073%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-orb-dream-speed1",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-orb-dream-speed1",
+          "maximum": 130,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-orb-dream-speed2",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-orb-dream-speed2",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-orb-dream-speed2",
+          "maximum": 115,
+          "full": [
+            "56.0976%",
+            "48.7805%"
+          ],
+          "half": [
+            "28.0488%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-orb-dream-speed2",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-orb-dream-speed2",
+          "maximum": 115,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-orb-dream-speed3",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-orb-dream-speed3",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-orb-dream-speed3",
+          "maximum": 100,
+          "full": [
+            "48.7805%",
+            "48.7805%"
+          ],
+          "half": [
+            "24.3902%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-orb-dream-speed3",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-orb-dream-speed3",
+          "maximum": 100,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-orb-shield-speed0",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-orb-shield-speed0",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-orb-shield-speed0",
+          "maximum": 145,
+          "full": [
+            "70.7317%",
+            "48.7805%"
+          ],
+          "half": [
+            "35.3659%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-orb-shield-speed0",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-orb-shield-speed0",
+          "maximum": 145,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-orb-shield-speed1",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-orb-shield-speed1",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-orb-shield-speed1",
+          "maximum": 130,
+          "full": [
+            "63.4146%",
+            "48.7805%"
+          ],
+          "half": [
+            "31.7073%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-orb-shield-speed1",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-orb-shield-speed1",
+          "maximum": 130,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-orb-shield-speed2",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-orb-shield-speed2",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-orb-shield-speed2",
+          "maximum": 115,
+          "full": [
+            "56.0976%",
+            "48.7805%"
+          ],
+          "half": [
+            "28.0488%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-orb-shield-speed2",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-orb-shield-speed2",
+          "maximum": 115,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-orb-shield-speed3",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-orb-shield-speed3",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-orb-shield-speed3",
+          "maximum": 100,
+          "full": [
+            "48.7805%",
+            "48.7805%"
+          ],
+          "half": [
+            "24.3902%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-orb-shield-speed3",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-orb-shield-speed3",
+          "maximum": 100,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-orb-dash-speed0",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-orb-dash-speed0",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-orb-dash-speed0",
+          "maximum": 160,
+          "full": [
+            "78.0488%",
+            "48.7805%"
+          ],
+          "half": [
+            "39.0244%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-orb-dash-speed0",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-orb-dash-speed0",
+          "maximum": 160,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-orb-dash-speed1",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-orb-dash-speed1",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-orb-dash-speed1",
+          "maximum": 145,
+          "full": [
+            "70.7317%",
+            "48.7805%"
+          ],
+          "half": [
+            "35.3659%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-orb-dash-speed1",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-orb-dash-speed1",
+          "maximum": 145,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-orb-dash-speed2",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-orb-dash-speed2",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-orb-dash-speed2",
+          "maximum": 130,
+          "full": [
+            "63.4146%",
+            "48.7805%"
+          ],
+          "half": [
+            "31.7073%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-orb-dash-speed2",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-orb-dash-speed2",
+          "maximum": 130,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-orb-dash-speed3",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-orb-dash-speed3",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-orb-dash-speed3",
+          "maximum": 115,
+          "full": [
+            "56.0976%",
+            "48.7805%"
+          ],
+          "half": [
+            "28.0488%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-orb-dash-speed3",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-orb-dash-speed3",
+          "maximum": 115,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-orb-dash-speed4",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-orb-dash-speed4",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-orb-dash-speed4",
+          "maximum": 100,
+          "full": [
+            "48.7805%",
+            "48.7805%"
+          ],
+          "half": [
+            "24.3902%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-orb-dash-speed4",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-orb-dash-speed4",
+          "maximum": 100,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-orb-heal-speed0",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-orb-heal-speed0",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-orb-heal-speed0",
+          "maximum": 145,
+          "full": [
+            "70.7317%",
+            "48.7805%"
+          ],
+          "half": [
+            "35.3659%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-orb-heal-speed0",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-orb-heal-speed0",
+          "maximum": 145,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-orb-heal-speed1",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-orb-heal-speed1",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-orb-heal-speed1",
+          "maximum": 130,
+          "full": [
+            "63.4146%",
+            "48.7805%"
+          ],
+          "half": [
+            "31.7073%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-orb-heal-speed1",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-orb-heal-speed1",
+          "maximum": 130,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-orb-heal-speed2",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-orb-heal-speed2",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-orb-heal-speed2",
+          "maximum": 115,
+          "full": [
+            "56.0976%",
+            "48.7805%"
+          ],
+          "half": [
+            "28.0488%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-orb-heal-speed2",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-orb-heal-speed2",
+          "maximum": 115,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-orb-heal-speed3",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-orb-heal-speed3",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-orb-heal-speed3",
+          "maximum": 100,
+          "full": [
+            "48.7805%",
+            "48.7805%"
+          ],
+          "half": [
+            "24.3902%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-orb-heal-speed3",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-orb-heal-speed3",
+          "maximum": 100,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-orb-blink-speed0",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-orb-blink-speed0",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-orb-blink-speed0",
+          "maximum": 145,
+          "full": [
+            "70.7317%",
+            "48.7805%"
+          ],
+          "half": [
+            "35.3659%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-orb-blink-speed0",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-orb-blink-speed0",
+          "maximum": 145,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-orb-blink-speed1",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-orb-blink-speed1",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-orb-blink-speed1",
+          "maximum": 130,
+          "full": [
+            "63.4146%",
+            "48.7805%"
+          ],
+          "half": [
+            "31.7073%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-orb-blink-speed1",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-orb-blink-speed1",
+          "maximum": 130,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-orb-blink-speed2",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-orb-blink-speed2",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-orb-blink-speed2",
+          "maximum": 115,
+          "full": [
+            "56.0976%",
+            "48.7805%"
+          ],
+          "half": [
+            "28.0488%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-orb-blink-speed2",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-orb-blink-speed2",
+          "maximum": 115,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-orb-blink-speed3",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-orb-blink-speed3",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-orb-blink-speed3",
+          "maximum": 100,
+          "full": [
+            "48.7805%",
+            "48.7805%"
+          ],
+          "half": [
+            "24.3902%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-orb-blink-speed3",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-orb-blink-speed3",
+          "maximum": 100,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-orb-boost-speed0",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-orb-boost-speed0",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-orb-boost-speed0",
+          "maximum": 145,
+          "full": [
+            "70.7317%",
+            "48.7805%"
+          ],
+          "half": [
+            "35.3659%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-orb-boost-speed0",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-orb-boost-speed0",
+          "maximum": 145,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-orb-boost-speed1",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-orb-boost-speed1",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-orb-boost-speed1",
+          "maximum": 130,
+          "full": [
+            "63.4146%",
+            "48.7805%"
+          ],
+          "half": [
+            "31.7073%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-orb-boost-speed1",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-orb-boost-speed1",
+          "maximum": 130,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-orb-boost-speed2",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-orb-boost-speed2",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-orb-boost-speed2",
+          "maximum": 115,
+          "full": [
+            "56.0976%",
+            "48.7805%"
+          ],
+          "half": [
+            "28.0488%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-orb-boost-speed2",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-orb-boost-speed2",
+          "maximum": 115,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-orb-boost-speed3",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-orb-boost-speed3",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-orb-boost-speed3",
+          "maximum": 100,
+          "full": [
+            "48.7805%",
+            "48.7805%"
+          ],
+          "half": [
+            "24.3902%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-orb-boost-speed3",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-orb-boost-speed3",
+          "maximum": 100,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-orb-slow-speed0",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-orb-slow-speed0",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-orb-slow-speed0",
+          "maximum": 160,
+          "full": [
+            "78.0488%",
+            "48.7805%"
+          ],
+          "half": [
+            "39.0244%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-orb-slow-speed0",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-orb-slow-speed0",
+          "maximum": 160,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-orb-slow-speed1",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-orb-slow-speed1",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-orb-slow-speed1",
+          "maximum": 145,
+          "full": [
+            "70.7317%",
+            "48.7805%"
+          ],
+          "half": [
+            "35.3659%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-orb-slow-speed1",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-orb-slow-speed1",
+          "maximum": 145,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-orb-slow-speed2",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-orb-slow-speed2",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-orb-slow-speed2",
+          "maximum": 130,
+          "full": [
+            "63.4146%",
+            "48.7805%"
+          ],
+          "half": [
+            "31.7073%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-orb-slow-speed2",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-orb-slow-speed2",
+          "maximum": 130,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-orb-slow-speed3",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-orb-slow-speed3",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-orb-slow-speed3",
+          "maximum": 115,
+          "full": [
+            "56.0976%",
+            "48.7805%"
+          ],
+          "half": [
+            "28.0488%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-orb-slow-speed3",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-orb-slow-speed3",
+          "maximum": 115,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-orb-slow-speed4",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-orb-slow-speed4",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-orb-slow-speed4",
+          "maximum": 100,
+          "full": [
+            "48.7805%",
+            "48.7805%"
+          ],
+          "half": [
+            "24.3902%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-orb-slow-speed4",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-orb-slow-speed4",
+          "maximum": 100,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-orb-barrier-speed0",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-orb-barrier-speed0",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-orb-barrier-speed0",
+          "maximum": 130,
+          "full": [
+            "63.4146%",
+            "48.7805%"
+          ],
+          "half": [
+            "31.7073%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-orb-barrier-speed0",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-orb-barrier-speed0",
+          "maximum": 130,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-orb-barrier-speed1",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-orb-barrier-speed1",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-orb-barrier-speed1",
+          "maximum": 115,
+          "full": [
+            "56.0976%",
+            "48.7805%"
+          ],
+          "half": [
+            "28.0488%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-orb-barrier-speed1",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-orb-barrier-speed1",
+          "maximum": 115,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-orb-barrier-speed2",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-orb-barrier-speed2",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-orb-barrier-speed2",
+          "maximum": 100,
+          "full": [
+            "48.7805%",
+            "48.7805%"
+          ],
+          "half": [
+            "24.3902%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-orb-barrier-speed2",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-orb-barrier-speed2",
+          "maximum": 100,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-wave-dream-speed0",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-wave-dream-speed0",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-wave-dream-speed0",
+          "maximum": 145,
+          "full": [
+            "70.7317%",
+            "48.7805%"
+          ],
+          "half": [
+            "35.3659%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-wave-dream-speed0",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-wave-dream-speed0",
+          "maximum": 145,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-wave-dream-speed1",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-wave-dream-speed1",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-wave-dream-speed1",
+          "maximum": 130,
+          "full": [
+            "63.4146%",
+            "48.7805%"
+          ],
+          "half": [
+            "31.7073%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-wave-dream-speed1",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-wave-dream-speed1",
+          "maximum": 130,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-wave-dream-speed2",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-wave-dream-speed2",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-wave-dream-speed2",
+          "maximum": 115,
+          "full": [
+            "56.0976%",
+            "48.7805%"
+          ],
+          "half": [
+            "28.0488%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-wave-dream-speed2",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-wave-dream-speed2",
+          "maximum": 115,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-wave-dream-speed3",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-wave-dream-speed3",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-wave-dream-speed3",
+          "maximum": 100,
+          "full": [
+            "48.7805%",
+            "48.7805%"
+          ],
+          "half": [
+            "24.3902%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-wave-dream-speed3",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-wave-dream-speed3",
+          "maximum": 100,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-wave-shield-speed0",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-wave-shield-speed0",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-wave-shield-speed0",
+          "maximum": 145,
+          "full": [
+            "70.7317%",
+            "48.7805%"
+          ],
+          "half": [
+            "35.3659%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-wave-shield-speed0",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-wave-shield-speed0",
+          "maximum": 145,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-wave-shield-speed1",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-wave-shield-speed1",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-wave-shield-speed1",
+          "maximum": 130,
+          "full": [
+            "63.4146%",
+            "48.7805%"
+          ],
+          "half": [
+            "31.7073%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-wave-shield-speed1",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-wave-shield-speed1",
+          "maximum": 130,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-wave-shield-speed2",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-wave-shield-speed2",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-wave-shield-speed2",
+          "maximum": 115,
+          "full": [
+            "56.0976%",
+            "48.7805%"
+          ],
+          "half": [
+            "28.0488%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-wave-shield-speed2",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-wave-shield-speed2",
+          "maximum": 115,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-wave-shield-speed3",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-wave-shield-speed3",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-wave-shield-speed3",
+          "maximum": 100,
+          "full": [
+            "48.7805%",
+            "48.7805%"
+          ],
+          "half": [
+            "24.3902%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-wave-shield-speed3",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-wave-shield-speed3",
+          "maximum": 100,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-wave-dash-speed0",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-wave-dash-speed0",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-wave-dash-speed0",
+          "maximum": 160,
+          "full": [
+            "78.0488%",
+            "48.7805%"
+          ],
+          "half": [
+            "39.0244%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-wave-dash-speed0",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-wave-dash-speed0",
+          "maximum": 160,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-wave-dash-speed1",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-wave-dash-speed1",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-wave-dash-speed1",
+          "maximum": 145,
+          "full": [
+            "70.7317%",
+            "48.7805%"
+          ],
+          "half": [
+            "35.3659%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-wave-dash-speed1",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-wave-dash-speed1",
+          "maximum": 145,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-wave-dash-speed2",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-wave-dash-speed2",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-wave-dash-speed2",
+          "maximum": 130,
+          "full": [
+            "63.4146%",
+            "48.7805%"
+          ],
+          "half": [
+            "31.7073%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-wave-dash-speed2",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-wave-dash-speed2",
+          "maximum": 130,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-wave-dash-speed3",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-wave-dash-speed3",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-wave-dash-speed3",
+          "maximum": 115,
+          "full": [
+            "56.0976%",
+            "48.7805%"
+          ],
+          "half": [
+            "28.0488%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-wave-dash-speed3",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-wave-dash-speed3",
+          "maximum": 115,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-wave-dash-speed4",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-wave-dash-speed4",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-wave-dash-speed4",
+          "maximum": 100,
+          "full": [
+            "48.7805%",
+            "48.7805%"
+          ],
+          "half": [
+            "24.3902%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-wave-dash-speed4",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-wave-dash-speed4",
+          "maximum": 100,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-wave-heal-speed0",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-wave-heal-speed0",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-wave-heal-speed0",
+          "maximum": 145,
+          "full": [
+            "70.7317%",
+            "48.7805%"
+          ],
+          "half": [
+            "35.3659%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-wave-heal-speed0",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-wave-heal-speed0",
+          "maximum": 145,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-wave-heal-speed1",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-wave-heal-speed1",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-wave-heal-speed1",
+          "maximum": 130,
+          "full": [
+            "63.4146%",
+            "48.7805%"
+          ],
+          "half": [
+            "31.7073%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-wave-heal-speed1",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-wave-heal-speed1",
+          "maximum": 130,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-wave-heal-speed2",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-wave-heal-speed2",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-wave-heal-speed2",
+          "maximum": 115,
+          "full": [
+            "56.0976%",
+            "48.7805%"
+          ],
+          "half": [
+            "28.0488%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-wave-heal-speed2",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-wave-heal-speed2",
+          "maximum": 115,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-wave-heal-speed3",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-wave-heal-speed3",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-wave-heal-speed3",
+          "maximum": 100,
+          "full": [
+            "48.7805%",
+            "48.7805%"
+          ],
+          "half": [
+            "24.3902%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-wave-heal-speed3",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-wave-heal-speed3",
+          "maximum": 100,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-wave-blink-speed0",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-wave-blink-speed0",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-wave-blink-speed0",
+          "maximum": 145,
+          "full": [
+            "70.7317%",
+            "48.7805%"
+          ],
+          "half": [
+            "35.3659%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-wave-blink-speed0",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-wave-blink-speed0",
+          "maximum": 145,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-wave-blink-speed1",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-wave-blink-speed1",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-wave-blink-speed1",
+          "maximum": 130,
+          "full": [
+            "63.4146%",
+            "48.7805%"
+          ],
+          "half": [
+            "31.7073%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-wave-blink-speed1",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-wave-blink-speed1",
+          "maximum": 130,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-wave-blink-speed2",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-wave-blink-speed2",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-wave-blink-speed2",
+          "maximum": 115,
+          "full": [
+            "56.0976%",
+            "48.7805%"
+          ],
+          "half": [
+            "28.0488%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-wave-blink-speed2",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-wave-blink-speed2",
+          "maximum": 115,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-wave-blink-speed3",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-wave-blink-speed3",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-wave-blink-speed3",
+          "maximum": 100,
+          "full": [
+            "48.7805%",
+            "48.7805%"
+          ],
+          "half": [
+            "24.3902%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-wave-blink-speed3",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-wave-blink-speed3",
+          "maximum": 100,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-wave-boost-speed0",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-wave-boost-speed0",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-wave-boost-speed0",
+          "maximum": 145,
+          "full": [
+            "70.7317%",
+            "48.7805%"
+          ],
+          "half": [
+            "35.3659%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-wave-boost-speed0",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-wave-boost-speed0",
+          "maximum": 145,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "pvp-health-wave-boost-speed1",
+      "unit": "regression scenario; not an independent source defect or modification",
+      "before": {
+        "id": "pvp-health-wave-boost-speed1",
+        "pass": false,
+        "details": {
+          "id": "pvp-health-wave-boost-speed1",
+          "maximum": 130,
+          "full": [
+            "63.4146%",
+            "48.7805%"
+          ],
+          "half": [
+            "31.7073%",
+            "24.3902%"
+          ],
+          "pass": false
+        }
+      },
+      "after": {
+        "id": "pvp-health-wave-boost-speed1",
+        "pass": true,
+        "details": {
+          "id": "pvp-health-wave-boost-speed1",
+          "maximum": 130,
+          "full": [
+            "100%",
+            "100%"
+          ],
+          "half": [
+            "50%",
+            "50%"
+          ],
+          "pass": true
+        }
+      }
+    }
+  ]
+}
