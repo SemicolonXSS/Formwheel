@@ -6,9 +6,11 @@ const app=getApps()[0],auth=getAuth(app),db=getDatabase(app);
 const path=ref(db,"hubCreatorSort");
 const projects=window.FormwheelHubProjects||[];
 const names=projects.map(p=>p.name);
-const baseline=["Cook","Battle","Reflex","Mix","Maze","Glitch","Quiz","Wheel","Clicker","Paint","Animation"];
+// Editorial priorities; not measured popularity. Remaining projects retain their relative order.
+const baseline=["PVP","Polyrhythm","Clicker","AFTERBEAT","Optical Chaos","Reflex","RULETORY","CITY TYCOON","LOOP","Battle","Party","Glitch","Maze","Sudoku","Paint"];
+const optimize=arr=>clean([...baseline,...arr.filter(n=>n!=="Duck"),...names.filter(n=>n!=="Duck"),"Duck"]);
 const clean=arr=>[...new Set((Array.isArray(arr)?arr:[]).filter(name=>names.includes(name)))];
-window.FormwheelCreatorSort={order:clean([...baseline,...names])};
+window.FormwheelCreatorSort={order:optimize(names)};
 const refresh=()=>window.dispatchEvent(new Event("formwheel-creator-sort-updated"));
 let pending=[],editing=false;
 const sort=document.getElementById("sort");
@@ -46,6 +48,12 @@ toggle.onclick=()=>{panel.hidden=!panel.hidden;toggle.setAttribute("aria-expande
 panel.style.cssText="padding:14px;border:1px solid var(--sort-line);border-radius:14px;max-width:480px;box-sizing:border-box;margin-top:8px;background:color-mix(in srgb,currentColor 3%,transparent)";
 rows.style.cssText="max-height:min(55vh,440px);overflow:auto;overscroll-behavior:contain;padding:3px";
 save.style.cssText="margin-top:12px;padding:12px;width:100%;border:0;border-radius:10px;background:#6250c7;color:white;font-weight:700";
+const auto=document.createElement("button");auto.type="button";auto.textContent="✨ 추천 순서 자동 최적화";auto.style.cssText="width:100%;padding:10px;border:1px solid var(--sort-line);border-radius:10px;background:transparent;color:inherit;font-weight:700;margin-bottom:6px";
+const undo=document.createElement("button");undo.type="button";undo.textContent="↶ 최적화 취소";undo.hidden=true;undo.style.cssText="padding:8px;border:1px solid var(--sort-line);border-radius:8px;background:transparent;color:inherit;margin-bottom:6px";
+let beforeOptimize=null;
+auto.onclick=()=>{if(!editing||save.disabled)return;beforeOptimize=[...pending];pending=optimize(pending);undo.hidden=false;paint();status.textContent="추천 순서 최적화 완료 · 확인 후 저장하세요."};
+undo.onclick=()=>{if(!editing||save.disabled||!beforeOptimize)return;pending=beforeOptimize;beforeOptimize=null;undo.hidden=true;paint();status.textContent="최적화 전 순서로 복원했습니다."};
+editor.prepend(auto,undo);
 const help=document.createElement("p");help.className="sort-help";help.textContent="☰ 손잡이를 잡고 이동하거나 화살표로 순서를 변경하세요.";editor.prepend(help);
 function paint(){
  if(!editing)return;
@@ -87,12 +95,12 @@ form.onsubmit=async event=>{
  try{
   const user=auth.currentUser?.email?.toLowerCase()==="not404spam@gmail.com"?auth.currentUser:(await signInWithPopup(auth,new GoogleAuthProvider())).user;
   if(user.email?.toLowerCase()!=="not404spam@gmail.com"||!user.emailVerified){status.textContent="제작자 계정 인증이 필요합니다.";return;}
-  editing=true;pending=[...window.FormwheelCreatorSort.order];editor.hidden=false;form.hidden=true;status.textContent="손잡이 또는 화살표로 순서를 조정한 다음 저장하세요.";paint();
+  editing=true;beforeOptimize=null;undo.hidden=true;pending=[...window.FormwheelCreatorSort.order];editor.hidden=false;form.hidden=true;status.textContent="손잡이 또는 화살표로 순서를 조정한 다음 저장하세요.";paint();
  }catch(error){status.textContent="로그인 실패: "+(error.code||"알 수 없는 오류");}
 };
 save.onclick=async()=>{
  save.disabled=true;status.textContent="저장 중…";
- try{await set(path,{order:pending,updatedAt:serverTimestamp()});status.textContent="추천 순서 저장 완료!";}
+ try{await set(path,{order:pending,updatedAt:serverTimestamp()});beforeOptimize=null;undo.hidden=true;status.textContent="추천 순서 저장 완료!";}
  catch(error){status.textContent="저장 실패: "+(error.code||"Firebase 권한 오류")+" · 데이터베이스 규칙 배포 상태를 확인하세요.";}
  finally{save.disabled=false;}
 };
